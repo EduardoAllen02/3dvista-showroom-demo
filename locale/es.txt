@@ -1,0 +1,17 @@
+#: locale=es
+
+## Media
+
+### Título
+panorama_35D315B3_1267_B55F_41AB_45275AB3D9B6.label = sala-1-entrada
+panorama_32273933_1267_BD5F_41B3_5409BAB1F4CB.label = sala-2-vitrinas
+panorama_3212DC5F_1267_BBC6_41B0_8EA75DE68BC6.label = sala-3-living
+panorama_3213DFE2_1267_B4FE_4186_6570B96F4684.label = sala-4-lounge
+panorama_3212F302_1267_AD3E_41A2_D60E15293A82.label = sala-5-mesas
+
+## Tour
+
+### Descripción
+
+### Título
+tour.name = Sin Título showroom-real
