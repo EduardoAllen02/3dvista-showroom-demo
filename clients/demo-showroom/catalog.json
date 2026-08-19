@@ -1,0 +1,453 @@
+[
+  {
+    "product_id": "sofa-elios-01",
+    "name": "Sofá Elios",
+    "category": "sofás",
+    "description": "Sofá modular de líneas suaves, tapizado en tela gris claro con textura ligeramente rugosa. Cojines de espuma de alta resiliencia y patas metálicas negras. Ideal como pieza central de una sala de estar contemporánea.",
+    "colors": [
+      "gris claro",
+      "gris perla"
+    ],
+    "materials": [
+      "tela",
+      "espuma",
+      "metal"
+    ],
+    "keywords": [
+      "moderno",
+      "modular",
+      "sala",
+      "living"
+    ],
+    "synonyms": [
+      "sillón",
+      "sofá seccional",
+      "sofá gris"
+    ],
+    "section": "Sala A — Zona Living",
+    "media_name": "sala-a",
+    "yaw": 0,
+    "pitch": 0,
+    "fov": 70,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/sofa-elios-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "sofas-grises-azules",
+    "active": true
+  },
+  {
+    "product_id": "sofa-nordic-02",
+    "name": "Sofá Modular Nordic",
+    "category": "sofás",
+    "description": "Sofá modular escandinavo en tono azul petróleo, con respaldo bajo y brazos redondeados. Módulos intercambiables que permiten configurar en L o en línea recta según el espacio disponible.",
+    "colors": [
+      "azul petróleo",
+      "azul oscuro"
+    ],
+    "materials": [
+      "tela",
+      "madera de haya"
+    ],
+    "keywords": [
+      "escandinavo",
+      "modular",
+      "azul",
+      "sala"
+    ],
+    "synonyms": [
+      "sofá azul",
+      "sofá en L"
+    ],
+    "section": "Sala B — Recodo Central",
+    "media_name": "sala-b",
+    "yaw": 45,
+    "pitch": -5,
+    "fov": 68,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/sofa-nordic-02/480/320",
+    "detail_url": null,
+    "alternatives_group": "sofas-grises-azules",
+    "active": true
+  },
+  {
+    "product_id": "silla-azul-marina-01",
+    "name": "Silla Azul Marina",
+    "category": "sillas",
+    "description": "Silla de comedor con estructura de madera de roble y asiento tapizado en tela azul marino. Diseño minimalista con respaldo ligeramente curvado para mayor comodidad.",
+    "colors": [
+      "azul marino"
+    ],
+    "materials": [
+      "madera de roble",
+      "tela"
+    ],
+    "keywords": [
+      "comedor",
+      "minimalista",
+      "azul"
+    ],
+    "synonyms": [
+      "silla azul",
+      "silla de comedor"
+    ],
+    "section": "Sala A — Zona Living",
+    "media_name": "sala-a",
+    "yaw": 120,
+    "pitch": -8,
+    "fov": 62,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/silla-azul-marina-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "sillas-madera",
+    "active": true
+  },
+  {
+    "product_id": "silla-escandinava-01",
+    "name": "Silla Escandinava Roble",
+    "category": "sillas",
+    "description": "Silla de líneas escandinavas fabricada íntegramente en madera de roble macizo, con asiento contorneado sin tapizar. Apilable y muy ligera.",
+    "colors": [
+      "roble natural"
+    ],
+    "materials": [
+      "madera de roble"
+    ],
+    "keywords": [
+      "escandinavo",
+      "madera",
+      "apilable"
+    ],
+    "synonyms": [
+      "silla de madera",
+      "silla nórdica"
+    ],
+    "section": "Sala C — Mirador Final",
+    "media_name": "sala-c",
+    "yaw": -60,
+    "pitch": -6,
+    "fov": 60,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/silla-escandinava-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "sillas-madera",
+    "active": true
+  },
+  {
+    "product_id": "mesa-roble-01",
+    "name": "Mesa de Madera Roble",
+    "category": "mesas",
+    "description": "Mesa de centro rectangular en madera maciza de roble, acabado natural con veta visible. Patas ligeramente cónicas de estilo escandinavo.",
+    "colors": [
+      "roble natural"
+    ],
+    "materials": [
+      "madera de roble"
+    ],
+    "keywords": [
+      "madera",
+      "centro",
+      "escandinava"
+    ],
+    "synonyms": [
+      "mesa de centro",
+      "mesa baja"
+    ],
+    "section": "Sala B — Recodo Central",
+    "media_name": "sala-b",
+    "yaw": -90,
+    "pitch": -15,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/mesa-roble-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "mesas-madera-piedra",
+    "active": true
+  },
+  {
+    "product_id": "mesa-marmol-01",
+    "name": "Mesa Auxiliar de Mármol",
+    "category": "mesas",
+    "description": "Mesa auxiliar circular con tapa de mármol blanco veteado y base metálica dorada. Pieza de acento para junto a un sillón o extremo de sofá.",
+    "colors": [
+      "blanco",
+      "dorado"
+    ],
+    "materials": [
+      "mármol",
+      "metal"
+    ],
+    "keywords": [
+      "auxiliar",
+      "acento",
+      "mármol"
+    ],
+    "synonyms": [
+      "mesa lateral",
+      "mesa de mármol"
+    ],
+    "section": "Sala C — Mirador Final",
+    "media_name": "sala-c",
+    "yaw": 30,
+    "pitch": -10,
+    "fov": 55,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/mesa-marmol-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "mesas-madera-piedra",
+    "active": true
+  },
+  {
+    "product_id": "lampara-arco-01",
+    "name": "Lámpara de Pie Arco",
+    "category": "iluminación",
+    "description": "Lámpara de pie con brazo en arco de acero negro mate y pantalla cónica en tono crudo. Ideal para iluminar de forma indirecta una zona de lectura junto al sofá.",
+    "colors": [
+      "negro",
+      "crudo"
+    ],
+    "materials": [
+      "acero",
+      "tela"
+    ],
+    "keywords": [
+      "iluminación",
+      "lectura",
+      "arco"
+    ],
+    "synonyms": [
+      "lámpara de arco",
+      "lámpara de pie"
+    ],
+    "section": "Sala A — Zona Living",
+    "media_name": "sala-a",
+    "yaw": -150,
+    "pitch": 5,
+    "fov": 58,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/lampara-arco-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "iluminacion-moderna",
+    "active": true
+  },
+  {
+    "product_id": "lampara-turquesa-01",
+    "name": "Lámpara Colgante Turquesa",
+    "category": "iluminación",
+    "description": "Lámpara colgante con pantalla de vidrio soplado en tono turquesa intenso. Aporta un punto de color sobre una mesa o zona de comedor.",
+    "colors": [
+      "turquesa"
+    ],
+    "materials": [
+      "vidrio",
+      "metal"
+    ],
+    "keywords": [
+      "iluminación",
+      "colgante",
+      "color"
+    ],
+    "synonyms": [
+      "lámpara colgante",
+      "pendant"
+    ],
+    "section": "Sala B — Recodo Central",
+    "media_name": "sala-b",
+    "yaw": 160,
+    "pitch": 10,
+    "fov": 55,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/lampara-turquesa-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "iluminacion-moderna",
+    "active": true
+  },
+  {
+    "product_id": "alfombra-berbere-01",
+    "name": "Alfombra Berbere",
+    "category": "decoración",
+    "description": "Alfombra de estilo bereber tejida a mano en lana cruda, con patrón geométrico en hilo negro. Aporta calidez y textura bajo la zona de sofás.",
+    "colors": [
+      "crudo",
+      "negro"
+    ],
+    "materials": [
+      "lana"
+    ],
+    "keywords": [
+      "textil",
+      "geométrico",
+      "artesanal"
+    ],
+    "synonyms": [
+      "alfombra bereber",
+      "tapete"
+    ],
+    "section": "Sala A — Zona Living",
+    "media_name": "sala-a",
+    "yaw": 60,
+    "pitch": -25,
+    "fov": 60,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/alfombra-berbere-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "decoracion-textil",
+    "active": true
+  },
+  {
+    "product_id": "espejo-laton-01",
+    "name": "Espejo Redondo de Latón",
+    "category": "decoración",
+    "description": "Espejo circular con marco delgado de latón cepillado. Pieza versátil para ampliar visualmente cualquier ambiente.",
+    "colors": [
+      "dorado"
+    ],
+    "materials": [
+      "latón",
+      "vidrio"
+    ],
+    "keywords": [
+      "espejo",
+      "metal",
+      "redondo"
+    ],
+    "synonyms": [
+      "espejo circular",
+      "espejo dorado"
+    ],
+    "section": "Sala C — Mirador Final",
+    "media_name": "sala-c",
+    "yaw": 100,
+    "pitch": 0,
+    "fov": 50,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/espejo-laton-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "decoracion-metal",
+    "active": true
+  },
+  {
+    "product_id": "estanteria-modular-01",
+    "name": "Estantería Modular",
+    "category": "almacenamiento",
+    "description": "Estantería modular de madera de nogal con compartimentos abiertos y cerrados. Permite combinar exhibición y almacenamiento en un mismo mueble.",
+    "colors": [
+      "nogal"
+    ],
+    "materials": [
+      "madera de nogal"
+    ],
+    "keywords": [
+      "almacenamiento",
+      "modular",
+      "estantería"
+    ],
+    "synonyms": [
+      "librero",
+      "repisa modular"
+    ],
+    "section": "Sala B — Recodo Central",
+    "media_name": "sala-b",
+    "yaw": 0,
+    "pitch": -12,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/estanteria-modular-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "almacenamiento-madera",
+    "active": true
+  },
+  {
+    "product_id": "cojines-terracota-01",
+    "name": "Set de Cojines Terracota",
+    "category": "decoración",
+    "description": "Set de tres cojines decorativos en tonos terracota y crudo, con mezcla de texturas de lino y pana. Complementan el sofá Elios o cualquier pieza en gris claro.",
+    "colors": [
+      "terracota",
+      "crudo"
+    ],
+    "materials": [
+      "lino",
+      "pana"
+    ],
+    "keywords": [
+      "cojines",
+      "textil",
+      "terracota"
+    ],
+    "synonyms": [
+      "almohadones",
+      "cojines decorativos"
+    ],
+    "section": "Sala A — Zona Living",
+    "media_name": "sala-a",
+    "yaw": -30,
+    "pitch": -20,
+    "fov": 55,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/cojines-terracota-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "decoracion-textil",
+    "active": true
+  },
+  {
+    "product_id": "sofa-cama-milano-01",
+    "name": "Sofá Cama Milano",
+    "category": "sofás",
+    "description": "Sofá cama convertible tapizado en pana verde botella. Próximamente disponible en el showroom — aún no exhibido en tour.",
+    "colors": [
+      "verde botella"
+    ],
+    "materials": [
+      "pana"
+    ],
+    "keywords": [
+      "sofá cama",
+      "convertible"
+    ],
+    "synonyms": [
+      "sofá convertible"
+    ],
+    "section": "Sala B — Recodo Central",
+    "media_name": "sala-b",
+    "yaw": 10,
+    "pitch": 0,
+    "fov": 60,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/sofa-cama-milano-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "sofas-grises-azules",
+    "active": false
+  },
+  {
+    "product_id": "mesa-centro-glass-01",
+    "name": "Mesa de Centro de Cristal",
+    "category": "mesas",
+    "description": "Mesa de centro con tapa de cristal templado y estructura de acero cromado. Actualmente fuera de stock, no disponible para exhibición.",
+    "colors": [
+      "transparente",
+      "cromado"
+    ],
+    "materials": [
+      "cristal",
+      "acero"
+    ],
+    "keywords": [
+      "cristal",
+      "moderna",
+      "centro"
+    ],
+    "synonyms": [
+      "mesa de cristal"
+    ],
+    "section": "Sala C — Mirador Final",
+    "media_name": "sala-c",
+    "yaw": -10,
+    "pitch": -5,
+    "fov": 55,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/mesa-centro-glass-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "mesas-madera-piedra",
+    "active": false
+  }
+]

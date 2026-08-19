@@ -1,0 +1,175 @@
+[
+  {
+    "product_id": "mesa-comedor-milano-01",
+    "name": "Mesa de Comedor Milano",
+    "category": "mesas",
+    "description": "Mesa de comedor rectangular en roble macizo, 200×90 cm, acabado natural que resalta la veta de la madera. Pieza central pensada para reunir a toda la familia.",
+    "colors": [
+      "roble natural"
+    ],
+    "materials": [
+      "roble macizo"
+    ],
+    "keywords": [
+      "mesa",
+      "comedor",
+      "madera",
+      "rectangular",
+      "roble"
+    ],
+    "synonyms": [
+      "mesa de comedor",
+      "mesa grande",
+      "mesa para comer"
+    ],
+    "section": "Sala 1 — Entrada",
+    "media_name": "sala-1-entrada",
+    "yaw": 122.568,
+    "pitch": -18.477,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/mesa-comedor-milano-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "mesas-showroom-real",
+    "active": true
+  },
+  {
+    "product_id": "sofa-cama-milano-01",
+    "name": "Sofá Cama Milano",
+    "category": "sofás",
+    "description": "Sofá cama de diseño italiano con estructura de madera maciza y tapizado en tela de alta resistencia. Se abre en segundos y se transforma en una amplia cama individual, ideal para espacios que combinan funcionalidad y estilo. Disponible en distintos acabados.",
+    "colors": [
+      "gris"
+    ],
+    "materials": [
+      "madera maciza",
+      "tela"
+    ],
+    "keywords": [
+      "sofá",
+      "sofá cama",
+      "convertible",
+      "italiano"
+    ],
+    "synonyms": [
+      "sillón cama",
+      "sofá convertible",
+      "divano letto"
+    ],
+    "section": "Sala 3 — Living",
+    "media_name": "sala-3-living",
+    "yaw": 110.631,
+    "pitch": -20.75,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "/assets/showroom-real/sofa-cama-milano-01.jpg",
+    "detail_url": null,
+    "alternatives_group": "asientos-showroom-real",
+    "active": true
+  },
+  {
+    "product_id": "vitrina-vidrio-01",
+    "name": "Vitrina Suspendida con Puertas de Vidrio",
+    "category": "almacenamiento",
+    "description": "Vitrina suspendida con puertas correderas de vidrio templado esmerilado. Estructura en fresno natural con iluminación LED integrada — perfecta para exhibir vajilla o piezas decorativas.",
+    "colors": [
+      "fresno natural"
+    ],
+    "materials": [
+      "fresno",
+      "vidrio templado"
+    ],
+    "keywords": [
+      "vitrina",
+      "almacenamiento",
+      "vidrio",
+      "suspendida",
+      "LED"
+    ],
+    "synonyms": [
+      "mueble vitrina",
+      "estantería con vidrio",
+      "alacena"
+    ],
+    "section": "Sala 2 — Vitrinas",
+    "media_name": "sala-2-vitrinas",
+    "yaw": 155.263,
+    "pitch": 3.612,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/vitrina-vidrio-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "vitrinas-showroom-real",
+    "active": true
+  },
+  {
+    "product_id": "sillon-lounge-01",
+    "name": "Sillón Giratorio Lounge",
+    "category": "sillas",
+    "description": "Sillón lounge giratorio tapizado en ecopiel blanca de flor entera. Base de cuatro radios en acero pintado negro mate — comodidad y diseño para espacios de descanso.",
+    "colors": [
+      "blanco"
+    ],
+    "materials": [
+      "ecopiel",
+      "acero"
+    ],
+    "keywords": [
+      "sillón",
+      "lounge",
+      "giratorio",
+      "relax"
+    ],
+    "synonyms": [
+      "poltrona",
+      "sillón reclinable",
+      "silla giratoria"
+    ],
+    "section": "Sala 4 — Lounge",
+    "media_name": "sala-4-lounge",
+    "yaw": 173.91,
+    "pitch": -10.485,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/sillon-lounge-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "asientos-showroom-real",
+    "active": true
+  },
+  {
+    "product_id": "mesas-duo-01",
+    "name": "Set de Mesas de Centro Duo",
+    "category": "mesas",
+    "description": "Set de dos mesas auxiliares apilables con tapa de vidrio ahumado y base de metal bronceado. Versátiles: se usan juntas o separadas según el espacio.",
+    "colors": [
+      "bronce",
+      "vidrio ahumado"
+    ],
+    "materials": [
+      "vidrio",
+      "metal"
+    ],
+    "keywords": [
+      "mesa",
+      "mesa auxiliar",
+      "set",
+      "centro",
+      "vidrio"
+    ],
+    "synonyms": [
+      "mesas de centro",
+      "mesas nido",
+      "mesitas"
+    ],
+    "section": "Sala 5 — Mesas",
+    "media_name": "sala-5-mesas",
+    "yaw": -174.251,
+    "pitch": -14.833,
+    "fov": 65,
+    "hotspot_name": null,
+    "image_url": "https://picsum.photos/seed/mesas-duo-01/480/320",
+    "detail_url": null,
+    "alternatives_group": "mesas-showroom-real",
+    "active": true
+  }
+]

@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+// Bundles clients/<tour>/entry.ts -> dist/<tour>/assistant.bundle.js (+ .css)
+// Usage: node scripts/build-tour-bundle.mjs <tour-name>
+import { build } from "esbuild";
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+import path from "node:path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const ROOT = path.resolve(__dirname, "..");
+
+async function main() {
+  const tour = process.argv[2];
+  if (!tour) {
+    console.error("Usage: node scripts/build-tour-bundle.mjs <tour-name>");
+    process.exit(1);
+  }
+
+  const clientDir = path.join(ROOT, "clients", tour);
+  const outDir = path.join(ROOT, "dist", tour);
+  if (!existsSync(outDir)) mkdirSync(outDir, { recursive: true });
+
+  await build({
+    entryPoints: [path.join(clientDir, "entry.ts")],
+    bundle: true,
+    format: "iife",
+    target: "es2018",
+    outfile: path.join(outDir, "assistant.bundle.js"),
+    logLevel: "info",
+  });
+
+  const baseCss = readFileSync(
+    path.join(ROOT, "packages", "assistant-ui", "src", "styles", "assistant.css"),
+    "utf8"
+  );
+  const themeCss = readFileSync(path.join(clientDir, "theme.css"), "utf8");
+  writeFileSync(path.join(outDir, "assistant.css"), `${baseCss}\n\n${themeCss}\n`, "utf8");
+
+  console.log(`OK: bundle generado en ${path.relative(ROOT, outDir)}/`);
+}
+
+main();

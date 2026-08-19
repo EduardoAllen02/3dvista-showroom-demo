@@ -1,0 +1,22 @@
+{
+  "tour_id": "showroom-real",
+  "displayName": "Showroom Real — Colección Milano",
+  "allowedOrigin": "http://localhost:5501",
+  "backendUrl": "http://localhost:8962",
+  "media": [
+    { "media_name": "sala-1-entrada", "sourceFrame": "frame_000001.webp", "label": "Sala 1 — Entrada" },
+    { "media_name": "sala-2-vitrinas", "sourceFrame": "frame_000007.webp", "label": "Sala 2 — Vitrinas" },
+    { "media_name": "sala-3-living", "sourceFrame": "frame_000010.webp", "label": "Sala 3 — Living" },
+    { "media_name": "sala-4-lounge", "sourceFrame": "frame_000015.webp", "label": "Sala 4 — Lounge" },
+    { "media_name": "sala-5-mesas", "sourceFrame": "frame_000019.webp", "label": "Sala 5 — Mesas" }
+  ],
+  "assistant": {
+    "assistantName": "AI Tour Assistant",
+    "welcomeMessage": "¡Hola! Soy tu asistente del showroom. Pregúntame por cualquier producto — sofás, sillas, mesas o vitrinas — y te llevo directo a él.",
+    "suggestedQuestions": ["Sofás", "Sillas", "Mesas", "Vitrinas"]
+  },
+  "theme": {
+    "primaryColor": "#14b8a6",
+    "position": "bottom-right"
+  }
+}

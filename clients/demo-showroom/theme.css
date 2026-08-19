@@ -1,0 +1,7 @@
+/* Per-tour theme override for demo-showroom — only CSS variables, never structural rules. */
+.tva-root {
+  --assistant-primary: #14b8a6;
+  --assistant-primary-hover: #0f9c8f;
+  --assistant-bg: #0b1220;
+  --assistant-bg-elevated: #101a2e;
+}

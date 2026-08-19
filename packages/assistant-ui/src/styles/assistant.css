@@ -1,0 +1,447 @@
+/* 3dvista-assistant widget — structural CSS only.
+   Colors/position come from CSS variables set by theme.ts per tour;
+   clients/<tour>/theme.css may override the variables below, never these rules. */
+
+.tva-root {
+  --assistant-primary: #14b8a6; /* dark turquoise default */
+  --assistant-primary-hover: #0f9c8f;
+  --assistant-bg: #0f172a;
+  --assistant-bg-elevated: #16213a;
+  --assistant-text: #e6f1ef;
+  --assistant-text-muted: #9fb3c8;
+  --assistant-border: #23324a;
+  --assistant-position-side: right;
+
+  position: fixed;
+  z-index: 999999;
+  bottom: 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color-scheme: dark;
+}
+
+.tva-root[data-assistant-position="bottom-right"] { right: 24px; }
+.tva-root[data-assistant-position="bottom-left"] { left: 24px; }
+
+/* Launcher */
+.tva-launcher {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  background: var(--assistant-primary);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  position: relative;
+  z-index: 1; /* stays below .tva-card so the two never visually overlap at the corner */
+}
+
+.tva-launcher svg {
+  width: 26px;
+  height: 26px;
+}
+
+.tva-launcher:hover { background: var(--assistant-primary-hover); }
+.tva-launcher:focus-visible { outline: 3px solid var(--assistant-primary); outline-offset: 3px; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .tva-launcher { transition: transform 0.15s ease, background 0.15s ease; }
+  .tva-launcher:hover { transform: scale(1.05); }
+}
+
+/* Chat card — intentionally independent of the launcher's corner: the
+   launcher stays wherever --assistant-position-side puts it, but the card
+   always opens anchored to the bottom-left of the viewport (fixed, not
+   relative to .tva-root), compact and wider rather than tall. */
+.tva-card {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  width: 420px;
+  max-height: min(620px, 82vh);
+  display: flex;
+  flex-direction: column;
+  background: var(--assistant-bg);
+  border: 1px solid var(--assistant-border);
+  border-radius: 16px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+  z-index: 2; /* above .tva-launcher */
+
+  /* Closed state: scaled down and faded out from its own bottom-left
+     corner, rather than the old `[hidden]`/display:none toggle — display
+     can't be transitioned, which is why open/close used to be an abrupt
+     pop instead of an animation. `inert` (set in chat-card.ts) handles
+     removing it from interaction/AT while closed, so this only has to
+     handle the visual. */
+  transform-origin: bottom left;
+  opacity: 0;
+  transform: scale(0.85) translateY(8px);
+  pointer-events: none;
+}
+
+.tva-card.tva-card--open {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .tva-card {
+    transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+.tva-card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--assistant-bg-elevated);
+  border-bottom: 1px solid var(--assistant-border);
+}
+.tva-card-header .tva-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--assistant-primary);
+  flex-shrink: 0;
+}
+.tva-card-header .tva-title { flex: 1; min-width: 0; }
+.tva-card-header .tva-title strong { display: block; font-size: 14px; color: var(--assistant-text); }
+.tva-card-header .tva-title span { display: block; font-size: 12px; color: var(--assistant-text-muted); }
+.tva-card-header button {
+  background: transparent;
+  border: none;
+  color: var(--assistant-text-muted);
+  cursor: pointer;
+  font-size: 16px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+.tva-card-header button:hover { background: var(--assistant-border); color: var(--assistant-text); }
+.tva-card-header button:focus-visible { outline: 2px solid var(--assistant-primary); }
+
+/* Messages */
+.tva-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tva-bubble {
+  max-width: 88%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 13.5px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+}
+.tva-bubble-user {
+  align-self: flex-end;
+  background: var(--assistant-primary);
+  color: #06201c;
+  border-bottom-right-radius: 4px;
+}
+.tva-bubble-assistant {
+  align-self: flex-start;
+  background: var(--assistant-bg-elevated);
+  color: var(--assistant-text);
+  border: 1px solid var(--assistant-border);
+  border-bottom-left-radius: 4px;
+}
+
+.tva-typing {
+  align-self: flex-start;
+  display: flex;
+  gap: 4px;
+  padding: 10px 12px;
+}
+.tva-typing span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--assistant-text-muted);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tva-typing span { animation: tva-pulse 1.2s infinite ease-in-out; }
+  .tva-typing span:nth-child(2) { animation-delay: 0.15s; }
+  .tva-typing span:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes tva-pulse { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
+}
+
+/* Product info card — compact horizontal layout (small square thumbnail
+   left, name + description right), matching the reference UI. Presented as
+   its own message-like element; the "Llévame"/"Ver alternativas" buttons
+   are a SEPARATE element below (.tva-product-actions), never part of this
+   box, and never carry the image/name/section themselves. */
+.tva-product-card {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--assistant-bg-elevated);
+  border: 1px solid var(--assistant-border);
+  border-radius: 12px;
+  padding: 8px;
+}
+.tva-product-card img {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--assistant-border);
+}
+.tva-product-card-body { min-width: 0; }
+.tva-product-card-body strong {
+  display: block;
+  font-size: 13px;
+  color: var(--assistant-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tva-product-card-body p {
+  margin: 2px 0 0;
+  font-size: 11.5px;
+  color: var(--assistant-text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Action buttons — discrete, ~80% width, centered, stacked. Only ever
+   attached to proposal cards (get_product/get_alternatives); navigating
+   never produces one of these (see assistant-core ProductCard doc). */
+.tva-product-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 80%;
+  margin: 2px auto 0;
+}
+.tva-product-actions button {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--assistant-border);
+  background: var(--assistant-bg-elevated);
+  color: var(--assistant-text);
+  cursor: pointer;
+}
+.tva-product-actions button.tva-primary {
+  background: var(--assistant-primary);
+  border-color: var(--assistant-primary);
+  color: #06201c;
+}
+.tva-product-actions button:hover { filter: brightness(1.1); }
+.tva-product-actions button:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
+
+/* Suggestions */
+.tva-suggestions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 10px;
+}
+.tva-chip {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--assistant-border);
+  background: var(--assistant-bg-elevated);
+  color: var(--assistant-text-muted);
+  cursor: pointer;
+}
+.tva-chip:hover { color: var(--assistant-text); border-color: var(--assistant-primary); }
+
+/* Input row */
+.tva-input-row {
+  display: flex;
+  gap: 8px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--assistant-border);
+  background: var(--assistant-bg-elevated);
+}
+.tva-input-row input {
+  flex: 1;
+  background: var(--assistant-bg);
+  border: 1px solid var(--assistant-border);
+  border-radius: 10px;
+  padding: 9px 12px;
+  color: var(--assistant-text);
+  font-size: 13px;
+}
+.tva-input-row input:focus-visible { outline: 2px solid var(--assistant-primary); }
+.tva-input-row button {
+  background: var(--assistant-primary);
+  border: none;
+  border-radius: 10px;
+  width: 38px;
+  color: #06201c;
+  cursor: pointer;
+}
+.tva-input-row button:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
+
+/* Mobile — STILL a floating popup (rounded corners, drop shadow, margin
+   showing the tour behind it), just wider (90% of the screen) — never
+   edge-to-edge. Every fixed-px size below is expressed as a bare number
+   times `--tva-mobile-unit` (a CSS length set in index.ts, `1px` on
+   desktop) so it renders at its intended PHYSICAL size instead of at half
+   scale: 3DVista's own runtime rewrites the page's viewport meta to
+   `initial-scale=0.5` on load, which doubles the CSS layout viewport that
+   every plain `px` value is relative to (confirmed live: window.innerWidth
+   reports ~750 on a real 375px-wide screen) — so without this, text/icons
+   render at roughly half their intended size on an actual phone even once
+   the mobile layout itself is correctly detected.
+
+   `--tva-mobile-unit` is `calc(100vw / <physicalScreenWidth>)` — a LIVE
+   `vw`-based length, not a cached number, so it self-corrects on every
+   layout pass no matter when 3DVista's rewrite actually happens (see
+   index.ts's `computeMobileUnit` for why an earlier cached-multiplier
+   version of this could go stale and break the layout).
+
+   Percentage sizing (width: 90% etc.) needs none of this — it's already
+   relative to the (also-doubled) layout viewport, so it cancels out on its
+   own. Driven by `data-tva-mobile`, NOT a `max-width` media query — see
+   index.ts's `isMobileDevice` for why that never fires inside the tour. */
+.tva-root[data-tva-mobile="true"] {
+  bottom: max(calc(16 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-bottom));
+}
+.tva-root[data-tva-mobile="true"][data-assistant-position="bottom-right"] {
+  right: max(calc(16 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-right));
+}
+.tva-root[data-tva-mobile="true"][data-assistant-position="bottom-left"] {
+  left: max(calc(16 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-left));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-launcher {
+  width: calc(64 * var(--tva-mobile-unit, 1px));
+  height: calc(64 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-launcher svg {
+  width: calc(28 * var(--tva-mobile-unit, 1px));
+  height: calc(28 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-card {
+  position: fixed;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  bottom: max(calc(16 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-bottom));
+  top: auto;
+  max-height: min(78vh, 78dvh);
+  border-radius: calc(18 * var(--tva-mobile-unit, 1px));
+  /* Near-full-width and roughly centered on mobile — rising from its own
+     bottom-left corner (the desktop default) would look lopsided here. */
+  transform-origin: bottom center;
+}
+
+.tva-root[data-tva-mobile="true"] .tva-card-header {
+  padding: calc(14 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px));
+  gap: calc(10 * var(--tva-mobile-unit, 1px));
+  /* The header's fixed-width children (avatar + 2 buttons) plus the
+     title's own content can, at some viewport/content combinations,
+     want more width than the card has — confirmed live via CDP: without
+     this the row grew to 282px tall instead of wrapping the title text
+     normally. flex-wrap keeps that overflow vertical (a slightly taller
+     header) instead of pushing content past the card's edges. */
+  flex-wrap: wrap;
+}
+.tva-root[data-tva-mobile="true"] .tva-card-header .tva-avatar {
+  width: calc(30 * var(--tva-mobile-unit, 1px));
+  height: calc(30 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-card-header .tva-title {
+  /* Allow the title block to actually shrink below its text's natural
+     width instead of forcing the row wider than the card. */
+  overflow: hidden;
+}
+.tva-root[data-tva-mobile="true"] .tva-card-header .tva-title strong {
+  font-size: calc(15 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-card-header .tva-title span {
+  font-size: calc(13 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-card-header button {
+  width: calc(40 * var(--tva-mobile-unit, 1px));
+  height: calc(40 * var(--tva-mobile-unit, 1px));
+  font-size: calc(18 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-messages {
+  padding: calc(14 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px));
+  gap: calc(12 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-bubble {
+  font-size: calc(15 * var(--tva-mobile-unit, 1px));
+  padding: calc(10 * var(--tva-mobile-unit, 1px)) calc(12 * var(--tva-mobile-unit, 1px));
+  border-radius: calc(12 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-typing span {
+  width: calc(6 * var(--tva-mobile-unit, 1px));
+  height: calc(6 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-product-card {
+  gap: calc(10 * var(--tva-mobile-unit, 1px));
+  padding: calc(8 * var(--tva-mobile-unit, 1px));
+  border-radius: calc(12 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-product-card img {
+  width: calc(60 * var(--tva-mobile-unit, 1px));
+  height: calc(60 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-product-card-body strong {
+  font-size: calc(15 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-product-card-body p {
+  font-size: calc(13 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-product-actions button {
+  font-size: calc(14 * var(--tva-mobile-unit, 1px));
+  padding: calc(10 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-suggestions {
+  padding: 0 calc(16 * var(--tva-mobile-unit, 1px)) calc(10 * var(--tva-mobile-unit, 1px));
+  gap: calc(6 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-chip {
+  font-size: calc(13 * var(--tva-mobile-unit, 1px));
+  padding: calc(7 * var(--tva-mobile-unit, 1px)) calc(11 * var(--tva-mobile-unit, 1px));
+}
+
+.tva-root[data-tva-mobile="true"] .tva-input-row {
+  padding: calc(12 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px));
+  padding-bottom: max(calc(12 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-bottom));
+  gap: calc(8 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-input-row input {
+  /* 16px is the iOS Safari threshold below which focusing an input
+     auto-zooms the page — compensating it like everything else here means
+     it lands on exactly 16px physical, right at that threshold. */
+  font-size: calc(16 * var(--tva-mobile-unit, 1px));
+  padding: calc(11 * var(--tva-mobile-unit, 1px)) calc(12 * var(--tva-mobile-unit, 1px));
+  min-width: 0; /* let it actually shrink in the flex row instead of overflowing */
+}
+.tva-root[data-tva-mobile="true"] .tva-input-row button {
+  width: calc(44 * var(--tva-mobile-unit, 1px));
+  flex-shrink: 0;
+}
