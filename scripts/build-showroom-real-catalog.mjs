@@ -57,7 +57,7 @@ const rows = [
     pitch: -20.75,
     fov: 65,
     hotspot_name: "",
-    image_url: "/assets/showroom-real/sofa-cama-milano-01.jpg",
+    image_url: "assets/showroom-real/sofa-cama-milano-01.jpg",
     detail_url: "",
     alternatives_group: "asientos-showroom-real",
     active: "TRUE",
