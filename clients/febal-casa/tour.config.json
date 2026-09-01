@@ -1,0 +1,507 @@
+{
+  "tour_id": "febal-casa",
+  "displayName": "Febal Casa — Tour Virtual",
+  "allowedOrigin": "https://deploy-febal-casa.vercel.app",
+  "backendUrl": "https://threevista-showroom-demo.onrender.com",
+  "media": [
+    {
+      "media_name": "9",
+      "sourceFrame": "panorama_A45B8D81_8E61_8A4D_41D0_65B85181FE74",
+      "label": "Panel 9"
+    },
+    {
+      "media_name": "1",
+      "sourceFrame": "panorama_6CB348B5_8C8C_4D34_41CE_57DFC158CFB8",
+      "label": "Panel 1"
+    },
+    {
+      "media_name": "2",
+      "sourceFrame": "panorama_D21AD553_83A4_B7E3_41DB_B5ADCBAB5B33",
+      "label": "Panel 2"
+    },
+    {
+      "media_name": "3",
+      "sourceFrame": "panorama_D1299B1D_83AC_F367_41C4_343D71F38710",
+      "label": "Panel 3"
+    },
+    {
+      "media_name": "4",
+      "sourceFrame": "panorama_B09866BA_8EE1_87BF_41D4_C35C9CF30E47",
+      "label": "Panel 4"
+    },
+    {
+      "media_name": "5",
+      "sourceFrame": "panorama_B628E2E9_9376_0886_41D4_762C36376A4B",
+      "label": "Panel 5"
+    },
+    {
+      "media_name": "6",
+      "sourceFrame": "panorama_B7F0ED93_9376_388A_41E1_418EAB7DCA6F",
+      "label": "Panel 6"
+    },
+    {
+      "media_name": "7",
+      "sourceFrame": "panorama_B6CA5A30_934A_3B86_41C4_F6E599634924",
+      "label": "Panel 7"
+    },
+    {
+      "media_name": "8",
+      "sourceFrame": "panorama_B4EF4480_934A_0886_41E1_DBDE611AAF7D",
+      "label": "Panel 8"
+    },
+    {
+      "media_name": "10",
+      "sourceFrame": "panorama_6C73EA94_8C8B_CDF4_41DB_8D2CF0C6C38F",
+      "label": "Panel 10"
+    },
+    {
+      "media_name": "11",
+      "sourceFrame": "panorama_A8236525_8E60_7A55_41D0_44CD4EFFE6C9",
+      "label": "Panel 11"
+    },
+    {
+      "media_name": "12",
+      "sourceFrame": "panorama_A85C88CD_8E63_8BD5_41D6_AEB961AE89C5",
+      "label": "Panel 12"
+    },
+    {
+      "media_name": "13",
+      "sourceFrame": "panorama_A9F704BB_8E63_BBBD_41DE_09963AB83129",
+      "label": "Panel 13"
+    },
+    {
+      "media_name": "14",
+      "sourceFrame": "panorama_BAD99671_8E20_86CD_41D0_9C2F67FF2301",
+      "label": "Panel 14"
+    },
+    {
+      "media_name": "15",
+      "sourceFrame": "panorama_BFA72184_8E20_BA4B_41D4_1242A1970851",
+      "label": "Panel 15"
+    },
+    {
+      "media_name": "16",
+      "sourceFrame": "panorama_A35D187F_8E60_8AB5_41CB_A7EE5C618057",
+      "label": "Panel 16"
+    },
+    {
+      "media_name": "17",
+      "sourceFrame": "panorama_7F95BDB7_8FB4_4734_41DE_09D921B9B8CA",
+      "label": "Panel 17"
+    },
+    {
+      "media_name": "18",
+      "sourceFrame": "panorama_1F184D72_85F4_474C_41DF_1AA449448618",
+      "label": "Panel 18"
+    },
+    {
+      "media_name": "19",
+      "sourceFrame": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+      "label": "Panel 19"
+    },
+    {
+      "media_name": "20",
+      "sourceFrame": "panorama_19560208_85F4_5CDC_41A2_C405344A0E34",
+      "label": "Panel 20"
+    },
+    {
+      "media_name": "22",
+      "sourceFrame": "panorama_26227211_85F4_3CCC_41DE_75C7D44BF168",
+      "label": "Panel 22"
+    },
+    {
+      "media_name": "23",
+      "sourceFrame": "panorama_1B9F9A41_858C_4D4C_41C1_8AA014FE2615",
+      "label": "Panel 23"
+    },
+    {
+      "media_name": "24",
+      "sourceFrame": "panorama_1A17496C_858C_CF54_41DE_A3202E247916",
+      "label": "Panel 24"
+    },
+    {
+      "media_name": "25",
+      "sourceFrame": "panorama_1BA7C729_858C_C4DC_41CB_4633ACE5BE99",
+      "label": "Panel 25"
+    },
+    {
+      "media_name": "26",
+      "sourceFrame": "panorama_919E4669_8E1A_9FCB_41D5_291F50DA2468",
+      "label": "Panel 26"
+    },
+    {
+      "media_name": "27",
+      "sourceFrame": "panorama_9D6C294F_97CE_199A_41D1_66DBE52C3C1B",
+      "label": "Panel 27"
+    },
+    {
+      "media_name": "28",
+      "sourceFrame": "panorama_2595A324_858D_DCD4_41DF_3254403BF6AB",
+      "label": "Panel 28"
+    },
+    {
+      "media_name": "29",
+      "sourceFrame": "panorama_9DF40A82_96DE_188A_41BA_06B97659BA72",
+      "label": "Panel 29"
+    },
+    {
+      "media_name": "30",
+      "sourceFrame": "panorama_208F2A18_858C_CCFC_41B4_46D1F5CE11DD",
+      "label": "Panel 30"
+    },
+    {
+      "media_name": "31",
+      "sourceFrame": "panorama_63513A1A_8D94_CCFC_4196_0C081F2088F9",
+      "label": "Panel 31"
+    },
+    {
+      "media_name": "32",
+      "sourceFrame": "panorama_6D744C0E_8D94_44D4_4172_23B87044C894",
+      "label": "Panel 32"
+    },
+    {
+      "media_name": "33",
+      "sourceFrame": "panorama_6C5695D5_8D97_C774_41E0_3530A2F92450",
+      "label": "Panel 33"
+    },
+    {
+      "media_name": "34",
+      "sourceFrame": "panorama_6D88F622_8D94_44CC_41DC_C135485D2E47",
+      "label": "Panel 34"
+    },
+    {
+      "media_name": "35",
+      "sourceFrame": "panorama_6D488D9A_8D94_C7FC_41D6_F4F04C1E4C93",
+      "label": "Panel 35"
+    },
+    {
+      "media_name": "36",
+      "sourceFrame": "panorama_602A48FA_8CB4_CD3C_417E_5E08EA8C3385",
+      "label": "Panel 36"
+    },
+    {
+      "media_name": "37",
+      "sourceFrame": "panorama_776312F4_8F94_3D34_41D1_A038C7844C12",
+      "label": "Panel 37"
+    },
+    {
+      "media_name": "38",
+      "sourceFrame": "panorama_7AF041CD_8F94_3F54_41D8_1D1FEFB54F19",
+      "label": "Panel 38"
+    },
+    {
+      "media_name": "39",
+      "sourceFrame": "panorama_045FA93C_A635_1AAB_41E3_6B874667ECB1",
+      "label": "Panel 39"
+    },
+    {
+      "media_name": "40",
+      "sourceFrame": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+      "label": "Panel 40"
+    },
+    {
+      "media_name": "41",
+      "sourceFrame": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+      "label": "Panel 41"
+    },
+    {
+      "media_name": "42",
+      "sourceFrame": "panorama_AE1E6B74_89EB_A706_41A2_70F780C3953C",
+      "label": "Panel 42"
+    },
+    {
+      "media_name": "43",
+      "sourceFrame": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+      "label": "Panel 43"
+    },
+    {
+      "media_name": "44",
+      "sourceFrame": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+      "label": "Panel 44"
+    },
+    {
+      "media_name": "45",
+      "sourceFrame": "panorama_AE969E19_89E9_610E_41D6_567EAF6D471D",
+      "label": "Panel 45"
+    },
+    {
+      "media_name": "46",
+      "sourceFrame": "panorama_AE30E3D8_89EF_A70E_41D6_F4454F991C97",
+      "label": "Panel 46"
+    },
+    {
+      "media_name": "47",
+      "sourceFrame": "panorama_AE4CE370_89EF_E71E_41B8_2DB281F8185E",
+      "label": "Panel 47"
+    },
+    {
+      "media_name": "48",
+      "sourceFrame": "panorama_7BC9FE75_A13A_23F9_41C1_5FA4D9B14AA6",
+      "label": "Panel 48"
+    },
+    {
+      "media_name": "49",
+      "sourceFrame": "panorama_AE3CBC56_89EF_6102_41DD_45E4076F9E6C",
+      "label": "Panel 49"
+    },
+    {
+      "media_name": "50",
+      "sourceFrame": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+      "label": "Panel 50"
+    },
+    {
+      "media_name": "51",
+      "sourceFrame": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+      "label": "Panel 51"
+    },
+    {
+      "media_name": "52",
+      "sourceFrame": "panorama_A1F337FA_89EE_AF02_41C7_D0500F53D1BD",
+      "label": "Panel 52"
+    },
+    {
+      "media_name": "53",
+      "sourceFrame": "panorama_A1BFFA72_89E9_6102_41B8_369ED772D9ED",
+      "label": "Panel 53"
+    },
+    {
+      "media_name": "54",
+      "sourceFrame": "panorama_A1B559D2_89E9_A302_41D5_D27514567F18",
+      "label": "Panel 54"
+    },
+    {
+      "media_name": "55",
+      "sourceFrame": "panorama_E5EAAED7_975A_188A_414D_38B921E2734E",
+      "label": "Panel 55"
+    },
+    {
+      "media_name": "56",
+      "sourceFrame": "panorama_A12A7873_89EB_A102_41D3_39027C33F8D4",
+      "label": "Panel 56"
+    },
+    {
+      "media_name": "57",
+      "sourceFrame": "panorama_A09F6AC7_89EA_E102_41CB_525BF8EF3414",
+      "label": "Panel 57"
+    },
+    {
+      "media_name": "58",
+      "sourceFrame": "panorama_A0F4D671_89EA_A11E_41C8_DADFBA87FC05",
+      "label": "Panel 58"
+    },
+    {
+      "media_name": "59",
+      "sourceFrame": "panorama_A0D85DBB_89E9_A302_41B5_35E91BD5EE00",
+      "label": "Panel 59"
+    },
+    {
+      "media_name": "59a",
+      "sourceFrame": "panorama_A069807E_89E9_A102_41D2_9FEB9FC313C5",
+      "label": "Panel 59a"
+    },
+    {
+      "media_name": "59b",
+      "sourceFrame": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+      "label": "Panel 59b"
+    },
+    {
+      "media_name": "60",
+      "sourceFrame": "panorama_A36D846D_89E7_A106_41B7_A0EBA93C6A9D",
+      "label": "Panel 60"
+    },
+    {
+      "media_name": "61",
+      "sourceFrame": "panorama_A3FEC439_89E7_E10E_41D2_5DB1A3B47D18",
+      "label": "Panel 61"
+    },
+    {
+      "media_name": "62",
+      "sourceFrame": "panorama_A3E902C2_89E7_A102_41DB_BC94169D7A6C",
+      "label": "Panel 62"
+    },
+    {
+      "media_name": "65",
+      "sourceFrame": "panorama_A36059F4_89E6_E306_41B7_E5F346DD513B",
+      "label": "Panel 65"
+    },
+    {
+      "media_name": "66",
+      "sourceFrame": "panorama_A16B0463_8A19_E102_41D2_6E7B83B91A33",
+      "label": "Panel 66"
+    },
+    {
+      "media_name": "67",
+      "sourceFrame": "panorama_9C0D53B9_954E_0886_41E2_3E4B3538B899",
+      "label": "Panel 67"
+    },
+    {
+      "media_name": "68",
+      "sourceFrame": "panorama_9C0B6071_954A_0786_41D4_410AF107312A",
+      "label": "Panel 68"
+    },
+    {
+      "media_name": "69",
+      "sourceFrame": "panorama_9C08DC26_9536_3F8A_41D3_E836FF75A76A",
+      "label": "Panel 69"
+    },
+    {
+      "media_name": "70",
+      "sourceFrame": "panorama_9C0A2046_954A_078A_41CF_4EF9CFA566A5",
+      "label": "Panel 70"
+    },
+    {
+      "media_name": "71",
+      "sourceFrame": "panorama_9BEE5897_92CA_388A_41E2_7E5787D58B4B",
+      "label": "Panel 71"
+    },
+    {
+      "media_name": "72",
+      "sourceFrame": "panorama_9C2FBCC8_954A_7886_41E0_985E25992051",
+      "label": "Panel 72"
+    },
+    {
+      "media_name": "73",
+      "sourceFrame": "panorama_9C354EF9_955E_1886_41DC_858B6724EE48",
+      "label": "Panel 73"
+    },
+    {
+      "media_name": "74",
+      "sourceFrame": "panorama_9C43B7B1_953A_0886_41E0_41126C6A8367",
+      "label": "Panel 74"
+    },
+    {
+      "media_name": "74a",
+      "sourceFrame": "panorama_9BED5F0B_92CE_399A_41D2_DB1DF8F4BB2D",
+      "label": "Panel 74a"
+    },
+    {
+      "media_name": "75",
+      "sourceFrame": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+      "label": "Panel 75"
+    },
+    {
+      "media_name": "76",
+      "sourceFrame": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+      "label": "Panel 76"
+    },
+    {
+      "media_name": "77",
+      "sourceFrame": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+      "label": "Panel 77"
+    },
+    {
+      "media_name": "78",
+      "sourceFrame": "panorama_0061054A_A63D_0AEF_41DA_3DA142A20926",
+      "label": "Panel 78"
+    },
+    {
+      "media_name": "79",
+      "sourceFrame": "panorama_9BE191BE_92F6_08FA_41D6_0E0F3F749454",
+      "label": "Panel 79"
+    },
+    {
+      "media_name": "80-opening",
+      "sourceFrame": "panorama_9DF48366_96DE_098A_419E_BFB4347F3D55",
+      "label": "Panel 80-opening"
+    },
+    {
+      "media_name": "81-opening",
+      "sourceFrame": "panorama_9E5125B8_95D6_0886_41A3_DE90939B0774",
+      "label": "Panel 81-opening"
+    },
+    {
+      "media_name": "82-opening",
+      "sourceFrame": "panorama_9E517695_95D6_088E_41E0_823D2B99A47D",
+      "label": "Panel 82-opening"
+    },
+    {
+      "media_name": "83",
+      "sourceFrame": "panorama_9D913B0B_9756_799A_41D9_9A6F82A57E02",
+      "label": "Panel 83"
+    },
+    {
+      "media_name": "84",
+      "sourceFrame": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+      "label": "Panel 84"
+    },
+    {
+      "media_name": "85",
+      "sourceFrame": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+      "label": "Panel 85"
+    },
+    {
+      "media_name": "86-open",
+      "sourceFrame": "panorama_9DC7DB9F_973A_38BA_41CB_606162433F73",
+      "label": "Panel 86-open"
+    },
+    {
+      "media_name": "87-open",
+      "sourceFrame": "panorama_9DF9AD27_96D6_198A_41C0_EEF1916FE3DB",
+      "label": "Panel 87-open"
+    },
+    {
+      "media_name": "88-open",
+      "sourceFrame": "panorama_3C59B1AE_A2CF_E16B_41C8_0F6F07BF695B",
+      "label": "Panel 88-open"
+    },
+    {
+      "media_name": "89-open",
+      "sourceFrame": "panorama_9DD9CEDB_96D6_18BA_41C1_3FA1DFEB3A28",
+      "label": "Panel 89-open"
+    },
+    {
+      "media_name": "90",
+      "sourceFrame": "panorama_A4CE7CD8_8A26_A10E_41D3_7F979D360CE6",
+      "label": "Panel 90"
+    },
+    {
+      "media_name": "91",
+      "sourceFrame": "panorama_A5D5D333_8A29_A702_41C0_1F2EE63FE805",
+      "label": "Panel 91"
+    },
+    {
+      "media_name": "92",
+      "sourceFrame": "panorama_648C73AB_934A_089A_41D5_710FCBD9036E",
+      "label": "Panel 92"
+    },
+    {
+      "media_name": "93",
+      "sourceFrame": "panorama_9BA9CC38_9376_1F86_41E0_BE16060FD435",
+      "label": "Panel 93"
+    },
+    {
+      "media_name": "94",
+      "sourceFrame": "panorama_709F5488_933A_0886_41E2_E5B1F86277CE",
+      "label": "Panel 94"
+    },
+    {
+      "media_name": "95",
+      "sourceFrame": "panorama_6CB35494_935A_088E_41DE_B3AAB6998D37",
+      "label": "Panel 95"
+    },
+    {
+      "media_name": "96",
+      "sourceFrame": "panorama_72BB3CFC_93C9_F87E_41C8_70C2B43AA971",
+      "label": "Panel 96"
+    },
+    {
+      "media_name": "97",
+      "sourceFrame": "panorama_73886CB8_93CA_1886_41AE_619E34E2F985",
+      "label": "Panel 97"
+    }
+  ],
+  "assistant": {
+    "assistantName": "Asistente Febal Casa",
+    "welcomeMessage": "Ciao! Soy tu asistente virtual de Febal Casa. Pregúntame por cualquier mueble del showroom y te llevo directo a él.",
+    "suggestedQuestions": [
+      "Sofás",
+      "Cocinas",
+      "Armarios",
+      "Mesas"
+    ]
+  },
+  "theme": {
+    "primaryColor": "#E20613",
+    "position": "bottom-right"
+  }
+}

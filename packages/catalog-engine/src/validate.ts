@@ -65,5 +65,29 @@ export function validateCatalog(rawRecords: unknown, knownMediaNames: string[]):
     checkNoRawMarkup(product, issues);
   }
 
+  const byId = new Map(products.map((p) => [p.product_id, p]));
+  for (const product of products) {
+    for (const compatId of product.compatible_with) {
+      const target = byId.get(compatId);
+      if (!target) {
+        issues.push({
+          rule: "compatible-with-exists",
+          product_id: product.product_id,
+          message: `compatible_with references unknown product_id "${compatId}".`,
+        });
+      } else if (target.alternatives_group === product.alternatives_group) {
+        // compatible_with means "pairs with" — the opposite relationship
+        // from alternatives_group ("substitutes for"). A product can't be
+        // both at once without the recommendation engine and "Ver
+        // alternativas" contradicting each other on the same pair.
+        issues.push({
+          rule: "compatible-with-not-alternative",
+          product_id: product.product_id,
+          message: `compatible_with lists "${compatId}", but it shares this product's own alternatives_group ("${product.alternatives_group}") — an alternative can't also be a compatible pairing.`,
+        });
+      }
+    }
+  }
+
   return { ok: issues.length === 0, issues };
 }

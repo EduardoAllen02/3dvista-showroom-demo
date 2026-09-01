@@ -3,12 +3,20 @@ export interface NavTarget {
   yaw: number;
   pitch: number;
   fov: number;
+  hotspot_name: string | null;
 }
 
 export interface TourBridgeStrategy {
   readonly name: "hash" | "player-api";
   isAvailable(): boolean;
   navigateTo(target: NavTarget): Promise<void> | void;
+  /**
+   * Opens the SAME info panel a real click on this product's native tour
+   * hotspot would — see product-panel.ts for how this is derived (no-op,
+   * not a required method, when a strategy has no way to do this, e.g. the
+   * hash-based fallback).
+   */
+  openProductPanel?(target: NavTarget): void;
 }
 
 /**

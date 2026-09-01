@@ -3,6 +3,7 @@ export interface NavTarget {
   yaw: number;
   pitch: number;
   fov: number;
+  hotspot_name: string | null;
 }
 
 /**
@@ -22,6 +23,27 @@ export interface ProductCard {
   section: string;
   detail_url: string | null;
   navTarget: NavTarget;
+  /** Whether to render "Ver alternativas" for this card — false for cards
+   * that already ARE an alternatives reveal (see server's tools.ts). */
+  alternativesAvailable: boolean;
+}
+
+/**
+ * Public, lightweight per-product record the wishlist layer's hotspot
+ * overlay fetches once from `<assetsBaseUrl>/catalog-manifest.json`
+ * (built alongside the widget bundle — see build-tour-bundle.mjs). Just
+ * enough to project a hotspot to screen coordinates and render a saved
+ * item's thumbnail — never descriptions/keywords/synonyms/materials/etc.
+ */
+export interface HotspotManifestEntry {
+  product_id: string;
+  name: string;
+  media_name: string;
+  yaw: number;
+  pitch: number;
+  fov: number;
+  image_url: string;
+  detail_url: string | null;
 }
 
 export interface ChatMessage {

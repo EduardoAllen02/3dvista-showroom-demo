@@ -34,5 +34,15 @@ export function createTourBridge(preferred: PreferredStrategy = "player-api"): T
       }
       throw new Error("createTourBridge: no navigation strategy is available.");
     },
+    // Same primary/fallback selection as navigateTo above — forwarded
+    // explicitly because a plain object spread of `primary`/`fallback`
+    // wouldn't pick up whichever one is actually available at call time.
+    openProductPanel(target: NavTarget): void {
+      if (primary.isAvailable()) {
+        primary.openProductPanel?.(target);
+      } else if (fallback.isAvailable()) {
+        fallback.openProductPanel?.(target);
+      }
+    },
   };
 }

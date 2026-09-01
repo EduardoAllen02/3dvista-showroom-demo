@@ -3,3 +3,5 @@ export { hashNavigator } from "./hash-navigator.js";
 export { playerApiNavigator } from "./player-api-navigator.js";
 export { createTourBridge } from "./strategy.js";
 export type { PreferredStrategy } from "./strategy.js";
+export { getActiveMediaName, getCameraState } from "./camera-reader.js";
+export type { CameraState } from "./camera-reader.js";

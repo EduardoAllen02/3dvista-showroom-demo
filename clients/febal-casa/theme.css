@@ -1,0 +1,28 @@
+/* Per-tour theme override for febal-casa — only CSS variables, never structural rules.
+   Primary red (#E20613) sampled directly from the official logo asset
+   (tour-project/febal-casa/native-skin/logo.png). Two variants below —
+   swap which block is active while reviewing with the client; keep only one. */
+
+/* --- Variant A: light & warm, close to febalcasa.com's own site feel ---
+   ACTIVE default while the client hasn't confirmed light vs dark (2026-08-23). --- */
+.tva-root {
+  --assistant-primary: #E20613;
+  --assistant-primary-hover: #B80510;
+  --assistant-bg: #FBFAF6;
+  --assistant-bg-elevated: #F1EFE8;
+  --assistant-text: #0A0C06;
+  --assistant-text-muted: #5C5C55;
+  --assistant-border: #D6D6D6;
+}
+
+/* --- Variant B: dark, same structure as the demo tours, red accent ---
+.tva-root {
+  --assistant-primary: #E20613;
+  --assistant-primary-hover: #B80510;
+  --assistant-bg: #0A0C06;
+  --assistant-bg-elevated: #17190F;
+  --assistant-text: #FBFAF6;
+  --assistant-text-muted: #A8A89C;
+  --assistant-border: #343E47;
+}
+--- */

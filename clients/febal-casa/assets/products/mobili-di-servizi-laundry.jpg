@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="it-IT">
+<!--[if lt IE 9]><html class="no-js no-svg ie lt-ie9 lt-ie8 lt-ie7" lang="it-IT"> <![endif]-->
+<!--[if IE 9]><html class="no-js no-svg ie ie9 lt-ie9 lt-ie8" lang="it-IT"> <![endif]-->
+<!--[if gt IE 9]><!-->
+
+<head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="author" href="../humans.txt">
+    <link rel="pingback" href="//febalcasa.com/xmlrpc.php">
+    <link rel="profile" href="https://gmpg.org/xfn/11">
+
+    <!-- Windows Phone Tile Color -->
+    <meta name="msapplication-TileColor" content="#ED1C24">
+    <!-- Android Browser Status Bar Color -->
+    <meta name="theme-color" content="#0A0C06">
+    <link rel="preconnect" href=" https://consent.cookiebot.com/uc.js">
+    <link rel="preconnect" href=" https://consentcdn.cookiebot.com/uc.js ">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+
+    <script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="d9232608-24a6-4be3-91f5-85bf7e33cc36" data-blockingmode="auto" type="text/javascript" defer></script>
+
+    <!--<script type="rocketlazyloadscript" id="Cookiebot" data-rocket-src="https://consent.cookiebot.com/uc.js" data-cbid="d9232608-24a6-4be3-91f5-85bf7e33cc36" data-blockingmode="auto" data-rocket-type="text/javascript" defer></script>-->
+
+    <style id='spoki-style-buttons'>.spoki-button-relative * {
+    box-sizing: border-box;
+}
+
+.spoki-button-relative {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    margin: 4px 0;
+    overflow: hidden;
+}
+
+.spoki-button-relative > .spoki-button {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    background-color: #23D366;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    line-height: 100%;
+    text-decoration: none;
+    margin-bottom: 0;
+}
+
+.spoki-button-relative > .spoki-button .spoki-wa-icon {
+    margin: 0 6px 0 0;
+}
+
+.spoki-button-relative > .spoki-button:hover {
+    opacity: 0.9;
+    background-color: #23D366;
+}
+
+.spoki-button-relative > .spoki-button svg {
+    position: relative;
+    min-height: unset;
+    height: 12px;
+}
+
+.spoki-button-relative > .spoki-button svg + span {
+    margin-left: 6px;
+}
+
+.spoki-button-relative > .spoki-button span {
+    color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 100%;
+}
+
+.spoki-button-relative > .spoki-button.size-1 {
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 12px;
+}
+
+.spoki-button-relative > .spoki-button.size-1 svg {
+    height: 12px;
+}
+
+.spoki-button-relative > .spoki-button.size-2, .spoki-button-relative > .spoki-button.size-4 {
+    padding: 8px 14px;
+    font-size: 12px;
+    border-radius: 16px;
+}
+
+.spoki-button-relative > .spoki-button.size-2 svg, .spoki-button-relative > .spoki-button.size-4 svg {
+    height: 16px;
+    width: auto;
+}
+
+.spoki-button-relative > .spoki-button.size-3 {
+    padding: 12px 24px;
+    font-size: 18px;
+    border-radius: 24px;
+}
+
+.spoki-button-relative > .spoki-button.size-3 svg {
+    height: 18px;
+}
+
+.spoki-button-relative > .spoki-button.size-4 {
+    width: 100%;
+}
+
+#spoki-fixed-btn {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    bottom: 24px;
+    z-index: 9999;
+}
+
+#spoki-fixed-btn #spoki-chat-link {
+    display: flex;
+    background-color: #23D366;
+    width: 65%;
+    height: 65%;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    text-decoration: none !important;
+}
+
+#spoki-fixed-btn #spoki-chat-link:hover {
+    opacity: 0.9;
+}
+
+#spoki-fixed-btn svg {
+    width: auto;
+    height: auto;
+    max-width: 65%;
+    max-height: 65%;
+}
+
+.spoki-fixed-btn-label {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 6px 12px;
+    background-color: white;
+    width: max-content;
+    max-width: 60vw;
+    box-shadow: #00122e2e 0 1px 50px 0;
+    border-radius: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333333;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+.spoki-fixed-btn-label img {
+    max-height: 16px;
+    max-width: 16px;
+    object-fit: contain;
+}
+.spoki-fixed-btn-label.hide-not-hover {
+    display: none;
+}
+
+#spoki-fixed-btn:active .spoki-fixed-btn-label.hide-not-hover,
+#spoki-fixed-btn:focus .spoki-fixed-btn-label.hide-not-hover,
+#spoki-fixed-btn:hover .spoki-fixed-btn-label.hide-not-hover {
+    display: block;
+}
+
+.spoki-fixed-btn-popup {
+    position: absolute;
+    right: -5px;
+    top: -5px;
+    background-color: #f44336;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 10px;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
+    z-index: 1;
+}
+
+#spoki-chat-preview {
+    position: absolute;
+    right: 0;
+    bottom: 52px;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    background-color: white;
+    width: 300px;
+    max-width: 80vw;
+    height: auto;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, .2);
+    overflow: hidden;
+    background-position: center;
+    background-size: cover;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    z-index: 999999999;
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.25s ease, opacity 0.25s;
+
+}
+
+#spoki-chat-preview.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.25s ease, opacity 0.25s;
+}
+
+#spoki-chat-preview .spoki-chat-preview-chat-message {
+    background-color: white;
+    border-radius: 0 12px 12px 12px;
+    padding: 8px 12px;
+    position: relative;
+    margin-top: 8px;
+    margin-left: 16px;
+    margin-bottom: 50px;
+    max-width: 80%;
+    width: max-content;
+    border: 1px solid #EFEFEF;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(0, 0, 0, .8);
+    text-overflow: ellipsis;
+    box-sizing: border-box;
+}
+
+#spoki-chat-preview #spoki-chat-preview-footer {
+    display: flex;
+    flex-direction: row;
+    padding: 8px 8px 8px 16px;
+    flex: 1;
+    width: 100%;
+    background-color: #EFEFEF;
+    box-sizing: border-box;
+}
+
+#spoki-chat-preview #spoki-chat-preview-footer form {
+    display: inherit;
+    width: 100%;
+}
+
+#spoki-chat-preview #spoki-chat-preview-footer #spoki-chat-preview-message {
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    line-height: 18px;
+    padding: 4px 16px;
+    color: rgba(0, 0, 0, .8);
+    border-radius: 16px;
+    outline: none !important;
+    margin-right: 8px;
+}
+
+#spoki-chat-preview #spoki-chat-preview-footer #spoki-chat-preview-send {
+    width: 32px !important;
+    min-width: 32px !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    color: #7C8083;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    outline: unset !important;
+}
+
+#spoki-chat-preview #spoki-chat-preview-footer #spoki-chat-preview-send:hover,
+#spoki-chat-preview #spoki-chat-preview-footer #spoki-chat-preview-send:active,
+#spoki-chat-preview #spoki-chat-preview-footer #spoki-chat-preview-send:focus {
+    opacity: 0.8;
+}
+
+#spoki-chat-preview:not(.hidden) ~ #spoki-chat-link svg {
+    display: none;
+}
+
+#spoki-chat-preview:not(.hidden) ~ .spoki-fixed-btn-label,
+#spoki-chat-preview:not(.hidden) ~ .spoki-fixed-btn-popup {
+    display: none;
+}
+
+#spoki-chat-preview:not(.hidden) ~ #spoki-chat-link:before {
+    content: 'X';
+    color: white !important;
+    font-size: 18px;
+}
+
+@media (max-width: 575px) {
+    #spoki-fixed-btn.hidden-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 576px) and (max-width: 991px) {
+    #spoki-fixed-btn.hidden-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width: 992px) {
+    #spoki-fixed-btn.hidden-desktop {
+        display: none !important;
+    }
+}</style><link rel="alternate" hreflang="en" href="https://www.febalcasa.com/en/kind/laundry/" />
+<link rel="alternate" hreflang="fr" href="https://www.febalcasa.com/fr/typologie/mobilier-de-service/mobilier-de-service-blanchisserie/" />
+<link rel="alternate" hreflang="de" href="https://www.febalcasa.com/de/typ/service-mobel/service-mobel-wascherei/" />
+<link rel="alternate" hreflang="el" href="https://www.febalcasa.com/el/%CF%84%CF%85%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1/%CF%80%CE%BB%CF%85%CE%BD%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CF%81%CE%BF%CF%8D%CF%87%CF%89%CE%BD/" />
+<link rel="alternate" hreflang="it" href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/" />
+<link rel="alternate" hreflang="ru" href="https://www.febalcasa.com/ru/%D1%82%D0%B8%D0%BF%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%BF%D1%80%D0%B0%D1%87%D0%B5%D1%87%D0%BD%D0%B0%D1%8F/" />
+<link rel="alternate" hreflang="es" href="https://www.febalcasa.com/es/tipologia/lavanderia/" />
+<link rel="alternate" hreflang="x-default" href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/" />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var gtm4wp_datalayer_name = "dataLayer";
+	var dataLayer = dataLayer || [];
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- Search Engine Optimization by Rank Math PRO - https://rankmath.com/ -->
+<title>Mobili per la lavanderia - Febal Casa</title>
+<meta name="description" content="La lavanderia è l&#039;ambiente della casa che richiede un occhio di riguardo, non solo dal punto di vista estetico, ma anche da quello pratico."/>
+<meta name="robots" content="follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"/>
+<link rel="canonical" href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/" />
+<meta property="og:locale" content="it_IT" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Mobili per la lavanderia - Febal Casa" />
+<meta property="og:description" content="La lavanderia è l&#039;ambiente della casa che richiede un occhio di riguardo, non solo dal punto di vista estetico, ma anche da quello pratico." />
+<meta property="og:url" content="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/" />
+<meta property="og:site_name" content="Febal Casa" />
+<meta property="article:publisher" content="https://www.facebook.com/febalcasa" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Mobili per la lavanderia - Febal Casa" />
+<meta name="twitter:description" content="La lavanderia è l&#039;ambiente della casa che richiede un occhio di riguardo, non solo dal punto di vista estetico, ma anche da quello pratico." />
+<meta name="twitter:site" content="@febal_casa" />
+<meta name="twitter:label1" content="Prodotti" />
+<meta name="twitter:data1" content="1" />
+<script type="application/ld+json" class="rank-math-schema-pro">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://www.febalcasa.com/it/#organization/","name":"Febal Casa","url":"https://www.febalcasa.com/it/","sameAs":["https://www.facebook.com/febalcasa","https://twitter.com/febal_casa","https://www.instagram.com/febalcasa_official/"]},{"@type":"WebSite","@id":"https://www.febalcasa.com/it/#website/","url":"https://www.febalcasa.com/it/","name":"Febal Casa","publisher":{"@id":"https://www.febalcasa.com/it/#organization/"},"inLanguage":"it-IT"},{"@type":"CollectionPage","@id":"https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/#webpage","url":"https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/","name":"Mobili per la lavanderia - Febal Casa","isPartOf":{"@id":"https://www.febalcasa.com/it/#website/"},"inLanguage":"it-IT"}]}</script>
+<!-- /Rank Math WordPress SEO plugin -->
+
+<link rel='dns-prefetch' href='//www.febalcasa.com' />
+<link rel='dns-prefetch' href='//www.google.com' />
+<link rel='dns-prefetch' href='//cdn.jsdelivr.net' />
+<link rel='dns-prefetch' href='//cdnjs.cloudflare.com' />
+<style id='wp-img-auto-sizes-contain-inline-css' type='text/css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='builder-blocks-style-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/css/style.css?ver=1779351915' type='text/css' media='all' />
+<link rel='stylesheet' id='builder-blocks-background-overlay-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/css/block-background-overlay.css?ver=1779117218' type='text/css' media='all' />
+<link rel='stylesheet' id='builder-blocks-columns-max-width-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/css/columns-max-width.css?ver=1779117218' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #0A0C06;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #FBFAF6;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--pure-white: #FFFFFF;--wp--preset--color--gray-100: #E5E4E2;--wp--preset--color--gray-200: #CAC9C5;--wp--preset--color--gray-300: #A8A7A0;--wp--preset--color--gray-400: #85847C;--wp--preset--color--gray-500: #6B6A61;--wp--preset--color--gray-600: #010101;--wp--preset--color--gray-700: #454540;--wp--preset--color--gray-800: #3A3935;--wp--preset--color--gray-900: #32322F;--wp--preset--color--accent: #ED1C24;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--font-size--h-1: clamp(38px, 6vw, 62px);--wp--preset--font-size--h-2: clamp(36px, 5vw, 48px);--wp--preset--font-size--h-3: clamp(30px, 4vw, 38px);--wp--preset--font-size--h-4: clamp(26px, 3vw, 32px);--wp--preset--font-size--h-5: clamp(22px, 2vw, 24px);--wp--preset--font-size--h-6: clamp(19px, 1vw, 20px);--wp--preset--font-size--body: clamp(14px, 1vw, 16px);--wp--preset--font-size--caption: clamp(12px, 1vw, 14px);--wp--preset--font-size--title-small: clamp(32px, 10vw, 76px);--wp--preset--font-size--title-big: clamp(34px, 12.5vw, 96px);--wp--preset--font-size--title-jumbo: clamp(40px, 18vw, 160px);--wp--preset--font-family--heading: "Noto Serif Display", serif;--wp--preset--font-family--body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--spacing--xxs: clamp(16px, 1vw, 20px);--wp--preset--spacing--xs: clamp(20px, 1.5vw, 28px);--wp--preset--spacing--sm: clamp(32px, 2vw, 40px);--wp--preset--spacing--md: clamp(48px, 3vw, 60px);--wp--preset--spacing--lg: clamp(64px, 4vw, 80px);--wp--preset--spacing--xl: clamp(80px, 5vw, 100px);--wp--preset--spacing--xxl: clamp(100px, 6vw, 120px);--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);--wp--custom--radius--sm: 4px;--wp--custom--radius--md: 8px;--wp--custom--radius--lg: 16px;--wp--custom--radius--pill: 999px;--wp--custom--transitions--base: all 0.2s ease;}:root { --wp--style--global--content-size: 760px;--wp--style--global--wide-size: 1320px; }:where(body) { margin: 0; }.wp-site-blocks > .alignleft { float: left; margin-right: 2em; }.wp-site-blocks > .alignright { float: right; margin-left: 2em; }.wp-site-blocks > .aligncenter { justify-content: center; margin-left: auto; margin-right: auto; }:where(.wp-site-blocks) > * { margin-block-start: 24px; margin-block-end: 0; }:where(.wp-site-blocks) > :first-child { margin-block-start: 0; }:where(.wp-site-blocks) > :last-child { margin-block-end: 0; }:root { --wp--style--block-gap: 24px; }:root :where(.is-layout-flow) > :first-child{margin-block-start: 0;}:root :where(.is-layout-flow) > :last-child{margin-block-end: 0;}:root :where(.is-layout-flow) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-constrained) > :first-child{margin-block-start: 0;}:root :where(.is-layout-constrained) > :last-child{margin-block-end: 0;}:root :where(.is-layout-constrained) > *{margin-block-start: 24px;margin-block-end: 0;}:root :where(.is-layout-flex){gap: 24px;}:root :where(.is-layout-grid){gap: 24px;}.is-layout-flow > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-flow > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-flow > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignleft{float: left;margin-inline-start: 0;margin-inline-end: 2em;}.is-layout-constrained > .alignright{float: right;margin-inline-start: 2em;margin-inline-end: 0;}.is-layout-constrained > .aligncenter{margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > :where(:not(.alignleft):not(.alignright):not(.alignfull)){max-width: var(--wp--style--global--content-size);margin-left: auto !important;margin-right: auto !important;}.is-layout-constrained > .alignwide{max-width: var(--wp--style--global--wide-size);}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}body{padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;}a:where(:not(.wp-element-button)){text-decoration: underline;}:root :where(.wp-element-button, .wp-block-button__link){background-color: #32373c;border-width: 0;color: #fff;font-family: inherit;font-size: inherit;font-style: inherit;font-weight: inherit;letter-spacing: inherit;line-height: inherit;padding-top: calc(0.667em + 2px);padding-right: calc(1.333em + 2px);padding-bottom: calc(0.667em + 2px);padding-left: calc(1.333em + 2px);text-decoration: none;text-transform: inherit;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-pure-white-color{color: var(--wp--preset--color--pure-white) !important;}.has-gray-100-color{color: var(--wp--preset--color--gray-100) !important;}.has-gray-200-color{color: var(--wp--preset--color--gray-200) !important;}.has-gray-300-color{color: var(--wp--preset--color--gray-300) !important;}.has-gray-400-color{color: var(--wp--preset--color--gray-400) !important;}.has-gray-500-color{color: var(--wp--preset--color--gray-500) !important;}.has-gray-600-color{color: var(--wp--preset--color--gray-600) !important;}.has-gray-700-color{color: var(--wp--preset--color--gray-700) !important;}.has-gray-800-color{color: var(--wp--preset--color--gray-800) !important;}.has-gray-900-color{color: var(--wp--preset--color--gray-900) !important;}.has-accent-color{color: var(--wp--preset--color--accent) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-pure-white-background-color{background-color: var(--wp--preset--color--pure-white) !important;}.has-gray-100-background-color{background-color: var(--wp--preset--color--gray-100) !important;}.has-gray-200-background-color{background-color: var(--wp--preset--color--gray-200) !important;}.has-gray-300-background-color{background-color: var(--wp--preset--color--gray-300) !important;}.has-gray-400-background-color{background-color: var(--wp--preset--color--gray-400) !important;}.has-gray-500-background-color{background-color: var(--wp--preset--color--gray-500) !important;}.has-gray-600-background-color{background-color: var(--wp--preset--color--gray-600) !important;}.has-gray-700-background-color{background-color: var(--wp--preset--color--gray-700) !important;}.has-gray-800-background-color{background-color: var(--wp--preset--color--gray-800) !important;}.has-gray-900-background-color{background-color: var(--wp--preset--color--gray-900) !important;}.has-accent-background-color{background-color: var(--wp--preset--color--accent) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-pure-white-border-color{border-color: var(--wp--preset--color--pure-white) !important;}.has-gray-100-border-color{border-color: var(--wp--preset--color--gray-100) !important;}.has-gray-200-border-color{border-color: var(--wp--preset--color--gray-200) !important;}.has-gray-300-border-color{border-color: var(--wp--preset--color--gray-300) !important;}.has-gray-400-border-color{border-color: var(--wp--preset--color--gray-400) !important;}.has-gray-500-border-color{border-color: var(--wp--preset--color--gray-500) !important;}.has-gray-600-border-color{border-color: var(--wp--preset--color--gray-600) !important;}.has-gray-700-border-color{border-color: var(--wp--preset--color--gray-700) !important;}.has-gray-800-border-color{border-color: var(--wp--preset--color--gray-800) !important;}.has-gray-900-border-color{border-color: var(--wp--preset--color--gray-900) !important;}.has-accent-border-color{border-color: var(--wp--preset--color--accent) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}.has-h-1-font-size{font-size: var(--wp--preset--font-size--h-1) !important;}.has-h-2-font-size{font-size: var(--wp--preset--font-size--h-2) !important;}.has-h-3-font-size{font-size: var(--wp--preset--font-size--h-3) !important;}.has-h-4-font-size{font-size: var(--wp--preset--font-size--h-4) !important;}.has-h-5-font-size{font-size: var(--wp--preset--font-size--h-5) !important;}.has-h-6-font-size{font-size: var(--wp--preset--font-size--h-6) !important;}.has-body-font-size{font-size: var(--wp--preset--font-size--body) !important;}.has-caption-font-size{font-size: var(--wp--preset--font-size--caption) !important;}.has-title-small-font-size{font-size: var(--wp--preset--font-size--title-small) !important;}.has-title-big-font-size{font-size: var(--wp--preset--font-size--title-big) !important;}.has-title-jumbo-font-size{font-size: var(--wp--preset--font-size--title-jumbo) !important;}.has-heading-font-family{font-family: var(--wp--preset--font-family--heading) !important;}.has-body-font-family{font-family: var(--wp--preset--font-family--body) !important;}
+:root :where(.wp-block-custom-breadcrumbs){text-align: left;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='wpml-menu-item-0-css' href='https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/templates/language-switchers/menu-item/style.min.css?ver=1' type='text/css' media='all' />
+<link rel='stylesheet' id='swiper-css' href='https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css?ver=cd5cca8ec3d25cb1ebdc2c811d2f06b6' type='text/css' media='all' />
+<link rel='stylesheet' id='lightgallery-css' href='https://cdnjs.cloudflare.com/ajax/libs/lightgallery/2.7.2/css/lightgallery.min.css?ver=cd5cca8ec3d25cb1ebdc2c811d2f06b6' type='text/css' media='all' />
+<link rel='stylesheet' id='layout-css' href='https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/css/layout.min.css?ver=2.5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='designsystem-css' href='https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/css/designsystem.min.css?ver=26.08.14' type='text/css' media='all' />
+<link rel='stylesheet' id='style-css' href='https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/css/main.min.css?ver=26.08.14' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-page-product-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/pages/product/pattern.css?ver=1778672182' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-page-promo-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/pages/promo/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-page-promo-rich-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/pages/promo-rich/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-call-to-action-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/call-to-action/pattern.css?ver=1779117218' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-form-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/form/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-header-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/header/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-promo-header-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/header-promo/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-highlight-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/highlight/pattern.css?ver=1777475259' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-pattern-pattern-section-intro-mansory-css' href='https://www.febalcasa.com/wp-content/mu-plugins/builder-blocks/patterns/sections/introduction-mansory/pattern.css?ver=1779117218' type='text/css' media='all' />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js?ver=cd5cca8ec3d25cb1ebdc2c811d2f06b6" id="jquery-js"></script>
+<script type="text/javascript" id="wpml-cookie-js-extra">
+/* <![CDATA[ */
+var wpml_cookies = {"wp-wpml_current_language":{"value":"it","expires":1,"path":"/"}};
+var wpml_cookies = {"wp-wpml_current_language":{"value":"it","expires":1,"path":"/"}};
+//# sourceURL=wpml-cookie-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/js/cookies/language-cookie.js?ver=476000" id="wpml-cookie-js" defer="defer" data-wp-strategy="defer"></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?render=6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW&amp;ver=0.1" id="saz-check-spammer-recaptcha-js"></script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/assets/js/gclid-handler.js?ver=1.0" id="gclid-handler-js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.febalcasa.com/xmlrpc.php?rsd" />
+
+<meta name="generator" content="WPML ver:4.7.6 stt:1,4,3,13,27,45,2;" />
+
+<!-- Google Tag Manager for WordPress by gtm4wp.com -->
+<!-- GTM Container placement set to automatic -->
+<script data-cfasync="false" data-pagespeed-no-defer>
+	var dataLayer_content = {"pagePostType":"category","pagePostType2":"tax-product","pageCategory":[],"product_category":"mobili-di-servizi-laundry"};
+	dataLayer.push( dataLayer_content );
+</script>
+<script data-cfasync="false" data-pagespeed-no-defer>
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KRV9FN4X');
+</script>
+<!-- End Google Tag Manager for WordPress by gtm4wp.com -->
+			<link rel="shortcut icon" href="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/icons/favicon-32x32.png"/>
+			<link rel="apple-touch-icon" sizes="180x180" href="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/icons/apple-touch-icon.png">
+			<link rel="icon" type="image/png" sizes="32x32" href="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/icons/favicon-32x32.png">
+			<link rel="icon" type="image/png" sizes="16x16" href="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/icons/favicon-16x16.png">
+			<link rel="mask-icon" href="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/icons/safari-pinned-tab.svg" color="#ED1C24">
+		
+    
+    
+    <style type="text/css">@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/greek-ext/wght/normal.woff2);unicode-range:U+1F00-1FFF;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/greek/wght/normal.woff2);unicode-range:U+0370-0377,U+037A-037F,U+0384-038A,U+038C,U+038E-03A1,U+03A3-03FF;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/latin-ext/wght/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/vietnamese/wght/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/cyrillic/wght/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/latin/wght/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:'Noto Serif Display';font-style:normal;font-weight:400;src:url(/cf-fonts/v/noto-serif-display/5.2.9/cyrillic-ext/wght/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C8A,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:swap;}</style>
+
+    <style id="critical-css">
+            </style>
+    <style id="loader">
+        [data-preloader] [preloader],
+        [data-preloader] .number,
+        [data-preloader] [data-overlay] {
+            display: none;
+        }
+    </style>
+    </head>
+
+<body class="page_taxonomy_kind" data-page="taxonomy_kind" data-template="taxonomy_kind" mode="light">
+    <div class="preloader" data-preloader>
+	<div class="progress" style="--progress: 0">
+		<progress max="100" value="0"></progress>
+	</div>
+
+	<div preloader>
+        <svg width="285" height="284" viewBox="0 0 285 284" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M284.5 0H0.5V283.95H284.5V0Z" fill="#ED1C24"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M234.412 92.9019H222.691V143.269H234.412V92.9019ZM88.6552 120.673C88.6552 120.673 91.1596 113.88 98.5727 113.88C100.7 113.912 102.77 114.576 104.519 115.785C106.267 116.995 107.615 118.696 108.39 120.673H88.6552ZM121.213 124.369C121.213 113.78 111.195 105.189 98.773 105.189C86.3512 105.189 76.3335 113.78 76.3335 124.369C76.3504 125.271 76.4173 126.171 76.5339 127.066C78.0365 136.456 87.6534 143.548 98.773 143.548C107.689 143.548 115.803 138.953 119.309 132.06H105.385C103.513 133.564 101.177 134.376 98.773 134.358C96.6652 134.355 94.6061 133.726 92.8578 132.552C91.1095 131.378 89.7511 129.712 88.9557 127.765L88.6552 127.066H121.012C121.178 126.177 121.245 125.272 121.213 124.369ZM50.8887 171.719C50.8887 161.13 60.6058 152.539 72.5268 152.539C82.845 152.539 91.5603 158.932 93.664 167.823H82.4443C81.5207 166.121 80.1429 164.706 78.4632 163.737C76.7836 162.767 74.8677 162.28 72.9275 162.329C67.1173 162.329 62.409 166.524 62.409 171.719C62.409 176.913 67.1173 181.209 72.9275 181.209C74.8635 181.235 76.7707 180.739 78.4463 179.771C80.1219 178.804 81.5035 177.402 82.4443 175.714H93.664C91.5603 184.605 82.845 190.998 72.5268 190.998C60.6058 190.998 50.8887 182.307 50.8887 171.719ZM120.311 181.109C118.243 181.158 116.204 180.621 114.431 179.56C112.657 178.499 111.222 176.958 110.293 175.115C109.901 174.06 109.697 172.944 109.692 171.818C109.692 166.724 114.401 162.528 120.311 162.528C126.221 162.528 130.93 166.724 130.93 171.818C130.889 172.949 130.651 174.065 130.228 175.115C128.726 178.711 124.719 181.109 120.311 181.109ZM130.629 190.998H141.548V165.925C140.468 163.324 138.873 160.966 136.86 158.992C134.846 157.019 132.454 155.469 129.828 154.437H129.527C126.522 153.038 123.416 152.739 119.61 152.739H117.907C106.587 153.738 97.9716 161.929 97.9716 171.818C97.9716 181.708 106.487 189.8 117.807 190.898H119.61C123.112 190.899 126.571 190.114 129.728 188.601L130.629 188.201V190.998ZM202.656 175.115C204.159 178.711 208.166 181.109 212.573 181.109C214.641 181.158 216.68 180.621 218.454 179.56C220.227 178.499 221.662 176.958 222.591 175.115C222.984 174.06 223.187 172.944 223.192 171.818C223.192 166.724 218.384 162.528 212.573 162.528C206.763 162.528 201.955 166.724 201.955 171.818C201.944 172.955 202.184 174.08 202.656 175.115ZM233.811 190.998H222.892V188.201L222.09 188.601C218.9 190.122 215.408 190.907 211.872 190.898H210.169C198.849 189.8 190.334 181.708 190.334 171.818C190.334 161.929 198.849 153.738 210.169 152.739H211.872C215.679 152.739 218.784 153.038 221.79 154.437H222.09C227.7 156.734 232.008 160.93 233.811 165.925V190.998ZM195.744 133.259C191.336 133.259 187.329 130.862 185.826 127.266C185.354 126.231 185.115 125.106 185.125 123.969C185.125 118.874 189.833 114.779 195.744 114.779C201.654 114.779 206.362 118.874 206.362 123.969C206.373 125.106 206.133 126.231 205.661 127.266C204.159 130.862 200.151 133.259 195.744 133.259ZM206.062 143.149H216.981V118.175C215.947 115.546 214.369 113.164 212.35 111.185C210.33 109.205 207.914 107.673 205.26 106.687L204.96 106.487C201.955 105.089 198.849 104.789 195.042 104.789H193.34C182.02 105.888 173.404 114.079 173.404 123.869C173.404 133.659 181.919 141.95 193.239 142.949H195.042C198.565 142.932 202.045 142.184 205.26 140.751L206.062 140.352V143.149ZM149.562 186.603C146.657 184.505 145.255 181.908 145.155 179.111H156.875C157.577 181.408 160.281 183.806 166.292 183.806C172.302 183.806 174.607 182.607 174.607 179.91C174.607 177.213 170.9 176.414 162.185 174.616L160.281 174.216C155.373 173.217 147.258 170.919 147.258 164.027C147.258 157.134 157.376 152.938 166.793 152.938C178.513 152.938 185.225 158.433 185.826 163.627H174.306C172.819 160.662 168.833 160.447 167.064 160.352L167.063 160.352C166.925 160.345 166.801 160.338 166.693 160.331H166.492C162.585 160.331 159.68 161.929 159.68 163.927C159.68 165.925 162.686 166.524 168.596 167.623L171.1 168.122C171.601 168.217 172.104 168.31 172.607 168.403L172.608 168.403L172.609 168.403C180.047 169.776 187.429 171.139 187.429 178.811C187.429 187.002 176.911 191.398 166.993 191.398C159.881 191.398 152.468 188.701 149.562 186.603ZM50.6884 143.249H61.9081V127.066H71.8256V119.474H61.9081V114.979C61.9081 103.79 70.0224 102.991 72.4266 102.991H77.9363V93.2015H68.7201C65.3285 93.2557 61.9983 94.1116 59.003 95.6989C53.4933 98.7956 50.6884 104.39 50.6884 112.181V143.249ZM146.958 133.459C151.466 133.459 155.573 130.962 157.176 127.365C157.621 126.322 157.859 125.203 157.877 124.069C157.877 118.974 152.968 114.779 146.958 114.779C140.947 114.779 136.039 118.974 136.039 124.069C136.007 125.208 136.248 126.337 136.74 127.365C138.243 130.962 142.45 133.459 146.958 133.459ZM137.341 107.287C140.569 105.773 144.092 104.989 147.659 104.989C159.68 104.989 169.397 113.58 169.397 124.069C169.431 125.072 169.364 126.076 169.197 127.066C167.594 136.256 158.378 143.249 147.659 143.249C144.091 143.259 140.566 142.474 137.341 140.951L136.54 140.552V143.249H125.019V92.9019H136.54V107.686L137.341 107.287Z" fill="white"/>
+        </svg>
+	</div>
+
+	<div class="number">
+		<div class="number--percentage">0%</div>
+	</div>
+
+	<div data-overlay></div>
+</div>
+
+<!-- <script id="preloader-script" type="text/javascript">
+	if(sessionStorage.getItem('init')){
+		document.querySelector('[data-preloader]').style.visibility = 'hidden'
+		document.querySelector('[data-preloader]').remove()
+		document.getElementById('preloader-script').remove()
+	}
+</script> -->    <nav data-navigation  mode="dark">
+        <nav class="navbar" data-navigation-bar>
+    <div id="statusbar-promo" class="statusbar-promo" data-navigation-promo>
+    <div class="swiper" data-carousel="statusbar-promo">
+        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                    <a href="https://www.febalcasa.com/it/promozioni/top-in-regalo-elettromestici-al-50/" class="btn-default no--icon">IN REGALO IL TOP IN GRES | ELETTRODOMESTICI -50%</a>
+                </div>
+                    </div>
+        <div class="swiper-button-prev" style="display:none" data-prev data-arrow></div>
+        <div class="swiper-button-next" style="display:none" data-next data-arrow></div>
+    </div>
+</div>    <div class="brand">
+        <a href="https://www.febalcasa.com/it/" target="_self" class="logo" data-async>
+            <span class="visually-hidden">Febal Casa</span>
+            <svg id="header-logo"width="285" height="284" viewBox="0 0 285 284" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M284.5 0H0.5V283.95H284.5V0Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M234.412 92.9019H222.691V143.269H234.412V92.9019ZM88.6552 120.673C88.6552 120.673 91.1596 113.88 98.5727 113.88C100.7 113.912 102.77 114.576 104.519 115.785C106.267 116.995 107.615 118.696 108.39 120.673H88.6552ZM121.213 124.369C121.213 113.78 111.195 105.189 98.773 105.189C86.3512 105.189 76.3335 113.78 76.3335 124.369C76.3504 125.271 76.4173 126.171 76.5339 127.066C78.0365 136.456 87.6534 143.548 98.773 143.548C107.689 143.548 115.803 138.953 119.309 132.06H105.385C103.513 133.564 101.177 134.376 98.773 134.358C96.6652 134.355 94.6061 133.726 92.8578 132.552C91.1095 131.378 89.7511 129.712 88.9557 127.765L88.6552 127.066H121.012C121.178 126.177 121.245 125.272 121.213 124.369ZM50.8887 171.719C50.8887 161.13 60.6058 152.539 72.5268 152.539C82.845 152.539 91.5603 158.932 93.664 167.823H82.4443C81.5207 166.121 80.1429 164.706 78.4632 163.737C76.7836 162.767 74.8677 162.28 72.9275 162.329C67.1173 162.329 62.409 166.524 62.409 171.719C62.409 176.913 67.1173 181.209 72.9275 181.209C74.8635 181.235 76.7707 180.739 78.4463 179.771C80.1219 178.804 81.5035 177.402 82.4443 175.714H93.664C91.5603 184.605 82.845 190.998 72.5268 190.998C60.6058 190.998 50.8887 182.307 50.8887 171.719ZM120.311 181.109C118.243 181.158 116.204 180.621 114.431 179.56C112.657 178.499 111.222 176.958 110.293 175.115C109.901 174.06 109.697 172.944 109.692 171.818C109.692 166.724 114.401 162.528 120.311 162.528C126.221 162.528 130.93 166.724 130.93 171.818C130.889 172.949 130.651 174.065 130.228 175.115C128.726 178.711 124.719 181.109 120.311 181.109ZM130.629 190.998H141.548V165.925C140.468 163.324 138.873 160.966 136.86 158.992C134.846 157.019 132.454 155.469 129.828 154.437H129.527C126.522 153.038 123.416 152.739 119.61 152.739H117.907C106.587 153.738 97.9716 161.929 97.9716 171.818C97.9716 181.708 106.487 189.8 117.807 190.898H119.61C123.112 190.899 126.571 190.114 129.728 188.601L130.629 188.201V190.998ZM202.656 175.115C204.159 178.711 208.166 181.109 212.573 181.109C214.641 181.158 216.68 180.621 218.454 179.56C220.227 178.499 221.662 176.958 222.591 175.115C222.984 174.06 223.187 172.944 223.192 171.818C223.192 166.724 218.384 162.528 212.573 162.528C206.763 162.528 201.955 166.724 201.955 171.818C201.944 172.955 202.184 174.08 202.656 175.115ZM233.811 190.998H222.892V188.201L222.09 188.601C218.9 190.122 215.408 190.907 211.872 190.898H210.169C198.849 189.8 190.334 181.708 190.334 171.818C190.334 161.929 198.849 153.738 210.169 152.739H211.872C215.679 152.739 218.784 153.038 221.79 154.437H222.09C227.7 156.734 232.008 160.93 233.811 165.925V190.998ZM195.744 133.259C191.336 133.259 187.329 130.862 185.826 127.266C185.354 126.231 185.115 125.106 185.125 123.969C185.125 118.874 189.833 114.779 195.744 114.779C201.654 114.779 206.362 118.874 206.362 123.969C206.373 125.106 206.133 126.231 205.661 127.266C204.159 130.862 200.151 133.259 195.744 133.259ZM206.062 143.149H216.981V118.175C215.947 115.546 214.369 113.164 212.35 111.185C210.33 109.205 207.914 107.673 205.26 106.687L204.96 106.487C201.955 105.089 198.849 104.789 195.042 104.789H193.34C182.02 105.888 173.404 114.079 173.404 123.869C173.404 133.659 181.919 141.95 193.239 142.949H195.042C198.565 142.932 202.045 142.184 205.26 140.751L206.062 140.352V143.149ZM149.562 186.603C146.657 184.505 145.255 181.908 145.155 179.111H156.875C157.577 181.408 160.281 183.806 166.292 183.806C172.302 183.806 174.607 182.607 174.607 179.91C174.607 177.213 170.9 176.414 162.185 174.616L160.281 174.216C155.373 173.217 147.258 170.919 147.258 164.027C147.258 157.134 157.376 152.938 166.793 152.938C178.513 152.938 185.225 158.433 185.826 163.627H174.306C172.819 160.662 168.833 160.447 167.064 160.352L167.063 160.352C166.925 160.345 166.801 160.338 166.693 160.331H166.492C162.585 160.331 159.68 161.929 159.68 163.927C159.68 165.925 162.686 166.524 168.596 167.623L171.1 168.122C171.601 168.217 172.104 168.31 172.607 168.403L172.608 168.403L172.609 168.403C180.047 169.776 187.429 171.139 187.429 178.811C187.429 187.002 176.911 191.398 166.993 191.398C159.881 191.398 152.468 188.701 149.562 186.603ZM50.6884 143.249H61.9081V127.066H71.8256V119.474H61.9081V114.979C61.9081 103.79 70.0224 102.991 72.4266 102.991H77.9363V93.2015H68.7201C65.3285 93.2557 61.9983 94.1116 59.003 95.6989C53.4933 98.7956 50.6884 104.39 50.6884 112.181V143.249ZM146.958 133.459C151.466 133.459 155.573 130.962 157.176 127.365C157.621 126.322 157.859 125.203 157.877 124.069C157.877 118.974 152.968 114.779 146.958 114.779C140.947 114.779 136.039 118.974 136.039 124.069C136.007 125.208 136.248 126.337 136.74 127.365C138.243 130.962 142.45 133.459 146.958 133.459ZM137.341 107.287C140.569 105.773 144.092 104.989 147.659 104.989C159.68 104.989 169.397 113.58 169.397 124.069C169.431 125.072 169.364 126.076 169.197 127.066C167.594 136.256 158.378 143.249 147.659 143.249C144.091 143.259 140.566 142.474 137.341 140.951L136.54 140.552V143.249H125.019V92.9019H136.54V107.686L137.341 107.287Z" fill="white"/>
+</svg>
+        </a>
+    </div>
+
+        <div class="nav-desktop d-none d-xl-flex" data-navigation-top>
+        <ul id="menu-secondary" class="nav "><li  id="menu-item-93199" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-93199"><a href="https://www.febalcasa.com/it/diventa-rivenditore/" class="nav-link ">Diventa Rivenditore</a></li>
+<li  id="menu-item-132222" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-132222"><a target="_blank" rel="nofollow" href="https://www.randstad.it/candidato/aziende-che-assumono/febal-casa/?utm_source=external_site&amp;utm_medium=referral&amp;utm_campaign=febal_casa" class="nav-link ">Diventa Arredatore</a></li>
+<li  id="menu-item-17544" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17544"><a href="https://www.febalcasa.com/it/contract/" class="nav-link ">Contract</a></li>
+<li  id="menu-item-17436" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17436"><a href="https://www.febalcasa.com/it/architetti/" class="nav-link ">Architetti</a></li>
+</ul>        <div class="nav actions">
+            <ul id="menu-services" class="nav "><li  id="menu-item-132223" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-132223"><a href="https://www.febalcasa.com/it/chi-siamo/" class="nav-link ">Chi siamo</a></li>
+<li  id="menu-item-8241" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-8241"><a href="/it/promozioni/" class="nav-link ">Promozioni</a></li>
+<li  id="menu-item-17281" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17281"><a href="https://www.febalcasa.com/it/virtual-tour/" class="nav-link ">Virtual Tour</a></li>
+<li  id="menu-item-100552" class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent nav-item nav-item-100552"><a href="https://www.febalcasa.com/it/blog/" class="nav-link active">News</a></li>
+<li  id="menu-item-16920" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-16920"><a href="https://www.febalcasa.com/it/contattaci/" class="nav-link ">Contatti</a></li>
+</ul>            <div id="select-language" class="nav-item" data-current-language="it">
+                <button type="button" id="language-toggler" data-modal-target="modal-language-selector">
+                    Language Select                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div data-navigation-main>
+        <div id="main-menu" class="main-menu" data-main>
+            
+            <div class="nav" data-menu="main">
+                                <ul id="menu-services-1" class="nav nav-mobile d-xl-none"><li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-132223"><a href="https://www.febalcasa.com/it/chi-siamo/" class="nav-link ">Chi siamo</a></li>
+<li  class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-8241"><a href="/it/promozioni/" class="nav-link ">Promozioni</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17281"><a href="https://www.febalcasa.com/it/virtual-tour/" class="nav-link ">Virtual Tour</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page current_page_parent nav-item nav-item-100552"><a href="https://www.febalcasa.com/it/blog/" class="nav-link active">News</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-16920"><a href="https://www.febalcasa.com/it/contattaci/" class="nav-link ">Contatti</a></li>
+</ul>
+                <ul id="menu-secondary-1" class="nav nav-mobile d-xl-none"><li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-93199"><a href="https://www.febalcasa.com/it/diventa-rivenditore/" class="nav-link ">Diventa Rivenditore</a></li>
+<li  class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-132222"><a target="_blank" rel="nofollow" href="https://www.randstad.it/candidato/aziende-che-assumono/febal-casa/?utm_source=external_site&amp;utm_medium=referral&amp;utm_campaign=febal_casa" class="nav-link ">Diventa Arredatore</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17544"><a href="https://www.febalcasa.com/it/contract/" class="nav-link ">Contract</a></li>
+<li  class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-17436"><a href="https://www.febalcasa.com/it/architetti/" class="nav-link ">Architetti</a></li>
+</ul>
+                <strong class="caption nav-mobile d-xl-none">Febal Casa</strong>
+                                <ul id="menu-main" class="nav menu-main--links">
+                                        <li id="rooms-toggler" class="nav-item">
+                        <button data-href="https://www.febalcasa.com/it/ambienti/" class="nav-link btn-toggler" data-menu-target="menu-rooms" data-menu-id="rooms">
+                            Ambienti                        </button>
+                    </li>
+                    <li id="products-toggler" class="nav-item">
+                        <button data-href="" class="nav-link btn-toggler" data-menu-target="menu-products" data-menu-id="products">
+                            Prodotti                        </button>
+                    </li>
+                                        <li>
+                        <a href="https://www.febalcasa.com/it/ispirazioni/" class="nav-link">
+                            Ispirazioni                        </a>
+                    </li>
+                    
+                                            <li>
+                            <a href="https://www.febalcasa.com/it/stores/" class="nav-link">
+                                Negozi                            </a>
+                        </li>
+                                    </ul>
+            </div>
+        </div>
+
+        <div id="actions" class="nav actions">
+                            <div id="select-language" class="nav-item nav-mobile d-xl-none" data-current-language="it">
+                    <button type="button" id="language-toggler" data-modal-target="modal-language-selector">
+                        Seleziona la lingua                    </button>
+                </div>
+                        <button id="menu-toggler" class="menu-toggler nav-mobile d-xl-none" data-menu-toggler>Menu</button>
+            
+            <ul class="nav nav-desktop" data-main-actions style="visibility: hidden;" >
+                <li id="search" class="search-container">
+                    <form role="search" action="https://www.febalcasa.com/it/" method="get" id="global-search">
+                        <input id="search-global" type="text" name="s" placeholder="Cerca" value="" />
+                        <input type="hidden" name="post_type[]" value="post" />
+                        <input type="hidden" name="post_type[]" value="product" />
+                        <input type="hidden" name="post_type[]" value="system" />
+                        <input type="hidden" name="post_type[]" value="composition" />
+                        <button class="btn-search" aria-label="Cerca" type="submit">
+                            <span class="visually-hidden">Cerca</span>
+                        </button>
+                    </form>
+                </li>
+                <li>
+                                            <a id="book-appointment" href="https://www.febalcasa.com/it/prendi-appuntamento/" class="btn-default">Prenota un appuntamento</a>
+                                    </li>
+            </ul>
+        </div>
+
+        <div id="menu-rooms" class="nav menu-rooms" data-navigation-menu="rooms" style="visibility:hidden;">
+            <button class="btn-backlink" data-closer>Ambienti</button>
+            <div class="content">
+    <div class="headings">
+        <span class="h2">I nostri ambienti</span>
+        <p class="description"></p>
+    </div>
+    <ul id="menu-ambienti-2025" class="list gallery "><li  id="menu-item-158877" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-158877"><article id="tease-" class="tease tease-basic tease-room" data-tease>
+    <a href="https://www.febalcasa.com/it/tipologia/cucine/" target="_self"  >
+        <figure class="cover">
+            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu-1x1.png" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu.png"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu.png"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu.webp" alt="Sedie e sgabelli consigli"title="FebalCasa_Cucina_Moderna_Origina_AntaSagoma37_Compo4_3_5-menu"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />        </figure>
+        <span class="btn-default no--icon">Cucina</span>
+    </a>
+</article></li>
+<li  id="menu-item-158875" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-158875"><article id="tease-" class="tease tease-basic tease-room" data-tease>
+    <a href="https://www.febalcasa.com/it/tipologia/soggiorni/" target="_self"  >
+        <figure class="cover">
+            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti-1x1.png" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti.png"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti.png"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti.webp" alt="FebalCasa_Sofas_Balmoral_Ambienti"title="FebalCasa_Sofas_Balmoral_Ambienti"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />        </figure>
+        <span class="btn-default no--icon">Soggiorno</span>
+    </a>
+</article></li>
+<li  id="menu-item-158878" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-158878"><article id="tease-" class="tease tease-basic tease-room" data-tease>
+    <a href="https://www.febalcasa.com/it/tipologia/dining/" target="_self"  >
+        <figure class="cover">
+            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Dining-1x1.png" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Dining.png"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Dining.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Dining.png"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Dining.webp" alt="FebalCasa_Dining"title="FebalCasa_Dining"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />        </figure>
+        <span class="btn-default no--icon">Dining</span>
+    </a>
+</article></li>
+<li  id="menu-item-158876" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-158876"><article id="tease-" class="tease tease-basic tease-room" data-tease>
+    <a href="https://www.febalcasa.com/it/tipologia/camere/" target="_self"  >
+        <figure class="cover">
+            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_CamereMatrimoniali_Compo5a-1x1.png" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_CamereMatrimoniali_Compo5a.png"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_CamereMatrimoniali_Compo5a.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_CamereMatrimoniali_Compo5a.png"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_CamereMatrimoniali_Compo5a.webp" alt="FebalCasa_CamereMatrimoniali_Compo5a"title="FebalCasa_CamereMatrimoniali_Compo5a"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />        </figure>
+        <span class="btn-default no--icon">Camere</span>
+    </a>
+</article></li>
+<li  id="menu-item-158879" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158879"><article id="tease-" class="tease tease-basic tease-room" data-tease>
+    <a href="https://www.febalcasa.com/it/tipologia/armadi/" target="_self"  >
+        <figure class="cover">
+            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Armadi_Ambienti-1x1.png" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Armadi_Ambienti.png"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Armadi_Ambienti.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Armadi_Ambienti.png"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Armadi_Ambienti.webp" alt="FebalCasa_Armadi_Ambienti"title="FebalCasa_Armadi_Ambienti"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />        </figure>
+        <span class="btn-default no--icon">Armadi</span>
+    </a>
+</article></li>
+</ul>    </div>
+        </div>
+
+        <div id="menu-products" class="nav menu-products" data-navigation-menu="products" style="visibility:hidden;">
+            <button class="btn-backlink" data-closer>Prodotti</button>
+            <div class="content">
+    <ul id="menu-prodotti-2025" class="list default "><li  id="menu-item-158882" class="menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children collection nav-item nav-item-158882"><span class="title">Cucine</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children depth_0">
+	<li  id="menu-item-158883" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158883"><a href="https://www.febalcasa.com/it/tipologia/cucine-moderne/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-moderne.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Cucina_Moderna_Origina_AntaProfiloAlluminio_Vol1_Compo8m-1.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Cucina_Moderna_Origina_AntaProfiloAlluminio_Vol1_Compo8l.jpg"]'>Moderne</a></li>
+	<li  id="menu-item-158884" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158884"><a href="https://www.febalcasa.com/it/tipologia/cucine-classiche/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/Gala_pag-22.jpg"]'>Classiche</a></li>
+	<li  id="menu-item-158885" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158885"><a href="https://www.febalcasa.com/it/tipologia/tavoli-da-cucina/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-tavoli-cucina.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_TavoliDesign_Bliss8.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_TavoliDesign_Bliss5.jpg"]'>Tavoli</a></li>
+	<li  id="menu-item-158886" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158886"><a href="https://www.febalcasa.com/it/tipologia/sedie-e-sgabelli-da-cucina/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-cucina.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Dea_c.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Dea_d.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Lola_b.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Lola_c.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Nives_g.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_Sedia_Nives_h.jpg"]'>Sedie e sgabelli</a></li>
+</ul>
+</li>
+<li  id="menu-item-158887" class="menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children collection nav-item nav-item-158887"><span class="title">Soggiorno</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children depth_0">
+	<li  id="menu-item-158889" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158889"><a href="https://www.febalcasa.com/it/tipologia/mobili-per-soggiorno/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_AreaCinema_Compo1_b-e1776862362565.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_ApertureALibro_Compo1_b-e1776961726926.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_SinergiaDeiSistemi_e_Winery_Compo1_a-e1776862457496.jpg"]'>Pareti attrezzate</a></li>
+	<li  id="menu-item-158890" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158890"><a href="https://www.febalcasa.com/it/tipologia/librerie/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Giorno_ParetiAttrezzate_LibreriaTrenta_DettagliEsclusivi_b.jpg"]'>Librerie moderne e componibili</a></li>
+	<li  id="menu-item-158891" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158891"><a href="https://www.febalcasa.com/it/tipologia/divani-poltrone-pouf/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Sofas_Balmoral_Compo1_b.jpg"]'>Divani, poltrone, pouf</a></li>
+	<li  id="menu-item-158892" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158892"><a href="https://www.febalcasa.com/it/tipologia/coffee-table/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Sofas_Camden_Compo1_b.jpg"]'>Coffee table</a></li>
+</ul>
+</li>
+<li  id="menu-item-158888" class="menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children collection nav-item nav-item-158888"><span class="title">Dining</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children depth_0">
+	<li  id="menu-item-158895" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158895"><a href="https://www.febalcasa.com/it/tipologia/tavoli-per-soggiorno/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-tavoli-soggiorno.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_TavoliDesign_Phoenix3.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_TavoliDesign_Phoenix5.jpg"]'>Tavoli</a></li>
+	<li  id="menu-item-158894" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158894"><a href="https://www.febalcasa.com/it/tipologia/sedie-soggiorno/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-sedie.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Dining_SedieDesign_Dea2.jpg"]'>Sedie</a></li>
+	<li  id="menu-item-158893" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158893"><a href="https://www.febalcasa.com/it/tipologia/madie/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-madie.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Madie_Aurora1.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Giorno_Madie_DettagliEsclusivi_Aurora.jpg"]'>Madie</a></li>
+	<li  id="menu-item-163802" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-163802"><a href="https://www.febalcasa.com/it/tipologia/specchi/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/06\/FC_CA_COPENAGHEN_P64.jpg"]'>Specchi</a></li>
+</ul>
+</li>
+<li  id="menu-item-158897" class="menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children collection nav-item nav-item-158897"><span class="title">Camere</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-room menu-item-has-children depth_0">
+	<li  id="menu-item-158898" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158898"><a href="https://www.febalcasa.com/it/tipologia/camere-matrimoniali-complete/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2026\/05\/FebalCasa_Notte_Letti_Imbottiti_Ambientate_Marguerite.jpg"]'>Camere matrimoniali</a></li>
+	<li  id="menu-item-158900" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158900"><a href="https://www.febalcasa.com/it/tipologia/letti/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-letti.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Letti_TestataImbottita_Opus2.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Letti_TestataImbottita_Opus3.jpg"]'>Letti</a></li>
+	<li  id="menu-item-158899" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158899"><a href="https://www.febalcasa.com/it/tipologia/como-e-comodini/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-gruppi.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FEBAL-NOTTE-PAG-062-063.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FEBAL-NOTTE-PAG-064.jpg"]'>Comò, comodini e cassettiere</a></li>
+	<li  id="menu-item-178778" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-178778"><a href="https://www.febalcasa.com/it/tipologia/letti-e-gruppi-notte/"class="nav-link " data-gallery='""'>Vedi tutti letti e gruppi notte</a></li>
+</ul>
+</li>
+<li  id="menu-item-158901" class="menu-item menu-item-type-taxonomy menu-item-object-kind menu-item-has-children collection nav-item nav-item-158901"><span class="title">Armadi</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-kind menu-item-has-children depth_0">
+	<li  id="menu-item-161980" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161980"><a href="https://www.febalcasa.com/it/tipologia/armadi/ispirazioni/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_VanoGuardaroba_Compo1_a.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_SinergiaDeiSistemi_e_Winery_Compo1_a-e1776862457496.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_ApertureALibro_Compo1_b-e1776961726926.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2025\/08\/FebalCasa_Armadi_IspirazioneArmadi_PassaggioConPonte_Compo1_b-e1776862274377.jpg"]'>Ispirazioni armadi</a></li>
+	<li  id="menu-item-161977" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161977"><a href="https://www.febalcasa.com/it/tipologia/armadi/ante/"class="nav-link " data-gallery='""'>Ante</a></li>
+	<li  id="menu-item-161978" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161978"><a href="https://www.febalcasa.com/it/tipologia/armadi/ante/battente/"class="nav-link " data-gallery='""'>Ante a battente</a></li>
+	<li  id="menu-item-161982" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161982"><a href="https://www.febalcasa.com/it/tipologia/armadi/ante/scorrevole/"class="nav-link " data-gallery='""'>Ante scorrevoli</a></li>
+	<li  id="menu-item-161979" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161979"><a href="https://www.febalcasa.com/it/tipologia/armadi/ante/libro/"class="nav-link " data-gallery='""'>Ante a libro</a></li>
+	<li  id="menu-item-161981" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161981"><a href="https://www.febalcasa.com/it/tipologia/cabine-armadio/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-cabine-armadio.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Hype_compo2a.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Hype_compo2b.jpg"]'>Cabine armadio</a></li>
+	<li  id="menu-item-161983" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-161983"><a href="https://www.febalcasa.com/it/tipologia/armadi/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-armadi.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Armadi_Ninfea_compo1a.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Notte_Armadi_Ninfea_compo1b.jpg"]'>Vedi tutti gli Armadi</a></li>
+</ul>
+</li>
+<li  id="menu-item-158911" class="menu-item menu-item-type-taxonomy menu-item-object-kind current-kind-ancestor current-menu-ancestor current-menu-parent current-kind-parent menu-item-has-children collection nav-item nav-item-158911"><span class="title">Mobili di servizio</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-kind current-kind-ancestor current-menu-ancestor current-menu-parent current-kind-parent menu-item-has-children depth_0">
+	<li  id="menu-item-158910" class="menu-item menu-item-type-taxonomy menu-item-object-kind current-menu-item nav-item nav-item-158910"><a href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/"class="nav-link active" data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-laundry.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c.jpg"]'>Lavanderia</a></li>
+	<li  id="menu-item-158909" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158909"><a href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-ingresso-e-ripostiglio/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-ingresso-ripostiglio.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/GO_U21_P88.jpg"]'>Ingresso e ripostiglio</a></li>
+</ul>
+</li>
+<li  id="menu-item-158912" class="menu-item menu-item-type-taxonomy menu-item-object-kind menu-item-has-children collection nav-item nav-item-158912"><span class="title">Camerette</span>
+<ul class="list   menu-item menu-item-type-taxonomy menu-item-object-kind menu-item-has-children depth_0">
+	<li  id="menu-item-158914" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158914"><a href="https://www.febalcasa.com/it/tipologia/momenti/cameretta/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-cameretta.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Momenti_Camerette_CompoK44_a.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Momenti_Camerette_CompoK44_b.jpg"]'>Camere per bambini</a></li>
+	<li  id="menu-item-158913" class="menu-item menu-item-type-taxonomy menu-item-object-kind nav-item nav-item-158913"><a href="https://www.febalcasa.com/it/tipologia/momenti/camere-per-ragazzi/"class="nav-link " data-gallery='["https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/03\/1-camere-ragazzi.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Momenti_CamerePerRagazzi_CompoY23_C.jpg","https:\/\/www.febalcasa.com\/wp-content\/uploads\/2024\/02\/FebalCasa_Momenti_CamerePerRagazzi_CompoY22_e.jpg"]'>Camere per ragazzi</a></li>
+</ul>
+</li>
+</ul>    </div>
+    <div class="featured" style="cursor: default;">
+        <figure class="cover">
+            <!-- <img
+						 
+						src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/1-1x1.jpg" 
+						data-src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/1.jpg"
+						data-webp="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/1.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/1.jpg"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/1.webp" draggable="false" 
+						loading="lazy" /> -->
+        </figure>
+    </div>
+        </div>
+    </div>
+</nav>    </nav>
+
+    <div id="app-viewport" class="app-viewport" data-app-viewport>
+        <main id="app-content" class="app-content content" data-app-content>
+            <div class="app-page taxonomy_kind" data-app-page>
+                <div class="taxonomy_kind__wrapper" data-wrapper>
+<header></header>
+<div>
+    <section class="hero--single swiper carousel link" data-carousel="hero" mode="dark" style="background-image: url(' 15152')">
+    <div class="swiper-wrapper">
+                                    <a class="swiper-slide" href="https://www.febalcasa.com/it/prodotti/laundry/">
+                            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b-1x1.jpg" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b.jpg"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b.jpg"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b.webp" class="img-slide"alt="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b"title="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_b"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />                            </a>
+                                                <a class="swiper-slide" href="https://www.febalcasa.com/it/prodotti/laundry/">
+                            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c-1x1.jpg" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c.jpg"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c.jpg"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c.webp" class="img-slide"alt="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c"title="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_c"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />                            </a>
+                                                <a class="swiper-slide" href="https://www.febalcasa.com/it/prodotti/laundry/">
+                            <img
+						 
+						src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d-1x1.jpg" 
+						data-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d.jpg"
+						data-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d.jpg"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d.webp" class="img-slide"alt="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d"title="FebalCasa_Utility_MobiliServizio_Lavanderia_compo1_d"style="object-position:center center;"data-mobile-style="object-position:center center;"draggable="false" 
+						loading="lazy" />                            </a>
+                        </div>
+    <div class="swiper-button-prev" data-prev data-arrow></div>
+    <div class="swiper-button-next" data-next data-arrow></div>
+    <div class="headings-hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 col-lg-4 content">
+                    
+                                            <span class="h1 title">Laundry</span>
+                    
+                    <p class="description">La lavanderia richiede attenzione sia estetica che pratica. Offriamo soluzioni modulari salvaspazio per adattarsi a diverse disposizioni, con mobili personalizzabili in una varietà di colori e finiture, garantendo funzionalità e stile in ogni ambiente.</p>
+                                            <span class="btn-default">Scopri</span>
+                                                                <span class="kind p">Laundry</span>
+                    
+                    <div class="pagination">
+                        <div class="swiper-pagination" data-pagination-bullets></div>
+                        <div class="swiper-pagination" data-pagination-fraction></div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></div>
+
+
+
+<section id="booking" mode="dark" class="booking" style="background-image: url('https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-1.webp'); background-size: cover; background-position: center;">
+    <div class="container">
+        <a href="https://www.febalcasa.com/it/stores/" target="_self">
+            <div class="row booking">
+                <div class="col-12 col-md-4 col-lg-3 info-1">
+                    <span class="caption">Store Locator</span>
+                    <span class="h3 name">Prenota un appuntamento</span>
+                </div>
+                <div class="col-12 col-md-3 figure">
+                    <figure class="cover">
+                        <img
+						 
+						src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-2-1x1.jpg" 
+						data-src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-2.jpg"
+						data-webp="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-2.webp" 
+						data-mobile-src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-2.jpg"
+						data-mobile-webp="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/booking-2.webp" class="img-fluid"alt="booking"draggable="false" 
+						loading="lazy" />                    </figure>
+                </div>
+                <div class="col-12 col-md col-lg-3 info-2">
+                    <span class="description">Prenota un appuntamento gratuito in negozio e progetta la casa dei tuoi sogni con i nostri Interior Designer.</span>
+                    <span class="btn-default">Trova lo store più vicino a te</span>
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+<div id="navigation-bottom-bar" class="nav navigation-bottom-bar" data-navigation-bottom-bar>
+    
+            <div class="nav" data-main-actions>
+            <span class="message">Prenota un appuntamento gratuito in negozio e progetta la casa dei tuoi sogni con i nostri Interior Designer.</span>
+            <a href="https://www.febalcasa.com/it/prendi-appuntamento/" id="navbar-cta" class="btn-primary" data-main-cta>Prenota un appuntamento</a>
+        </div>
+    </div>
+                </div>
+            </div>
+                <footer 
+                    data-footer="extended"
+                    class="full"
+                                            mode="dark"
+                                                                style="background-image: url('https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/background--footer.webp');"
+                                                                data-mobile-style="background-image: url('https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/background--footer--mobile.webp');"
+                                    >
+                        <div class="cta--pre-footer" mode="light">
+        <ul class="nav">
+                            <li class="nav-item">
+                                            <a class="tease--cta" href="https://www.febalcasa.com/it/prendi-appuntamento/" target="_self">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M26.3594 12.2793C26.4277 12.2793 26.4955 12.2922 26.5586 12.3184C26.6217 12.3446 26.6793 12.3832 26.7275 12.4316L29.8467 15.5518C29.8951 15.6001 29.9337 15.6575 29.96 15.7207C29.9861 15.7838 30 15.8516 30 15.9199C30 15.9882 29.9861 16.056 29.96 16.1191C29.9337 16.1822 29.8951 16.2398 29.8467 16.2881L19.4473 26.6875C19.3974 26.737 19.3378 26.7758 19.2725 26.8018L14.0732 28.8818C13.9788 28.9196 13.875 28.9286 13.7754 28.9082C13.6757 28.8877 13.5837 28.8386 13.5117 28.7666C13.4399 28.6947 13.3906 28.6034 13.3701 28.5039C13.3497 28.4043 13.3587 28.3005 13.3965 28.2061L15.4766 23.0059C15.5025 22.9405 15.5413 22.8809 15.5908 22.8311L25.9912 12.4316C26.0395 12.3833 26.097 12.3445 26.1602 12.3184C26.2232 12.2923 26.2911 12.2793 26.3594 12.2793ZM16.4023 23.4922L14.8135 27.4658L18.7871 25.876L18.8975 25.7666C18.7983 25.7295 18.7127 25.6622 18.6523 25.5752C18.592 25.4883 18.5596 25.3851 18.5596 25.2793V24.7598H18.0391C17.9014 24.7597 17.7693 24.7047 17.6719 24.6074C17.5744 24.5099 17.5195 24.3772 17.5195 24.2393V23.7197H16.999C16.8933 23.7196 16.79 23.6872 16.7031 23.627C16.6162 23.5666 16.5498 23.4809 16.5127 23.3818L16.4023 23.4922ZM17.5195 22.375V22.6797H18.0391L18.1416 22.6895C18.2414 22.7095 18.3342 22.759 18.4072 22.832C18.5045 22.9295 18.5595 23.0615 18.5596 23.1992V23.7197H19.0791L19.1816 23.7295C19.2814 23.7495 19.3742 23.799 19.4473 23.8721C19.5445 23.9695 19.5996 24.1016 19.5996 24.2393V24.7598H19.9043L26.6641 18L24.2793 15.6152L17.5195 22.375ZM25.0146 14.8799L27.3994 17.2646L28.7441 15.9199L26.3594 13.5352L25.0146 14.8799Z" fill="black"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M7.8584 16.5518L7.8623 8.64844H15.8105L7.8584 16.5518ZM8.90137 9.68848L8.89941 14.0498L13.2891 9.68848H8.90137Z" fill="black"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M24.8008 3.95996C25.2209 3.9603 25.5998 4.21353 25.7607 4.60156C25.9215 4.98995 25.8332 5.43796 25.5361 5.73535L4.73633 26.5352C4.43895 26.8324 3.99101 26.9206 3.60254 26.7598C3.21409 26.5986 2.96076 26.2194 2.96094 25.7988L2.96973 5C2.96997 4.42581 3.43558 3.95996 4.00977 3.95996H24.8008ZM4.00977 5L4.00098 25.7998L24.8008 5H4.00977Z" fill="black"/>
+  </svg>                            <div class="data">
+                                <span class="h6">Consulenza guidata</span>
+                                <p>I nostri Interior Designer sono a tua disposizione</p>
+                                <span class="btn-default">Prenota un appuntamento</span>
+                            </div>
+                        </a>
+                                    </li>
+                                        <li class="nav-item">
+                    <a class="tease--cta" href="https://www.febalcasa.com/it/cataloghi/" target="_self">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M16.1123 5.56863C17.9034 4.06421 20.52 3.82615 22.9443 4.06473C25.7598 4.34265 28.607 5.28684 30.3799 6.07449C30.5134 6.13386 30.6264 6.22954 30.7051 6.34891C30.764 6.43841 30.802 6.53878 30.8174 6.64285L30.8252 6.74832V26.8948C30.8251 27.0178 30.793 27.1389 30.7324 27.2473C30.6717 27.3559 30.5839 27.4484 30.4766 27.5159C30.3692 27.5834 30.2461 27.624 30.1182 27.6331C29.9902 27.6422 29.8616 27.6194 29.7451 27.5677C28.0813 26.8298 25.3969 25.9427 22.79 25.6858C20.2202 25.4327 17.9855 25.8113 16.7158 27.2161L16.5957 27.3548C16.5246 27.4413 16.4342 27.5115 16.3311 27.5598C16.2279 27.6082 16.1148 27.6331 16 27.6331C15.8852 27.6331 15.7721 27.6082 15.6689 27.5598C15.5915 27.5236 15.5212 27.4749 15.4609 27.4163L15.4043 27.3548C14.1585 25.8361 11.8624 25.4245 9.20801 25.6858C6.60294 25.9428 3.92044 26.8298 2.25488 27.5677C2.13839 27.6194 2.00981 27.6422 1.88184 27.6331C1.75394 27.624 1.63078 27.5834 1.52344 27.5159C1.41607 27.4484 1.32826 27.3559 1.26758 27.2473C1.20691 27.1388 1.17484 27.017 1.1748 26.8938V6.74832C1.17484 6.60722 1.21639 6.46821 1.29492 6.34891C1.37361 6.22954 1.48664 6.13386 1.62012 6.07449C3.39299 5.28684 6.24023 4.34265 9.05566 4.06473L9.05469 4.06375C11.4794 3.82691 14.0965 4.06415 15.8877 5.56863L16 5.66336L16.1123 5.56863ZM29.2998 7.23074L29.1914 7.1868C27.5216 6.50488 25.1252 5.76862 22.79 5.53934C20.283 5.29261 18.0959 5.64637 16.8115 6.96805L16.7627 7.01883V25.2376L17.0225 25.093C18.7296 24.1461 20.9069 24.0113 22.9443 24.2132H22.9453C25.1383 24.4274 27.352 25.0494 29.0635 25.6868L29.2998 25.7747V7.23074ZM15.2373 7.01883L15.1885 6.96805C13.9041 5.64637 11.717 5.29261 9.20996 5.53934C6.87476 5.76862 4.4784 6.50488 2.80859 7.1868L2.7002 7.23074V25.7747L2.93652 25.6868C4.64607 25.0495 6.86224 24.4291 9.05566 24.2112C11.0911 24.0112 13.2703 24.1479 14.9775 25.093L15.2373 25.2366V7.01883Z" fill="#0A0C06" stroke="white" stroke-width="0.35"/>
+</svg>
+                        <div class="data">
+                            <span class="h6">Scopri il catalogo</span>
+                            <p>Scarica i cataloghi Febal Casa e lasciati ispirare dalle nostre proposte</p>
+                            <span class="btn-default">Scarica i PDF</span>
+                        </div>
+                    </a>
+                </li>
+                                        <li class="nav-item">
+                    <a class="tease--cta" href="#newsletter-container" target="_self">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M6.14741 7.23377C5.17056 7.23377 4.36847 7.95693 4.36847 8.83766V22.1623C4.36847 23.0431 5.17056 23.7662 6.14741 23.7662H25.8526C26.8294 23.7662 27.6315 23.0431 27.6315 22.1623V8.83766C27.6315 7.95693 26.8294 7.23377 25.8526 7.23377H6.14741ZM3.00006 8.83766C3.00006 7.27554 4.4148 6 6.14741 6H25.8526C27.5852 6 28.9999 7.27554 28.9999 8.83766V22.1623C28.9999 23.7245 27.5852 25 25.8526 25H6.14741C4.41481 25 3.00006 23.7245 3.00006 22.1623V8.83766Z" fill="#0A0C06"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M3.41558 7.40151C3.63228 7.1224 4.0589 7.05452 4.36847 7.2499L16 14.6234L27.612 7.2499C27.9216 7.05452 28.3482 7.1224 28.5649 7.40151C28.7816 7.68062 28.7064 8.06526 28.3968 8.26064L16.3924 15.8818C16.1568 16.0304 15.8432 16.0304 15.6076 15.8818L3.58374 8.26064C3.27417 8.06526 3.19888 7.68062 3.41558 7.40151Z" fill="#0A0C06"/>
+</svg>
+                        <div class="data">
+                            <span class="h6">Newsletter</span>
+                            <p>Iscriviti alla newsletter</p>
+                            <span class="btn-default">Iscriviti alla mailing list</span>
+                        </div>
+                    </a>
+                </li>
+                    </ul>
+    </div>
+                    <div id="newsletter-container" class="container">
+    <div class="row newsletter">
+        <div class="col-12 col-lg-4 form">
+            <span class="caption">Newsletter</span>
+            <span class="h3">Le ispirazioni sulla casa non ti bastano?</span>
+            
+        <form method="post" onkeydown="if(event.keyCode === 13) {return false;}">
+
+            <input type="hidden" id="_wpnonce" name="_wpnonce" value="d8ae0e1c9d" /><input type="hidden" name="_wp_http_referer" value="/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/15152/" />
+            <input type="hidden" name="action" value="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8">
+            <input type="hidden" name="oid" value="00D24000000eeI1">
+            <input type="hidden" name="retURL" value="https://www.febalcasa.com/it/typ-nl/?sazf=w2l_newsletter&event=subscribe_newsletter">
+            <input type="hidden" name="00N3V000000yazt" value="https://www.febalcasa.com/it/typ-nl/?sazf=w2l_newsletter&event=subscribe_newsletter">
+
+            <div class="input-container">
+
+                <input type="email" class="form-control" name="email" id="saz_email" required autocomplete="email"
+                       placeholder="Text">
+                <label for="saz_email">Email</label>
+                                    <button type="submit" class="btn-default saz-btn-click" class="g-recaptcha"
+                            data-sitekey="6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW"
+                            data-callback='onSubmit' data-action='submit'>Invia <i
+                                class="fas fa-spinner fa-pulse d-none" id="saz_pv_spinner_button"></i></button>
+                            </div>
+
+            <input type="hidden" name="00N3V000000qQWv" id="saz_privacy" class="form-check-input" value="1">
+
+            <input type="hidden" name="recordType" value="0123V000000L2xg">
+            <input type="hidden" name="url" value="febalcasa.com">
+            <input type="hidden" name="00N3V000000qThS" value="Febal Casa">
+            <input type="hidden" name="lead_source" value="Newsletter">
+            <input type="hidden" name="00N2400000IQtaN" value="Preso">
+            <input type="hidden" name="00N2400000Is6Le"
+                   value="IT">
+            <input type="hidden" name="Campaign_ID" value="7013V000000keoTQAQ">
+
+            <div class="checkbox check-legal-term">
+                <label for="saz_privacy_marketing_1_nws">
+                    <input type="checkbox" name="00N3V000000qQX0" id="saz_privacy_marketing_1_nws" required
+                           class="form-check-input" value="1">
+                    <span class="label">Con l'invio della presente richiesta dichiaro di essere maggiorenne e di aver preso visione dell'<a href="https://www.febalcasa.com/it/privacy-policy/">informativa sul trattamento dei dati personali</a>, consapevole dei diritti a me riservati compresa la successiva revoca, e acconsento al trattamento per finalità di marketing diretto.</span>
+                </label>
+
+
+                <label class="form-check-label" for="saz_privacy_marketing_2_nws">
+                    <input type="checkbox" name="00N3V000000qThN" id="saz_privacy_marketing_2_nws"
+                           class="form-check-input" value="1">
+                    <span class="label">Inoltre acconsento al trattamento dei miei dati personali per elaborare un mio profilo volto a personalizzare l'offerta di prodotti e servizi di vendita/assistenza da parte di Febal Casa o della propria rete vendita o di specifici servizi richiesta da me.</span>
+                </label>
+            </div>
+
+                            <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW"></script> -->
+
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW', {
+                            action: 'newsletter'
+                        }).then(function(token) {
+                            var recaptchaResponse = document.getElementById('recaptchaResponseNews-1');
+                            if (recaptchaResponse) {
+                                recaptchaResponse.value = token;
+                            }
+                        });
+                    });
+                </script>
+
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponseNews-1">
+            
+        </form>
+
+                            </div>
+    </div>
+</div>
+
+                    <div data-footer-main>
+    <div class=" footer-top">
+        <div class="links">
+            <div class="menus">
+                <ul id="menu-footer1" class="nav footer_menu"><li  id="menu-item-98863" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-98863"><a href="#" class="nav-link ">Febal Casa</a></li>
+<li  id="menu-item-100065" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100065"><a href="https://www.febalcasa.com/it/chi-siamo/" class="nav-link ">Chi siamo</a></li>
+<li  id="menu-item-164019" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-164019"><a href="https://www.febalcasa.com/it/cataloghi/" class="nav-link ">Cataloghi</a></li>
+<li  id="menu-item-98865" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-98865"><a href="/it/promozioni/" class="nav-link ">Promozioni</a></li>
+<li  id="menu-item-132225" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-132225"><a href="https://www.febalcasa.com/it/magazine/" class="nav-link ">Magazine</a></li>
+<li  id="menu-item-100060" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100060"><a href="https://www.febalcasa.com/it/i-negozi-in-italia/" class="nav-link ">I negozi in Italia</a></li>
+<li  id="menu-item-100061" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100061"><a href="https://www.febalcasa.com/it/libeskind022/" class="nav-link ">LIBESKIND022</a></li>
+<li  id="menu-item-165693" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-165693"><a href="https://www.febalcasa.com/it/onda-zha/" class="nav-link ">ONDA – ZHA</a></li>
+<li  id="menu-item-102280" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-102280"><a href="https://www.febalcasa.com/it/total-living/" class="nav-link ">Total living</a></li>
+<li  id="menu-item-100062" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100062"><a href="https://www.febalcasa.com/it/perche-scegliere-febal-casa/" class="nav-link ">Perché scegliere Febal Casa</a></li>
+<li  id="menu-item-100063" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100063"><a href="https://www.febalcasa.com/it/servizi/" class="nav-link ">Servizi</a></li>
+</ul>                <ul id="menu-footer2" class="nav footer_menu"><li  id="menu-item-98866" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-98866"><a href="#" class="nav-link ">Prodotti</a></li>
+<li  id="menu-item-98869" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-98869"><a href="https://www.febalcasa.com/it/tipologia/cucine/" class="nav-link ">Cucina</a></li>
+<li  id="menu-item-98868" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-98868"><a href="https://www.febalcasa.com/it/tipologia/soggiorni/" class="nav-link ">Soggiorno</a></li>
+<li  id="menu-item-100058" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-100058"><a href="https://www.febalcasa.com/it/tipologia/dining/" class="nav-link ">Dining</a></li>
+<li  id="menu-item-98867" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-98867"><a href="https://www.febalcasa.com/it/tipologia/camere/" class="nav-link ">Camera da letto</a></li>
+<li  id="menu-item-100059" class="menu-item menu-item-type-taxonomy menu-item-object-room nav-item nav-item-100059"><a href="https://www.febalcasa.com/it/tipologia/camerette-mobili-servizio/" class="nav-link ">Camerette e mobili di servizio</a></li>
+</ul>                <ul id="menu-footer3" class="nav footer_menu"><li  id="menu-item-98861" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-98861"><a href="#" class="nav-link ">Collabora</a></li>
+<li  id="menu-item-98706" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-98706"><a href="https://www.febalcasa.com/it/diventa-rivenditore/" class="nav-link ">Diventa rivenditore</a></li>
+<li  id="menu-item-132224" class="menu-item menu-item-type-custom menu-item-object-custom nav-item nav-item-132224"><a href="https://www.randstad.it/candidato/aziende-che-assumono/febal-casa/" class="nav-link ">Diventa Arredatore</a></li>
+<li  id="menu-item-98707" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-98707"><a href="https://www.febalcasa.com/it/contract/" class="nav-link ">Contract</a></li>
+<li  id="menu-item-100064" class="menu-item menu-item-type-post_type menu-item-object-page nav-item nav-item-100064"><a href="https://www.febalcasa.com/it/architetti/" class="nav-link ">Architetti</a></li>
+</ul>            </div>
+        </div>
+
+        <div id="footer-select-language" class="nav-item" data-current-language="it">
+            <button type="button" id="footer-language-toggler" data-modal-target="modal-language-selector">
+                <strong>Seleziona la lingua</strong>
+                
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/it.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="it">Italiano</span>            </button>
+        </div>
+    </div>
+
+    <div class="footer-sub">
+        <svg id="footer-logo"class="logo"width="285" height="284" viewBox="0 0 285 284" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M284.5 0H0.5V283.95H284.5V0Z" fill="#ED1C24"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M234.412 92.9019H222.691V143.269H234.412V92.9019ZM88.6552 120.673C88.6552 120.673 91.1596 113.88 98.5727 113.88C100.7 113.912 102.77 114.576 104.519 115.785C106.267 116.995 107.615 118.696 108.39 120.673H88.6552ZM121.213 124.369C121.213 113.78 111.195 105.189 98.773 105.189C86.3512 105.189 76.3335 113.78 76.3335 124.369C76.3504 125.271 76.4173 126.171 76.5339 127.066C78.0365 136.456 87.6534 143.548 98.773 143.548C107.689 143.548 115.803 138.953 119.309 132.06H105.385C103.513 133.564 101.177 134.376 98.773 134.358C96.6652 134.355 94.6061 133.726 92.8578 132.552C91.1095 131.378 89.7511 129.712 88.9557 127.765L88.6552 127.066H121.012C121.178 126.177 121.245 125.272 121.213 124.369ZM50.8887 171.719C50.8887 161.13 60.6058 152.539 72.5268 152.539C82.845 152.539 91.5603 158.932 93.664 167.823H82.4443C81.5207 166.121 80.1429 164.706 78.4632 163.737C76.7836 162.767 74.8677 162.28 72.9275 162.329C67.1173 162.329 62.409 166.524 62.409 171.719C62.409 176.913 67.1173 181.209 72.9275 181.209C74.8635 181.235 76.7707 180.739 78.4463 179.771C80.1219 178.804 81.5035 177.402 82.4443 175.714H93.664C91.5603 184.605 82.845 190.998 72.5268 190.998C60.6058 190.998 50.8887 182.307 50.8887 171.719ZM120.311 181.109C118.243 181.158 116.204 180.621 114.431 179.56C112.657 178.499 111.222 176.958 110.293 175.115C109.901 174.06 109.697 172.944 109.692 171.818C109.692 166.724 114.401 162.528 120.311 162.528C126.221 162.528 130.93 166.724 130.93 171.818C130.889 172.949 130.651 174.065 130.228 175.115C128.726 178.711 124.719 181.109 120.311 181.109ZM130.629 190.998H141.548V165.925C140.468 163.324 138.873 160.966 136.86 158.992C134.846 157.019 132.454 155.469 129.828 154.437H129.527C126.522 153.038 123.416 152.739 119.61 152.739H117.907C106.587 153.738 97.9716 161.929 97.9716 171.818C97.9716 181.708 106.487 189.8 117.807 190.898H119.61C123.112 190.899 126.571 190.114 129.728 188.601L130.629 188.201V190.998ZM202.656 175.115C204.159 178.711 208.166 181.109 212.573 181.109C214.641 181.158 216.68 180.621 218.454 179.56C220.227 178.499 221.662 176.958 222.591 175.115C222.984 174.06 223.187 172.944 223.192 171.818C223.192 166.724 218.384 162.528 212.573 162.528C206.763 162.528 201.955 166.724 201.955 171.818C201.944 172.955 202.184 174.08 202.656 175.115ZM233.811 190.998H222.892V188.201L222.09 188.601C218.9 190.122 215.408 190.907 211.872 190.898H210.169C198.849 189.8 190.334 181.708 190.334 171.818C190.334 161.929 198.849 153.738 210.169 152.739H211.872C215.679 152.739 218.784 153.038 221.79 154.437H222.09C227.7 156.734 232.008 160.93 233.811 165.925V190.998ZM195.744 133.259C191.336 133.259 187.329 130.862 185.826 127.266C185.354 126.231 185.115 125.106 185.125 123.969C185.125 118.874 189.833 114.779 195.744 114.779C201.654 114.779 206.362 118.874 206.362 123.969C206.373 125.106 206.133 126.231 205.661 127.266C204.159 130.862 200.151 133.259 195.744 133.259ZM206.062 143.149H216.981V118.175C215.947 115.546 214.369 113.164 212.35 111.185C210.33 109.205 207.914 107.673 205.26 106.687L204.96 106.487C201.955 105.089 198.849 104.789 195.042 104.789H193.34C182.02 105.888 173.404 114.079 173.404 123.869C173.404 133.659 181.919 141.95 193.239 142.949H195.042C198.565 142.932 202.045 142.184 205.26 140.751L206.062 140.352V143.149ZM149.562 186.603C146.657 184.505 145.255 181.908 145.155 179.111H156.875C157.577 181.408 160.281 183.806 166.292 183.806C172.302 183.806 174.607 182.607 174.607 179.91C174.607 177.213 170.9 176.414 162.185 174.616L160.281 174.216C155.373 173.217 147.258 170.919 147.258 164.027C147.258 157.134 157.376 152.938 166.793 152.938C178.513 152.938 185.225 158.433 185.826 163.627H174.306C172.819 160.662 168.833 160.447 167.064 160.352L167.063 160.352C166.925 160.345 166.801 160.338 166.693 160.331H166.492C162.585 160.331 159.68 161.929 159.68 163.927C159.68 165.925 162.686 166.524 168.596 167.623L171.1 168.122C171.601 168.217 172.104 168.31 172.607 168.403L172.608 168.403L172.609 168.403C180.047 169.776 187.429 171.139 187.429 178.811C187.429 187.002 176.911 191.398 166.993 191.398C159.881 191.398 152.468 188.701 149.562 186.603ZM50.6884 143.249H61.9081V127.066H71.8256V119.474H61.9081V114.979C61.9081 103.79 70.0224 102.991 72.4266 102.991H77.9363V93.2015H68.7201C65.3285 93.2557 61.9983 94.1116 59.003 95.6989C53.4933 98.7956 50.6884 104.39 50.6884 112.181V143.249ZM146.958 133.459C151.466 133.459 155.573 130.962 157.176 127.365C157.621 126.322 157.859 125.203 157.877 124.069C157.877 118.974 152.968 114.779 146.958 114.779C140.947 114.779 136.039 118.974 136.039 124.069C136.007 125.208 136.248 126.337 136.74 127.365C138.243 130.962 142.45 133.459 146.958 133.459ZM137.341 107.287C140.569 105.773 144.092 104.989 147.659 104.989C159.68 104.989 169.397 113.58 169.397 124.069C169.431 125.072 169.364 126.076 169.197 127.066C167.594 136.256 158.378 143.249 147.659 143.249C144.091 143.259 140.566 142.474 137.341 140.951L136.54 140.552V143.249H125.019V92.9019H136.54V107.686L137.341 107.287Z" fill="white"/>
+</svg>
+
+        <div class="credits">
+            <span class="copyright">All rights reserved © 2026 — Febal Casa</span>
+            <ul class="nav privacy">
+                <li class="nav-item">
+                                    <a class="nav-link" href="https://www.febalcasa.com/it/privacy-policy/">Privacy Policy</a>
+                                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.febalcasa.com/it/cookie-policy/">Cookie Policy</a>
+                </li>
+                
+                <li class="nav-item"><a class="nav-link" href="javascript:Cookiebot.renew();">Rivedi impostazioni cookie</a></li>
+            </ul>
+            <div class="socials">
+                                    <a href="https://www.instagram.com/febalcasa_official/" target="_blank" class="instagram"><span class=" visually-hidden">Instagram</span></a>
+                
+                                    <a href="https://www.facebook.com/febalcasa" target="_blank" class="facebook"><span class=" visually-hidden">Facebook</span></a>
+                
+                                    <a href="https://www.youtube.com/channel/UCnzgyieUVUOHdhGRAQK_l0A" target="_blank" class="youtube"><span class=" visually-hidden">YouTube</span></a>
+                
+                                    <a href="https://www.linkedin.com/company/febalcasa/" target="_blank" class="linkedin"><span class=" visually-hidden">LinkedIn</span></a>
+                
+                                    <a href="https://www.pinterest.it/febalcasa/" target="_blank" class="pinterest"><span class=" visually-hidden">Pinterest</span></a>
+                            </div>
+        </div>
+    </div>
+</div>                </footer>
+
+                <section id="modal-language-selector" class="modal " data-modal data-modal-language data-lenis-prevent style="visibility:hidden;">
+    <button class="btn-close" data-modal-close><span class="visually-hidden">Chiudi</span></button>
+    <div data-container>
+        <span class="h6 modal--title">Seleziona la lingua</span>
+        <ul class="nav language-selector">
+                            <li class="nav-item">
+                    <a id="Passa a English" class="nav-link" href="https://www.febalcasa.com/en/kind/laundry/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/en.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="en">English</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Français" class="nav-link" href="https://www.febalcasa.com/fr/typologie/mobilier-de-service/mobilier-de-service-blanchisserie/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/fr.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="fr">Français</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Deutsch" class="nav-link" href="https://www.febalcasa.com/de/typ/service-mobel/service-mobel-wascherei/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/de.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="de">Deutsch</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Ελληνικά" class="nav-link" href="https://www.febalcasa.com/el/%CF%84%CF%85%CF%80%CE%BF%CE%BB%CE%BF%CE%B3%CE%AF%CE%B1/%CF%80%CE%BB%CF%85%CE%BD%CF%84%CE%AE%CF%81%CE%B9%CE%BF-%CF%81%CE%BF%CF%8D%CF%87%CF%89%CE%BD/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/el.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="el">Ελληνικά</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Italiano" class="nav-link" href="https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/it.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="it">Italiano</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Русский" class="nav-link" href="https://www.febalcasa.com/ru/%D1%82%D0%B8%D0%BF%D0%BE%D0%BB%D0%BE%D0%B3%D0%B8%D1%8F/%D0%BF%D1%80%D0%B0%D1%87%D0%B5%D1%87%D0%BD%D0%B0%D1%8F/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/ru.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="ru">Русский</span></a>
+                </li>
+                            <li class="nav-item">
+                    <a id="Passa a Español" class="nav-link" href="https://www.febalcasa.com/es/tipologia/lavanderia/" target="_self">
+            <img
+            class="wpml-ls-flag"
+            src="https://www.febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/es.svg"
+            alt=""
+            
+            
+    /><span class="wpml-ls-native" lang="es">Español</span></a>
+                </li>
+                        <li class="nav-item">
+                <a id="chinese" class="nav-link" href="https://febalcasa-china.cn/" target="_self"><img class="wpml-ls-flag" src="https://febalcasa.com/wp-content/plugins/sitepress-multilingual-cms/res/flags/zh.svg" alt="">中文</a>
+            </li>
+        </ul>
+    </div>
+</section>
+                            </main>
+        </div>
+        <script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/it/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/febalcasa_nooo/*","/it/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+<script>document.addEventListener('DOMContentLoaded', function () {
+    (() => Array.from(document.getElementsByClassName('spoki-shadowed-button')).forEach(el => {
+        const content = document.importNode(el, true);
+        const shadowRoot = el.attachShadow({mode: 'open'});
+        el.innerHTML = '';
+        el.className = el.className.replace('spoki-shadowed-button', '');
+        const style = document.createElement('style');
+        style.innerHTML = document.getElementById('spoki-style-buttons').innerHTML.replace(/(\\r\\n|\\n|\\r)/gm, '');
+        shadowRoot.appendChild(style);
+        shadowRoot.appendChild(content.firstChild);
+    }))();
+})</script><section id="modal-newsletter-modal" class="modal " data-modal data-modal-newsletter data-lenis-prevent style="visibility:hidden;">
+    <button class="btn-close" data-modal-close="newsletter"><span class="visually-hidden">Chiudi</span></button>
+    <div data-container>
+        <div class="container-fluid">
+            <span class="caption">Iscriviti</span>
+            <span class="h4 title">Le ispirazioni sulla casa non ti bastano? Iscriviti alla newsletter</span>
+            
+        <form method="post" onkeydown="if(event.keyCode === 13) {return false;}">
+
+            <input type="hidden" id="_wpnonce" name="_wpnonce" value="d8ae0e1c9d" /><input type="hidden" name="_wp_http_referer" value="/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/15152/" />
+            <input type="hidden" name="action" value="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8">
+            <input type="hidden" name="oid" value="00D24000000eeI1">
+            <input type="hidden" name="retURL" value="https://www.febalcasa.com/it/typ-nl/?sazf=w2l_newsletter&event=subscribe_newsletter">
+            <input type="hidden" name="00N3V000000yazt" value="https://www.febalcasa.com/it/typ-nl/?sazf=w2l_newsletter&event=subscribe_newsletter">
+
+            <div class="input-container">
+
+                <input type="email" class="form-control" name="email" id="saz_email" required autocomplete="email"
+                       placeholder="Text">
+                <label for="saz_email">Email</label>
+                                    <button type="submit" class="btn-default saz-btn-click" class="g-recaptcha"
+                            data-sitekey="6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW"
+                            data-callback='onSubmit' data-action='submit'>Invia <i
+                                class="fas fa-spinner fa-pulse d-none" id="saz_pv_spinner_button"></i></button>
+                            </div>
+
+            <input type="hidden" name="00N3V000000qQWv" id="saz_privacy" class="form-check-input" value="1">
+
+            <input type="hidden" name="recordType" value="0123V000000L2xg">
+            <input type="hidden" name="url" value="febalcasa.com">
+            <input type="hidden" name="00N3V000000qThS" value="Febal Casa">
+            <input type="hidden" name="lead_source" value="Newsletter">
+            <input type="hidden" name="00N2400000IQtaN" value="Preso">
+            <input type="hidden" name="00N2400000Is6Le"
+                   value="IT">
+            <input type="hidden" name="Campaign_ID" value="7013V000000keoTQAQ">
+
+            <div class="checkbox check-legal-term">
+                <label for="saz_privacy_marketing_1_nws">
+                    <input type="checkbox" name="00N3V000000qQX0" id="saz_privacy_marketing_1_nws" required
+                           class="form-check-input" value="1">
+                    <span class="label">Con l'invio della presente richiesta dichiaro di essere maggiorenne e di aver preso visione dell'<a href="https://www.febalcasa.com/it/privacy-policy/">informativa sul trattamento dei dati personali</a>, consapevole dei diritti a me riservati compresa la successiva revoca, e acconsento al trattamento per finalità di marketing diretto.</span>
+                </label>
+
+
+                <label class="form-check-label" for="saz_privacy_marketing_2_nws">
+                    <input type="checkbox" name="00N3V000000qThN" id="saz_privacy_marketing_2_nws"
+                           class="form-check-input" value="1">
+                    <span class="label">Inoltre acconsento al trattamento dei miei dati personali per elaborare un mio profilo volto a personalizzare l'offerta di prodotti e servizi di vendita/assistenza da parte di Febal Casa o della propria rete vendita o di specifici servizi richiesta da me.</span>
+                </label>
+            </div>
+
+                            <!-- <script src="https://www.google.com/recaptcha/api.js?render=6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW"></script> -->
+
+                <script>
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6Lf1RnkpAAAAADHdISe7kHy0CTbzkWPstjgb_pkW', {
+                            action: 'newsletter'
+                        }).then(function(token) {
+                            var recaptchaResponse = document.getElementById('recaptchaResponseNews-2');
+                            if (recaptchaResponse) {
+                                recaptchaResponse.value = token;
+                            }
+                        });
+                    });
+                </script>
+
+                <input type="hidden" name="recaptcha_response" id="recaptchaResponseNews-2">
+            
+        </form>
+
+                </div>
+    </div>
+</section>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-includes/js/jquery/ui/core.min.js?ver=1.13.3" id="jquery-ui-core-js"></script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-includes/js/jquery/ui/datepicker.min.js?ver=1.13.3" id="jquery-ui-datepicker-js"></script>
+<script type="text/javascript" id="jquery-ui-datepicker-js-after">
+/* <![CDATA[ */
+jQuery(function(jQuery){jQuery.datepicker.setDefaults({"closeText":"Chiudi","currentText":"Oggi","monthNames":["Gennaio","Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"],"monthNamesShort":["Gen","Feb","Mar","Apr","Mag","Giu","Lug","Ago","Set","Ott","Nov","Dic"],"nextText":"Prossimo","prevText":"Precedente","dayNames":["domenica","luned\u00ec","marted\u00ec","mercoled\u00ec","gioved\u00ec","venerd\u00ec","sabato"],"dayNamesShort":["Dom","Lun","Mar","Mer","Gio","Ven","Sab"],"dayNamesMin":["D","L","M","M","G","V","S"],"dateFormat":"d MM yy","firstDay":1,"isRTL":false});});
+//# sourceURL=jquery-ui-datepicker-js-after
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/plugins/saz-colombini-crm/js/init.js?ver=1772730699" id="saz-colombini-datepicker-init-js"></script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/plugins/saz-colombini/js/google-map-api.js?ver=1709027688" id="google-map-api-js"></script>
+<script type="text/javascript" id="colombini-gmaps-js-extra">
+/* <![CDATA[ */
+var colombiniGmaps = {"apiKey":"AIzaSyC91VgUvMYjNdwcGP2tj1q2TSY2EfO-EfQ","pinPremium":"https://www.febalcasa.com/wp-content/plugins/saz-colombini/functions/../img/pin-premium.png","pinBasic":"https://www.febalcasa.com/wp-content/plugins/saz-colombini/functions/../img/pin-basic.png","pinBasicColombini":"https://www.febalcasa.com/wp-content/plugins/saz-colombini/functions/../img/pin-basic-colombini.png","lang":"it"};
+//# sourceURL=colombini-gmaps-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/plugins/saz-colombini/functions/../js/store-locator.js?ver=2023-09-28" id="colombini-gmaps-js"></script>
+<script type="text/javascript" id="colombini-crm-js-extra">
+/* <![CDATA[ */
+var colombiniCrm = {"ep":"https://www.febalcasa.com/it/wp-json/"};
+//# sourceURL=colombini-crm-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/plugins/saz-colombini/functions/../js/crm.js?v=3.5&amp;ver=1774518568" id="colombini-crm-js"></script>
+<script type="text/javascript" id="main-js-extra">
+/* <![CDATA[ */
+var config = {"api":"https://www.febalcasa.com/it/wp-json/","theme":"https://www.febalcasa.com/wp-content/themes/febalcasa_nooo","locale":"https://www.febalcasa.com/wp-content/uploads/locale","language":"IT"};
+var maps = {"APIkey":"AIzaSyC91VgUvMYjNdwcGP2tj1q2TSY2EfO-EfQ"};
+var design = {"color":{"primary":"#ED1C24"}};
+//# sourceURL=main-js-extra
+/* ]]> */
+</script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/js/main.min.js?ver=26.08.06.11" id="main-js"></script>
+<script type="text/javascript" src="https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/js/bundle.min.js?ver=26.08.06.11" id="bundle-js" defer="defer" data-wp-strategy="defer"></script>
+    <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js/v4513226cdae34746b4dedf0b4dfa099e1781791509496" integrity="sha512-ZE9pZaUXND66v380QUtch/5sE9tPFh2zg45pR2PB0CVkCtOREv2AJKkSidISWkysEuQ0EH8faUU5du78bx87UQ==" data-cf-beacon='{"version":"2024.11.0","token":"52e36b50dd5d4311b9af75cb7f38efef","r":1}' crossorigin="anonymous"></script>
+</body>
+
+</html>
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1787508075 -->

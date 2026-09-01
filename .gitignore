@@ -7,3 +7,5 @@ data/panoramas/optimized/
 data/panoramas/source/
 *.log
 .DS_Store
+*.tsbuildinfo
+server/data/debug-*.json

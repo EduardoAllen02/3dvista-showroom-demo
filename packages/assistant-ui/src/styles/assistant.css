@@ -5,6 +5,14 @@
 .tva-root {
   --assistant-primary: #14b8a6; /* dark turquoise default */
   --assistant-primary-hover: #0f9c8f;
+  /* Text/icon color for anything sitting ON a --assistant-primary
+   * background (buttons, the user's own chat bubble, the send icon).
+   * Was hardcoded #06201c (near-black) in three separate rules before —
+   * fine against this default's pale teal, unreadable against a
+   * saturated color like Febal's red. A tour with a primary color that
+   * needs dark-on-primary instead (rare — most brand accents are
+   * saturated enough for white) overrides just this one variable. */
+  --assistant-on-primary: #ffffff;
   --assistant-bg: #0f172a;
   --assistant-bg-elevated: #16213a;
   --assistant-text: #e6f1ef;
@@ -29,7 +37,7 @@
   border-radius: 50%;
   border: none;
   background: var(--assistant-primary);
-  color: #fff;
+  color: var(--assistant-on-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,47 +60,50 @@
   .tva-launcher:hover { transform: scale(1.05); }
 }
 
-/* Chat card — intentionally independent of the launcher's corner: the
-   launcher stays wherever --assistant-position-side puts it, but the card
-   always opens anchored to the bottom-left of the viewport (fixed, not
-   relative to .tva-root), compact and wider rather than tall. */
+/* Chat card — panel lateral de ancho fijo que se desliza desde el borde de
+   la pantalla, idéntico en estructura al panel de wishlist (.tva-wl-panel).
+   Se monta sobre el canvas de 3DVista gracias al stacking context de
+   .tva-root (z-index:999999), que lo coloca encima del panel de wishlist
+   (z-index:999997) sin necesidad de valores absolutos propios altos. */
 .tva-card {
   position: fixed;
-  bottom: 24px;
-  left: 24px;
-  width: 420px;
-  max-height: min(620px, 82vh);
+  top: 0;
+  bottom: 0;
+  width: 380px;
+  max-width: 92vw;
   display: flex;
   flex-direction: column;
   background: var(--assistant-bg);
-  border: 1px solid var(--assistant-border);
-  border-radius: 16px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  border: none;
+  border-radius: 0;
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.45);
   overflow: hidden;
-  z-index: 2; /* above .tva-launcher */
+  z-index: 2; /* dentro del stacking context de .tva-root (999999), por encima del launcher (z-index:1) */
 
-  /* Closed state: scaled down and faded out from its own bottom-left
-     corner, rather than the old `[hidden]`/display:none toggle — display
-     can't be transitioned, which is why open/close used to be an abrupt
-     pop instead of an animation. `inert` (set in chat-card.ts) handles
-     removing it from interaction/AT while closed, so this only has to
-     handle the visual. */
-  transform-origin: bottom left;
-  opacity: 0;
-  transform: scale(0.85) translateY(8px);
+  transform: translateX(100%);
   pointer-events: none;
 }
 
+.tva-root[data-assistant-position="bottom-right"] .tva-card { right: 0; }
+.tva-root[data-assistant-position="bottom-left"] .tva-card { left: 0; transform: translateX(-100%); }
+
 .tva-card.tva-card--open {
-  opacity: 1;
-  transform: scale(1) translateY(0);
+  transform: translateX(0);
   pointer-events: auto;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   .tva-card {
-    transition: opacity 0.18s ease, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
   }
+}
+
+/* Ocultar el launcher mientras el panel está abierto — el panel cubre ese
+   rincón y el header del panel ya tiene botón de cierre propio. */
+.tva-root:has(.tva-card--open) .tva-launcher {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
 }
 
 .tva-card-header {
@@ -109,6 +120,13 @@
   border-radius: 50%;
   background: var(--assistant-primary);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tva-card-header .tva-avatar svg {
+  width: 16px;
+  height: 16px;
 }
 .tva-card-header .tva-title { flex: 1; min-width: 0; }
 .tva-card-header .tva-title strong { display: block; font-size: 14px; color: var(--assistant-text); }
@@ -127,6 +145,42 @@
 }
 .tva-card-header button:hover { background: var(--assistant-border); color: var(--assistant-text); }
 .tva-card-header button:focus-visible { outline: 2px solid var(--assistant-primary); }
+/* Pill de cambio entre paneles — en el header del chatbot necesita !important
+   para sobreescribir la regla genérica .tva-card-header button (32×32px / padding:0). */
+.tva-card-switch-btn {
+  width: auto !important;
+  height: auto !important;
+  padding: 5px 10px !important;
+  font-size: 11px !important;
+  font-weight: 600;
+  border-radius: 999px !important;
+  border: 1px solid var(--assistant-border) !important;
+  background: transparent !important;
+  color: var(--assistant-text-muted) !important;
+  white-space: nowrap;
+}
+.tva-card-switch-btn:hover {
+  border-color: var(--assistant-primary) !important;
+  color: var(--assistant-primary) !important;
+  background: transparent !important;
+}
+.tva-card-switch-btn:focus-visible { outline: 2px solid var(--assistant-primary) !important; outline-offset: 2px; }
+
+/* El botón de la wishlist no hereda reglas genéricas restrictivas, no necesita !important. */
+.tva-wl-switch-btn {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--assistant-border);
+  background: transparent;
+  color: var(--assistant-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+.tva-wl-switch-btn:hover { border-color: var(--assistant-primary); color: var(--assistant-primary); }
+.tva-wl-switch-btn:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
 
 /* Messages */
 .tva-messages {
@@ -149,7 +203,7 @@
 .tva-bubble-user {
   align-self: flex-end;
   background: var(--assistant-primary);
-  color: #06201c;
+  color: var(--assistant-on-primary);
   border-bottom-right-radius: 4px;
 }
 .tva-bubble-assistant {
@@ -159,6 +213,12 @@
   border: 1px solid var(--assistant-border);
   border-bottom-left-radius: 4px;
 }
+.tva-bubble-link {
+  color: var(--assistant-primary);
+  font-weight: 600;
+  text-decoration: underline;
+}
+.tva-bubble-link:hover { opacity: 0.85; }
 
 .tva-typing {
   align-self: flex-start;
@@ -179,63 +239,106 @@
   @keyframes tva-pulse { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
 }
 
-/* Product info card — compact horizontal layout (small square thumbnail
-   left, name + description right), matching the reference UI. Presented as
-   its own message-like element; the "Llévame"/"Ver alternativas" buttons
-   are a SEPARATE element below (.tva-product-actions), never part of this
-   box, and never carry the image/name/section themselves. */
+/* Product info card — image takes ~50% of the card width as a wide
+   rectangle (NOT a small square thumbnail), name/teaser/link fill the other
+   50%, matching the reference UI. Presented as its own message-like
+   element; the "Llévame"/"Ver alternativas" buttons are a SEPARATE element
+   below (.tva-product-actions), never part of this box, and never carry
+   the image/name/section themselves. */
 .tva-product-card {
+  position: relative;
   align-self: stretch;
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: stretch;
+  gap: 12px;
   background: var(--assistant-bg-elevated);
   border: 1px solid var(--assistant-border);
   border-radius: 12px;
-  padding: 8px;
+  padding: 10px;
 }
+
+.tva-wishlist-heart {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.tva-wishlist-heart svg { width: 15px; height: 15px; }
+.tva-wishlist-heart:hover { background: rgba(0, 0, 0, 0.55); }
+.tva-wishlist-heart:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
+.tva-wishlist-heart--saved { color: #ff5a7a; }
+.tva-wishlist-heart--saved svg { fill: #ff5a7a; }
 .tva-product-card img {
-  width: 56px;
-  height: 56px;
+  width: 50%;
+  height: 100px;
   border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
   background: var(--assistant-border);
 }
-.tva-product-card-body { min-width: 0; }
+.tva-product-card-body {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .tva-product-card-body strong {
   display: block;
-  font-size: 13px;
+  font-size: 16px;
   color: var(--assistant-text);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .tva-product-card-body p {
-  margin: 2px 0 0;
-  font-size: 11.5px;
+  margin: 4px 0 0;
+  font-size: 13px;
   color: var(--assistant-text-muted);
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
+.tva-product-card-link {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--assistant-primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+.tva-product-card-link:hover { text-decoration: underline; }
+.tva-product-card-link:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
 
-/* Action buttons — discrete, ~80% width, centered, stacked. Only ever
-   attached to proposal cards (get_product/get_alternatives); navigating
-   never produces one of these (see assistant-core ProductCard doc). */
+/* Action buttons — ~70% width, right-aligned (matches the reference UI),
+   stacked, rounded rectangles rather than pills. Only ever attached to
+   proposal cards (get_product/get_alternatives); navigating never produces
+   one of these (see assistant-core ProductCard doc). */
 .tva-product-actions {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  width: 80%;
-  margin: 2px auto 0;
+  align-items: stretch;
+  gap: 8px;
+  width: 70%;
+  margin: 4px 0 0 auto;
 }
 .tva-product-actions button {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  padding: 8px 10px;
-  border-radius: 999px;
+  padding: 11px 14px;
+  border-radius: 12px;
   border: 1px solid var(--assistant-border);
   background: var(--assistant-bg-elevated);
   color: var(--assistant-text);
@@ -244,17 +347,381 @@
 .tva-product-actions button.tva-primary {
   background: var(--assistant-primary);
   border-color: var(--assistant-primary);
-  color: #06201c;
+  color: var(--assistant-on-primary);
 }
 .tva-product-actions button:hover { filter: brightness(1.1); }
 .tva-product-actions button:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
 
-/* Suggestions */
+/* ============================================================
+   Wishlist layer — a SEPARATE top-level component from the chat card
+   (see wishlist-layer.ts). Everything below is scoped under .tva-wl-*
+   and positioned independently via `position: fixed`, exactly like
+   .tva-card/.tva-launcher are — it does not rely on .tva-wl-root's own
+   box for layout, only as a DOM/theme-variable anchor.
+   ============================================================ */
+
+/* Toggle button — top-right, but LOW enough to clear the tour's own Febal
+   logo (confirmed live: the logo's own bounding box extends to roughly
+   y=110 in the exported tour's markup) — the trigger itself must never
+   cover the logo, even though the opened panel below is allowed to. */
+.tva-wl-toggle {
+  position: fixed;
+  top: 110px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background: var(--assistant-bg);
+  color: var(--assistant-text);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999998; /* below the chat card's z-index:2 within .tva-root's own stacking is irrelevant here — this sits in the page's top-level stacking context, so it needs its own high value to clear the 3DVista canvas. */
+}
+.tva-wl-toggle svg { width: 20px; height: 20px; }
+.tva-wl-toggle:hover { color: var(--assistant-primary); }
+.tva-wl-toggle:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
+/* The panel is full-height and 380px wide from the right edge — the toggle
+   (right:24px) falls WITHIN that span, so it visually sat on top of the
+   panel's own first row once open (confirmed live). Hide it for the
+   duration; the panel's own header ("N productos guardados") already
+   conveys what the badge was showing. */
+.tva-wl-toggle--active { opacity: 0; pointer-events: none; }
+.tva-wl-toggle-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: 999px;
+  background: var(--assistant-primary);
+  color: var(--assistant-on-primary);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 16px;
+  text-align: center;
+  border: 2px solid var(--assistant-bg);
+}
+.tva-wl-toggle--active .tva-wl-toggle-badge { border-color: var(--assistant-primary); }
+
+/* Panel — generous padding throughout (never the chat's compact bubble
+   spacing) per explicit direction: this must read as spacious, not
+   cramped. Slides in from the right, independent of the chat card. */
+.tva-wl-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 380px;
+  max-width: 92vw;
+  background: var(--assistant-bg);
+  box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  z-index: 999997;
+  transform: translateX(100%);
+  pointer-events: none;
+}
+.tva-wl-panel.tva-wl-panel--open {
+  transform: translateX(0);
+  pointer-events: auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tva-wl-panel { transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1); }
+}
+
+.tva-wl-header { display: flex; align-items: flex-start; justify-content: space-between; }
+.tva-wl-header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--assistant-text);
+}
+.tva-wl-header span {
+  display: block;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--assistant-text-muted);
+}
+.tva-wl-close {
+  background: transparent;
+  border: none;
+  color: var(--assistant-text-muted);
+  font-size: 22px;
+  line-height: 1;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tva-wl-close:hover { background: var(--assistant-bg-elevated); color: var(--assistant-text); }
+/* Switch-to-chat pill in the wishlist panel header. */
+.tva-wl-switch-btn {
+  background: transparent;
+  border: 1px solid var(--assistant-border);
+  color: var(--assistant-text-muted);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.tva-wl-switch-btn:hover { border-color: var(--assistant-primary); color: var(--assistant-primary); }
+.tva-wl-switch-btn:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
+
+.tva-wl-empty {
+  margin: 0;
+  padding: 32px 8px;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--assistant-text-muted);
+}
+
+.tva-wl-list { display: flex; flex-direction: column; gap: 16px; }
+.tva-wl-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--assistant-border);
+}
+.tva-wl-item img {
+  width: 56px;
+  height: 56px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background: var(--assistant-bg-elevated);
+}
+.tva-wl-item-body { flex: 1; min-width: 0; }
+.tva-wl-item-body strong {
+  display: block;
+  font-size: 14px;
+  color: var(--assistant-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tva-wl-item-section {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  color: var(--assistant-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tva-wl-item-go {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--assistant-primary);
+  background: transparent;
+  color: var(--assistant-primary);
+  cursor: pointer;
+}
+.tva-wl-item-go:hover { background: var(--assistant-primary); color: var(--assistant-on-primary); }
+.tva-wl-item-actions { flex-shrink: 0; }
+.tva-wl-item-heart {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: #ff5a7a;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tva-wl-item-heart svg { width: 18px; height: 18px; fill: currentColor; }
+.tva-wl-item-heart:hover { background: var(--assistant-bg-elevated); }
+
+.tva-wl-style-section { display: flex; flex-direction: column; gap: 14px; }
+.tva-wl-style-loading {
+  margin: 0;
+  font-size: 13px;
+  color: var(--assistant-text-muted);
+  font-style: italic;
+}
+.tva-wl-style-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--assistant-bg-elevated);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--assistant-text);
+}
+.tva-wl-style-label svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--assistant-primary); }
+.tva-wl-style-label strong { color: var(--assistant-primary); }
+.tva-wl-rec-row {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+.tva-wl-rec-card {
+  flex-shrink: 0;
+  width: 96px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--assistant-text);
+  cursor: pointer;
+  text-align: left;
+}
+.tva-wl-rec-card img {
+  width: 100%;
+  height: 64px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--assistant-bg-elevated);
+}
+.tva-wl-rec-card strong {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.tva-wl-rec-card span {
+  font-size: 11px;
+  color: var(--assistant-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tva-wl-rec-card:hover strong { color: var(--assistant-primary); }
+
+.tva-wl-showroom-btn {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  background: var(--assistant-text);
+  color: var(--assistant-bg);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.tva-wl-showroom-btn:hover { opacity: 0.88; }
+
+.tva-wl-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--assistant-border);
+}
+.tva-wl-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 4px;
+  border: 1px solid var(--assistant-border);
+  border-radius: 12px;
+  background: var(--assistant-bg-elevated);
+  color: var(--assistant-text);
+  font-size: 11px;
+  text-align: center;
+  cursor: pointer;
+}
+.tva-wl-action:hover { border-color: var(--assistant-primary); color: var(--assistant-primary); }
+.tva-wl-action::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background: currentColor;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+}
+.tva-wl-action[data-icon="pdf"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Cpath d='M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Cpath d='M12 3v12m0 0-4-4m4 4 4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2'/%3E%3C/svg%3E");
+}
+.tva-wl-action[data-icon="mail"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E");
+}
+.tva-wl-action[data-icon="whatsapp"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z'/%3E%3C/svg%3E");
+}
+
+/* Hotspot-hover heart overlay — sits above the tour's canvas, effectively
+   invisible except for the one button shown while hovering a hotspot.
+   Positioned every animation frame via `transform` (see
+   hotspot-heart-overlay.ts) — deliberately no CSS transition on that
+   property, so it tracks the mouse/camera exactly instead of visibly
+   lagging behind. */
+.tva-hotspot-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999996;
+}
+.tva-hotspot-heart {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  color: var(--assistant-text);
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  pointer-events: none;
+}
+.tva-hotspot-heart--visible { display: flex; pointer-events: auto; }
+.tva-hotspot-heart svg { width: 18px; height: 18px; }
+.tva-hotspot-heart:hover { background: #fff; }
+.tva-hotspot-heart--saved { color: #ff5a7a; }
+.tva-hotspot-heart--saved svg { fill: #ff5a7a; }
+
+/* Suggestions — rendered below the input row (see chat-card.ts). */
 .tva-suggestions {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 6px;
-  padding: 0 16px 10px;
+  padding: 10px 16px 14px;
+}
+.tva-suggestions-label {
+  font-size: 12px;
+  color: var(--assistant-text-muted);
+  margin-right: 2px;
 }
 .tva-chip {
   font-size: 12px;
@@ -290,7 +757,7 @@
   border: none;
   border-radius: 10px;
   width: 38px;
-  color: #06201c;
+  color: var(--assistant-on-primary);
   cursor: pointer;
 }
 .tva-input-row button:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
@@ -337,17 +804,8 @@
 }
 
 .tva-root[data-tva-mobile="true"] .tva-card {
-  position: fixed;
-  left: 5%;
-  right: 5%;
-  width: 90%;
-  bottom: max(calc(16 * var(--tva-mobile-unit, 1px)), env(safe-area-inset-bottom));
-  top: auto;
-  max-height: min(78vh, 78dvh);
-  border-radius: calc(18 * var(--tva-mobile-unit, 1px));
-  /* Near-full-width and roughly centered on mobile — rising from its own
-     bottom-left corner (the desktop default) would look lopsided here. */
-  transform-origin: bottom center;
+  /* Panel full-height también en mobile — ancho casi completo de pantalla. */
+  width: 92vw;
 }
 
 .tva-root[data-tva-mobile="true"] .tva-card-header {
@@ -404,24 +862,35 @@
   border-radius: calc(12 * var(--tva-mobile-unit, 1px));
 }
 .tva-root[data-tva-mobile="true"] .tva-product-card img {
-  width: calc(60 * var(--tva-mobile-unit, 1px));
-  height: calc(60 * var(--tva-mobile-unit, 1px));
+  width: 50%;
+  height: calc(110 * var(--tva-mobile-unit, 1px));
 }
 .tva-root[data-tva-mobile="true"] .tva-product-card-body strong {
-  font-size: calc(15 * var(--tva-mobile-unit, 1px));
+  font-size: calc(17 * var(--tva-mobile-unit, 1px));
 }
 .tva-root[data-tva-mobile="true"] .tva-product-card-body p {
-  font-size: calc(13 * var(--tva-mobile-unit, 1px));
+  font-size: calc(14 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-product-card-link {
+  font-size: calc(14 * var(--tva-mobile-unit, 1px));
+  margin-top: calc(4 * var(--tva-mobile-unit, 1px));
 }
 
+.tva-root[data-tva-mobile="true"] .tva-product-actions {
+  gap: calc(8 * var(--tva-mobile-unit, 1px));
+}
 .tva-root[data-tva-mobile="true"] .tva-product-actions button {
   font-size: calc(14 * var(--tva-mobile-unit, 1px));
-  padding: calc(10 * var(--tva-mobile-unit, 1px));
+  padding: calc(12 * var(--tva-mobile-unit, 1px)) calc(14 * var(--tva-mobile-unit, 1px));
+  border-radius: calc(12 * var(--tva-mobile-unit, 1px));
 }
 
 .tva-root[data-tva-mobile="true"] .tva-suggestions {
-  padding: 0 calc(16 * var(--tva-mobile-unit, 1px)) calc(10 * var(--tva-mobile-unit, 1px));
+  padding: calc(10 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px)) calc(14 * var(--tva-mobile-unit, 1px));
   gap: calc(6 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-suggestions-label {
+  font-size: calc(13 * var(--tva-mobile-unit, 1px));
 }
 .tva-root[data-tva-mobile="true"] .tva-chip {
   font-size: calc(13 * var(--tva-mobile-unit, 1px));
@@ -445,3 +914,18 @@
   width: calc(44 * var(--tva-mobile-unit, 1px));
   flex-shrink: 0;
 }
+
+.tva-root[data-tva-mobile="true"] .tva-wishlist-heart {
+  width: calc(30 * var(--tva-mobile-unit, 1px));
+  height: calc(30 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-wishlist-heart svg {
+  width: calc(17 * var(--tva-mobile-unit, 1px));
+  height: calc(17 * var(--tva-mobile-unit, 1px));
+}
+
+/* KNOWN GAP: the wishlist layer (.tva-wl-*, .tva-hotspot-*) doesn't yet
+   have the --tva-mobile-unit px-compensation the rest of this file uses
+   (see the big comment above data-tva-mobile) — same 3DVista viewport-meta
+   doubling would apply to it on an actual phone. Not yet verified live on
+   mobile; revisit before treating mobile as done. */

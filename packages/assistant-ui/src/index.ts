@@ -1,7 +1,10 @@
+import { WishlistState, createApiClient, getOrCreateSessionId, loadCatalogManifest, type HotspotManifestEntry } from "@3dvista-assistant/assistant-core";
+import { createTourBridge } from "@3dvista-assistant/tour-bridge";
 import type { AssistantConfig } from "./types.js";
 import { applyTheme } from "./theme.js";
 import { createLauncher } from "./launcher.js";
 import { createChatCard } from "./chat-card.js";
+import { createWishlistLayer } from "./wishlist-layer.js";
 
 export type { AssistantConfig, AssistantTheme } from "./types.js";
 
@@ -92,10 +95,48 @@ export function init(config: AssistantConfig): void {
   };
   applyResponsiveState();
 
-  const { element: cardEl, toggleOpen } = createChatCard(config);
+  // Shared across BOTH independent layers — the chatbot's own small
+  // secondary heart and the wishlist layer's primary UI (toggle/panel/
+  // hotspot overlay) all read and write through this ONE store, so saving
+  // a product from either surface is reflected everywhere immediately.
+  const wishlist = new WishlistState();
+  const tourBridge = createTourBridge(config.navStrategy);
+  const api = createApiClient({
+    apiBaseUrl: config.apiBaseUrl,
+    tourId: config.tourId,
+    sessionId: getOrCreateSessionId(),
+  });
+
+  // Mutable refs so each panel can open the other — resolved after both are
+  // created (there's no circular-dependency issue: the closures capture the
+  // variable by reference, so they see the final assigned value at call time).
+  let openWishlist: () => void = () => {};
+
+  const { element: cardEl, toggleOpen, open: openChat } = createChatCard(config, wishlist, () => openWishlist());
   const launcher = createLauncher(toggleOpen);
 
-  root.append(cardEl, launcher);
+  // Populated in place once the manifest fetch resolves (see below) — the
+  // hotspot overlay reads this SAME array reference on every animation
+  // frame, so mounting the wishlist layer doesn't have to wait on a
+  // network round-trip just to show its toggle button/panel.
+  const hotspotManifest: HotspotManifestEntry[] = [];
+  const { element: wishlistLayerEl, open: _openWishlist } = createWishlistLayer({
+    wishlist,
+    tourBridge,
+    manifest: hotspotManifest,
+    assistantName: config.assistantName,
+    fetchRecommendations: (productIds) => api.getRecommendations(productIds),
+    onOpenChat: () => openChat(),
+  });
+  openWishlist = _openWishlist;
+  loadCatalogManifest(config.assetsBaseUrl)
+    .then((entries) => hotspotManifest.push(...entries))
+    .catch(() => {
+      // Hotspot-hover hearts simply won't appear this session — the panel
+      // and the chat's own heart still work fully off `wishlist` alone.
+    });
+
+  root.append(cardEl, launcher, wishlistLayerEl);
   document.body.appendChild(root);
 
   // `screen.width` only changes on rotation (portrait/landscape swap) —

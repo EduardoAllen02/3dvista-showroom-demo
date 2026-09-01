@@ -1,4 +1,5 @@
 import type { NavTarget, TdvObject, TdvRootPlayer, TourBridgeStrategy } from "./types.js";
+import { openProductPanel } from "./product-panel.js";
 
 const MAIN_PLAYLIST_ID = "mainPlayList";
 
@@ -64,15 +65,49 @@ const MAIN_PLAYLIST_ID = "mainPlayList";
  * `initialPosition` write, also schedule a short delayed direct write to
  * the (by-then-settled) active player as a fallback — cheap, and covers
  * whichever of the two failure modes a given 3DVista build/version exhibits
- * without needing to detect which one is active.
+ * without needing to detect which one is active. (Originally a single fixed
+ * 600ms delay here — superseded by the staggered schedule below.)
  */
-const POST_ACTIVATION_REWRITE_DELAY_MS = 600;
+
+/**
+ * FOURTH correction, found on the Febal Casa real-client tour (real
+ * photographic panoramas, heavier tiles than the demo/showroom-real
+ * projects): a SINGLE delayed rewrite at 600ms is not always enough. Traced
+ * live via instrumented `set()` calls (wrapping the active-player class's
+ * prototype `set`, see tour-project/febal-casa notes) on a real cross-
+ * panorama navigation:
+ *   t+0ms    setMainMediaByName("11")
+ *   t+36ms   engine applies the panorama's own native default pose
+ *            (yaw 93 / pitch -0.36 / hfov 110 — a REAL authored default,
+ *            unlike the demo tours' uniform 0/0/90)
+ *   t+645ms  our POST_ACTIVATION_REWRITE_DELAY_MS rewrite lands correctly
+ *   t+962ms  the engine resets to its native default a SECOND time —
+ *            overwriting our correct value right back to the wrong one
+ * The second reset's timing is presumably tied to a later tile/loading
+ * milestone on heavier real panoramas, not a fixed delay — a single rewrite
+ * anywhere before it is fragile. Fix: reapply on a short staggered schedule
+ * instead of once, so at least one rewrite always lands after whichever
+ * native reset the engine fires last. Bounded and finite — this is not the
+ * same thing as the continuous per-frame "Reproducir en bucle" autoplay
+ * bug (see FASE0-FINDINGS.md); these are one-off activation-time resets
+ * that stop on their own once the panorama has finished settling.
+ */
+const POST_ACTIVATION_REWRITE_SCHEDULE_MS = [600, 1200, 2000, 3000];
+
+// Guards the staggered rewrites above against a stale navigation: if the
+// visitor asks for a second product while the first one's rewrites are
+// still pending, only the LATEST call's scheduled writes should still be
+// allowed to fire — otherwise an old timeout could land after the new
+// navigation and yank the camera back to the wrong place.
+let navigationGeneration = 0;
+
 export const playerApiNavigator: TourBridgeStrategy = {
   name: "player-api",
   isAvailable(): boolean {
     return typeof window !== "undefined" && typeof window.tour?.player?.getById === "function";
   },
   navigateTo(target: NavTarget): void {
+    const thisGeneration = ++navigationGeneration;
     const registry = window.tour?.player;
     if (!registry) {
       throw new Error("player-api-navigator: window.tour.player not available.");
@@ -125,15 +160,21 @@ export const playerApiNavigator: TourBridgeStrategy = {
     } else {
       rootPlayer.setMainMediaByName(target.media_name);
       // Fallback for 3DVista builds that don't apply initialPosition to the
-      // newly-active panorama on activation (see THIRD correction above) —
-      // re-apply directly once activation has had time to settle.
-      setTimeout(() => {
-        const viewer = rootPlayer.getMainViewer();
-        const activePlayer = rootPlayer.getActivePlayerWithViewer(viewer);
-        activePlayer.set?.("yaw", target.yaw);
-        activePlayer.set?.("pitch", target.pitch);
-        activePlayer.set?.("hfov", target.fov);
-      }, POST_ACTIVATION_REWRITE_DELAY_MS);
+      // newly-active panorama on activation (see THIRD correction above), OR
+      // that reset it back to the native default a second time on a later
+      // loading milestone (see FOURTH correction above) — re-apply on a
+      // short staggered schedule so at least one rewrite always lands last.
+      for (const delay of POST_ACTIVATION_REWRITE_SCHEDULE_MS) {
+        setTimeout(() => {
+          if (thisGeneration !== navigationGeneration) return; // superseded by a newer navigateTo() call
+          const viewer = rootPlayer.getMainViewer();
+          const activePlayer = rootPlayer.getActivePlayerWithViewer(viewer);
+          activePlayer.set?.("yaw", target.yaw);
+          activePlayer.set?.("pitch", target.pitch);
+          activePlayer.set?.("hfov", target.fov);
+        }, delay);
+      }
     }
   },
+  openProductPanel,
 };

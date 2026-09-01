@@ -36,7 +36,28 @@ async function main() {
   const themeCss = readFileSync(path.join(clientDir, "theme.css"), "utf8");
   writeFileSync(path.join(outDir, "assistant.css"), `${baseCss}\n\n${themeCss}\n`, "utf8");
 
-  console.log(`OK: bundle generado en ${path.relative(ROOT, outDir)}/`);
+  // Public, lightweight manifest for the wishlist layer's hotspot-hover
+  // overlay — it needs every active product's (media_name, yaw, pitch) to
+  // project hotspots to screen coordinates client-side, without a server
+  // round-trip per panorama. Deliberately excludes description/keywords/
+  // synonyms/colors/materials/compatible_with — none of that is needed to
+  // draw a heart icon over a hotspot, so it stays out of the payload.
+  const catalog = JSON.parse(readFileSync(path.join(clientDir, "catalog.json"), "utf8"));
+  const manifest = catalog
+    .filter((p) => p.active)
+    .map((p) => ({
+      product_id: p.product_id,
+      name: p.name,
+      media_name: p.media_name,
+      yaw: p.yaw,
+      pitch: p.pitch,
+      fov: p.fov,
+      image_url: p.image_url,
+      detail_url: p.detail_url,
+    }));
+  writeFileSync(path.join(outDir, "catalog-manifest.json"), JSON.stringify(manifest), "utf8");
+
+  console.log(`OK: bundle generado en ${path.relative(ROOT, outDir)}/ (manifest: ${manifest.length} productos)`);
 }
 
 main();

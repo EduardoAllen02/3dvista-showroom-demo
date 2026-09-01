@@ -33,7 +33,12 @@ function resolvePath(urlPath) {
     return path.join(ROOT, "dist", TOUR, urlPath.replace("/assistant/", ""));
   }
   if (urlPath.startsWith("/assets/")) {
-    return path.join(ROOT, "clients", urlPath.replace("/assets/", ""));
+    // /assets/<tour>/<rest> -> clients/<tour>/assets/<rest>
+    const rest = urlPath.replace("/assets/", "");
+    const slashIdx = rest.indexOf("/");
+    const tourName = slashIdx === -1 ? rest : rest.slice(0, slashIdx);
+    const assetPath = slashIdx === -1 ? "" : rest.slice(slashIdx + 1);
+    return path.join(ROOT, "clients", tourName, "assets", assetPath);
   }
   const clean = urlPath === "/" ? "/index.htm" : urlPath;
   return path.join(ROOT, "tour-project", TOUR, "tour-export", clean);

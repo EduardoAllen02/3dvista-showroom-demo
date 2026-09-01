@@ -23,6 +23,28 @@ export const ProductSchema = z.object({
   image_url: z.string().min(1),
   detail_url: z.string().nullable(),
   alternatives_group: z.string().min(1),
+  /**
+   * Physical silhouette/form (e.g. "modular", "curvo", "rectangular",
+   * "L-shaped", "alto y estrecho") — distinct from `category` (what the
+   * piece IS) and from `style` (its aesthetic). Useful for recommendations
+   * that match spatial fit ("algo compacto para una esquina").
+   */
+  shape: z.string().optional(),
+  /**
+   * Decor style tag(s) (e.g. "Minimal", "Cálido natural") — the signal the
+   * wishlist's style inference aggregates over. Distinct from `category`
+   * (what the piece IS) and from `alternatives_group` (what else could
+   * substitute for it) — this is about aesthetic, cuts across categories.
+   */
+  style: z.array(z.string()).default([]),
+  /**
+   * product_ids of OTHER pieces this one was designed/staged to pair with
+   * (e.g. a sofa's companion coffee table) — never includes ids from this
+   * product's own `alternatives_group` (those are substitutes for THIS
+   * product, the opposite relationship: things that pair WITH it). Powers
+   * recommendations; never shown as "Ver alternativas".
+   */
+  compatible_with: z.array(z.string()).default([]),
   active: z.boolean(),
 });
 

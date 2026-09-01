@@ -1,9 +1,12 @@
 import type { Product } from "./schema.js";
-import type { SearchCandidate, SearchFilters } from "./types.js";
+import type { SearchCandidate, SearchFilters, SearchResult } from "./types.js";
 import { normalize, stem, tokenize } from "./normalize.js";
 
 const MAX_CANDIDATES = 8;
-const MIN_CANDIDATES_FOR_FUZZY = 3;
+// Fewer than this many genuine (score > 0) matches marks the result as
+// low-confidence — see SearchResult's doc comment for why this replaced
+// the old array-order padding fallback.
+const MIN_REAL_MATCHES = 2;
 
 function levenshtein(a: string, b: string): number {
   const dp: number[][] = Array.from({ length: a.length + 1 }, (_, i) =>
@@ -64,11 +67,7 @@ function scoreProduct(product: Product, queryTokens: string[], stemmedQuery: str
   return score;
 }
 
-export function searchCatalog(
-  query: string,
-  filters: SearchFilters,
-  products: Product[]
-): SearchCandidate[] {
+export function searchCatalog(query: string, filters: SearchFilters, products: Product[]): SearchResult {
   const active = products.filter((p) => p.active);
 
   let pool = active;
@@ -80,27 +79,29 @@ export function searchCatalog(
   if (filters.material) {
     pool = pool.filter((p) => p.materials.some((m) => fieldMatches(m, filters.material!)));
   }
+  if (filters.shape) {
+    pool = pool.filter((p) => fieldMatches(p.shape, filters.shape!));
+  }
 
   const queryTokens = tokenize(query);
+
+  // Empty query (e.g. a category/color/material-only filter call, no free
+  // text) isn't "low confidence" — there's nothing to score against, so
+  // the filtered pool itself IS the answer, taken as-is.
+  if (queryTokens.length === 0) {
+    const asIs = pool.slice(0, MAX_CANDIDATES).map((product) => ({ product, score: 0 }));
+    return { candidates: asIs, lowConfidence: false };
+  }
+
   const stemmedQuery = queryTokens.map(stem);
 
-  const scored = pool
+  const scored: SearchCandidate[] = pool
     .map((product) => ({ product, score: scoreProduct(product, queryTokens, stemmedQuery) }))
-    .filter((c) => c.score > 0 || queryTokens.length === 0);
+    .filter((c) => c.score > 0);
 
   scored.sort((a, b) => b.score - a.score);
 
-  if (scored.length >= MIN_CANDIDATES_FOR_FUZZY) {
-    return scored.slice(0, MAX_CANDIDATES);
-  }
+  const lowConfidence = scored.length < MIN_REAL_MATCHES;
 
-  // Not enough matches — pad with remaining active pool (still capped, never full catalog blindly).
-  const already = new Set(scored.map((c) => c.product.product_id));
-  const padded = [...scored];
-  for (const product of pool) {
-    if (padded.length >= MAX_CANDIDATES) break;
-    if (already.has(product.product_id)) continue;
-    padded.push({ product, score: 0 });
-  }
-  return padded.slice(0, MAX_CANDIDATES);
+  return { candidates: scored.slice(0, MAX_CANDIDATES), lowConfidence };
 }

@@ -10,9 +10,16 @@ const ChatRequestSchema = z.object({
   session_id: z.string(),
   message: z.string().min(1).max(1000),
   history: z
-    .array(z.object({ role: z.enum(["user", "assistant"]), text: z.string() }))
+    .array(
+      z.object({
+        role: z.enum(["user", "assistant"]),
+        text: z.string(),
+        product_ids: z.array(z.string()).optional(),
+      })
+    )
     .max(20)
     .default([]),
+  wishlist_product_ids: z.array(z.string()).max(50).default([]),
 });
 
 export function registerChatRoute(app: FastifyInstance): void {
@@ -22,10 +29,10 @@ export function registerChatRoute(app: FastifyInstance): void {
       return reply.code(400).send({ error: "Cuerpo de solicitud inválido.", issues: parsed.error.issues });
     }
 
-    const { session_id, message, history } = parsed.data;
+    const { session_id, message, history, wishlist_product_ids } = parsed.data;
 
     try {
-      const result = await handleChat(message, history);
+      const result = await handleChat(message, history, wishlist_product_ids);
 
       logUsage({
         tour_id: config.TOUR_ID,

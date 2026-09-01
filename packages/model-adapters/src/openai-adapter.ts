@@ -36,7 +36,7 @@ export function createOpenAiAdapter(apiKey: string): ModelProvider {
           model: request.model,
           messages: request.messages,
           tools: request.tools,
-          tool_choice: "auto",
+          tool_choice: request.tool_choice ?? "auto",
         }),
       });
 
