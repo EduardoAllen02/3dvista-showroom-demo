@@ -10,12 +10,14 @@ export function createMessageList(
 ) {
   let typingEl: HTMLElement | null = null;
 
-  function isNearBottom(): boolean {
-    return container.scrollTop + container.clientHeight >= container.scrollHeight - 80;
-  }
-
+  // Never auto-follow to the bottom, even when a fresh response (however
+  // long — several proposal cards, alternatives, etc.) lands while the
+  // user is already at/near the bottom — explicit direction: the view must
+  // stay exactly where the user left it, full stop, not just "unless they
+  // were already at the bottom" (an earlier version only preserved position
+  // when scrolled UP, which still yanked the view down on every reply if
+  // the user happened to be at the bottom already — not what was wanted).
   function render(messages: ChatMessage[]): void {
-    const wasNearBottom = isNearBottom();
     const prevScrollTop = container.scrollTop;
     container.innerHTML = "";
     for (const message of messages) {
@@ -32,26 +34,16 @@ export function createMessageList(
         container.appendChild(renderProductActions(card, tourBridge, handlers));
       }
     }
-    // Only auto-scroll to bottom if the user was already near the bottom —
-    // if they scrolled up to read earlier messages, preserve their position.
-    if (wasNearBottom) {
-      container.scrollTop = container.scrollHeight;
-    } else {
-      container.scrollTop = prevScrollTop;
-    }
+    container.scrollTop = prevScrollTop;
   }
 
   function showTyping(): void {
     if (typingEl) return;
-    const wasNearBottom = isNearBottom();
     typingEl = document.createElement("div");
     typingEl.className = "tva-typing";
-    typingEl.setAttribute("aria-label", "El asistente está escribiendo");
+    typingEl.setAttribute("aria-label", "L'assistente sta scrivendo");
     typingEl.innerHTML = "<span></span><span></span><span></span>";
     container.appendChild(typingEl);
-    if (wasNearBottom) {
-      container.scrollTop = container.scrollHeight;
-    }
   }
 
   function hideTyping(): void {

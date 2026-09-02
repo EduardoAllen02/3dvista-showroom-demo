@@ -54,6 +54,7 @@ async function main() {
       fov: p.fov,
       image_url: p.image_url,
       detail_url: p.detail_url,
+      hotspot_name: p.hotspot_name ?? null,
     }));
   writeFileSync(path.join(outDir, "catalog-manifest.json"), JSON.stringify(manifest), "utf8");
 

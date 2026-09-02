@@ -5,3 +5,5 @@ export { createTourBridge } from "./strategy.js";
 export type { PreferredStrategy } from "./strategy.js";
 export { getActiveMediaName, getCameraState } from "./camera-reader.js";
 export type { CameraState } from "./camera-reader.js";
+export { deriveOverlayPrefix, findEnabledDugmePrefix, findOpenNativePreview, normalizePrefix } from "./product-panel.js";
+export type { NativePreviewSignal } from "./product-panel.js";

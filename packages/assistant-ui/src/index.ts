@@ -107,12 +107,20 @@ export function init(config: AssistantConfig): void {
     sessionId: getOrCreateSessionId(),
   });
 
-  // Mutable refs so each panel can open the other — resolved after both are
-  // created (there's no circular-dependency issue: the closures capture the
-  // variable by reference, so they see the final assigned value at call time).
+  // Mutable refs so each panel can open the other, and the wishlist's own
+  // toggle button can hide itself while the chat is open — all resolved
+  // after both are created (there's no circular-dependency issue: the
+  // closures capture the variable by reference, so they see the final
+  // assigned value at call time).
   let openWishlist: () => void = () => {};
+  let onChatOpenChange: (open: boolean) => void = () => {};
 
-  const { element: cardEl, toggleOpen, open: openChat } = createChatCard(config, wishlist, () => openWishlist());
+  const { element: cardEl, toggleOpen, open: openChat } = createChatCard(
+    config,
+    wishlist,
+    () => openWishlist(),
+    (open) => onChatOpenChange(open)
+  );
   const launcher = createLauncher(toggleOpen);
 
   // Populated in place once the manifest fetch resolves (see below) — the
@@ -120,7 +128,7 @@ export function init(config: AssistantConfig): void {
   // frame, so mounting the wishlist layer doesn't have to wait on a
   // network round-trip just to show its toggle button/panel.
   const hotspotManifest: HotspotManifestEntry[] = [];
-  const { element: wishlistLayerEl, open: _openWishlist } = createWishlistLayer({
+  const { element: wishlistLayerEl, open: _openWishlist, setChatOpen } = createWishlistLayer({
     wishlist,
     tourBridge,
     manifest: hotspotManifest,
@@ -129,6 +137,7 @@ export function init(config: AssistantConfig): void {
     onOpenChat: () => openChat(),
   });
   openWishlist = _openWishlist;
+  onChatOpenChange = setChatOpen;
   loadCatalogManifest(config.assetsBaseUrl)
     .then((entries) => hotspotManifest.push(...entries))
     .catch(() => {
@@ -138,6 +147,27 @@ export function init(config: AssistantConfig): void {
 
   root.append(cardEl, launcher, wishlistLayerEl);
   document.body.appendChild(root);
+
+  // The launcher/wishlist-toggle stay hidden (see [data-tva-tour-entered]
+  // in assistant.css) until the visitor is actually inside the tour —
+  // explicit direction: they shouldn't appear over the language-select
+  // screen. Two DOM-inspection approaches were tried and abandoned before
+  // this one (both confirmed live, both wrong): the screen's own heading
+  // text ("Selezionare la lingua...") turned out to be canvas-drawn, not a
+  // real DOM node — searching for it found nothing even while it was
+  // plainly on screen. A `<span>IT</span>` DOES exist in the DOM, but
+  // there are THREE of them and one stays `visibility:visible` even deep
+  // in the tour (evidently an unrelated in-tour language-switcher control,
+  // not the gate) — so "is any IT span visible" never reliably flips.
+  // The gate is the very first thing on screen with nothing else
+  // interactive before it, so the robust signal is simpler than parsing
+  // 3DVista's canvas UI at all: the visitor's first real click/tap
+  // anywhere on the page. Fires once, removes itself.
+  function onFirstInteraction(): void {
+    root.dataset.tvaTourEntered = "true";
+    window.removeEventListener("pointerdown", onFirstInteraction, true);
+  }
+  window.addEventListener("pointerdown", onFirstInteraction, true);
 
   // `screen.width` only changes on rotation (portrait/landscape swap) —
   // re-derive both the mobile flag and the unit then. No `resize`

@@ -38,7 +38,7 @@ export function renderProductInfo(card: ProductCard, handlers: ProductCardHandle
   const syncHeart = (saved: boolean): void => {
     heartBtn.classList.toggle("tva-wishlist-heart--saved", saved);
     heartBtn.setAttribute("aria-pressed", String(saved));
-    heartBtn.setAttribute("aria-label", saved ? "Quitar de mi colección" : "Guardar en mi colección");
+    heartBtn.setAttribute("aria-label", saved ? "Rimuovi dalla mia collezione" : "Salva nella mia collezione");
   };
   syncHeart(handlers.isWishlisted(card.product_id));
   heartBtn.innerHTML =
@@ -69,7 +69,7 @@ export function renderProductInfo(card: ProductCard, handlers: ProductCardHandle
     const fichaBtn = document.createElement("button");
     fichaBtn.type = "button";
     fichaBtn.className = "tva-product-card-link";
-    fichaBtn.textContent = "Ver ficha ›";
+    fichaBtn.textContent = "Vedi scheda ›";
     fichaBtn.addEventListener("click", () => {
       if (handlers.onVerFicha) {
         handlers.onVerFicha(card);
@@ -104,7 +104,7 @@ export function renderProductActions(
   const goBtn = document.createElement("button");
   goBtn.type = "button";
   goBtn.className = "tva-primary";
-  goBtn.textContent = "Llévame";
+  goBtn.textContent = "Portami lì";
   goBtn.addEventListener("click", () => {
     // The nav target was already resolved server-side from the validated
     // catalog — this button only ever plays back coordinates the backend
@@ -120,7 +120,7 @@ export function renderProductActions(
   if (card.alternativesAvailable) {
     const altBtn = document.createElement("button");
     altBtn.type = "button";
-    altBtn.textContent = "Ver alternativas";
+    altBtn.textContent = "Vedi alternative";
     altBtn.addEventListener("click", () => handlers.onVerAlternativas(card));
     actions.appendChild(altBtn);
   }

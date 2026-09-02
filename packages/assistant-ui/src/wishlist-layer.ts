@@ -16,8 +16,15 @@ const HEART_SVG =
   '<path d="M12 20.5s-7.5-4.8-10-9.4C.5 7.8 2.3 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.3.5 5.1 3.8 3.6 7.1-2.5 4.6-10 9.4-10 9.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' +
   "</svg>";
 
+const CHEVRON_LEFT_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+  '<path d="M15 5l-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHEVRON_RIGHT_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+  '<path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
 function buildSummaryText(items: ProductCard[], assistantName: string): string {
-  const lines = [`Mi colección de ${assistantName}:`, ""];
+  const lines = [`La mia collezione di ${assistantName}:`, ""];
   items.forEach((item, i) => lines.push(`${i + 1}. ${item.name}`));
   return lines.join("\n");
 }
@@ -38,14 +45,14 @@ function downloadAsPdf(items: ProductCard[], assistantName: string): void {
     )
     .join("");
   win.document.write(
-    `<!doctype html><html><head><title>Mi colección — ${assistantName}</title><style>
+    `<!doctype html><html><head><title>La mia collezione — ${assistantName}</title><style>
       body{font-family:sans-serif;padding:32px;color:#111}
       h1{font-size:20px}
       table{width:100%;border-collapse:collapse;margin-top:16px}
       td{padding:10px 8px;border-bottom:1px solid #ddd;vertical-align:middle}
       img{width:64px;height:64px;object-fit:cover;border-radius:6px;background:#eee}
     </style></head><body>
-      <h1>Mi colección — ${assistantName}</h1>
+      <h1>La mia collezione — ${assistantName}</h1>
       <table>${rows}</table>
     </body></html>`
   );
@@ -56,7 +63,7 @@ function downloadAsPdf(items: ProductCard[], assistantName: string): void {
 
 function emailWishlist(items: ProductCard[], assistantName: string): void {
   const body = buildSummaryText(items, assistantName);
-  const url = `mailto:?subject=${encodeURIComponent("Mi colección — " + assistantName)}&body=${encodeURIComponent(body)}`;
+  const url = `mailto:?subject=${encodeURIComponent("La mia collezione — " + assistantName)}&body=${encodeURIComponent(body)}`;
   window.open(url, "_blank");
 }
 
@@ -65,6 +72,12 @@ function shareOnWhatsapp(items: ProductCard[], assistantName: string): void {
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
 }
 
+/**
+ * Same image/text proportions as the chat's own product card (.tva-product-card:
+ * 50%-width image, text filling the other half) per explicit direction — the
+ * old layout squeezed the image down to a ~56px thumbnail. No card wrapper
+ * here though (also explicit): sits directly on the panel's own background.
+ */
 function renderItemRow(item: ProductCard, deps: WishlistLayerDeps, onChanged: () => void): HTMLElement {
   const row = document.createElement("div");
   row.className = "tva-wl-item";
@@ -89,27 +102,124 @@ function renderItemRow(item: ProductCard, deps: WishlistLayerDeps, onChanged: ()
   const goBtn = document.createElement("button");
   goBtn.type = "button";
   goBtn.className = "tva-wl-item-go";
-  goBtn.textContent = "Llévame";
+  goBtn.textContent = "Portami lì";
   goBtn.addEventListener("click", () => deps.tourBridge.navigateTo(item.navTarget));
   body.appendChild(goBtn);
   row.appendChild(body);
 
-  const actions = document.createElement("div");
-  actions.className = "tva-wl-item-actions";
-
+  // Small corner badge overlapping the image — same visual treatment as the
+  // chat card's own .tva-wishlist-heart — instead of its own flex column.
   const heart = document.createElement("button");
   heart.type = "button";
   heart.className = "tva-wl-item-heart tva-wl-item-heart--saved";
-  heart.setAttribute("aria-label", `Quitar ${item.name} de mi colección`);
+  heart.setAttribute("aria-label", `Rimuovi ${item.name} dalla mia collezione`);
   heart.innerHTML = HEART_SVG;
   heart.addEventListener("click", () => {
     deps.wishlist.remove(item.product_id);
     onChanged();
   });
-  actions.appendChild(heart);
-  row.appendChild(actions);
+  row.appendChild(heart);
 
   return row;
+}
+
+/**
+ * Recommendations row wrapped with prev/next arrows and manual (pointer)
+ * drag-to-scroll — replaces the native horizontal scrollbar entirely
+ * (hidden via CSS) per explicit direction: "esa barrita gris se ve
+ * horrible." Arrows self-hide at either end; dragging still works with the
+ * scrollbar gone since native touch/trackpad scrolling wasn't the issue —
+ * a MOUSE click-drag needs this (browsers don't do that natively, only
+ * touch/trackpad do).
+ */
+function createRecommendationsRow(cards: ProductCard[], deps: WishlistLayerDeps): HTMLElement {
+  const wrap = document.createElement("div");
+  wrap.className = "tva-wl-rec-wrap";
+
+  const row = document.createElement("div");
+  row.className = "tva-wl-rec-row";
+  for (const card of cards) row.appendChild(renderRecommendationCard(card, deps));
+  wrap.appendChild(row);
+
+  const prevBtn = document.createElement("button");
+  prevBtn.type = "button";
+  prevBtn.className = "tva-wl-rec-arrow tva-wl-rec-arrow--prev tva-wl-rec-arrow--hidden";
+  prevBtn.setAttribute("aria-label", "Precedente");
+  prevBtn.innerHTML = CHEVRON_LEFT_SVG;
+  wrap.appendChild(prevBtn);
+
+  const nextBtn = document.createElement("button");
+  nextBtn.type = "button";
+  nextBtn.className = "tva-wl-rec-arrow tva-wl-rec-arrow--next";
+  nextBtn.setAttribute("aria-label", "Successivo");
+  nextBtn.innerHTML = CHEVRON_RIGHT_SVG;
+  wrap.appendChild(nextBtn);
+
+  function step(dir: 1 | -1): void {
+    const card = row.querySelector<HTMLElement>(".tva-wl-rec-card");
+    const width = card ? card.getBoundingClientRect().width + 12 : 108;
+    row.scrollBy({ left: dir * width, behavior: "smooth" });
+  }
+  prevBtn.addEventListener("click", () => step(-1));
+  nextBtn.addEventListener("click", () => step(1));
+
+  function syncArrows(): void {
+    const maxScroll = row.scrollWidth - row.clientWidth;
+    prevBtn.classList.toggle("tva-wl-rec-arrow--hidden", row.scrollLeft <= 1);
+    nextBtn.classList.toggle("tva-wl-rec-arrow--hidden", row.scrollLeft >= maxScroll - 1);
+  }
+  row.addEventListener("scroll", syncArrows);
+  // scrollWidth isn't reliable until the row has actually painted its
+  // children — one frame is enough for that first "does it even overflow" check.
+  requestAnimationFrame(syncArrows);
+
+  // Drag threshold: only commit to "this is a drag" (and only THEN capture
+  // the pointer / suppress the click) once the pointer has actually moved a
+  // few px. Capturing unconditionally on every pointerdown — an earlier
+  // version did — rerouted the pointerup that would normally complete a
+  // plain click on a .tva-wl-rec-card button to `row` instead, silently
+  // breaking every recommendation card's navigation (reported live: cards
+  // stopped taking the visitor anywhere on click).
+  const DRAG_THRESHOLD_PX = 5;
+  let tracking = false;
+  let dragStarted = false;
+  let startX = 0;
+  let startScrollLeft = 0;
+  row.addEventListener("pointerdown", (e) => {
+    tracking = true;
+    dragStarted = false;
+    startX = e.clientX;
+    startScrollLeft = row.scrollLeft;
+  });
+  row.addEventListener("pointermove", (e) => {
+    if (!tracking) return;
+    const dx = e.clientX - startX;
+    if (!dragStarted) {
+      if (Math.abs(dx) < DRAG_THRESHOLD_PX) return;
+      dragStarted = true;
+      row.setPointerCapture(e.pointerId);
+      row.classList.add("tva-wl-rec-row--dragging");
+    }
+    row.scrollLeft = startScrollLeft - dx;
+  });
+  const endDrag = (): void => {
+    if (dragStarted) {
+      // A real drag just ended — swallow the click it would otherwise fire
+      // on whatever card sits under the pointer (one-shot: removes itself).
+      const suppressClick = (ev: MouseEvent): void => {
+        ev.stopPropagation();
+        ev.preventDefault();
+      };
+      row.addEventListener("click", suppressClick, { capture: true, once: true });
+    }
+    tracking = false;
+    dragStarted = false;
+    row.classList.remove("tva-wl-rec-row--dragging");
+  };
+  row.addEventListener("pointerup", endDrag);
+  row.addEventListener("pointercancel", endDrag);
+
+  return wrap;
 }
 
 function renderRecommendationCard(card: ProductCard, deps: WishlistLayerDeps): HTMLElement {
@@ -127,54 +237,98 @@ function renderRecommendationCard(card: ProductCard, deps: WishlistLayerDeps): H
   const name = document.createElement("strong");
   name.textContent = card.name;
   el.appendChild(name);
-
-  if (card.section) {
-    const section = document.createElement("span");
-    section.textContent = card.section;
-    el.appendChild(section);
-  }
+  // No section/room label here — removed per explicit direction ("quitar
+  // 'CASA 01' debajo del nombre"); these are compact thumbnails, not the
+  // full item rows above, which still show it.
 
   return el;
 }
 
-export function createWishlistLayer(deps: WishlistLayerDeps): { element: HTMLElement; open: () => void } {
+export function createWishlistLayer(
+  deps: WishlistLayerDeps
+): { element: HTMLElement; open: () => void; setChatOpen: (next: boolean) => void } {
   const root = document.createElement("div");
   root.className = "tva-wl-root";
 
-  // Hotspot-hover heart overlay — independent piece, mounted alongside the
-  // toggle/panel but with no coupling to either beyond the shared store.
-  const hotspotOverlay = createHotspotHeartOverlay({ wishlist: deps.wishlist, manifest: deps.manifest });
+  // Declared up here rather than down by renderPanel, where it
+  // conceptually belongs — grouped with previewOpen/previewProduct/
+  // chatOpen below, the other state syncEntryButtons reads.
+  let open = false;
+
+  // Two mutually-exclusive entry points share this top-right spot, never
+  // both visible at once:
+  //  - previewHeartBtn: a native tour hotspot's own info panel is open
+  //    (ANY of them — even ones not yet in the catalog, shown regardless
+  //    per explicit direction, see onNativePreviewChange below) — saves
+  //    THAT specific product.
+  //  - collectionBtn ("Mi colección" pill): the fallback the rest of the
+  //    time — opens the panel, same as before.
+  // Both hidden the instant either the chat or this panel itself opens.
+  let previewOpen = false;
+  let previewProduct: HotspotManifestEntry | null = null;
+  let chatOpen = false;
+
+  const hotspotOverlay = createHotspotHeartOverlay({
+    wishlist: deps.wishlist,
+    manifest: deps.manifest,
+    onNativePreviewChange: (state) => {
+      previewOpen = state.open;
+      previewProduct = state.product;
+      syncEntryButtons();
+    },
+  });
   root.appendChild(hotspotOverlay.element);
 
-  // Toggle button — positioned clear of the tour's own Febal logo (top-right,
-  // but low enough to sit below it) per explicit instruction: the trigger
-  // must never cover the logo, even though the opened panel itself may.
-  const toggleBtn = document.createElement("button");
-  toggleBtn.type = "button";
-  toggleBtn.className = "tva-wl-toggle";
-  toggleBtn.setAttribute("aria-label", "Mi colección");
-  toggleBtn.setAttribute("aria-pressed", "false");
-  toggleBtn.innerHTML = HEART_SVG;
-  const badge = document.createElement("span");
-  badge.className = "tva-wl-toggle-badge";
-  badge.hidden = true;
-  toggleBtn.appendChild(badge);
-  root.appendChild(toggleBtn);
+  const collectionBtn = document.createElement("button");
+  collectionBtn.type = "button";
+  collectionBtn.className = "tva-wl-toggle";
+  collectionBtn.textContent = "La mia collezione";
+  root.appendChild(collectionBtn);
+
+  const previewHeartBtn = document.createElement("button");
+  previewHeartBtn.type = "button";
+  previewHeartBtn.className = "tva-wl-preview-heart tva-wl-preview-heart--hidden";
+  previewHeartBtn.setAttribute("aria-label", "Salva nella mia collezione");
+  previewHeartBtn.innerHTML = HEART_SVG;
+  root.appendChild(previewHeartBtn);
+
+  function syncPreviewHeartVisual(): void {
+    const saved = previewProduct ? deps.wishlist.has(previewProduct.product_id) : false;
+    previewHeartBtn.classList.toggle("tva-wl-preview-heart--saved", saved);
+  }
+
+  previewHeartBtn.addEventListener("click", () => {
+    // Hotspot doesn't map to a catalog product yet — the button still
+    // shows (explicit direction, see onNativePreviewChange), it just has
+    // nothing to save. Silent no-op, not an error state.
+    if (!previewProduct) return;
+    const p = previewProduct;
+    deps.wishlist.toggle({
+      product_id: p.product_id,
+      name: p.name,
+      description: "",
+      image_url: p.image_url,
+      section: "",
+      detail_url: p.detail_url,
+      navTarget: { media_name: p.media_name, yaw: p.yaw, pitch: p.pitch, fov: p.fov, hotspot_name: p.hotspot_name },
+      alternativesAvailable: false,
+    });
+    syncPreviewHeartVisual();
+  });
+
+  function syncEntryButtons(): void {
+    const hideBoth = open || chatOpen;
+    collectionBtn.classList.toggle("tva-wl-toggle--hidden", hideBoth || previewOpen);
+    previewHeartBtn.classList.toggle("tva-wl-preview-heart--hidden", hideBoth || !previewOpen);
+    syncPreviewHeartVisual();
+  }
 
   // Panel
   const panel = document.createElement("aside");
   panel.className = "tva-wl-panel";
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "Mi colección");
+  panel.setAttribute("aria-label", "La mia collezione");
   root.appendChild(panel);
-
-  let open = false;
-
-  function syncBadge(): void {
-    const count = deps.wishlist.getAll().length;
-    badge.hidden = count === 0;
-    badge.textContent = String(count);
-  }
 
   function renderPanel(): void {
     const items = deps.wishlist.getAll();
@@ -184,15 +338,15 @@ export function createWishlistLayer(deps: WishlistLayerDeps): { element: HTMLEle
     header.className = "tva-wl-header";
     const titleWrap = document.createElement("div");
     const h2 = document.createElement("h2");
-    h2.textContent = "Mi colección";
+    h2.textContent = "La mia collezione";
     const count = document.createElement("span");
-    count.textContent = items.length === 1 ? "1 producto guardado" : `${items.length} productos guardados`;
+    count.textContent = items.length === 1 ? "1 prodotto salvato" : `${items.length} prodotti salvati`;
     titleWrap.append(h2, count);
     const switchToChatBtn = document.createElement("button");
     switchToChatBtn.type = "button";
     switchToChatBtn.className = "tva-wl-switch-btn";
-    switchToChatBtn.setAttribute("aria-label", "Abrir asistente");
-    switchToChatBtn.textContent = "Asistente";
+    switchToChatBtn.setAttribute("aria-label", "Apri assistente");
+    switchToChatBtn.textContent = "Assistente";
     switchToChatBtn.addEventListener("click", () => {
       setOpen(false);
       deps.onOpenChat?.();
@@ -201,33 +355,49 @@ export function createWishlistLayer(deps: WishlistLayerDeps): { element: HTMLEle
     const closeBtn = document.createElement("button");
     closeBtn.type = "button";
     closeBtn.className = "tva-wl-close";
-    closeBtn.setAttribute("aria-label", "Cerrar");
+    closeBtn.setAttribute("aria-label", "Chiudi");
     closeBtn.textContent = "×";
     closeBtn.addEventListener("click", () => setOpen(false));
-    header.append(titleWrap, switchToChatBtn, closeBtn);
+    // Grouped together so both sit flush against the right edge, next to
+    // each other — header's own justify-content:space-between previously
+    // had THREE direct children (titleWrap, switchToChatBtn, closeBtn),
+    // which spaced switchToChatBtn evenly in the middle instead (reported
+    // live: "Asistente" looked centered rather than beside the close ×).
+    const headerActions = document.createElement("div");
+    headerActions.className = "tva-wl-header-actions";
+    headerActions.append(switchToChatBtn, closeBtn);
+    header.append(titleWrap, headerActions);
     panel.appendChild(header);
 
     if (items.length === 0) {
       const empty = document.createElement("p");
       empty.className = "tva-wl-empty";
       empty.textContent =
-        "Aún no has guardado nada. Pasa el cursor sobre cualquier producto en el tour, o usa el corazón en el chat, para empezar tu colección.";
+        "Non hai ancora salvato nulla. Passa il cursore su qualsiasi prodotto nel tour, oppure usa il cuore nella chat, per iniziare la tua collezione.";
       panel.appendChild(empty);
       return;
     }
 
     const list = document.createElement("div");
     list.className = "tva-wl-list";
-    for (const item of items) list.appendChild(renderItemRow(item, deps, () => { renderPanel(); syncBadge(); }));
+    for (const item of items) list.appendChild(renderItemRow(item, deps, () => renderPanel()));
     panel.appendChild(list);
+
+    // Groups the style section + PDF/mail/WhatsApp actions so they're
+    // pinned to the panel's bottom TOGETHER (single margin-top:auto on this
+    // wrapper — see .tva-wl-bottom) regardless of whether styleSection ends
+    // up removed below (no dominant style, no recommendations).
+    const bottom = document.createElement("div");
+    bottom.className = "tva-wl-bottom";
+    panel.appendChild(bottom);
 
     const styleSection = document.createElement("div");
     styleSection.className = "tva-wl-style-section";
     const loading = document.createElement("p");
     loading.className = "tva-wl-style-loading";
-    loading.textContent = "Analizando tu estilo…";
+    loading.textContent = "Analizzando il tuo stile…";
     styleSection.appendChild(loading);
-    panel.appendChild(styleSection);
+    bottom.appendChild(styleSection);
 
     deps
       .fetchRecommendations(items.map((i) => i.product_id))
@@ -240,36 +410,28 @@ export function createWishlistLayer(deps: WishlistLayerDeps): { element: HTMLEle
             '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
             '<path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z" fill="currentColor"/></svg>';
           const text = document.createElement("span");
-          text.innerHTML = `<strong>Tu estilo: ${dominantStyle}.</strong> Esto es lo que podría gustarte.`;
+          text.innerHTML = `<strong>Il tuo stile: ${dominantStyle}.</strong> Questo potrebbe piacerti.`;
           label.appendChild(text);
           styleSection.appendChild(label);
         }
         if (cards.length > 0) {
-          const row = document.createElement("div");
-          row.className = "tva-wl-rec-row";
-          for (const card of cards) row.appendChild(renderRecommendationCard(card, deps));
-          styleSection.appendChild(row);
+          styleSection.appendChild(createRecommendationsRow(cards, deps));
         } else if (!dominantStyle) {
           styleSection.remove();
         }
       })
       .catch(() => styleSection.remove());
 
-    const showroomBtn = document.createElement("button");
-    showroomBtn.type = "button";
-    showroomBtn.className = "tva-wl-showroom-btn";
-    showroomBtn.textContent = "Ver en el showroom";
-    showroomBtn.addEventListener("click", () => {
-      deps.tourBridge.navigateTo(items[0].navTarget);
-      setOpen(false);
-    });
-    panel.appendChild(showroomBtn);
+    // No "Ver en el showroom" button — removed per explicit direction: every
+    // product's own "Llévame" already does exactly this, one product at a
+    // time, which is the only sensible target anyway once there's more than
+    // one item saved (this button always just jumped to items[0]).
 
     const actions = document.createElement("div");
     actions.className = "tva-wl-actions";
     const actionDefs: Array<[string, string, () => void]> = [
-      ["Descargar PDF", "pdf", () => downloadAsPdf(items, deps.assistantName)],
-      ["Enviar por correo", "mail", () => emailWishlist(items, deps.assistantName)],
+      ["Scarica PDF", "pdf", () => downloadAsPdf(items, deps.assistantName)],
+      ["Invia via email", "mail", () => emailWishlist(items, deps.assistantName)],
       ["WhatsApp", "whatsapp", () => shareOnWhatsapp(items, deps.assistantName)],
     ];
     for (const [label, iconKind, handler] of actionDefs) {
@@ -281,23 +443,32 @@ export function createWishlistLayer(deps: WishlistLayerDeps): { element: HTMLEle
       btn.addEventListener("click", handler);
       actions.appendChild(btn);
     }
-    panel.appendChild(actions);
+    bottom.appendChild(actions);
   }
 
   function setOpen(next: boolean): void {
     open = next;
     panel.classList.toggle("tva-wl-panel--open", open);
-    toggleBtn.classList.toggle("tva-wl-toggle--active", open);
-    toggleBtn.setAttribute("aria-pressed", String(open));
+    syncEntryButtons();
     if (open) renderPanel();
   }
 
-  toggleBtn.addEventListener("click", () => setOpen(!open));
+  collectionBtn.addEventListener("click", () => setOpen(true));
+
   deps.wishlist.subscribe(() => {
-    syncBadge();
+    syncPreviewHeartVisual();
     if (open) renderPanel();
   });
-  syncBadge();
 
-  return { element: root, open: () => setOpen(true) };
+  return {
+    element: root,
+    open: () => setOpen(true),
+    // Called by index.ts whenever the (separately-owned) chat card opens or
+    // closes — the only coupling between the two layers besides the shared
+    // WishlistState, and only for these buttons' visibility, nothing else.
+    setChatOpen: (next: boolean): void => {
+      chatOpen = next;
+      syncEntryButtons();
+    },
+  };
 }

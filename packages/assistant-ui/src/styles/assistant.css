@@ -2,6 +2,29 @@
    Colors/position come from CSS variables set by theme.ts per tour;
    clients/<tour>/theme.css may override the variables below, never these rules. */
 
+/* Febal Casa's own brand typeface for panel headings. Two corrections
+   behind this specific choice, both from live feedback:
+   1. First tried "Noto Serif Display" (febalcasa.com's own H1 font,
+      confirmed via computed style) — but that's a big-display headline
+      face, thin strokes that go illegible at this UI's small sizes
+      ("no se ve bien en chiquito").
+   2. The replacement needed to be FuturaBookC — the font Febal's own
+      in-tour hotspot labels use (e.g. "BALMORAL SOFA"), which reads
+      cleanly small. It's already a real asset THIS tour ships (see
+      tour-export/fonts/FuturaBookC Regular.woff2 + fonts.css) — no
+      Google Fonts fetch needed, just point at the same file via an
+      absolute path (this stylesheet lives at /assistant/, the font at
+      the tour root, so a relative path would resolve wrong). Per-tour,
+      same spirit as theme.css: a client without this asset just falls
+      back to the generic sans-serif stack instead of a 404. */
+@font-face {
+  font-family: "FuturaBookC";
+  src: url("/fonts/FuturaBookC Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 .tva-root {
   --assistant-primary: #14b8a6; /* dark turquoise default */
   --assistant-primary-hover: #0f9c8f;
@@ -31,6 +54,17 @@
 .tva-root[data-assistant-position="bottom-left"] { left: 24px; }
 
 /* Launcher */
+/* Entry-point buttons stay hidden over the language-select screen — explicit
+   direction: they should only appear once the visitor is actually inside
+   the tour. [data-tva-tour-entered] is set once (index.ts polls a DOM
+   signature 3DVista itself exposes for that screen) and never unset. */
+.tva-root:not([data-tva-tour-entered="true"]) .tva-launcher,
+.tva-root:not([data-tva-tour-entered="true"]) .tva-wl-toggle,
+.tva-root:not([data-tva-tour-entered="true"]) .tva-wl-preview-heart {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .tva-launcher {
   width: 60px;
   height: 60px;
@@ -129,8 +163,18 @@
   height: 16px;
 }
 .tva-card-header .tva-title { flex: 1; min-width: 0; }
-.tva-card-header .tva-title strong { display: block; font-size: 14px; color: var(--assistant-text); }
-.tva-card-header .tva-title span { display: block; font-size: 12px; color: var(--assistant-text-muted); }
+/* Standard UI text sizes (set per explicit direction): title matches a
+   product card's own name (16px), subtitle/description-role text matches
+   a product card's description (13px) — reused everywhere for consistency
+   rather than each label picking its own size. */
+.tva-card-header .tva-title strong {
+  display: block;
+  font-size: 16px;
+  color: var(--assistant-text);
+  font-family: "FuturaBookC", sans-serif;
+  text-transform: uppercase;
+}
+.tva-card-header .tva-title span { display: block; font-size: 13px; color: var(--assistant-text-muted); }
 .tva-card-header button {
   background: transparent;
   border: none;
@@ -151,7 +195,7 @@
   width: auto !important;
   height: auto !important;
   padding: 5px 10px !important;
-  font-size: 11px !important;
+  font-size: 13px !important;
   font-weight: 600;
   border-radius: 999px !important;
   border: 1px solid var(--assistant-border) !important;
@@ -168,7 +212,7 @@
 
 /* El botón de la wishlist no hereda reglas genéricas restrictivas, no necesita !important. */
 .tva-wl-switch-btn {
-  font-size: 11px;
+  font-size: 13px;
   font-weight: 600;
   padding: 5px 10px;
   border-radius: 999px;
@@ -190,6 +234,30 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+/* Custom scrollbar (explicit direction: the default OS one "se ve horrible") —
+   white track, grey rounded thumb, Apple-style thin bar. Webkit-only (Chrome/
+   Safari/Edge, which is effectively every real visitor here); Firefox falls
+   back to its own thin scrollbar via scrollbar-width below rather than being
+   left with the same ugly default. */
+.tva-messages {
+  scrollbar-width: thin;
+  scrollbar-color: #c7c7c7 #ffffff;
+}
+.tva-messages::-webkit-scrollbar {
+  width: 8px;
+}
+.tva-messages::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-radius: 8px;
+}
+.tva-messages::-webkit-scrollbar-thumb {
+  background: #c7c7c7;
+  border-radius: 8px;
+  border: 2px solid #ffffff;
+}
+.tva-messages::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
 }
 
 .tva-bubble {
@@ -318,6 +386,13 @@
   color: var(--assistant-primary);
   text-decoration: none;
   cursor: pointer;
+  /* This is a <button>, not an <a> — without this reset it kept the
+     browser's native button chrome (grey background/border), which made
+     the red text hard to read (flagged live). Transparent lets the
+     containing product card's own background show through instead. */
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 .tva-product-card-link:hover { text-decoration: underline; }
 .tva-product-card-link:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
@@ -360,13 +435,61 @@
    box for layout, only as a DOM/theme-variable anchor.
    ============================================================ */
 
-/* Toggle button — top-right, but LOW enough to clear the tour's own Febal
-   logo (confirmed live: the logo's own bounding box extends to roughly
-   y=110 in the exported tour's markup) — the trigger itself must never
-   cover the logo, even though the opened panel below is allowed to. */
+/* "Mi colección" pill — top-right, low enough to clear the tour's own Febal
+   logo (moved further down than an earlier value per explicit feedback
+   that it still crowded the logo). The fallback entry point: shown
+   whenever NEITHER panel is open AND no native hotspot preview is open
+   (see .tva-wl-preview-heart just below for that other case) — hidden via
+   .tva-wl-toggle--hidden, driven by wishlist-layer.ts's own open state,
+   chat-card.ts's (via index.ts's setChatOpen wiring), and the native-
+   preview signal together. */
+/* Styled to match the tour's own "Showroom map" button per explicit,
+   detailed live feedback on the shape specifically: solid Febal red, white
+   mixed-case text (NOT all-caps — unlike the panel titles above, this one
+   reverted after an earlier version force-uppercased it), ONE rounded
+   corner with the other three square (not a uniform border-radius), and a
+   flat black drop shadow directly underneath (not a soft diffuse shadow
+   all around). That button is a baked-in image asset in the tour export
+   (no inspectable CSS/font — confirmed by grepping script_general.js/
+   skin/, nothing under "Showroom map" at all), so this is a visual match
+   built from scratch, refined against live screenshots rather than an
+   extracted value. */
 .tva-wl-toggle {
   position: fixed;
-  top: 110px;
+  top: 150px;
+  right: 24px;
+  height: 40px;
+  padding: 0 18px;
+  border-radius: 8px 0 0 0;
+  border: none;
+  background: var(--assistant-primary);
+  color: var(--assistant-on-primary);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* NOT FuturaBookC here — zoomed side-by-side comparison against the real
+     "Showroom map" button (live feedback) showed that button isn't
+     geometric/Futura-styled at all: bolder, more condensed, a generic
+     grotesque-style bold — a plain system-bold stack (real bold cuts, not
+     synthetic-bolding a Regular-weight face) reads much closer. */
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+  cursor: pointer;
+  z-index: 999998; /* page's own top-level stacking context — needs a high value to clear the 3DVista canvas, same reasoning as .tva-wl-panel's z-index below. */
+}
+.tva-wl-toggle:hover { background: var(--assistant-primary-hover); color: var(--assistant-on-primary); }
+.tva-wl-toggle:focus-visible { outline: 2px solid var(--assistant-text); outline-offset: 2px; }
+.tva-wl-toggle--hidden { opacity: 0; pointer-events: none; }
+
+/* Bare heart — replaces the pill above, same spot, while a native tour
+   hotspot preview is open (see hotspot-heart-overlay.ts's
+   onNativePreviewChange); saves THAT product instead of opening the panel. */
+.tva-wl-preview-heart {
+  position: fixed;
+  top: 150px;
   right: 24px;
   width: 44px;
   height: 44px;
@@ -379,34 +502,14 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 999998; /* below the chat card's z-index:2 within .tva-root's own stacking is irrelevant here — this sits in the page's top-level stacking context, so it needs its own high value to clear the 3DVista canvas. */
+  z-index: 999998;
 }
-.tva-wl-toggle svg { width: 20px; height: 20px; }
-.tva-wl-toggle:hover { color: var(--assistant-primary); }
-.tva-wl-toggle:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
-/* The panel is full-height and 380px wide from the right edge — the toggle
-   (right:24px) falls WITHIN that span, so it visually sat on top of the
-   panel's own first row once open (confirmed live). Hide it for the
-   duration; the panel's own header ("N productos guardados") already
-   conveys what the badge was showing. */
-.tva-wl-toggle--active { opacity: 0; pointer-events: none; }
-.tva-wl-toggle-badge {
-  position: absolute;
-  top: -2px;
-  right: -2px;
-  min-width: 16px;
-  height: 16px;
-  padding: 0 4px;
-  border-radius: 999px;
-  background: var(--assistant-primary);
-  color: var(--assistant-on-primary);
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 16px;
-  text-align: center;
-  border: 2px solid var(--assistant-bg);
-}
-.tva-wl-toggle--active .tva-wl-toggle-badge { border-color: var(--assistant-primary); }
+.tva-wl-preview-heart svg { width: 20px; height: 20px; }
+.tva-wl-preview-heart:hover { color: var(--assistant-primary); }
+.tva-wl-preview-heart:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
+.tva-wl-preview-heart--hidden { opacity: 0; pointer-events: none; }
+.tva-wl-preview-heart--saved { color: #ff5a7a; }
+.tva-wl-preview-heart--saved svg { fill: #ff5a7a; }
 
 /* Panel — generous padding throughout (never the chat's compact bubble
    spacing) per explicit direction: this must read as spacious, not
@@ -416,7 +519,7 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 380px;
+  width: 400px;
   max-width: 92vw;
   background: var(--assistant-bg);
   box-shadow: -12px 0 40px rgba(0, 0, 0, 0.2);
@@ -438,11 +541,14 @@
 }
 
 .tva-wl-header { display: flex; align-items: flex-start; justify-content: space-between; }
+.tva-wl-header-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
 .tva-wl-header h2 {
   margin: 0;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   color: var(--assistant-text);
+  font-family: "FuturaBookC", sans-serif;
+  text-transform: uppercase;
 }
 .tva-wl-header span {
   display: block;
@@ -463,50 +569,46 @@
   flex-shrink: 0;
 }
 .tva-wl-close:hover { background: var(--assistant-bg-elevated); color: var(--assistant-text); }
-/* Switch-to-chat pill in the wishlist panel header. */
-.tva-wl-switch-btn {
-  background: transparent;
-  border: 1px solid var(--assistant-border);
-  color: var(--assistant-text-muted);
-  font-size: 11px;
-  font-weight: 600;
-  padding: 5px 10px;
-  border-radius: 999px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.tva-wl-switch-btn:hover { border-color: var(--assistant-primary); color: var(--assistant-primary); }
-.tva-wl-switch-btn:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
 
 .tva-wl-empty {
   margin: 0;
   padding: 32px 8px;
   text-align: center;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--assistant-text-muted);
 }
 
 .tva-wl-list { display: flex; flex-direction: column; gap: 16px; }
+/* Same image/text split as the chat's own .tva-product-card (50%-width
+   image, text filling the rest) — explicitly NOT wrapped in a card border/
+   background, sits directly on the panel. */
 .tva-wl-item {
+  position: relative;
   display: flex;
-  align-items: center;
-  gap: 14px;
+  align-items: stretch;
+  gap: 12px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--assistant-border);
 }
 .tva-wl-item img {
-  width: 56px;
-  height: 56px;
-  border-radius: 10px;
+  width: 50%;
+  height: 100px;
+  border-radius: 8px;
   object-fit: cover;
   flex-shrink: 0;
   background: var(--assistant-bg-elevated);
 }
-.tva-wl-item-body { flex: 1; min-width: 0; }
+.tva-wl-item-body {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .tva-wl-item-body strong {
   display: block;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--assistant-text);
   white-space: nowrap;
   overflow: hidden;
@@ -515,15 +617,16 @@
 .tva-wl-item-section {
   display: block;
   margin-top: 2px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--assistant-text-muted);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .tva-wl-item-go {
-  margin-top: 6px;
-  font-size: 12px;
+  margin-top: 8px;
+  align-self: flex-start;
+  font-size: 13px;
   font-weight: 600;
   padding: 5px 12px;
   border-radius: 999px;
@@ -533,23 +636,37 @@
   cursor: pointer;
 }
 .tva-wl-item-go:hover { background: var(--assistant-primary); color: var(--assistant-on-primary); }
-.tva-wl-item-actions { flex-shrink: 0; }
+/* Small corner badge overlapping the image — same treatment as the chat
+   card's own .tva-wishlist-heart, instead of a separate flex column. */
 .tva-wl-item-heart {
-  width: 32px;
-  height: 32px;
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 26px;
+  height: 26px;
+  padding: 0;
   border: none;
   border-radius: 50%;
-  background: transparent;
-  color: #ff5a7a;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
 }
-.tva-wl-item-heart svg { width: 18px; height: 18px; fill: currentColor; }
-.tva-wl-item-heart:hover { background: var(--assistant-bg-elevated); }
+.tva-wl-item-heart svg { width: 15px; height: 15px; fill: currentColor; }
+.tva-wl-item-heart:hover { background: rgba(0, 0, 0, 0.55); }
+.tva-wl-item-heart--saved { color: #ff5a7a; }
+.tva-wl-item-heart--saved svg { fill: #ff5a7a; }
 
 .tva-wl-style-section { display: flex; flex-direction: column; gap: 14px; }
+/* Wraps style-section + actions together (see wishlist-layer.ts) so BOTH
+   get pushed to the bottom as one unit via this single margin-top:auto —
+   explicit direction: don't let the style section float in the middle with
+   dead space below it (e.g. only one saved item); the two belong grouped
+   at the bottom, not each fighting for its own auto-margin. */
+.tva-wl-bottom { display: flex; flex-direction: column; gap: 24px; margin-top: auto; }
 .tva-wl-style-loading {
   margin: 0;
   font-size: 13px;
@@ -568,13 +685,53 @@
   color: var(--assistant-text);
 }
 .tva-wl-style-label svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--assistant-primary); }
-.tva-wl-style-label strong { color: var(--assistant-primary); }
+/* Same treatment as the panel/button headings elsewhere (FuturaBookC +
+   uppercase) per explicit direction — was plain body text before, out of
+   step with the rest of the panel's typography. */
+.tva-wl-style-label strong {
+  color: var(--assistant-primary);
+  font-family: "FuturaBookC", sans-serif;
+  text-transform: uppercase;
+}
+.tva-wl-rec-wrap { position: relative; }
 .tva-wl-rec-row {
   display: flex;
   gap: 12px;
   overflow-x: auto;
   padding-bottom: 4px;
+  cursor: grab;
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge */
 }
+/* Native scrollbar hidden per explicit direction ("esa barrita gris se ve
+   horrible") — replaced by the arrow buttons below + pointer-drag (see
+   createRecommendationsRow in wishlist-layer.ts); still scrolls natively
+   via touch/trackpad, this only hides the visible track/thumb. */
+.tva-wl-rec-row::-webkit-scrollbar { display: none; }
+.tva-wl-rec-row--dragging { cursor: grabbing; scroll-behavior: auto; }
+.tva-wl-rec-arrow {
+  position: absolute;
+  top: 32px;
+  transform: translateY(-50%);
+  width: 26px;
+  height: 26px;
+  border: none;
+  border-radius: 50%;
+  background: var(--assistant-bg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+  color: var(--assistant-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+}
+.tva-wl-rec-arrow svg { width: 14px; height: 14px; }
+.tva-wl-rec-arrow--prev { left: -6px; }
+.tva-wl-rec-arrow--next { right: -6px; }
+.tva-wl-rec-arrow--hidden { display: none; }
+.tva-wl-rec-arrow:hover { color: var(--assistant-primary); }
 .tva-wl-rec-card {
   flex-shrink: 0;
   width: 96px;
@@ -586,6 +743,7 @@
   background: transparent;
   color: var(--assistant-text);
   cursor: pointer;
+  transform: translateY(0);
   text-align: left;
 }
 .tva-wl-rec-card img {
@@ -596,7 +754,7 @@
   background: var(--assistant-bg-elevated);
 }
 .tva-wl-rec-card strong {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1.3;
   display: -webkit-box;
@@ -604,34 +762,16 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.tva-wl-rec-card span {
-  font-size: 11px;
-  color: var(--assistant-text-muted);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 .tva-wl-rec-card:hover strong { color: var(--assistant-primary); }
-
-.tva-wl-showroom-btn {
-  display: block;
-  width: 100%;
-  padding: 13px;
-  border: none;
-  border-radius: 12px;
-  background: var(--assistant-text);
-  color: var(--assistant-bg);
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
+@media (prefers-reduced-motion: no-preference) {
+  .tva-wl-rec-card { transition: transform 0.15s ease; }
+  .tva-wl-rec-card:hover { transform: translateY(-3px); }
 }
-.tva-wl-showroom-btn:hover { opacity: 0.88; }
 
 .tva-wl-actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  margin-top: auto;
   padding-top: 16px;
   border-top: 1px solid var(--assistant-border);
 }
@@ -645,7 +785,7 @@
   border-radius: 12px;
   background: var(--assistant-bg-elevated);
   color: var(--assistant-text);
-  font-size: 11px;
+  font-size: 13px;
   text-align: center;
   cursor: pointer;
 }

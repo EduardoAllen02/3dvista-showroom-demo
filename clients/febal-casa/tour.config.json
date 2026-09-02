@@ -2,7 +2,7 @@
   "tour_id": "febal-casa",
   "displayName": "Febal Casa — Tour Virtual",
   "allowedOrigin": "https://deploy-febal-casa.vercel.app",
-  "backendUrl": "https://threevista-showroom-demo.onrender.com",
+  "backendUrl": "https://threedvista-showroom-demo.onrender.com",
   "media": [
     {
       "media_name": "9",
@@ -491,13 +491,13 @@
     }
   ],
   "assistant": {
-    "assistantName": "Asistente Febal Casa",
-    "welcomeMessage": "Ciao! Soy tu asistente virtual de Febal Casa. Pregúntame por cualquier mueble del showroom y te llevo directo a él.",
+    "assistantName": "Assistente Febal Casa",
+    "welcomeMessage": "Ciao! Sono il tuo assistente virtuale di Febal Casa. Chiedimi di qualsiasi mobile dello showroom e ti ci porto direttamente.",
     "suggestedQuestions": [
-      "Sofás",
-      "Cocinas",
-      "Armarios",
-      "Mesas"
+      "Divani",
+      "Cucine",
+      "Armadi",
+      "Tavoli"
     ]
   },
   "theme": {

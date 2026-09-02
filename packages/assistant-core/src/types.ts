@@ -44,6 +44,10 @@ export interface HotspotManifestEntry {
   fov: number;
   image_url: string;
   detail_url: string | null;
+  /** Needed to match a currently-open NATIVE tour hotspot preview back to a
+   * catalog product (see native-preview-detector.ts) — same "BOX nnn -
+   * B_nnn" label the catalog scrape captured, not something derived here. */
+  hotspot_name: string | null;
 }
 
 export interface ChatMessage {

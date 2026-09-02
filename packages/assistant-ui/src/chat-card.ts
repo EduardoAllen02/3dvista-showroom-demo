@@ -23,7 +23,8 @@ import { createMessageList } from "./message-list.js";
 export function createChatCard(
   config: AssistantConfig,
   wishlist: WishlistState,
-  onOpenWishlist?: () => void
+  onOpenWishlist?: () => void,
+  onOpenChange?: (open: boolean) => void
 ): { element: HTMLElement; toggleOpen: () => void; open: () => void } {
   const state = new ChatState();
   const tourBridge = createTourBridge(config.navStrategy);
@@ -62,14 +63,14 @@ export function createChatCard(
   const nameEl = document.createElement("strong");
   nameEl.textContent = config.assistantName;
   const subEl = document.createElement("span");
-  subEl.textContent = "Tu asesor de decoración";
+  subEl.textContent = "Il tuo consulente d'arredamento";
   titleWrap.append(nameEl, subEl);
 
   const switchToWishlistBtn = document.createElement("button");
   switchToWishlistBtn.type = "button";
   switchToWishlistBtn.className = "tva-card-switch-btn";
-  switchToWishlistBtn.setAttribute("aria-label", "Abrir Mi Lista");
-  switchToWishlistBtn.textContent = "Mi Lista";
+  switchToWishlistBtn.setAttribute("aria-label", "Apri la mia lista");
+  switchToWishlistBtn.textContent = "La mia lista";
   switchToWishlistBtn.addEventListener("click", () => {
     setOpen(false);
     onOpenWishlist?.();
@@ -77,7 +78,7 @@ export function createChatCard(
 
   const closeBtn = document.createElement("button");
   closeBtn.type = "button";
-  closeBtn.setAttribute("aria-label", "Cerrar");
+  closeBtn.setAttribute("aria-label", "Chiudi");
   closeBtn.textContent = "×";
 
   header.append(avatar, titleWrap, switchToWishlistBtn, closeBtn);
@@ -132,12 +133,12 @@ export function createChatCard(
       const altCards = await api.getAlternatives(productCard.product_id);
       messageList.hideTyping();
       state.addAssistantMessage(
-        altCards.length > 0 ? "Aquí tienes más alternativas:" : "No encontré más alternativas para este producto.",
+        altCards.length > 0 ? "Ecco altre alternative:" : "Non ho trovato altre alternative per questo prodotto.",
         altCards
       );
     } catch {
       messageList.hideTyping();
-      state.addAssistantMessage("Lo siento, no pude cargar las alternativas. Intenta de nuevo.", []);
+      state.addAssistantMessage("Mi dispiace, non sono riuscito a caricare le alternative. Riprova.", []);
     }
     messageList.render(state.getMessages());
     setBusy(false);
@@ -148,11 +149,11 @@ export function createChatCard(
   inputRow.className = "tva-input-row";
   const input = document.createElement("input");
   input.type = "text";
-  input.placeholder = "Escribe tu pregunta...";
-  input.setAttribute("aria-label", "Mensaje para el asistente");
+  input.placeholder = "Scrivi la tua domanda...";
+  input.setAttribute("aria-label", "Messaggio per l'assistente");
   const sendBtn = document.createElement("button");
   sendBtn.type = "button";
-  sendBtn.setAttribute("aria-label", "Enviar");
+  sendBtn.setAttribute("aria-label", "Invia");
   sendBtn.textContent = "➤";
   inputRow.append(input, sendBtn);
   card.appendChild(inputRow);
@@ -163,7 +164,7 @@ export function createChatCard(
   suggestions.className = "tva-suggestions";
   const suggestionsLabel = document.createElement("span");
   suggestionsLabel.className = "tva-suggestions-label";
-  suggestionsLabel.textContent = "Sugerencias:";
+  suggestionsLabel.textContent = "Suggerimenti:";
   suggestions.appendChild(suggestionsLabel);
   for (const question of config.suggestedQuestions) {
     const chip = document.createElement("button");
@@ -236,7 +237,7 @@ export function createChatCard(
     } catch {
       messageList.hideTyping();
       state.addAssistantMessage(
-        "Lo siento, tuve un problema para responder. Intenta de nuevo en un momento.",
+        "Mi dispiace, ho avuto un problema nel rispondere. Riprova tra un momento.",
         []
       );
     }
@@ -270,6 +271,7 @@ export function createChatCard(
     card.inert = !open;
     card.setAttribute("aria-hidden", String(!open));
     state.setOpen(open);
+    onOpenChange?.(open);
     if (open) {
       // Wait a frame so focus doesn't jump before the open transition has
       // started painting (jarring on some mobile browsers otherwise).
