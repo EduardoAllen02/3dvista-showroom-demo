@@ -10,6 +10,14 @@ export function createMessageList(
 ) {
   let typingEl: HTMLElement | null = null;
 
+  // Tracks how many messages were on screen after the last render() — the
+  // only way to tell a genuinely NEW message apart from a full rebuild
+  // triggered by unrelated state (e.g. a wishlist heart toggled elsewhere
+  // re-renders the exact same messages). Messages only ever get appended,
+  // never reordered or removed (see ChatState), so "index >= this count" is
+  // a safe, cheap way to identify the newly-added tail without diffing.
+  let renderedMessageCount = 0;
+
   // Never auto-follow to the bottom, even when a fresh response (however
   // long — several proposal cards, alternatives, etc.) lands while the
   // user is already at/near the bottom — explicit direction: the view must
@@ -20,9 +28,11 @@ export function createMessageList(
   function render(messages: ChatMessage[]): void {
     const prevScrollTop = container.scrollTop;
     container.innerHTML = "";
-    for (const message of messages) {
+    messages.forEach((message, index) => {
+      const isNew = index >= renderedMessageCount;
       const bubble = document.createElement("div");
       bubble.className = `tva-bubble tva-bubble-${message.role}`;
+      if (isNew) bubble.classList.add("tva-msg-enter");
       renderFormattedText(bubble, message.text);
       container.appendChild(bubble);
 
@@ -30,17 +40,24 @@ export function createMessageList(
         // Every card in message.cards is a proposal (get_product/
         // get_alternatives) — navigate_to_product never produces one — so
         // it always gets the info block AND its own action buttons.
-        container.appendChild(renderProductInfo(card, handlers));
-        container.appendChild(renderProductActions(card, tourBridge, handlers));
+        const info = renderProductInfo(card, handlers);
+        const actions = renderProductActions(card, tourBridge, handlers);
+        if (isNew) {
+          info.classList.add("tva-msg-enter");
+          actions.classList.add("tva-msg-enter");
+        }
+        container.appendChild(info);
+        container.appendChild(actions);
       }
-    }
+    });
+    renderedMessageCount = messages.length;
     container.scrollTop = prevScrollTop;
   }
 
   function showTyping(): void {
     if (typingEl) return;
     typingEl = document.createElement("div");
-    typingEl.className = "tva-typing";
+    typingEl.className = "tva-typing tva-msg-enter";
     typingEl.setAttribute("aria-label", "L'assistente sta scrivendo");
     typingEl.innerHTML = "<span></span><span></span><span></span>";
     container.appendChild(typingEl);

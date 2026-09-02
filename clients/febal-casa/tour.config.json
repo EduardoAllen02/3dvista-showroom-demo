@@ -2,7 +2,7 @@
   "tour_id": "febal-casa",
   "displayName": "Febal Casa — Tour Virtual",
   "allowedOrigin": "https://deploy-febal-casa.vercel.app",
-  "backendUrl": "https://threedvista-showroom-demo.onrender.com",
+  "backendUrl": "https://3-140-244-55.sslip.io",
   "media": [
     {
       "media_name": "9",

@@ -23,37 +23,95 @@ const CHEVRON_RIGHT_SVG =
   '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
   '<path d="M9 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+/**
+ * "Assistente Febal Casa" (the chatbot's own persona name, used everywhere
+ * ELSE in the widget) reads oddly as the byline on an exported document
+ * representing the STORE's collection, not the assistant's — reported live
+ * ("que no diga asistente febal casa solo febal casa"). Strips a leading
+ * "Asistente"/"Assistente"/"Assistant" word when present, so this tour's
+ * "Assistente Febal Casa" becomes plain "Febal Casa"; a future tour whose
+ * assistantName doesn't start with that word is returned unchanged rather
+ * than mangled.
+ */
+function brandName(assistantName: string): string {
+  return assistantName.replace(/^(asistente|assistente|assistant)\s+/i, "");
+}
+
+function formatExportDate(): string {
+  return new Date().toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+}
+
 function buildSummaryText(items: ProductCard[], assistantName: string): string {
-  const lines = [`La mia collezione di ${assistantName}:`, ""];
-  items.forEach((item, i) => lines.push(`${i + 1}. ${item.name}`));
-  return lines.join("\n");
+  const brand = brandName(assistantName);
+  const count = items.length === 1 ? "1 prodotto" : `${items.length} prodotti`;
+  const lines = [`La mia collezione — ${brand}`, `${formatExportDate()} · ${count}`, ""];
+  items.forEach((item, i) => {
+    lines.push(`${i + 1}. ${item.name}`);
+    if (item.description) lines.push(`   ${item.description}`);
+    if (item.detail_url) lines.push(`   ${item.detail_url}`);
+    lines.push("");
+  });
+  return lines.join("\n").trimEnd();
 }
 
 /**
  * Opens a plain, print-ready page and triggers the browser's native print
  * dialog ("Guardar como PDF" is a print-destination on every major
  * browser) — a real PDF download without pulling a PDF-generation library
- * into a browser bundle.
+ * into a browser bundle. `primaryColor` is resolved from the live
+ * `--assistant-primary` CSS variable at the call site (see renderPanel) —
+ * this print window is a separate, unstyled document with no access to the
+ * parent page's stylesheet, so the per-tour brand color has to be passed in
+ * as a literal value rather than referenced.
  */
-function downloadAsPdf(items: ProductCard[], assistantName: string): void {
+function downloadAsPdf(items: ProductCard[], assistantName: string, primaryColor: string): void {
   const win = window.open("", "_blank");
   if (!win) return;
+  const brand = brandName(assistantName);
+  const count = items.length === 1 ? "1 prodotto" : `${items.length} prodotti`;
   const rows = items
     .map(
-      (item) =>
-        `<tr><td><img src="${item.image_url}" alt=""></td><td><strong>${item.name}</strong></td></tr>`
+      (item, i) => `
+      <div class="item">
+        <span class="num">${i + 1}</span>
+        <img src="${item.image_url}" alt="">
+        <div class="body">
+          <strong>${item.name}</strong>
+          ${item.section ? `<span class="section">${item.section}</span>` : ""}
+          ${item.description ? `<p>${item.description}</p>` : ""}
+          ${item.detail_url ? `<a href="${item.detail_url}">Vedi la scheda completa →</a>` : ""}
+        </div>
+      </div>`
     )
     .join("");
   win.document.write(
-    `<!doctype html><html><head><title>La mia collezione — ${assistantName}</title><style>
-      body{font-family:sans-serif;padding:32px;color:#111}
-      h1{font-size:20px}
-      table{width:100%;border-collapse:collapse;margin-top:16px}
-      td{padding:10px 8px;border-bottom:1px solid #ddd;vertical-align:middle}
-      img{width:64px;height:64px;object-fit:cover;border-radius:6px;background:#eee}
+    `<!doctype html><html><head><title>La mia collezione — ${brand}</title><meta charset="utf-8"><style>
+      * { box-sizing: border-box; }
+      body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; }
+      header { background: ${primaryColor}; color: #fff; padding: 36px 40px; }
+      header .brand { font-size: 26px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
+      header .subtitle { margin-top: 6px; font-size: 15px; opacity: 0.92; }
+      header .meta { margin-top: 14px; font-size: 12.5px; opacity: 0.85; }
+      main { padding: 28px 40px 40px; }
+      .item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid #e5e5e5; align-items: flex-start; }
+      .item:last-child { border-bottom: none; }
+      .num { flex-shrink: 0; width: 22px; font-size: 13px; font-weight: 700; color: ${primaryColor}; padding-top: 2px; }
+      img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; background: #eee; flex-shrink: 0; }
+      .body { min-width: 0; }
+      .body strong { display: block; font-size: 15.5px; }
+      .body .section { display: block; margin-top: 2px; font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.03em; }
+      .body p { margin: 8px 0 0; font-size: 13px; line-height: 1.5; color: #444; }
+      .body a { display: inline-block; margin-top: 8px; font-size: 12.5px; font-weight: 600; color: ${primaryColor}; text-decoration: none; }
+      footer { padding: 18px 40px 32px; font-size: 11px; color: #999; }
+      @media print { header { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
     </style></head><body>
-      <h1>La mia collezione — ${assistantName}</h1>
-      <table>${rows}</table>
+      <header>
+        <div class="brand">${brand}</div>
+        <div class="subtitle">La mia collezione</div>
+        <div class="meta">${formatExportDate()} · ${count}</div>
+      </header>
+      <main>${rows}</main>
+      <footer>${brand}</footer>
     </body></html>`
   );
   win.document.close();
@@ -63,7 +121,7 @@ function downloadAsPdf(items: ProductCard[], assistantName: string): void {
 
 function emailWishlist(items: ProductCard[], assistantName: string): void {
   const body = buildSummaryText(items, assistantName);
-  const url = `mailto:?subject=${encodeURIComponent("La mia collezione — " + assistantName)}&body=${encodeURIComponent(body)}`;
+  const url = `mailto:?subject=${encodeURIComponent("La mia collezione — " + brandName(assistantName))}&body=${encodeURIComponent(body)}`;
   window.open(url, "_blank");
 }
 
@@ -430,7 +488,16 @@ export function createWishlistLayer(
     const actions = document.createElement("div");
     actions.className = "tva-wl-actions";
     const actionDefs: Array<[string, string, () => void]> = [
-      ["Scarica PDF", "pdf", () => downloadAsPdf(items, deps.assistantName)],
+      [
+        "Scarica PDF",
+        "pdf",
+        () =>
+          downloadAsPdf(
+            items,
+            deps.assistantName,
+            getComputedStyle(panel).getPropertyValue("--assistant-primary").trim() || "#e20613"
+          ),
+      ],
       ["Invia via email", "mail", () => emailWishlist(items, deps.assistantName)],
       ["WhatsApp", "whatsapp", () => shareOnWhatsapp(items, deps.assistantName)],
     ];

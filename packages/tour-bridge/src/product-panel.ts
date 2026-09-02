@@ -175,3 +175,52 @@ export function findOpenNativePreview(): NativePreviewSignal {
   // opened the iframe also leaves that hotspot's own dugme enabled).
   return { open: true, prefix: findEnabledDugmePrefix() };
 }
+
+export interface HotspotAnchor {
+  yaw: number;
+  pitch: number;
+}
+
+/**
+ * The hotspot marker's OWN authored world position (yaw/pitch), read live
+ * from the tour's own overlay data — found by reflection via CDP
+ * (`getAttributeNames()`/`getClassName()` on a "<prefix> hotspot" overlay,
+ * a "FlatHotspotPanoramaOverlay"): the overlay itself carries no position
+ * attribute (`projected: false`, and `yaw`/`pitch`/`ath`/`atv` are all
+ * absent from `getAttributeNames()`) — the marker's actual screen anchor
+ * lives one level down, on `items[0]` (a "FlatHotspotPanoramaOverlayImage"),
+ * confirmed live via `overlay.get('items')[0].get('yaw'/'pitch')` and
+ * cross-checked against the exported script_general.js's own authoring
+ * data for the same overlay id.
+ *
+ * This is the marker's TRUE per-panorama position — unlike the catalog's
+ * own yaw/pitch (authored once, for whichever single panorama instance was
+ * catalogued), this works correctly in every panorama a hotspot appears
+ * in, and needs no mouse-position involvement at all — used to give the
+ * floating hover heart (hotspot-heart-overlay.ts) a fixed screen offset
+ * from the marker itself instead of trailing the cursor.
+ */
+export function findHotspotAnchor(prefix: string): HotspotAnchor | null {
+  const mediaName = getCurrentMediaName();
+  if (!mediaName) return null;
+  const overlays = findOverlaysForMediaName(mediaName);
+  if (!overlays) return null;
+  const HOTSPOT_SUFFIX = " hotspot";
+  for (const o of overlays) {
+    const data = o.get("data") as { label?: string } | undefined;
+    const label = data?.label;
+    if (
+      typeof label === "string" &&
+      label.endsWith(HOTSPOT_SUFFIX) &&
+      normalizePrefix(label.slice(0, -HOTSPOT_SUFFIX.length)) === prefix
+    ) {
+      const items = o.get("items") as TdvObject[] | undefined;
+      const image = items?.[0];
+      const yaw = image?.get("yaw");
+      const pitch = image?.get("pitch");
+      if (typeof yaw === "number" && typeof pitch === "number") return { yaw, pitch };
+      return null;
+    }
+  }
+  return null;
+}

@@ -103,7 +103,7 @@
   position: fixed;
   top: 0;
   bottom: 0;
-  width: 380px;
+  width: 400px;
   max-width: 92vw;
   display: flex;
   flex-direction: column;
@@ -288,6 +288,26 @@
 }
 .tva-bubble-link:hover { opacity: 0.85; }
 
+/* Entrance animation — messages/cards ease and scale into place instead of
+   snapping into existence, the same instinct behind Messenger/Instagram's
+   own bubble-in transition (fade + slight scale-up, growing from the
+   bottom where a new message enters). Applied ONLY to genuinely new
+   messages by message-list.ts (tracks the previously-rendered count) — this
+   file fully rebuilds .tva-messages' innerHTML on every render(), including
+   ones triggered by unrelated state (a wishlist heart toggled elsewhere),
+   so animating unconditionally would replay this on every existing bubble
+   each time, not just new ones. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes tva-msg-enter {
+    from { opacity: 0; transform: scale(0.85) translateY(6px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .tva-msg-enter {
+    transform-origin: bottom center;
+    animation: tva-msg-enter 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
 .tva-typing {
   align-self: flex-start;
   display: flex;
@@ -345,8 +365,8 @@
 .tva-wishlist-heart svg { width: 15px; height: 15px; }
 .tva-wishlist-heart:hover { background: rgba(0, 0, 0, 0.55); }
 .tva-wishlist-heart:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
-.tva-wishlist-heart--saved { color: #ff5a7a; }
-.tva-wishlist-heart--saved svg { fill: #ff5a7a; }
+.tva-wishlist-heart--saved { color: var(--assistant-primary); }
+.tva-wishlist-heart--saved svg { fill: var(--assistant-primary); }
 .tva-product-card img {
   width: 50%;
   height: 100px;
@@ -508,8 +528,8 @@
 .tva-wl-preview-heart:hover { color: var(--assistant-primary); }
 .tva-wl-preview-heart:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 2px; }
 .tva-wl-preview-heart--hidden { opacity: 0; pointer-events: none; }
-.tva-wl-preview-heart--saved { color: #ff5a7a; }
-.tva-wl-preview-heart--saved svg { fill: #ff5a7a; }
+.tva-wl-preview-heart--saved { color: var(--assistant-primary); }
+.tva-wl-preview-heart--saved svg { fill: var(--assistant-primary); }
 
 /* Panel — generous padding throughout (never the chat's compact bubble
    spacing) per explicit direction: this must read as spacious, not
@@ -657,8 +677,8 @@
 }
 .tva-wl-item-heart svg { width: 15px; height: 15px; fill: currentColor; }
 .tva-wl-item-heart:hover { background: rgba(0, 0, 0, 0.55); }
-.tva-wl-item-heart--saved { color: #ff5a7a; }
-.tva-wl-item-heart--saved svg { fill: #ff5a7a; }
+.tva-wl-item-heart--saved { color: var(--assistant-primary); }
+.tva-wl-item-heart--saved svg { fill: var(--assistant-primary); }
 
 .tva-wl-style-section { display: flex; flex-direction: column; gap: 14px; }
 /* Wraps style-section + actions together (see wishlist-layer.ts) so BOTH
@@ -847,8 +867,59 @@
 .tva-hotspot-heart--visible { display: flex; pointer-events: auto; }
 .tva-hotspot-heart svg { width: 18px; height: 18px; }
 .tva-hotspot-heart:hover { background: #fff; }
-.tva-hotspot-heart--saved { color: #ff5a7a; }
-.tva-hotspot-heart--saved svg { fill: #ff5a7a; }
+.tva-hotspot-heart--saved { color: var(--assistant-primary); }
+.tva-hotspot-heart--saved svg { fill: var(--assistant-primary); }
+@media (prefers-reduced-motion: no-preference) {
+  .tva-hotspot-heart { transition: transform 0.15s ease, background 0.15s ease; }
+  .tva-hotspot-heart:hover { transform: scale(1.12); }
+
+  /* Appear animation — plays the instant the button becomes --visible
+     (mouse gets near a hotspot), NOT tied to :hover on the button itself.
+     Explicitly no color change here — stays the neutral outline color from
+     .tva-hotspot-heart above; only an actual save (below) fills it in with
+     Febal red, per explicit direction ("en el hover aparece la animación
+     pero sin rellenar de rojo"). classList.add on a class the element
+     already has is a no-op, so this doesn't replay on every tick the
+     button stays visible — only on a genuine hidden→visible transition. */
+  @keyframes tva-heart-appear {
+    from { transform: scale(0.4); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+  .tva-hotspot-heart--visible {
+    animation: tva-heart-appear 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  /* Fires once, exactly when --saved is first applied — toggling a class a
+     browser already has (see syncSavedVisual's classList.toggle) is a
+     no-op, so this doesn't replay on every unrelated re-render, only on an
+     actual unsaved→saved transition (or a fresh page load landing on an
+     already-saved product, which is a harmless, arguably fitting replay
+     too). Scale overshoots past 1 before settling — a small "pop", not a
+     full bounce — plus a expanding ring on the button itself for the
+     classic like-button "burst" read. */
+  @keyframes tva-heart-pop {
+    0% { transform: scale(1); }
+    35% { transform: scale(1.35); }
+    60% { transform: scale(0.92); }
+    100% { transform: scale(1); }
+  }
+  @keyframes tva-heart-burst {
+    0% { transform: scale(0.5); opacity: 0.7; }
+    100% { transform: scale(1.9); opacity: 0; }
+  }
+  .tva-hotspot-heart--saved svg {
+    animation: tva-heart-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .tva-hotspot-heart--saved::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--assistant-primary);
+    animation: tva-heart-burst 0.5s ease-out;
+    pointer-events: none;
+  }
+}
 
 /* Suggestions — rendered below the input row (see chat-card.ts). */
 .tva-suggestions {

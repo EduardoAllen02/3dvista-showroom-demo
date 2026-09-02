@@ -1,25 +1,32 @@
 import type { HotspotManifestEntry, WishlistState } from "@3dvista-assistant/assistant-core";
-import { deriveOverlayPrefix, findEnabledDugmePrefix, findOpenNativePreview, normalizePrefix } from "@3dvista-assistant/tour-bridge";
+import {
+  deriveOverlayPrefix,
+  findEnabledDugmePrefix,
+  findHotspotAnchor,
+  findOpenNativePreview,
+  getCameraState,
+  normalizePrefix,
+} from "@3dvista-assistant/tour-bridge";
+import { projectToScreen } from "./hotspot-projection.js";
 
-// Where the floating heart sits relative to the point where a hover was
-// detected — up and to the right of the cursor, reading as a companion badge
-// rather than replacing the native marker. HEART_OFFSET_MAGNITUDE (its
-// distance from that point) doubles as the "stay visible" radius below: a
-// circle of exactly this size, centered on the hover point, always reaches
-// the heart's own center — see the stay-visible comment in tick() for why
-// this specific value (not an arbitrary bigger one, and not a timer) is what
-// guarantees the visitor can actually reach the button to click it.
-// Bumped up from an earlier (10, -40) — reported live as sitting close
-// enough to visually overlap the native marker icon in some spots.
+// Where the floating heart sits relative to the hotspot marker's own TRUE
+// screen position (see tour-bridge's findHotspotAnchor) — up and to the
+// right, reading as a companion badge rather than replacing the native
+// marker. Fixed relative to the MARKER now, not the cursor — an earlier
+// version anchored to wherever the mouse happened to be at the moment hover
+// was first detected, which worked but could land at a slightly different
+// offset each time depending on exactly where within the hover area the
+// cursor was; this is now identical every time, for every hotspot.
 const HEART_OFFSET_X = 14;
 const HEART_OFFSET_Y = -58;
 const HEART_OFFSET_MAGNITUDE = Math.hypot(HEART_OFFSET_X, HEART_OFFSET_Y);
-// Half again the button's own rendered size (34px, see .tva-hotspot-heart in
-// assistant.css) plus a small margin — the second stay-visible zone, centered
-// on the button itself rather than the hover point, so a visitor already
-// resting on the button never loses it even though the hover-point circle
-// above only ever reaches the button's center, not its far edge.
-const HEART_HIT_RADIUS_PX = 20;
+// The one stay-visible zone (see tick()): once hover ends, the heart holds
+// its last projected position, and stays visible as long as the mouse is
+// within this radius of THAT point — comfortably covers both the marker
+// itself (exactly HEART_OFFSET_MAGNITUDE away, by construction) and the
+// button's own hitbox a bit beyond that, so the visitor always has a clear
+// path from "hovering the marker" to "clicking the heart".
+const STAY_VISIBLE_RADIUS_PX = HEART_OFFSET_MAGNITUDE + 15;
 
 const HEART_SVG =
   '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
@@ -47,20 +54,27 @@ export interface HotspotHeartOverlayDeps {
  * currently pointing at. Independent of the chat widget entirely — reads/
  * writes the same shared WishlistState, but has no other coupling to it.
  *
- * Positioning is driven by 3DVista's OWN real-time hover signal (see
- * findEnabledDugmePrefix in tour-bridge), not a catalog yaw/pitch projection
- * — an earlier version projected each manifest entry's authored yaw/pitch to
- * screen and checked proximity to the mouse, which only ever worked in
- * whichever single panorama the catalog happened to record that yaw/pitch
- * for. Confirmed live that the same physical hotspot commonly appears in
- * several panoramas (different rooms/angles showing the same piece), so that
- * approach silently failed everywhere except one specific panorama per
- * product — this reads the tour's own live hover state instead, which is
- * correct in every panorama a hotspot appears in, no catalog coordinate
- * involved. Intentionally NOT a DOM-per-hotspot approach: 3DVista renders
- * hotspots on canvas/WebGL (confirmed live — no DOM element exists per
- * marker to attach a real `mouseenter` to), so this polls every animation
- * frame instead.
+ * Two independent signals, each doing exactly one job:
+ *  - WHICH hotspot is active, and whether to show anything at all: driven
+ *    by 3DVista's own real-time hover flag (findEnabledDugmePrefix in
+ *    tour-bridge) — correct in every panorama, no catalog coordinate
+ *    involved (an earlier version used the CATALOG's own authored
+ *    yaw/pitch for this too, which only ever worked in whichever single
+ *    panorama the catalog happened to record it for, since the same
+ *    physical hotspot commonly appears in several).
+ *  - WHERE to draw it: the marker's own TRUE per-panorama position (see
+ *    tour-bridge's findHotspotAnchor — found by CDP reflection on the
+ *    overlay's `items[0]`), projected to screen with the live camera via
+ *    projectToScreen. An earlier version anchored the heart to wherever the
+ *    mouse happened to be at the moment hover was first detected — worked,
+ *    but landed at a slightly different offset each time depending on where
+ *    within the hover area the cursor was, and could read as faint jitter.
+ *    This is now a fixed, identical offset from the marker for every
+ *    hotspot, independent of the mouse entirely.
+ *
+ * Intentionally NOT a DOM-per-hotspot approach: 3DVista renders hotspots on
+ * canvas/WebGL (confirmed live — no DOM element exists per marker to attach
+ * a real `mouseenter` to), so this polls every animation frame instead.
  */
 export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { element: HTMLElement; destroy: () => void } {
   const layer = document.createElement("div");
@@ -75,12 +89,12 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
   let mouseX = -9999;
   let mouseY = -9999;
   let current: HotspotManifestEntry | null = null;
-  // The mouse position at the moment `current` was last confirmed hovered
-  // (dugme enabled) — frozen once hover ends, so the two stay-visible zones
-  // in tick() have a fixed point to measure from instead of chasing a
-  // constantly-updating value.
-  let anchorX = 0;
-  let anchorY = 0;
+  // The heart's own last-projected screen position — recomputed fresh from
+  // the marker's true yaw/pitch every tick WHILE genuinely hovered, then
+  // held fixed once hover ends, so the one stay-visible zone in tick() has
+  // a stable point to measure from.
+  let heartX = 0;
+  let heartY = 0;
   // Updated by checkNativePreview below (polled independently) — while true,
   // the full preview page owns this role via previewHeartBtn (wishlist-
   // layer.ts), so this floating heart hides regardless of hover state.
@@ -206,53 +220,46 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
     }
 
     // Real-time "is the mouse over hotspot X right now" — driven by 3DVista's
-    // OWN dugme-enabled-on-hover flag (see findEnabledDugmePrefix), not a
-    // catalog yaw/pitch projection. This is what makes it work in EVERY
-    // panorama a hotspot appears in, not just the one the catalog happened to
-    // record — confirmed live that most products' hotspot exists in several
-    // panoramas but the catalog only ever captured one.
+    // OWN dugme-enabled-on-hover flag (see findEnabledDugmePrefix). Only
+    // decides WHICH hotspot is active; positioning below is independent of
+    // the mouse entirely.
     const hoveredPrefix = findEnabledDugmePrefix();
     if (hoveredPrefix) {
       const product = resolveProductForPrefix(hoveredPrefix);
       if (product) {
-        // Anchor set ONLY on the first tick this product is detected as
-        // hovered (current !== product covers both "nothing was shown yet"
-        // and "this is a different hotspot than before") — NOT re-set on
-        // every subsequent tick while still hovering the same one. An
-        // earlier version re-anchored every tick, which made the heart
-        // visibly chase the cursor around inside the hotspot's own hover
-        // area instead of staying put — reported live as wrong. Once
-        // anchored, the heart holds that exact spot regardless of how much
-        // more the mouse moves within (or, per the stay-visible zones
-        // below, just outside) the hover area.
-        if (current !== product) {
+        // The marker's own TRUE screen position this frame — read live
+        // (findHotspotAnchor) and projected with the current camera
+        // orientation, recomputed every tick while genuinely hovered. Since
+        // the camera doesn't move just from the visitor moving the mouse
+        // toward the button, this lands on the exact same pixel every time
+        // — no jitter, no dependency on exactly where within the hover area
+        // the cursor happened to be (an earlier version anchored to that
+        // instead, see git history).
+        const anchor = findHotspotAnchor(hoveredPrefix);
+        const camera = getCameraState();
+        const pt = anchor && camera ? projectToScreen(camera, anchor, window.innerWidth, window.innerHeight) : null;
+        if (pt && pt.visible) {
           current = product;
-          anchorX = mouseX;
-          anchorY = mouseY;
+          heartX = pt.x + HEART_OFFSET_X;
+          heartY = pt.y + HEART_OFFSET_Y;
+          showAt(heartX, heartY);
+          return;
         }
-        showAt(anchorX + HEART_OFFSET_X, anchorY + HEART_OFFSET_Y);
-        return;
       }
-      // Hovering a real hotspot, but it isn't in the catalog yet — nothing to
-      // show for THIS one; fall through to the stay-visible check below in
-      // case a different, already-shown heart is still reachable.
+      // Hovering a real hotspot, but it isn't in the catalog yet, or its
+      // anchor/camera couldn't be resolved this tick — nothing new to show;
+      // fall through to the stay-visible check below in case a previously
+      // shown heart is still reachable.
     }
 
     // Not directly hovering a mapped hotspot right now — keep any
-    // already-shown heart visible purely by DISTANCE (explicitly not a
-    // timer, per direction), frozen at its last hover position:
-    //  - within HEART_OFFSET_MAGNITUDE of that position (the same distance
-    //    used to place the heart, so this circle always reaches exactly to
-    //    the heart's own center — guarantees the cursor can get there), OR
-    //  - within HEART_HIT_RADIUS_PX of the heart's own center (covers the
-    //    button's far edge, which the circle above doesn't quite reach, and
-    //    lets the visitor rest on the button itself indefinitely).
+    // already-shown heart visible purely by DISTANCE from its last known
+    // (now frozen) position, explicitly not a timer per direction: gives
+    // the visitor a clear window to move from the marker to the button
+    // without the heart vanishing mid-transit.
     if (current) {
-      const heartX = anchorX + HEART_OFFSET_X;
-      const heartY = anchorY + HEART_OFFSET_Y;
-      const distToAnchor = Math.hypot(mouseX - anchorX, mouseY - anchorY);
       const distToHeart = Math.hypot(mouseX - heartX, mouseY - heartY);
-      if (distToAnchor <= HEART_OFFSET_MAGNITUDE || distToHeart <= HEART_HIT_RADIUS_PX) {
+      if (distToHeart <= STAY_VISIBLE_RADIUS_PX) {
         showAt(heartX, heartY);
         return;
       }
