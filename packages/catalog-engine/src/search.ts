@@ -28,6 +28,22 @@ function fieldMatches(field: string | undefined, filterValue: string): boolean {
   return normalize(field) === normalize(filterValue);
 }
 
+// `shape` is a free-form descriptive phrase (not a controlled enum like
+// category/section), so the model calling search_catalog can reasonably
+// pass "angolo" or "ad angolo" or "a L" for the exact same stored value —
+// strict equality made a real, reproduced bug: a shape filter of "angolo"
+// against a stored "ad angolo" returned zero matches even though the
+// product genuinely has that shape, which silently killed the very
+// use case (search by shape) this field exists for. Bidirectional
+// substring match tolerates that phrasing variance without turning into a
+// fuzzy/unbounded match.
+function shapeMatches(field: string | undefined, filterValue: string): boolean {
+  if (!field) return false;
+  const f = normalize(field);
+  const v = normalize(filterValue);
+  return f.includes(v) || v.includes(f);
+}
+
 function scoreProduct(product: Product, queryTokens: string[], stemmedQuery: string[]): number {
   let score = 0;
   const nameNorm = normalize(product.name);
@@ -52,6 +68,20 @@ function scoreProduct(product: Product, queryTokens: string[], stemmedQuery: str
   for (const token of queryTokens) {
     if (token.length < 2) continue;
     if (haystack.includes(token)) score += 3;
+  }
+
+  // shape/style get their own, heavier-weighted pass instead of being mixed
+  // into the generic haystack above: a free-text query naming a shape/style
+  // (e.g. "divano ad angolo") must rank the products that actually HAVE that
+  // shape/style above same-category products that only match on the generic
+  // category keyword ("divano") — otherwise every sofa ties on category and
+  // the genuinely-matching one never stands out (confirmed live: without
+  // this, "Cerco un divano ad angolo" scored all 5 catalog sofas equally,
+  // since none of the generic keyword lists mention "angolo").
+  const shapeStyleHaystack = [product.shape ?? "", ...product.style].map(normalize).join(" ");
+  for (const token of queryTokens) {
+    if (token.length < 3) continue;
+    if (shapeStyleHaystack.includes(token)) score += 6;
   }
 
   // Controlled fuzzy match on name tokens (distance cap keeps it "controlled").
@@ -80,17 +110,25 @@ export function searchCatalog(query: string, filters: SearchFilters, products: P
     pool = pool.filter((p) => p.materials.some((m) => fieldMatches(m, filters.material!)));
   }
   if (filters.shape) {
-    pool = pool.filter((p) => fieldMatches(p.shape, filters.shape!));
+    pool = pool.filter((p) => shapeMatches(p.shape, filters.shape!));
   }
 
   const queryTokens = tokenize(query);
 
   // Empty query (e.g. a category/color/material-only filter call, no free
-  // text) isn't "low confidence" — there's nothing to score against, so
-  // the filtered pool itself IS the answer, taken as-is.
+  // text) isn't "low confidence" as long as the filter actually matched
+  // something — there's nothing to score against, so the filtered pool
+  // itself IS the answer, taken as-is. But an EMPTY pool here still means
+  // low confidence: a shape/style/material/color filter that matched zero
+  // products is exactly the case that should fall through to the full-
+  // catalog listing (see catalog-listing.ts) so the model can reason about
+  // what's actually available instead of silently returning nothing.
+  // Confirmed live: this branch used to return `lowConfidence: false`
+  // unconditionally, so a zero-match filtered search (e.g. shape="angolare"
+  // with no such product) never triggered the fallback at all.
   if (queryTokens.length === 0) {
     const asIs = pool.slice(0, MAX_CANDIDATES).map((product) => ({ product, score: 0 }));
-    return { candidates: asIs, lowConfidence: false };
+    return { candidates: asIs, lowConfidence: pool.length === 0 };
   }
 
   const stemmedQuery = queryTokens.map(stem);

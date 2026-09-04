@@ -29,6 +29,17 @@ const scraped = readJsonIfExists(path.join(TOUR_DIR, "scraped-products.json"), {
 
 const manualByLabel = new Map(manualCaptures.map((c) => [c.product_label, c]));
 
+// Enriched data (colors/materials/shape/style) only ever enters catalog.json
+// via the catalog.xlsx -> xlsx-to-json.mjs roundtrip (Fase 3, human+Claude
+// verified) or the style/compatible_with inference script — this build
+// script has no source data for any of them. Re-running it (e.g. after new
+// products get scraped/matched) must not silently wipe that prior work, so
+// the previous catalog.json is loaded here and any existing non-empty
+// colors/materials/shape/style for a product_id is carried forward instead
+// of being reset to the hardcoded empty defaults below.
+const previousCatalog = readJsonIfExists(path.join(CLIENT_DIR, "catalog.json"), []);
+const previousById = new Map(previousCatalog.map((p) => [p.product_id, p]));
+
 // Category value stored on the product is CLIENT-FACING (Febal Casa is an
 // Italian brand — the assistant's prose is forced to Italian in prompt.md,
 // and this field can end up quoted/surfaced too, e.g. in card metadata or a
@@ -170,13 +181,15 @@ function buildRecord(row, isMatched) {
     (scrapedEntry && scrapedEntry.description) ||
     `${name} — pieza de la colección Febal Casa, sección ${row.casa || ""}.`.trim();
 
+  const previous = previousById.get(productId);
+
   return {
     product_id: productId,
     name,
     category,
     description,
-    colors: [],
-    materials: [],
+    colors: previous?.colors?.length ? previous.colors : [],
+    materials: previous?.materials?.length ? previous.materials : [],
     keywords: keywordsFor(name, category, description),
     synonyms: [],
     section: row.casa || "Showroom",
@@ -189,6 +202,9 @@ function buildRecord(row, isMatched) {
     detail_url: link,
     alternatives_group: slugify(category),
     active: hasCoords,
+    shape: previous?.shape || undefined,
+    style: previous?.style?.length ? previous.style : [],
+    compatible_with: previous?.compatible_with?.length ? previous.compatible_with : [],
     // internal bookkeeping fields, stripped before writing final files:
     _needs_review: !hasCoords || !scrapedEntry,
     _coord_source: isMatched ? "auto-extracted" : manual ? "manual-capture" : "none",
@@ -218,13 +234,13 @@ fs.writeFileSync(path.join(CLIENT_DIR, "catalog.json"), JSON.stringify(clean, nu
 const HEADERS = [
   "product_id", "name", "category", "description", "colors", "materials", "keywords",
   "synonyms", "section", "media_name", "yaw", "pitch", "fov", "hotspot_name", "image_url",
-  "detail_url", "alternatives_group", "active",
+  "detail_url", "alternatives_group", "active", "shape", "style",
 ];
 const rows = [HEADERS, ...clean.map((r) => [
   r.product_id, r.name, r.category, r.description, r.colors.join(", "), r.materials.join(", "),
   r.keywords.join(", "), r.synonyms.join(", "), r.section, r.media_name ?? "",
   r.yaw, r.pitch, r.fov, r.hotspot_name ?? "", r.image_url, r.detail_url ?? "",
-  r.alternatives_group, r.active ? "TRUE" : "FALSE",
+  r.alternatives_group, r.active ? "TRUE" : "FALSE", r.shape ?? "", r.style.join(", "),
 ])];
 const ws = xlsx.utils.aoa_to_sheet(rows);
 const wb = xlsx.utils.book_new();

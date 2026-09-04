@@ -9,9 +9,13 @@ import xlsx from "xlsx";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-const ARRAY_FIELDS = new Set(["colors", "materials", "keywords", "synonyms"]);
+const ARRAY_FIELDS = new Set(["colors", "materials", "keywords", "synonyms", "style"]);
 const NUMBER_FIELDS = new Set(["yaw", "pitch", "fov"]);
 const BOOLEAN_FIELDS = new Set(["active"]);
+// hotspot_name/detail_url are `z.string().nullable()` in the schema, so an
+// empty cell must become `null`. `shape` is `z.string().optional()` (NOT
+// nullable) — an empty cell must stay "" (or be omitted), never `null`, or
+// CatalogSchema.parse() rejects every row without a shape value yet.
 const NULLABLE_STRING_FIELDS = new Set(["hotspot_name", "detail_url"]);
 
 function coerceCell(field, value) {

@@ -38,7 +38,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-100-b-104-boiserie",
@@ -78,7 +82,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-100-b-106-divano-balmoral",
@@ -118,7 +126,15 @@
     "image_url": "assets/febal-casa/products/balmoral.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/balmoral/",
     "alternatives_group": "divani",
-    "active": true
+    "active": true,
+    "shape": "ad angolo",
+    "style": [
+      "Contemporáneo",
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-100-b-109-tavolino-rio"
+    ]
   },
   {
     "product_id": "box-100-b-109-tavolino-rio",
@@ -156,7 +172,13 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/rio/",
     "alternatives_group": "tavolini",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-100-b-106-divano-balmoral"
+    ]
   },
   {
     "product_id": "box-100-b-110-tavolino-rio",
@@ -194,7 +216,13 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/rio/",
     "alternatives_group": "tavolini",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-100-b-106-divano-balmoral"
+    ]
   },
   {
     "product_id": "box-100-b-125-boiserie",
@@ -234,7 +262,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-120-b-121-cucina-origina-anta-square-cannettato",
@@ -271,7 +303,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-120-b-122-sistema-origina",
@@ -304,7 +340,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-120-b-123-sistema-origina",
@@ -337,7 +377,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-140-b-141-sistema-diciotto",
@@ -375,7 +419,14 @@
     "image_url": "assets/febal-casa/products/diciotto.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/diciotto/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-140-b-142-libreria-trenta",
+      "box-140-b-146-madie-aurora"
+    ]
   },
   {
     "product_id": "box-140-b-142-libreria-trenta",
@@ -415,7 +466,14 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-140-b-141-sistema-diciotto",
+      "box-140-b-146-madie-aurora"
+    ]
   },
   {
     "product_id": "box-140-b-143-libreria-trenta",
@@ -455,7 +513,11 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-140-b-146-madie-aurora",
@@ -492,7 +554,14 @@
     "image_url": "assets/febal-casa/products/aurora.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/aurora/",
     "alternatives_group": "madie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-140-b-141-sistema-diciotto",
+      "box-140-b-142-libreria-trenta"
+    ]
   },
   {
     "product_id": "box-140-b-148-tavolino-rio",
@@ -530,7 +599,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/rio/",
     "alternatives_group": "tavolini",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-160-b-161-armadio-profile-block",
@@ -572,7 +645,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-block/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-160-b-162-libreria-lapis",
+      "box-160-b-166-pouff-windsor",
+      "box-160-b-167-boiserie-tv"
+    ]
   },
   {
     "product_id": "box-160-b-162-libreria-lapis",
@@ -612,7 +693,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lapis/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Minimal"
+    ],
+    "compatible_with": [
+      "box-160-b-161-armadio-profile-block",
+      "box-160-b-166-pouff-windsor",
+      "box-160-b-167-boiserie-tv"
+    ]
   },
   {
     "product_id": "box-160-b-166-pouff-windsor",
@@ -651,7 +740,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/windsor/",
     "alternatives_group": "pouf",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-160-b-161-armadio-profile-block",
+      "box-160-b-162-libreria-lapis",
+      "box-160-b-167-boiserie-tv"
+    ]
   },
   {
     "product_id": "box-160-b-167-boiserie-tv",
@@ -691,7 +788,15 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-160-b-161-armadio-profile-block",
+      "box-160-b-162-libreria-lapis",
+      "box-160-b-166-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-170-b-172-sistema-origina",
@@ -728,7 +833,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-170-b-173-sistema-origina",
@@ -765,7 +874,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-170-b-174-sistema-origina",
@@ -802,7 +915,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-180-b-181-armadio-barret-con-portale",
@@ -845,7 +962,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ispirazioni/armadio-con-passaggio-con-ponte/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-180-b-182-libreria-trenta",
+      "box-180-b-186-boiserie"
+    ]
   },
   {
     "product_id": "box-180-b-182-libreria-trenta",
@@ -885,7 +1009,14 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-180-b-181-armadio-barret-con-portale",
+      "box-180-b-186-boiserie"
+    ]
   },
   {
     "product_id": "box-180-b-186-boiserie",
@@ -925,7 +1056,14 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-180-b-181-armadio-barret-con-portale",
+      "box-180-b-182-libreria-trenta"
+    ]
   },
   {
     "product_id": "box-200-b-201-libreria-trenta-anta-libeskind022",
@@ -967,7 +1105,11 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-200-b-202-divano-camden",
@@ -1007,7 +1149,14 @@
     "image_url": "assets/febal-casa/products/camden.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/camden/",
     "alternatives_group": "divani",
-    "active": true
+    "active": true,
+    "style": [
+      "Cálido acogedor",
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-200-b-204-poltrone-astor"
+    ]
   },
   {
     "product_id": "box-200-b-203-divano-camden",
@@ -1047,7 +1196,14 @@
     "image_url": "assets/febal-casa/products/camden.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/camden/",
     "alternatives_group": "divani",
-    "active": true
+    "active": true,
+    "style": [
+      "Cálido acogedor",
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-200-b-204-poltrone-astor"
+    ]
   },
   {
     "product_id": "box-200-b-204-poltrone-astor",
@@ -1085,7 +1241,14 @@
     "image_url": "assets/febal-casa/products/astor.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/astor/",
     "alternatives_group": "poltrone",
-    "active": true
+    "active": true,
+    "style": [
+      "Cálido acogedor",
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-200-b-202-divano-camden"
+    ]
   },
   {
     "product_id": "box-200-b-205-tavolini-ink",
@@ -1121,7 +1284,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/ink/",
     "alternatives_group": "altro",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-220-b-221-cucina-origina-anta-libeskind022",
@@ -1158,7 +1325,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-libeskind/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-220-b-222-sistema-origina",
+      "box-220-b-223-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-220-b-222-sistema-origina",
@@ -1191,7 +1365,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-libeskind/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-220-b-221-cucina-origina-anta-libeskind022",
+      "box-220-b-223-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-220-b-223-pouff-windsor",
@@ -1230,7 +1411,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/windsor/",
     "alternatives_group": "pouf",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-220-b-221-cucina-origina-anta-libeskind022",
+      "box-220-b-222-sistema-origina"
+    ]
   },
   {
     "product_id": "box-240-b-241-libreria-trenta",
@@ -1270,7 +1458,14 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-240-b-242-tavolo-phoenix",
+      "box-240-b-244-madia-libeskind022"
+    ]
   },
   {
     "product_id": "box-240-b-242-tavolo-phoenix",
@@ -1308,7 +1503,14 @@
     "image_url": "assets/febal-casa/products/phoenix.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/phoenix/",
     "alternatives_group": "tavoli",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-240-b-241-libreria-trenta",
+      "box-240-b-244-madia-libeskind022"
+    ]
   },
   {
     "product_id": "box-240-b-244-madia-libeskind022",
@@ -1348,7 +1550,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/libeskind022/",
     "alternatives_group": "madie",
-    "active": true
+    "active": true,
+    "style": [
+      "Minimal",
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-240-b-241-libreria-trenta",
+      "box-240-b-242-tavolo-phoenix"
+    ]
   },
   {
     "product_id": "box-240-b-245-poltrona-vivienne",
@@ -1386,7 +1596,12 @@
     "image_url": "assets/febal-casa/products/vivienne.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/vivienne/",
     "alternatives_group": "poltrone",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante",
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-260-b-261-armadio-collezione-momenti",
@@ -1430,7 +1645,11 @@
     "image_url": "assets/febal-casa/products/mobili-di-servizi-laundry.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-260-b-264-boiserie",
@@ -1470,7 +1689,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-280-b-281-letto-couple",
@@ -1507,7 +1730,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": null,
     "alternatives_group": "camera-da-letto",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-280-b-284-poltrona-isabelle",
@@ -1546,7 +1773,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/isabelle/",
     "alternatives_group": "poltrone",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante",
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-280-b-285-specchio-polar"
+    ]
   },
   {
     "product_id": "box-280-b-285-specchio-polar",
@@ -1581,7 +1815,13 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/polar/",
     "alternatives_group": "altro",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-280-b-284-poltrona-isabelle"
+    ]
   },
   {
     "product_id": "box-290-b-291-boiserie",
@@ -1621,7 +1861,14 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-290-b-293-cabina-armadio-lapis",
+      "box-290-b-295-armadio-lewitt-plus"
+    ]
   },
   {
     "product_id": "box-290-b-293-cabina-armadio-lapis",
@@ -1662,7 +1909,13 @@
     "image_url": "assets/febal-casa/products/lapis.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/cabine-armadio/lapis/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-290-b-291-boiserie"
+    ]
   },
   {
     "product_id": "box-290-b-294-boiserie",
@@ -1702,7 +1955,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-290-b-295-armadio-lewitt-plus",
@@ -1743,7 +2000,13 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lewitt-plus/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-290-b-291-boiserie"
+    ]
   },
   {
     "product_id": "box-300-b-301-sistema-diciotto",
@@ -1781,7 +2044,13 @@
     "image_url": "assets/febal-casa/products/diciotto.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/diciotto/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-300-b-303-divano-melrose"
+    ]
   },
   {
     "product_id": "box-300-b-302-libreria-trenta",
@@ -1821,7 +2090,13 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-300-b-308-gruppo-notte-marlene"
+    ]
   },
   {
     "product_id": "box-300-b-303-divano-melrose",
@@ -1860,7 +2135,15 @@
     "image_url": "assets/febal-casa/products/melrose.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/melrose/",
     "alternatives_group": "divani",
-    "active": true
+    "active": true,
+    "shape": "ad angolo",
+    "style": [
+      "Cálido acogedor",
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-300-b-301-sistema-diciotto"
+    ]
   },
   {
     "product_id": "box-300-b-304-poltrona-andy",
@@ -1898,7 +2181,12 @@
     "image_url": "assets/febal-casa/products/andy.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/andy/",
     "alternatives_group": "poltrone",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo",
+      "Cálido acogedor"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-300-b-308-gruppo-notte-marlene",
@@ -1940,7 +2228,13 @@
     "image_url": "assets/febal-casa/products/febal-notte-gruppo-como-e-comodino-marlene.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/febal-notte-gruppo-como-e-comodino-marlene/",
     "alternatives_group": "camera-da-letto",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-300-b-302-libreria-trenta"
+    ]
   },
   {
     "product_id": "box-320-b-321-cucina-modula-anta-square",
@@ -1976,7 +2270,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/modula-anta-square/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-320-b-322-tavolo-madeira",
+      "box-320-b-323-sedia-nina",
+      "box-320-b-324-madia-leaf"
+    ]
   },
   {
     "product_id": "box-320-b-322-tavolo-madeira",
@@ -2010,7 +2312,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/madeira/ ",
     "alternatives_group": "tavoli",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-320-b-321-cucina-modula-anta-square",
+      "box-320-b-323-sedia-nina",
+      "box-320-b-324-madia-leaf"
+    ]
   },
   {
     "product_id": "box-320-b-323-sedia-nina",
@@ -2048,7 +2358,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/nina/",
     "alternatives_group": "sedie",
-    "active": true
+    "active": true,
+    "style": [
+      "Cálido acogedor"
+    ],
+    "compatible_with": [
+      "box-320-b-321-cucina-modula-anta-square",
+      "box-320-b-322-tavolo-madeira",
+      "box-320-b-324-madia-leaf"
+    ]
   },
   {
     "product_id": "box-320-b-324-madia-leaf",
@@ -2086,7 +2404,15 @@
     "image_url": "assets/febal-casa/products/leaf.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/leaf/",
     "alternatives_group": "madie",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-320-b-321-cucina-modula-anta-square",
+      "box-320-b-322-tavolo-madeira",
+      "box-320-b-323-sedia-nina"
+    ]
   },
   {
     "product_id": "box-340-b-342-libreria-trenta",
@@ -2126,7 +2452,14 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-340-b-344-gruppo-notte-marlene",
+      "box-340-b-345-boiserie"
+    ]
   },
   {
     "product_id": "box-340-b-344-gruppo-notte-marlene",
@@ -2169,7 +2502,15 @@
     "image_url": "assets/febal-casa/products/astrid.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/astrid/",
     "alternatives_group": "camera-da-letto",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo",
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-340-b-342-libreria-trenta",
+      "box-340-b-345-boiserie"
+    ]
   },
   {
     "product_id": "box-340-b-345-boiserie",
@@ -2209,7 +2550,14 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-340-b-342-libreria-trenta",
+      "box-340-b-344-gruppo-notte-marlene"
+    ]
   },
   {
     "product_id": "box-360-b-361-armadio-collezione-momenti",
@@ -2248,7 +2596,15 @@
     "image_url": "assets/febal-casa/products/cameretta.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-360-b-362-letto-collezione-momenti",
+      "box-360-b-363-libreria-collezione-momenti",
+      "box-360-b-364-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-360-b-362-letto-collezione-momenti",
@@ -2287,7 +2643,15 @@
     "image_url": "assets/febal-casa/products/cameretta.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
     "alternatives_group": "camera-da-letto",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-360-b-361-armadio-collezione-momenti",
+      "box-360-b-363-libreria-collezione-momenti",
+      "box-360-b-364-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-360-b-363-libreria-collezione-momenti",
@@ -2325,7 +2689,15 @@
     "image_url": "assets/febal-casa/products/cameretta.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-360-b-361-armadio-collezione-momenti",
+      "box-360-b-362-letto-collezione-momenti",
+      "box-360-b-364-pouff-windsor"
+    ]
   },
   {
     "product_id": "box-360-b-364-pouff-windsor",
@@ -2364,7 +2736,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/windsor/",
     "alternatives_group": "pouf",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-360-b-361-armadio-collezione-momenti",
+      "box-360-b-362-letto-collezione-momenti",
+      "box-360-b-363-libreria-collezione-momenti"
+    ]
   },
   {
     "product_id": "box-360-b-365-armadio-collezione-momenti",
@@ -2403,7 +2783,11 @@
     "image_url": "assets/febal-casa/products/cameretta.jpg",
     "detail_url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-400-b-401-boiserie",
@@ -2443,7 +2827,11 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-400-b-401-libreria-trenta",
@@ -2483,7 +2871,13 @@
     "image_url": "assets/febal-casa/products/trenta.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/trenta/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-400-b-402-madia-onda-zaha-hadid-architects"
+    ]
   },
   {
     "product_id": "box-400-b-402-madia-onda-zaha-hadid-architects",
@@ -2521,7 +2915,13 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/madia-onda/",
     "alternatives_group": "madie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-400-b-401-libreria-trenta"
+    ]
   },
   {
     "product_id": "box-400-b-403-divano-navigli",
@@ -2560,7 +2960,11 @@
     "image_url": "assets/febal-casa/products/navigli.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/navigli/",
     "alternatives_group": "divani",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-420-b-421-libreria-lapis",
@@ -2600,7 +3004,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lapis/",
     "alternatives_group": "librerie",
-    "active": true
+    "active": true,
+    "style": [
+      "Minimal"
+    ],
+    "compatible_with": [
+      "box-420-b-422-sistema-origina",
+      "box-420-b-423-cucina-origina-anta-sagoma-37"
+    ]
   },
   {
     "product_id": "box-420-b-422-sistema-origina",
@@ -2639,7 +3050,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-420-b-421-libreria-lapis",
+      "box-420-b-423-cucina-origina-anta-sagoma-37"
+    ]
   },
   {
     "product_id": "box-420-b-423-cucina-origina-anta-sagoma-37",
@@ -2679,7 +3097,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-420-b-421-libreria-lapis",
+      "box-420-b-422-sistema-origina"
+    ]
   },
   {
     "product_id": "box-420-b-424-cucina-origina-anta-sagoma-37",
@@ -2719,7 +3144,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-420-b-421-libreria-lapis",
+      "box-420-b-422-sistema-origina"
+    ]
   },
   {
     "product_id": "box-440-b-441-boiserie",
@@ -2759,7 +3191,16 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-440-b-442-tavolo-leeds",
+      "box-440-b-443-sedia-nives-con-braccioli",
+      "box-500-b-501-isola-onda-zaha-hadid-architects",
+      "box-500-b-502-sistema-origina-anta-square"
+    ]
   },
   {
     "product_id": "box-440-b-442-tavolo-leeds",
@@ -2797,7 +3238,16 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/leeds/",
     "alternatives_group": "tavoli",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-440-b-441-boiserie",
+      "box-440-b-443-sedia-nives-con-braccioli",
+      "box-500-b-501-isola-onda-zaha-hadid-architects",
+      "box-500-b-502-sistema-origina-anta-square"
+    ]
   },
   {
     "product_id": "box-440-b-443-sedia-nives-con-braccioli",
@@ -2835,7 +3285,17 @@
     "image_url": "assets/febal-casa/products/nives.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/nives/",
     "alternatives_group": "sedie",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante",
+      "Cálido acogedor"
+    ],
+    "compatible_with": [
+      "box-440-b-441-boiserie",
+      "box-440-b-442-tavolo-leeds",
+      "box-500-b-501-isola-onda-zaha-hadid-architects",
+      "box-500-b-502-sistema-origina-anta-square"
+    ]
   },
   {
     "product_id": "box-460-b-461-armadio-scorrevole-rodin",
@@ -2874,7 +3334,11 @@
     "image_url": "assets/febal-casa/products/rodin.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/rodin/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-460-b-465-cabina-armadio-hype",
@@ -2916,7 +3380,11 @@
     "image_url": "assets/febal-casa/products/hype.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/hype/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Minimal"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-500-b-501-isola-onda-zaha-hadid-architects",
@@ -2954,7 +3422,16 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-isola-onda/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-440-b-441-boiserie",
+      "box-440-b-442-tavolo-leeds",
+      "box-440-b-443-sedia-nives-con-braccioli",
+      "box-500-b-502-sistema-origina-anta-square"
+    ]
   },
   {
     "product_id": "box-500-b-502-sistema-origina-anta-square",
@@ -2993,7 +3470,16 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-square/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-440-b-441-boiserie",
+      "box-440-b-442-tavolo-leeds",
+      "box-440-b-443-sedia-nives-con-braccioli",
+      "box-500-b-501-isola-onda-zaha-hadid-architects"
+    ]
   },
   {
     "product_id": "box-500-b-503-sistema-origina-anta-square",
@@ -3032,7 +3518,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-square/",
     "alternatives_group": "sistemi-modulari",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-600-b-601-armadio-profile-leather",
@@ -3074,7 +3564,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-leather/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-600-b-602-armadio-profile-leather",
@@ -3116,7 +3610,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-leather/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-600-b-603-armadio-profile-solid",
@@ -3157,7 +3655,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-solid/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-600-b-604-armadio-profile-solid",
@@ -3198,7 +3700,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-solid/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-600-b-605-armadio-profile-reflex",
@@ -3240,7 +3746,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-reflex/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-620-b-621-cucina-anta-telaio-alluminio-vetro",
+      "box-620-b-623-sgabello-lola"
+    ]
   },
   {
     "product_id": "box-600-b-607-armadio-battente-aurora",
@@ -3281,7 +3794,11 @@
     "image_url": "assets/febal-casa/products/aurora.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/aurora-porta-battente/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-620-b-621-cucina-anta-telaio-alluminio-vetro",
@@ -3320,7 +3837,15 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-alluminio/",
     "alternatives_group": "cucine",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-600-b-605-armadio-profile-reflex",
+      "box-620-b-623-sgabello-lola",
+      "box-620-b-622-armadio-barret"
+    ]
   },
   {
     "product_id": "box-620-b-622-armadio-barret",
@@ -3361,7 +3886,14 @@
     "image_url": "assets/febal-casa/products/barret.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/barret/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Minimal"
+    ],
+    "compatible_with": [
+      "box-620-b-621-cucina-anta-telaio-alluminio-vetro",
+      "box-620-b-623-sgabello-lola"
+    ]
   },
   {
     "product_id": "box-620-b-623-sgabello-lola",
@@ -3400,7 +3932,16 @@
     "image_url": "assets/febal-casa/products/lola.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lola/",
     "alternatives_group": "sgabelli",
-    "active": true
+    "active": true,
+    "style": [
+      "Cálido acogedor",
+      "Minimal"
+    ],
+    "compatible_with": [
+      "box-600-b-605-armadio-profile-reflex",
+      "box-620-b-621-cucina-anta-telaio-alluminio-vetro",
+      "box-620-b-622-armadio-barret"
+    ]
   },
   {
     "product_id": "box-640-b-641-armadio-lumia",
@@ -3441,7 +3982,14 @@
     "image_url": "assets/febal-casa/products/lumia.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lewitt-lumia/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-640-b-644-tavolo-madeira",
+      "box-640-b-645-sedia-dea"
+    ]
   },
   {
     "product_id": "box-640-b-642-armadio-lumia",
@@ -3482,7 +4030,14 @@
     "image_url": "assets/febal-casa/products/lumia.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lewitt-lumia/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-640-b-644-tavolo-madeira",
+      "box-640-b-645-sedia-dea"
+    ]
   },
   {
     "product_id": "box-640-b-643-armadio-lewitt-plus",
@@ -3523,7 +4078,11 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/lewitt-plus/",
     "alternatives_group": "armadi",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": []
   },
   {
     "product_id": "box-640-b-644-tavolo-madeira",
@@ -3562,7 +4121,15 @@
     "image_url": "assets/febal-casa/products/madeira.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/madeira/",
     "alternatives_group": "tavoli",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo",
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-640-b-641-armadio-lumia",
+      "box-640-b-645-sedia-dea"
+    ]
   },
   {
     "product_id": "box-640-b-645-sedia-dea",
@@ -3601,7 +4168,15 @@
     "image_url": "assets/febal-casa/products/dea.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/dea/",
     "alternatives_group": "sedie",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante",
+      "Cálido acogedor"
+    ],
+    "compatible_with": [
+      "box-640-b-641-armadio-lumia",
+      "box-640-b-644-tavolo-madeira"
+    ]
   },
   {
     "product_id": "box-660-b-664-tavolo-daniel",
@@ -3639,7 +4214,14 @@
     "image_url": "assets/febal-casa/placeholder-product.png",
     "detail_url": "https://www.febalcasa.com/it/prodotti/daniel/",
     "alternatives_group": "tavoli",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante"
+    ],
+    "compatible_with": [
+      "box-660-b-665-sedia-dea",
+      "box-660-b-667-boiserie"
+    ]
   },
   {
     "product_id": "box-660-b-665-sedia-dea",
@@ -3678,7 +4260,15 @@
     "image_url": "assets/febal-casa/products/dea.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/dea/",
     "alternatives_group": "sedie",
-    "active": true
+    "active": true,
+    "style": [
+      "Clásico elegante",
+      "Cálido acogedor"
+    ],
+    "compatible_with": [
+      "box-660-b-664-tavolo-daniel",
+      "box-660-b-667-boiserie"
+    ]
   },
   {
     "product_id": "box-660-b-667-boiserie",
@@ -3718,6 +4308,13 @@
     "image_url": "assets/febal-casa/products/boiserie.jpg",
     "detail_url": "https://www.febalcasa.com/it/prodotti/boiserie/",
     "alternatives_group": "boiserie",
-    "active": true
+    "active": true,
+    "style": [
+      "Contemporáneo"
+    ],
+    "compatible_with": [
+      "box-660-b-664-tavolo-daniel",
+      "box-660-b-665-sedia-dea"
+    ]
   }
 ]
