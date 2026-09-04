@@ -29,32 +29,42 @@ const scraped = readJsonIfExists(path.join(TOUR_DIR, "scraped-products.json"), {
 
 const manualByLabel = new Map(manualCaptures.map((c) => [c.product_label, c]));
 
+// Category value stored on the product is CLIENT-FACING (Febal Casa is an
+// Italian brand — the assistant's prose is forced to Italian in prompt.md,
+// and this field can end up quoted/surfaced too, e.g. in card metadata or a
+// future filter chip) — it must be Italian, not the internal matching
+// language. Search-time multilingual coverage (a visitor typing "sofa" or
+// "sillón") is handled separately below by CATEGORY_SYNONYMS, keyed by
+// this same Italian label, NOT by mixing languages into the label itself
+// (that was the previous bug: category was literally "sofás", so any path
+// that echoed it back — even indirectly — leaked Spanish into an
+// all-Italian assistant).
 const CATEGORY_RULES = [
-  [/divano letto|sof[aà] cama/i, "sofás cama"],
-  [/divano/i, "sofás"],
-  [/poltrona|poltrone/i, "sillones"],
-  [/tavolino/i, "mesas de centro"],
-  [/tavolo/i, "mesas"],
-  [/sedia|sedie/i, "sillas"],
-  [/sgabello/i, "taburetes"],
-  [/armadio|cabina armadio/i, "armarios"],
-  [/cassettiera/i, "cómodas"],
-  [/libreria/i, "librerías"],
-  [/madia|madie/i, "aparadores"],
-  [/cucina|isola/i, "cocinas"],
-  [/boiserie/i, "paneles decorativos"],
-  [/letto|gruppo notte/i, "dormitorio"],
-  [/consolle/i, "consolas"],
-  [/pouff/i, "puffs"],
-  [/vitrina/i, "vitrinas"],
-  [/sistema|origina|diciotto/i, "sistemas modulares"],
+  [/divano letto|sof[aà] cama/i, "divani letto"],
+  [/divano/i, "divani"],
+  [/poltrona|poltrone/i, "poltrone"],
+  [/tavolino/i, "tavolini"],
+  [/tavolo/i, "tavoli"],
+  [/sedia|sedie/i, "sedie"],
+  [/sgabello/i, "sgabelli"],
+  [/armadio|cabina armadio/i, "armadi"],
+  [/cassettiera/i, "cassettiere"],
+  [/libreria/i, "librerie"],
+  [/madia|madie/i, "madie"],
+  [/cucina|isola/i, "cucine"],
+  [/boiserie/i, "boiserie"],
+  [/letto|gruppo notte/i, "camera da letto"],
+  [/consolle/i, "consolle"],
+  [/pouff/i, "pouf"],
+  [/vitrina/i, "vetrine"],
+  [/sistema|origina|diciotto/i, "sistemi modulari"],
 ];
 
 function categorize(name) {
   for (const [re, cat] of CATEGORY_RULES) {
     if (re.test(name)) return cat;
   }
-  return "otros";
+  return "altro";
 }
 
 // Extra multilingual (ES/IT/EN) terms per category, merged into every
@@ -62,25 +72,28 @@ function categorize(name) {
 // "chair") that never appears in the product's own name, which is the #1
 // reason search_catalog was scoring too few real matches and falling back
 // to its irrelevant array-order padding (see FASE... conversation bug).
+// Keyed by the Italian category label above (not by a Spanish string) —
+// the Spanish/English terms still live here as SEARCH synonyms, just no
+// longer as the stored/displayed category itself.
 const CATEGORY_SYNONYMS = {
-  "sofás": ["sofa", "sofá", "divano", "couch", "asiento"],
-  "sofás cama": ["sofa cama", "divano letto", "sofa bed", "sillon cama"],
-  "sillones": ["sillon", "sillón", "poltrona", "armchair"],
-  "mesas de centro": ["mesa de centro", "mesita", "tavolino", "coffee table"],
-  "mesas": ["mesa", "tavolo", "table", "comedor"],
-  "sillas": ["silla", "sedia", "chair", "asiento"],
-  "taburetes": ["taburete", "banqueta", "sgabello", "stool", "bar"],
-  "armarios": ["armario", "closet", "ropero", "armadio", "wardrobe", "cabina armadio", "vestidor"],
-  "cómodas": ["comoda", "cómoda", "cajonera", "cassettiera", "dresser"],
-  "librerías": ["libreria", "librería", "estanteria", "estantería", "bookshelf", "estante"],
-  "aparadores": ["aparador", "madia", "credenza", "sideboard", "buffet"],
-  "cocinas": ["cocina", "cucina", "kitchen", "isla"],
-  "paneles decorativos": ["panel", "boiserie", "revestimiento", "pared", "decorativo", "columna", "vertical"],
-  "dormitorio": ["cama", "letto", "bed", "dormitorio", "recamara", "recámara", "habitacion", "gruppo notte"],
-  "consolas": ["consola", "consolle", "console table", "recibidor"],
-  "puffs": ["puff", "pouff", "puf", "ottoman", "reposapies"],
-  "vitrinas": ["vitrina", "vetrina", "display cabinet"],
-  "sistemas modulares": ["sistema modular", "modular", "sistema"],
+  "divani": ["sofa", "sofá", "sofás", "divano", "couch", "asiento"],
+  "divani letto": ["sofa cama", "divano letto", "sofa bed", "sillon cama"],
+  "poltrone": ["sillon", "sillón", "sillones", "poltrona", "armchair"],
+  "tavolini": ["mesa de centro", "mesita", "tavolino", "coffee table"],
+  "tavoli": ["mesa", "mesas", "tavolo", "table", "comedor"],
+  "sedie": ["silla", "sillas", "sedia", "chair", "asiento"],
+  "sgabelli": ["taburete", "taburetes", "banqueta", "sgabello", "stool", "bar"],
+  "armadi": ["armario", "armarios", "closet", "ropero", "armadio", "wardrobe", "cabina armadio", "vestidor"],
+  "cassettiere": ["comoda", "cómoda", "cómodas", "cajonera", "cassettiera", "dresser"],
+  "librerie": ["libreria", "librería", "librerías", "estanteria", "estantería", "bookshelf", "estante"],
+  "madie": ["aparador", "aparadores", "madia", "credenza", "sideboard", "buffet"],
+  "cucine": ["cocina", "cocinas", "cucina", "kitchen", "isla"],
+  "boiserie": ["panel", "paneles decorativos", "boiserie", "revestimiento", "pared", "decorativo", "columna", "vertical"],
+  "camera da letto": ["cama", "dormitorio", "letto", "bed", "recamara", "recámara", "habitacion", "gruppo notte"],
+  "consolle": ["consola", "consolas", "consolle", "console table", "recibidor"],
+  "pouf": ["puff", "puffs", "pouff", "puf", "ottoman", "reposapies"],
+  "vetrine": ["vitrina", "vitrinas", "vetrina", "display cabinet"],
+  "sistemi modulari": ["sistema modular", "sistemas modulares", "modular", "sistema"],
 };
 
 const STOPWORDS = new Set([
