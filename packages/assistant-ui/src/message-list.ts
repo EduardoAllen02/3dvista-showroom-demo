@@ -18,15 +18,18 @@ export function createMessageList(
   // a safe, cheap way to identify the newly-added tail without diffing.
   let renderedMessageCount = 0;
 
-  // Never auto-follow to the bottom, even when a fresh response (however
-  // long — several proposal cards, alternatives, etc.) lands while the
-  // user is already at/near the bottom — explicit direction: the view must
-  // stay exactly where the user left it, full stop, not just "unless they
-  // were already at the bottom" (an earlier version only preserved position
-  // when scrolled UP, which still yanked the view down on every reply if
-  // the user happened to be at the bottom already — not what was wanted).
+  // Revised 2026-09-04 per client feedback (Andrea, Febal Casa): a fresh
+  // assistant reply with product cards was easy to miss, because the view
+  // never moved — the visitor had to notice and scroll manually. The old
+  // behavior (restore prevScrollTop unconditionally, never auto-follow) is
+  // kept for re-renders that do NOT add a new message — e.g. a wishlist
+  // heart toggled elsewhere still shouldn't yank the view — but a genuinely
+  // new message (index >= renderedMessageCount at call time, captured
+  // BEFORE it's overwritten below) now scrolls smoothly to reveal it.
   function render(messages: ChatMessage[]): void {
     const prevScrollTop = container.scrollTop;
+    const hasNewMessage = messages.length > renderedMessageCount;
+    let firstNewEl: HTMLElement | null = null;
     container.innerHTML = "";
     messages.forEach((message, index) => {
       const isNew = index >= renderedMessageCount;
@@ -35,6 +38,7 @@ export function createMessageList(
       if (isNew) bubble.classList.add("tva-msg-enter");
       renderFormattedText(bubble, message.text);
       container.appendChild(bubble);
+      if (isNew && !firstNewEl) firstNewEl = bubble;
 
       for (const card of message.cards) {
         // Every card in message.cards is a proposal (get_product/
@@ -51,7 +55,15 @@ export function createMessageList(
       }
     });
     renderedMessageCount = messages.length;
-    container.scrollTop = prevScrollTop;
+
+    if (hasNewMessage && firstNewEl) {
+      // Reveal the start of the new reply rather than jumping straight to
+      // the very bottom — with several cards in one reply, the visitor
+      // should land on the assistant's text/first card, not past it.
+      (firstNewEl as HTMLElement).scrollIntoView({ behavior: "smooth", block: "start" });
+    } else {
+      container.scrollTop = prevScrollTop;
+    }
   }
 
   function showTyping(): void {
