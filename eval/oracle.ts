@@ -33,8 +33,10 @@ export class Oracle {
       const fams = e.configuration.status === "known" ? e.configuration.value.filter((x) => x.dominant).flatMap((x) => x.color_family) : [];
       r = !fams.length ? "unknown" : fams.some((f) => this.under(f, c.value)) ? "yes" : "no";
     } else if (c.facet === "material") {
-      const mats = e.configuration.status === "known" ? e.configuration.value.map((x) => x.material).filter((m): m is string => !!m) : [];
-      r = !mats.length ? "unknown" : mats.some((m) => this.under(m, c.value)) ? "yes" : "no";
+      const parts = e.configuration.status === "known" ? e.configuration.value : [];
+      const mats = parts.map((x) => x.material).filter((m): m is string => !!m);
+      if (mats.some((m) => this.under(m, c.value))) r = "yes";
+      else r = parts.some((x) => x.dominant && x.material) ? "no" : "unknown";
     } else r = "unknown";
     if (c.op === "not" && r !== "unknown") r = r === "yes" ? "no" : "yes";
     return r;

@@ -181,7 +181,7 @@ export class Renderer {
     if (card.availability === "on_order") {
       const v = this.variantsText(card, lang, 3);
       if (v) out.push(`${T.on_order[lang]}: ${v}`);
-      if (card.shown_as) out.push(`${T.in_showroom[lang]}: ${card.shown_as}`);
+      if (card.shown_as) out.push(`${T.in_showroom[lang]}: ${localizeObserved(card.shown_as, lang)}`);
     }
     return out;
   }
@@ -258,6 +258,11 @@ const OBS: Record<string, { es: string; en: string }> = {
   bronzo: { es: "bronce", en: "bronze" }, champagne: { es: "champán", en: "champagne" }, metallizzato: { es: "metalizado", en: "metallic" },
   blu: { es: "azul", en: "blue" }, azzurro: { es: "azul claro", en: "light blue" }, rosso: { es: "rojo", en: "red" }, rosa: { es: "rosa", en: "pink" },
   giallo: { es: "amarillo", en: "yellow" }, cognac: { es: "coñac", en: "cognac" }, carbon: { es: "carbón", en: "carbon" }, grey: { es: "gris", en: "grey" },
+  caldo: { es: "cálido", en: "warm" }, talpa: { es: "topo", en: "taupe" }, perla: { es: "perla", en: "pearl" }, salvia: { es: "salvia", en: "sage" },
+  ghiaccio: { es: "hielo", en: "ice" }, miele: { es: "miel", en: "honey" }, carbone: { es: "carbón", en: "charcoal" }, fumé: { es: "ahumado", en: "smoked" },
+  vetro: { es: "vidrio", en: "glass" }, nocciola: { es: "avellana", en: "hazelnut" }, materico: { es: "texturizado", en: "textured" },
+  verdastro: { es: "verdoso", en: "greenish" }, lucido: { es: "brillante", en: "glossy" }, alluminio: { es: "aluminio", en: "aluminium" },
+  acciaio: { es: "acero", en: "steel" }, travertino: { es: "travertino", en: "travertine" },
   e: { es: "y", en: "and" },
 };
 export function localizeObserved(text: string, lang: Lang): string {

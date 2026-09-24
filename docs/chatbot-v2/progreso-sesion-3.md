@@ -8,7 +8,7 @@
 - **D2.** Modelo: **nada de Sonnet**. Se trabaja con el GPT actual (gpt-4o-mini) y luego se compara con GPT baratos (gpt-6-luna, gpt-5-mini, gpt-5-nano). gpt-4o "normal" queda descartado porque cuesta más que Sonnet.
 - **D3.** Umbral de error 0: queda el propuesto por defecto (pass^5 con datos revisados por Andrea + UX en vivo).
 - **D4.** "Llévame a X" con destino único navega directo. Es configurable.
-- **D5.** Sin respuesta todavía. **No se ha hecho ningún commit**; todo el trabajo va en archivos nuevos, salvo un export añadido en `packages/model-adapters/src/index.ts`.
+- **D5.** Hecho: commit baseline `b55c9a2` y commit del motor v2 `ed5e066` (sin push). Lo de este corte (capturas, Excel, diagrama) está sin commitear.
 
 ## Hecho
 
@@ -39,6 +39,51 @@
 - Cliente OpenAI con structured outputs (`packages/model-adapters/src/openai-json.ts`).
 - Ejecutor `scripts/v2-chat.mts` con 14 conversaciones (22 turnos) sobre los casos de uso.
 
+### Capturas del tour (88/88, 2026-09-23)
+- `scripts/cdp_nav_one.py`, una pieza por llamada, por API y sin arrastre.
+  - Hallazgo: `activePlayer.set("yaw"…)` cambia las propiedades pero **no repinta la vista**; `activePlayer.setPosition(yaw, pitch, 0, hfov)` sí.
+  - El widget "Llévame" usa `set()` en la misma panorámica, así que puede no moverse. Quedó como tarea aparte.
+- `placements.json` con 88 entradas binarias con evidencia:
+  - visible 87 (FEB-094 mal encuadrado);
+  - color 88, material 42, forma 88;
+  - opción oficial exacta 6.
+- **8 errores del catálogo v1 corregidos.** Ejemplos:
+  - FEB-004 Rio es de madera, no de mármol;
+  - FEB-027 Camden es verde, no "cognac";
+  - FEB-017 Windsor no es verde oliva;
+  - FEB-013 Aurora no tiene nogal.
+- **FEB-036 Vivienne.** El material queda SIN confirmar, así que el bot ya no dice "de piel" (verificado en la batería).
+- **Datos resueltos:**
+  - Arden (FEB-101) es cabecera de madera, no Soft: confirmado.
+  - Barret-Portale (FEB-099) es compatible con battente.
+  - FEB-056 se volvió a enlazar de Astrid a Marlene (`url-overrides.json`, pendiente de Andrea).
+  - FEB-034 Phoenix sí se ve (el "detrás de una puerta" era la cámara que no se movía).
+
+### Correcciones de datos y motor en este corte
+- **Codificación.** `facts-placement.py` y `facts-record.py` leían stdin como cp1252 y dañaban los acentos; ahora leen bytes UTF-8.
+- **Etiquetas de opciones.** `scripts/facts-clean-labels.py` limpia 467 etiquetas y guarda el original en `label_raw`:
+  - "Copia di FebalCasa_…_Finiture_";
+  - "C ";
+  - "Opacoosa/Lucidoosa/CosaAntico" → "Rosa antico";
+  - "Ilaccato".
+- **Material.** Un componente secundario ya no puede volverse el material dominante. El motor y el oráculo responden "no" solo si el material dominante es conocido.
+- **Forma expuesta.** Sale solo de la captura: la v1 mezclaba el rango del modelo, p. ej. Madeira "rotondo o ovale, allungabile".
+- **Ontología.** Nuevas formas:
+  - en U, cilíndrico, envolvente, sin brazos, con brazos;
+  - con reposapiés, sin puertas (a giorno), para TV;
+  - matrimonial, de una plaza.
+  - Además: "da terra a soffitto"; los colores nocciola/avellana y talpa; se resolvieron choques con categorías.
+- **Tarjetas y redactor.** Los colores observados se traducen: "grigio caldo" → "gris cálido". El redactor ya no escribe "se ve así".
+
+### Entregables
+- Excel de revisión: `~/Downloads/febal-casa-revision-2026-09-23.xlsx`.
+  - Se genera con `scripts/build-review-xlsx.py`.
+  - 11 hojas: piezas con foto, modelos, 5.138 opciones con muestra, sinónimos, colores → familia, materiales, estilos, armonías, ánimos, errores v1 y preguntas P1–P23.
+  - v2 del Excel (`febal-casa-revision-2026-09-23-v2.xlsx`): "Opciones oficiales" trae solo listas propias y de texto (2.392 filas), ordenadas como se recorre el tour. Las paletas genéricas quedan una sola vez: 34 en "Paletas por confirmar" y 399 opciones en "Paletas genéricas", en lugar de 2.746 filas repetidas.
+- Importador de la revisión: `scripts/import-review-xlsx.py` → `review.reviewed.json` + `review-corrections.json`.
+  - Un SI en "Paletas por confirmar" agrega los grupos a `promoted_palette_groups`, y el compilador los vuelve ofrecibles (alcance "model"), excepto en los modelos excluidos.
+- Diagrama interactivo: `docs/chatbot-v2/arquitectura-v2.html`, publicado en https://claude.ai/artifact/MdbnP2owKAdRB3mt1vCarU (privado; Edd lo comparte).
+
 ## Métricas de la suite (gpt-4o-mini, datos en modo dev, sin validar)
 
 | Corrida | Plantilla de respaldo | Reparaciones | Costo/turno | p50 | p95 |
@@ -46,6 +91,8 @@
 | run1 | 11/22 | 2 | $0.00086 | 4,0 s | 4,7 s |
 | run3 | 0/22 | 1 | $0.00077 | 2,9 s | 3,6 s |
 | run4 | 0/22 | 6 | $0.00085 | 2,6 s | 5,2 s |
+| run5 (datos de capturas) | 1/22 | 5 | $0.00081 | 2,9 s | 4,6 s |
+| run6 (+ ajustes de redacción) | 0/22 | 4 | $0.00094 | 2,6 s | 4,6 s |
 
 Las trazas completas están en `eval/runs/`.
 
@@ -62,10 +109,11 @@ Casos ya resueltos de punta a punta con datos reales:
 - **UC-15** negación.
 
 ## Siguiente
-1. **Capturas del tour** (esperan a Edd), para las piezas sin observación y las dudosas:
-   - FEB-036 Vivienne anotada como "pelle" a ojo: el bot dice "sí, de piel" y probablemente es Nabuk Eagle;
-   - Arden vs Arden Soft; Barret-Portale; Momenti; FEB-056 Astrid/Marlene.
-2. Excel de revisión para Andrea (Paso 6), incluidas las armonías y los estilos propuestos.
+1. Edd envía el Excel a Andrea. Con su respuesta:
+   - `python scripts/import-review-xlsx.py <archivo>`;
+   - aplicar `review-corrections.json`;
+   - `npx tsx scripts/build-catalog-v2.ts febal-casa --strict`.
+2. Tarea aparte: "Llévame" en la misma panorámica con `setPosition` (widget).
 3. Integración en `server` con el flag `ASSISTANT_ENGINE=v2` y el widget:
    - grupos y chips de motivo;
    - enlace "Sito ufficiale ↗";
@@ -73,8 +121,7 @@ Casos ya resueltos de punta a punta con datos reales:
 4. Bake-off de GPT baratos con la misma batería. Suite dorada sobre un catálogo ficticio congelado.
 
 ## Bloqueos
-- Las capturas necesitan a Edd (Chrome al frente, sin usar la PC).
-- D5 (commit baseline) sin respuesta.
+- Ninguno técnico. Falta la revisión de Andrea (hechos validados: 0/818).
 
 ## Gasto en APIs
-≈ US$0.07, en 4 corridas de 22 turnos con gpt-4o-mini.
+≈ US$0.13, en 7 corridas de 22 turnos con gpt-4o-mini.

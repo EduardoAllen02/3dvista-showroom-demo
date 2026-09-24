@@ -1,0 +1,2114 @@
+[
+ {
+  "product_id": "FEB-001",
+  "name": "Boiserie camino",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "15",
+   "yaw": -56.4,
+   "pitch": -29.5,
+   "fov": 111.2
+  },
+  "landed": {
+   "media_name": "15",
+   "yaw": -56.4,
+   "pitch": -29.500000000000004,
+   "fov": 111.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "c5368acae03a",
+  "captured_at": "2026-09-24T00:46:03Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-001.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-002",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "14",
+   "yaw": 39.6,
+   "pitch": 5.1,
+   "fov": 110
+  },
+  "landed": {
+   "media_name": "14",
+   "yaw": 39.6,
+   "pitch": 5.1,
+   "fov": 110
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "820429ee4bdf",
+  "captured_at": "2026-09-24T00:46:15Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-002.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-003",
+  "name": "Divano Balmoral",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "11",
+   "yaw": -152.7,
+   "pitch": -52.8,
+   "fov": 101.4
+  },
+  "landed": {
+   "media_name": "11",
+   "yaw": -152.7,
+   "pitch": -52.8,
+   "fov": 101.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "c6282166acfc",
+  "captured_at": "2026-09-24T00:44:03Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-003.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-004",
+  "name": "Tavolino Rio",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "11",
+   "yaw": 98.1,
+   "pitch": -50,
+   "fov": 75.8
+  },
+  "landed": {
+   "media_name": "11",
+   "yaw": 98.1,
+   "pitch": -50,
+   "fov": 75.8
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "acdcf76ff520",
+  "captured_at": "2026-09-24T00:44:27Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-004.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-005",
+  "name": "Tavolino Rio",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "9",
+   "yaw": 95.3,
+   "pitch": -38.5,
+   "fov": 93.9
+  },
+  "landed": {
+   "media_name": "9",
+   "yaw": 95.3,
+   "pitch": -38.5,
+   "fov": 93.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "004df19ff451",
+  "captured_at": "2026-09-24T00:44:48Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-005.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-006",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "4",
+   "yaw": 35.7,
+   "pitch": 6.1,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "4",
+   "yaw": 35.7,
+   "pitch": 6.1,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "42d299e1e5e4",
+  "captured_at": "2026-09-24T00:45:02Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-006.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-007",
+  "name": "Cucina Origina Anta Square Cannettato",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "6",
+   "yaw": 52.7,
+   "pitch": -36.9,
+   "fov": 110
+  },
+  "landed": {
+   "media_name": "6",
+   "yaw": 52.7,
+   "pitch": -36.9,
+   "fov": 110
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "57a3c744d835",
+  "captured_at": "2026-09-24T00:45:16Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-007.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-008",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "2",
+   "yaw": 7.3,
+   "pitch": -3.4,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "2",
+   "yaw": 7.300000000000001,
+   "pitch": -3.4,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "22d62d354824",
+  "captured_at": "2026-09-24T00:45:33Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-008.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-009",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "2",
+   "yaw": 136,
+   "pitch": -5.8,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "2",
+   "yaw": 136,
+   "pitch": -5.8,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ec2e21d58d32",
+  "captured_at": "2026-09-24T00:45:42Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-009.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-010",
+  "name": "Sistema Diciotto",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "19",
+   "yaw": 13.8,
+   "pitch": -0.4,
+   "fov": 70.6
+  },
+  "landed": {
+   "media_name": "19",
+   "yaw": 13.8,
+   "pitch": -0.4,
+   "fov": 70.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4f3d1405dbd5",
+  "captured_at": "2026-09-24T00:47:25Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-010.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-012",
+  "name": "Libreria Trenta",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "18",
+   "yaw": 149.6,
+   "pitch": 0.2,
+   "fov": 105.2
+  },
+  "landed": {
+   "media_name": "18",
+   "yaw": 149.6,
+   "pitch": 0.2,
+   "fov": 105.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "a9124c477bee",
+  "captured_at": "2026-09-24T00:47:39Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-012.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-013",
+  "name": "Madie Aurora",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "18",
+   "yaw": 76.5,
+   "pitch": -14.4,
+   "fov": 90
+  },
+  "landed": {
+   "media_name": "18",
+   "yaw": 76.5,
+   "pitch": -14.4,
+   "fov": 90
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "b034fa5b71ca",
+  "captured_at": "2026-09-24T00:47:53Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-013.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-015",
+  "name": "Armadio Profile/ Block",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "17",
+   "yaw": -167.7,
+   "pitch": -2.2,
+   "fov": 99.4
+  },
+  "landed": {
+   "media_name": "17",
+   "yaw": -167.7,
+   "pitch": -2.2,
+   "fov": 99.40000000000002
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4004122da66f",
+  "captured_at": "2026-09-24T00:48:11Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-015.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-016",
+  "name": "Libreria Lapis",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "17",
+   "yaw": 126.6,
+   "pitch": -2.6,
+   "fov": 86.5
+  },
+  "landed": {
+   "media_name": "17",
+   "yaw": 126.6,
+   "pitch": -2.6,
+   "fov": 86.5
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "8baa083254dd",
+  "captured_at": "2026-09-24T00:48:23Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-016.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-017",
+  "name": "Pouff Windsor",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "17",
+   "yaw": 35.9,
+   "pitch": -38.8,
+   "fov": 75.7
+  },
+  "landed": {
+   "media_name": "17",
+   "yaw": 35.9,
+   "pitch": -38.8,
+   "fov": 75.7
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "3d2d363f0dcf",
+  "captured_at": "2026-09-24T00:48:34Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-017.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-018",
+  "name": "Boiserie TV",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "17",
+   "yaw": 49.4,
+   "pitch": 8.1,
+   "fov": 90.2
+  },
+  "landed": {
+   "media_name": "17",
+   "yaw": 49.4,
+   "pitch": 8.1,
+   "fov": 90.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "23722e463ee3",
+  "captured_at": "2026-09-24T00:48:45Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-018.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-020",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "25",
+   "yaw": -175.9,
+   "pitch": -2.4,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "25",
+   "yaw": -175.9,
+   "pitch": -2.4,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "5442beb96822",
+  "captured_at": "2026-09-24T00:49:00Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-020.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-021",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "24",
+   "yaw": -162.4,
+   "pitch": -3.9,
+   "fov": 117.3
+  },
+  "landed": {
+   "media_name": "24",
+   "yaw": -162.4,
+   "pitch": -3.9,
+   "fov": 117.30000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ec56e485ea48",
+  "captured_at": "2026-09-24T00:49:18Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-021.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-023",
+  "name": "Libreria Trenta",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "33",
+   "yaw": -51.2,
+   "pitch": -8.1,
+   "fov": 109.2
+  },
+  "landed": {
+   "media_name": "33",
+   "yaw": -51.2,
+   "pitch": -8.1,
+   "fov": 109.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4cfa606d28fc",
+  "captured_at": "2026-09-24T00:49:35Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-023.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-024",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "33",
+   "yaw": -178.1,
+   "pitch": -7.5,
+   "fov": 101.9
+  },
+  "landed": {
+   "media_name": "33",
+   "yaw": -178.1,
+   "pitch": -7.499999999999999,
+   "fov": 101.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "d91d50563bdb",
+  "captured_at": "2026-09-24T00:49:47Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-024.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-025",
+  "name": "Libreria Trenta Anta Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "53",
+   "yaw": 147.5,
+   "pitch": -0.2,
+   "fov": 118.2
+  },
+  "landed": {
+   "media_name": "53",
+   "yaw": 147.5,
+   "pitch": -0.2,
+   "fov": 118.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "3e2ab7e02e6e",
+  "captured_at": "2026-09-24T00:50:36Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-025.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-027",
+  "name": "Divano Camden",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "52",
+   "yaw": -128,
+   "pitch": -41.6,
+   "fov": 87.8
+  },
+  "landed": {
+   "media_name": "52",
+   "yaw": -128,
+   "pitch": -41.6,
+   "fov": 87.8
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "39927443a0bf",
+  "captured_at": "2026-09-24T00:50:53Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-027.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-028",
+  "name": "Poltrone Astor",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "52",
+   "yaw": -34.5,
+   "pitch": -26.4,
+   "fov": 67.9
+  },
+  "landed": {
+   "media_name": "52",
+   "yaw": -34.5,
+   "pitch": -26.4,
+   "fov": 67.90000000000002
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "10f37a2be019",
+  "captured_at": "2026-09-24T00:51:04Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-028.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-029",
+  "name": "Tavolini Ink",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "52",
+   "yaw": -12.8,
+   "pitch": -28.5,
+   "fov": 49.8
+  },
+  "landed": {
+   "media_name": "52",
+   "yaw": -12.8,
+   "pitch": -28.500000000000004,
+   "fov": 49.8
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "748900b15cdf",
+  "captured_at": "2026-09-24T00:51:18Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-029.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-030",
+  "name": "Cucina Origina Anta Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "61",
+   "yaw": -120.5,
+   "pitch": -34.9,
+   "fov": 93.4
+  },
+  "landed": {
+   "media_name": "61",
+   "yaw": -120.50000000000001,
+   "pitch": -34.9,
+   "fov": 93.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4a509755ede1",
+  "captured_at": "2026-09-24T00:51:34Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-030.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-031",
+  "name": "Sistema Origina",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "61",
+   "yaw": -123.7,
+   "pitch": 0,
+   "fov": 69.4
+  },
+  "landed": {
+   "media_name": "61",
+   "yaw": -123.70000000000002,
+   "pitch": 0,
+   "fov": 69.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "34cebaba0ba0",
+  "captured_at": "2026-09-24T00:51:49Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-031.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-032",
+  "name": "Pouff Windsor",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "61",
+   "yaw": 156,
+   "pitch": -35.4,
+   "fov": 84.9
+  },
+  "landed": {
+   "media_name": "61",
+   "yaw": 156,
+   "pitch": -35.4,
+   "fov": 84.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "b8aea80fe705",
+  "captured_at": "2026-09-24T00:52:06Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-032.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-033",
+  "name": "Libreria Trenta",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "49",
+   "yaw": 50.8,
+   "pitch": -3.1,
+   "fov": 97.9
+  },
+  "landed": {
+   "media_name": "49",
+   "yaw": 50.8,
+   "pitch": -3.1,
+   "fov": 97.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "12288f4409f9",
+  "captured_at": "2026-09-24T00:52:20Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-033.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-034",
+  "name": "Tavolo Phoenix",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "50",
+   "yaw": -3.1,
+   "pitch": -34.9,
+   "fov": 97.9
+  },
+  "landed": {
+   "media_name": "50",
+   "yaw": -3.1,
+   "pitch": -34.9,
+   "fov": 97.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "2a4a93949bf3",
+  "captured_at": "2026-09-24T00:52:37Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-034.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-035",
+  "name": "Madia Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "55",
+   "yaw": 170.7,
+   "pitch": -31.6,
+   "fov": 98.8
+  },
+  "landed": {
+   "media_name": "55",
+   "yaw": 170.7,
+   "pitch": -31.6,
+   "fov": 98.8
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "f3f8a71704c4",
+  "captured_at": "2026-09-24T00:52:55Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-035.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-036",
+  "name": "Poltrona Vivienne",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "49",
+   "yaw": -83.5,
+   "pitch": -28.8,
+   "fov": 93.5
+  },
+  "landed": {
+   "media_name": "49",
+   "yaw": -83.5,
+   "pitch": -28.8,
+   "fov": 93.5
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "a159e67b4699",
+  "captured_at": "2026-09-24T00:53:16Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-036.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-037",
+  "name": "Armadio Collezione Momenti.",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "66",
+   "yaw": -112.5,
+   "pitch": -6.8,
+   "fov": 123.6
+  },
+  "landed": {
+   "media_name": "66",
+   "yaw": -112.5,
+   "pitch": -6.8,
+   "fov": 123.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "76ea8bda392f",
+  "captured_at": "2026-09-24T00:53:51Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-037.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-038",
+  "name": "Boiserie",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "65",
+   "yaw": 85.4,
+   "pitch": -1,
+   "fov": 109.7
+  },
+  "landed": {
+   "media_name": "65",
+   "yaw": 85.4,
+   "pitch": -1,
+   "fov": 109.7
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "98de45ff61c6",
+  "captured_at": "2026-09-24T00:54:10Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-038.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-039",
+  "name": "Letto Couple",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "58",
+   "yaw": 3.4,
+   "pitch": -34,
+   "fov": 115.9
+  },
+  "landed": {
+   "media_name": "58",
+   "yaw": 3.4,
+   "pitch": -34,
+   "fov": 115.90000000000002
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "bb035af65e27",
+  "captured_at": "2026-09-24T00:54:27Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-039.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-040",
+  "name": "Poltrona Isabelle",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "59",
+   "yaw": -81.5,
+   "pitch": -40.1,
+   "fov": 89.3
+  },
+  "landed": {
+   "media_name": "59",
+   "yaw": -81.5,
+   "pitch": -40.1,
+   "fov": 89.30000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "347587112adf",
+  "captured_at": "2026-09-24T00:54:46Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-040.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-041",
+  "name": "Specchio Polar",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "58",
+   "yaw": 136.7,
+   "pitch": -6.8,
+   "fov": 96.4
+  },
+  "landed": {
+   "media_name": "58",
+   "yaw": 136.7,
+   "pitch": -6.8,
+   "fov": 96.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "eefaf0424dfd",
+  "captured_at": "2026-09-24T00:55:01Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-041.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-042",
+  "name": "Boiserie",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "59b",
+   "yaw": -17.1,
+   "pitch": 2.2,
+   "fov": 121.6
+  },
+  "landed": {
+   "media_name": "59b",
+   "yaw": -17.1,
+   "pitch": 2.2,
+   "fov": 121.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ff735ab1ae15",
+  "captured_at": "2026-09-24T00:55:16Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-042.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-043",
+  "name": "Cabina Armadio Lapis",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "59b",
+   "yaw": -14.1,
+   "pitch": -14.6,
+   "fov": 121.6
+  },
+  "landed": {
+   "media_name": "59b",
+   "yaw": -14.1,
+   "pitch": -14.600000000000001,
+   "fov": 121.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "084b9c7b85e8",
+  "captured_at": "2026-09-24T00:55:29Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-043.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-045",
+  "name": "Armadio Lewitt Plus",
+  "section": "CASA 02 - PERFETTA",
+  "target": {
+   "media_name": "59a",
+   "yaw": 133.2,
+   "pitch": -5.3,
+   "fov": 121.6
+  },
+  "landed": {
+   "media_name": "59a",
+   "yaw": 133.2,
+   "pitch": -5.300000000000001,
+   "fov": 121.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "6c666949f652",
+  "captured_at": "2026-09-24T00:55:45Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-045.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-046",
+  "name": "Sistema Diciotto",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "43",
+   "yaw": -179.3,
+   "pitch": -6.2,
+   "fov": 86.7
+  },
+  "landed": {
+   "media_name": "43",
+   "yaw": -179.3,
+   "pitch": -6.2,
+   "fov": 86.7
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "9f08a749e9a3",
+  "captured_at": "2026-09-24T00:56:48Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-046.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-047",
+  "name": "Libreria Trenta",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "43",
+   "yaw": 10.2,
+   "pitch": 2.8,
+   "fov": 98.3
+  },
+  "landed": {
+   "media_name": "43",
+   "yaw": 10.2,
+   "pitch": 2.8,
+   "fov": 98.30000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "5041b8adb66b",
+  "captured_at": "2026-09-24T00:57:04Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-047.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-048",
+  "name": "Divano Melrose",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "43",
+   "yaw": 38.3,
+   "pitch": -36.5,
+   "fov": 86.9
+  },
+  "landed": {
+   "media_name": "43",
+   "yaw": 38.3,
+   "pitch": -36.5,
+   "fov": 86.9
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "db1f949f7b10",
+  "captured_at": "2026-09-24T00:57:17Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-048.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-049",
+  "name": "Poltrona Andy",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "42",
+   "yaw": -172.5,
+   "pitch": -44.8,
+   "fov": 86.1
+  },
+  "landed": {
+   "media_name": "42",
+   "yaw": -172.5,
+   "pitch": -44.8,
+   "fov": 86.1
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "3107b4ca8458",
+  "captured_at": "2026-09-24T00:57:32Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-049.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-050",
+  "name": "Gruppo Notte Marlene",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "43",
+   "yaw": -69.7,
+   "pitch": -22.3,
+   "fov": 78.2
+  },
+  "landed": {
+   "media_name": "43",
+   "yaw": -69.7,
+   "pitch": -22.3,
+   "fov": 78.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4339a1b8e175",
+  "captured_at": "2026-09-24T00:57:50Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-050.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-051",
+  "name": "Cucina Modula anta Square",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "95",
+   "yaw": 98.9,
+   "pitch": -8.3,
+   "fov": 114.7
+  },
+  "landed": {
+   "media_name": "95",
+   "yaw": 98.9,
+   "pitch": -8.3,
+   "fov": 114.70000000000002
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "660655729052",
+  "captured_at": "2026-09-24T00:58:08Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-051.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-052",
+  "name": "Tavolo Madeira",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "97",
+   "yaw": 89.6,
+   "pitch": -38.4,
+   "fov": 75.3
+  },
+  "landed": {
+   "media_name": "97",
+   "yaw": 89.6,
+   "pitch": -38.4,
+   "fov": 75.3
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "89f92788c848",
+  "captured_at": "2026-09-24T00:58:24Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-052.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-053",
+  "name": "Sedia Nina",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "97",
+   "yaw": 34.6,
+   "pitch": -42.6,
+   "fov": 75.3
+  },
+  "landed": {
+   "media_name": "97",
+   "yaw": 34.6,
+   "pitch": -42.6,
+   "fov": 75.3
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ab0096270431",
+  "captured_at": "2026-09-24T00:58:38Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-053.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-054",
+  "name": "Madia Leaf",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "40",
+   "yaw": -109.2,
+   "pitch": -41,
+   "fov": 98.4
+  },
+  "landed": {
+   "media_name": "40",
+   "yaw": -109.2,
+   "pitch": -41,
+   "fov": 98.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "79c2d02aa907",
+  "captured_at": "2026-09-24T00:58:55Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-054.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-055",
+  "name": "Libreria Trenta",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "47",
+   "yaw": -36.4,
+   "pitch": -5.4,
+   "fov": 110.2
+  },
+  "landed": {
+   "media_name": "47",
+   "yaw": -36.4,
+   "pitch": -5.4,
+   "fov": 110.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "3d71d29dd0f6",
+  "captured_at": "2026-09-24T00:59:13Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-055.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-056",
+  "name": "Gruppo Notte Marlene",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "46",
+   "yaw": 115.5,
+   "pitch": -29.6,
+   "fov": 54.4
+  },
+  "landed": {
+   "media_name": "46",
+   "yaw": 115.49999999999999,
+   "pitch": -29.600000000000005,
+   "fov": 54.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "61736ea22c71",
+  "captured_at": "2026-09-24T00:59:34Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-056.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-057",
+  "name": "Boiserie",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "46",
+   "yaw": 110.6,
+   "pitch": -15.3,
+   "fov": 69.6
+  },
+  "landed": {
+   "media_name": "46",
+   "yaw": 110.6,
+   "pitch": -15.300000000000002,
+   "fov": 69.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "25e5e83e6dde",
+  "captured_at": "2026-09-24T00:59:49Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-057.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-058",
+  "name": "Armadio Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "92",
+   "yaw": 125,
+   "pitch": -2.2,
+   "fov": 74.5
+  },
+  "landed": {
+   "media_name": "92",
+   "yaw": 125.00000000000001,
+   "pitch": -2.2,
+   "fov": 74.5
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "fbe59accf5c8",
+  "captured_at": "2026-09-24T01:00:06Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-058.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-059",
+  "name": "Letto Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "92",
+   "yaw": 173.8,
+   "pitch": -22.7,
+   "fov": 91.7
+  },
+  "landed": {
+   "media_name": "92",
+   "yaw": 173.8,
+   "pitch": -22.7,
+   "fov": 91.7
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "25256868517b",
+  "captured_at": "2026-09-24T01:00:20Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-059.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-060",
+  "name": "Libreria Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "92",
+   "yaw": 7.4,
+   "pitch": -3.8,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "92",
+   "yaw": 7.400000000000001,
+   "pitch": -3.8,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "d009edb5e636",
+  "captured_at": "2026-09-24T01:00:35Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-060.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-061",
+  "name": "Pouff Windsor",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "92",
+   "yaw": 127.6,
+   "pitch": -23.3,
+   "fov": 53.8
+  },
+  "landed": {
+   "media_name": "92",
+   "yaw": 127.60000000000001,
+   "pitch": -23.3,
+   "fov": 53.8
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "5714cfbfa9b4",
+  "captured_at": "2026-09-24T01:00:49Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-061.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-063",
+  "name": "Boiserie",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "76",
+   "yaw": 23.5,
+   "pitch": 17.2,
+   "fov": 80.4
+  },
+  "landed": {
+   "media_name": "76",
+   "yaw": 23.5,
+   "pitch": 17.2,
+   "fov": 80.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "b12123d20768",
+  "captured_at": "2026-09-24T01:01:50Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-063.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-064",
+  "name": "Libreria Trenta",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "76",
+   "yaw": 43.8,
+   "pitch": -2.9,
+   "fov": 102.7
+  },
+  "landed": {
+   "media_name": "76",
+   "yaw": 43.8,
+   "pitch": -2.9,
+   "fov": 102.7
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "e9b7ffe05c62",
+  "captured_at": "2026-09-24T04:11:49Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-064.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-065",
+  "name": "Madia Onda - Zaha Hadid Architects",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "74a",
+   "yaw": 50.9,
+   "pitch": -11,
+   "fov": 47.4
+  },
+  "landed": {
+   "media_name": "74a",
+   "yaw": 50.9,
+   "pitch": -11,
+   "fov": 47.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "f5d996defa05",
+  "captured_at": "2026-09-24T04:12:11Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-065.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-066",
+  "name": "Divano Navigli",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "76",
+   "yaw": -75.9,
+   "pitch": -38.7,
+   "fov": 95.4
+  },
+  "landed": {
+   "media_name": "76",
+   "yaw": -75.9,
+   "pitch": -38.7,
+   "fov": 95.4
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "d82a7a227d85",
+  "captured_at": "2026-09-24T04:12:33Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-066.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-067",
+  "name": "Libreria Lapis",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "69",
+   "yaw": -18.4,
+   "pitch": -6.3,
+   "fov": 99.6
+  },
+  "landed": {
+   "media_name": "69",
+   "yaw": -18.400000000000002,
+   "pitch": -6.3,
+   "fov": 99.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "8edfdbcdc7da",
+  "captured_at": "2026-09-24T04:12:53Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-067.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-068",
+  "name": "Sistema Origina",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "70",
+   "yaw": -112,
+   "pitch": -8.3,
+   "fov": 88
+  },
+  "landed": {
+   "media_name": "70",
+   "yaw": -112,
+   "pitch": -8.3,
+   "fov": 88
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "c95390f08208",
+  "captured_at": "2026-09-24T04:13:16Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-068.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-069",
+  "name": "Cucina Origina Anta Sagoma 37",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "69",
+   "yaw": -118.3,
+   "pitch": -34.9,
+   "fov": 90.6
+  },
+  "landed": {
+   "media_name": "69",
+   "yaw": -118.3,
+   "pitch": -34.9,
+   "fov": 90.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ca45d5a7e766",
+  "captured_at": "2026-09-24T04:13:37Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-069.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-072",
+  "name": "Tavolo Leeds",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "75",
+   "yaw": -87.6,
+   "pitch": -26.2,
+   "fov": 74.5
+  },
+  "landed": {
+   "media_name": "75",
+   "yaw": -87.6,
+   "pitch": -26.2,
+   "fov": 74.5
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "9372ad81d64c",
+  "captured_at": "2026-09-24T04:13:58Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-072.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-073",
+  "name": "Sedia Nives con braccioli",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "75",
+   "yaw": -50.9,
+   "pitch": -28.6,
+   "fov": 64.1
+  },
+  "landed": {
+   "media_name": "75",
+   "yaw": -50.9,
+   "pitch": -28.6,
+   "fov": 64.1
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "8254dd3baa8d",
+  "captured_at": "2026-09-24T04:14:17Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-073.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-074",
+  "name": "Armadio Scorrevole Rodin",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "73",
+   "yaw": -8.6,
+   "pitch": -2.9,
+   "fov": 123.1
+  },
+  "landed": {
+   "media_name": "73",
+   "yaw": -8.6,
+   "pitch": -2.9,
+   "fov": 123.10000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "500ea64e5330",
+  "captured_at": "2026-09-24T04:14:39Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-074.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-075",
+  "name": "Cabina Armadio Hype",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "74",
+   "yaw": 37.4,
+   "pitch": -6.4,
+   "fov": 114.1
+  },
+  "landed": {
+   "media_name": "74",
+   "yaw": 37.4,
+   "pitch": -6.4,
+   "fov": 114.10000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "6457257aaf9e",
+  "captured_at": "2026-09-24T04:15:03Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-075.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-076",
+  "name": "Isola Onda - Zaha Hadid Architects",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "75",
+   "yaw": 5.5,
+   "pitch": -17.7,
+   "fov": 57.6
+  },
+  "landed": {
+   "media_name": "75",
+   "yaw": 5.5,
+   "pitch": -17.7,
+   "fov": 57.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "c674d6e29cca",
+  "captured_at": "2026-09-24T04:15:21Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-076.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-077",
+  "name": "Sistema Origina anta Square",
+  "section": "CASA 04 - A-MARE",
+  "target": {
+   "media_name": "78",
+   "yaw": 10.2,
+   "pitch": 0.2,
+   "fov": 83.6
+  },
+  "landed": {
+   "media_name": "78",
+   "yaw": 10.2,
+   "pitch": 0.2,
+   "fov": 83.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "f3f30c521788",
+  "captured_at": "2026-09-24T04:15:42Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-077.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-079",
+  "name": "Armadio Profile/ Leather",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "26",
+   "yaw": -64.3,
+   "pitch": -2.6,
+   "fov": 90.2
+  },
+  "landed": {
+   "media_name": "26",
+   "yaw": -64.3,
+   "pitch": -2.6,
+   "fov": 90.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "da00ebcee83f",
+  "captured_at": "2026-09-24T04:16:36Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-079.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-081",
+  "name": "Armadio Profile/ Solid",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "27",
+   "yaw": 153.6,
+   "pitch": -1.7,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "27",
+   "yaw": 153.6,
+   "pitch": -1.7,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "903d47bb880a",
+  "captured_at": "2026-09-24T04:16:58Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-081.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-083",
+  "name": "Armadio Profile/ Reflex",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "31",
+   "yaw": -177.3,
+   "pitch": -3.6,
+   "fov": 63.7
+  },
+  "landed": {
+   "media_name": "31",
+   "yaw": -177.3,
+   "pitch": -3.6,
+   "fov": 63.70000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "007859c9f817",
+  "captured_at": "2026-09-24T04:17:17Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-083.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-084",
+  "name": "Armadio battente Aurora",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "27",
+   "yaw": -5.6,
+   "pitch": -9.3,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "27",
+   "yaw": -5.6,
+   "pitch": -9.3,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "aabc48701f4c",
+  "captured_at": "2026-09-24T04:17:39Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-084.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-085",
+  "name": "Cucina Anta Telaio Alluminio vetro",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "80-opening",
+   "yaw": 19.3,
+   "pitch": -30.5,
+   "fov": 87.6
+  },
+  "landed": {
+   "media_name": "80-opening",
+   "yaw": 19.3,
+   "pitch": -30.5,
+   "fov": 87.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4a7dcb90904a",
+  "captured_at": "2026-09-24T04:18:00Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-085.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-086",
+  "name": "Armadio Barret",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "83",
+   "yaw": 31.4,
+   "pitch": -6.3,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "83",
+   "yaw": 31.4,
+   "pitch": -6.3,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "e6362a08670c",
+  "captured_at": "2026-09-24T04:18:24Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-086.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-087",
+  "name": "Sgabello Lola",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "31",
+   "yaw": 4.6,
+   "pitch": -32.4,
+   "fov": 67.3
+  },
+  "landed": {
+   "media_name": "31",
+   "yaw": 4.6000000000000005,
+   "pitch": -32.4,
+   "fov": 67.3
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "766fb3e4e386",
+  "captured_at": "2026-09-24T04:18:45Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-087.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-088",
+  "name": "Armadio Lumia",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "88-open",
+   "yaw": -116.8,
+   "pitch": 0.4,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "88-open",
+   "yaw": -116.80000000000001,
+   "pitch": 0.4,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "874492564c55",
+  "captured_at": "2026-09-24T04:19:05Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-088.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-090",
+  "name": "Armadio Lewitt Plus",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "86-open",
+   "yaw": 157.3,
+   "pitch": -12.2,
+   "fov": 103.1
+  },
+  "landed": {
+   "media_name": "86-open",
+   "yaw": 157.3,
+   "pitch": -12.2,
+   "fov": 103.1
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "6c0b706d394c",
+  "captured_at": "2026-09-24T04:19:29Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-090.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-091",
+  "name": "Tavolo Madeira",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "88-open",
+   "yaw": 61.4,
+   "pitch": -28.6,
+   "fov": 63
+  },
+  "landed": {
+   "media_name": "88-open",
+   "yaw": 61.4,
+   "pitch": -28.6,
+   "fov": 63
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ac1c6d0be3f5",
+  "captured_at": "2026-09-24T04:19:49Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-091.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-092",
+  "name": "Sedia Dea",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "84",
+   "yaw": 128.2,
+   "pitch": -35.6,
+   "fov": 54.1
+  },
+  "landed": {
+   "media_name": "84",
+   "yaw": 128.2,
+   "pitch": -35.6,
+   "fov": 54.1
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "d78100c4b59c",
+  "captured_at": "2026-09-24T04:20:10Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-092.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-093",
+  "name": "Tavolo Daniel",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "91",
+   "yaw": 74.8,
+   "pitch": -29,
+   "fov": 95
+  },
+  "landed": {
+   "media_name": "91",
+   "yaw": 74.8,
+   "pitch": -29.000000000000004,
+   "fov": 95
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "ec3c279e971a",
+  "captured_at": "2026-09-24T04:20:38Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-093.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-094",
+  "name": "Sedia Dea",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "91",
+   "yaw": 131.4,
+   "pitch": -4.6,
+   "fov": 82
+  },
+  "landed": {
+   "media_name": "91",
+   "yaw": 131.4,
+   "pitch": -4.6000000000000005,
+   "fov": 82
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "88d407df7269",
+  "captured_at": "2026-09-24T04:21:02Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-094.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-095",
+  "name": "Boiserie",
+  "section": "GALLERIA",
+  "target": {
+   "media_name": "90",
+   "yaw": 132.6,
+   "pitch": -13.4,
+   "fov": 80.2
+  },
+  "landed": {
+   "media_name": "90",
+   "yaw": 132.6,
+   "pitch": -13.4,
+   "fov": 80.2
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "b340dab09751",
+  "captured_at": "2026-09-24T04:21:39Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-095.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-096",
+  "name": "Armadio Profile/ Leather",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "38",
+   "yaw": 7,
+   "pitch": 1.7,
+   "fov": 65.6
+  },
+  "landed": {
+   "media_name": "38",
+   "yaw": 7,
+   "pitch": 1.7,
+   "fov": 65.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "5682acd6ce6c",
+  "captured_at": "2026-09-24T04:22:07Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-096.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-097",
+  "name": "Cabina Armadio Telaio",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "38",
+   "yaw": 83.8,
+   "pitch": -1.3,
+   "fov": 65.5
+  },
+  "landed": {
+   "media_name": "38",
+   "yaw": 83.8,
+   "pitch": -1.3,
+   "fov": 65.5
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "243511abf824",
+  "captured_at": "2026-09-24T04:22:27Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-097.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-098",
+  "name": "Cassettiera Square",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "36",
+   "yaw": -14.1,
+   "pitch": -49,
+   "fov": 108.6
+  },
+  "landed": {
+   "media_name": "36",
+   "yaw": -14.1,
+   "pitch": -49,
+   "fov": 108.6
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "c6bbf203c736",
+  "captured_at": "2026-09-24T04:22:51Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-098.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-099",
+  "name": "Armadio Barret con Portale",
+  "section": "CASA 01 - AUTENTICA",
+  "target": {
+   "media_name": "33",
+   "yaw": 38.1,
+   "pitch": -0.9,
+   "fov": 119.2
+  },
+  "landed": {
+   "media_name": "33",
+   "yaw": 38.1,
+   "pitch": -0.9,
+   "fov": 119.20000000000002
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "3f3eb3d139c6",
+  "captured_at": "2026-09-24T04:23:17Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-099.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-100",
+  "name": "Armadio Halley",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "47",
+   "yaw": -151.8,
+   "pitch": -4.3,
+   "fov": 130
+  },
+  "landed": {
+   "media_name": "47",
+   "yaw": -151.8,
+   "pitch": -4.3,
+   "fov": 130
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "0411f1e08301",
+  "captured_at": "2026-09-24T04:23:44Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-100.png",
+  "identical_to": []
+ },
+ {
+  "product_id": "FEB-101",
+  "name": "Letto Arden",
+  "section": "CASA 03 - AUDACE",
+  "target": {
+   "media_name": "46",
+   "yaw": 144.3,
+   "pitch": -36.6,
+   "fov": 91.6
+  },
+  "landed": {
+   "media_name": "46",
+   "yaw": 144.3,
+   "pitch": -36.6,
+   "fov": 91.60000000000001
+  },
+  "landing_ok": true,
+  "retried": false,
+  "window_visible": true,
+  "sha1": "4ca29488afee",
+  "captured_at": "2026-09-24T04:24:07Z",
+  "file": "tour-project/febal-casa/product-facts/captures/FEB-101.png",
+  "identical_to": []
+ }
+]

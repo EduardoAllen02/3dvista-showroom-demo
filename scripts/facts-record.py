@@ -26,7 +26,8 @@ def attr(v):
 
 
 def main():
-    batch = json.load(sys.stdin)
+    # Bytes, not sys.stdin: on Windows the text stream defaults to cp1252 and mangles accents.
+    batch = json.loads(sys.stdin.buffer.read().decode("utf-8"))
     data = {}
     if os.path.exists(OUT):
         with open(OUT, encoding="utf-8") as f:

@@ -34,7 +34,11 @@ export interface RawPiece {
   image_url: string; detail_url: string | null; active: boolean; shape?: string | null; finish?: string[];
 }
 export interface RawObservation { name: string; colors: string[]; materials: string[]; finish?: string[]; shape?: string; note?: string }
-export interface RawReview { validated_fact_ids: string[]; rejected_fact_ids: string[]; reviewer?: string; at?: string }
+export interface RawReview {
+  validated_fact_ids: string[]; rejected_fact_ids: string[]; reviewer?: string; at?: string;
+  /** Generic-palette groups the client confirmed as real options of that model (sheet "Paletas por confirmar"). */
+  promoted_palette_groups?: string[];
+}
 
 export interface CompileInput {
   tour_id: string;
@@ -107,6 +111,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
   const facts: Fact[] = [];
   const validated = new Set(input.review?.validated_fact_ids ?? []);
   const rejected = new Set(input.review?.rejected_fact_ids ?? []);
+  const promoted = new Set(input.review?.promoted_palette_groups ?? []);
   const now = new Date().toISOString();
 
   const addFact = (f: Omit<Fact, "review">): Fact => {
@@ -177,7 +182,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
         }
         groups.push({
           id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category),
-          material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null, scope: scope ?? "generic_palette", options, fact: listFact.id,
+          material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null, scope: scope === "model" || promoted.has(gid) ? "model" : "generic_palette", options, fact: listFact.id,
         });
       }
     }
@@ -232,7 +237,9 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const legacyOk = !input.ignore_legacy_values.includes(p.product_id);
     const colorsText = obs ? obs.colors : legacyOk ? p.colors : [];
     const matsText = obs ? obs.materials : legacyOk ? p.materials : [];
-    const shapeText = [obs?.shape, legacyOk ? p.shape : null].filter(Boolean).join(" · ");
+    // A captured piece is described only by what the capture shows: the v1 shape was often the
+    // model's range ("rotondo o ovale, fisso o allungabile") or belonged to another piece.
+    const shapeText = obs ? obs.shape ?? "" : legacyOk ? p.shape ?? "" : "";
     const kind = obs ? "tour_capture" as const : "catalog_v1" as const;
     const evidence = obs ? `captura ${p.product_id}: ${obs.colors.join(", ")} / ${obs.materials.join(", ")}` : `catálogo v1 (CASA 01 manual): ${p.colors.join(", ")} / ${p.materials.join(", ")}`;
 

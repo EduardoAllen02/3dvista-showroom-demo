@@ -31,7 +31,7 @@ const CATEGORIES: Concept[] = [
   c("category.walk_in_closet", "category", ["vestidor", "cabina armadio", "walk-in closet"], { es: ["vestidor", "vestidores", "cuarto de vestir"], it: ["cabina armadio", "cabine armadio"], en: ["walk-in closet", "walk in closet", "dressing room"] }, "category.wardrobe"),
   c("category.drawer_unit", "category", ["cajonera", "cassettiera", "chest of drawers"], { es: ["cajonera", "cajoneras"], it: ["cassettiera", "cassettiere"], en: ["chest of drawers", "drawer unit"] }),
   c("category.bedroom", "category", ["recámara", "camera da letto", "bedroom"], { es: ["recámara", "recámaras", "dormitorio", "dormitorios", "habitación"], it: ["camera da letto", "zona notte"], en: ["bedroom", "bedrooms"] }),
-  c("category.bed", "category", ["cama", "letto", "bed"], { es: ["cama", "camas", "cama matrimonial", "cabecera", "cabeceras"], it: ["letto", "letti", "testata", "testiera"], en: ["bed", "beds", "headboard"] }, "category.bedroom"),
+  c("category.bed", "category", ["cama", "letto", "bed"], { es: ["cama", "camas", "cabecera", "cabeceras"], it: ["letto", "letti", "testata", "testiera"], en: ["bed", "beds", "headboard"] }, "category.bedroom"),
   c("category.night_group", "category", ["mesita de noche", "gruppo notte", "nightstand"], { es: ["mesita de noche", "mesitas de noche", "buró", "burós", "cómoda", "cómodas", "sinfonier"], it: ["comodino", "comodini", "comò", "settimino", "gruppo notte"], en: ["nightstand", "nightstands", "bedside table", "dresser"] }, "category.bedroom"),
   c("category.boiserie", "category", ["boiserie", "boiserie", "wall panelling"], { es: ["boiserie", "panel de pared", "paneles de pared", "revestimiento de pared", "pared decorativa", "lambrín"], it: ["boiserie", "pannelli a parete"], en: ["boiserie", "wall panelling", "wall paneling", "wall panels"] }),
   c("category.mirror", "category", ["espejo", "specchio", "mirror"], { es: ["espejo", "espejos"], it: ["specchio", "specchi", "specchiera"], en: ["mirror", "mirrors"] }),
@@ -57,7 +57,19 @@ const SHAPES: Concept[] = [
   c("shape.sliding_doors", "shape", ["puertas corredizas", "ante scorrevoli", "sliding doors"], { es: ["corredizas", "corrediza", "puertas corredizas", "deslizantes"], it: ["scorrevole", "scorrevoli", "ante scorrevoli"], en: ["sliding", "sliding doors"] }),
   c("shape.bridge", "shape", ["de puente", "a ponte", "bridge"], { es: ["de puente", "con puente", "portal", "con portal", "tipo puente"], it: ["a ponte", "con ponte", "portale"], en: ["bridge", "over-bed"] }),
   c("shape.freestanding", "shape", ["centro de la habitación", "centro stanza", "freestanding"], { es: ["centro de la habitación", "al centro", "exento", "divisor"], it: ["centro stanza", "divisorio"], en: ["freestanding", "room divider"] }),
-  c("shape.full_height", "shape", ["de piso a techo", "a tutta altezza", "full height"], { es: ["de piso a techo", "hasta el techo", "a toda altura"], it: ["a tutta altezza", "fino a terra"], en: ["full height", "floor to ceiling"] }),
+  c("shape.full_height", "shape", ["de piso a techo", "a tutta altezza", "full height"], { es: ["de piso a techo", "hasta el techo", "a toda altura"], it: ["a tutta altezza", "fino a terra", "da terra a soffitto", "fino al soffitto"], en: ["full height", "floor to ceiling"] }),
+  c("shape.u_shaped", "shape", ["en U", "a U", "U-shaped"], { es: ["en u", "en forma de u", "de herradura"], it: ["a u", "a ferro di cavallo"], en: ["u-shaped", "u shaped", "horseshoe"] }),
+  c("shape.cylindrical", "shape", ["cilíndrico", "cilindrico", "cylindrical"], { es: ["cilíndrico", "cilíndrica", "cilindro", "tipo tambor"], it: ["cilindrico", "cilindrica", "cilindro"], en: ["cylindrical", "cylinder", "drum"] }),
+  c("shape.enveloping", "shape", ["envolvente", "avvolgente", "wraparound"], { es: ["envolvente", "tipo concha", "de concha"], it: ["avvolgente", "a guscio", "a pozzetto"], en: ["wraparound", "shell", "tub chair"] }),
+  c("shape.armless", "shape", ["sin brazos", "senza braccioli", "armless"], { es: ["sin brazos", "sin descansabrazos"], it: ["senza braccioli"], en: ["armless", "without arms"] }),
+  c("shape.with_arms", "shape", ["con brazos", "con braccioli", "with arms"], { es: ["con brazos", "con descansabrazos", "con reposabrazos"], it: ["con braccioli", "con bracciolo"], en: ["with arms", "with armrests", "armchair-style"] }),
+  c("shape.footrest", "shape", ["con reposapiés", "con poggiapiedi", "with footstool"], { es: ["con reposapiés", "con otomana", "con banquito"], it: ["con poggiapiedi", "con pouf"], en: ["with footstool", "with ottoman"] }),
+  // No bare "abierto"/"open": too common in chat ("¿está abierto?") and would trip the answer scan.
+  c("shape.open", "shape", ["sin puertas", "a giorno", "open shelving"], { es: ["sin puertas", "repisas abiertas", "estantería abierta", "librero abierto"], it: ["a giorno", "senza ante"], en: ["open shelving", "open shelves", "without doors"] }),
+  c("shape.tv_unit", "shape", ["para TV", "porta TV", "for TV"], { es: ["para tv", "para la tele", "para televisión", "para la televisión"], it: ["porta tv", "porta-tv"], en: ["tv stand", "for the tv", "for tv"] }),
+  // Bed sizes. No bare "individual"/"doble"/"single": "sillón individual" is not a bed.
+  c("shape.double_bed", "shape", ["matrimonial", "matrimoniale", "double bed"], { es: ["matrimonial", "de matrimonio", "queen size", "king size", "tamaño queen", "tamaño king"], it: ["matrimoniale", "matrimoniali", "due piazze"], en: ["double bed", "queen size", "king size", "queen-size", "king-size"] }),
+  c("shape.single_bed", "shape", ["de una plaza", "una piazza", "single bed"], { es: ["de una plaza", "una plaza", "plaza y media"], it: ["una piazza", "piazza e mezza", "singolo"], en: ["single bed", "twin bed", "twin size"] }),
 ];
 
 const MATERIALS: Concept[] = [
@@ -97,11 +109,11 @@ const MATERIALS: Concept[] = [
 const COLORS: Concept[] = [
   c("color.white", "color", ["blanco", "bianco", "white"], { es: ["blanco", "blanca", "blancos", "blancas"], it: ["bianco", "bianca", "bianchi"], en: ["white"] }),
   c("color.cream", "color", ["crema", "panna", "cream"], { es: ["crema", "marfil", "hueso", "perla"], it: ["panna", "crema", "avorio", "perla"], en: ["cream", "ivory", "off-white", "off white"] }),
-  c("color.beige", "color", ["beige", "beige", "beige"], { es: ["beige", "beis", "arena", "arenas", "topo", "greige"], it: ["beige", "sabbia", "tortora", "corda", "canapa"], en: ["beige", "sand", "taupe", "greige", "linen"] }),
+  c("color.beige", "color", ["beige", "beige", "beige"], { es: ["beige", "beis", "arena", "arenas", "topo", "greige"], it: ["beige", "sabbia", "tortora", "corda", "canapa", "talpa"], en: ["beige", "sand", "taupe", "greige", "linen"] }),
   c("color.grey", "color", ["gris", "grigio", "grey"], { es: ["gris", "grises", "gris oscuro", "gris claro", "plata", "plateado"], it: ["grigio", "grigi", "grigia", "argento"], en: ["grey", "gray", "silver"] }),
   c("color.anthracite", "color", ["antracita", "antracite", "anthracite"], { es: ["antracita", "grafito", "carbón", "gris carbón"], it: ["antracite", "grafite", "carbone"], en: ["anthracite", "graphite", "charcoal"] }, "color.grey"),
   c("color.black", "color", ["negro", "nero", "black"], { es: ["negro", "negra", "negros", "negras"], it: ["nero", "nera", "neri"], en: ["black"] }),
-  c("color.brown", "color", ["café", "marrone", "brown"], { es: ["café", "cafés", "marrón", "marrones", "chocolate", "cognac", "coñac", "tabaco", "moka", "caramelo", "camel"], it: ["marrone", "marroni", "moro", "testa di moro", "cioccolato", "tabacco", "caffè", "cognac", "moka"], en: ["brown", "chocolate", "cognac", "tobacco", "coffee", "espresso", "mocha", "camel", "caramel"] }, undefined,
+  c("color.brown", "color", ["café", "marrone", "brown"], { es: ["café", "cafés", "marrón", "marrones", "chocolate", "cognac", "coñac", "tabaco", "moka", "caramelo", "camel", "avellana"], it: ["marrone", "marroni", "moro", "testa di moro", "cioccolato", "tabacco", "caffè", "cognac", "moka", "nocciola"], en: ["brown", "chocolate", "cognac", "tobacco", "coffee", "espresso", "mocha", "camel", "caramel", "hazelnut"] }, undefined,
     "En México 'café' es el color marrón."),
   c("color.natural_wood", "color", ["madera natural", "legno naturale", "natural wood"], { es: ["madera natural", "tono madera", "color madera", "roble natural"], it: ["legno naturale", "naturale"], en: ["natural wood", "wood tone"] }, "color.brown"),
   c("color.yellow", "color", ["amarillo", "giallo", "yellow"], { es: ["amarillo", "amarilla", "amarillos", "amarillas", "mostaza", "ocre", "dorado claro", "limón"], it: ["giallo", "gialla", "gialli", "senape", "ocra", "limone"], en: ["yellow", "mustard", "ochre", "ocher", "lemon", "sunflower", "curry"] }),

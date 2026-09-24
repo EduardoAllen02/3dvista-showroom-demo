@@ -1,0 +1,4893 @@
+[
+ {
+  "product_id": "FEB-001",
+  "name": "Boiserie camino",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-001.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:46:03Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "frontal",
+    "dominante": true,
+    "color": "nero venato bianco",
+    "material": "effetto marmo lucido (Scenario)"
+   },
+   {
+    "rol": "costados",
+    "dominante": false,
+    "color": "grigio chiaro",
+    "material": ""
+   },
+   {
+    "rol": "nicho chimenea",
+    "dominante": false,
+    "color": "nero",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "nero venato bianco",
+   "evidencia": "losa central negra brillante con veta blanca densa; costados gris claro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "effetto marmo (frontale Scenario)",
+   "evidencia": "losa a toda altura con veta continua y reflejos; la ficha lista la colección SCENARIO para los frontales"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie a tutta altezza con nicchia camino",
+   "evidencia": "nicho horizontal con leña bajo la losa"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "SCENARIO · Nero Marquinia o Black Saint Laurent",
+   "evidencia": "ambas negras veteadas; en la foto no se distinguen"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Boiserie camino",
+   "colors": [
+    "nero venato bianco"
+   ],
+   "materials": [
+    "effetto marmo lucido (Scenario)"
+   ],
+   "shape": "boiserie a tutta altezza con nicchia camino"
+  }
+ },
+ {
+  "product_id": "FEB-002",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-002.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:46:15Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles de pared",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "portales",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "pared lisa greige entre dos portales; marcos de los portales bronce oscuro"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "pannello liscio opaco",
+   "evidencia": "lacado mate o nobilitato: no se distingue en foto"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie a tutta altezza con aperture passanti",
+   "evidencia": "dos aberturas enmarcadas a los lados del marcador"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "color liso con varios candidatos (Laccato opaco / Nobilitato 2); el marco bronce quizá Metal Skin Viva Bronzo"
+  },
+  "notas": [
+   "La misma pared con portales se ve en FEB-006."
+  ],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "boiserie a tutta altezza con aperture passanti"
+  }
+ },
+ {
+  "product_id": "FEB-003",
+  "name": "Divano Balmoral",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-003.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:44:03Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "verde oliva chiaro",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "verde oliva chiaro",
+   "evidencia": "tono amarillo-verdoso apagado en asiento, respaldo y cojines; luz cálida"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela con pelo y brillo tipo terciopelo/chenilla; no es piel"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "ad angolo con terminale curvo",
+   "evidencia": "composición en L con penisola redondeada"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "BELLEZZA Olive / Forest; JOLIE Turtle; NATURAL Khaki",
+   "evidencia": "varios tonos oliva parecidos; la luz cálida impide elegir"
+  },
+  "notas": [
+   "En la misma vista hay mesitas de mármol rojo-marrón veteado (no son FEB-004)."
+  ],
+  "observed": {
+   "name": "Divano Balmoral",
+   "colors": [
+    "verde oliva chiaro"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "ad angolo con terminale curvo"
+  }
+ },
+ {
+  "product_id": "FEB-004",
+  "name": "Tavolino Rio",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-004.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:44:27Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "noce",
+    "material": "legno impiallacciato"
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "bronzo",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "noce",
+   "evidencia": "cubierta redonda con veta de madera visible alrededor del hotspot"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "legno impiallacciato",
+   "evidencia": "veta de madera visible; base de columna metálica bronceada. La ficha dice 'Piano: laccato opaco o impiallacciato'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rotondo",
+   "evidencia": "vista desde arriba; base de columna"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [
+   "ERROR de material (catálogo v1): v1 decía 'marmo marrone scuro/nero venato'. La mesita del marcador es de madera; las mesitas de mármol cercanas son otras piezas."
+  ],
+  "observed": {
+   "name": "Tavolino Rio",
+   "colors": [
+    "noce"
+   ],
+   "materials": [
+    "legno impiallacciato",
+    "metallo"
+   ],
+   "shape": "rotondo"
+  }
+ },
+ {
+  "product_id": "FEB-005",
+  "name": "Tavolino Rio",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-005.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:44:48Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "noce",
+    "material": "legno impiallacciato"
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "noce",
+   "evidencia": "cubierta redonda veteada junto al sofá Balmoral"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "legno impiallacciato",
+   "evidencia": "veta visible; base de columna oscura"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rotondo",
+   "evidencia": "base de columna"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [
+   "Probablemente la misma mesita que FEB-004 vista desde otra panorámica (ambas junto al Balmoral)."
+  ],
+  "observed": {
+   "name": "Tavolino Rio",
+   "colors": [
+    "noce"
+   ],
+   "materials": [
+    "legno impiallacciato",
+    "metallo"
+   ],
+   "shape": "rotondo"
+  }
+ },
+ {
+  "product_id": "FEB-006",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-006.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:45:02Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles de pared",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "portal",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "el marcador está en la pared lisa greige junto al portal hacia el comedor"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "pannello liscio opaco",
+   "evidencia": "lacado o nobilitato no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie a tutta altezza con apertura passante",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "color liso, varios candidatos"
+  },
+  "notas": [
+   "ERROR de color y material (catálogo v1): v1 decía 'nero venato bianco, effetto pietra'. Esa es la boiserie chimenea FEB-001; aquí la pared es greige lisa."
+  ],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "boiserie a tutta altezza con apertura passante"
+  }
+ },
+ {
+  "product_id": "FEB-007",
+  "name": "Cucina Origina Anta Square Cannettato",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-007.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:45:16Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas isla",
+    "dominante": true,
+    "color": "rovere miele",
+    "material": "impiallacciato cannettato"
+   },
+   {
+    "rol": "cubierta",
+    "dominante": false,
+    "color": "marrone scuro venato bianco",
+    "material": "effetto marmo lucido"
+   },
+   {
+    "rol": "columnas",
+    "dominante": false,
+    "color": "rovere miele",
+    "material": "impiallacciato cannettato"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere miele; marrone scuro venato bianco",
+   "evidencia": "isla con puertas de duelas verticales en madera clara cálida; cubierta oscura con veta blanca densa"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "impiallacciato cannettato",
+   "evidencia": "duelas verticales visibles; la ficha solo ofrece impiallacciato cannettato para esta puerta. La cubierta parece mármol, pero no se sabe si es piedra o cerámica"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina a isola",
+   "evidencia": "isla con tarja y parrilla; columnas detrás"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "IMPIALLACCIATO OPACO CANNETTATO · Rovere biondo o Rovere Europeo",
+   "evidencia": "dos robles claros parecidos"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cucina Origina Anta Square Cannettato",
+   "colors": [
+    "rovere miele"
+   ],
+   "materials": [
+    "impiallacciato cannettato",
+    "effetto marmo lucido",
+    "impiallacciato cannettato"
+   ],
+   "shape": "cucina a isola"
+  }
+ },
+ {
+  "product_id": "FEB-008",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-008.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:45:33Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "columnas horno",
+    "dominante": true,
+    "color": "rovere miele",
+    "material": "impiallacciato cannettato"
+   },
+   {
+    "rol": "vitrinas",
+    "dominante": false,
+    "color": "vetro fumé",
+    "material": "vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere miele; vetro fumé",
+   "evidencia": "pared de columnas: centro en madera acanalada con hornos, a los lados vitrinas iluminadas con marco oscuro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "impiallacciato cannettato; vetro",
+   "evidencia": "duelas verticales; puertas de vidrio ahumado con repisas iluminadas"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete colonne a tutta altezza",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "IMPIALLACCIATO OPACO CANNETTATO · Rovere biondo o Rovere Europeo",
+   "evidencia": ""
+  },
+  "notas": [
+   "v1 también listaba 'marmo': en esta vista no hay mármol (es la cubierta de la isla FEB-007)."
+  ],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "rovere miele"
+   ],
+   "materials": [
+    "impiallacciato cannettato",
+    "vetro"
+   ],
+   "shape": "parete colonne a tutta altezza"
+  }
+ },
+ {
+  "product_id": "FEB-009",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-009.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:45:42Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "columnas",
+    "dominante": true,
+    "color": "rovere miele",
+    "material": "impiallacciato cannettato"
+   },
+   {
+    "rol": "vitrinas",
+    "dominante": false,
+    "color": "vetro fumé",
+    "material": "vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere miele; vetro fumé",
+   "evidencia": "las mismas columnas de FEB-008 vistas desde atrás de la isla"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "impiallacciato cannettato; vetro",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete colonne a tutta altezza",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "IMPIALLACCIATO OPACO CANNETTATO · Rovere biondo o Rovere Europeo",
+   "evidencia": ""
+  },
+  "notas": [
+   "Mismo sistema que FEB-008, otra panorámica. También se ve la campana suspendida de metal negro."
+  ],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "rovere miele"
+   ],
+   "materials": [
+    "impiallacciato cannettato",
+    "vetro"
+   ],
+   "shape": "parete colonne a tutta altezza"
+  }
+ },
+ {
+  "product_id": "FEB-010",
+  "name": "Sistema Diciotto",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-010.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:47:25Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "vitrinas",
+    "dominante": true,
+    "color": "antracite",
+    "material": "vetro"
+   },
+   {
+    "rol": "paneles",
+    "dominante": false,
+    "color": "antracite",
+    "material": ""
+   },
+   {
+    "rol": "repisas abiertas superiores",
+    "dominante": false,
+    "color": "tortora",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite; tortora",
+   "evidencia": "vitrinas de vidrio con marco gris muy oscuro y paneles antracita; arriba repisas abiertas greige"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "vetro + pannelli",
+   "evidencia": "el vidrio se ve; paneles lacados o nobilitato no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete attrezzata con passaggio centrale",
+   "evidencia": "vitrinas a los lados de un paso hacia la cocina; repisas abiertas arriba"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "colores lisos oscuros con varios candidatos"
+  },
+  "notas": [
+   "DUDA de modelo: es la misma pared que FEB-012 (Libreria Trenta) vista desde el otro lado; no se sabe qué parte es Diciotto y qué parte Trenta."
+  ],
+  "observed": {
+   "name": "Sistema Diciotto",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [],
+   "shape": "parete attrezzata con passaggio centrale"
+  }
+ },
+ {
+  "product_id": "FEB-012",
+  "name": "Libreria Trenta",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-012.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:47:39Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "vitrinas",
+    "dominante": true,
+    "color": "antracite",
+    "material": "vetro fumé"
+   },
+   {
+    "rol": "repisas abiertas superiores",
+    "dominante": false,
+    "color": "tortora",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite; tortora",
+   "evidencia": "vitrinas con vidrio ahumado y marco oscuro; repisas abiertas greige arriba"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "vetro fumé con telaio metallo",
+   "evidencia": "vidrio ahumado visible, perfil metálico oscuro. El texto de la ficha: 'Anta Aurora: vetro trasparente, trasparente fumé, stop sol; profilo metallo Carbon grey'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a tutta altezza con vetrine e passaggio",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "Anta Aurora · vetro fumé, profilo Carbon grey",
+   "evidencia": "el perfil coincide con el único listado (Carbon grey), pero el vidrio podría ser fumé o stop sol"
+  },
+  "notas": [
+   "Misma pared que FEB-010."
+  ],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [
+    "vetro fumé"
+   ],
+   "shape": "libreria a tutta altezza con vetrine e passaggio"
+  }
+ },
+ {
+  "product_id": "FEB-013",
+  "name": "Madie Aurora",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-013.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:47:53Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio scuro",
+    "material": "vetro trasparente con telaio alluminio"
+   },
+   {
+    "rol": "top y estructura",
+    "dominante": false,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite",
+   "evidencia": "dos aparadores bajos: top y estructura gris muy oscuro, marcos oscuros"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "vetro; alluminio",
+   "evidencia": "puertas de vidrio transparente con marco de aluminio oscuro; se ven las copas dentro"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia bassa con ante vetro",
+   "evidencia": "dos aparadores iguales sobre patas"
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "TELAIO ALLUMINIO AURORA · Brown Metal Gray (telaio)",
+   "evidencia": "es el único color de marco listado para los frontales; marcos gris casi negro"
+  },
+  "notas": [
+   "ERROR de color y material (catálogo v1): v1 decía 'noce' y 'legno': no se ve nogal ni madera, todo es gris oscuro con vidrio.",
+   "Las etiquetas de la ficha para Fianchi/Top traían el prefijo 'Copia di FebalCasa_…_Finiture_'; ya se limpiaron."
+  ],
+  "observed": {
+   "name": "Madie Aurora",
+   "colors": [
+    "grigio scuro"
+   ],
+   "materials": [
+    "vetro trasparente con telaio alluminio"
+   ],
+   "shape": "madia bassa con ante vetro"
+  }
+ },
+ {
+  "product_id": "FEB-015",
+  "name": "Armadio Profile/ Block",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-015.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:48:11Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "bronzo champagne",
+    "material": ""
+   },
+   {
+    "rol": "perfiles",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bronzo champagne",
+   "evidencia": "cuatro puertas abatibles lisas en tono bronce/champagne satinado con banda horizontal y perfiles oscuros"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "tiene aspecto metálico satinado, pero el texto de la ficha dice 'Ante: nobilitato'; no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente 4 ante",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la lista de la ficha es una paleta genérica de armarios; perfil 'brunito o laccato' no se distingue"
+  },
+  "notas": [
+   "v1 decía 'pannello metallico': no confirmable (la ficha dice nobilitato)."
+  ],
+  "observed": {
+   "name": "Armadio Profile/ Block",
+   "colors": [
+    "bronzo champagne"
+   ],
+   "materials": [],
+   "shape": "armadio battente 4 ante"
+  }
+ },
+ {
+  "product_id": "FEB-016",
+  "name": "Libreria Lapis",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-016.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:48:23Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "montantes",
+    "dominante": false,
+    "color": "bronzo champagne",
+    "material": "metallo"
+   },
+   {
+    "rol": "repisas y cajonera",
+    "dominante": true,
+    "color": "antracite",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite; bronzo champagne",
+   "evidencia": "repisas y cajonera gris oscuro; montantes piso-techo en tono bronce claro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "metallo",
+   "evidencia": "montantes y repisas delgadas metálicas; fondo espejado. La ficha: 'Ripiani: vetro, metallo, pannello'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a montanti da terra a soffitto",
+   "evidencia": "estructura de postes con repisas y cajonera baja"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [
+   "ERROR de material (catálogo v1): v1 decía 'legno naturale': no se ve madera natural."
+  ],
+  "observed": {
+   "name": "Libreria Lapis",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [
+    "metallo",
+    "metallo"
+   ],
+   "shape": "libreria a montanti da terra a soffitto"
+  }
+ },
+ {
+  "product_id": "FEB-017",
+  "name": "Pouff Windsor",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-017.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:48:34Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "tortora",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "pouf cilíndrico gris-pardo cálido en la esquina, bajo luz cálida"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela texturizada tipo bouclé"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cilindrico",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de revestimientos"
+  },
+  "notas": [
+   "ERROR de color (catálogo v1): v1 decía 'verde oliva scuro': el pouf se ve gris-pardo, no verde."
+  ],
+  "observed": {
+   "name": "Pouff Windsor",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "cilindrico"
+  }
+ },
+ {
+  "product_id": "FEB-018",
+  "name": "Boiserie TV",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-018.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:48:45Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles",
+    "dominante": true,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite",
+   "evidencia": "paneles lisos gris muy oscuro detrás del televisor"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "pannello liscio opaco",
+   "evidencia": "lacado o nobilitato no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie porta TV",
+   "evidencia": "paneles a toda altura con TV colgada"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "color liso, varios candidatos"
+  },
+  "notas": [
+   "La muestra previa decía 'tortora chiaro' con 'mensole in metallo': en esta vista es gris oscuro y no hay repisas."
+  ],
+  "observed": {
+   "name": "Boiserie TV",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [],
+   "shape": "boiserie porta TV"
+  }
+ },
+ {
+  "product_id": "FEB-020",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-020.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:49:00Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas con marco",
+    "dominante": true,
+    "color": "grigio caldo",
+    "material": "telaio laccato opaco con vetro"
+   },
+   {
+    "rol": "interior",
+    "dominante": false,
+    "color": "rovere scuro",
+    "material": ""
+   },
+   {
+    "rol": "portal",
+    "dominante": false,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo (greige)",
+   "evidencia": "pared de vitrinas con marco greige y jaladera de barra; interior madera oscura iluminada"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "telaio laccato opaco; vetro",
+   "evidencia": "marcos de color uniforme sin veta, vidrio transparente; la ficha ofrece telaio en laccato opaco o legno"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete vetrine a tutta altezza con passaggio",
+   "evidencia": "portal oscuro al centro hacia el comedor"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "LACCATO OPACO · Grigio Caldo o Grigio Città",
+   "evidencia": "greige claro con varios candidatos"
+  },
+  "notas": [
+   "v1 listaba 'marmo nero venato oro': no aparece en esta vista.",
+   "Las etiquetas de TELAIO VETRO traían una 'I' sobrante ('Ilaccato…', 'Irovere…'); ya se limpiaron."
+  ],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "grigio caldo"
+   ],
+   "materials": [
+    "telaio laccato opaco con vetro"
+   ],
+   "shape": "parete vetrine a tutta altezza con passaggio"
+  }
+ },
+ {
+  "product_id": "FEB-021",
+  "name": "Sistema Origina",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-021.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:49:18Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio caldo",
+    "material": "telaio"
+   },
+   {
+    "rol": "cubierta y respaldo",
+    "dominante": false,
+    "color": "grigio scuro venato bianco",
+    "material": "effetto marmo"
+   },
+   {
+    "rol": "campana y parrilla",
+    "dominante": false,
+    "color": "acciaio",
+    "material": "acciaio inox"
+   },
+   {
+    "rol": "nichos abiertos",
+    "dominante": false,
+    "color": "grigio caldo",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo; grigio scuro venato bianco",
+   "evidencia": "cocina en U: puertas con marco greige, cubierta y pared gris oscuro con veta blanca, campana y parrilla de acero"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "effetto marmo (piano); acciaio inox",
+   "evidencia": "cubierta con veta; acero cepillado en la zona de cocción. No se sabe si el piano es piedra o cerámica"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina a U",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "El marcador cae fuera de cuadro en este punto de vista; se registra la composición completa.",
+   "v1 decía 'nero venato oro': la veta se ve blanca, no dorada."
+  ],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "grigio caldo"
+   ],
+   "materials": [
+    "telaio",
+    "effetto marmo",
+    "acciaio inox"
+   ],
+   "shape": "cucina a U"
+  }
+ },
+ {
+  "product_id": "FEB-023",
+  "name": "Libreria Trenta",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-023.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:49:35Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "crema",
+    "material": ""
+   },
+   {
+    "rol": "fondos de nichos",
+    "dominante": false,
+    "color": "noce",
+    "material": "aspetto legno"
+   },
+   {
+    "rol": "lateral nicho TV",
+    "dominante": false,
+    "color": "grigio chiaro venato",
+    "material": "effetto pietra"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "crema; noce",
+   "evidencia": "pared completa con puertas lisas crema-greige; nicho TV y nichos verticales con fondo de nogal e iluminación LED"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "puertas lisas mate (lacado o nobilitato no se distingue); los fondos se ven como madera, pero podrían ser nobilitato"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete attrezzata porta TV con nicchie",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "crema"
+   ],
+   "materials": [],
+   "shape": "parete attrezzata porta TV con nicchie"
+  }
+ },
+ {
+  "product_id": "FEB-024",
+  "name": "Boiserie",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-024.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:49:47Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles cabecera",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": ""
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "tortora chiaro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro",
+   "evidencia": "pared cabecera lisa greige claro con tiras LED verticales y repisas inclinadas del mismo color"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "pannello liscio opaco",
+   "evidencia": "panel liso; las repisas parecen metal delgado"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie testiera con mensole",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "ERROR de material (catálogo v1): v1 decía 'beige chiaro venato, effetto pietra': el panel es liso, sin veta."
+  ],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [],
+   "shape": "boiserie testiera con mensole"
+  }
+ },
+ {
+  "product_id": "FEB-025",
+  "name": "Libreria Trenta Anta Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-025.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:50:36Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas Libeskind",
+    "dominante": true,
+    "color": "grigio talpa scuro",
+    "material": ""
+   },
+   {
+    "rol": "estructura",
+    "dominante": false,
+    "color": "grigio talpa scuro",
+    "material": ""
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "tortora chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio talpa scuro; tortora chiaro",
+   "evidencia": "estructura y puertas gris-pardo oscuro; repisas abiertas greige claro con LED"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "puertas Libeskind lacadas o metal skin: no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a tutta altezza con ante a rilievo sfaccettato",
+   "evidencia": "puertas con relieve facetado tipo origami, visible en la parte baja"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha solo dice 'Anta Libeskind022: tutte le laccate opache GIORNO + 3 metal skin'"
+  },
+  "notas": [
+   "El tour muestra la etiqueta 'LIBRERIA TRENTA ANTA LIBESKIND022' al pasar el cursor."
+  ],
+  "observed": {
+   "name": "Libreria Trenta Anta Libeskind022",
+   "colors": [
+    "grigio talpa scuro"
+   ],
+   "materials": [],
+   "shape": "libreria a tutta altezza con ante a rilievo sfaccettato"
+  }
+ },
+ {
+  "product_id": "FEB-027",
+  "name": "Divano Camden",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-027.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:50:53Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "verde bosco",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "verde bosco",
+   "evidencia": "sofá curvo verde oscuro con brillo de terciopelo/chenilla en asiento y cojines"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela con pelo y brillo tipo terciopelo/chenilla"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "curvo",
+   "evidencia": "sofá modular curvo en forma de riñón"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "CLOUD Dark Green; CAMPSBAY Hunter/Turtle; BOSTON Green",
+   "evidencia": "varios verdes oscuros"
+  },
+  "notas": [
+   "ERROR de color (catálogo v1): v1 decía 'cognac'. El sofá es verde oscuro."
+  ],
+  "observed": {
+   "name": "Divano Camden",
+   "colors": [
+    "verde bosco"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "curvo"
+  }
+ },
+ {
+  "product_id": "FEB-028",
+  "name": "Poltrone Astor",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-028.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:51:04Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "senape",
+    "material": ""
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "grigio scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "senape",
+   "evidencia": "dos sillones mostaza/ocre sobre base de disco oscura"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "superficie lisa con arrugas suaves y poco pelo: podría ser nobuk (Nabuk Eagle Sun) o tela aterciopelada; no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltrona con base a disco",
+   "evidencia": "par de sillones envolventes con base redonda"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "NABUK EAGLE Sun; BELLEZZA Sun; JOLIE Gold",
+   "evidencia": ""
+  },
+  "notas": [
+   "Son dos sillones iguales (catálogo en plural: 'Poltrone Astor')."
+  ],
+  "observed": {
+   "name": "Poltrone Astor",
+   "colors": [
+    "senape"
+   ],
+   "materials": [],
+   "shape": "poltrona con base a disco"
+  }
+ },
+ {
+  "product_id": "FEB-029",
+  "name": "Tavolini Ink",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-029.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:51:18Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubiertas",
+    "dominante": true,
+    "color": "tortora scuro",
+    "material": ""
+   },
+   {
+    "rol": "pie y base",
+    "dominante": false,
+    "color": "nero",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora scuro; nero",
+   "evidencia": "dos cubiertas pardo-grisáceas a distinta altura; pie delgado y base plana oscuros"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la cubierta podría ser cerámica, piedra o metal pintado"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolini a due altezze con piano sagomato",
+   "evidencia": "cubiertas de forma orgánica (triángulo redondeado), un solo pie"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [
+   "La muestra previa decía 'tondo basso, nero': las cubiertas no son redondas ni negras."
+  ],
+  "observed": {
+   "name": "Tavolini Ink",
+   "colors": [
+    "tortora scuro"
+   ],
+   "materials": [],
+   "shape": "tavolini a due altezze con piano sagomato"
+  }
+ },
+ {
+  "product_id": "FEB-030",
+  "name": "Cucina Origina Anta Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-030.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:51:34Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas Libeskind isla",
+    "dominante": true,
+    "color": "antracite",
+    "material": ""
+   },
+   {
+    "rol": "cubierta",
+    "dominante": false,
+    "color": "tortora venato",
+    "material": "effetto travertino"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite; tortora venato",
+   "evidencia": "isla con puertas de relieve facetado gris oscuro mate; cubierta gruesa beige-gris con veta lineal"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "puertas: laccato opaco o metal skin no se distingue; la cubierta parece travertino o cerámica"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina a isola",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "LACCATO METAL SKIN Metallo o LACCATO OPACO Antracite/Ardesia",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cucina Origina Anta Libeskind022",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [],
+   "shape": "cucina a isola"
+  }
+ },
+ {
+  "product_id": "FEB-031",
+  "name": "Sistema Origina",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-031.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:51:49Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "columnas y altos",
+    "dominante": true,
+    "color": "rovere scuro",
+    "material": ""
+   },
+   {
+    "rol": "cubierta y respaldo",
+    "dominante": false,
+    "color": "tortora venato",
+    "material": "effetto travertino"
+   },
+   {
+    "rol": "alacena superior",
+    "dominante": false,
+    "color": "vetro riflettente",
+    "material": "vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere scuro; tortora venato",
+   "evidencia": "pared de columnas con hornos y cava en madera gris oscuro con veta; cubierta y respaldo beige-gris veteado"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": "hay veta vertical visible, pero chapa o nobilitato con estampado de madera no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete colonne con zona lavaggio",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "las puertas aquí son planas: la ficha asignada (Anta Libeskind) no corresponde a esta parte"
+  },
+  "notas": [
+   "DUDA de ficha: el modelo asignado es 'Origina Anta Libeskind', pero las puertas de esta pared son lisas de madera, no Libeskind."
+  ],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "rovere scuro"
+   ],
+   "materials": [],
+   "shape": "parete colonne con zona lavaggio"
+  }
+ },
+ {
+  "product_id": "FEB-032",
+  "name": "Pouff Windsor",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-032.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:52:06Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "grigio",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio",
+   "evidencia": "pouf redondo gris medio con costura perimetral"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela texturizada"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rotondo basso",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de revestimientos"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Pouff Windsor",
+   "colors": [
+    "grigio"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "rotondo basso"
+  }
+ },
+ {
+  "product_id": "FEB-033",
+  "name": "Libreria Trenta",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-033.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:52:20Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "repisas abiertas",
+    "dominante": true,
+    "color": "grigio chiaro caldo",
+    "material": ""
+   },
+   {
+    "rol": "puertas bajas",
+    "dominante": false,
+    "color": "noce scuro",
+    "material": "aspetto legno"
+   },
+   {
+    "rol": "vitrinas",
+    "dominante": false,
+    "color": "vetro fumé",
+    "material": "vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio chiaro caldo; noce scuro",
+   "evidencia": "repisas abiertas greige claro arriba; base con puertas de madera oscura y vitrinas de marco oscuro"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno; vetro",
+   "evidencia": "las puertas bajas tienen veta, pero pueden ser nobilitato o chapa"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete libreria con base a ante e vetrine",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "grigio chiaro caldo"
+   ],
+   "materials": [],
+   "shape": "parete libreria con base a ante e vetrine"
+  }
+ },
+ {
+  "product_id": "FEB-034",
+  "name": "Tavolo Phoenix",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-034.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:52:37Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "rovere carbone",
+    "material": "legno impiallacciato"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio carbone (rovere scuro)",
+   "evidencia": "cubierta rectangular gris-negro frío con veta de madera visible"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "legno impiallacciato",
+   "evidencia": "veta visible en toda la cubierta; no es vidrio ni supermarmo"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rettangolare",
+   "evidencia": "mesa de comedor con 6 sillas"
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "Piano - Fisso · IMPIALLACCIATO · Rovere Carbone Imp L038",
+   "evidencia": "de las tres chapas listadas (Rovere Spessart pardo cálido, Noce claro, Rovere Carbone gris carbón), solo Carbone coincide con el tono frío gris-negro"
+  },
+  "notas": [
+   "Antes estaba anotado 'detrás de una puerta'; con la cámara corregida (setPosition) se ve completa.",
+   "La muestra previa decía 'Supermarmo o Cristallo nero': es madera."
+  ],
+  "observed": {
+   "name": "Tavolo Phoenix",
+   "colors": [
+    "rovere carbone"
+   ],
+   "materials": [
+    "legno impiallacciato"
+   ],
+   "shape": "rettangolare"
+  }
+ },
+ {
+  "product_id": "FEB-035",
+  "name": "Madia Libeskind022",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-035.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:52:55Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas y caja",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": ""
+   },
+   {
+    "rol": "top",
+    "dominante": false,
+    "color": "travertino",
+    "material": "effetto travertino"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro; travertino",
+   "evidencia": "aparador de 4 puertas con relieve facetado suave greige claro; top beige-gris con veta lineal tipo travertino"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "puertas lacadas o metal skin no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia 4 ante a rilievo",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "el top parece travertino, pero la ficha solo lista para el Top Gres Calacatta y Gres Stone Grey"
+  },
+  "notas": [
+   "DUDA de acabado: el top visible (travertino) no está en la lista oficial del Top. ¿Acabado especial o lista incompleta?",
+   "Las etiquetas de la ficha traían el prefijo 'Copia di FebalCasa_…_Finiture_'; ya se limpiaron."
+  ],
+  "observed": {
+   "name": "Madia Libeskind022",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [],
+   "shape": "madia 4 ante a rilievo"
+  }
+ },
+ {
+  "product_id": "FEB-036",
+  "name": "Poltrona Vivienne",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-036.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:53:16Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "nero",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "sillón relax beige-greige con reposapiés, base de estrella oscura"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "superficie lisa con pliegues finos: puede ser piel, nobuk (Nabuk Eagle) o tela; en la foto no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltrona relax girevole con poggiapiedi",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "NABUK EAGLE Sand o tessuti beige",
+   "evidencia": ""
+  },
+  "notas": [
+   "CORRIGE la anotación anterior 'pelle/ecopelle': el material NO está confirmado. El bot no debe decir que es de piel."
+  ],
+  "observed": {
+   "name": "Poltrona Vivienne",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "poltrona relax girevole con poggiapiedi"
+  }
+ },
+ {
+  "product_id": "FEB-037",
+  "name": "Armadio Collezione Momenti.",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-037.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:53:51Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro",
+   "evidencia": "armario de puertas lisas greige claro con jaladera de canal vertical"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente ante lisce",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha asignada es 'mobili di servizio laundry' y no tiene acabados"
+  },
+  "notas": [
+   "DUDA de ficha: la ficha asignada (lavandería) no parece corresponder a este armario de la colección Momenti."
+  ],
+  "observed": {
+   "name": "Armadio Collezione Momenti.",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [],
+   "shape": "armadio battente ante lisce"
+  }
+ },
+ {
+  "product_id": "FEB-038",
+  "name": "Boiserie",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-038.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:54:10Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles",
+    "dominante": true,
+    "color": "nocciola",
+    "material": ""
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "nocciola; bronzo scuro",
+   "evidencia": "paneles de pared beige-pardo cálido con repisas delgadas inclinadas pardo oscuro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "mensole in metallo",
+   "evidencia": "repisas de lámina delgada doblada; los paneles no se pueden confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie con mensole",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "nocciola"
+   ],
+   "materials": [
+    "",
+    "metallo"
+   ],
+   "shape": "boiserie con mensole"
+  }
+ },
+ {
+  "product_id": "FEB-039",
+  "name": "Letto Couple",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-039.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:54:27Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cama tapizada",
+    "dominante": true,
+    "color": "bianco ghiaccio",
+    "material": ""
+   },
+   {
+    "rol": "pared de paneles acolchados",
+    "dominante": false,
+    "color": "bianco ghiaccio",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bianco ghiaccio",
+   "evidencia": "cama tapizada blanco-gris claro frente a una pared de paneles acolchados del mismo tono"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "imbottito",
+   "evidencia": "tapizado liso con brillo suave: piel, similpiel o tela no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "letto matrimoniale imbottito",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha solo tiene la paleta genérica 'Finiture per NOTTE'"
+  },
+  "notas": [
+   "El marcador F no aparece en cuadro, pero la cama ocupa el centro de la vista.",
+   "Junto a la cama: burós y cómoda redondeados de roble claro (no son esta pieza)."
+  ],
+  "observed": {
+   "name": "Letto Couple",
+   "colors": [
+    "bianco ghiaccio"
+   ],
+   "materials": [],
+   "shape": "letto matrimoniale imbottito"
+  }
+ },
+ {
+  "product_id": "FEB-040",
+  "name": "Poltrona Isabelle",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-040.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:54:46Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro",
+   "evidencia": "sillón compacto greige claro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela texturizada tipo chenilla/bouclé"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltroncina con schienale avvolgente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "varios beiges/greige en las 11 colecciones"
+  },
+  "notas": [
+   "El tour muestra la etiqueta 'POLTRONA ISABELLE'."
+  ],
+  "observed": {
+   "name": "Poltrona Isabelle",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "poltroncina con schienale avvolgente"
+  }
+ },
+ {
+  "product_id": "FEB-041",
+  "name": "Specchio Polar",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-041.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:55:01Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "marco",
+    "dominante": true,
+    "color": "bronzo scuro",
+    "material": ""
+   },
+   {
+    "rol": "luna",
+    "dominante": false,
+    "color": "",
+    "material": "specchio"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bronzo scuro",
+   "evidencia": "dos espejos altos apoyados en el piso con marco grueso pardo-negro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "specchio",
+   "evidencia": "el reflejo del cuarto se ve en la luna; el material del marco no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "specchio da terra rettangolare",
+   "evidencia": "dos unidades apoyadas en la pared"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Specchio Polar",
+   "colors": [
+    "bronzo scuro"
+   ],
+   "materials": [
+    "",
+    "specchio"
+   ],
+   "shape": "specchio da terra rettangolare"
+  }
+ },
+ {
+  "product_id": "FEB-042",
+  "name": "Boiserie",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-042.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:55:16Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles de fondo",
+    "dominante": true,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite",
+   "evidencia": "fondo del vestidor en paneles gris muy oscuro (con veta leve en la vista de FEB-043)"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "podría ser madera oscura o nobilitato"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie di fondo cabina armadio",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "Comparte panorámica con FEB-043: hay dos marcadores, el de la pared (boiserie) y el del poste (Lapis)."
+  ],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [],
+   "shape": "boiserie di fondo cabina armadio"
+  }
+ },
+ {
+  "product_id": "FEB-043",
+  "name": "Cabina Armadio Lapis",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-043.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:55:29Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cajoneras y repisas",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   },
+   {
+    "rol": "montantes",
+    "dominante": false,
+    "color": "alluminio",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro; alluminio",
+   "evidencia": "vestidor abierto: cajoneras y repisas greige claro, postes plateados con tira LED"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "montanti in metallo",
+   "evidencia": "postes de aluminio con luz integrada; cajones lacados o nobilitato no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio a montanti",
+   "evidencia": "sistema abierto de postes, barras y cajoneras"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha solo tiene paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cabina Armadio Lapis",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [
+    "",
+    "metallo"
+   ],
+   "shape": "cabina armadio a montanti"
+  }
+ },
+ {
+  "product_id": "FEB-045",
+  "name": "Armadio Lewitt Plus",
+  "section": "CASA 02 - PERFETTA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-045.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:55:45Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio scuro verdastro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio scuro verdastro",
+   "evidencia": "puertas altas lisas gris oscuro con matiz verde, canal vertical entre puertas"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente ante lisce",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "LACCATO OPACO Grigio Fango / Verde Vintage / Grigio Antracite",
+   "evidencia": "paleta genérica"
+  },
+  "notas": [
+   "El tour muestra la etiqueta 'ARMADIO LEWITT PLUS'."
+  ],
+  "observed": {
+   "name": "Armadio Lewitt Plus",
+   "colors": [
+    "grigio scuro verdastro"
+   ],
+   "materials": [],
+   "shape": "armadio battente ante lisce"
+  }
+ },
+ {
+  "product_id": "FEB-046",
+  "name": "Sistema Diciotto",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-046.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:56:48Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles y marco TV",
+    "dominante": true,
+    "color": "rovere scuro",
+    "material": ""
+   },
+   {
+    "rol": "fondos de nichos",
+    "dominante": false,
+    "color": "marrone scuro venato",
+    "material": "effetto marmo"
+   },
+   {
+    "rol": "vitrinas",
+    "dominante": false,
+    "color": "bronzo",
+    "material": "vetro"
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "bianco caldo",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere scuro; marrone scuro venato",
+   "evidencia": "pared TV: paneles de madera oscura, fondos de nichos marrón oscuro con veta, vitrinas con marco bronce y repisas claras"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno; effetto marmo; vetro",
+   "evidencia": "vidrio y efecto mármol se ven; los paneles de madera pueden ser chapa o nobilitato"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete attrezzata porta TV con vetrine",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "CASSA · IMPIALLACCIATO ECCIMERI Rovere dark (candidato)",
+   "evidencia": ""
+  },
+  "notas": [
+   "La muestra previa ('comodino cilindrico curvo, effetto pelle') no corresponde: aquí es la pared TV de la sala."
+  ],
+  "observed": {
+   "name": "Sistema Diciotto",
+   "colors": [
+    "rovere scuro"
+   ],
+   "materials": [],
+   "shape": "parete attrezzata porta TV con vetrine"
+  }
+ },
+ {
+  "product_id": "FEB-047",
+  "name": "Libreria Trenta",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-047.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:57:04Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "fondos de nichos",
+    "dominante": false,
+    "color": "rovere scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora; rovere scuro",
+   "evidencia": "pared completa de puertas lisas beige-pardo con tres nichos de fondo de madera oscura; puerta de paso a la izquierda"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete attrezzata con nicchie",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "parete attrezzata con nicchie"
+  }
+ },
+ {
+  "product_id": "FEB-048",
+  "name": "Divano Melrose",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-048.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:57:17Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "grigio caldo",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo",
+   "evidencia": "sofá gris cálido claro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela de tejido fino acanalado; no es piel"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "ad angolo con penisola",
+   "evidencia": "composición en L con chaise a la derecha, respaldos acolchados por módulos"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "varios grises en las 11 colecciones"
+  },
+  "notas": [
+   "Junto al sofá: mesitas de mármol marrón veteado (no catalogadas)."
+  ],
+  "observed": {
+   "name": "Divano Melrose",
+   "colors": [
+    "grigio caldo"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "ad angolo con penisola"
+  }
+ },
+ {
+  "product_id": "FEB-049",
+  "name": "Poltrona Andy",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-049.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:57:32Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "tortora",
+    "material": "velluto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "tres sillones bajos sin brazos, gris-pardo"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "velluto",
+   "evidencia": "marcas de pelo aplastado típicas del terciopelo en asiento y respaldo"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltroncina senza braccioli con schienale a rullo",
+   "evidencia": "respaldo cilíndrico separado sobre soporte metálico"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de revestimientos"
+  },
+  "notas": [
+   "Son tres unidades (una sola y dos juntas)."
+  ],
+  "observed": {
+   "name": "Poltrona Andy",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [
+    "velluto"
+   ],
+   "shape": "poltroncina senza braccioli con schienale a rullo"
+  }
+ },
+ {
+  "product_id": "FEB-050",
+  "name": "Gruppo Notte Marlene",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-050.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:57:50Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cuerpo",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "jaladeras",
+    "dominante": false,
+    "color": "marrone scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "dos cómodas altas beige-pardo con esquinas redondeadas y jaladera vertical oscura"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "maniglia in metallo (con inserto in pelle)",
+   "evidencia": "la jaladera oscura coincide con el texto de la ficha 'Maniglia verticale: lama in metallo con inserto in pelle'; el cuerpo no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cassettiera alta a spigoli arrotondati",
+   "evidencia": "dos unidades de 5 cajones"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica 'Finiture per NOTTE'"
+  },
+  "notas": [
+   "El tour muestra la etiqueta 'GRUPPO NOTTE MARLENE'.",
+   "El inserto de piel de la jaladera NO hace que la pieza sea 'de piel': se registra solo el metal como material del componente.",
+   "Duda previa FEB-050/046 'misma sala': son piezas distintas en la misma panorámica."
+  ],
+  "observed": {
+   "name": "Gruppo Notte Marlene",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [
+    "",
+    "metallo"
+   ],
+   "shape": "cassettiera alta a spigoli arrotondati"
+  }
+ },
+ {
+  "product_id": "FEB-051",
+  "name": "Cucina Modula anta Square",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-051.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:58:08Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": ""
+   },
+   {
+    "rol": "cubierta y respaldo",
+    "dominante": false,
+    "color": "grigio scuro venato bianco",
+    "material": "effetto marmo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro; grigio scuro venato bianco",
+   "evidencia": "cocina en L: puertas lisas greige claro con leve brillo; cubierta y respaldo gris oscuro con veta blanca"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "puertas lacadas, PET o nobilitato no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina ad angolo",
+   "evidencia": "L con tarja y parrilla, alacenas a toda altura"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "PET OPACO Visone / Acciaio champagne; LACCATO Grigio Londra",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cucina Modula anta Square",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [],
+   "shape": "cucina ad angolo"
+  }
+ },
+ {
+  "product_id": "FEB-052",
+  "name": "Tavolo Madeira",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-052.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:58:24Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite",
+   "evidencia": "cubierta redonda gris muy oscuro, uniforme, sin veta, con plato giratorio central"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "sin veta: más compatible con Cristallo Velvet o Superceramica Antracite que con supermármol, pero no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rotondo",
+   "evidencia": "mesa redonda para 6"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "CRISTALLO VELVET Antracite / SUPERCERAMICA Antracite",
+   "evidencia": ""
+  },
+  "notas": [
+   "v1 decía 'supermarmo lucido': no se ve veta ni brillo de mármol."
+  ],
+  "observed": {
+   "name": "Tavolo Madeira",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [],
+   "shape": "rotondo"
+  }
+ },
+ {
+  "product_id": "FEB-053",
+  "name": "Sedia Nina",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-053.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:58:38Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "grigio talpa scuro",
+    "material": "velluto"
+   },
+   {
+    "rol": "patas",
+    "dominante": false,
+    "color": "nero",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio talpa scuro",
+   "evidencia": "silla tapizada gris-pardo oscuro con patas delgadas negras"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "velluto",
+   "evidencia": "brillo de pelo de terciopelo en respaldo y asiento"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia imbottita con schienale avvolgente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Sedia Nina",
+   "colors": [
+    "grigio talpa scuro"
+   ],
+   "materials": [
+    "velluto"
+   ],
+   "shape": "sedia imbottita con schienale avvolgente"
+  }
+ },
+ {
+  "product_id": "FEB-054",
+  "name": "Madia Leaf",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-054.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:58:55Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas y caja",
+    "dominante": true,
+    "color": "champagne",
+    "material": ""
+   },
+   {
+    "rol": "top",
+    "dominante": false,
+    "color": "grigio scuro venato bianco",
+    "material": "effetto marmo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "champagne; grigio scuro venato bianco",
+   "evidencia": "aparador de 3 puertas con brillo metálico champagne; top oscuro con veta blanca dentro de un marco metálico"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "las puertas parecen Metal Skin, pero no se puede confirmar; el top parece mármol o gres"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia 3 ante",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "METAL SKIN Champagne (candidato)",
+   "evidencia": ""
+  },
+  "notas": [
+   "La muestra previa hablaba de 'vetrine laterali': en esta vista no hay vitrinas."
+  ],
+  "observed": {
+   "name": "Madia Leaf",
+   "colors": [
+    "champagne"
+   ],
+   "materials": [],
+   "shape": "madia 3 ante"
+  }
+ },
+ {
+  "product_id": "FEB-055",
+  "name": "Libreria Trenta",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-055.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:59:13Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "estructura y puertas",
+    "dominante": true,
+    "color": "rovere scuro",
+    "material": ""
+   },
+   {
+    "rol": "fondo nicho TV",
+    "dominante": false,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "top mueble bajo",
+    "dominante": false,
+    "color": "marrone scuro venato",
+    "material": "effetto marmo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere scuro; tortora",
+   "evidencia": "mueble de pared en madera oscura enmarcando un nicho TV con fondo beige; base de 4 puertas con top oscuro veteado"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": "veta visible; chapa o nobilitato no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete attrezzata porta TV",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "rovere scuro"
+   ],
+   "materials": [],
+   "shape": "parete attrezzata porta TV"
+  }
+ },
+ {
+  "product_id": "FEB-056",
+  "name": "Gruppo Notte Marlene",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-056.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:59:34Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cuerpo",
+    "dominante": true,
+    "color": "grigio talpa",
+    "material": ""
+   },
+   {
+    "rol": "top",
+    "dominante": false,
+    "color": "rovere scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio talpa; rovere scuro",
+   "evidencia": "buró de 2 cajones con esquinas redondeadas gris-pardo y top de madera oscura"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "comodino 2 cassetti a spigoli arrotondati",
+   "evidencia": "mismo perfil redondeado y jaladera vertical que las cómodas Marlene de FEB-050"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "ERROR de ficha: el catálogo lo enlazaba a la ficha 'astrid' (cama), pero la pieza es un buró del grupo Marlene. Ya se enlazó a la ficha Marlene (como FEB-050); falta confirmarlo."
+  ],
+  "observed": {
+   "name": "Gruppo Notte Marlene",
+   "colors": [
+    "grigio talpa"
+   ],
+   "materials": [],
+   "shape": "comodino 2 cassetti a spigoli arrotondati"
+  }
+ },
+ {
+  "product_id": "FEB-057",
+  "name": "Boiserie",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-057.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T00:59:49Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "panel cabecera",
+    "dominante": true,
+    "color": "grigio scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio scuro",
+   "evidencia": "banda de pared detrás de la cama en gris oscuro con veta tipo madera y LED arriba; el resto de la pared es tapiz beige"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie testiera retroilluminata",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "grigio scuro"
+   ],
+   "materials": [],
+   "shape": "boiserie testiera retroilluminata"
+  }
+ },
+ {
+  "product_id": "FEB-058",
+  "name": "Armadio Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-058.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T01:00:06Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas armario",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   },
+   {
+    "rol": "nichos, escritorio y columna abierta",
+    "dominante": false,
+    "color": "grigio scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro; grigio scuro",
+   "evidencia": "armario de puertas lisas greige claro; nicho de escritorio y cabecera gris oscuro; columna de repisas abierta con LED"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "composizione cameretta con armadio a ponte e scrittoio",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha 'momenti-cameretta' no tiene acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Collezione Momenti.",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [],
+   "shape": "composizione cameretta con armadio a ponte e scrittoio"
+  }
+ },
+ {
+  "product_id": "FEB-059",
+  "name": "Letto Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-059.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T01:00:20Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cama tapizada",
+    "dominante": true,
+    "color": "grigio chiaro",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio chiaro",
+   "evidencia": "cama individual/matrimonial chica tapizada gris claro con cabecera de cojín capitonado"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "textura de tela visible en la base"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "letto singolo imbottito con testiera a cuscino",
+   "evidencia": "dentro de un nicho de armario puente"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Letto Collezione Momenti.",
+   "colors": [
+    "grigio chiaro"
+   ],
+   "materials": [
+    "tessuto"
+   ],
+   "shape": "letto singolo imbottito con testiera a cuscino"
+  }
+ },
+ {
+  "product_id": "FEB-060",
+  "name": "Libreria Collezione Momenti.",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-060.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T01:00:35Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "tortora materico",
+    "material": ""
+   },
+   {
+    "rol": "librero abierto",
+    "dominante": false,
+    "color": "rovere scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora; rovere scuro",
+   "evidencia": "puertas altas beige-pardo con textura tipo piedra/cemento y jaladeras metálicas; librero abierto en madera oscura con puerta de vidrio"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "textura 'materica' visible, pero no se puede decir de qué material es"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a giorno affiancata ad armadio",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Collezione Momenti.",
+   "colors": [
+    "tortora materico"
+   ],
+   "materials": [],
+   "shape": "libreria a giorno affiancata ad armadio"
+  }
+ },
+ {
+  "product_id": "FEB-061",
+  "name": "Pouff Windsor",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-061.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T01:00:49Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "asiento",
+    "dominante": true,
+    "color": "grigio",
+    "material": "tessuto"
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio; bronzo scuro",
+   "evidencia": "pouf con parte alta de tela gris y base envolvente metálica oscura con aberturas"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto; metallo",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "pouf cilindrico con base metallica",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de revestimientos"
+  },
+  "notas": [
+   "Las tres Windsor expuestas son distintas: FEB-017 cilindro todo de tela, FEB-032 redondo bajo, FEB-061 con base metálica."
+  ],
+  "observed": {
+   "name": "Pouff Windsor",
+   "colors": [
+    "grigio"
+   ],
+   "materials": [
+    "tessuto",
+    "metallo"
+   ],
+   "shape": "pouf cilindrico con base metallica"
+  }
+ },
+ {
+  "product_id": "FEB-063",
+  "name": "Boiserie",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-063.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T01:01:50Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles de pared",
+    "dominante": true,
+    "color": "panna",
+    "material": ""
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "panna",
+    "material": "metallo"
+   },
+   {
+    "rol": "listón vertical",
+    "dominante": false,
+    "color": "rovere chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "panna; rovere chiaro",
+   "evidencia": "pared crema cálido con repisas delgadas del mismo color, tiras LED verticales y listón de madera clara"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "las repisas parecen lámina metálica; los paneles no se pueden confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie con mensole e LED verticali",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "En su propio punto de vista hay dos marcadores (boiserie y Libreria Trenta FEB-064) sobre la misma composición; la boiserie se ve mejor en la toma de FEB-065, detrás de la madia Onda."
+  ],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "panna"
+   ],
+   "materials": [],
+   "shape": "boiserie con mensole e LED verticali"
+  }
+ },
+ {
+  "product_id": "FEB-064",
+  "name": "Libreria Trenta",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-064.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:11:49Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "estructura y repisas",
+    "dominante": true,
+    "color": "panna",
+    "material": ""
+   },
+   {
+    "rol": "repisas de vidrio",
+    "dominante": false,
+    "color": "vetro",
+    "material": "vetro"
+   },
+   {
+    "rol": "cajones bajos",
+    "dominante": false,
+    "color": "grigio tortora",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "panna; rovere chiaro",
+   "evidencia": "librero abierto crema con repisas de vidrio iluminadas, listón central de madera clara y cajones bajos gris-pardo"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "ripiani in vetro",
+   "evidencia": "repisas de vidrio con LED; la estructura no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a giorno con ripiani in vetro",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Trenta",
+   "colors": [
+    "panna"
+   ],
+   "materials": [
+    "",
+    "vetro"
+   ],
+   "shape": "libreria a giorno con ripiani in vetro"
+  }
+ },
+ {
+  "product_id": "FEB-065",
+  "name": "Madia Onda - Zaha Hadid Architects",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-065.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:12:11Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "frentes con relieve de onda",
+    "dominante": true,
+    "color": "grigio bronzo",
+    "material": "metal"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio bronzo",
+   "evidencia": "aparador de 3 puertas gris-bronce satinado con relieve de ondas en la parte baja"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "frontale metal (Metal Onda)",
+   "evidencia": "el texto de la ficha solo ofrece frentes 'Metal Onda, Metal Bronzo Onda, Metal Champagne Onda, Metal Iridio Onda'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia 3 ante con rilievo a onda",
+   "evidencia": "diseño Zaha Hadid Architects"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "Metal Onda o Metal Bronzo Onda",
+   "evidencia": "dos tonos parecidos"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Madia Onda - Zaha Hadid Architects",
+   "colors": [
+    "grigio bronzo"
+   ],
+   "materials": [
+    "metal"
+   ],
+   "shape": "madia 3 ante con rilievo a onda"
+  }
+ },
+ {
+  "product_id": "FEB-066",
+  "name": "Divano Navigli",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-066.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:12:33Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "bianco panna",
+    "material": "bouclé"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bianco panna",
+   "evidencia": "sofá grande blanco crema con cojines grises"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto bouclé",
+   "evidencia": "rizo del bouclé visible en toda la superficie"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "componibile con penisola, trapuntato a quadri",
+   "evidencia": "módulos con acolchado en cuadros, chaise a la izquierda, respaldos móviles"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "varios blancos en 3 categorías de precio"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Divano Navigli",
+   "colors": [
+    "bianco panna"
+   ],
+   "materials": [
+    "bouclé"
+   ],
+   "shape": "componibile con penisola, trapuntato a quadri"
+  }
+ },
+ {
+  "product_id": "FEB-067",
+  "name": "Libreria Lapis",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-067.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:12:53Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "montantes",
+    "dominante": false,
+    "color": "alluminio",
+    "material": "metallo"
+   },
+   {
+    "rol": "repisas",
+    "dominante": true,
+    "color": "antracite",
+    "material": "metallo e vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "alluminio; antracite",
+   "evidencia": "postes plateados con LED y repisas gris oscuro; dos hornos integrados"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "metallo; vetro",
+   "evidencia": "repisas de metal y de vidrio ahumado. La ficha: 'Ripiani: vetro, metallo, pannello'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria a montanti con forni integrati",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Libreria Lapis",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [
+    "metallo e vetro",
+    "metallo"
+   ],
+   "shape": "libreria a montanti con forni integrati"
+  }
+ },
+ {
+  "product_id": "FEB-068",
+  "name": "Sistema Origina",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-068.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:13:16Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "columnas",
+    "dominante": true,
+    "color": "noce scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "noce scuro",
+   "evidencia": "pared de columnas a toda altura en madera oscura de veta vertical con jaladera larga vertical"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": "veta visible; nobilitato, laminado o chapa no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete colonne a tutta altezza",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Sistema Origina",
+   "colors": [
+    "noce scuro"
+   ],
+   "materials": [],
+   "shape": "parete colonne a tutta altezza"
+  }
+ },
+ {
+  "product_id": "FEB-069",
+  "name": "Cucina Origina Anta Sagoma 37",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-069.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:13:37Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio scuro lucido",
+    "material": ""
+   },
+   {
+    "rol": "cubierta",
+    "dominante": false,
+    "color": "grigio venato bianco",
+    "material": "effetto marmo"
+   },
+   {
+    "rol": "repisa trasera",
+    "dominante": false,
+    "color": "tortora chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio scuro; grigio venato bianco",
+   "evidencia": "isla con puertas gris-pardo oscuro brillantes con canal horizontal; cubierta gris con veta blanca"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina a isola",
+   "evidencia": "con parrilla de inducción y repisa elevada detrás"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cucina Origina Anta Sagoma 37",
+   "colors": [
+    "grigio scuro lucido"
+   ],
+   "materials": [],
+   "shape": "cucina a isola"
+  }
+ },
+ {
+  "product_id": "FEB-072",
+  "name": "Tavolo Leeds",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-072.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:13:58Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "noce scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "noce scuro",
+   "evidencia": "cubierta rectangular gruesa de madera oscura con veta horizontal"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": "veta visible; madera maciza, chapa o laminado no se distinguen; la base no se ve"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rettangolare",
+   "evidencia": "mesa para 8"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Tavolo Leeds",
+   "colors": [
+    "noce scuro"
+   ],
+   "materials": [],
+   "shape": "rettangolare"
+  }
+ },
+ {
+  "product_id": "FEB-073",
+  "name": "Sedia Nives con braccioli",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-073.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:14:17Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "tapizado",
+    "dominante": true,
+    "color": "grigio perla",
+    "material": ""
+   },
+   {
+    "rol": "patas",
+    "dominante": false,
+    "color": "nero",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio perla",
+   "evidencia": "sillas con brazos tapizadas en gris claro liso, patas oscuras delgadas"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "tapizado liso con leve brillo: piel, similpiel o tela lisa no se distingue"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia con braccioli",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "patas Nero o Antracite no se distinguen"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Sedia Nives con braccioli",
+   "colors": [
+    "grigio perla"
+   ],
+   "materials": [],
+   "shape": "sedia con braccioli"
+  }
+ },
+ {
+  "product_id": "FEB-074",
+  "name": "Armadio Scorrevole Rodin",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-074.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:14:39Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas corredizas",
+    "dominante": true,
+    "color": "tortora",
+    "material": "laccato opaco"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "armario de puertas corredizas beige-greige mate con línea de luz horizontal"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "laccato opaco",
+   "evidencia": "el texto de la ficha dice 'Quadrotti anta: laccati opachi a catalogo' y el acabado se ve mate liso"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio ante scorrevoli con fascia luminosa",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "tono beige con varios candidatos en la paleta genérica"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Scorrevole Rodin",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [
+    "laccato opaco"
+   ],
+   "shape": "armadio ante scorrevoli con fascia luminosa"
+  }
+ },
+ {
+  "product_id": "FEB-075",
+  "name": "Cabina Armadio Hype",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-075.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:15:03Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles de pared",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": ""
+   },
+   {
+    "rol": "repisas, zapateros y cajoneras",
+    "dominante": false,
+    "color": "antracite",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro; antracite",
+   "evidencia": "vestidor en U: paneles beige claro, repisas, zapateros y cajoneras gris oscuro"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio a U",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha solo tiene paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cabina Armadio Hype",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [],
+   "shape": "cabina armadio a U"
+  }
+ },
+ {
+  "product_id": "FEB-076",
+  "name": "Isola Onda - Zaha Hadid Architects",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-076.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:15:21Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas con relieve de onda",
+    "dominante": true,
+    "color": "bronzo",
+    "material": "metal"
+   },
+   {
+    "rol": "cubierta",
+    "dominante": false,
+    "color": "acciaio",
+    "material": "acciaio inox"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bronzo; acciaio",
+   "evidencia": "isla con puertas metálicas brillantes color bronce con relieve de ondas; cubierta de acero con tarja integrada"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "ante metal (Metal Onda); piano acciaio inox",
+   "evidencia": "la ficha solo ofrece puertas 'Metal ... Onda'; el acero cepillado y la tarja integrada se ven"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina a isola",
+   "evidencia": "diseño Zaha Hadid Architects; detrás, columnas de roble claro con 3 hornos"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "Metal Bronzo Onda o Metal Champagne Onda",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Isola Onda - Zaha Hadid Architects",
+   "colors": [
+    "bronzo"
+   ],
+   "materials": [
+    "metal",
+    "acciaio inox"
+   ],
+   "shape": "cucina a isola"
+  }
+ },
+ {
+  "product_id": "FEB-077",
+  "name": "Sistema Origina anta Square",
+  "section": "CASA 04 - A-MARE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-077.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:15:42Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "columnas",
+    "dominante": true,
+    "color": "rovere naturale",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere naturale",
+   "evidencia": "pared de columnas lisas en roble medio con 3 hornos y alacena con puertas retráctiles"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "aspetto legno",
+   "evidencia": "nobilitato Rovere o chapa no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "parete colonne a tutta altezza",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "NOBILITATO Rovere Europeo (candidato)",
+   "evidencia": ""
+  },
+  "notas": [
+   "DUDA de zona: en esta panorámica el tour muestra la etiqueta 'CASA 01: AUTENTICA', pero el catálogo la pone en CASA 04 - A-MARE."
+  ],
+  "observed": {
+   "name": "Sistema Origina anta Square",
+   "colors": [
+    "rovere naturale"
+   ],
+   "materials": [],
+   "shape": "parete colonne a tutta altezza"
+  }
+ },
+ {
+  "product_id": "FEB-079",
+  "name": "Armadio Profile/ Leather",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-079.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:16:36Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": "effetto pelle"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro",
+   "evidencia": "pared larga de puertas abatibles beige-greige claro con perfiles oscuros"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "effetto pelle (similpelle)",
+   "evidencia": "la ficha Profile/Leather define la puerta como 'effetto pelle'; en la foto la textura no se aprecia"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "SIMILPELLE INCA Cemento / Panna / Grigio Perla",
+   "evidencia": ""
+  },
+  "notas": [
+   "Es SIMILPIEL (efecto piel), no piel: el bot nunca debe decir 'de piel'."
+  ],
+  "observed": {
+   "name": "Armadio Profile/ Leather",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [
+    "effetto pelle"
+   ],
+   "shape": "armadio battente"
+  }
+ },
+ {
+  "product_id": "FEB-081",
+  "name": "Armadio Profile/ Solid",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-081.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:16:58Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro",
+   "evidencia": "puertas altas lisas greige claro con perfil vertical de jaladera bronce"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha dice 'Ante: effetto legno o effetto cemento'; no se ve veta, pero efecto cemento no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Profile/ Solid",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [],
+   "shape": "armadio battente"
+  }
+ },
+ {
+  "product_id": "FEB-083",
+  "name": "Armadio Profile/ Reflex",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-083.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:17:17Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio fumé",
+    "material": "vetro riflettente"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio fumé",
+   "evidencia": "puertas altas que reflejan el pasillo como espejo gris, perfiles oscuros"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "vetro riflettente",
+   "evidencia": "reflejo nítido del entorno; la ficha dice 'vetro riflettente fumé'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Profile/ Reflex",
+   "colors": [
+    "grigio fumé"
+   ],
+   "materials": [
+    "vetro riflettente"
+   ],
+   "shape": "armadio battente"
+  }
+ },
+ {
+  "product_id": "FEB-084",
+  "name": "Armadio battente Aurora",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-084.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:17:39Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "vetro fumé chiaro",
+    "material": "vetro"
+   },
+   {
+    "rol": "interior",
+    "dominante": false,
+    "color": "noce",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "vetro fumé chiaro; noce",
+   "evidencia": "puertas de vidrio ligeramente ahumado con perfil delgado; interior de madera cálida con repisas iluminadas"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "vetro",
+   "evidencia": "vidrio transparente con el interior visible"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente in vetro",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "vetro Ombra fumé o Stop-sol",
+   "evidencia": "tipo de vidrio no distinguible"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio battente Aurora",
+   "colors": [
+    "vetro fumé chiaro"
+   ],
+   "materials": [
+    "vetro"
+   ],
+   "shape": "armadio battente in vetro"
+  }
+ },
+ {
+  "product_id": "FEB-085",
+  "name": "Cucina Anta Telaio Alluminio vetro",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-085.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:18:00Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "isla / península",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   },
+   {
+    "rol": "mesa redonda integrada",
+    "dominante": false,
+    "color": "grigio chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro",
+   "evidencia": "península de cubierta greige claro mate con mesa redonda integrada"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "cubierta mate tipo piedra; material no confirmable"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "penisola cucina con tavolo rotondo integrato",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "DUDA de pieza: el marcador está sobre la península; las puertas de 'Telaio Alluminio vetro' (marco oscuro con vidrio) solo se ven al fondo. ¿Qué parte es la pieza del catálogo?"
+  ],
+  "observed": {
+   "name": "Cucina Anta Telaio Alluminio vetro",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [],
+   "shape": "penisola cucina con tavolo rotondo integrato"
+  }
+ },
+ {
+  "product_id": "FEB-086",
+  "name": "Armadio Barret",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-086.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:18:24Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "rovere grigio",
+    "material": "nobilitato effetto legno"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere grigio",
+   "evidencia": "puertas abatibles con veta de roble gris-pardo y jaladera de barra metálica"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "nobilitato",
+   "evidencia": "la ficha limita la puerta a 'nobilitate o laccate opache'; la veta visible descarta el lacado"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "varios robles en la paleta"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Barret",
+   "colors": [
+    "rovere grigio"
+   ],
+   "materials": [
+    "nobilitato effetto legno"
+   ],
+   "shape": "armadio battente"
+  }
+ },
+ {
+  "product_id": "FEB-087",
+  "name": "Sgabello Lola",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-087.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:18:45Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "asiento y respaldo",
+    "dominante": true,
+    "color": "tortora chiaro",
+    "material": "tessuto"
+   },
+   {
+    "rol": "patas",
+    "dominante": false,
+    "color": "sabbia",
+    "material": "metallo verniciato"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora chiaro",
+   "evidencia": "taburetes altos tapizados beige con respaldo bajo; patas delgadas beige claro con reposapiés"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto; metallo verniciato",
+   "evidencia": "tela aterciopelada en el asiento; patas metálicas pintadas"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sgabello con schienale basso",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "Gambe metallo verniciato · Sabbia",
+   "evidencia": "de las 4 opciones del texto (Ottone scuro, Nero, Antracite, Sabbia) solo Sabbia es clara como las patas visibles"
+  },
+  "notas": [
+   "Junto a la península de FEB-085."
+  ],
+  "observed": {
+   "name": "Sgabello Lola",
+   "colors": [
+    "tortora chiaro"
+   ],
+   "materials": [
+    "tessuto",
+    "metallo verniciato"
+   ],
+   "shape": "sgabello con schienale basso"
+  }
+ },
+ {
+  "product_id": "FEB-088",
+  "name": "Armadio Lumia",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-088.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:19:05Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio chiaro",
+   "evidencia": "puertas lisas gris muy claro con canales verticales de jaladera del mismo color"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con maniglia a gola verticale",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [
+   "El punto de vista está muy cerca: solo se ven las puertas."
+  ],
+  "observed": {
+   "name": "Armadio Lumia",
+   "colors": [
+    "grigio chiaro"
+   ],
+   "materials": [],
+   "shape": "armadio battente con maniglia a gola verticale"
+  }
+ },
+ {
+  "product_id": "FEB-090",
+  "name": "Armadio Lewitt Plus",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-090.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:19:29Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "grigio salvia",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio salvia",
+   "evidencia": "puertas altas gris verdoso claro con canales verticales oscuros"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con maniglia a gola verticale",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Lewitt Plus",
+   "colors": [
+    "grigio salvia"
+   ],
+   "materials": [],
+   "shape": "armadio battente con maniglia a gola verticale"
+  }
+ },
+ {
+  "product_id": "FEB-091",
+  "name": "Tavolo Madeira",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-091.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:19:49Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "bianco",
+    "material": ""
+   },
+   {
+    "rol": "base",
+    "dominante": false,
+    "color": "sabbia",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bianco; sabbia",
+   "evidencia": "cubierta redonda blanca satinada, sin veta; base de patas cruzadas beige claro (se ve en la toma de FEB-092)"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "sin veta: más compatible con Cristallo Velvet Bianco o Superceramica Bianco que con supermármol, pero no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rotondo",
+   "evidencia": "mesa redonda para 4"
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "Base metallo · Sabbia",
+   "evidencia": "de las 4 bases del texto (Ottone Scuro, Nero, Antracite, Sabbia) solo Sabbia es clara como la base visible"
+  },
+  "notas": [
+   "v1 decía 'supermarmo opaco': no se ve veta."
+  ],
+  "observed": {
+   "name": "Tavolo Madeira",
+   "colors": [
+    "bianco"
+   ],
+   "materials": [],
+   "shape": "rotondo"
+  }
+ },
+ {
+  "product_id": "FEB-092",
+  "name": "Sedia Dea",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-092.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:20:10Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "carcasa tapizada",
+    "dominante": true,
+    "color": "tortora",
+    "material": "tessuto"
+   },
+   {
+    "rol": "patas",
+    "dominante": false,
+    "color": "sabbia",
+    "material": "metallo verniciato"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "sillas envolventes tapizadas beige-pardo con patas delgadas beige claro"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela con leve pelo tipo microfibra/terciopelo"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia a guscio imbottita",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "Gambe metallo verniciato · Sabbia",
+   "evidencia": "de las 4 opciones del texto solo Sabbia es clara como las patas visibles"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Sedia Dea",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [
+    "tessuto",
+    "metallo verniciato"
+   ],
+   "shape": "sedia a guscio imbottita"
+  }
+ },
+ {
+  "product_id": "FEB-093",
+  "name": "Tavolo Daniel",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-093.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:20:38Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cubierta",
+    "dominante": true,
+    "color": "bianco venato grigio e oro",
+    "material": "effetto marmo"
+   },
+   {
+    "rol": "patas",
+    "dominante": false,
+    "color": "tortora",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "bianco venato grigio e oro",
+   "evidencia": "cubierta rectangular blanca brillante con veta gris, parda y dorada; patas de marco delgado"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "effetto marmo",
+   "evidencia": "la ficha dice 'Piano: cristallo, superceramica, supermarmo'; supermármol o supercerámica no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "rettangolare",
+   "evidencia": "mesa grande de reuniones; hay una junta al centro (¿extensible?) que no se puede confirmar"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "la ficha no tiene lista de acabados"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Tavolo Daniel",
+   "colors": [
+    "bianco venato grigio e oro"
+   ],
+   "materials": [],
+   "shape": "rettangolare"
+  }
+ },
+ {
+  "product_id": "FEB-094",
+  "name": "Sedia Dea",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-094.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:21:02Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "NO",
+  "componentes": [
+   {
+    "rol": "carcasa tapizada",
+    "dominante": true,
+    "color": "tortora",
+    "material": "tessuto"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora",
+   "evidencia": "en su propio punto de vista solo se ven respaldos en la esquina; en la toma de FEB-093 (misma panorámica) las sillas Dea se ven completas en beige-pardo"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia a guscio imbottita",
+   "evidencia": "vista en la toma de FEB-093"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [
+   "ERROR de punto de vista: apunta al muestrario de acabados y el marcador queda en el borde inferior. Conviene reencuadrarlo en el tour."
+  ],
+  "observed": {
+   "name": "Sedia Dea",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "sedia a guscio imbottita"
+  }
+ },
+ {
+  "product_id": "FEB-095",
+  "name": "Boiserie",
+  "section": "GALLERIA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-095.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:21:39Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles y repisas",
+    "dominante": true,
+    "color": "grigio caldo chiaro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio caldo chiaro",
+   "evidencia": "pared de paneles greige claro con repisas del mismo color donde se exhiben muestras"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "boiserie con mensole",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "notas": [],
+  "observed": {
+   "name": "Boiserie",
+   "colors": [
+    "grigio caldo chiaro"
+   ],
+   "materials": [],
+   "shape": "boiserie con mensole"
+  }
+ },
+ {
+  "product_id": "FEB-096",
+  "name": "Armadio Profile/ Leather",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-096.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:22:07Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas",
+    "dominante": true,
+    "color": "cognac",
+    "material": "effetto pelle"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "cognac (ocra)",
+   "evidencia": "puertas abatibles color ámbar/cuero cálido bajo luz directa"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "effetto pelle (similpelle)",
+   "evidencia": "ficha Profile/Leather: puerta 'effetto pelle'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "SIMILPELLE INCA Bambu o Bronzo",
+   "evidencia": "la luz cálida impide elegir"
+  },
+  "notas": [
+   "Es SIMILPIEL (efecto piel), no piel."
+  ],
+  "observed": {
+   "name": "Armadio Profile/ Leather",
+   "colors": [
+    "cognac"
+   ],
+   "materials": [
+    "effetto pelle"
+   ],
+   "shape": "armadio battente"
+  }
+ },
+ {
+  "product_id": "FEB-097",
+  "name": "Cabina Armadio Telaio",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-097.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:22:27Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "fondos",
+    "dominante": true,
+    "color": "noce chiaro",
+    "material": ""
+   },
+   {
+    "rol": "estructura de marco",
+    "dominante": false,
+    "color": "bronzo scuro",
+    "material": "metallo"
+   },
+   {
+    "rol": "repisas",
+    "dominante": false,
+    "color": "vetro",
+    "material": "vetro"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "noce chiaro; bronzo scuro",
+   "evidencia": "vestidor abierto con fondos de madera cálida, montantes metálicos oscuros y repisas de vidrio"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "telaio in metallo; ripiani in vetro",
+   "evidencia": "montantes metálicos delgados y repisas de vidrio visibles; los fondos parecen madera, pero no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio a telaio a giorno",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [
+   "La muestra previa decía 'ripiani in legno': las repisas son de vidrio."
+  ],
+  "observed": {
+   "name": "Cabina Armadio Telaio",
+   "colors": [
+    "noce chiaro"
+   ],
+   "materials": [
+    "",
+    "metallo",
+    "vetro"
+   ],
+   "shape": "cabina armadio a telaio a giorno"
+  }
+ },
+ {
+  "product_id": "FEB-098",
+  "name": "Cassettiera Square",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-098.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:22:51Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cajones y estructura",
+    "dominante": true,
+    "color": "antracite",
+    "material": ""
+   },
+   {
+    "rol": "tapa expositora",
+    "dominante": false,
+    "color": "vetro fumé",
+    "material": "vetro"
+   },
+   {
+    "rol": "cubierta lateral",
+    "dominante": false,
+    "color": "grigio scuro venato",
+    "material": "effetto pietra"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "antracite; vetro fumé",
+   "evidencia": "cajonera isla gris oscuro con tapa de vidrio ahumado sobre organizador, cubierta lateral gris con veta blanca y bancas tapizadas a los lados"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "vetro (piano espositore)",
+   "evidencia": "vidrio ahumado sobre el cajón organizador; lo demás no se puede confirmar"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cassettiera a isola con piano espositore in vetro",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Cassettiera Square",
+   "colors": [
+    "antracite"
+   ],
+   "materials": [
+    "",
+    "vetro",
+    "effetto pietra"
+   ],
+   "shape": "cassettiera a isola con piano espositore in vetro"
+  }
+ },
+ {
+  "product_id": "FEB-099",
+  "name": "Armadio Barret con Portale",
+  "section": "CASA 01 - AUTENTICA",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-099.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:23:17Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "puertas y portal",
+    "dominante": true,
+    "color": "grigio talpa scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "grigio talpa scuro",
+   "evidencia": "armario de puertas lisas gris-pardo oscuro que forma un portal de paso hacia el vestidor"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "nobilitato o lacado mate liso no se distinguen"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio con portale passante",
+   "evidencia": "puertas planas sin rieles de corredera visibles: compatible con la ficha Barret battente"
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [
+   "DUDA de tipo de puerta: la ficha Barret battente (puertas abatibles) es compatible con la captura, no se ven rieles de corredera; falta confirmarlo."
+  ],
+  "observed": {
+   "name": "Armadio Barret con Portale",
+   "colors": [
+    "grigio talpa scuro"
+   ],
+   "materials": [],
+   "shape": "armadio con portale passante"
+  }
+ },
+ {
+  "product_id": "FEB-100",
+  "name": "Armadio Halley",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-100.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:23:44Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "paneles superiores",
+    "dominante": true,
+    "color": "tortora",
+    "material": ""
+   },
+   {
+    "rol": "banda inferior",
+    "dominante": false,
+    "color": "rovere scuro",
+    "material": ""
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "tortora; rovere scuro",
+   "evidencia": "puertas corredizas en dos tonos: arriba beige, abajo banda de madera oscura; perfiles oscuros"
+  },
+  "material": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": ""
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio ante scorrevoli bicolore",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "NO",
+   "valor": "",
+   "evidencia": "paleta genérica de armarios"
+  },
+  "notas": [],
+  "observed": {
+   "name": "Armadio Halley",
+   "colors": [
+    "tortora"
+   ],
+   "materials": [],
+   "shape": "armadio ante scorrevoli bicolore"
+  }
+ },
+ {
+  "product_id": "FEB-101",
+  "name": "Letto Arden",
+  "section": "CASA 03 - AUDACE",
+  "captura": "tour-project/febal-casa/product-facts/captures/FEB-101.png",
+  "landing_ok": true,
+  "capturado": "2026-09-24T04:24:07Z",
+  "observado": "2026-09-23",
+  "fuente": "captura del tour desde su POV verificado, observada a mano",
+  "visible": "SI",
+  "componentes": [
+   {
+    "rol": "cabecera",
+    "dominante": true,
+    "color": "rovere scuro",
+    "material": "legno impiallacciato"
+   },
+   {
+    "rol": "estructura",
+    "dominante": false,
+    "color": "grigio scuro",
+    "material": "metallo"
+   }
+  ],
+  "color": {
+   "confirmado": "SI",
+   "valor": "rovere scuro; grigio scuro",
+   "evidencia": "cama con cabecera rectangular de esquinas redondeadas en madera gris-pardo oscuro y bastidor metálico delgado"
+  },
+  "material": {
+   "confirmado": "SI",
+   "valor": "impiallacciato (testiera); metallo (telaio)",
+   "evidencia": "veta visible en la cabecera; el texto de la ficha lista 'Impiallacciato Eccimeri: Rovere Dark, Rovere, Noce'"
+  },
+  "forma": {
+   "confirmado": "SI",
+   "valor": "letto matrimoniale con testiera in legno e telaio metallico",
+   "evidencia": ""
+  },
+  "opcion_oficial": {
+   "confirmado": "SI",
+   "valor": "Impiallacciato Eccimeri · Rovere Dark (testiera)",
+   "evidencia": "de las 3 chapas del texto, solo Rovere Dark es oscura; Rovere es clara y Noce pardo cálido"
+  },
+  "notas": [
+   "RESUELVE Arden vs Arden Soft: la cabecera es de madera, no tapizada → Arden. El url-override FEB-101 → arden queda confirmado por la captura.",
+   "Los burós a los lados son del grupo Marlene (ver FEB-056)."
+  ],
+  "observed": {
+   "name": "Letto Arden",
+   "colors": [
+    "rovere scuro"
+   ],
+   "materials": [
+    "legno impiallacciato",
+    "metallo"
+   ],
+   "shape": "letto matrimoniale con testiera in legno e telaio metallico"
+  }
+ }
+]

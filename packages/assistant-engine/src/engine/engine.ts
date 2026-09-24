@@ -89,7 +89,9 @@ export class QueryEngine {
       case "material": {
         const comps = e.configuration.status === "known" ? e.configuration.value : [];
         const mats = comps.map((d) => d.material).filter((m): m is ConceptId => !!m);
-        t = mats.length ? (this.anyIsA(mats, v) ? "yes" : "no") : "unknown";
+        // A secondary part (shelves, handles) can say "yes", but only a known dominant surface can say "no".
+        const dominantKnown = comps.some((d) => d.dominant && !!d.material);
+        t = this.anyIsA(mats, v) ? "yes" : dominantKnown ? "no" : "unknown";
         break;
       }
       case "tone": {

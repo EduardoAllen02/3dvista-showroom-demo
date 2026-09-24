@@ -1,0 +1,485 @@
+<title>Mapa del asistente Febal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..125,500..800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root {
+    --ground: #EEEDEA;
+    --surface: #F8F7F5;
+    --surface-2: #E4E2DD;
+    --ink: #23262A;
+    --ink-2: #555A60;
+    --ink-3: #8A8E93;
+    --line: #CFCCC5;
+    --code: #1F5C5A;
+    --code-soft: #D6E6E3;
+    --llm: #A86A12;
+    --llm-soft: #F3E3C4;
+    --data: #6B4A36;
+    --data-soft: #E9DDD2;
+    --review: #A23B55;
+    --review-soft: #F1D9DF;
+    --ui: #3D4A73;
+    --ui-soft: #DCE0EE;
+    --focus: #1F5C5A;
+    --shadow: 0 1px 2px rgba(35, 38, 42, .08), 0 6px 18px rgba(35, 38, 42, .06);
+    --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+    --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #15171A; --surface: #1D2024; --surface-2: #272B30; --ink: #E8E6E1; --ink-2: #B3B0AA; --ink-3: #7E7C78; --line: #3A3E44;
+      --code: #6FC0B8; --code-soft: #1F3533; --llm: #E0A646; --llm-soft: #3B2F1A; --data: #C99A7B; --data-soft: #342920;
+      --review: #E07E97; --review-soft: #3A2229; --ui: #9AA8DA; --ui-soft: #252B40; --focus: #6FC0B8;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .25);
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #15171A; --surface: #1D2024; --surface-2: #272B30; --ink: #E8E6E1; --ink-2: #B3B0AA; --ink-3: #7E7C78; --line: #3A3E44;
+    --code: #6FC0B8; --code-soft: #1F3533; --llm: #E0A646; --llm-soft: #3B2F1A; --data: #C99A7B; --data-soft: #342920;
+    --review: #E07E97; --review-soft: #3A2229; --ui: #9AA8DA; --ui-soft: #252B40; --focus: #6FC0B8;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .25);
+  }
+  html, body { height: 100%; }
+  body { background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.5; }
+  .app { height: 100%; display: grid; grid-template-rows: auto 1fr; padding-inline: 16px; padding-block: 12px; gap: 12px; box-sizing: border-box; }
+  header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+  h1 { font-family: var(--display); font-stretch: 88%; font-weight: 750; font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+  .sub { color: var(--ink-2); margin: 4px 0 0; max-width: 70ch; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .sw { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; box-sizing: border-box; }
+  .main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 12px; min-height: 0; }
+  .stage { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-height: 380px; box-shadow: var(--shadow); }
+  svg#map { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none; }
+  svg#map.dragging { cursor: grabbing; }
+  .controls { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 6px; }
+  .controls button, .tour button, .chip {
+    font: 500 13px/1 var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+    min-width: 36px; height: 36px; padding: 0 10px; cursor: pointer;
+  }
+  .controls button:hover, .tour button:hover, .chip:hover { background: var(--surface-2); }
+  button:focus-visible, .node:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .zoomlevel { font: 500 11px var(--mono); color: var(--ink-3); text-align: center; }
+  .hint { position: absolute; left: 12px; bottom: 10px; font-size: 12px; color: var(--ink-3); background: color-mix(in srgb, var(--surface) 85%, transparent); padding: 2px 6px; border-radius: 6px; }
+  aside { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px; overflow: auto; min-height: 0; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 14px; }
+  .tour { display: flex; flex-direction: column; gap: 10px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .tour h2, .detail h2 { font-family: var(--display); font-stretch: 92%; font-weight: 700; font-size: 17px; margin: 0; line-height: 1.25; text-wrap: balance; }
+  .eyebrow { font: 600 11px var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
+  .stepbar { display: flex; align-items: center; gap: 8px; }
+  .stepbar .count { font: 500 12px var(--mono); color: var(--ink-2); margin-right: auto; font-variant-numeric: tabular-nums; }
+  .say { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; font-size: 13.5px; }
+  .say b { font-weight: 600; }
+  .detail { display: flex; flex-direction: column; gap: 8px; }
+  .who { display: inline-flex; align-items: center; gap: 6px; font: 600 12px var(--body); padding: 3px 8px; border-radius: 999px; width: fit-content; }
+  .detail p { margin: 0; max-width: 62ch; }
+  .files { font: 12px/1.6 var(--mono); color: var(--ink-2); word-break: break-word; }
+  .kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; font-size: 13px; }
+  .kv dt { color: var(--ink-3); }
+  .kv dd { margin: 0; font-variant-numeric: tabular-nums; }
+  code, .tag { font-family: var(--mono); font-size: 12.5px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+  .rules { margin: 0; padding-left: 18px; color: var(--ink-2); font-size: 13px; display: grid; gap: 4px; }
+  /* SVG */
+  .lane rect { fill: var(--surface-2); opacity: .55; }
+  .lane text { font: 700 15px var(--display); font-stretch: 90%; fill: var(--ink-2); letter-spacing: .01em; }
+  .lane .lanenote { font-family: var(--body); font-weight: 400; font-size: 12px; font-stretch: 100%; fill: var(--ink-3); }
+  .node { cursor: pointer; }
+  .node rect.box { stroke-width: 2; }
+  .node .t1 { font: 600 14px var(--body); fill: var(--ink); }
+  .node .t2 { font: 400 11.5px var(--body); fill: var(--ink-2); }
+  .node .badge { font: 600 10px var(--body); letter-spacing: .06em; text-transform: uppercase; }
+  .node.sel rect.box { stroke-width: 3.5; }
+  .node:hover rect.box { filter: brightness(0.97); }
+  .edge path { fill: none; stroke: var(--ink-3); stroke-width: 1.6; }
+  .edge.dash path { stroke-dasharray: 5 4; }
+  .edge text { font: 500 11px var(--body); fill: var(--ink-2); paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+  .dim .node:not(.on) { opacity: .28; }
+  .dim .edge:not(.on) { opacity: .15; }
+  .edge.on path { stroke: var(--ink); stroke-width: 2.6; }
+  .node.on rect.box { stroke-width: 3.5; }
+  @keyframes pulse { 0%, 100% { stroke-opacity: .9; } 50% { stroke-opacity: .25; } }
+  .node.current .halo { stroke: var(--ink); stroke-width: 3; fill: none; animation: pulse 1.6s ease-in-out infinite; }
+  @media (prefers-reduced-motion: reduce) { .node.current .halo { animation: none; } }
+  @media (max-width: 900px) {
+    .app { height: auto; }
+    .main { grid-template-columns: 1fr; }
+    .stage { height: 62vh; }
+    aside { overflow: visible; }
+  }
+</style>
+
+<div class="app">
+  <header>
+    <div>
+      <p class="eyebrow">Febal Casa · asistente del showroom · versión 2</p>
+      <h1>Cómo responde el asistente, paso a paso</h1>
+      <p class="sub">El modelo de lenguaje entiende y redacta; el código decide qué existe y pone cada dato. Arrastra para moverte, rueda o botones para acercar, y toca una caja para ver qué hace.</p>
+    </div>
+    <div class="legend" aria-label="Quién hace cada paso">
+      <span><i class="sw" style="border-color:var(--code);background:var(--code-soft)"></i>Código (reglas fijas)</span>
+      <span><i class="sw" style="border-color:var(--llm);background:var(--llm-soft)"></i>LLM gpt-4o-mini</span>
+      <span><i class="sw" style="border-color:var(--data);background:var(--data-soft)"></i>Datos</span>
+      <span><i class="sw" style="border-color:var(--review);background:var(--review-soft)"></i>Revisión</span>
+      <span><i class="sw" style="border-color:var(--ui);background:var(--ui-soft)"></i>Visitante / tour</span>
+    </div>
+  </header>
+
+  <div class="main">
+    <div class="stage">
+      <svg id="map" role="img" aria-label="Diagrama de la arquitectura del asistente">
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--ink-3)"></path>
+          </marker>
+          <marker id="arrow-on" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="var(--ink)"></path>
+          </marker>
+        </defs>
+        <g id="world"></g>
+      </svg>
+      <div class="controls" aria-label="Zoom">
+        <button type="button" id="zin" aria-label="Acercar">+</button>
+        <button type="button" id="zout" aria-label="Alejar">−</button>
+        <button type="button" id="zfit" aria-label="Ajustar a la pantalla">⤢</button>
+        <div class="zoomlevel" id="zlevel">100%</div>
+      </div>
+      <div class="hint">Arrastra · rueda para zoom · teclas + − 0</div>
+    </div>
+
+    <aside>
+      <section class="tour" aria-label="Recorrido con un ejemplo real">
+        <div>
+          <p class="eyebrow">Recorrido con una conversación real</p>
+          <h2 id="tourTitle">Elige un ejemplo</h2>
+        </div>
+        <div class="chips" role="group" aria-label="Ejemplos">
+          <button type="button" class="chip" id="sc-amarillo" aria-pressed="false">«¿Lo tienes en amarillo?»</button>
+          <button type="button" class="chip" id="sc-cuero" aria-pressed="false">«Quiero un sofá de cuero»</button>
+        </div>
+        <div class="stepbar" id="stepbar" hidden>
+          <span class="count" id="stepCount">Paso 1 de 9</span>
+          <button type="button" id="prev" aria-label="Paso anterior">‹ Anterior</button>
+          <button type="button" id="next" aria-label="Paso siguiente">Siguiente ›</button>
+          <button type="button" id="exit" aria-label="Salir del recorrido">✕</button>
+        </div>
+        <div class="say" id="stepText">Los dos ejemplos salen de la última batería con gpt-4o-mini (23 de septiembre de 2026): mismo texto, mismas piezas, mismos tiempos.</div>
+      </section>
+
+      <section class="detail" id="detail" aria-live="polite"></section>
+    </aside>
+  </div>
+</div>
+
+<script>
+(() => {
+  const KIND = {
+    code:   { c: "--code",   s: "--code-soft",   who: "Código" },
+    llm:    { c: "--llm",    s: "--llm-soft",    who: "LLM (gpt-4o-mini)" },
+    data:   { c: "--data",   s: "--data-soft",   who: "Datos" },
+    review: { c: "--review", s: "--review-soft", who: "Revisión" },
+    ui:     { c: "--ui",     s: "--ui-soft",     who: "Visitante / tour" },
+  };
+
+  // ---------------------------------------------------------------- nodes
+  const N = [
+    { id: "visitante", x: 50, y: 170, k: "ui", t: "Visitante escribe", s: "chat dentro del tour 3DVista",
+      d: "El visitante escribe en el chat que vive dentro del tour virtual. Puede hacerlo en español, italiano o inglés, y cambiar de idioma a mitad de la conversación.",
+      f: ["widget (packages/tour-bridge)", "server (conexión v2: siguiente paso)"],
+      kv: [["Estado", "v1 sigue en producción; v2 se conecta con la opción ASSISTANT_ENGINE=v2"]] },
+    { id: "estado", x: 270, y: 64, k: "code", t: "Memoria de la charla", s: "idioma · tema · filtros · foco",
+      d: "Recuerda de qué se está hablando: el idioma, el tema (por ejemplo «sofás de ángulo»), los filtros activos y la pieza en foco. Si el visitante cambia de categoría («ahora cocinas»), abre un tema nuevo y no arrastra filtros que no aplican.",
+      f: ["packages/assistant-engine/src/turn/state.ts"] },
+    { id: "gateway", x: 270, y: 170, k: "code", t: "Coordinador del turno", s: "lee, llama, verifica, guarda",
+      d: "Dirige cada turno de principio a fin: lee la memoria, pide el plan al LLM, consulta el motor, pide la redacción, la verifica y guarda la memoria. Pase lo que pase con el LLM, el visitante siempre recibe una respuesta.",
+      f: ["src/turn/gateway.ts"] },
+    { id: "planner", x: 490, y: 170, k: "llm", t: "Planificador", s: "entiende qué pide · solo JSON",
+      d: "gpt-4o-mini lee el mensaje y devuelve únicamente un JSON con vocabulario cerrado: la intención (buscar, listar, variante, detalle, ubicar, recomendar…) y los atributos como identificadores (color.yellow, shape.corner). No escribe nada para el visitante ni decide qué existe.",
+      f: ["src/turn/planner.ts"], kv: [["Tiempo típico", "≈1,3 s"]] },
+    { id: "lexicon", x: 710, y: 64, k: "data", t: "Diccionario de sinónimos", s: "es · it · en",
+      d: "Traduce cómo habla la gente a conceptos: «en L» = de ángulo, «cuero» = piel, «vino» = rojo, «fino» = elegante. Distingue falsos amigos: similpiel y nobuk NO son piel. Se pueden agregar o quitar sinónimos en la hoja «Sinónimos» del Excel de revisión.",
+      f: ["src/ontology/furniture-pack.ts", "src/ontology/lexicon.ts"], kv: [["Conceptos", "110"], ["Sinónimos", "≈1.100"]] },
+    { id: "reducer", x: 710, y: 170, k: "code", t: "Reductor", s: "valida y traduce el plan",
+      d: "Código que no se fía del LLM: valida cada identificador, detecta negaciones («que no sea negra»), completa con el diccionario lo que el LLM olvidó y lo combina con la memoria. El resultado son filtros exactos para el motor.",
+      f: ["src/turn/reducer.ts"] },
+    { id: "engine", x: 930, y: 170, k: "code", t: "Motor de búsqueda", s: "decide qué existe · sin LLM",
+      d: "Es quien decide qué hay. Tres niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la ficha oficial lo ofrece: regla de disponibilidad) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
+      f: ["src/engine/engine.ts"], kv: [["Costo de relajar", "categoría 100 · modelo 50 · forma 6 · material 5 · color 4"]] },
+    { id: "oracle", x: 1180, y: 64, k: "code", t: "Oráculo de pruebas", s: "segunda implementación",
+      d: "Una segunda versión del motor, escrita por separado, contra la que se compara el motor real en todas las combinaciones de 1 a 3 filtros. Si alguna vez difieren, la prueba falla.",
+      f: ["eval/oracle.ts", "packages/assistant-engine/test/oracle-diff.test.ts"], kv: [["Combinaciones", "22.664"], ["Diferencias", "0"]] },
+    { id: "composer", x: 930, y: 320, k: "llm", t: "Redactor", s: "escribe con etiquetas",
+      d: "gpt-4o-mini redacta la respuesta en el idioma del visitante, pero en lugar de nombres, opciones, zonas o enlaces escribe etiquetas: {{p:FEB-003}} (pieza), {{v:FEB-003}} (opciones bajo pedido), {{link:FEB-003}} (ficha), {{z:FEB-003}} (zona). Así no puede inventar un nombre ni un color.",
+      f: ["src/turn/composer.ts"], kv: [["Tiempo típico", "≈1,6 s"]] },
+    { id: "renderer", x: 710, y: 320, k: "code", t: "Renderizador", s: "pone los datos reales",
+      d: "Sustituye cada etiqueta por el dato real del catálogo: nombre del modelo, zona (Casa 1 Autentica…), opciones oficiales, enlace a la ficha, medidas. Todo lo que es un dato lo escribe el código.",
+      f: ["src/turn/render.ts"] },
+    { id: "verifier", x: 490, y: 320, k: "code", t: "Verificador", s: "revisa antes de mostrar",
+      d: "Revisa cada respuesta antes de mostrarla. V1 etiquetas válidas · V3 ningún atributo sin respaldo · V4 ningún número inventado · V5 ningún nombre suelto · V7 idioma correcto · V8 zonas correctas · V9 dice todo lo obligatorio (p. ej. «no lo tenemos así, pero sí bajo pedido»).",
+      f: ["src/turn/verifier.ts"] },
+    { id: "fallback", x: 270, y: 404, k: "code", t: "Reparar o plantilla", s: "si el verificador falla", h: 58,
+      d: "Si la respuesta no pasa: el redactor recibe la lista de errores y lo intenta una vez más; si vuelve a fallar, se usa una plantilla escrita en código (es / it / en), que siempre es correcta aunque suene menos natural.",
+      f: ["src/turn/templates.ts"], kv: [["Última batería", "5 reparaciones y 1 plantilla en 22 turnos"]] },
+    { id: "respuesta", x: 50, y: 320, k: "ui", t: "Respuesta + tarjetas", s: "botón «Llévame» al mueble",
+      d: "El visitante ve el texto, tarjetas agrupadas con el motivo (p. ej. «amarillo ✓ · bajo pedido») y el botón «Llévame», que mueve la cámara del tour hasta la pieza. El LLM nunca ve coordenadas de cámara.",
+      f: ["src/turn/render.ts (tarjetas)", "packages/tour-bridge (navegación)"] },
+
+    { id: "web", x: 50, y: 548, k: "ui", t: "febalcasa.com", s: "56 fichas oficiales",
+      d: "La web oficial: una ficha por modelo con listas de acabados, medidas y texto. Es la fuente de lo que se puede pedir.",
+      f: [] },
+    { id: "scraper", x: 290, y: 548, k: "data", t: "Fichas leídas", s: "scraper + lectura a mano", w: 200,
+      d: "Un script descarga cada ficha y extrae los acabados con su muestra de color. Después se leyeron a mano las 56 fichas: forma, materiales, estilo y medidas como SI/NO con la cita literal. Hallazgo: 18 listas son paletas genéricas (no se ofrecen como opción segura).",
+      f: ["scripts/scrape-febal-facts.py", "product-facts/models.json", "product-facts/model-attributes.json"], kv: [["Opciones", "5.138"]] },
+    { id: "tour", x: 50, y: 648, k: "ui", t: "Tour 3DVista", s: "88 piezas activas",
+      d: "El tour virtual del showroom: cada pieza tiene su punto de vista (panorámica y cámara) y su zona (Casa 1 a 4 y Galleria).",
+      f: ["clients/febal-casa/catalog.json"] },
+    { id: "capturas", x: 290, y: 648, k: "data", t: "Capturas del tour", s: "88, una por una", w: 200,
+      d: "Una captura por pieza desde su punto de vista, moviendo la cámara con la API del tour (sin arrastrar el mouse), revisada a ojo: color, material, forma y opción oficial, cada uno SI/NO con evidencia. Corrigió 8 errores del catálogo anterior (p. ej. una mesita de madera anotada como mármol).",
+      f: ["scripts/cdp_nav_one.py", "product-facts/placements.json", "product-facts/captures/"], kv: [["Color confirmado", "88/88"], ["Material confirmado", "42/88"]] },
+    { id: "ontologia", x: 290, y: 748, k: "data", t: "Ontología", s: "conceptos, cercanías, armonías", w: 200,
+      d: "El mismo paquete que usa el diccionario: formas, colores, materiales, estilos y categorías; cercanías («nobuk se parece a piel») y armonías de color, que son borrador hasta que se aprueben.",
+      f: ["src/ontology/furniture-pack.ts"] },
+    { id: "compilador", x: 620, y: 648, k: "code", t: "Compilador", s: "une todo en un catálogo",
+      d: "Une fichas, capturas, ontología y revisión en un solo catálogo. Cada dato es un «hecho» con su fuente y su estado de revisión. En modo desarrollo usa también lo pendiente; en modo estricto solo lo validado en la revisión.",
+      f: ["src/catalog/compile.ts", "scripts/build-catalog-v2.ts"] },
+    { id: "catalogo", x: 1150, y: 620, k: "data", t: "Catálogo canónico v2", s: "la única fuente de verdad", w: 230, h: 104,
+      d: "Lo que el motor y el renderizador consultan. Cada pieza expuesta apunta a su modelo; cada modelo, a sus opciones oficiales; cada dato, a su evidencia.",
+      f: ["clients/febal-casa/catalog.v2.json"], kv: [["Modelos", "56"], ["Piezas", "88"], ["Opciones", "5.138"], ["Hechos", "818 (0 validados aún)"]] },
+    { id: "excel", x: 1150, y: 790, k: "review", t: "Excel de revisión", s: "11 hojas, foto de cada pieza", w: 230,
+      d: "El libro de revisión: piezas con su captura, modelos, opciones con muestra de color, sinónimos, armonías y preguntas abiertas. Columnas SI/NO, Corrección y Nota.",
+      f: ["scripts/build-review-xlsx.py", "Descargas/febal-casa-revision-2026-09-23.xlsx"] },
+    { id: "validacion", x: 620, y: 790, k: "review", t: "Validación", s: "SI / NO / corrección",
+      d: "Cada dato se marca SI o NO. Un importador convierte el Excel en la lista de hechos validados y rechazados; el catálogo estricto solo usa lo validado. Mientras tanto, lo pendiente se usa en pruebas.",
+      f: ["scripts/import-review-xlsx.py", "product-facts/review.reviewed.json"] },
+  ];
+
+  // ---------------------------------------------------------------- edges
+  const byId = Object.fromEntries(N.map((n) => [n.id, n]));
+  N.forEach((n) => { n.w = n.w || 180; n.h = n.h || 64; });
+  const R = (n) => [n.x + n.w, n.y + n.h / 2], L = (n) => [n.x, n.y + n.h / 2], T = (n) => [n.x + n.w / 2, n.y], B = (n) => [n.x + n.w / 2, n.y + n.h];
+  const line = (a, b) => `M${a[0]},${a[1]} L${b[0]},${b[1]}`;
+  const poly = (...pts) => "M" + pts.map((p) => p.join(",")).join(" L");
+  const curve = (a, b) => { const mx = (a[0] + b[0]) / 2; return `M${a[0]},${a[1]} C${mx},${a[1]} ${mx},${b[1]} ${b[0]},${b[1]}`; };
+  const n = byId;
+  const E = [
+    { a: "visitante", b: "gateway", d: line(R(n.visitante), L(n.gateway)) },
+    { a: "gateway", b: "estado", d: line(T(n.gateway), B(n.estado)), both: true, lab: "lee / guarda", lx: 290, ly: 150 },
+    { a: "gateway", b: "planner", d: line(R(n.gateway), L(n.planner)) },
+    { a: "planner", b: "reducer", d: line(R(n.planner), L(n.reducer)) },
+    { a: "lexicon", b: "reducer", d: line(B(n.lexicon), T(n.reducer)) },
+    { a: "reducer", b: "engine", d: line(R(n.reducer), L(n.engine)) },
+    { a: "oracle", b: "engine", d: poly([1270, 128], [1270, 190], [1110, 190]), dash: true, lab: "0 diferencias", lx: 1280, ly: 160, anchor: "start" },
+    { a: "catalogo", b: "engine", d: poly([1330, 620], [1330, 216], [1110, 216]), lab: "consulta", lx: 1340, ly: 420, anchor: "start" },
+    { a: "engine", b: "composer", d: line(B(n.engine), T(n.composer)), lab: "resultados + obligaciones", lx: 1030, ly: 282, anchor: "start" },
+    { a: "composer", b: "renderer", d: line(L(n.composer), R(n.renderer)) },
+    { a: "renderer", b: "verifier", d: line(L(n.renderer), R(n.verifier)) },
+    { a: "verifier", b: "respuesta", d: line(L(n.verifier), R(n.respuesta)), lab: "✓ pasa", lx: 360, ly: 344 },
+    { a: "verifier", b: "fallback", d: poly([580, 384], [580, 433], [450, 433]), lab: "✗ falla", lx: 590, ly: 420, anchor: "start" },
+    { a: "fallback", b: "respuesta", d: poly([270, 433], [140, 433], [140, 384]), lab: "plantilla", lx: 205, ly: 452 },
+    { a: "fallback", b: "composer", d: poly([360, 462], [360, 472], [1060, 472], [1060, 384]), dash: true, lab: "reparar una vez", lx: 700, ly: 466 },
+
+    { a: "web", b: "scraper", d: line(R(n.web), L(n.scraper)) },
+    { a: "tour", b: "capturas", d: line(R(n.tour), L(n.capturas)) },
+    { a: "scraper", b: "compilador", d: curve(R(n.scraper), [620, 666]) },
+    { a: "capturas", b: "compilador", d: line(R(n.capturas), [620, 680]) },
+    { a: "ontologia", b: "compilador", d: curve(R(n.ontologia), [620, 694]) },
+    { a: "compilador", b: "catalogo", d: line([800, 680], [1150, 680]), lab: "catalog.v2.json", lx: 975, ly: 672 },
+    { a: "catalogo", b: "excel", d: line(B(n.catalogo), T(n.excel)), lab: "se genera", lx: 1275, ly: 760, anchor: "start" },
+    { a: "excel", b: "validacion", d: line(L(n.excel), R(n.validacion)), lab: "se envía a revisar", lx: 975, ly: 814 },
+    { a: "validacion", b: "compilador", d: line(T(n.validacion), B(n.compilador)), lab: "validados", lx: 720, ly: 752, anchor: "start" },
+  ];
+
+  const LANES = [
+    { x: 20, y: 20, w: 1400, h: 472, t: "Un turno de conversación", note: "≈2,9 s y ≈US$0,0008 por turno con gpt-4o-mini" },
+    { x: 20, y: 508, w: 1400, h: 392, t: "De dónde salen los datos", note: "se prepara antes; el visitante nunca espera esto" },
+  ];
+  const WORLD = { w: 1440, h: 920 };
+
+  // ---------------------------------------------------------------- draw
+  const svgNS = "http://www.w3.org/2000/svg";
+  const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+  const svg = document.getElementById("map"), world = document.getElementById("world");
+  const gl = el("g", {}, world), ge = el("g", {}, world), gn = el("g", {}, world);
+  LANES.forEach((l) => {
+    const g = el("g", { class: "lane" }, gl);
+    el("rect", { x: l.x, y: l.y, width: l.w, height: l.h, rx: 14 }, g);
+    const t = el("text", { x: l.x + 18, y: l.y + 28 }, g); t.textContent = l.t;
+    const s = el("tspan", { class: "lanenote", dx: 12 }, t); s.textContent = l.note;
+  });
+  const edgeEls = E.map((e) => {
+    const g = el("g", { class: "edge" + (e.dash ? " dash" : "") }, ge);
+    const p = el("path", { d: e.d, "marker-end": "url(#arrow)" }, g);
+    if (e.both) p.setAttribute("marker-start", "url(#arrow)");
+    if (e.lab) { const t = el("text", { x: e.lx, y: e.ly, "text-anchor": e.anchor || "middle" }, g); t.textContent = e.lab; }
+    e.g = g; e.p = p; return e;
+  });
+  const nodeEls = {};
+  N.forEach((nd) => {
+    const K = KIND[nd.k];
+    const g = el("g", { class: "node", tabindex: "0", role: "button", "aria-label": `${nd.t}: ${nd.s}` }, gn);
+    el("rect", { class: "halo", x: nd.x - 6, y: nd.y - 6, width: nd.w + 12, height: nd.h + 12, rx: 14, fill: "none", stroke: "none" }, g);
+    el("rect", { class: "box", x: nd.x, y: nd.y, width: nd.w, height: nd.h, rx: 10, style: `fill:var(${K.s});stroke:var(${K.c})` }, g);
+    const b = el("text", { x: nd.x + 12, y: nd.y + 17, class: "badge", style: `fill:var(${K.c})` }, g); b.textContent = K.who.split(" (")[0];
+    const t1 = el("text", { x: nd.x + 12, y: nd.y + 36, class: "t1" }, g); t1.textContent = nd.t;
+    const t2 = el("text", { x: nd.x + 12, y: nd.y + 53, class: "t2" }, g); t2.textContent = nd.s;
+    if (nd.id === "catalogo") { const t3 = el("text", { x: nd.x + 12, y: nd.y + 76, class: "t2" }, g); t3.textContent = "56 modelos · 88 piezas"; const t4 = el("text", { x: nd.x + 12, y: nd.y + 93, class: "t2" }, g); t4.textContent = "5.138 opciones · 818 hechos"; }
+    g.addEventListener("click", (ev) => { if (moved) return; select(nd.id); });
+    g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(nd.id); } });
+    nodeEls[nd.id] = g;
+  });
+
+  // ---------------------------------------------------------------- pan / zoom
+  let vw = 1, vh = 1, tx = 0, ty = 0, k = 1;
+  const zl = document.getElementById("zlevel");
+  function apply() { world.setAttribute("transform", `translate(${tx},${ty}) scale(${k})`); zl.textContent = Math.round(k * 100) + "%"; }
+  function size() { const r = svg.getBoundingClientRect(); vw = r.width; vh = r.height; }
+  function fit() { size(); k = Math.min(vw / WORLD.w, vh / WORLD.h) * 0.97; tx = (vw - WORLD.w * k) / 2; ty = (vh - WORLD.h * k) / 2; apply(); }
+  function zoomAt(f, cx, cy) { const nk = Math.max(0.25, Math.min(3.5, k * f)); tx = cx - (cx - tx) * (nk / k); ty = cy - (cy - ty) * (nk / k); k = nk; apply(); }
+  function centerOn(id, scale) {
+    size(); const nd = byId[id]; const nk = scale || Math.max(k, Math.min(1.1, vw / 700));
+    k = nk; tx = vw / 2 - (nd.x + nd.w / 2) * k; ty = vh / 2 - (nd.y + nd.h / 2) * k; apply();
+  }
+  svg.addEventListener("wheel", (ev) => { ev.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(Math.exp(-ev.deltaY * 0.0015), ev.clientX - r.left, ev.clientY - r.top); }, { passive: false });
+  const pts = new Map(); let moved = false, start = null, pinch = null;
+  svg.addEventListener("pointerdown", (ev) => {
+    pts.set(ev.pointerId, [ev.clientX, ev.clientY]); moved = false;
+    if (pts.size === 1) start = { x: ev.clientX, y: ev.clientY, tx, ty };
+    if (pts.size === 2) { const [a, b] = [...pts.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), k }; }
+  });
+  svg.addEventListener("pointermove", (ev) => {
+    if (!pts.has(ev.pointerId)) return;
+    pts.set(ev.pointerId, [ev.clientX, ev.clientY]);
+    if (pts.size === 2 && pinch) {
+      const [a, b] = [...pts.values()]; const r = svg.getBoundingClientRect();
+      const d = Math.hypot(a[0] - b[0], a[1] - b[1]);
+      zoomAt((pinch.k * d / pinch.d) / k, (a[0] + b[0]) / 2 - r.left, (a[1] + b[1]) / 2 - r.top); moved = true; return;
+    }
+    if (start) {
+      const dx = ev.clientX - start.x, dy = ev.clientY - start.y;
+      if (!moved && Math.hypot(dx, dy) < 4) return;
+      if (!moved) { moved = true; try { svg.setPointerCapture(ev.pointerId); } catch (_) {} svg.classList.add("dragging"); }
+      tx = start.tx + dx; ty = start.ty + dy; apply();
+    }
+  });
+  const end = (ev) => { pts.delete(ev.pointerId); if (pts.size < 2) pinch = null; if (!pts.size) { start = null; svg.classList.remove("dragging"); setTimeout(() => { moved = false; }, 0); } };
+  svg.addEventListener("pointerup", end); svg.addEventListener("pointercancel", end);
+  const mid = () => [vw / 2, vh / 2];
+  document.getElementById("zin").onclick = () => { size(); zoomAt(1.25, ...mid()); };
+  document.getElementById("zout").onclick = () => { size(); zoomAt(0.8, ...mid()); };
+  document.getElementById("zfit").onclick = fit;
+  document.addEventListener("keydown", (ev) => {
+    if (ev.target.closest && ev.target.closest("input,textarea")) return;
+    if (ev.key === "+" || ev.key === "=") { size(); zoomAt(1.2, ...mid()); }
+    else if (ev.key === "-") { size(); zoomAt(1 / 1.2, ...mid()); }
+    else if (ev.key === "0") fit();
+    else if (ev.key.startsWith("Arrow") && !(ev.target.classList && ev.target.classList.contains("node"))) {
+      const s = 40; if (ev.key === "ArrowLeft") tx += s; if (ev.key === "ArrowRight") tx -= s; if (ev.key === "ArrowUp") ty += s; if (ev.key === "ArrowDown") ty -= s; apply();
+    }
+  });
+  window.addEventListener("resize", () => { const pk = k; size(); if (!tour) fit(); else apply(); });
+
+  // ---------------------------------------------------------------- detail panel
+  const detail = document.getElementById("detail");
+  const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const tagify = (s) => esc(s).replace(/\{\{([a-z]+):([^}]+)\}\}/g, '<span class="tag">{{$1:$2}}</span>');
+  function select(id) {
+    Object.values(nodeEls).forEach((g) => g.classList.remove("sel"));
+    nodeEls[id].classList.add("sel");
+    const nd = byId[id], K = KIND[nd.k];
+    detail.innerHTML = `
+      <p class="eyebrow">Paso seleccionado</p>
+      <h2>${esc(nd.t)}</h2>
+      <span class="who" style="background:var(${K.s});color:var(${K.c})">${esc(K.who)}</span>
+      <p>${tagify(nd.d)}</p>
+      ${nd.kv ? `<dl class="kv">${nd.kv.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join("")}</dl>` : ""}
+      ${nd.f && nd.f.length ? `<div class="files">${nd.f.map(esc).join("<br>")}</div>` : ""}`;
+  }
+  function overview() {
+    detail.innerHTML = `
+      <p class="eyebrow">Reglas de diseño</p>
+      <h2>Por qué no inventa</h2>
+      <ul class="rules">
+        <li>El LLM entiende y redacta; <b>el código decide qué existe</b> y escribe cada nombre, opción, zona, medida y enlace.</li>
+        <li>Si un color o acabado no está en el tour pero la ficha lo ofrece: «aquí no está así, pero sí bajo pedido» + enlace (regla de disponibilidad).</li>
+        <li>Lo que no está confirmado se dice «sin confirmar»; nunca se rellena.</li>
+        <li>Cada respuesta pasa por el verificador; si falla, se repara o se usa una plantilla.</li>
+        <li>El LLM nunca ve coordenadas de cámara.</li>
+      </ul>
+      <dl class="kv">
+        <dt>Última batería</dt><dd>22 turnos, gpt-4o-mini</dd>
+        <dt>Costo</dt><dd>US$0,0177 en total (≈US$0,0008 por turno)</dd>
+        <dt>Tiempo</dt><dd>p50 2,9 s · p95 4,6 s</dd>
+        <dt>Plantillas</dt><dd>1 de 22 · reparaciones 5</dd>
+        <dt>Datos validados</dt><dd>0 de 818 (pendiente de revisión)</dd>
+      </dl>`;
+  }
+
+  // ---------------------------------------------------------------- guided tour
+  const SCEN = {
+    amarillo: { title: "«¿Tienes sofás de ángulo?» → «¿Lo tienes en amarillo?»", steps: [
+      ["visitante", "El visitante ya preguntó <b>«¿Tienes sofás de ángulo?»</b> (le mostramos Balmoral y Melrose) y ahora escribe <b>«¿Lo tienes en amarillo?»</b>."],
+      ["estado", "La memoria sabe el tema: <b>sofá + de ángulo</b>, en español. «Lo» se refiere a esos sofás."],
+      ["planner", "El planificador devuelve solo esto: intención <code>variant</code>, agrega <code>color.yellow</code>, referencias Balmoral (FEB-003) y Melrose (FEB-048). 1,46 s."],
+      ["reducer", "El reductor valida los ids y los junta con la memoria: filtros <b>sofá · de ángulo · amarillo</b>."],
+      ["engine", "El motor: en el showroom no hay sofás de ángulo amarillos. <b>Bajo pedido sí</b>: Balmoral (Nabuk Eagle Sun, Bellezza Sun, Roma Lemon Sorbet, Tecno Mustard) y Melrose (Boston Mustard…). Como solo hay bajo pedido, busca algo amarillo que sí se vea: el sillón <b>Astor</b> en mostaza. Obligaciones: decir que no está, ofrecer bajo pedido con enlace, ofrecer el Astor."],
+      ["composer", "El redactor escribe con etiquetas, p. ej.: «…pero {{p:FEB-003}}, que aquí está en {{shown:FEB-003}}, sí se puede pedir en {{v:FEB-003}}: míralo en {{link:FEB-003}}». 1,85 s."],
+      ["renderer", "El código cambia cada etiqueta por el dato: <b>Balmoral</b>, «verde oliva claro», las 4 opciones amarillas oficiales y el enlace a su ficha."],
+      ["verifier", "El verificador comprueba nombres, zonas, idioma y que estén todas las obligaciones. Pasa al primer intento."],
+      ["respuesta", "«En el showroom no tenemos sofás de ángulo en amarillo, pero <b>Balmoral</b> está en verde oliva claro y SÍ está disponible bajo pedido en Nabuk Eagle Sun, Bellezza Sun, Roma Lemon Sorbet, Tecno Mustard: míralo en su ficha. […] Si prefieres un sillón, <b>Astor</b> está en Casa 2 (Perfetta) y es amarillo. ¿Te lo muestro?» · 3 tarjetas · 3,3 s en total."],
+    ] },
+    cuero: { title: "«Quiero un sofá de cuero»", steps: [
+      ["visitante", "El visitante escribe <b>«Quiero un sofá de cuero»</b>."],
+      ["lexicon", "El diccionario reconoce <b>«cuero» = piel</b> (material.leather) y «sofá» como categoría. Similpiel y nobuk son conceptos distintos: no se confunden."],
+      ["planner", "El planificador: intención <code>search</code>, agrega <code>material.leather</code>. El reductor completa la categoría sofá con el diccionario."],
+      ["engine", "El motor: <b>no hay sofás de piel</b> ni en el showroom ni bajo pedido. Relaja lo más barato: piel → <b>nobuk</b> (cercanía firmada). Balmoral se puede pedir en Nabuk Eagle. Además, nombra los materiales que sí existen en sofás."],
+      ["composer", "El redactor escribe su primera versión con etiquetas…"],
+      ["verifier", "…y el verificador la rechaza: <b>V9</b>, faltaba nombrar los materiales disponibles ({{vals:c1}})."],
+      ["fallback", "Se repara una vez: el redactor recibe el error y corrige. No hizo falta la plantilla."],
+      ["respuesta", "«En el showroom no tenemos sofás de piel, pero <b>Balmoral</b>, que aquí está en verde oliva claro, sí se puede pedir en Nabuk Eagle Black, Stone, Grey, Sand y más. […] También tenemos opciones en bouclé, tela, microfibra, nobuk, terciopelo.» Ya no dice que el sillón Vivienne sea de piel: la captura no lo confirma."],
+    ] },
+  };
+  let tour = null, step = 0;
+  const stepbar = document.getElementById("stepbar"), stepText = document.getElementById("stepText"), stepCount = document.getElementById("stepCount"), tourTitle = document.getElementById("tourTitle");
+  const chips = { amarillo: document.getElementById("sc-amarillo"), cuero: document.getElementById("sc-cuero") };
+  function show() {
+    const sc = SCEN[tour], [id, text] = sc.steps[step];
+    const path = sc.steps.slice(0, step + 1).map((s) => s[0]);
+    svg.classList.add("dim");
+    Object.entries(nodeEls).forEach(([nid, g]) => { g.classList.toggle("on", path.includes(nid)); g.classList.toggle("current", nid === id); });
+    edgeEls.forEach((e) => {
+      const on = path.some((p, i) => i > 0 && ((path[i - 1] === e.a && p === e.b) || (e.both && path[i - 1] === e.b && p === e.a)));
+      e.g.classList.toggle("on", on); e.p.setAttribute("marker-end", on ? "url(#arrow-on)" : "url(#arrow)");
+    });
+    stepCount.textContent = `Paso ${step + 1} de ${sc.steps.length}`;
+    stepText.innerHTML = text.replace(/\{\{([a-z]+):([^}]+)\}\}/g, '<span class="tag">{{$1:$2}}</span>');
+    document.getElementById("prev").disabled = step === 0;
+    document.getElementById("next").disabled = step === sc.steps.length - 1;
+    select(id); centerOn(id);
+  }
+  function startTour(name) {
+    tour = name; step = 0; stepbar.hidden = false; tourTitle.textContent = SCEN[name].title;
+    Object.entries(chips).forEach(([k2, b]) => b.setAttribute("aria-pressed", String(k2 === name)));
+    show();
+  }
+  function exitTour() {
+    tour = null; stepbar.hidden = true; svg.classList.remove("dim"); tourTitle.textContent = "Elige un ejemplo";
+    Object.values(chips).forEach((b) => b.setAttribute("aria-pressed", "false"));
+    Object.values(nodeEls).forEach((g) => g.classList.remove("on", "current", "sel"));
+    edgeEls.forEach((e) => { e.g.classList.remove("on"); e.p.setAttribute("marker-end", "url(#arrow)"); });
+    stepText.textContent = "Los dos ejemplos salen de la última batería con gpt-4o-mini (23 de septiembre de 2026): mismo texto, mismas piezas, mismos tiempos.";
+    overview(); fit();
+  }
+  chips.amarillo.onclick = () => startTour("amarillo");
+  chips.cuero.onclick = () => startTour("cuero");
+  document.getElementById("prev").onclick = () => { if (step > 0) { step--; show(); } };
+  document.getElementById("next").onclick = () => { if (step < SCEN[tour].steps.length - 1) { step++; show(); } };
+  document.getElementById("exit").onclick = exitTour;
+
+  overview();
+  requestAnimationFrame(fit);
+})();
+</script>
