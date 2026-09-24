@@ -1,0 +1,31 @@
+{
+  "FEB-039": {
+    "url": "https://www.febalcasa.com/it/prodotti/couple/",
+    "old_url": "",
+    "status": "confirmed",
+    "evidence": "Catalog row had no URL. febalcasa.com product-sitemap1 lists /it/prodotti/couple/; page title 'Letto Couple | Febal Casa', canonical matches.",
+    "date": "2026-09-23"
+  },
+  "FEB-101": {
+    "url": "https://www.febalcasa.com/it/prodotti/arden/",
+    "old_url": "https://www.febalcasa.com/it/prodotti/allure/",
+    "status": "pending_capture",
+    "evidence": "Catalog pointed to Allure (another bed). Sitemap has /it/prodotti/arden/ ('Letto in Legno Arden') and /it/prodotti/arden-soft/ (upholstered variant). Which one is exposed must be confirmed on the tour capture.",
+    "date": "2026-09-23"
+  },
+  "FEB-086": {
+    "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/barret/",
+    "old_url": "https://www.febalcasa.com/it/prodotti/barret/",
+    "status": "confirmed",
+    "evidence": "Old URL answers 301 to /it/tipologia/armadi/ante/battente/barret/ (title 'Armadio ante battenti Barret', canonical). Normalized so both Barret pieces map to one model.",
+    "date": "2026-09-23"
+  },
+  "FEB-099": {
+    "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/barret/",
+    "old_url": "https://www.febalcasa.com/it/tipologia/armadi/ispirazioni/armadio-con-passaggio-con-ponte/",
+    "related_urls": ["https://www.febalcasa.com/it/tipologia/armadi/ispirazioni/armadio-con-passaggio-con-ponte/"],
+    "status": "pending_capture",
+    "evidence": "Old URL is a generic 'Armadi a ponte con passaggio' inspiration page with no finish list. The model is Barret; Barret exists as battente / scorrevole / libro. Hinged (battente) assumed like FEB-086; door type must be confirmed on the tour capture.",
+    "date": "2026-09-23"
+  }
+}

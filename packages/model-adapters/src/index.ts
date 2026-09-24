@@ -10,3 +10,4 @@ export type {
 export { createOpenAiAdapter } from "./openai-adapter.js";
 export { createAnthropicAdapter } from "./anthropic-adapter.js";
 export { TOOL_SCHEMAS } from "./tool-schemas.js";
+export { createOpenAiJsonClient } from "./openai-json.js";

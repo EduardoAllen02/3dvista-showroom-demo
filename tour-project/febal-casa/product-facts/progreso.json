@@ -1,0 +1,86 @@
+{
+  "actualizado": "2026-09-23",
+  "ejecuta": "sesión orquestadora (Edd pidió que termine la captura aquí)",
+  "paso_actual": "paso_4_capturas (espera a Edd)",
+  "pasos": {
+    "paso_1_tabla_88": {
+      "estado": "hecho",
+      "salidas": [
+        "product-facts/tabla-88.json",
+        "~/Downloads/febal-casa-atributos-88.xlsx"
+      ]
+    },
+    "paso_2_scraper": {
+      "estado": "hecho",
+      "notas": [
+        "Bug de etiquetas corregido: el alt de la web borra '_r'; se restaura la 'r' alineando con el nombre de archivo (label_source lo indica). 86 etiquetas restauradas en 5 fichas de prueba.",
+        "56/56 URLs, integridad OK, 42 con acabados, 14 sin sección de acabados, 5.055 opciones, 11 con medidas.",
+        "Listas compartidas: 14 armarios comparten la misma lista (111), 4 camas 'LETTI -' (298), Balmoral/Astor/Vivienne (145), Camden/Isabelle/Melrose (131). Andrea debe confirmar que aplican a cada modelo.",
+        "Ninguna ficha dice qué acabado tiene la pieza en foto: las capturas son necesarias.",
+        "21 muestras sin color (miniaturas -rid40/-rid50 que no existen y 5 opciones sin nombre ni imagen en Aurora/Trenta)."
+      ],
+      "url_overrides": {
+        "confirmados": [
+          "FEB-039 couple",
+          "FEB-086 barret (301 → battente)"
+        ],
+        "pendientes_de_captura": [
+          "FEB-101 arden vs arden-soft",
+          "FEB-099 barret: tipo de puerta"
+        ],
+        "sin_resolver": [
+          "FEB-037 (apunta a laundry)",
+          "FEB-058/059/060 (página tipología Momenti cameretta; existen /momenti/, /camere-per-ragazzi/, /cameretta/a-ponte/)",
+          "FEB-056 'Gruppo Notte Marlene' apunta a /prodotti/astrid/ (revisar con captura)"
+        ]
+      }
+    },
+    "paso_3_lectura_manual": {
+      "estado": "hecho",
+      "salida": "product-facts/model-attributes.json (56 modelos, 88 piezas)",
+      "resumen": {
+        "forma_SI": 53,
+        "materiales_SI": 49,
+        "estilo_SI": 45,
+        "medidas_SI": 16,
+        "listas": {
+          "especifica_del_modelo": 24,
+          "paleta_generica": 18,
+          "sin_lista": 14
+        }
+      },
+      "hallazgos": [
+        "Paletas genéricas: 'Finiture per NOTTE.' (Arden, Astrid, Couple, Marlene) y la paleta de armarios (14 fichas) NO son listas del modelo. El texto a veces las restringe (Arden: solo Impiallacciato Eccimeri Rovere Dark/Rovere/Noce; Barret: anta nobilitato o laccato opaco; Rodin: quadrotti laccati opachi; Profile Leather: effetto pelle). El motor solo debe afirmar 'disponible bajo pedido' con listas específicas u opciones confirmadas en el texto.",
+        "Piel auténtica: solo el inserto en piel de la manija vertical de Marlene. Profile Leather = efecto piel (similpiel). Nabuk Eagle (Balmoral, Astor, Vivienne) pendiente de Andrea.",
+        "Melrose y Balmoral: la ficha dice 'modulare/componibile', no 'ad angolo'; la forma de ángulo es de la pieza expuesta (captura).",
+        "Barret: la ficha menciona 'soluzioni a ponte' → FEB-099 'con Portale' es Barret.",
+        "Medidas reales encontradas en tablas que el regex del scraper no veía (Arden, Couple, Astrid, Marlene, Madeira, Phoenix…)."
+      ]
+    },
+    "paso_4_capturas": {
+      "estado": "pendiente (requiere Chrome de Edd con CDP 9222 + tour en localhost:5501)",
+      "capturas_existentes_a_revisar": 27,
+      "retomar": [
+        "FEB-018",
+        "FEB-028",
+        "FEB-029",
+        "FEB-040",
+        "FEB-049",
+        "FEB-087",
+        "FEB-097",
+        "FEB-099"
+      ],
+      "faltan": 61
+    },
+    "paso_5_normalizaciones": {
+      "estado": "pendiente"
+    },
+    "paso_6_excel_andrea": {
+      "estado": "pendiente"
+    }
+  },
+  "piezas": {},
+  "bloqueos": [
+    "Capturas del tour: esperar a que Edd tenga el Chrome con CDP y el tour listos, sin usar la PC durante la captura."
+  ]
+}

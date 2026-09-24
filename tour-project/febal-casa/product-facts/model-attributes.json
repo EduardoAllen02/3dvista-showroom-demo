@@ -1,0 +1,2404 @@
+[
+ {
+  "model_key": "andy",
+  "url": "https://www.febalcasa.com/it/prodotti/andy/",
+  "piezas": [
+   "FEB-049"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltrona",
+   "evidencia": "la nuova poltrona Andy presenta un design distintivo"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no menciona materiales"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "moderna, contemporanea",
+   "evidencia": "Moderna e contemporanea, la nuova poltrona Andy"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de rivestimenti/finiture",
+   "evidencia": "solo 'Modularità' y el formulario de distribuidores"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "arden",
+  "url": "https://www.febalcasa.com/it/prodotti/arden/",
+  "piezas": [
+   "FEB-101"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "letto in legno; testata e giroletto curvati, senza spigoli",
+   "evidencia": "Il profilo della testata e del giroletto fluisce in modo continuo, senza spigoli né interruzioni"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "legno (Impiallacciato Eccimeri)"
+   ],
+   "evidencia": "Il legno non viene addolcito da rivestimenti, ma parla da sé, nella trasparenza delle venature dell’Impiallacciato Eccimeri"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "naturale e contemporanea",
+   "evidencia": "camere da letto che cercano un’identità naturale e contemporanea"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "materasso_cm": "160 x 200",
+    "ingombro_totale_cm": "L 204 x H 101 x P 218"
+   },
+   "evidencia": "Materasso L (cm) 160 P (cm) 200 — Ingombro totale L (cm) 204 H (cm) 101 P (cm) 218"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "la lista de la ficha es la PALETA GENÉRICA 'Finiture per NOTTE.' (compartida con Astrid, Couple y Marlene), no la del modelo",
+   "evidencia": "Finiture per NOTTE. LETTI - TELAIO ALLUMINIO … LETTI - MICROFIBRA BELLEZZA"
+  },
+  "opciones_en_texto": [
+   "Impiallacciato Eccimeri: Rovere Dark, Rovere, Noce"
+  ],
+  "notas": [
+   "CRÍTICO: el texto restringe Arden a 3 chapas de madera ('disponibile in Rovere Dark, Rovere e Noce') y dice que no lleva tapizado; la paleta NOTTE (tejidos, lacados…) no debe afirmarse como opción de Arden.",
+   "Existe también arden-soft (versión tapizada) en febalcasa.com; confirmar cuál es FEB-101 con la captura."
+  ]
+ },
+ {
+  "model_key": "astor",
+  "url": "https://www.febalcasa.com/it/prodotti/astor/",
+  "piezas": [
+   "FEB-028"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltrona con base girevole, circolare o a raggiera",
+   "evidencia": "La base girevole, disponibile in versione circolare o a raggiera"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "Astor è disponibile in una selezione di tessuti di alta qualità e tonalità neutre o vivaci"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "design pulito e contemporaneo",
+   "evidencia": "Il design pulito e contemporaneo la rende un complemento perfetto per soggiorni moderni o salotti raffinati"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('rivestimenti Astor'); coincide: 11 colecciones",
+   "evidencia": "rivestimenti Astor NABUK EAGLE … TECNO"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Incluye NABUK EAGLE: pendiente de Andrea si es piel o no."
+  ]
+ },
+ {
+  "model_key": "astrid",
+  "url": "https://www.febalcasa.com/it/prodotti/astrid/",
+  "piezas": [
+   "FEB-056"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "gruppo notte: comodino 2 cassetti, comò 3 cassetti, settimino 6 cassetti; vassoio superiore in cristallo",
+   "evidencia": "Il Gruppo Astrid … Il vassoio superiore in cristallo"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "cristallo (vassoio superiore)"
+   ],
+   "evidencia": "Il cristallo del vassoio superiore di Astrid"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "eleganza essenziale, identità preziosa",
+   "evidencia": "La struttura articola fessure e pannelli con eleganza essenziale … Astrid esprime un’identità preziosa"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "comodino_cm": "L 49.1 x H 53.8 x P 47.1",
+    "comò_cm": "L 131.1 x H 82.6 x P 47.1",
+    "settimino_cm": "L 49.1 x H 135 x P 47.1"
+   },
+   "evidencia": "Comodino 2 cassetti L 49.1 H 53.8 P 47.1; Comò 3 cassetti L 131.1 H 82.6 P 47.1; Settimino 6 cassetti L 49.1 H 135 P 47.1"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA 'Finiture per NOTTE.' (no específica del modelo)",
+   "evidencia": "Finiture per NOTTE. LETTI - …"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "La pieza del catálogo que apunta aquí es FEB-056 'Gruppo Notte Marlene': el nombre no coincide con la ficha (Astrid). Revisar con la captura cuál es."
+  ]
+ },
+ {
+  "model_key": "aurora",
+  "url": "https://www.febalcasa.com/it/prodotti/aurora/",
+  "piezas": [
+   "FEB-013"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia; versione alta con kit bar",
+   "evidencia": "La madia Aurora … nella versione alta puo’ essere allestita con il kit bar"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo Carbon grey (profilo)",
+    "vetro (anta)"
+   ],
+   "evidencia": "La combinazione del metallo Carbon grey, che contaddistingue il profilo, con il vetro dell’anta e la finitura dell’interno"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "solo 'estetica ricercata', sin estilo nombrado"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: Cassa e Schiena / Fianchi / Frontali / Top; coincide con el parser",
+   "evidencia": "finiture Cassa E Schiena … Frontali TELAIO ALLUMINIO AURORA … Top … GRES"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Frontali 'TELAIO ALLUMINIO AURORA' trae opciones sin nombre ni imagen en la web (label vacío)."
+  ]
+ },
+ {
+  "model_key": "aurora-porta-battente",
+  "url": "https://www.febalcasa.com/it/prodotti/aurora-porta-battente/",
+  "piezas": [
+   "FEB-084"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "anta battente per armadio, profilo a doppia cornice",
+   "evidencia": "L’ anta battente Aurora è disegnata con un profilo a doppia cornice in metallo Carbon grey"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo Carbon grey (profilo)",
+    "vetro Ombra fumé o Stop-sol (anta)",
+    "casse in nobilitato Noce (interno, ambientazione)"
+   ],
+   "evidencia": "può accogliere un vetro Ombra fumé o Stop-sol … All’interno, l’ anta Aurora si abbina a casse in nobilitato Noce"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "moderno, contemporaneo",
+   "evidencia": "Entrambe le versioni si integrano armoniosamente in contesti dal gusto moderno … un tocco di contemporaneità"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "medidas solo en PDF 'Scheda tecnica' (no leído)"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Aurora' es la PALETA GENÉRICA DE ARMADIOS (idéntica en 14 fichas); aplica al sistema de armario, no al vidrio de la puerta",
+   "evidencia": "Finiture per Aurora SIMILPELLE INCA … NOBILITATI"
+  },
+  "opciones_en_texto": [
+   "Anta: vetro Ombra fumé, vetro Stop-sol; profilo metallo Carbon grey"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "balmoral",
+  "url": "https://www.febalcasa.com/it/prodotti/balmoral/",
+  "piezas": [
+   "FEB-003"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "divano componibile / modulare",
+   "evidencia": "Balmoral è un divano modulare … La composizione flessibile consente infinite configurazioni"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "Balmoral è disponibile in una ricca selezione di tessuti e colori"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante; per contesti moderni e classici",
+   "evidencia": "Il suo design sofisticato e le linee eleganti … Perfetto sia in contesti moderni che classici"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Rivestimenti per Balmoral'); coincide: 11 colecciones",
+   "evidencia": "Rivestimenti per Balmoral BALMORAL NABUK EAGLE … TECNO"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "La ficha no dice 'ad angolo'; la forma de la pieza expuesta sale de la captura.",
+   "NABUK EAGLE pendiente de Andrea (¿piel?)."
+  ]
+ },
+ {
+  "model_key": "boiserie",
+  "url": "https://www.febalcasa.com/it/prodotti/boiserie/",
+  "piezas": [
+   "FEB-001",
+   "FEB-002",
+   "FEB-006",
+   "FEB-018",
+   "FEB-024",
+   "FEB-038",
+   "FEB-042",
+   "FEB-057",
+   "FEB-063",
+   "FEB-095"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sistema di pannelli a sormonto fino a terra, modulare; mensole, pensili, portabottiglie, luce LED",
+   "evidencia": "La Boiserie è composta da pannelli a sormonto personalizzabili con luce Led integrata, finiture a contrasto, mensole in metallo, pensili e moduli porta bottiglie"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato (rigato)",
+    "laccato opaco",
+    "metallo (mensole)",
+    "specchio (pensile Dice)"
+   ],
+   "evidencia": "design rigato delle finiture nobilitate … mensole in metallo … l’esclusiva schiena a specchio"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "sofisticato, design rigato",
+   "evidencia": "arricchisce il soggiorno in maniera estremamente sofisticata grazie al design rigato"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "mensole_spessore_mm": 25
+   },
+   "evidencia": "Lo spessore delle mensole in metallo di 25 mm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: FIANCHI E PIANI (Nobilitato 2, Laccato Opaco, Metal Skin, Impiallacciato Eccimeri) / FRONTALI (Scenario); coincide",
+   "evidencia": "Finiture per Boiserie FIANCHI EIPIANI … FRONTALI SCENARIO"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "camden",
+  "url": "https://www.febalcasa.com/it/prodotti/camden/",
+  "piezas": [
+   "FEB-027"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "divano dalle linee armoniose con curvatura; modulare (sezione Modularità)",
+   "evidencia": "una curvatura elegante che valorizza qualsiasi ambiente living"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "la varietà di tessuti disponibili lo rendono altamente personalizzabile"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "classico e contemporaneo, elegante",
+   "evidencia": "coniuga tradizione e modernità … perfetto per ambienti classici o dal gusto contemporaneo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Rivestimenti per Camden'); coincide: 11 colecciones",
+   "evidencia": "Rivestimenti per Camden CAMDEN BOSTON … VELVET"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "couple",
+  "url": "https://www.febalcasa.com/it/prodotti/couple/",
+  "piezas": [
+   "FEB-039"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "letto misto; testata a pannelli configurabili (lunga, sovrapposta, alta, semplice); sommier Ermes o Adair",
+   "evidencia": "La testata è una composizione di pannelli configurabili — lunga, sovrapposta, alta, semplice"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "impiallacciato",
+    "laccato",
+    "laccato metal (superfici rigide)",
+    "tessuto o similpelle (zone imbottite)"
+   ],
+   "evidencia": "L’alternanza tra superfici rigide (impiallacciato, laccato, laccato metal) e zone imbottite in tessuto o similpelle"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo, ordinato e armonioso",
+   "evidencia": "trasferendo all’intera camera da letto un carattere contemporaneo, ordinato e armonioso"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "testata_cm": [
+     "L 420 x H 140,8 x P 10",
+     "L 240 x H 105,6 x P 10"
+    ],
+    "materasso_cm": [
+     "160x190",
+     "160x200",
+     "180x200",
+     "153x203",
+     "193x203",
+     "183x213"
+    ],
+    "sommier_ermes_ingombro_cm": "L 172–212 x H 37 x P 204–227",
+    "sommier_adair_ingombro_cm": "L 170 x H 32 x P 199–209"
+   },
+   "evidencia": "Testata Couple Ingombro totale L 420 H 140,8 P 10 … Sommier Ermes … Sommier Adair …"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA 'Finiture per NOTTE.'; el texto sí confirma las familias impiallacciato, laccato, laccato metal, tessuto y similpelle para Couple",
+   "evidencia": "Finiture per NOTTE. TELAIO ALLUMINIO … MICROFIBRA BELLEZZA"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "A diferencia de Arden, aquí el texto respalda que la paleta NOTTE (familias tejido/similpiel/laca/chapa) aplica a Couple. Andrea confirma."
+  ]
+ },
+ {
+  "model_key": "daniel",
+  "url": "https://www.febalcasa.com/it/prodotti/daniel/",
+  "piezas": [
+   "FEB-093"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolo con struttura ponte gamba; quadrata, rettangolare, rettangolare allungabile",
+   "evidencia": "Il modello è disponibile in forma quadrata, rettangolare e rettangolare allungabile"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "piano: cristallo, superceramica, supermarmo"
+   ],
+   "evidencia": "Il suo piano personalizzabile in cristallo, superceramica e supermarmo"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "estrema eleganza",
+   "evidencia": "Sinonimo di estrema eleganza, il tavolo Daniel"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [
+   "Piano: cristallo, superceramica, supermarmo",
+   "Forma: quadrata, rettangolare, rettangolare allungabile"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "dea",
+  "url": "https://www.febalcasa.com/it/prodotti/dea/",
+  "piezas": [
+   "FEB-092",
+   "FEB-094"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia; seduta e schienale curvi con pieghe sartoriali; gambe lineari",
+   "evidencia": "La linearità delle gambe … ammorbidita dalle forme curve e accoglienti della seduta e dello schienale"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo verniciato (gambe)"
+   ],
+   "evidencia": "La linearità delle gambe in metallo verniciato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "raffinata, sartoriale",
+   "evidencia": "La sedia Dea è perfetta per progetti raffinati in ogni dettaglio … un prezioso tocco sartoriale"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [
+   "Gambe metallo verniciato: Ottone scuro, Antracite, Nero, Sabbia"
+  ],
+  "notas": [
+   "El material del tapizado de seduta/schienale no está nombrado en la ficha (solo 'tocco sartoriale')."
+  ]
+ },
+ {
+  "model_key": "diciotto",
+  "url": "https://www.febalcasa.com/it/prodotti/diciotto/",
+  "piezas": [
+   "FEB-010",
+   "FEB-046"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sistema di arredo modulare (parete attrezzata living): ante Libeskind022 e Cover, pensili Deck/Dice/Connect/Paper, elemento Odeon, top vassoio",
+   "evidencia": "Diciotto è un sistema di arredo pratico, versatile e funzionale che, attraverso una vasta modularità, crea composizioni sempre diverse"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato",
+    "laccato opaco",
+    "metal skin",
+    "impiallacciato eccimeri",
+    "metallo (pensile Deck)",
+    "specchio (pensile Dice)",
+    "plexiglass (sostegno Odeon)"
+   ],
+   "evidencia": "Deck è un pensile caratterizzato da una scocca in metallo … L’esclusiva schiena a specchio … un sostegno in plexiglass"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "attuale, design innovativo",
+   "evidencia": "Soluzioni attuali e su misura donano carattere al living attraverso finiture, elementi e design innovativi"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: CASSA / INTERNE / TOP; coincide",
+   "evidencia": "Finiture per Diciotto CASSA … INTERNE NOBILITATO 1 LEATHER GREY … TOP"
+  },
+  "opciones_en_texto": [
+   "Anta Libeskind022: tutte le laccate opache GIORNO. + 3 laccati metal skin",
+   "Pensile Deck: scocca metallo Carbon grey o Champagne; schiena nobilitati GIORNO."
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "febal-notte-armadio-scorrevole-halley-01",
+  "url": "https://www.febalcasa.com/it/prodotti/febal-notte-armadio-scorrevole-halley-01/",
+  "piezas": [
+   "FEB-100"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "anta scorrevole per armadio a quadrotti, luce LED orizzontale integrata (opzionale)",
+   "evidencia": "L’ anta scorrevole Halley unisce contrasti materici e luce LED integrata … I quadrotti che compongono l’anta possono essere personalizzati singolarmente"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "superfici lignee e texture materiche (anta)",
+    "metallo, vetro e similpelle (accessori interni Plus)"
+   ],
+   "evidencia": "Halley gioca sui contrasti tra superfici lignee e texture materiche … accessori Plus in metallo , vetro e similpelle"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo, sofisticato, scenografico",
+   "evidencia": "L’ anta scorrevole Halley ha un carattere contemporaneo … crea atmosfere sofisticate"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Halley' = PALETA GENÉRICA DE ARMADIOS (idéntica en 14 fichas)",
+   "evidencia": "Finiture per Halley SIMILPELLE INCA … NOBILITATI"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "febal-notte-gruppo-como-e-comodino-marlene",
+  "url": "https://www.febalcasa.com/it/prodotti/febal-notte-gruppo-como-e-comodino-marlene/",
+  "piezas": [
+   "FEB-050"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "gruppo notte dalle forme curvilinee: comodino, comò, settimino; versione con maniglia verticale",
+   "evidencia": "Le forme curvilinee di Marlene … Ogni pezzo della collezione — comodino, comò, settimino"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo con inserto in pelle (maniglia verticale)",
+    "top in nobilitato, laccato o gres"
+   ],
+   "evidencia": "una sottile lama in metallo con inserto in pelle … Il top personalizzabile — in nobilitato, laccato o gres"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, sinuoso, raffinato",
+   "evidencia": "Il Gruppo Marlene declina l’eleganza attraverso la sinuosità … un’aura di raffinata precisione"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "comodino_2_cassetti_cm": "L 52.6 x H 46.9 x P 50.3",
+    "comò_3_cassetti_cm": "L 130 x H 78.9 x P 59.4",
+    "settimino_5_cassetti_cm": "L 52.6 x H 114.1 x P 50.3"
+   },
+   "evidencia": "Comodino 2 cassetti L 52.6 H 46.9 P 50.3 … Comò 3 cassetti L 130 H 78.9 P 59.4 … Settimino 5 cassetti L 52.6 H 114.1 P 50.3"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA 'Finiture per NOTTE.'; el texto confirma solo el top (nobilitato, laccato, gres)",
+   "evidencia": "Finiture per NOTTE. …"
+  },
+  "opciones_en_texto": [
+   "Top: nobilitato, laccato, gres",
+   "Maniglia verticale: lama in metallo con inserto in pelle"
+  ],
+  "notas": [
+   "Único dato de PIEL auténtica encontrado hasta ahora: el inserto en piel de la manija vertical (útil para UC-1 como 'detalle en piel', no como mueble de piel)."
+  ]
+ },
+ {
+  "model_key": "hype",
+  "url": "https://www.febalcasa.com/it/prodotti/hype/",
+  "piezas": [
+   "FEB-075"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio modulare a cremagliera: lineare, angolare o su misura; LED integrato opzionale",
+   "evidencia": "Hype è un sistema modulare per cabine armadio con struttura a cremagliera, pensato per soluzioni lineari, angolari o su misura"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "solo 'materiali di alta qualità', sin nombrarlos"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante",
+   "evidencia": "perfetta per chi cerca una soluzione elegante e versatile"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Hype' = PALETA GENÉRICA DE ARMADIOS; el texto dice que aplican 'le finiture disponibili della collezione NOTTE'",
+   "evidencia": "Le finiture disponibili della collezione NOTTE offrono un’ampia scelta cromatica e materica"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "ink",
+  "url": "https://www.febalcasa.com/it/prodotti/ink/",
+  "piezas": [
+   "FEB-029"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "NO",
+   "valor": "coffee table (solo la categoría; la forma no se describe)",
+   "evidencia": "il coffee table Ink"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no menciona materiales"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, adatto a qualsiasi stile",
+   "evidencia": "Elegante e funzionale, il coffee table Ink è adatto a qualsiasi stile"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "isabelle",
+  "url": "https://www.febalcasa.com/it/prodotti/isabelle/",
+  "piezas": [
+   "FEB-040"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltroncina compatta",
+   "evidencia": "Isabelle, la poltroncina elegante e compatta"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "i rivestimenti in tessuti di pregio ne esaltano il carattere ricercato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante; moderno o classico; senza tempo",
+   "evidencia": "Isabelle si adatta facilmente a contesti moderni o classici … dallo stile senza tempo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('rivestimenti Isabelle'); coincide: 11 colecciones",
+   "evidencia": "rivestimenti Isabelle BOSTON … VELVET"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "lapis",
+  "url": "https://www.febalcasa.com/it/prodotti/lapis/",
+  "piezas": [
+   "FEB-016",
+   "FEB-067"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sistema libreria configurabile a parete e centro stanza; pensili e basi",
+   "evidencia": "Il sistema libreria Lapis, configurabile a parete e centro stanza"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "ripiani in vetro, metallo o pannello"
+   ],
+   "evidencia": "ripiani in vetro, in metallo o in pannello"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "rigore, design inedito",
+   "evidencia": "regalando estremo rigore e contenimento. Il suo design inedito"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [
+   "Ripiani: vetro, metallo, pannello"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "leaf",
+  "url": "https://www.febalcasa.com/it/prodotti/leaf/",
+  "piezas": [
+   "FEB-054"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia in due altezze, maniglia incassata",
+   "evidencia": "La madia Leaf, disponibile in due diverse altezze … impreziosito dalla maniglia incassata"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato 2",
+    "laccato opaco",
+    "metal skin (según encabezados de finiture)"
+   ],
+   "evidencia": "finiture Cassa NOBILITATO 2 / LACCATO OPACO / METAL SKIN; Frontali …; Top NOBILITATO 2 / LACCATO OPACO"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "razionale",
+   "evidencia": "si caratterizza per il suo disegno razionale"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: Cassa / Frontali / Top; coincide",
+   "evidencia": "finiture Cassa … Frontali … Top"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "leeds",
+  "url": "https://www.febalcasa.com/it/prodotti/leeds/",
+  "piezas": [
+   "FEB-072"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolo fisso o allungabile; rettangolare o a botte; base scultorea",
+   "evidencia": "Il tavolo Leeds è disponibile in versione fissa e allungabile e in forma rettangolare o a botte"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo (base)"
+   ],
+   "evidencia": "La base scultorea … personalizzabile in cinque finiture metallo"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo ('per incontrare ogni esigenza di stile')"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [
+   "Base: cinque finiture metallo (no nombradas)",
+   "Forma: rettangolare o a botte; fisso o allungabile"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "lewitt-lumia",
+  "url": "https://www.febalcasa.com/it/prodotti/lewitt-lumia/",
+  "piezas": [
+   "FEB-088"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "anta battente con profilo luminoso verticale integrato (LED 4000K)",
+   "evidencia": "L’anta battente Lumia si distingue per il profilo luminoso verticale integrato"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato opaco (anta, proposta Bianco Kent)",
+    "nobilitato Noce (interni)",
+    "metallo Silver shade (profilo ripiani)"
+   ],
+   "evidencia": "Proposta in laccato opaco Bianco Kent , l’anta Lumia si abbina a interni in nobilitato Noce e ripiani con profilo in metallo Silver shade"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "moderno, contemporaneo, sofisticato",
+   "evidencia": "ideale per armadi battenti in contesti moderni … estetica contemporanea"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Lumia' = PALETA GENÉRICA DE ARMADIOS",
+   "evidencia": "Finiture per Lumia …"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "lewitt-plus",
+  "url": "https://www.febalcasa.com/it/prodotti/lewitt-plus/",
+  "piezas": [
+   "FEB-045",
+   "FEB-090"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "anta battente con presa a gola continua a tutta altezza; composizioni lineari o ad angolo",
+   "evidencia": "presa a gola a tutta altezza … perfetta per integrarsi sia in composizioni lineari sia in soluzioni ad angolo"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "pannelli: nobilitato, laccato o legno impiallacciato",
+    "gola laccata opaca",
+    "interni nobilitato Leather grey",
+    "metallo Carbon grey (ripiani e telai)",
+    "top in similpelle",
+    "ripiani in vetro"
+   ],
+   "evidencia": "I pannelli principali possono essere scelti tra finiture nobilitate, laccate o in legno impiallacciato … top in similpelle"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo, architettonico, elegante",
+   "evidencia": "unisce design architettonico e massima personalizzazione, ideale per ambienti contemporanei"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Lewitt Plus' = PALETA GENÉRICA DE ARMADIOS; el texto confirma familias nobilitato/laccato/impiallacciato para los paneles",
+   "evidencia": "Finiture per Lewitt Plus …"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "libeskind022",
+  "url": "https://www.febalcasa.com/it/prodotti/libeskind022/",
+  "piezas": [
+   "FEB-035"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia: H 75 cm (3 o 4 ante) o H 154 cm (2 ante); superficie dinamica",
+   "evidencia": "la madia LIBESKIND022 può essere configurata in 3 diverse tipologie: altezza H 75 cm in versione 3 ante o 4 ante e altezza H 154 cm in versione 2 ante"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato opaco / metal skin (cassa e frontali)",
+    "ripiani in pannello o vetro",
+    "top laccato opaco o gres",
+    "maniglia integrata in legno (cassettiera interna)"
+   ],
+   "evidencia": "configurata con ripiani interni in pannello o vetro e con un top laccato opaco o gres … maniglia integrata in legno"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "minimale, contemporaneo",
+   "evidencia": "Il design è minimale e al contempo complesso … si integra allo stile di vita contemporaneo"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "altezze_cm": [
+     75,
+     154
+    ]
+   },
+   "evidencia": "altezza H 75 cm … altezza H 154 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: Cassa e Frontali / Interno / Top; coincide",
+   "evidencia": "finiture Cassa E Frontali LACCATO OPACO METAL SKIN; Interno LEATHER GREY …; Top GRES"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "El texto dice top 'laccato opaco o gres', pero la lista de Top solo trae GRES."
+  ]
+ },
+ {
+  "model_key": "lola",
+  "url": "https://www.febalcasa.com/it/prodotti/lola/",
+  "piezas": [
+   "FEB-087"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia con spalliera alta o bassa; sgabello fisso o girevole",
+   "evidencia": "Disponibile con spalliera alta o bassa e in versione sgabello fisso o girevole"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo verniciato (gambe) o gambe rivestite"
+   ],
+   "evidencia": "Le gambe sono disponibili in metallo verniciato … oppure rivestite in abbinamento alla seduta"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "lineare, raffinata",
+   "evidencia": "Lola presenta un design lineare … Accogliente e raffinata"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture ('numerosi rivestimenti' sin listar)",
+   "evidencia": "grazie ai numerosi rivestimenti"
+  },
+  "opciones_en_texto": [
+   "Gambe metallo verniciato: Ottone scuro, nero, Antracite, Sabbia; o rivestite come la seduta",
+   "Spalliera alta o bassa; sgabello fisso o girevole"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "madeira",
+  "url": "https://www.febalcasa.com/it/prodotti/madeira/",
+  "piezas": [
+   "FEB-052",
+   "FEB-091"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolo: piano rotondo (fisso o allungabile) o ovale fisso; gambe inclinate e sovrapposte ad archi; centrotavola girevole opzionale (fisso)",
+   "evidencia": "Il piano è di forma rotonda, ovale fisso o allungabile … Le gambe inclinate e sovrapposte formano un disegno geometrico"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "base in metallo",
+    "piano: cristallo lucido, cristallo velvet, superceramica, supermarmo opaco, supermarmo lucido, legno impiallacciato"
+   ],
+   "evidencia": "La base in metallo … Il piano … configurabile in Cristallo Lucido, Cristallo Velvet, Superceramica, Supermarmo opaco, Supermarmo lucido e legno Impiallacciato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, equilibrato, leggero",
+   "evidencia": "un risultato perfetto nato dall’eleganza, dall’equilibrio e dalla leggerezza dei volumi"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "rotondo_fisso": [
+     "D 110 H 75 (4 posti)",
+     "D 120 H 75 (5)",
+     "D 130 H 75 (6)",
+     "D 150 H 75 (8)"
+    ],
+    "ovale_fisso": "L 180 P/D 115 H 75 (8)",
+    "rotondo_allungabile": [
+     "D 150 H 76 (6)",
+     "L 175 P 125 H 76 (8)"
+    ]
+   },
+   "evidencia": "Specifiche tecniche Rotondo Fisso D 110 H 75 4 posti … Rotondo Allungabile L 175 P 125 H 76 8 posti a sedere"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente y forma: Piano-Allungabile / Piano-Ovale / Piano-Tondo / Struttura; coincide",
+   "evidencia": "finiture Piano - Allungabile … Piano - Ovale CRISTALLO LUCIDO CRISTALLO VELVET … Piano - Tondo … IMPIALLACCIATO … Struttura METALLO"
+  },
+  "opciones_en_texto": [
+   "Base metallo: Ottone Scuro, Nero, Antracite, Sabbia"
+  ],
+  "notas": [
+   "El ovale fisso solo admite cristallo (lucido/velvet); el impiallacciato solo el tondo fisso."
+  ]
+ },
+ {
+  "model_key": "madia-onda",
+  "url": "https://www.febalcasa.com/it/prodotti/madia-onda/",
+  "piezas": [
+   "FEB-065"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "madia compatta (ZHA), frontale in vetro, supporti inferiori a lama",
+   "evidencia": "La Madia Onda , nata dalla collaborazione di Febal Casa con lo studio ZHA, si caratterizza per una struttura compatta"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "telaio in alluminio",
+    "frontale in vetro fuso retroverniciato effetto metallo",
+    "ripiani in vetro extra chiaro",
+    "supporti in metallo"
+   ],
+   "evidencia": "Il telaio, in alluminio … il frontale in vetro fuso retroverniciato effetto metallo … ripiani in vetro extra chiaro"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo",
+   "evidencia": "enfatizzano il carattere contemporaneo dell’elemento"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cm": "L 212,5 x H 74,5 x P 50",
+    "frontale_cm": "70 x 60"
+   },
+   "evidencia": "una larghezza di 212,5 cm, un’altezza di 74,5 cm e una profondità di 50 cm … frontale … da 70×60 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Finiture per Madia ONDA'); coincide",
+   "evidencia": "VETRO ONDA … PIEDI IN METALLO"
+  },
+  "opciones_en_texto": [
+   "Telaio alluminio: nero o champagne",
+   "Frontale: Metal Onda, Metal Bronzo Onda, Metal Champagne Onda, Metal Iridio Onda",
+   "Supporti a lama: Carbon Grey, Silver Shade"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "melrose",
+  "url": "https://www.febalcasa.com/it/prodotti/melrose/",
+  "piezas": [
+   "FEB-048"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "divano modulare / componibile",
+   "evidencia": "Melrose è un divano modulare … Grazie alla sua struttura modulare, Melrose permette la massima libertà compositiva"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "i rivestimenti personalizzabili in tessuti e colori pregiati"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "moderno, contemporaneo, elegante",
+   "evidencia": "dal design moderno e accogliente … il divano modulare elegante e contemporaneo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Rivestimenti per Melrose'); coincide con el parser: 11 colecciones",
+   "evidencia": "Rivestimenti per Melrose: BOSTON … VELVET"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "La ficha NO dice 'ad angolo': solo 'modulare'. Que la pieza expuesta sea de ángulo sale de la captura (nivel pieza)."
+  ]
+ },
+ {
+  "model_key": "modula-anta-square",
+  "url": "https://www.febalcasa.com/it/prodotti/modula-anta-square/",
+  "piezas": [
+   "FEB-051"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Modula, anta square con maniglia o gola sagomata; cassa Standard o Over",
+   "evidencia": "Disponibile con maniglia o con gola … la modularità Standard e Over"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato opaco",
+    "laccato opaco ad eccimeri",
+    "monolaccato lucido",
+    "nobilitato",
+    "PET lucido/opaco",
+    "maniglia Range in alluminio"
+   ],
+   "evidencia": "Finiture per Modula anta square LACCATO OPACO … PET OPACO; La maniglia Range in alluminio"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, linee pulite, raffinata",
+   "evidencia": "dà vita ad ambienti eleganti … soluzioni dalle linee pulite e dall’estetica raffinata"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_standard": "P 57, H 72–76 cm",
+    "cassa_over": "ante H 78 cm, zoccolo H 8/10/12"
+   },
+   "evidencia": "La cassa Standard presenta una profondità di 57 cm e un altezza che varia da 72 a 76 cm … ante di altezza 78 cm … zoccolo h 8, 10 o 12"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Finiture per Modula anta square'); coincide",
+   "evidencia": "ANTA SQUARE LACCATO OPACO (19) … PET OPACO (6)"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "navigli",
+  "url": "https://www.febalcasa.com/it/prodotti/navigli/",
+  "piezas": [
+   "FEB-066"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "divano modulare ad alta aggregabilità, trapuntatura continua, schienali scorrevoli, elemento pouf, con o senza bracciolo, lati rifiniti (anche centro stanza)",
+   "evidencia": "Progettato secondo un concept di alta aggregabilità … Il modello ha i lati componibili completamente rifiniti e permette l’installazione del prodotto anche a centro stanza"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "imbottitura in poliuretano (35, 30 e 25 kg/m3)",
+    "rivestimento in tessuto (collezioni)"
+   ],
+   "evidencia": "L’imbottitura di seduta è in poliuretano di alta densità con un peso volumetrico di 35 kg/m3 … Il cuscino spalliera è in poliuretano altamente elastico … 25 kg/m3"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo ('composizioni inedite ed estremo carattere')"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas del sofá"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('Rivestimenti per Navigli'), en 3 categorías de precio: CAT. 1 (Cavaliere, Colonna, Key West, Medici, Pisa), CAT. 2 (Cheyenne, Jolie, Mirabella, Roma), CAT. 3 (Tecno); coincide",
+   "evidencia": "NAVIGLI - CAT. 1 CAVALIERE … NAVIGLI - CAT. 3 TECNO"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "nina",
+  "url": "https://www.febalcasa.com/it/prodotti/nina/",
+  "piezas": [
+   "FEB-053"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia; struttura in metallo o rivestita",
+   "evidencia": "La sedia Nina può essere personalizzata con struttura in metallo oppure rivestita in abbinamento alla scocca"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo (struttura) o struttura rivestita"
+   ],
+   "evidencia": "struttura in metallo oppure rivestita"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "nives",
+  "url": "https://www.febalcasa.com/it/prodotti/nives/",
+  "piezas": [
+   "FEB-073"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "sedia e poltroncina con braccioli; seduta imbottita; linee dolci e sinuose",
+   "evidencia": "la sedia e la poltroncina Nives … grazie alla seduta imbottita e ai braccioli"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "metallo verniciato (gambe)",
+    "seduta imbottita (rivestimento non nominato)"
+   ],
+   "evidencia": "Le gambe sono personalizzabili in metallo verniciato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, di design",
+   "evidencia": "Eleganti e di design … conferire eleganza e forte personalità"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture ('numerosi rivestimenti e finiture' sin listar)",
+   "evidencia": "i numerosi rivestimenti e finiture"
+  },
+  "opciones_en_texto": [
+   "Gambe metallo verniciato: Ottone scuro, Nero, Antracite, Sabbia"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "origina-anta-libeskind",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-libeskind/",
+  "piezas": [
+   "FEB-030",
+   "FEB-031"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina con anta Libeskind022 (geometrie destrutturate), penisola Silenzio, ante rientranti, ante a terra, cabine (lavanderia, dispensa)",
+   "evidencia": "Dalle geometrie destrutturate dell’anta Libeskind022 fino alla purezza delle linee nelle ante debordanti a terra e della penisola Silenzio"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato metal skin / laccato opaco + RAL (anta)",
+    "top: laminati, Laminam, Neolith, Abitum, gres",
+    "vetro (schienali luminosi)",
+    "alluminio (boiserie Moove Slim)"
+   ],
+   "evidencia": "Top a forte spessore disponibile in diversi materiali come laminati, Laminam, Neolith, Abitum e gres"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "minimal, contemporaneo, lusso autentico",
+   "evidencia": "lo stile minimal degli arredi … una concezione contemporanea e autentica del lusso"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "solo 'colonna profonda 59 cm' (elemento Daily)"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta ('Finiture per Anta Libeskind'); coincide",
+   "evidencia": "LACCATO METAL SKIN (3) · LACCATO OPACO + RAL (21)"
+  },
+  "opciones_en_texto": [
+   "Sostegno penisola Corinto: legno Eucalipto o laccato opaco",
+   "Daily: mostrine Champagne, Nero, Alluminio anodizzato"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "origina-anta-sagoma37",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/",
+  "piezas": [
+   "FEB-068",
+   "FEB-069"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina, anta con lavorazione inclinata a 37 gradi, gola piatta o sagomata; cassa Over",
+   "evidencia": "caratterizzato da gola piatta o sagomata e dall’anta con lavorazione inclinata a 37 gradi"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato",
+    "laminato Fenix",
+    "laccato opaco",
+    "monolaccato lucido",
+    "laccato lucido"
+   ],
+   "evidencia": "Finiture per Origina anta sagoma37 NOBILITATO LAMINATO FENIX LACCATO OPACO MONOLACCATO LUCIDO LACCATO LUCIDO"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "razionale e minimalista, moderno, elegante",
+   "evidencia": "Il suo design è razionale e minimalista … con un tocco di modernità"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_over": "ante H 78 cm"
+   },
+   "evidencia": "La cassa Over presenta ante di altezza 78 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta ('Finiture per Origina anta sagoma37'); coincide",
+   "evidencia": "NOBILITATO (12) … LACCATO LUCIDO (32)"
+  },
+  "opciones_en_texto": [
+   "Personalizzabile in tutte le colorazioni RAL"
+  ],
+  "notas": [
+   "La página repite un bloque genérico del 'Sistema Origina' (Isola Atlas, Sinua, Lapis, cabine, top Laminam/Neolith/gres…) común a todas las cocinas Origina; no es específico de esta anta."
+  ]
+ },
+ {
+  "model_key": "origina-anta-square",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-square/",
+  "piezas": [
+   "FEB-077"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina, anta square con maniglia o gola sagomata; modularità Standard e Over",
+   "evidencia": "L’anta square, disponibile con maniglia o con gola sagomata … la modularità Standard e Over"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato",
+    "PET",
+    "laminato Fenix",
+    "laccato opaco + RAL",
+    "monolaccato lucido",
+    "laccato lucido + RAL",
+    "laccato metalskin (anche spazzolato)",
+    "impiallacciato eccimeri / opaco / termico"
+   ],
+   "evidencia": "Finiture per Origina anta square NOBILITATO PET LAMINATO FENIX … IMPIALLACCIATO TERMICO"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "profilo lineare",
+   "evidencia": "La caratteristica anta dal profilo lineare da vita ad un spazio di puro piacere estetico"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_standard": "P 57, H 72–76 cm",
+    "cassa_over": "ante H 78 cm"
+   },
+   "evidencia": "La cassa Standard presenta una profondità di 57 cm e un altezza che varia da 72 a 76 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta ('Finiture per Origina anta square'); coincide: 11 colecciones",
+   "evidencia": "ANTA SQUARE NOBILITATO (15) … IMPIALLACCIATO TERMICO (2)"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Mismo bloque genérico del Sistema Origina que las otras cocinas."
+  ]
+ },
+ {
+  "model_key": "origina-anta-square-cannettato",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/",
+  "piezas": [
+   "FEB-007",
+   "FEB-008",
+   "FEB-009"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina, anta square cannettata (doghe verticali)",
+   "evidencia": "le ante cannettate … si distinguono per i frontali decorati con doghe verticali che valorizzano il legno"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "legno impiallacciato opaco cannettato",
+    "impiallacciato termico cannettato"
+   ],
+   "evidencia": "Finiture per Origina Anta Square Cannettato IMPIALLACCIATO OPACO CANNETTATO IMPIALLACCIATO TERMICO CANNETTATO"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, sofisticato, di classe; tendenze attuali",
+   "evidencia": "conferendo un tocco elegante e sofisticato … un’atmosfera di indiscutibile classe"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_standard": "P 57, H 72–76 cm",
+    "cassa_over": "ante H 78 cm"
+   },
+   "evidencia": "La cassa Standard presenta una profondità di 57 cm … ante di altezza 78 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta; coincide: 2 colecciones (8 + 2)",
+   "evidencia": "IMPIALLACCIATO OPACO CANNETTATO (8) · IMPIALLACCIATO TERMICO CANNETTATO (2)"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Mismo bloque genérico del Sistema Origina."
+  ]
+ },
+ {
+  "model_key": "origina-anta-telaio-alluminio",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-alluminio/",
+  "piezas": [
+   "FEB-085"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina, anta con telaio in alluminio; gola piatta o sagomata",
+   "evidencia": "L’anta con telaio in alluminio … possibilità di scegliere il sistema di apertura con gola piatta o gola sagomata"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "telaio in alluminio",
+    "vetro opaco / vetro opaco flutes / vetro specchio",
+    "superfici ceramiche Laminam e Neolith"
+   ],
+   "evidencia": "grazie alle numerose finiture, come i vetri e le superfici ceramiche Laminam® e Neolith®"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo (solo 'apertura e flessibilità')"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_standard": "P 57, H 72–76 cm",
+    "cassa_over": "ante H 78 cm"
+   },
+   "evidencia": "La cassa Standard presenta una profondità di 57 cm … ante di altezza 78 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta; coincide: LAMINAM (6), VETRO OPACO (9), VETRO OPACO FLUTES (4), VETRO SPECCHIO (1), NEOLITH (7)",
+   "evidencia": "Finiture per Origina anta telaio alluminio ANTA TELAIO ALLUMINIO LAMINAM … NEOLITH"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "origina-anta-telaio-legno",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
+  "piezas": [
+   "FEB-020",
+   "FEB-021"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cucina Sistema Origina, anta a telaio; apertura a gola, maniglie a ponte o pomoli in metallo godronato",
+   "evidencia": "L’anta a telaio … può essere abbinato a aperture a gola, a maniglie e a pomoli"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato opaco",
+    "legno",
+    "telaio vetro",
+    "metallo godronato (pomoli)"
+   ],
+   "evidencia": "Finiture per Origina anta telaio legno LACCATO OPACO LEGNO TELAIO VETRO … i pomoli di metallo godronato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "classico contemporaneo, echi vintage, raffinatezza intramontabile",
+   "evidencia": "è simbolo di uno stile classico contemporaneo … Contemporanea e dagli echi vintage"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "cassa_over": "ante H 78 cm"
+   },
+   "evidencia": "La cassa Over presenta ante di altezza 78 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica de la anta; coincide: LACCATO OPACO (32), LEGNO (2), TELAIO VETRO (6)",
+   "evidencia": "ANTA TELAIO LEGNO LACCATO OPACO … TELAIO VETRO"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "origina-isola-onda",
+  "url": "https://www.febalcasa.com/it/prodotti/origina-isola-onda/",
+  "piezas": [
+   "FEB-076"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "isola cucina (ZHA), lunghezza variabile, basamento con zoccoli uniti a 45°; ante battenti 60×60",
+   "evidencia": "L’ Isola Onda … concepita come fulcro dello spazio cucina"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "telaio in alluminio (nero o champagne)",
+    "ante in vetro fuso retroverniciato effetto metallo",
+    "basamento: Gres, Abitum, Laminam, Neolith, Optimum, Laminato"
+   ],
+   "evidencia": "Il telaio in alluminio, nelle finiture nero o champagne, racchiude ante in vetro fuso retroverniciato effetto metallo … Gres , Abitum , Laminam , Neolith , Optimum e Laminato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "rigoroso, essenziale",
+   "evidencia": "La struttura, dal design rigoroso … garantendo un’estetica essenziale e pulita"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "lunghezza_cm": "180–360",
+    "profondita_cm": 121.8,
+    "ante_cm": "60 x 60",
+    "basamento_h_cm": "26 o 28"
+   },
+   "evidencia": "lunghezza variabile da un minimo di 180 cm fino a un massimo di 360 cm, mantenendo una profondità fissa di 121,8 cm … ante da 60×60 cm … altezza a scelta tra 26 e 28 cm"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo; coincide: TELAIO ALLUMINIO ONDA (2), VETRO ONDA (8)",
+   "evidencia": "Finiture per Origina Isola Onda ISOLA ONDA TELAIO ALLUMINIO ONDA … VETRO ONDA"
+  },
+  "opciones_en_texto": [
+   "Ante: Metal Onda, Metal Bronzo Onda, Metal Champagne Onda, Metal Iridio Onda"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "phoenix",
+  "url": "https://www.febalcasa.com/it/prodotti/phoenix/",
+  "piezas": [
+   "FEB-034"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolo rettangolare fisso o allungabile, base geometrica imponente",
+   "evidencia": "Il tavolo Phoenix è proposto con piani di varie dimensioni di forma rettangolare in variabile fissa o allungabile"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "piano: cristallo lucido, cristallo velvet, superceramica, supermarmo opaco, supermarmo lucido, impiallacciato (+ nobilitato nell'allungabile)",
+    "struttura in metallo"
+   ],
+   "evidencia": "I piani sono in Cristallo Lucido, Cristallo Velvet, Superceramica, Supermarmo Opaco, Supermarmo Lucido e Impiallacciato. La struttura è in metallo"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo ('grande impatto estetico', 'prestigio')"
+  },
+  "medidas": {
+   "confirmado": "SI",
+   "valor": {
+    "fisso": [
+     "L 200 P 106 H 75 (8)",
+     "L 250 P 106 H 75 (10)"
+    ],
+    "allungabile": [
+     "L 160 P 90 (6)",
+     "L 190 P 100 (8)",
+     "L 200 P 90 (8)",
+     "L 240 P 100 (10)",
+     "L 240 P 90 (10)",
+     "L 290 P 100 (12)"
+    ]
+   },
+   "evidencia": "Specifiche tecniche Rettangolare Fisso L 200 P/D 106 H 75 8 posti … Rettangolare Allungabile L 290 P/D 100 H 75 12 posti"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: Piano - Fisso / Piano - Allungabile / Struttura; coincide",
+   "evidencia": "finiture Piano - Fisso … Piano - Allungabile … NOBILITATO … Struttura METALLO"
+  },
+  "opciones_en_texto": [
+   "Struttura metallo: Ottone scuro, Nero, Antracite, Sabbia"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "polar",
+  "url": "https://www.febalcasa.com/it/prodotti/polar/",
+  "piezas": [
+   "FEB-041"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "specchiera da terra, spostabile",
+   "evidencia": "La specchiera Polar è progettata per essere posizionata a terra … può essere spostata agilmente"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "specchio"
+   ],
+   "evidencia": "La specchiera Polar"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "rio",
+  "url": "https://www.febalcasa.com/it/prodotti/rio/",
+  "piezas": [
+   "FEB-004",
+   "FEB-005"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "tavolino con struttura porta riviste",
+   "evidencia": "Il tavolino Rio è contraddistinto da una struttura in metallo che presenta la particolarità di poter accogliere riviste e giornali"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "struttura in metallo",
+    "piano laccato opaco o impiallacciato"
+   ],
+   "evidencia": "struttura in metallo … Il piano può essere configurato … in finitura laccata opaca o impiallacciata"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [
+   "Piano: laccato opaco o impiallacciato"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "rodin",
+  "url": "https://www.febalcasa.com/it/prodotti/rodin/",
+  "piezas": [
+   "FEB-074"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "anta scorrevole a quadrotti con maniglia orizzontale LED integrata",
+   "evidencia": "L’ anta scorrevole Rodin si distingue per la maniglia orizzontale con LED integrato … I quadrotti che compongono l’anta"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "laccato opaco (quadrotti dell'anta)",
+    "metallo e vetro (accessori interni Plus)"
+   ],
+   "evidencia": "I quadrotti … sono personalizzabili singolarmente con finiture e colori laccati opachi a catalogo … accessori Plus in metallo e vetro"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante, moderno, innovativo",
+   "evidencia": "L’ anta scorrevole Rodin unisce eleganza e innovazione tecnologica … in contesti modern i"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "'Finiture per Rodin' = PALETA GENÉRICA DE ARMADIOS; el texto limita los quadrotti de la anta a laccati opachi",
+   "evidencia": "Finiture per Rodin SIMILPELLE INCA … NOBILITATI"
+  },
+  "opciones_en_texto": [
+   "Quadrotti anta: laccati opachi a catalogo"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-armadi-ante-battente-barret",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/barret/",
+  "piezas": [
+   "FEB-086",
+   "FEB-099"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio ad anta battente con maniglie dedicate; armadiature tradizionali, soluzioni a ponte, configurazioni stagionali, consolle e nicchie",
+   "evidencia": "può essere inserita in armadiature tradizionali, soluzioni a ponte, configurazioni stagionali o sistemi con consolle e nicchie integrate"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "anta: nobilitato o laccato opaco",
+    "interni nobilitato Noce o Desert",
+    "accessori metallo e vetro, ripiani rivestiti in similpelle"
+   ],
+   "evidencia": "finiture nobilitate e laccate opache della collezione NOTTE … Gli interni in nobilitato Noce o Desert … ripiani rivestiti in similpelle"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "minimalista, essenziale",
+   "evidencia": "L’anta battente Barret unisce minimalismo formale … un’essenzialità formale"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS; el texto limita la anta a nobilitato o laccato opaco",
+   "evidencia": "personalizzabile grazie alla gamma di maniglie dedicate e alle finiture nobilitate e laccate opache della collezione NOTTE"
+  },
+  "opciones_en_texto": [
+   "Anta: finiture nobilitate o laccate opache (collezione NOTTE)",
+   "Interni: nobilitato Noce o Desert"
+  ],
+  "notas": [
+   "'Soluzioni a ponte' = la configuración 'con Portale' de FEB-099: confirma que FEB-099 es el modelo Barret."
+  ]
+ },
+ {
+  "model_key": "tipologia-armadi-ante-battente-profile-block",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-block/",
+  "piezas": [
+   "FEB-015"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con profilo verticale integrato come presa, senza maniglie a vista; lineari, a ponte, a tutta parete",
+   "evidencia": "il profilo verticale integrato che funge da presa … ambienti notte lineari, soluzioni a ponte, armadiature a tutta parete"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "ante in nobilitato (finiture opache materiche)",
+    "profilo brunito o laccato"
+   ],
+   "evidencia": "Le ante in nobilitato disegnano una superficie piena … Il profilo brunito o laccato"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "essenziale, contemporaneo, rigoroso, minimal",
+   "evidencia": "un’estetica essenziale e contemporanea … progetti d’interni essenziali o minimali"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS; el texto dice ante in nobilitato",
+   "evidencia": "Le ante in nobilitato"
+  },
+  "opciones_en_texto": [
+   "Ante: nobilitato (finiture opache, compatte, materiche)",
+   "Profilo: brunito o laccato"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-armadi-ante-battente-profile-leather",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-leather/",
+  "piezas": [
+   "FEB-079",
+   "FEB-096"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con rivestimento effetto pelle e profilo verticale in metallo brunito che integra la maniglia",
+   "evidencia": "L’armadio battente Profile / Leather si distingue per il rivestimento effetto pelle … Il profilo verticale in metallo brunito integra la maniglia"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "rivestimento EFFETTO PELLE (non pelle vera) con venatura naturale",
+    "profilo in metallo brunito"
+   ],
+   "evidencia": "una finitura effetto pelle con venatura naturale … profilo verticale in metallo, disponibile in finitura brunita"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo, sofisticato, raffinato non ostentato",
+   "evidencia": "Perfetto per ambienti notte contemporanei … un’ estetica raffinata ma non ostentata"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS; la anta es 'effetto pelle' (en la paleta: SIMILPELLE INCA)",
+   "evidencia": "il rivestimento effetto pelle"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Responde la pregunta abierta: Profile Leather es EFECTO PIEL (similpiel), no piel auténtica. Para UC-1 es 'parecido a la piel', nunca 'de piel'."
+  ]
+ },
+ {
+  "model_key": "tipologia-armadi-ante-battente-profile-reflex",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-reflex/",
+  "piezas": [
+   "FEB-083"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con ante in vetro riflettente fumé e profilo verticale con maniglia integrata",
+   "evidencia": "L’armadio battente Profile / Reflex utilizza ante in vetro riflettente fumé"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "ante in vetro riflettente fumé",
+    "dettagli metallici brunito o laccato"
+   ],
+   "evidencia": "ante in vetro riflettente fumé … dettagli metallici in finitura brunita o laccata"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "contemporaneo, sofisticato, essenziale",
+   "evidencia": "Ideale per ambienti contemporanei … un elemento di arredo dinamico e sofisticato"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS; la anta es vetro riflettente fumé",
+   "evidencia": "ante in vetro riflettente fumé"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-armadi-ante-battente-profile-solid",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-solid/",
+  "piezas": [
+   "FEB-081"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "armadio battente con profilo verticale a scomparsa; lineari, ad angolo, a ponte, terminali a giorno",
+   "evidencia": "composizioni lineari, soluzioni ad angolo, armadiature su misura con elementi a ponte o terminali a giorno"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "ante in finiture effetto legno o cemento"
+   ],
+   "evidencia": "le ante in finiture effetto legno o cemento"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "pulito e contemporaneo, architettonico",
+   "evidencia": "garantendo un design pulito e contemporaneo … impatto architettonico"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS; la anta es effetto legno o cemento",
+   "evidencia": "Le ante, proposte in finiture effetto legno o cemento"
+  },
+  "opciones_en_texto": [
+   "Ante: effetto legno o effetto cemento"
+  ],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-armadi-cassettiere-square",
+  "url": "https://www.febalcasa.com/it/tipologia/armadi/cassettiere/square/",
+  "piezas": [
+   "FEB-098"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cassettiera per cabina armadio, anche centro stanza; elementi Pouf e Jolly; top vaschetta",
+   "evidencia": "Posizionata a centro stanza … elementi Pouf e Jolly … top vaschetta"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "solo 'materiali sofisticati', 'top vaschetta, disponibili in diversi materiali' sin nombrarlos"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "razionale, raffinato",
+   "evidencia": "Le proporzioni generose e il design razionale … un elemento architettonico autonomo e raffinato"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS",
+   "evidencia": "Finiture per Cassettiera Square …"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-cabine-armadio-lapis",
+  "url": "https://www.febalcasa.com/it/tipologia/cabine-armadio/lapis/",
+  "piezas": [
+   "FEB-043"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio componibile a giorno, a parete o centro stanza; ripiani, pensili e basi sospese",
+   "evidencia": "Lapis è una proposta trasversale per la cabina armadio componibile … configurazioni a parete o centro stanza"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "ripiani in vetro, metallo o pannello"
+   ],
+   "evidencia": "ripiani in vetro, metallo o pannello si alternano a pensili e basi sospese"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "lineare, rigoroso, essenziale",
+   "evidencia": "Il suo design lineare … Composizione libera e stile rigoroso … design essenziale"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "medidas solo en la scheda tecnica (PDF)"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS/NOTTE; el texto dice que las finiture 'si armonizzano con la palette materica della collezione NOTTE'",
+   "evidencia": "Le finiture selezionabili si armonizzano con la palette materica della collezione NOTTE"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-cabine-armadio-telaio",
+  "url": "https://www.febalcasa.com/it/tipologia/cabine-armadio/telaio/",
+  "piezas": [
+   "FEB-097"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "cabina armadio con struttura in metallo a spalle aperte, pannelli in vetro o sezioni chiuse",
+   "evidencia": "con struttura in metallo e pannelli in vetro … spalle in metallo che definiscono una struttura aperta"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "struttura in metallo",
+    "vetri trasparenti o fumé"
+   ],
+   "evidencia": "struttura in metallo … vetri trasparenti o fumé"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "architettonico, essenziale, sofisticato",
+   "evidencia": "dal design architettonico … progetti d’arredo essenziali e luminosi … un ritmo visivo sofisticato"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "PALETA GENÉRICA DE ARMADIOS",
+   "evidencia": "Finiture per Telaio …"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ },
+ {
+  "model_key": "tipologia-mobili-di-servizi-mobili-di-servizi-laundry",
+  "url": "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/",
+  "piezas": [
+   "FEB-037"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "NO",
+   "valor": "página de tipología 'Laundry' (lavanderia), no de un producto",
+   "evidencia": "La lavanderia richiede attenzione sia estetica che pratica. Offriamo soluzioni modulari salvaspazio"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no menciona materiales"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "página de tipología"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "URL equivocada para FEB-037 'Armadio Collezione Momenti': es una página de lavandería. Resolver con la captura."
+  ]
+ },
+ {
+  "model_key": "tipologia-momenti-cameretta",
+  "url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
+  "piezas": [
+   "FEB-058",
+   "FEB-059",
+   "FEB-060"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "NO",
+   "valor": "página de tipología 'Camerette' (colección MOMENTI), no de un producto: letti a soppalco, a castello, camerette a ponte",
+   "evidencia": "Letti a soppalco, letti a castello e soluzioni salvaspazio – come le camerette a ponte"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra materiales"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo ('di tendenza')"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de finiture",
+   "evidencia": "página de tipología"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "FEB-058/059/060 son piezas de la colección MOMENTI; la web solo tiene páginas de tipología (cameretta, camere-per-ragazzi, cameretta/a-ponte). Elegir la correcta con la captura."
+  ]
+ },
+ {
+  "model_key": "trenta",
+  "url": "https://www.febalcasa.com/it/prodotti/trenta/",
+  "piezas": [
+   "FEB-012",
+   "FEB-023",
+   "FEB-025",
+   "FEB-033",
+   "FEB-047",
+   "FEB-055",
+   "FEB-064"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "libreria modulare: a terra, ad angolo, terminale, sopralzo, sospesa; vano ponte/divisorio; porta TV girevole; portale TV; piano scrittoio; ante Libeskind022, Cover, Aurora, scorrevole",
+   "evidencia": "Librerie / Modularità … Struttura A terra Ad angolo Terminale Sopralzo Sospesa … Il vano ponte … Elemento porta TV girevole"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "nobilitato 2",
+    "laccato opaco",
+    "laccato lucido",
+    "metal skin",
+    "telaio alluminio (Surround, Aurora, Traforata)",
+    "Scenario",
+    "vetro (ante Aurora, ripiani plus retroilluminati)"
+   ],
+   "evidencia": "Finiture per Trenta FIANCHI E PIANI … FRONTALI … TELAIO ALLUMINIO … SCHIENE … L’anta Aurora, con profilo in metallo Carbon grey, può essere configurata con vetro trasparente, trasparente fumé e stop sol"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "elegante e moderno",
+   "evidencia": "I ripiani plus in vetro retroilluminato coniugano funzionalità e stile donando un carattere elegante e moderno alla libreria Trenta"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha solo muestra encabezados 'Dimensioni larghezza e profondità / altezza' sin valores en el texto"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica por componente: FIANCHI E PIANI / FRONTALI / SCHIENE; coincide",
+   "evidencia": "Finiture per Trenta FIANCHI EIPIANI … FRONTALI … SCHIENE"
+  },
+  "opciones_en_texto": [
+   "Anta Libeskind022: tutte le laccate opache GIORNO. + 3 metal skin",
+   "Anta Aurora: vetro trasparente, trasparente fumé, stop sol; profilo metallo Carbon grey"
+  ],
+  "notas": [
+   "TELAIO ALLUMINIO (Surround/Aurora/Traforata) tiene opciones sin nombre ni imagen en la web."
+  ]
+ },
+ {
+  "model_key": "vivienne",
+  "url": "https://www.febalcasa.com/it/prodotti/vivienne/",
+  "piezas": [
+   "FEB-036"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "poltrona con base girevole a raggiera o circolare",
+   "evidencia": "la possibilità di scegliere tra base girevole a raggiera o circolare"
+  },
+  "materiales": {
+   "confirmado": "SI",
+   "valor": [
+    "tessuto (rivestimento)"
+   ],
+   "evidencia": "Vivienne è realizzata con tessuti pregiati"
+  },
+  "estilo": {
+   "confirmado": "SI",
+   "valor": "moderno, raffinato e contemporaneo; per contesti moderni o classici; senza tempo",
+   "evidencia": "il perfetto equilibrio tra design moderno … Il suo design raffinato e contemporaneo … Perfetta in contesti moderni o classici"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "SI",
+   "valor": "específica del modelo ('rivestimenti Vivienne'); coincide: 11 colecciones",
+   "evidencia": "rivestimenti Vivienne NABUK EAGLE … TECNO"
+  },
+  "opciones_en_texto": [],
+  "notas": [
+   "Incluye NABUK EAGLE: pendiente de Andrea (¿piel?)."
+  ]
+ },
+ {
+  "model_key": "windsor",
+  "url": "https://www.febalcasa.com/it/prodotti/windsor/",
+  "piezas": [
+   "FEB-017",
+   "FEB-032",
+   "FEB-061"
+  ],
+  "leido": "2026-09-23",
+  "fuente": "texto íntegro de la ficha (raw-html, div.app-page), leído a mano",
+  "forma": {
+   "confirmado": "SI",
+   "valor": "pouf",
+   "evidencia": "Il pouf Windsor completa la gamma dei pouf della collezione divani"
+  },
+  "materiales": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "menciona 'rivestimenti' sin nombrarlos"
+  },
+  "estilo": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "no nombra un estilo"
+  },
+  "medidas": {
+   "confirmado": "NO",
+   "valor": null,
+   "evidencia": "la ficha no trae medidas"
+  },
+  "lista_acabados": {
+   "confirmado": "NO",
+   "valor": "sin sección de rivestimenti",
+   "evidencia": "solo descripción"
+  },
+  "opciones_en_texto": [],
+  "notas": []
+ }
+]

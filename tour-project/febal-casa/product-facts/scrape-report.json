@@ -1,0 +1,886 @@
+{
+ "generated_at": "2026-09-23T23:50:12Z",
+ "models": [
+  {
+   "model_key": "andy",
+   "url": "https://www.febalcasa.com/it/prodotti/andy/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "arden",
+   "url": "https://www.febalcasa.com/it/prodotti/arden/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 22,
+    "collections": 22,
+    "options": 298
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "astor",
+   "url": "https://www.febalcasa.com/it/prodotti/astor/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 145
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "astrid",
+   "url": "https://www.febalcasa.com/it/prodotti/astrid/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 22,
+    "collections": 22,
+    "options": 298
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "aurora",
+   "url": "https://www.febalcasa.com/it/prodotti/aurora/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 4,
+    "collections": 12,
+    "options": 159
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 1
+  },
+  {
+   "model_key": "aurora-porta-battente",
+   "url": "https://www.febalcasa.com/it/prodotti/aurora-porta-battente/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/armadi/ante/battente/aurora/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "balmoral",
+   "url": "https://www.febalcasa.com/it/prodotti/balmoral/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 145
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "boiserie",
+   "url": "https://www.febalcasa.com/it/prodotti/boiserie/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 2,
+    "collections": 5,
+    "options": 59
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "camden",
+   "url": "https://www.febalcasa.com/it/prodotti/camden/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 131
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "couple",
+   "url": "https://www.febalcasa.com/it/prodotti/couple/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 22,
+    "collections": 22,
+    "options": 298
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "daniel",
+   "url": "https://www.febalcasa.com/it/prodotti/daniel/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "dea",
+   "url": "https://www.febalcasa.com/it/prodotti/dea/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "diciotto",
+   "url": "https://www.febalcasa.com/it/prodotti/diciotto/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 10,
+    "options": 113
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "febal-notte-armadio-scorrevole-halley-01",
+   "url": "https://www.febalcasa.com/it/prodotti/febal-notte-armadio-scorrevole-halley-01/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/armadi/ante/scorrevole/halley/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "febal-notte-gruppo-como-e-comodino-marlene",
+   "url": "https://www.febalcasa.com/it/prodotti/febal-notte-gruppo-como-e-comodino-marlene/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 22,
+    "collections": 22,
+    "options": 298
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 2
+  },
+  {
+   "model_key": "hype",
+   "url": "https://www.febalcasa.com/it/prodotti/hype/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/cabine-armadio/hype/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "ink",
+   "url": "https://www.febalcasa.com/it/prodotti/ink/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "isabelle",
+   "url": "https://www.febalcasa.com/it/prodotti/isabelle/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 131
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "lapis",
+   "url": "https://www.febalcasa.com/it/prodotti/lapis/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "leaf",
+   "url": "https://www.febalcasa.com/it/prodotti/leaf/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 8,
+    "options": 145
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "leeds",
+   "url": "https://www.febalcasa.com/it/prodotti/leeds/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "lewitt-lumia",
+   "url": "https://www.febalcasa.com/it/prodotti/lewitt-lumia/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/armadi/ante/battente/lumia/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "lewitt-plus",
+   "url": "https://www.febalcasa.com/it/prodotti/lewitt-plus/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/armadi/ante/battente/lewitt-plus/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "libeskind022",
+   "url": "https://www.febalcasa.com/it/prodotti/libeskind022/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 6,
+    "options": 75
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "lola",
+   "url": "https://www.febalcasa.com/it/prodotti/lola/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "madeira",
+   "url": "https://www.febalcasa.com/it/prodotti/madeira/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 4,
+    "collections": 14,
+    "options": 52
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "madia-onda",
+   "url": "https://www.febalcasa.com/it/prodotti/madia-onda/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 6,
+    "options": 48
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "melrose",
+   "url": "https://www.febalcasa.com/it/prodotti/melrose/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 131
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "modula-anta-square",
+   "url": "https://www.febalcasa.com/it/prodotti/modula-anta-square/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 6,
+    "options": 80
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "navigli",
+   "url": "https://www.febalcasa.com/it/prodotti/navigli/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 10,
+    "options": 120
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "nina",
+   "url": "https://www.febalcasa.com/it/prodotti/nina/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "nives",
+   "url": "https://www.febalcasa.com/it/prodotti/nives/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-libeskind",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-libeskind/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 2,
+    "options": 24
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-sagoma37",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 5,
+    "options": 123
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-square",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-square/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 147
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-square-cannettato",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 2,
+    "options": 10
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-telaio-alluminio",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-alluminio/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 5,
+    "options": 27
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-anta-telaio-legno",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 3,
+    "options": 40
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "origina-isola-onda",
+   "url": "https://www.febalcasa.com/it/prodotti/origina-isola-onda/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 2,
+    "options": 10
+   },
+   "missing": [],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "phoenix",
+   "url": "https://www.febalcasa.com/it/prodotti/phoenix/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 12,
+    "options": 48
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "polar",
+   "url": "https://www.febalcasa.com/it/prodotti/polar/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "rio",
+   "url": "https://www.febalcasa.com/it/prodotti/rio/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "rodin",
+   "url": "https://www.febalcasa.com/it/prodotti/rodin/",
+   "status": "integrity_mismatch",
+   "notes": [
+    "canonical=https://www.febalcasa.com/it/tipologia/armadi/ante/scorrevole/rodin/"
+   ],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-ante-battente-barret",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/barret/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-ante-battente-profile-block",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-block/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-ante-battente-profile-leather",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-leather/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-ante-battente-profile-reflex",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-reflex/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-ante-battente-profile-solid",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-solid/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-armadi-cassettiere-square",
+   "url": "https://www.febalcasa.com/it/tipologia/armadi/cassettiere/square/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-cabine-armadio-lapis",
+   "url": "https://www.febalcasa.com/it/tipologia/cabine-armadio/lapis/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-cabine-armadio-telaio",
+   "url": "https://www.febalcasa.com/it/tipologia/cabine-armadio/telaio/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 13,
+    "collections": 13,
+    "options": 111
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-mobili-di-servizi-mobili-di-servizi-laundry",
+   "url": "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "tipologia-momenti-cameretta",
+   "url": "https://www.febalcasa.com/it/tipologia/momenti/cameretta/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "trenta",
+   "url": "https://www.febalcasa.com/it/prodotti/trenta/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 3,
+    "collections": 14,
+    "options": 201
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "vivienne",
+   "url": "https://www.febalcasa.com/it/prodotti/vivienne/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 1,
+    "collections": 11,
+    "options": 145
+   },
+   "missing": [
+    "dimensions"
+   ],
+   "photo_captions": 0
+  },
+  {
+   "model_key": "windsor",
+   "url": "https://www.febalcasa.com/it/prodotti/windsor/",
+   "status": "ok",
+   "notes": [],
+   "counts": {
+    "groups": 0,
+    "collections": 0,
+    "options": 0
+   },
+   "missing": [
+    "finishes",
+    "dimensions"
+   ],
+   "photo_captions": 0
+  }
+ ],
+ "pieces_without_url": [],
+ "totals": {
+  "urls": 56,
+  "scraped": 56,
+  "with_finishes": 42,
+  "without_finishes": [
+   "andy",
+   "daniel",
+   "dea",
+   "ink",
+   "lapis",
+   "leeds",
+   "lola",
+   "nina",
+   "nives",
+   "polar",
+   "rio",
+   "tipologia-mobili-di-servizi-mobili-di-servizi-laundry",
+   "tipologia-momenti-cameretta",
+   "windsor"
+  ],
+  "with_dimensions": 11,
+  "with_photo_captions": [
+   "aurora",
+   "febal-notte-gruppo-como-e-comodino-marlene"
+  ],
+  "integrity_mismatch": [
+   "aurora-porta-battente",
+   "febal-notte-armadio-scorrevole-halley-01",
+   "hype",
+   "lewitt-lumia",
+   "lewitt-plus",
+   "rodin"
+  ],
+  "options_total": 5055,
+  "swatches_without_color": 21
+ }
+}

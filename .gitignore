@@ -12,3 +12,7 @@ server/data/debug-*.json
 ~$*.xlsx
 ~$*.docx
 .captures/
+__pycache__/
+tour-project/febal-casa/product-facts/raw-html/
+tour-project/febal-casa/product-facts/captures/*.png
+eval/runs/
