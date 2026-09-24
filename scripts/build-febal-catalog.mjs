@@ -38,7 +38,50 @@ const manualByLabel = new Map(manualCaptures.map((c) => [c.product_label, c]));
 // colors/materials/shape/style for a product_id is carried forward instead
 // of being reset to the hardcoded empty defaults below.
 const previousCatalog = readJsonIfExists(path.join(CLIENT_DIR, "catalog.json"), []);
-const previousById = new Map(previousCatalog.map((p) => [p.product_id, p]));
+
+// product_id used to be `slugify(hotspot_name + name)` (e.g.
+// "box-100-b-106-divano-balmoral") — long, and Andrea asked for short opaque
+// codes instead ("FEB-001" style) since nothing in the codebase parses the
+// id string (confirmed: it's only ever compared for exact equality). The
+// short id itself can't double as the "is this the same row as before"
+// lookup key anymore, so `naturalKey` (still the old slugify formula) plays
+// that role internally: it's recomputed from each row's OWN hotspot_name+name
+// every run, so it's stable regardless of what id scheme is active.
+function naturalKey(hotspotName, name) {
+  return slugify(`${hotspotName}-${name}`).slice(0, 80);
+}
+
+const previousByNaturalKey = new Map(
+  previousCatalog.map((p) => [naturalKey(p.hotspot_name, p.name), p])
+);
+
+// Stable short-id assignment: if the previous run already minted a FEB-###
+// for this exact row (matched via naturalKey), reuse it verbatim — that's
+// what keeps ids (and everything that references them, like
+// `compatible_with`) stable across reruns. Otherwise mint the next unused
+// number. The FIRST run after this migration finds no FEB-### ids yet (every
+// previous.product_id is still the old long slug), so every row gets a fresh
+// one-time renumbering; `oldIdToNewId` records that old->new mapping so
+// `compatible_with` arrays (which still hold OLD ids at that point) can be
+// remapped in the second pass below instead of pointing at ids that no
+// longer exist.
+let nextIdNum =
+  1 +
+  previousCatalog.reduce((max, p) => {
+    const m = /^FEB-(\d+)$/.exec(p.product_id);
+    return m ? Math.max(max, Number(m[1])) : max;
+  }, 0);
+const oldIdToNewId = new Map();
+
+function assignProductId(key, previous) {
+  if (previous && /^FEB-\d+$/.test(previous.product_id)) {
+    return previous.product_id;
+  }
+  const id = `FEB-${String(nextIdNum).padStart(3, "0")}`;
+  nextIdNum++;
+  if (previous) oldIdToNewId.set(previous.product_id, id);
+  return id;
+}
 
 // Category value stored on the product is CLIENT-FACING (Febal Casa is an
 // Italian brand — the assistant's prose is forced to Italian in prompt.md,
@@ -157,31 +200,68 @@ function keywordsFor(name, category, description) {
 function buildRecord(row, isMatched) {
   const name = (row.prodotto_ita || row.prodotto_eng || "Producto sin nombre").trim();
   const category = categorize(name);
-  const link = row.link_ita || row.link_eng || null;
+  // .trim() here is load-bearing, not defensive style — confirmed live: a
+  // single trailing space on one row's link_ita (source spreadsheet artifact,
+  // "BOX 320 - B_322" / Tavolo Madeira) made this exact-string lookup miss
+  // the real scraped description that the SAME product's other placement
+  // ("BOX 640 - B_644", identical trimmed URL) matched fine. That product
+  // silently fell back to the generic one-line description below, then a
+  // real customer asked for a round table and gpt-4o-mini — reading only
+  // that placement's data — said none existed, while Sonnet found the
+  // OTHER placement's real (round-top-capable) description and answered
+  // correctly. Both models were reasoning correctly over what they were
+  // given; the bug was a broken join upstream, not a model quality issue.
+  const link = (row.link_ita || row.link_eng || null)?.trim() || null;
   const scrapedEntry = link ? scraped[link] : null;
   const manual = manualByLabel.get(row.nome);
 
-  const productId = slugify(`${row.nome}-${name}`).slice(0, 80);
-  const hasCoords = isMatched || !!manual;
+  const key = naturalKey(row.nome, name);
+  // `isMatched` alone means "Fase-2's coordinate-matcher paired this
+  // spreadsheet row with SOME hotspot" — it says nothing about whether that
+  // hotspot still exists. 2026-09-22: found 13 matched rows whose box number
+  // has zero trace anywhere in extracted-hotspots.json OR a fresh live
+  // re-scan of the running tour (1124 overlays checked) — the spreadsheet
+  // documented a placement the .vtp file never had, from the very first
+  // Fase-2 extraction, not a later regression. Every one of those 13 has a
+  // real, camera-verified sibling under the same product name (see
+  // HANDOFF_FEBAL_CASA.md), so hiding them costs nothing — but leaving them
+  // `active` risks the model picking the ghost row (with its stale/never-
+  // verified yaw/pitch/media_name) over the working sibling and sending a
+  // visitor to a broken camera position. `no_live_hotspot` is hand-set on
+  // exactly those 13 rows in matched-catalog.json.
+  const hasCoords = (isMatched || !!manual) && !row.no_live_hotspot;
 
   let yaw = 0;
   let pitch = 0;
   let mediaName = null;
+  // fov defaults to 70 (the tour's own native default) unless a live CDP
+  // capture recorded the real value the shot needed — see
+  // HANDOFF_FEBAL_CASA.md's manual capture session, 2026-09-17.
+  let fov = 70;
   if (isMatched) {
     yaw = row.yaw;
     pitch = row.pitch;
     mediaName = row.media_name;
+    if (typeof row.fov === "number") fov = row.fov;
   } else if (manual) {
     yaw = manual.yaw;
     pitch = manual.pitch;
     mediaName = manual.media_name;
+    if (typeof manual.fov === "number") fov = manual.fov;
   }
 
+  // CLIENT-FACING (see CATEGORY_RULES comment above on why this field must
+  // be Italian) — this fallback fires whenever no real scraped description
+  // exists yet, and was found in Spanish here (a real, live bug: 14 of 95
+  // catalog products were shipping this exact Spanish sentence straight to
+  // the model, which can narrate it verbatim to a visitor despite prompt.md
+  // forcing Italian prose).
   const description =
     (scrapedEntry && scrapedEntry.description) ||
-    `${name} — pieza de la colección Febal Casa, sección ${row.casa || ""}.`.trim();
+    `${name} — elemento della collezione Febal Casa, sezione ${row.casa || ""}.`.trim();
 
-  const previous = previousById.get(productId);
+  const previous = previousByNaturalKey.get(key);
+  const productId = assignProductId(key, previous);
 
   return {
     product_id: productId,
@@ -196,7 +276,7 @@ function buildRecord(row, isMatched) {
     media_name: mediaName,
     yaw,
     pitch,
-    fov: 70,
+    fov,
     hotspot_name: row.nome || null,
     image_url: (scrapedEntry && scrapedEntry.image_local_path) || "assets/febal-casa/placeholder-product.png",
     detail_url: link,
@@ -204,6 +284,7 @@ function buildRecord(row, isMatched) {
     active: hasCoords,
     shape: previous?.shape || undefined,
     style: previous?.style?.length ? previous.style : [],
+    finish: previous?.finish?.length ? previous.finish : [],
     compatible_with: previous?.compatible_with?.length ? previous.compatible_with : [],
     // internal bookkeeping fields, stripped before writing final files:
     _needs_review: !hasCoords || !scrapedEntry,
@@ -215,6 +296,17 @@ const allRecords = [
   ...matched.map((r) => buildRecord(r, true)),
   ...unmatched.map((r) => buildRecord(r, false)),
 ];
+
+// `compatible_with` was carried forward verbatim above and may still hold
+// OLD-style product_ids if this run just performed the one-time FEB-###
+// migration (see assignProductId) — every new id is known now, so remap.
+// A no-op on every run after the migration, since oldIdToNewId stays empty
+// once all previous ids are already FEB-###.
+if (oldIdToNewId.size > 0) {
+  for (const record of allRecords) {
+    record.compatible_with = record.compatible_with.map((id) => oldIdToNewId.get(id) ?? id);
+  }
+}
 
 // --- write catalog.full.json (everything, including unresolved rows, for inspection) ---
 fs.writeFileSync(path.join(CLIENT_DIR, "catalog.full.json"), JSON.stringify(allRecords, null, 2), "utf8");
@@ -234,13 +326,13 @@ fs.writeFileSync(path.join(CLIENT_DIR, "catalog.json"), JSON.stringify(clean, nu
 const HEADERS = [
   "product_id", "name", "category", "description", "colors", "materials", "keywords",
   "synonyms", "section", "media_name", "yaw", "pitch", "fov", "hotspot_name", "image_url",
-  "detail_url", "alternatives_group", "active", "shape", "style",
+  "detail_url", "alternatives_group", "active", "shape", "style", "finish",
 ];
 const rows = [HEADERS, ...clean.map((r) => [
   r.product_id, r.name, r.category, r.description, r.colors.join(", "), r.materials.join(", "),
   r.keywords.join(", "), r.synonyms.join(", "), r.section, r.media_name ?? "",
   r.yaw, r.pitch, r.fov, r.hotspot_name ?? "", r.image_url, r.detail_url ?? "",
-  r.alternatives_group, r.active ? "TRUE" : "FALSE", r.shape ?? "", r.style.join(", "),
+  r.alternatives_group, r.active ? "TRUE" : "FALSE", r.shape ?? "", r.style.join(", "), r.finish.join(", "),
 ])];
 const ws = xlsx.utils.aoa_to_sheet(rows);
 const wb = xlsx.utils.book_new();
@@ -248,7 +340,8 @@ xlsx.utils.book_append_sheet(wb, ws, "products");
 xlsx.writeFile(wb, path.join(CLIENT_DIR, "catalog.xlsx"));
 
 const withRealImage = clean.filter((r) => r.image_url && !r.image_url.includes("placeholder-product")).length;
-console.log(`Built ${clean.length} catalog records (all active, real coordinates).`);
+const activeCount = clean.filter((r) => r.active).length;
+console.log(`Built ${clean.length} catalog records (${activeCount} active, ${clean.length - activeCount} flagged no_live_hotspot).`);
 console.log(`  skipped (no coordinates yet — see catalog.full.json + unmatched-products.json): ${skippedNoCoords}`);
 console.log(`  with real scraped image: ${withRealImage} / ${clean.length} (rest use the logo placeholder)`);
 console.log(`\nWrote:\n  ${path.join(CLIENT_DIR, "catalog.json")}\n  ${path.join(CLIENT_DIR, "catalog.xlsx")}\n  ${path.join(CLIENT_DIR, "catalog.full.json")} (debug, includes review flags)`);

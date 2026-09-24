@@ -1,4 +1,14 @@
-import { searchCatalog, toNavTarget, getRecommendations, computeStyleProfile, type Product } from "@3dvista-assistant/catalog-engine";
+import {
+  searchCatalog,
+  toNavTarget,
+  getRecommendations,
+  computeStyleProfile,
+  closestAvailableColor,
+  findVariant,
+  rankBySimilarity,
+  type Product,
+  type SimilarityAttribute,
+} from "@3dvista-assistant/catalog-engine";
 import { findProductById, loadCatalog } from "../catalog/catalog-loader.js";
 import { buildFullCatalogListing } from "./catalog-listing.js";
 
@@ -23,23 +33,48 @@ export interface ProductCardPayload {
   alternativesAvailable: boolean;
 }
 
-/** Same-name-dedup used both to decide alternativesAvailable and to build the actual list. */
+/**
+ * Two entries count as "the same physical hotspot marker" (to collapse)
+ * only when they share BOTH name and every distinguishing attribute — name
+ * alone is no longer enough. Confirmed live via the client (Andrea): some
+ * same-name catalog duplicates (e.g. two "Divano Camden" entries) are
+ * genuinely different modular configurations (one with an added round
+ * "isla"/pouf module, one curved) sharing one landing-page name because
+ * Febal doesn't publish a page per exact configuration — collapsing those
+ * by name alone would silently hide a real, sellable option from the
+ * visitor. A literal duplicate hotspot marker of the identical piece still
+ * has identical shape/colors/materials/finish too, so it still collapses.
+ */
+function attributeSignature(p: Product): string {
+  return JSON.stringify({
+    shape: p.shape ?? null,
+    colors: [...p.colors].sort(),
+    materials: [...p.materials].sort(),
+    finish: [...p.finish].sort(),
+  });
+}
+
+/** Same-name-plus-attributes dedup used both to decide alternativesAvailable and to build the actual list. */
 function distinctAlternatives(product: Product, catalog: Product[]): Product[] {
-  // Seeded with the anchor's OWN name — some catalog entries are two
-  // separate hotspot markers on the literal same physical piece (confirmed
-  // live: "Divano Camden" has two product_ids, same sofa, same room, two
-  // marker positions). Without seeding this, the anchor's own name was
-  // never in the set (it gets filtered out by the product_id check below
-  // before ever reaching the seenNames logic), so its own duplicate-by-
-  // name twin slipped through as if it were a real alternative — the sofa
-  // "recommended" as an alternative to itself.
-  const seenNames = new Set<string>([product.name]);
+  // Seeded with the anchor's OWN name+signature — without seeding this, the
+  // anchor's own duplicate-by-name-and-attributes twin (a literal redundant
+  // hotspot marker) slipped through as if it were a real alternative — the
+  // sofa "recommended" as an alternative to itself.
+  const seenSignaturesByName = new Map<string, Set<string>>([
+    [product.name, new Set([attributeSignature(product)])],
+  ]);
   return catalog.filter((p) => {
     if (p.alternatives_group !== product.alternatives_group || p.product_id === product.product_id) {
       return false;
     }
-    if (seenNames.has(p.name)) return false;
-    seenNames.add(p.name);
+    const sig = attributeSignature(p);
+    const seen = seenSignaturesByName.get(p.name);
+    if (seen?.has(sig)) return false; // literal duplicate hotspot marker — collapse
+    if (seen) {
+      seen.add(sig);
+    } else {
+      seenSignaturesByName.set(p.name, new Set([sig]));
+    }
     return true;
   });
 }
@@ -102,6 +137,8 @@ export function runTool(name: string, args: Record<string, unknown>): ToolRunRes
         material: typeof args.material === "string" ? args.material : undefined,
         shape: typeof args.shape === "string" ? args.shape : undefined,
         section: typeof args.section === "string" ? args.section : undefined,
+        finish: typeof args.finish === "string" ? args.finish : undefined,
+        style: typeof args.style === "string" ? args.style : undefined,
       };
       const { candidates, lowConfidence } = searchCatalog(query, filters, catalog);
       const output: Record<string, unknown> = {
@@ -123,6 +160,33 @@ export function runTool(name: string, args: Record<string, unknown>): ToolRunRes
           "(con descripción) como respaldo — úsalo solo si de verdad ayuda a identificar qué pidió el " +
           "usuario, y sigue confirmando con get_product/get_alternatives antes de describir cualquiera.";
         output.full_catalog = buildFullCatalogListing(catalog);
+      }
+      // Combined-filter honest fallback (Caso A): a color filter that, ANDed
+      // with everything else the visitor asked for, matched nothing — retry
+      // WITHOUT color (keeping style/category/etc.) so we can tell the model
+      // exactly what real color(s) the products that DO satisfy the rest of
+      // the request actually have, and how close (if at all) they are to
+      // what was requested. This never widens `candidates` itself — it's a
+      // separate, explicitly-labeled block so the model can't confuse it
+      // with a genuine match.
+      if (filters.color && candidates.length === 0) {
+        const relaxed = searchCatalog(query, { ...filters, color: undefined }, catalog);
+        if (relaxed.candidates.length > 0) {
+          const availableColors = [...new Set(relaxed.candidates.flatMap((c) => c.product.colors))];
+          const closest = closestAvailableColor(filters.color, availableColors);
+          output.color_fallback = {
+            requested_color: filters.color,
+            matched_without_color: relaxed.candidates.slice(0, 8).map((c) => ({
+              product_id: c.product.product_id,
+              name: c.product.name,
+              category: c.product.category,
+              section: c.product.section,
+            })),
+            colors_available_in_these_candidates: availableColors,
+            closest_available_color: closest?.color ?? null,
+            closest_is_same_family: closest?.sameFamily ?? false,
+          };
+        }
       }
       return { output, cards: [], valid: true };
     }
@@ -156,11 +220,25 @@ export function runTool(name: string, args: Record<string, unknown>): ToolRunRes
           return true;
         });
       return {
+        // Deliberately NOT `...card`: the card carries `image_url`/
+        // `detail_url`/`navTarget` (yaw/pitch/fov/media_name) for the
+        // FRONTEND to render the button/link — prompt.md rules 1 and 9
+        // already forbid the model from ever mentioning any of those in its
+        // own prose, but confirmed live: gpt-4o-mini, given `detail_url` in
+        // its own tool result, sometimes copied it straight into a markdown
+        // link in its reply anyway. Simplest fix that can't be un-followed:
+        // never hand the model a field it has no legitimate reason to
+        // narrate in the first place.
         output: {
-          ...card,
+          product_id: product.product_id,
+          name: product.name,
+          description: product.description,
+          section: product.section,
+          alternativesAvailable,
           style: product.style,
           shape: product.shape ?? null,
           materials: product.materials,
+          finish: product.finish,
           compatible_with_names: compatibleNames,
         },
         cards: [card],
@@ -184,7 +262,23 @@ export function runTool(name: string, args: Record<string, unknown>): ToolRunRes
       // the total shown — a category with 20 distinct products would
       // otherwise dump 20 full cards into one message, exactly the wall-of-
       // cards a live test flagged as bad UX.
-      const alternatives = distinctAlternatives(product, catalog).slice(0, MAX_ALTERNATIVES);
+      const rawPreferred = typeof args.preferred_attribute === "string" ? args.preferred_attribute : undefined;
+      const preferredAttribute: SimilarityAttribute | undefined =
+        rawPreferred === "shape" || rawPreferred === "color" || rawPreferred === "style" || rawPreferred === "finish"
+          ? rawPreferred
+          : undefined;
+      // Confirmed-live bug: a round table's alternatives showed square
+      // tables first, burying the other real round one, because this only
+      // deduped — it never ranked. `rankBySimilarity` reorders (never
+      // filters) by how many real attributes each candidate shares with the
+      // anchor, weighting `preferred_attribute` heavily when the model tells
+      // us which attribute the visitor actually asked about (e.g. asked by
+      // color → color matches should win even across different shapes).
+      const alternatives = rankBySimilarity(
+        product,
+        distinctAlternatives(product, catalog),
+        preferredAttribute,
+      ).slice(0, MAX_ALTERNATIVES);
       return {
         output: alternatives.map((p) => ({ product_id: p.product_id, name: p.name, section: p.section })),
         // These cards ARE the alternatives — none of them gets its own
@@ -228,6 +322,50 @@ export function runTool(name: string, args: Record<string, unknown>): ToolRunRes
       }
       const navTarget = toNavTarget(product);
       return { output: { navTarget }, cards: [], navigate: navTarget, valid: true };
+    }
+
+    case "get_product_variant": {
+      // Caso B: visitor asks "¿lo tienes en velvet?" about a product the
+      // assistant already proposed. Fully deterministic — the answer is
+      // entirely known from the catalog once product_id+requested_value are
+      // given, so this resolves it in one call instead of the model
+      // chaining get_product+search_catalog itself (same reasoning as why
+      // get_recommendations exists as its own tool).
+      const productId = typeof args.product_id === "string" ? args.product_id : "";
+      const requestedValue = typeof args.requested_value === "string" ? args.requested_value : "";
+      const anchor = findProductById(productId);
+      if (!anchor) {
+        return { output: { error: `product_id "${productId}" no encontrado o no activo.` }, cards: [], valid: false };
+      }
+      const { siblings, match } = findVariant(anchor, requestedValue, catalog);
+      const siblingSummaries = siblings.map((p) => ({
+        product_id: p.product_id,
+        name: p.name,
+        colors: p.colors,
+        materials: p.materials,
+        finish: p.finish,
+        shape: p.shape ?? null,
+      }));
+      if (match) {
+        const alternativesAvailable = distinctAlternatives(match.product, catalog).length > 0;
+        const card = toCard(match.product, alternativesAvailable);
+        return {
+          output: {
+            found: true,
+            matched_field: match.matchedField,
+            matched_value: match.matchedValue,
+            product_id: match.product.product_id,
+            siblings: siblingSummaries,
+          },
+          cards: [card],
+          valid: true,
+        };
+      }
+      return {
+        output: { found: false, requested_value: requestedValue, siblings: siblingSummaries },
+        cards: [],
+        valid: true,
+      };
     }
 
     default:

@@ -10,6 +10,7 @@ export interface CatalogListingEntry {
   style: string[];
   colors: string[];
   materials: string[];
+  finish: string[];
 }
 
 /**
@@ -24,8 +25,8 @@ export interface CatalogListingEntry {
  * a menu of ids for the model to pick from; get_product/navigate_to_product
  * still validate against the same trusted catalog either way.
  *
- * `shape`/`style`/`colors`/`materials` are included so a filtered search
- * that matched nothing (e.g. shape="angolare") can still be rescued here —
+ * `shape`/`style`/`colors`/`materials`/`finish` are included so a filtered
+ * search that matched nothing (e.g. shape="angolare") can still be rescued here —
  * the model can see which of these attributes genuinely exist across the
  * catalog and offer them as real alternatives instead of a dead end. Empty
  * arrays / null `shape` are expected for products this data hasn't been
@@ -43,5 +44,6 @@ export function buildFullCatalogListing(catalog: Product[]): CatalogListingEntry
     style: p.style,
     colors: p.colors,
     materials: p.materials,
+    finish: p.finish,
   }));
 }

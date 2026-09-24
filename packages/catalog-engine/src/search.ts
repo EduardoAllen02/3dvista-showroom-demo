@@ -1,6 +1,7 @@
 import type { Product } from "./schema.js";
 import type { SearchCandidate, SearchFilters, SearchResult } from "./types.js";
 import { normalize, stem, tokenize } from "./normalize.js";
+import { fieldMatches, shapeMatches } from "./matching.js";
 
 const MAX_CANDIDATES = 8;
 // Fewer than this many genuine (score > 0) matches marks the result as
@@ -23,27 +24,6 @@ function levenshtein(a: string, b: string): number {
   return dp[a.length][b.length];
 }
 
-function fieldMatches(field: string | undefined, filterValue: string): boolean {
-  if (!field) return false;
-  return normalize(field) === normalize(filterValue);
-}
-
-// `shape` is a free-form descriptive phrase (not a controlled enum like
-// category/section), so the model calling search_catalog can reasonably
-// pass "angolo" or "ad angolo" or "a L" for the exact same stored value —
-// strict equality made a real, reproduced bug: a shape filter of "angolo"
-// against a stored "ad angolo" returned zero matches even though the
-// product genuinely has that shape, which silently killed the very
-// use case (search by shape) this field exists for. Bidirectional
-// substring match tolerates that phrasing variance without turning into a
-// fuzzy/unbounded match.
-function shapeMatches(field: string | undefined, filterValue: string): boolean {
-  if (!field) return false;
-  const f = normalize(field);
-  const v = normalize(filterValue);
-  return f.includes(v) || v.includes(f);
-}
-
 function scoreProduct(product: Product, queryTokens: string[], stemmedQuery: string[]): number {
   let score = 0;
   const nameNorm = normalize(product.name);
@@ -60,6 +40,7 @@ function scoreProduct(product: Product, queryTokens: string[], stemmedQuery: str
     ...product.keywords,
     ...product.colors,
     ...product.materials,
+    ...product.finish,
     product.section,
   ]
     .map(normalize)
@@ -109,8 +90,18 @@ export function searchCatalog(query: string, filters: SearchFilters, products: P
   if (filters.material) {
     pool = pool.filter((p) => p.materials.some((m) => fieldMatches(m, filters.material!)));
   }
+  if (filters.finish) {
+    // Controlled vocabulary (Febal's own named rivestimento lines) — strict
+    // match like color/material, unlike shape/style's free phrasing below.
+    pool = pool.filter((p) => p.finish.some((f) => fieldMatches(f, filters.finish!)));
+  }
   if (filters.shape) {
     pool = pool.filter((p) => shapeMatches(p.shape, filters.shape!));
+  }
+  if (filters.style) {
+    // Same substring treatment as shape (bfc3c84): stored style labels are
+    // compound ("Classico elegante") while a visitor names just "elegante".
+    pool = pool.filter((p) => p.style.some((s) => shapeMatches(s, filters.style!)));
   }
 
   const queryTokens = tokenize(query);

@@ -21,6 +21,10 @@ export interface SearchFilters {
   material?: string;
   shape?: string;
   section?: string;
+  /** Named upholstery/fabric-line (e.g. "Velvet", "Boston") — controlled vocabulary, strict match. */
+  finish?: string;
+  /** Decor style tag (e.g. "elegante") — free phrasing against compound stored labels, substring match like shape. */
+  style?: string;
 }
 
 export interface SearchCandidate {

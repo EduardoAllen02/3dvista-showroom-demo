@@ -2,8 +2,10 @@ import type { FastifyInstance } from "fastify";
 import { z } from "zod";
 import { config } from "../config.js";
 import { handleChat } from "../agent/orchestrator.js";
+import { handleChatViaClaudeCode } from "../agent/claude-code-orchestrator.js";
 import { requireMatchingTour } from "../middleware/tour-auth.js";
 import { logUsage } from "../logging/usage-logger.js";
+import { computeCostUsd } from "../logging/model-pricing.js";
 
 const ChatRequestSchema = z.object({
   tour_id: z.string(),
@@ -32,18 +34,26 @@ export function registerChatRoute(app: FastifyInstance): void {
     const { session_id, message, history, wishlist_product_ids } = parsed.data;
 
     try {
-      const result = await handleChat(message, history, wishlist_product_ids);
+      const result =
+        config.MODEL_PROVIDER === "claude-code"
+          ? await handleChatViaClaudeCode(message, history, wishlist_product_ids)
+          : await handleChat(message, history, wishlist_product_ids);
+
+      const reportedCostUsd =
+        config.MODEL_PROVIDER === "claude-code"
+          ? (result.claudeCodeCostUsd ?? 0)
+          : computeCostUsd(config.MODEL_ID, result.usage);
 
       logUsage({
         tour_id: config.TOUR_ID,
         session_id,
         model: config.MODEL_ID,
-        provider: "openai",
+        provider: config.MODEL_PROVIDER,
         input_tokens: result.usage.input_tokens,
         cached_input_tokens: result.usage.cached_input_tokens,
         reasoning_tokens: result.usage.reasoning_tokens,
         output_tokens: result.usage.output_tokens,
-        reported_cost_usd: 0,
+        reported_cost_usd: reportedCostUsd,
         latency_ms: result.latencyMs,
         tool_call_valid: result.toolCallValid,
         navigation_correct: null,

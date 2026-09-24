@@ -8,4 +8,5 @@ export type {
   ToolSchema,
 } from "./provider.js";
 export { createOpenAiAdapter } from "./openai-adapter.js";
+export { createAnthropicAdapter } from "./anthropic-adapter.js";
 export { TOOL_SCHEMAS } from "./tool-schemas.js";

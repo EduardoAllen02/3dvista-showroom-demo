@@ -9,7 +9,7 @@ import xlsx from "xlsx";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 
-const ARRAY_FIELDS = new Set(["colors", "materials", "keywords", "synonyms", "style"]);
+const ARRAY_FIELDS = new Set(["colors", "materials", "keywords", "synonyms", "style", "finish"]);
 const NUMBER_FIELDS = new Set(["yaw", "pitch", "fov"]);
 const BOOLEAN_FIELDS = new Set(["active"]);
 // hotspot_name/detail_url are `z.string().nullable()` in the schema, so an

@@ -2,7 +2,7 @@
   "tour_id": "febal-casa",
   "displayName": "Febal Casa — Tour Virtual",
   "allowedOrigin": "https://deploy-febal-casa.vercel.app",
-  "backendUrl": "https://3-140-244-55.sslip.io",
+  "backendUrl": "http://localhost:8961",
   "media": [
     {
       "media_name": "9",

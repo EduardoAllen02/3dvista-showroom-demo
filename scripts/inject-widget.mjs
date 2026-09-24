@@ -21,12 +21,16 @@ const ROOT = path.resolve(__dirname, "..");
 function main() {
   const tour = process.argv[2];
   const assetsBaseUrl = process.argv[3] ?? "http://localhost:5500/assistant";
+  // Lets several side-by-side variants (e.g. one per backend/model under
+  // comparison) share the same tour-export panorama media while each keeps
+  // its own injected <script> tag — see serve-demo.mjs's INDEX_FILE param.
+  const indexFile = process.argv[4] ?? "index.htm";
   if (!tour) {
-    console.error("Usage: node scripts/inject-widget.mjs <tour-name> [assetsBaseUrl]");
+    console.error("Usage: node scripts/inject-widget.mjs <tour-name> [assetsBaseUrl] [indexFile]");
     process.exit(1);
   }
 
-  const indexPath = path.join(ROOT, "tour-project", tour, "tour-export", "index.htm");
+  const indexPath = path.join(ROOT, "tour-project", tour, "tour-export", indexFile);
   if (!existsSync(indexPath)) {
     console.error(`No se encontró ${indexPath}. Exporta el tour (Publicar > Web) antes de inyectar.`);
     process.exit(1);

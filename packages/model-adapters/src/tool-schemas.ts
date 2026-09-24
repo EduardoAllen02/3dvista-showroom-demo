@@ -25,6 +25,16 @@ export const TOOL_SCHEMAS: ToolSchema[] = [
             description:
               "Forma/silueta física si el usuario la menciona (p. ej. 'redondo', 'modular', 'rectangular', 'en L', 'compacto') — solo cuando la pidió explícitamente, no la inventes.",
           },
+          finish: {
+            type: "string",
+            description:
+              "Acabado/línea de tela con nombre propio de Febal Casa (p. ej. 'Velvet', 'Boston', 'Rimini') si el usuario lo menciona — solo cuando lo pidió explícitamente, no lo inventes. Distinto de color: 'velvet' suele ser un acabado, no un color.",
+          },
+          style: {
+            type: "string",
+            description:
+              "Estilo decorativo si el usuario lo menciona (p. ej. 'elegante', 'minimal', 'clásico') — solo cuando lo pidió explícitamente, no lo inventes.",
+          },
           section: { type: "string" },
         },
         required: ["query"],
@@ -55,6 +65,12 @@ export const TOOL_SCHEMAS: ToolSchema[] = [
         type: "object",
         properties: {
           product_id: { type: "string" },
+          preferred_attribute: {
+            type: "string",
+            enum: ["shape", "color", "style", "finish"],
+            description:
+              "Qué característica pidió el visitante al buscar alternativas (p. ej. preguntó por otro COLOR, aunque cambie la forma). Solo inclúyelo cuando el visitante mencionó explícitamente esa característica al pedir alternativas — si no dijo nada específico, omite el campo.",
+          },
         },
         required: ["product_id"],
       },
@@ -76,6 +92,25 @@ export const TOOL_SCHEMAS: ToolSchema[] = [
           },
         },
         required: ["product_ids"],
+      },
+    },
+  },
+  {
+    type: "function",
+    function: {
+      name: "get_product_variant",
+      description:
+        "Resuelve si un producto YA propuesto existe en un acabado/color/forma distinto que el visitante pida (p. ej. '¿lo tienes en velvet?', '¿viene en verde?'). Úsala SOLO sobre un product_id que tú mismo ya propusiste en este turno o el anterior — nunca busques de nuevo con search_catalog para esto. Devuelve el producto real que coincide (si existe) o, si no, los acabados/colores/formas reales de los diseños hermanos para que ofrezcas alternativas honestas.",
+      parameters: {
+        type: "object",
+        properties: {
+          product_id: { type: "string" },
+          requested_value: {
+            type: "string",
+            description: "El acabado, color o forma exactos que pidió el visitante, tal como los escribió.",
+          },
+        },
+        required: ["product_id", "requested_value"],
       },
     },
   },

@@ -32,25 +32,40 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const CATALOG_PATH = path.join(ROOT, "clients", "febal-casa", "catalog.json");
 
+// Labels are the CLIENT-FACING style tags (Febal Casa is Italian, the
+// assistant's prose is forced to Italian in prompt.md) — same rule that
+// already governs `category` (see build-febal-catalog.mjs's CATEGORY_RULES
+// comment). These were previously stored in Spanish ("Contemporáneo",
+// "Clásico elegante", "Cálido acogedor") — a real, reproduced instance of
+// the exact same category-of-bug already fixed once for `category` itself
+// (commit 2a48d50): the internal matching label leaked into a client-facing
+// field. Fixed here by relabeling to Italian; the Italian keyword lists
+// below are unaffected (they were already correct).
 const STYLE_KEYWORDS = {
   Minimal: ["minimal", "essenzial", "rigore", "lineare", "lineari", "pulit", "sobri"],
-  "Contemporáneo": [
+  Contemporaneo: [
     "contemporane", "moderno", "moderna", "moderni", "distintivo", "attuale", "geometric", "architettonic",
   ],
-  "Clásico elegante": ["elegante", "eleganza", "classico", "classici", "raffinat", "prezios", "sartorial", "senza tempo"],
-  "Cálido acogedor": ["accogliente", "accoglienza", "avvolgente", "avvolgenza", "calore", "morbid", "comfort", "confort"],
+  "Classico elegante": ["elegante", "eleganza", "classico", "classici", "raffinat", "prezios", "sartorial", "senza tempo"],
+  "Caldo accogliente": ["accogliente", "accoglienza", "avvolgente", "avvolgenza", "calore", "morbid", "comfort", "confort"],
 };
 
 // Only used when a description is pure boilerplate and matches none of the
-// keyword lists above — a reasonable category-level prior, not a per-product guess.
+// keyword lists above — a reasonable category-level prior, not a per-product
+// guess. Keys MUST match the real (Italian) `category` values currently in
+// the catalog — confirmed live these had gone stale after the category
+// field itself was relabeled to Italian in 2a48d50 (keys here were still the
+// old Spanish category strings, e.g. "cocinas", so this lookup silently
+// never matched anything and every boilerplate-description product fell
+// through to FALLBACK_STYLE regardless of its real category).
 const CATEGORY_STYLE_DEFAULT = {
-  "cocinas": "Contemporáneo",
-  "sistemas modulares": "Contemporáneo",
-  "paneles decorativos": "Minimal",
-  "armarios": "Contemporáneo",
-  "dormitorio": "Clásico elegante",
+  "cucine": "Contemporaneo",
+  "sistemi modulari": "Contemporaneo",
+  "boiserie": "Minimal",
+  "armadi": "Contemporaneo",
+  "camera da letto": "Classico elegante",
 };
-const FALLBACK_STYLE = "Contemporáneo";
+const FALLBACK_STYLE = "Contemporaneo";
 
 const MAX_COMPATIBLE = 4;
 

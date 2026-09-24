@@ -1,9 +1,11 @@
 import { searchCatalog, computeStyleProfile, type NavTarget } from "@3dvista-assistant/catalog-engine";
 import {
   createOpenAiAdapter,
+  createAnthropicAdapter,
   TOOL_SCHEMAS,
   type ChatMessage,
   type ChatUsage,
+  type ModelProvider,
 } from "@3dvista-assistant/model-adapters";
 import { config } from "../config.js";
 import { loadCatalog } from "../catalog/catalog-loader.js";
@@ -11,9 +13,20 @@ import { buildSystemPrompt } from "./system-prompt.js";
 import { runTool, type ProductCardPayload } from "./tools.js";
 import { buildFullCatalogListing } from "./catalog-listing.js";
 
-const MAX_TOOL_TURNS = 4;
+// Exported so the Fase 2 Claude Agent SDK path (claude-code-orchestrator.ts)
+// can use the exact same cap — a fair comparison needs identical limits,
+// not just identical tools/catalog/prompt.
+export const MAX_TOOL_TURNS = 4;
 
-const provider = createOpenAiAdapter(config.OPENAI_API_KEY);
+// Provider selection is the ONLY thing that changes between the gpt-4o-mini
+// baseline and the Claude comparison (Fase 2 of the Febal Casa repair plan)
+// — same orchestrator loop, same tools, same prompt.md. config.ts's
+// superRefine guarantees the matching API key is present for whichever
+// provider is selected, so the non-null assertions below are safe.
+const provider: ModelProvider =
+  config.MODEL_PROVIDER === "anthropic"
+    ? createAnthropicAdapter(config.ANTHROPIC_API_KEY!)
+    : createOpenAiAdapter(config.OPENAI_API_KEY!);
 
 export interface OrchestratorResult {
   reply: string;
@@ -24,6 +37,13 @@ export interface OrchestratorResult {
   usage: ChatUsage;
   latencyMs: number;
   toolCallValid: boolean;
+  /**
+   * Only set by claude-code-orchestrator.ts's Claude Agent SDK path — that
+   * provider runs on a Claude Code subscription rather than metered API
+   * billing, so its own SDK-reported total_cost_usd is the authoritative
+   * figure instead of model-pricing.ts's per-token estimate.
+   */
+  claudeCodeCostUsd?: number;
 }
 
 export interface HistoryTurn {
@@ -71,7 +91,7 @@ function toApiMessages(history: HistoryTurn[]): ChatMessage[] {
  * model that means nothing was verified yet, so it must search again
  * rather than navigate to something older.
  */
-function lastProposal(history: HistoryTurn[]): string[] | null {
+export function lastProposal(history: HistoryTurn[]): string[] | null {
   const last = history[history.length - 1];
   if (last?.role === "assistant" && last.product_ids && last.product_ids.length > 0) {
     return last.product_ids;
@@ -113,16 +133,33 @@ export async function handleChat(
   let navigate: NavTarget | null = null;
   let toolCallValid = true;
   let proposalMade = false;
+  // Set when a tool result comes back flagged low_confidence/color_fallback
+  // — those are explicitly "here's real data, now go propose something with
+  // it" signals (rules 12/13 in prompt.md), not a legitimate place to stop.
+  // Confirmed live: gpt-4o-mini, given a color_fallback block naming a real
+  // matching product, sometimes narrated the names in plain prose and
+  // stopped there with zero tool calls on the very next completion (0
+  // cards, violating rule 22's "never zero proposal calls") — weaker
+  // tool-calling discipline than Sonnet/Haiku showed on the identical data.
+  // Forcing tool_choice back to "required" for one more turn whenever this
+  // is true (same mechanism as turn 0, just re-armed) makes the "keep
+  // going until you propose something" rule structurally true instead of
+  // hoping the model's own compliance holds — bounded by MAX_TOOL_TURNS
+  // either way, so a genuinely dead-end case still falls through to the
+  // honest failure message below instead of looping forever.
+  let needsProposal = false;
 
   for (let turn = 0; turn < MAX_TOOL_TURNS; turn++) {
     // Force a tool call on the FIRST completion of every user turn (see
-    // ChatRequest.tool_choice's doc comment) — structural, not just a
-    // prompt request, so it can't be skipped the way wording sometimes was.
+    // ChatRequest.tool_choice's doc comment), and again any time the prior
+    // turn's tool result demanded a proposal that hasn't happened yet —
+    // structural, not just a prompt request, so it can't be skipped the way
+    // wording sometimes was.
     const result = await provider.chat({
       model: config.MODEL_ID,
       messages,
       tools: TOOL_SCHEMAS,
-      tool_choice: turn === 0 ? "required" : "auto",
+      tool_choice: turn === 0 || (needsProposal && !proposalMade) ? "required" : "auto",
     });
 
     totalUsage.input_tokens += result.usage.input_tokens;
@@ -153,6 +190,11 @@ export async function handleChat(
       const toolResult = runTool(call.function.name, args);
       if (!toolResult.valid) toolCallValid = false;
 
+      const out = toolResult.output as Record<string, unknown> | null | undefined;
+      if (out && (out.low_confidence === true || out.color_fallback)) {
+        needsProposal = true;
+      }
+
       // At most ONE proposal-type call (get_product/get_alternatives) gets
       // to contribute cards per user turn. Without this, a live test showed
       // the model sometimes calling get_product for the top pick AND THEN
@@ -167,7 +209,8 @@ export async function handleChat(
       const isProposalTool =
         call.function.name === "get_product" ||
         call.function.name === "get_alternatives" ||
-        call.function.name === "get_recommendations";
+        call.function.name === "get_recommendations" ||
+        call.function.name === "get_product_variant";
       const suppressCards = isProposalTool && proposalMade;
       if (!suppressCards) {
         cards.push(...toolResult.cards);

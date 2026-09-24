@@ -9,3 +9,6 @@ data/panoramas/source/
 .DS_Store
 *.tsbuildinfo
 server/data/debug-*.json
+~$*.xlsx
+~$*.docx
+.captures/
