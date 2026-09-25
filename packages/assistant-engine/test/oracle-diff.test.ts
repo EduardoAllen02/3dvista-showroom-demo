@@ -45,7 +45,7 @@ function* combos(): Generator<OracleConstraint[]> {
   }
 }
 
-test("engine ≡ oracle on every 1–3 constraint combination (exhibited and on-order sets)", () => {
+test("engine ≡ oracle on every 1–3 constraint combination (exhibited, on-order and line sets)", () => {
   let n = 0;
   const diffs: string[] = [];
   for (const cs of combos()) {
@@ -53,9 +53,10 @@ test("engine ≡ oracle on every 1–3 constraint combination (exhibited and on-
     const r = engine.evaluate(toEngine(cs));
     const e1 = new Set(r.T1.map((c) => c.exhibit_id)), o1 = oracle.exhibited(cs);
     const e2 = new Set(r.T2.map((c) => c.model_id)), o2 = oracle.onOrder(cs);
+    const e3 = new Set(r.L.map((c) => c.model_id)), o3 = oracle.onLine(cs);
     const same = (a: Set<string>, b: Set<string>) => a.size === b.size && [...a].every((x) => b.has(x));
-    if (!same(e1, o1) || !same(e2, o2)) {
-      diffs.push(`${JSON.stringify(cs)} T1 engine=[${[...e1]}] oracle=[${[...o1]}] T2 engine=[${[...e2]}] oracle=[${[...o2]}]`);
+    if (!same(e1, o1) || !same(e2, o2) || !same(e3, o3)) {
+      diffs.push(`${JSON.stringify(cs)} T1 engine=[${[...e1]}] oracle=[${[...o1]}] T2 engine=[${[...e2]}] oracle=[${[...o2]}] L engine=[${[...e3]}] oracle=[${[...o3]}]`);
     }
   }
   if (diffs.length) console.log(diffs.slice(0, 10).join("\n"));

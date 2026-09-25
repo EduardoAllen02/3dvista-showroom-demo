@@ -214,7 +214,7 @@
    "evidencia": "la ficha no tiene lista de acabados"
   },
   "notas": [
-   "ERROR de material (catálogo v1): v1 decía 'marmo marrone scuro/nero venato'. La mesita del marcador es de madera; las mesitas de mármol cercanas son otras piezas."
+   "CORREGIDO (material): el catálogo anterior decía 'marmo marrone scuro/nero venato'. La mesita del marcador es de madera; las mesitas de mármol cercanas son otras piezas."
   ],
   "observed": {
    "name": "Tavolino Rio",
@@ -332,7 +332,7 @@
    "evidencia": "color liso, varios candidatos"
   },
   "notas": [
-   "ERROR de color y material (catálogo v1): v1 decía 'nero venato bianco, effetto pietra'. Esa es la boiserie chimenea FEB-001; aquí la pared es greige lisa."
+   "CORREGIDO (color y material): el catálogo anterior decía 'nero venato bianco, effetto pietra'. Esa es la boiserie chimenea FEB-001; aquí la pared es greige lisa."
   ],
   "observed": {
    "name": "Boiserie",
@@ -690,7 +690,7 @@
    "evidencia": "es el único color de marco listado para los frontales; marcos gris casi negro"
   },
   "notas": [
-   "ERROR de color y material (catálogo v1): v1 decía 'noce' y 'legno': no se ve nogal ni madera, todo es gris oscuro con vidrio.",
+   "CORREGIDO (color y material): el catálogo anterior decía 'noce' y 'legno': no se ve nogal ni madera, todo es gris oscuro con vidrio.",
    "Las etiquetas de la ficha para Fianchi/Top traían el prefijo 'Copia di FebalCasa_…_Finiture_'; ya se limpiaron."
   ],
   "observed": {
@@ -805,7 +805,7 @@
    "evidencia": "la ficha no tiene lista de acabados"
   },
   "notas": [
-   "ERROR de material (catálogo v1): v1 decía 'legno naturale': no se ve madera natural."
+   "CORREGIDO (material): el catálogo anterior decía 'legno naturale': no se ve madera natural."
   ],
   "observed": {
    "name": "Libreria Lapis",
@@ -858,7 +858,7 @@
    "evidencia": "la ficha no tiene lista de revestimientos"
   },
   "notas": [
-   "ERROR de color (catálogo v1): v1 decía 'verde oliva scuro': el pouf se ve gris-pardo, no verde."
+   "CORREGIDO (color): el catálogo anterior decía 'verde oliva scuro': el pouf se ve gris-pardo, no verde."
   ],
   "observed": {
    "name": "Pouff Windsor",
@@ -1164,7 +1164,7 @@
    "evidencia": ""
   },
   "notas": [
-   "ERROR de material (catálogo v1): v1 decía 'beige chiaro venato, effetto pietra': el panel es liso, sin veta."
+   "CORREGIDO (material): el catálogo anterior decía 'beige chiaro venato, effetto pietra': el panel es liso, sin veta."
   ],
   "observed": {
    "name": "Boiserie",
@@ -1276,7 +1276,7 @@
    "evidencia": "varios verdes oscuros"
   },
   "notas": [
-   "ERROR de color (catálogo v1): v1 decía 'cognac'. El sofá es verde oscuro."
+   "CORREGIDO (color): el catálogo anterior decía 'cognac'. El sofá es verde oscuro."
   ],
   "observed": {
    "name": "Divano Camden",
@@ -2831,7 +2831,7 @@
    "evidencia": ""
   },
   "notas": [
-   "ERROR de ficha: el catálogo lo enlazaba a la ficha 'astrid' (cama), pero la pieza es un buró del grupo Marlene. Ya se enlazó a la ficha Marlene (como FEB-050); falta confirmarlo."
+   "CORREGIDO (ficha): el catálogo lo enlazaba a la ficha 'astrid' (una cama), pero la pieza es un buró del grupo Marlene; ya se enlazó a la ficha Marlene, como FEB-050."
   ],
   "observed": {
    "name": "Gruppo Notte Marlene",
@@ -4485,7 +4485,7 @@
    "evidencia": ""
   },
   "notas": [
-   "ERROR de punto de vista: apunta al muestrario de acabados y el marcador queda en el borde inferior. Conviene reencuadrarlo en el tour."
+   "PENDIENTE (punto de vista en el tour): la cámara apunta al muestrario de acabados y la silla queda en el borde; hay que reencuadrarlo en el tour, no se arregla desde los datos."
   ],
   "observed": {
    "name": "Sedia Dea",

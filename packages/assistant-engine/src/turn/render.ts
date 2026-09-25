@@ -13,6 +13,8 @@ const T = {
   and_more: { es: "y más", it: "e altro", en: "and more" },
   on_order: { es: "Bajo pedido", it: "Su ordinazione", en: "On order" },
   in_showroom: { es: "En showroom", it: "In showroom", en: "In showroom" },
+  in_line: { es: "En la línea (confirmar)", it: "Nella linea (da confermare)", en: "In the line (to confirm)" },
+  line_title: { es: "De la línea, a confirmar en su ficha", it: "Della linea, da confermare sulla scheda", en: "From the product line, to confirm on its page" },
   combines: { es: "combina con", it: "si abbina a", en: "goes with" },
   similar: { es: "parecido a", it: "simile a", en: "close to" },
   not: { es: "No", it: "Non", en: "Not" },
@@ -42,7 +44,7 @@ export interface UiCard {
   // v2 additions (the v1 widget ignores unknown fields)
   group_id: string;
   group_title: string;
-  availability: "exhibited" | "on_order" | "unknown";
+  availability: "exhibited" | "on_order" | "line" | "unknown";
   reasons: string[];
   variants_text: string | null;
   shown_as: string | null;
@@ -81,6 +83,13 @@ export class Renderer {
     return parts.length > max ? `${shown} ${T.and_more[lang]}` : shown;
   }
 
+  /** "la línea Dormitorio de Febal": the line whose palette gave the card its variants. */
+  lineName(card: CardRef, lang: Lang): string | null {
+    const m = this.models.get(card.model_id);
+    const line = (card.variants ?? []).map((v) => m?.option_groups.find((g) => g.id === v.group_id)?.line).find(Boolean);
+    return line ? LINE[line][lang] : null;
+  }
+
   concept(id: string, lang: Lang): string {
     return this.lx.label(id, lang);
   }
@@ -93,6 +102,7 @@ export class Renderer {
       switch (kind) {
         case "p": return card ? `**${this.displayName(arg)}**` : whole;
         case "v": return card ? this.variantsText(card, lang) : whole;
+        case "line": return card ? this.lineName(card, lang) ?? whole : whole;
         case "z": { const e = this.exhibits.get(arg); return e ? this.zoneLabel(e.zone) : whole; }
         case "shown": return card?.shown_as ? localizeObserved(card.shown_as, lang) : (this.exhibits.get(arg) ? "—" : whole);
         case "link": {
@@ -116,6 +126,7 @@ export class Renderer {
     switch (g.role) {
       case "exact_exhibited": return T.exact[lang];
       case "exact_on_order": return T.orderable[lang];
+      case "line_on_order": return T.line_title[lang];
       case "unknown": return T.unconfirmed[lang];
       case "list": return T.list[lang];
       case "alternatives": return T.alternatives[lang];
@@ -148,6 +159,7 @@ export class Renderer {
     switch (kind) {
       case "abs": return `Di claramente que NO hay en el showroom exactamente: ${req}.`;
       case "ord": return `Di que {{p:${a}}} en el showroom está en {{shown:${a}}} (no como lo pidió), PERO SÍ está disponible bajo pedido en {{v:${a}}}; incluye {{link:${a}}}.`;
+      case "lin": return `Di que {{p:${a}}} (aquí en {{shown:${a}}}) no lo tienes confirmado así para ese modelo, pero {{line:${a}}} maneja {{v:${a}}}; pide que CONFIRME en {{link:${a}}} si aplica a ese modelo. Nunca digas que está disponible sin ese aviso.`;
       case "grp": return `Presenta como alternativa: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}).`;
       case "off": return `Al final ofrece como pregunta: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}). La respuesta termina en "?".`;
       case "harm": { const [x, y] = ob.slice(5).split(">"); return `Di que {{c:${y}}} combina con {{c:${x}}}.`; }
@@ -178,9 +190,9 @@ export class Renderer {
       else if (m === "unknown") out.push(`${label}: ${T.unknown[lang]}`);
       else if (m.startsWith("sub:")) out.push(this.concept(m.slice(4), lang));
     }
-    if (card.availability === "on_order") {
+    if (card.availability === "on_order" || card.availability === "line") {
       const v = this.variantsText(card, lang, 3);
-      if (v) out.push(`${T.on_order[lang]}: ${v}`);
+      if (v) out.push(`${card.availability === "line" ? T.in_line[lang] : T.on_order[lang]}: ${v}`);
       if (card.shown_as) out.push(`${T.in_showroom[lang]}: ${localizeObserved(card.shown_as, lang)}`);
     }
     return out;
@@ -204,7 +216,7 @@ export class Renderer {
           alternativesAvailable: g.role !== "alternatives",
           group_id: g.id, group_title: title, availability: card.availability,
           reasons: this.reasons(card, bundle, lang),
-          variants_text: card.availability === "on_order" ? this.variantsText(card, lang) : null,
+          variants_text: card.availability === "on_order" || card.availability === "line" ? this.variantsText(card, lang) : null,
           shown_as: card.shown_as ?? null, official_url: m?.official_url ?? null,
         });
       }
@@ -226,6 +238,7 @@ export class Renderer {
           disponibilidad: c.availability, zona: `{{z:${c.exhibit_id}}}`,
           como_se_ve: c.shown_as ? `{{shown:${c.exhibit_id}}}` : null,
           bajo_pedido: c.availability === "on_order" ? `{{v:${c.exhibit_id}}}` : null,
+          de_la_linea: c.availability === "line" ? { linea: `{{line:${c.exhibit_id}}}`, opciones: `{{v:${c.exhibit_id}}}`, aviso: "confirmar en la ficha si aplica a este modelo" } : null,
           ficha: this.models.get(c.model_id)?.official_url ? `{{link:${c.exhibit_id}}}` : null,
           cumple: this.reasons(c, bundle, lang),
         })),
@@ -237,6 +250,11 @@ export class Renderer {
     return JSON.stringify(view);
   }
 }
+
+const LINE: Record<"notte" | "armadi", Record<Lang, string>> = {
+  notte: { es: "la línea Dormitorio de Febal", it: "la linea Notte di Febal", en: "Febal's bedroom line" },
+  armadi: { es: "la línea de armarios de Febal", it: "la linea armadi di Febal", en: "Febal's wardrobe line" },
+};
 
 export function allCards(b: Bundle): CardRef[] {
   return b.groups.flatMap((g) => g.cards);

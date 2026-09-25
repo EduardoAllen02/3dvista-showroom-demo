@@ -3,7 +3,8 @@
  *
  * Written separately on purpose: it does NOT import the engine. It re-derives, by brute
  * force over the canonical catalog JSON, which pieces satisfy a set of constraints physically
- * (T1) and which models can be ordered satisfying them (T2). The differential test
+ * (T1), which models can be ordered satisfying them from their own lists (T2) and which only
+ * from the product line's palette (L, mentioned with a caveat). The differential test
  * compares both implementations on thousands of constraint combinations: any difference
  * is either an engine bug or an oracle bug, and must be explained before shipping.
  */
@@ -42,9 +43,9 @@ export class Oracle {
     return r;
   }
 
-  private modelOffers(m: Model, roleCs: OracleConstraint[]): boolean {
+  private modelOffers(m: Model, roleCs: OracleConstraint[], scopes: string[]): boolean {
     for (const g of m.option_groups) {
-      if (g.scope === "generic_palette") continue;
+      if (!scopes.includes(g.scope)) continue;
       for (const o of g.options) {
         const ok = roleCs.every((c) => {
           let hit = false;
@@ -63,15 +64,24 @@ export class Oracle {
     return new Set(this.cat.exhibits.filter((e) => cs.every((c) => this.pieceSays(e, c) === "yes")).map((e) => e.id));
   }
 
-  /** Models (not already exhibited as a full match) that can be ordered satisfying every constraint. */
+  /** Models (not already exhibited as a full match) that can be ordered from their own lists. */
   onOrder(cs: OracleConstraint[]): Set<string> {
+    return this.orderable(cs, ["model", "text"], new Set());
+  }
+
+  /** Models that only the product line's palette can satisfy (neither exhibited nor on order). */
+  onLine(cs: OracleConstraint[]): Set<string> {
+    return this.orderable(cs, ["line"], this.onOrder(cs));
+  }
+
+  private orderable(cs: OracleConstraint[], scopes: string[], alsoSkip: Set<string>): Set<string> {
     const roleCs = cs.filter((c) => c.facet === "color" || c.facet === "material");
     if (!roleCs.length) return new Set();
     const exhibitedModels = new Set(this.cat.exhibits.filter((e) => cs.every((c) => this.pieceSays(e, c) === "yes")).map((e) => e.model_id));
     const out = new Set<string>();
     for (const e of this.cat.exhibits) {
       const m = this.cat.models.find((x) => x.id === e.model_id);
-      if (!m || exhibitedModels.has(m.id)) continue;
+      if (!m || exhibitedModels.has(m.id) || alsoSkip.has(m.id)) continue;
       const frameOk = cs.filter((c) => !roleCs.includes(c)).every((c) => {
         if (this.pieceSays(e, c) === "yes") return true;
         if ((c.facet === "shape" || c.facet === "style") && c.op === "is") {
@@ -82,7 +92,7 @@ export class Oracle {
       });
       if (!frameOk) continue;
       if (roleCs.every((c) => this.pieceSays(e, c) === "yes")) continue;
-      if (this.modelOffers(m, roleCs)) out.add(m.id);
+      if (this.modelOffers(m, roleCs, scopes)) out.add(m.id);
     }
     return out;
   }

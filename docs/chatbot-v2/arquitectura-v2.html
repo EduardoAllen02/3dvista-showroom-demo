@@ -207,7 +207,7 @@
       d: "Código que no se fía del LLM: valida cada identificador, detecta negaciones («que no sea negra»), completa con el diccionario lo que el LLM olvidó y lo combina con la memoria. El resultado son filtros exactos para el motor.",
       f: ["src/turn/reducer.ts"] },
     { id: "engine", x: 930, y: 170, k: "code", t: "Motor de búsqueda", s: "decide qué existe · sin LLM",
-      d: "Es quien decide qué hay. Tres niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la ficha oficial lo ofrece: regla de disponibilidad) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
+      d: "Es quien decide qué hay. Cuatro niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la lista propia de la ficha lo ofrece: regla de disponibilidad), DE LA LÍNEA (solo la paleta de la línea lo tiene, p. ej. «Finiture per NOTTE» = línea Dormitorio: se menciona con el aviso de confirmar en la ficha si aplica al modelo) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
       f: ["src/engine/engine.ts"], kv: [["Costo de relajar", "categoría 100 · modelo 50 · forma 6 · material 5 · color 4"]] },
     { id: "oracle", x: 1180, y: 64, k: "code", t: "Oráculo de pruebas", s: "segunda implementación",
       d: "Una segunda versión del motor, escrita por separado, contra la que se compara el motor real en todas las combinaciones de 1 a 3 filtros. Si alguna vez difieren, la prueba falla.",

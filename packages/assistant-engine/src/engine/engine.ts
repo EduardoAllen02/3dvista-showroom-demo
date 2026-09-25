@@ -1,4 +1,4 @@
-import type { CanonicalCatalog, ConceptId, ConfiguredComponent, Exhibit, Model, Option, OptionGroup } from "../catalog/types.js";
+import type { CanonicalCatalog, ConceptId, ConfiguredComponent, Exhibit, Model, Option, OptionGroup, OptionScope } from "../catalog/types.js";
 import type { Lexicon } from "../ontology/lexicon.js";
 import {
   DEFAULT_POLICY, type ActiveConstraint, type Bundle, type CardGroup, type CardRef, type MatchMark, type Outcome,
@@ -8,7 +8,7 @@ import {
 /**
  * Deterministic query engine (docs/chatbot-v2/02-arquitectura-clean-room.md §6).
  * Exhaustive tri-state evaluation over every exhibit and every model's official
- * options, tiers (exhibited → on order → unknown), and cost-based hierarchical
+ * options, tiers (exhibited → on order → line palette with caveat → unknown), and cost-based hierarchical
  * relaxation. No LLM here: same constraints ⇒ same bundle, checkable by an oracle.
  */
 
@@ -118,11 +118,12 @@ export class QueryEngine {
   }
 
   /**
-   * Options of model m (assertable lists only: the model's own lists or options stated in
-   * its page text) that satisfy ALL role-level constraints with the same option.
+   * Options of model m that satisfy ALL role-level constraints with the same option.
+   * Default: assertable lists only (the model's own lists or options stated in its page text);
+   * ["line"]: the product line's palette, which may only be mentioned with a caveat.
    */
-  modelOptions(m: Model, roleCs: ActiveConstraint[]): { tri: Tri; variants: Variant[] } {
-    const assertable = m.option_groups.filter((g) => g.scope !== "generic_palette" && g.options.length);
+  modelOptions(m: Model, roleCs: ActiveConstraint[], scopes: OptionScope[] = ["model", "text"]): { tri: Tri; variants: Variant[] } {
+    const assertable = m.option_groups.filter((g) => scopes.includes(g.scope) && g.options.length);
     if (!assertable.length) return { tri: "unknown", variants: [] };
     const variants: Variant[] = [];
     for (const g of assertable) {
@@ -141,7 +142,7 @@ export class QueryEngine {
   }
 
   // ------------------------------------------------------------------ evaluation
-  evaluate(cs: ActiveConstraint[]): { T1: CardRef[]; T2: CardRef[]; U: CardRef[] } {
+  evaluate(cs: ActiveConstraint[]): { T1: CardRef[]; T2: CardRef[]; L: CardRef[]; U: CardRef[] } {
     const must = cs.filter((c) => c.strength === "must");
     const roleCs = must.filter((c) => ROLE_FACETS.has(c.facet) && c.op !== "harmonizes_with");
     const T1: CardRef[] = [], U: CardRef[] = [];
@@ -159,12 +160,13 @@ export class QueryEngine {
       }
     }
 
-    const T2: CardRef[] = [];
-    const t2Models = new Set<string>();
-    if (roleCs.length) {
+    // T2 = the model's own options (assertable); L = only the line palette has it (caveat).
+    const orderable = (scopes: OptionScope[], availability: "on_order" | "line", skip: Set<string>, into: Set<string>): CardRef[] => {
+      const out: CardRef[] = [];
+      if (!roleCs.length) return out;
       for (const e of this.exhibits.values()) {
         const m = this.models.get(e.model_id);
-        if (!m || t1Models.has(m.id) || t2Models.has(m.id)) continue;
+        if (!m || skip.has(m.id) || into.has(m.id)) continue;
         const match: Record<string, MatchMark> = {};
         let ok = true;
         for (const c of must) {
@@ -176,23 +178,27 @@ export class QueryEngine {
         if (!ok) continue;
         const own = roleCs.map((c) => this.satExhibit(e, c));
         if (own.every((t) => t === "yes")) continue; // would be T1
-        const opt = this.modelOptions(m, roleCs);
+        const opt = this.modelOptions(m, roleCs, scopes);
         if (opt.tri !== "yes") continue;
         for (const c of roleCs) match[c.id] = "yes";
-        T2.push({ ...this.card(e, "on_order", match), variants: opt.variants, shown_as: this.shownAs(e) });
-        t2Models.add(m.id);
+        out.push({ ...this.card(e, availability, match), variants: opt.variants, shown_as: this.shownAs(e) });
+        into.add(m.id);
       }
-    }
+      return out;
+    };
+    const t2Models = new Set<string>(), lModels = new Set<string>();
+    const T2 = orderable(["model", "text"], "on_order", t1Models, t2Models);
+    const L = orderable(["line"], "line", new Set([...t1Models, ...t2Models]), lModels);
 
     for (const e of this.exhibits.values()) {
-      if (t1Models.has(e.model_id) || t2Models.has(e.model_id)) continue;
+      if (t1Models.has(e.model_id) || t2Models.has(e.model_id) || lModels.has(e.model_id)) continue;
       const match = exhibitMarks.get(e.id)!;
       const marks = Object.values(match);
       if (marks.includes("no") || !marks.includes("unknown")) continue;
       U.push(this.card(e, "unknown", match));
     }
     const order = (a: CardRef, b: CardRef) => a.exhibit_id.localeCompare(b.exhibit_id);
-    return { T1: T1.sort(order), T2: T2.sort(order), U: U.sort(order) };
+    return { T1: T1.sort(order), T2: T2.sort(order), L: L.sort(order), U: U.sort(order) };
   }
 
   private card(e: Exhibit, availability: CardRef["availability"], match: Record<string, MatchMark>): CardRef {
@@ -251,7 +257,7 @@ export class QueryEngine {
     const qid = `q${++this.queryCounter}`;
     const raw = this.evaluate(cs);
     // Presentation: one card per (model, look) — two identical exhibits of the same model add nothing.
-    const T1 = dedupeByModel(raw.T1), T2 = raw.T2, U = dedupeByModel(raw.U);
+    const T1 = dedupeByModel(raw.T1), T2 = raw.T2, L = raw.L, U = dedupeByModel(raw.U);
     const groups: CardGroup[] = [];
     const obligations: string[] = [];
     let gi = 0;
@@ -261,21 +267,26 @@ export class QueryEngine {
       groups.push({ id: `g${++gi}`, role: "exact_on_order", relaxation: [], cards: T2.slice(0, cap), total: T2.length });
       for (const c of T2.slice(0, cap)) obligations.push(`ord:${c.exhibit_id}`);
     }
+    // Only when nothing is exact or orderable from the model's own lists: the line palette, with its caveat.
+    if (!T1.length && !T2.length && L.length) {
+      groups.push({ id: `g${++gi}`, role: "line_on_order", relaxation: [], cards: L.slice(0, cap), total: L.length });
+      for (const c of L.slice(0, 3)) obligations.push(`lin:${c.exhibit_id}`);
+    }
     const unknownFacets = new Set(U.flatMap((c) => Object.entries(c.match).filter(([, m]) => m === "unknown").map(([id]) => cs.find((x) => x.id === id)?.facet)));
     const concreteUnknown = [...unknownFacets].every((f) => f === "color" || f === "material" || f === "shape");
-    if (U.length && concreteUnknown && U.length <= 4 && (T1.length + T2.length === 0 || (T1.length + T2.length <= 1 && U.length <= 3))) {
+    if (U.length && concreteUnknown && U.length <= 4 && (T1.length + T2.length + L.length === 0 || (T1.length + T2.length + L.length <= 1 && U.length <= 3))) {
       groups.push({ id: `g${++gi}`, role: "unknown", relaxation: [], cards: U.slice(0, cap), total: U.length });
       for (const c of U.slice(0, cap)) obligations.push(`unk:${c.exhibit_id}`);
     }
-    const outcome: Outcome = T1.length ? "exact" : T2.length ? "on_order_only" : groups.some((g) => g.role === "unknown") ? "unknown_only" : "no_exact";
+    const outcome: Outcome = T1.length ? "exact" : T2.length ? "on_order_only" : L.length ? "line_only" : groups.some((g) => g.role === "unknown") ? "unknown_only" : "no_exact";
     if (outcome !== "exact") obligations.push(`abs:${qid}`);
 
-    const physicalOnly = !T1.length && T2.length > 0 && this.policy.show_physical_when_only_on_order;
+    const physicalOnly = !T1.length && (T2.length > 0 || L.length > 0) && this.policy.show_physical_when_only_on_order;
     const needRelax = (!T1.length && !T2.length) || physicalOnly;
     const available: Bundle["available_values"] = [];
 
     if (needRelax) {
-      const shown = new Set([...T1, ...T2, ...U].map((c) => c.exhibit_id));
+      const shown = new Set([...T1, ...T2, ...L, ...U].map((c) => c.exhibit_id));
       const candidates = this.relaxCandidates(cs, physicalOnly, shown);
       const newCs = cs.filter((c) => c.role === "new" && c.facet !== "category" && c.strength === "must");
       const keepsNew = (k: RelaxCandidate) => newCs.every((c) => !k.ops.some((o) => o.constraint === c.id));
@@ -296,7 +307,7 @@ export class QueryEngine {
         if (c.op !== "is" || !["color", "material", "shape", "style"].includes(c.facet)) continue;
         const scope = cs.filter((x) => x.facet === "category" || x.facet === "model");
         const probe = this.evaluate([...scope, c]);
-        if (!probe.T1.length && !probe.T2.length) {
+        if (!probe.T1.length && !probe.T2.length && !probe.L.length) {
           available.push({ constraint: c.id, facet: c.facet, values: this.valuesInScope(c.facet, scope) });
           obligations.push(`vals:${c.id}`);
         }
@@ -357,7 +368,7 @@ export class QueryEngine {
       if (facet === "style" && e.styles.status === "known") e.styles.value.forEach((s) => vals.add(s));
       const m = this.models.get(e.model_id);
       if (m) for (const g of m.option_groups) {
-        if (g.scope === "generic_palette") continue;
+        if (g.scope !== "model" && g.scope !== "text") continue;
         if (facet === "color") g.options.forEach((o) => o.color_family.forEach((f) => vals.add(topFamily(this.lx, f))));
         if (facet === "material") { if (g.material) vals.add(g.material); g.options.forEach((o) => o.material && vals.add(o.material)); }
       }
@@ -505,7 +516,7 @@ export class QueryEngine {
         ? { exhibit_id: e.id, field: f, status: "known", text: m.shape_text ?? "", facts: m.shapes.facts }
         : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       else if (f === "options") {
-        const own = m.option_groups.filter((g) => g.scope !== "generic_palette");
+        const own = m.option_groups.filter((g) => g.scope === "model" || g.scope === "text");
         details.push(own.length
           ? { exhibit_id: e.id, field: f, status: "known", text: own.map((g) => `${g.name} (${g.options.length})`).join(", "), facts: own.map((g) => g.fact) }
           : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });

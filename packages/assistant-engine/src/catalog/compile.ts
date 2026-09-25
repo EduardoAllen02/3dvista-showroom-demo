@@ -26,6 +26,8 @@ type Bin = { confirmado: "SI" | "NO"; valor: unknown; evidencia: string };
 export interface RawModelAttributes {
   model_key: string; url: string; leido: string;
   forma?: Bin; materiales?: Bin; estilo?: Bin; medidas?: Bin; lista_acabados?: Bin;
+  /** confirmado "NO" = the page text contradicts the line palette (Arden: wood only) -> never mention it. */
+  paleta_de_linea?: Bin;
   opciones_en_texto?: string[]; notas?: string[];
 }
 export interface RawPiece {
@@ -38,6 +40,8 @@ export interface RawReview {
   validated_fact_ids: string[]; rejected_fact_ids: string[]; reviewer?: string; at?: string;
   /** Generic-palette groups the client confirmed as real options of that model (sheet "Paletas por confirmar"). */
   promoted_palette_groups?: string[];
+  /** Palette groups the client said do NOT apply to that model: never mentioned. */
+  excluded_palette_groups?: string[];
 }
 
 export interface CompileInput {
@@ -112,6 +116,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
   const validated = new Set(input.review?.validated_fact_ids ?? []);
   const rejected = new Set(input.review?.rejected_fact_ids ?? []);
   const promoted = new Set(input.review?.promoted_palette_groups ?? []);
+  const excluded = new Set(input.review?.excluded_palette_groups ?? []);
   const now = new Date().toISOString();
 
   const addFact = (f: Omit<Fact, "review">): Fact => {
@@ -163,6 +168,10 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const listVerdict = a?.lista_acabados;
     const scope: OptionScope | null = listVerdict?.confirmado === "SI" ? "model"
       : /GEN[ÉE]RICA/i.test(String(listVerdict?.valor ?? "")) ? "generic_palette" : null;
+    // A line palette is mentionable with a caveat unless the page text contradicts it.
+    const listText = String(listVerdict?.valor ?? "");
+    const line = /ARMADI/i.test(listText) ? "armadi" : /NOTTE/i.test(listText) ? "notte" : null;
+    const lineBlocked = a?.paleta_de_linea?.confirmado === "NO";
     const groups: OptionGroup[] = [];
     const seenOpt = new Set<string>();
     for (const g of rm.finish_groups) {
@@ -182,7 +191,10 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
         }
         groups.push({
           id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category),
-          material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null, scope: scope === "model" || promoted.has(gid) ? "model" : "generic_palette", options, fact: listFact.id,
+          material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null,
+          scope: scope === "model" || promoted.has(gid) ? "model"
+            : scope === "generic_palette" && line && !lineBlocked && !excluded.has(gid) ? "line" : "generic_palette",
+          line: scope === "model" ? null : line, options, fact: listFact.id,
         });
       }
     }
@@ -205,7 +217,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
         fact: tFact.id,
       });
     }
-    const assertable = groups.filter((g) => g.scope !== "generic_palette" && g.options.length > 0);
+    const assertable = groups.filter((g) => (g.scope === "model" || g.scope === "text") && g.options.length > 0);
 
     models.push({
       id: rm.model_key,

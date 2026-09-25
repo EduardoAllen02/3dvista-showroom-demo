@@ -56,10 +56,13 @@ export interface Option {
  * "available on order" for THIS model:
  *  - "model":           the page's own list ("Rivestimenti per Melrose") → assertable;
  *  - "text":            options stated in the page text ("disponibile in Rovere Dark, Rovere e Noce") → assertable;
- *  - "generic_palette": a category-wide palette shown on the page ("Finiture per NOTTE.",
- *                       the shared wardrobe palette) → NOT assertable per model; only "see the page".
+ *  - "line":            the product line's palette shown on the page ("Finiture per NOTTE." = bedroom
+ *                       line, the shared wardrobe palette) → mentionable only WITH a caveat: "the line
+ *                       offers X; check on its page that it applies to this model";
+ *  - "generic_palette": a line palette the page text contradicts (Arden: wood only) or the review
+ *                       rejected → never mentioned.
  */
-export type OptionScope = "model" | "text" | "generic_palette";
+export type OptionScope = "model" | "text" | "line" | "generic_palette";
 
 export interface OptionGroup {
   id: string;                  // "melrose/boston"
@@ -69,6 +72,8 @@ export interface OptionGroup {
   material: ConceptId | null;  // proposal until reviewed (line-materials)
   price_band: string | null;   // "CAT. 2"
   scope: OptionScope;
+  /** Which Febal line a palette belongs to ("notte" = bedroom, "armadi" = wardrobes), for the caveat wording. */
+  line?: "notte" | "armadi" | null;
   options: Option[];
   fact: FactId;
 }

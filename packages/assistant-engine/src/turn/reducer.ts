@@ -65,6 +65,10 @@ export class Reducer {
     if (s.lang !== plan.lang) notes.push(`lang: detector=${s.lang} plan=${plan.lang}`);
 
     // ---- references: only ids the visitor can actually be pointing at
+    // The planner sometimes returns "FEB-101 Letto Arden": keep the id it contains.
+    const canon = (x: string | null): string | null => (!x || this.exhibitIds.has(x) ? x : x.split(/[\s,;|()]+/).find((t) => this.exhibitIds.has(t)) ?? x);
+    plan.focus = canon(plan.focus);
+    for (const r of plan.refs) r.exhibit_id = canon(r.exhibit_id) ?? r.exhibit_id;
     const named = this.namedModels(message).flatMap((m) => this.exhibitsOfModel(m));
     const reachable = new Set([
       ...s.last_cards.groups.flatMap((g) => g.items), ...s.mentioned, ...s.wishlist, ...named,
@@ -104,7 +108,7 @@ export class Reducer {
     }
     // Normalize the intent: "list" only for a bare category; "variant" needs a single focused piece.
     if (plan.intent === "list" && proposed.some((c) => c.facet !== "category") ) { plan.intent = "search"; notes.push("list→search (has attributes)"); }
-    if (plan.intent === "variant" && !valid(plan.focus) && !plan.refs.some((r) => valid(r.exhibit_id))) { plan.intent = "search"; notes.push("variant→search (no single focus)"); }
+    if (plan.intent === "variant" && !focus) { plan.intent = "search"; notes.push("variant→search (no single focus)"); }
     const moodOnly = proposed.length > 0 && proposed.every((c) => c.facet === "mood");
     if (plan.intent === "recommend" && moodOnly) { plan.intent = "search"; notes.push("recommend→mood search"); }
     // Concepts the visitor clearly said that the plan forgot (only for facets it left empty).

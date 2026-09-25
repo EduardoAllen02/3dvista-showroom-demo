@@ -20,6 +20,18 @@ const NEG: Record<Lang, RegExp> = {
   it: /\b(non|nessun[oa]?|niente|senza)\b/i,
   en: /\b(no|not|none|without)\b|n't\b/i,
 };
+// The line palette is only ever mentioned with a "confirm it on its page" caveat.
+const CONFIRM: Record<Lang, RegExp> = {
+  es: /confirm|verific|revis|consult/i,
+  it: /conferm|verific|controll/i,
+  en: /confirm|check|verif/i,
+};
+// A line-palette answer must not present the options as a sure order.
+const SURE_ORDER: Record<Lang, RegExp> = {
+  es: /bajo pedido|se puede pedir|puedes pedir/i,
+  it: /su ordinazione|si pu[òo] ordinare/i,
+  en: /available (to|on) order|can (be )?order/i,
+};
 const COMBINE: Record<Lang, RegExp> = {
   es: /combin|armoniz|queda bien/i,
   it: /abbin|si sposa|armonizz|sta bene/i,
@@ -41,13 +53,15 @@ export class Verifier {
     const cards = allCards(bundle);
     const cardIds = new Set(cards.map((c) => c.exhibit_id));
     const onOrder = new Set(cards.filter((c) => c.availability === "on_order").map((c) => c.exhibit_id));
+    const onLine = new Set(cards.filter((c) => c.availability === "line").map((c) => c.exhibit_id));
     const full = segments.map((s) => s.text).join(" ");
 
     // V1 tags resolvable and inside the bundle
     for (const [, kind, arg] of full.matchAll(/\{\{(\w+):([^}]+)\}\}/g)) {
       const ok =
         (["p", "z", "shown", "link"].includes(kind) && cardIds.has(arg)) ||
-        (kind === "v" && onOrder.has(arg)) ||
+        (kind === "v" && (onOrder.has(arg) || onLine.has(arg))) ||
+        (kind === "line" && onLine.has(arg)) ||
         (kind === "c" && this.lx.concepts.has(arg)) ||
         (kind === "vals" && bundle.available_values.some((a) => a.constraint === arg)) ||
         (kind === "n" && bundle.groups.some((g) => g.id === arg)) ||
@@ -83,6 +97,13 @@ export class Verifier {
       switch (kind) {
         case "abs": if (!NEG[lang].test(plain)) v.push(`V9 ${ob}: di explícitamente que NO hay exactamente lo pedido`); break;
         case "ord": if (!has(`{{p:${a}}}`) || !has(`{{v:${a}}}`) || !has(`{{link:${a}}}`)) v.push(`V9 ${ob}: di que {{p:${a}}} no está así en el showroom pero sí disponible bajo pedido en {{v:${a}}}, y enlaza {{link:${a}}}`); break;
+        case "lin":
+          if (!has(`{{p:${a}}}`) || !has(`{{v:${a}}}`) || !has(`{{line:${a}}}`) || !has(`{{link:${a}}}`) || !CONFIRM[lang].test(plain))
+            v.push(`V9 ${ob}: di que {{line:${a}}} maneja {{v:${a}}} para {{p:${a}}}, CON el aviso de confirmar en {{link:${a}}} si aplica a ese modelo`);
+          if (!bundle.obligations.some((o) => o.startsWith("ord:")) && SURE_ORDER[lang].test(plain))
+            v.push(`V9 ${ob}: no digas que está disponible bajo pedido; es de la línea y hay que confirmarlo en {{link:${a}}}`);
+          if (/(l[ií]nea|linea|line)\s*\{\{line:/i.test(full)) v.push(`V9 ${ob}: {{line:${a}}} ya dice "la línea…": no escribas "línea" antes de la etiqueta`);
+          break;
         case "grp": case "off": {
           const g = bundle.groups.find((x) => x.id === a);
           if (!g || !g.cards.some((c) => has(`{{p:${c.exhibit_id}}}`))) v.push(`V9 ${ob}: menciona al menos una pieza del grupo ${a} con {{p:ID}}`);

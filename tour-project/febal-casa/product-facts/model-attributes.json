@@ -78,8 +78,13 @@
   ],
   "notas": [
    "CRÍTICO: el texto restringe Arden a 3 chapas de madera ('disponibile in Rovere Dark, Rovere e Noce') y dice que no lleva tapizado; la paleta NOTTE (tejidos, lacados…) no debe afirmarse como opción de Arden.",
-   "Existe también arden-soft (versión tapizada) en febalcasa.com; confirmar cuál es FEB-101 con la captura."
-  ]
+   "Existe también arden-soft (versión tapizada); la captura confirma que FEB-101 es Arden (cabecera de madera)."
+  ],
+  "paleta_de_linea": {
+   "confirmado": "NO",
+   "valor": "no aplica: la ficha dice que Arden es de madera, solo en 3 chapas y sin tapizado; la paleta de la línea trae telas y lacados",
+   "evidencia": "disponibile in Rovere Dark, Rovere e Noce … Il legno non viene addolcito da rivestimenti"
+  }
  },
  {
   "model_key": "astor",
@@ -246,7 +251,12 @@
   "opciones_en_texto": [
    "Anta: vetro Ombra fumé, vetro Stop-sol; profilo metallo Carbon grey"
   ],
-  "notas": []
+  "notas": [],
+  "paleta_de_linea": {
+   "confirmado": "NO",
+   "valor": "no aplica a la puerta: la puerta Aurora es de vidrio con perfil metálico; la paleta es del sistema de armario",
+   "evidencia": "può accogliere un vetro Ombra fumé o Stop-sol"
+  }
  },
  {
   "model_key": "balmoral",
@@ -2035,7 +2045,12 @@
    "evidencia": "ante in vetro riflettente fumé"
   },
   "opciones_en_texto": [],
-  "notas": []
+  "notas": [],
+  "paleta_de_linea": {
+   "confirmado": "NO",
+   "valor": "no aplica a la puerta: la puerta Profile Reflex es de vidrio reflejante; la paleta es del sistema de armario",
+   "evidencia": "ante in vetro riflettente fumé"
+  }
  },
  {
   "model_key": "tipologia-armadi-ante-battente-profile-solid",

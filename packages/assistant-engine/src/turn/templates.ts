@@ -17,6 +17,10 @@ const S = {
   butOrder: { es: "pero sí está disponible bajo pedido", it: "ma è disponibile su ordinazione", en: "but it is available to order" } as L,
   shownAs: { es: "en el showroom está en", it: "in showroom è in", en: "in the showroom it is in" } as L,
   seeIt: { es: "mira", it: "vedi", en: "see" } as L,
+  lineNot: { es: "no lo tengo confirmado así para este modelo, pero", it: "non l'ho confermato così per questo modello, ma", en: "isn't confirmed like that for this model, but" } as L,
+  lineHas: { es: "maneja", it: "prevede", en: "offers" } as L,
+  lineCheck: { es: "confirma en", it: "verifica su", en: "check" } as L,
+  lineApplies: { es: "si aplica a este modelo", it: "se vale per questo modello", en: "to confirm it applies to this model" } as L,
   noExact: { es: "No tengo exactamente lo que buscas.", it: "Non ho esattamente ciò che cerchi.", en: "I don't have exactly what you are looking for." } as L,
   closest: { es: "Lo más cercano que sí tenemos:", it: "La cosa più vicina che abbiamo:", en: "The closest we do have:" } as L,
   combines: { es: "que combina con lo que pediste", it: "che si abbina a quello che hai chiesto", en: "which goes with what you asked for" } as L,
@@ -92,7 +96,13 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer): Segment
           seg.push({ text: `${S.noShowroom[lang]}: {{p:${c.exhibit_id}}} ${c.shown_as ? `${S.shownAs[lang]} {{shown:${c.exhibit_id}}}, ` : ""}${S.butOrder[lang]}: {{v:${c.exhibit_id}}}; ${S.seeIt[lang]} {{link:${c.exhibit_id}}}.`, claims });
         }
       }
-      if (!by("exact_exhibited").length && !by("exact_on_order").length && absClaimed.length) seg.push({ text: S.noExact[lang], claims: absClaimed });
+      for (const g of by("line_on_order")) {
+        for (const [i, c] of g.cards.slice(0, 3).entries()) {
+          const claims = [`lin:${c.exhibit_id}`, ...(i === 0 && !by("exact_on_order").length ? absClaimed : [])];
+          seg.push({ text: `{{p:${c.exhibit_id}}}${c.shown_as ? ` (${S.shownAs[lang]} {{shown:${c.exhibit_id}}})` : ""} ${S.lineNot[lang]} {{line:${c.exhibit_id}}} ${S.lineHas[lang]} {{v:${c.exhibit_id}}}; ${S.lineCheck[lang]} {{link:${c.exhibit_id}}} ${S.lineApplies[lang]}.`, claims });
+        }
+      }
+      if (!by("exact_exhibited").length && !by("exact_on_order").length && !by("line_on_order").length && absClaimed.length) seg.push({ text: S.noExact[lang], claims: absClaimed });
       for (const g of by("unknown")) seg.push({ text: `${S.unknown[lang]} ${g.cards.map((c) => `{{p:${c.exhibit_id}}} (${S.checkPage[lang]} {{link:${c.exhibit_id}}})`).join(", ")}.`, claims: g.cards.map((c) => `unk:${c.exhibit_id}`) });
       for (const a of bundle.available_values) seg.push({ text: `${S.values[lang]} {{vals:${a.constraint}}}.`, claims: [`vals:${a.constraint}`] });
       for (const g of by("alt_keep_frame")) {
@@ -134,6 +144,10 @@ export function completeObligations(segments: Segment[], bundle: Bundle, lang: L
     if (kind === "ord" && has(`{{p:${a}}}`)) {
       if (!has(`{{v:${a}}}`)) { if (!linksOnly) extra.push({ text: `{{p:${a}}}: ${S.butOrder[lang]} {{v:${a}}}; ${S.seeIt[lang]} {{link:${a}}}.`, claims: [ob] }); }
       else if (!has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.seeIt[lang])} {{link:${a}}}.`, claims: [ob] });
+    }
+    if (kind === "lin" && has(`{{p:${a}}}`)) {
+      if (!has(`{{v:${a}}}`) || !has(`{{line:${a}}}`)) { if (!linksOnly) extra.push({ text: `{{p:${a}}}: {{line:${a}}} ${S.lineHas[lang]} {{v:${a}}}; ${S.lineCheck[lang]} {{link:${a}}} ${S.lineApplies[lang]}.`, claims: [ob] }); }
+      else if (!has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.lineCheck[lang])} {{link:${a}}} ${S.lineApplies[lang]}.`, claims: [ob] });
     }
     if (kind === "unk" && has(`{{p:${a}}}`) && !has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.checkPage[lang])} {{link:${a}}}.`, claims: [ob] });
   }

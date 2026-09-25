@@ -80,6 +80,18 @@
   - Se genera con `scripts/build-review-xlsx.py`.
   - 11 hojas: piezas con foto, modelos, 5.138 opciones con muestra, sinónimos, colores → familia, materiales, estilos, armonías, ánimos, errores v1 y preguntas P1–P23.
   - v2 del Excel (`febal-casa-revision-2026-09-23-v2.xlsx`): "Opciones oficiales" trae solo listas propias y de texto (2.392 filas), ordenadas como se recorre el tour. Las paletas genéricas quedan una sola vez: 34 en "Paletas por confirmar" y 399 opciones en "Paletas genéricas", en lugar de 2.746 filas repetidas.
+  - v4 (`febal-casa-revision-2026-09-25-v4.xlsx`), la vigente:
+    - el "Léeme" explica todo el archivo con tablas (fuentes, por qué hay dudas, marcas, cómo marcar, niveles de opciones, paletas, hoja por hoja, colores, qué sigue, glosario);
+    - las notas se marcan como CORREGIDO (ya aplicado, verde), DUDA (naranja) y PENDIENTE (en el tour, rojo); la hoja «Errores» pasa a llamarse «Correcciones»;
+    - la columna de piezas se llama «Opción del showroom».
+- Paletas de línea («Finiture per NOTTE» = línea Dormitorio, y la de armarios): decisión de Edd (2026-09-25), opción A.
+  - Nuevo alcance `line`: el motor tiene un nivel "de la línea" después del bajo pedido.
+  - La obligación `lin:` obliga a decir "{{line}} maneja {{v}}; confirma en {{link}} si aplica a este modelo". El verificador rechaza "bajo pedido" o que falte el aviso.
+  - No se menciona donde la ficha la contradice (`paleta_de_linea: NO` en `model-attributes.json`): Arden (madera), puerta Aurora y Profile Reflex (vidrio).
+  - La revisión puede promoverla a opción normal (SI) o descartarla (NO / modelos excluidos).
+  - El oráculo cubre el nivel nuevo: 22.664 combinaciones, 0 diferencias.
+  - Batería run8 (24 turnos, con C15 "Couple/Arden en azul"): 0 plantillas, 4 reparaciones, $0.00083/turno.
+- Reductor: acepta referencias con el id pegado al nombre ("FEB-101 Letto Arden"). Una "variante" usa también el modelo nombrado en el mensaje.
 - Importador de la revisión: `scripts/import-review-xlsx.py` → `review.reviewed.json` + `review-corrections.json`.
   - Un SI en "Paletas por confirmar" agrega los grupos a `promoted_palette_groups`, y el compilador los vuelve ofrecibles (alcance "model"), excepto en los modelos excluidos.
 - Diagrama interactivo: `docs/chatbot-v2/arquitectura-v2.html`, publicado en https://claude.ai/artifact/MdbnP2owKAdRB3mt1vCarU (privado; Edd lo comparte).

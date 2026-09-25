@@ -31,7 +31,8 @@ export interface Variant {
 export interface CardRef {
   exhibit_id: string;
   model_id: string;
-  availability: "exhibited" | "on_order" | "unknown";
+  /** "line": only the product line's palette has it — mention it with a "check the page" caveat. */
+  availability: "exhibited" | "on_order" | "line" | "unknown";
   /** Official options that satisfy the request on order (coherent: same option for color + material). */
   variants?: Variant[];
   /** What the exhibited piece looks like (literal observation), for "en el showroom está en …". */
@@ -50,7 +51,7 @@ export interface RelaxOp {
 }
 
 export type GroupRole =
-  | "exact_exhibited" | "exact_on_order" | "unknown" | "alt_keep_frame" | "alt_keep_new"
+  | "exact_exhibited" | "exact_on_order" | "line_on_order" | "unknown" | "alt_keep_frame" | "alt_keep_new"
   | "list" | "alternatives" | "recommend" | "locate" | "detail";
 
 export interface CardGroup {
@@ -63,7 +64,7 @@ export interface CardGroup {
 }
 
 export type Outcome =
-  | "exact" | "on_order_only" | "no_exact" | "unknown_only" | "list" | "empty_list"
+  | "exact" | "on_order_only" | "line_only" | "no_exact" | "unknown_only" | "list" | "empty_list"
   | "alternatives" | "recommend" | "locate" | "detail" | "not_found";
 
 export interface Bundle {

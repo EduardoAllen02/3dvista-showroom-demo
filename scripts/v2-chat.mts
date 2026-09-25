@@ -45,6 +45,8 @@ const CONVERSATIONS: Record<string, string[]> = {
   C12_vago: ["algo acogedor para un salón pequeño"],
   C13_cambio_idioma: ["¿tienen armarios de efecto piel?", "and in white?"],
   C14_negacion: ["quiero una silla", "que no sea negra"],
+  // Line palette ("Finiture per NOTTE"): Couple may mention it with a caveat; Arden's page restricts it to wood.
+  C15_paleta_linea: ["¿tienes la cama Couple en azul?", "¿y la Arden en azul?"],
 };
 
 const catalog = JSON.parse(readFileSync(path.join(root, "clients/febal-casa/catalog.v2.json"), "utf8"));

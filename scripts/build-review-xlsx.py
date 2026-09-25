@@ -87,7 +87,8 @@ RED = "C8102E"
 HEAD = PatternFill("solid", fgColor=RED)
 HEAD_FONT = Font(bold=True, color="FFFFFF")
 REVIEW = PatternFill("solid", fgColor="FFF4CC")      # review columns (filled by the reviewer)
-ERROR = PatternFill("solid", fgColor="F8D7DA")       # an ERROR note on this row
+PENDING = PatternFill("solid", fgColor="F8D7DA")     # PENDIENTE: must be fixed outside the data (the tour)
+FIXED = PatternFill("solid", fgColor="DFF3E3")       # CORREGIDO: already fixed in the data, only to confirm
 DOUBT = PatternFill("solid", fgColor="FFE8B3")       # open question on this row
 CONFIRM = PatternFill("solid", fgColor="E4EDF8")     # SI/NO data columns: soft blue
 # Any NO turns fluorescent (conditional format, so a NO typed later in "¿OK?" lights up too).
@@ -169,56 +170,22 @@ def thumb(pid):
     return img
 
 
-# ------------------------------------------------------------------ Léeme
+# ------------------------------------------------------------------ Léeme (written at the end, when every count is known)
 pl = list(placements.values())
 count = lambda key, v: sum(1 for p in pl if (p[key]["confirmado"] if isinstance(p[key], dict) else p[key]) == v)
-errors = [p for p in pl if any(n.startswith("ERROR") for n in p["notas"])]
-v1_errors = [p for p in pl if any(n.startswith("ERROR") and "catálogo v1" in n for n in p["notas"])]
-doubts = [p for p in pl if any(n.startswith("DUDA") for n in p["notas"])]
-
-ws = wb.active
-ws.title = "Léeme"
-ws.column_dimensions["A"].width = 120
-lines = [
-    ("Febal Casa · revisión de datos del asistente (v2)", Font(bold=True, size=16, color=RED)),
-    (f"Generado el {TODAY}. Para revisar y devolver con las columnas amarillas llenas.", None),
-    ("", None),
-    ("Qué es este archivo", Font(bold=True, size=12)),
-    ("Todo lo que el asistente puede decir de cada mueble sale de aquí. Hasta que se revise, nada cuenta como verdad definitiva (hechos validados: 0).", None),
-    ("Cada dato es binario: SI = confirmado con evidencia literal (captura del tour o texto de la ficha oficial); NO = no se pudo confirmar, y el asistente dirá que no está confirmado en vez de inventarlo.", None),
-    ("", None),
-    ("Cómo revisar", Font(bold=True, size=12)),
-    ("1. Las columnas amarillas son para la revisión: «¿OK?» (elegir SI o NO), «Corrección» (el valor correcto) y «Nota».", None),
-    ("2. Basta revisar lo que esté mal; una fila sin marcar sigue como pendiente.", None),
-    ("3. En «Piezas», fila roja = ERROR detectado (dato del catálogo anterior que la captura corrigió, ficha mal enlazada o punto de vista mal encuadrado); fila naranja = DUDA abierta. Cada nota dice de qué es el error o la duda.", None),
-    ("4. Hoja «Sinónimos»: todas las palabras que el asistente entiende para forma, color, material, estilo y categoría. Se pueden agregar o quitar sinónimos en las columnas amarillas.", None),
-    ("5. Hoja «Armonías»: qué colores combinan (borrador de diseño). El asistente solo lo usa como propuesta hasta que se apruebe.", None),
-    ("6. Acabados: «Opciones oficiales» trae solo las listas propias de cada modelo (esas el asistente sí las ofrece bajo pedido), en el orden en que se recorre el tour. Las paletas que la web repite igual en varias fichas están en «Paletas por confirmar» (una fila por paleta: ¿aplica de verdad a esos modelos?) y en «Paletas genéricas» (cada opción una sola vez). Mientras una paleta no se confirme, el asistente no la ofrece como opción segura y remite a la ficha.", None),
-    ("7. Colores: las columnas de datos SI/NO van en azul suave; cualquier NO se resalta en verde fosforescente, también el que se marque en «¿OK?».", None),
-    ("", None),
-    ("Regla de disponibilidad (ya implementada)", Font(bold=True, size=12)),
-    ("Si un color, acabado o variante no está físicamente en el tour pero la ficha oficial sí lo ofrece, el asistente dice que en el showroom no está así, que sí está disponible bajo pedido, y enlaza la ficha oficial.", None),
-    ("", None),
-    ("Resumen de las capturas (88 piezas del tour, una por una desde su punto de vista)", Font(bold=True, size=12)),
-    (f"Pieza visible en su punto de vista: {count('visible', 'SI')}/88 · Color confirmado: {count('color', 'SI')}/88 · Material confirmado: {count('material', 'SI')}/88 · Forma confirmada: {count('forma', 'SI')}/88 · Opción oficial exacta identificada: {count('opcion_oficial', 'SI')}/88", None),
-    (f"Errores detectados: {len(errors)} ({len(v1_errors)} del catálogo anterior, ya corregidos) · Dudas abiertas: {len(doubts)}", None),
-    ("__OPTIONS_SUMMARY__", None),
-    ("", None),
-    ("Hojas", Font(bold=True, size=12)),
-    ("Piezas (88) · Modelos · Opciones oficiales · Paletas por confirmar · Paletas genéricas · Sinónimos · Colores → familia · Materiales por colección · Estilos · Armonías · Ánimos · Errores · Preguntas abiertas", None),
-]
-for i, (text, font) in enumerate(lines, start=1):
-    c = ws.cell(i, 1, text)
-    c.alignment = Alignment(wrap_text=True, vertical="top")
-    if font:
-        c.font = font
+note_kind = lambda p, k: [n for n in p["notas"] if n.startswith(k)]
+fixed = [p for p in pl if note_kind(p, "CORREGIDO")]
+pending = [p for p in pl if note_kind(p, "PENDIENTE")]
+doubts = [p for p in pl if note_kind(p, "DUDA")]
+readme = wb.active
+readme.title = "Léeme"
 
 # ------------------------------------------------------------------ Piezas
 H = ["ID", "Pieza", "Zona", "Modelo", "Ficha oficial", "Captura (con marcador)", "Visible en su punto de vista",
      "Color ¿confirmado?", "Color visto", "Familia de color", "Evidencia del color",
      "Material ¿confirmado?", "Material visto", "Material (concepto: dominante · otras partes)", "Evidencia del material",
      "Forma ¿confirmada?", "Forma vista", "Forma (conceptos)", "Evidencia de la forma",
-     "Opción oficial ¿identificada?", "Opción oficial / candidatas", "Evidencia de la opción",
+     "Opción del showroom ¿identificada?", "Opción del showroom / candidatas", "Evidencia de la opción del showroom",
      "Componentes vistos", "Notas y dudas", "Descripción (catálogo v1)",
      "¿OK?", "Corrección", "Nota", "fact_ids"]
 W = [9, 22, 16, 22, 14, 44, 10, 10, 20, 16, 40, 10, 22, 18, 40, 10, 26, 22, 30, 10, 30, 36, 44, 50, 50, 8, 30, 30, 20]
@@ -243,7 +210,7 @@ for r, pid in enumerate(sorted(placements), start=2):
     if img:
         ws.add_image(img, f"F{r}")
         ws.row_dimensions[r].height = 150
-    fill = ERROR if any(n.startswith("ERROR") for n in p["notas"]) else DOUBT if any(n.startswith("DUDA") for n in p["notas"]) else None
+    fill = PENDING if note_kind(p, "PENDIENTE") else DOUBT if note_kind(p, "DUDA") else FIXED if note_kind(p, "CORREGIDO") else None
     if fill:
         for col in (1, 2, 24):
             ws.cell(r, col).fill = fill
@@ -258,10 +225,24 @@ H = ["Modelo", "Nombre", "Categoría", "Ficha oficial", "Piezas en el tour",
      "Forma ¿confirmada?", "Forma (texto ficha)", "Forma (conceptos)", "Evidencia forma",
      "Materiales ¿confirmados?", "Materiales (texto ficha)", "Materiales (conceptos)", "Evidencia materiales",
      "Estilo ¿confirmado?", "Estilo (texto ficha)", "Estilo (conceptos)", "Evidencia estilo",
-     "Medidas ¿confirmadas?", "Medidas", "Lista de acabados", "Opciones en el texto de la ficha",
+     "Medidas ¿confirmadas?", "Medidas", "Lista de acabados", "Paleta de la línea en el asistente", "Opciones en el texto de la ficha",
      "Descripción oficial", "Notas", "¿OK?", "Corrección", "Nota", "fact_ids"]
-W = [26, 24, 16, 12, 16, 10, 26, 20, 36, 10, 26, 20, 36, 10, 24, 20, 36, 10, 40, 40, 40, 50, 40, 8, 30, 30, 20]
+W = [26, 24, 16, 12, 16, 10, 26, 20, 36, 10, 26, 20, 36, 10, 24, 20, 36, 10, 40, 40, 34, 40, 50, 40, 8, 30, 30, 20]
 ws = sheet("Modelos", H, W, review_cols=3, hidden_cols=1)
+LINE_ES = {"notte": "línea Dormitorio", "armadi": "línea de armarios"}
+
+
+def palette_policy(m, a):
+    groups = m.get("option_groups", [])
+    lines = sorted({g.get("line") for g in groups if g.get("scope") == "line" and g.get("line")})
+    if lines:
+        return f"Se menciona con aviso ({', '.join(LINE_ES[x] for x in lines)}): «maneja…; confirma en su ficha si aplica»"
+    if (a.get("paleta_de_linea") or {}).get("confirmado") == "NO":
+        return f"No se menciona: {a['paleta_de_linea']['valor']}"
+    if any(g.get("scope") == "generic_palette" for g in groups):
+        return "No se menciona (descartada en la revisión)"
+    return "—"
+
 for r, key in enumerate(sorted(attrs), start=2):
     a, m = attrs[key], models.get(key, {})
     g = lambda k: a.get(k) or {"confirmado": "", "valor": "", "evidencia": ""}
@@ -271,6 +252,7 @@ for r, key in enumerate(sorted(attrs), start=2):
                txt(g("materiales")["confirmado"]), txt(g("materiales")["valor"]), es_list(attr_ids(m.get("materials"))), txt(g("materiales")["evidencia"]),
                txt(g("estilo")["confirmado"]), txt(g("estilo")["valor"]), es_list(attr_ids(m.get("styles"))), txt(g("estilo")["evidencia"]),
                txt(g("medidas")["confirmado"]), txt(g("medidas")["valor"]), f"{txt(g("lista_acabados")["confirmado"])} · {txt(g("lista_acabados")["valor"])}",
+               palette_policy(m, a),
                "\n".join(a.get("opciones_en_texto") or []), m.get("description_it") or "", "\n".join(a.get("notas") or []),
                None, None, None, ",".join(fids)])
     link(ws.cell(r, 4), a.get("url") or m.get("official_url"), "ficha ↗")
@@ -301,7 +283,7 @@ ws = sheet("Opciones oficiales", H, W, review_cols=3, hidden_cols=1)
 r = 1
 for m in sorted(cat["models"], key=tour_order):
     for grp in m["option_groups"]:
-        if grp["scope"] == "generic_palette":
+        if grp["scope"] not in ("model", "text"):  # line palettes go to the palette sheets
             continue
         for o in grp["options"]:
             r += 1
@@ -319,7 +301,7 @@ ws.freeze_panes = "H2"
 palettes = {}   # collection -> titles, models, group ids, options (each once)
 for m in sorted(cat["models"], key=tour_order):
     for grp in m["option_groups"]:
-        if grp["scope"] != "generic_palette":
+        if grp["scope"] not in ("line", "generic_palette"):
             continue
         # Same collection name AND same options = the same palette (armadi vs letti lists differ).
         key = ((grp.get("name") or "").strip().upper(), tuple(sorted(o["official_name"].strip().lower() for o in grp["options"])))
@@ -461,16 +443,19 @@ for mo in onto["moods"]:
     ws.append([c["labels"]["es"], ", ".join(c["synonyms"].get("es", [])), es_list(mo["prefer"]), None, None, None])
 finish(ws)
 
-# ------------------------------------------------------------------ Errores
-H = ["ID", "Pieza", "Tipo", "Detalle", "Colores v1", "Materiales v1", "Forma v1", "¿OK?", "Nota"]
-W = [9, 26, 26, 70, 22, 22, 22, 8, 30]
-ws = sheet("Errores", H, W, review_cols=2)
-for p in sorted(errors, key=lambda x: x["product_id"]):
+# ------------------------------------------------------------------ Correcciones
+H = ["ID", "Pieza", "Estado", "Qué", "Detalle", "Colores v1", "Materiales v1", "Forma v1", "¿OK?", "Nota"]
+W = [9, 26, 22, 20, 70, 22, 22, 22, 8, 30]
+ws = sheet("Correcciones", H, W, review_cols=2)
+for p in sorted(fixed + pending, key=lambda x: x["product_id"]):
     old = v1.get(p["product_id"], {})
-    for note in (n for n in p["notas"] if n.startswith("ERROR")):
+    for note in note_kind(p, "CORREGIDO") + note_kind(p, "PENDIENTE"):
         head, _, body = note.partition(":")
-        ws.append([p["product_id"], p["name"], head.replace("ERROR", "Error", 1), body.strip(),
+        state, _, what = head.partition(" (")
+        ws.append([p["product_id"], p["name"], "Ya corregido en los datos" if state == "CORREGIDO" else "Pendiente: se arregla en el tour",
+                   what.rstrip(")"), body.strip(),
                    ", ".join(old.get("colors") or []), ", ".join(old.get("materials") or []), old.get("shape") or "", None, None])
+        ws.cell(ws.max_row, 3).fill = FIXED if state == "CORREGIDO" else PENDING
 finish(ws)
 
 # ------------------------------------------------------------------ Preguntas abiertas
@@ -507,13 +492,167 @@ finish(ws)
 for r in range(2, ws.max_row + 1):
     ws.cell(r, 4).fill = REVIEW
 
-own = sum(len(g["options"]) for m in cat["models"] for g in m["option_groups"] if g["scope"] != "generic_palette")
-repeated = sum(len(g["options"]) for m in cat["models"] for g in m["option_groups"] if g["scope"] == "generic_palette")
-for row in wb["Léeme"].iter_rows():
-    for c in row:
-        if c.value == "__OPTIONS_SUMMARY__":
-            c.value = (f"Modelos (fichas oficiales): {len(attrs)} · Opciones propias de los modelos: {own} · "
-                       f"Paletas genéricas: {len(palettes)} paletas con {generic_unique} opciones distintas (en la web aparecen repetidas {repeated} veces)")
+own = sum(len(g["options"]) for m in cat["models"] for g in m["option_groups"] if g["scope"] in ("model", "text"))
+repeated = sum(len(g["options"]) for m in cat["models"] for g in m["option_groups"] if g["scope"] in ("line", "generic_palette"))
+rows_of = lambda title: wb[title].max_row - 1
+flagged = lambda title, col: sum(1 for r in range(2, wb[title].max_row + 1)
+                                 if wb[title].cell(r, [c.value for c in wb[title][1]].index(col) + 1).value)
+
+
+def write_readme(ws):
+    widths = [24, 42, 42, 40, 34]
+    for i, w in enumerate(widths, start=1):
+        ws.column_dimensions[get_column_letter(i)].width = w
+    total = sum(widths)
+    r = 1
+
+    def lines_for(text, width):
+        return max(1, sum(-(-max(len(part), 1) // max(int(width * 0.9), 1)) for part in str(text).split("\n")))
+
+    def para(text, font=None):
+        nonlocal r
+        ws.merge_cells(start_row=r, start_column=1, end_row=r, end_column=len(widths))
+        c = ws.cell(r, 1, text)
+        c.alignment = Alignment(wrap_text=True, vertical="top")
+        if font:
+            c.font = font
+        ws.row_dimensions[r].height = 16 * lines_for(text, total) + (8 if font and font.size and font.size > 12 else 2)
+        r += 1
+
+    def title(text):
+        nonlocal r
+        r += 1
+        para(text, Font(bold=True, size=13, color=RED))
+
+    def table(headers, rows):
+        nonlocal r
+        for j, h in enumerate(headers, start=1):
+            c = ws.cell(r, j, h)
+            c.fill, c.font, c.alignment = HEAD, HEAD_FONT, Alignment(wrap_text=True, vertical="center")
+        ws.row_dimensions[r].height = 20
+        r += 1
+        for row in rows:
+            for j, v in enumerate(row, start=1):
+                c = ws.cell(r, j, v)
+                c.alignment, c.border = WRAP, THIN
+                fill = row_fills.get(str(row[0]))
+                if fill and j == 1:
+                    c.fill = fill
+            ws.row_dimensions[r].height = 16 * max(lines_for(v, widths[j - 1]) for j, v in enumerate(row, start=1)) + 4
+            r += 1
+
+    row_fills = {"CORREGIDO (verde)": FIXED, "DUDA (naranja)": DOUBT, "PENDIENTE (rojo)": PENDING,
+                 "Amarillo": REVIEW, "Azul suave": CONFIRM, "Verde fosforescente": NEON, "Verde claro": FIXED, "Naranja": DOUBT, "Rojo": PENDING}
+
+    para("Febal Casa · revisión de datos del asistente (v2)", Font(bold=True, size=16, color=RED))
+    para(f"Generado el {TODAY}. Para revisar y devolver con las columnas amarillas llenas.")
+
+    title("La idea en una frase")
+    para("Este archivo es un examen de todo lo que sabe el asistente. Cada dato dice de dónde salió; lo que no se pudo comprobar está marcado; "
+         "quien conoce el showroom lo confirma o lo corrige. El chatbot no lee este Excel: cuando vuelve revisado, se usa para generar su base de datos final. "
+         "Hasta entonces nada cuenta como verdad definitiva, y lo que no está confirmado el asistente lo dice como «no confirmado» en vez de inventarlo.")
+
+    title("De dónde salió la información")
+    table(["Fuente", "Cómo se sacó", "Qué aporta", "Hojas", ""], [
+        ("El tour (88 piezas)", "Una captura por pieza desde su punto de vista, revisada a ojo", "Cómo es el mueble EXPUESTO: color, material, forma", "Piezas, Correcciones", ""),
+        ("La web febalcasa.com (56 fichas)", "Un programa copió cada ficha y después se leyó a mano, una por una", "Lo que se puede PEDIR: acabados, forma, materiales, estilo, medidas", "Modelos, Opciones oficiales, Paletas", ""),
+        ("Propuestas del sistema", "Deducciones automáticas o criterio de diseño", "En qué familia cae cada color, material de cada colección, sinónimos, qué combina", "Colores → familia, Materiales, Sinónimos, Estilos, Armonías, Ánimos", ""),
+    ])
+
+    title("Por qué hay dudas")
+    table(["Razón", "Ejemplo", "Quién la resuelve", "", ""], [
+        ("La foto no alcanza", "Vivienne: en la foto no se distingue si es piel, nobuk o tela. Boiserie FEB-001: negro con veta blanca puede ser Nero Marquinia o Black Saint Laurent.", "Quien sabe qué se puso en el showroom", "", ""),
+        ("La web es ambigua o está mal", "La misma lista de acabados pegada en varias fichas; la ficha del armario Momenti apunta a una de lavandería; la ficha de Andy no trae acabados.", "Febal", "", ""),
+        ("Es una propuesta automática", "¿«Moss» es verde o gris? ¿La colección «PET» es plástico?", "Quien revisa, solo si está mal", "", ""),
+    ])
+    para(f"La mayoría de las filas son datos con evidencia. Las dudas están marcadas en su lugar: {len(doubts)} en «Piezas», "
+         f"{flagged('Colores → familia', 'Revisar')} colores y {flagged('Materiales por colección', 'Revisar')} colecciones marcadas, "
+         f"{len(palettes)} paletas por confirmar y {len(QUESTIONS)} preguntas abiertas.")
+
+    title("Marcas en las notas («Piezas» y «Correcciones»)")
+    table(["Marca", "Qué significa", "Qué hacer", "Ejemplo", ""], [
+        ("CORREGIDO (verde)", "Ya se arregló en los datos: el asistente ya usa el valor bueno. La nota solo cuenta qué decía antes, para que quede constancia.", "Nada, o confirmar con SI", "FEB-004 Rio: el catálogo anterior decía mármol; ya dice madera", ""),
+        ("DUDA (naranja)", "Falta un dato que la foto o la web no resuelven.", "Escribir el dato en «Corrección» o responder la pregunta", "FEB-077: ¿Casa 1 o Casa 4?", ""),
+        ("PENDIENTE (rojo)", "Hay que arreglarlo fuera de los datos (en el tour).", "Decidir si se hace", "FEB-094: la cámara de la silla Dea apunta al muestrario", ""),
+    ])
+
+    title("Cómo marcar")
+    table(["Columna", "Qué poner", "Ejemplo", "", ""], [
+        ("¿OK?", "SI = lo que dice la fila es correcto, incluidos sus NO (un NO en «Material ¿confirmado?» significa «la foto no permite saberlo», no «está mal»). NO = algo afirmado está mal.", "Vivienne: color y forma bien → SI", "", ""),
+        ("Corrección", "El valor correcto de lo que está mal, o el dato que falta si se sabe.", "Vivienne: «es Nabuk Eagle Sand»", "", ""),
+        ("Nota", "Cualquier comentario.", "«confirmar con el proveedor»", "", ""),
+    ])
+    para("Basta revisar lo que esté mal o lo que se sepa; una fila sin marcar queda pendiente. No marques NO por un dato que falta: eso rechazaría también lo que sí está bien de la fila.")
+
+    title("Los cuatro niveles de «opciones»")
+    table(["Dónde", "Qué pregunta", "Ejemplo", "", ""], [
+        ("Modelos · Lista de acabados", "¿La ficha trae una lista de acabados PROPIA de ese modelo?", "Balmoral: SI · Arden: NO (trae la de la línea) · Andy: NO (no trae ninguna)", "", ""),
+        ("Opciones oficiales", "¿Qué acabados hay en esa lista propia? Una fila por acabado; el asistente los ofrece bajo pedido.", "Balmoral · Nabuk Eagle · Black", "", ""),
+        ("Paletas por confirmar", "La lista repetida de la línea, ¿aplica de verdad a este modelo?", "Tessuto Jenny: Couple sí, Arden no", "", ""),
+        ("Piezas · Opción del showroom", "¿Cuál de esos acabados tiene la pieza expuesta?", "FEB-001: no se distingue entre Nero Marquinia y Black Saint Laurent", "", ""),
+    ])
+
+    title("Las paletas, explicado fácil")
+    para("Es como el folleto de una marca de coches que, abajo de cada modelo, pega «todos los colores de la marca», aunque no todos existan para ese modelo. "
+         "En la web de Febal, abajo de cada cama aparece un bloque «Finiture per NOTTE» (acabados de la línea Dormitorio) con unos 300 acabados: telas, lacados, espejos, madera. "
+         "Ese bloque es idéntico en 4 camas, y otro de armarios es idéntico en 14 armarios: es el menú de toda la línea, no la lista de cada modelo.")
+    para("Prueba de que no todo aplica: la ficha de Arden dice que es de madera, solo en 3 chapas y sin tapizado, pero abajo trae el menú con telas y lacados. "
+         "Por eso «Paletas por confirmar» tiene una fila por lista repetida y una sola pregunta: ¿aplica de verdad a estos modelos? SI = pasa a opción normal; NO = deja de mencionarse; "
+         "«Modelos donde NO aplica» = deja de mencionarse solo en esos. Mientras nadie responda, el asistente la menciona CON AVISO («la línea Dormitorio de Febal maneja X; confirma en su ficha si aplica a este modelo»), "
+         "salvo donde la ficha la contradice (Arden solo en madera; puertas Aurora y Profile Reflex de vidrio). «Paletas genéricas» muestra lo que contienen, cada acabado una sola vez.")
+
+    title("Hoja por hoja")
+    table(["Hoja", "Qué es", "Qué hacer", "Ejemplo", "Filas"], [
+        ("Piezas (88)", "Cada mueble del tour con su foto: color, material y forma que se ven", f"PRIORIDAD 1. Revisar; donde dice NO, escribir el dato si se sabe (faltan {count('material', 'NO')} materiales y {count('opcion_oficial', 'NO')} acabados exactos)", "FEB-036 Vivienne: material → «Nabuk Eagle Sand»", rows_of("Piezas (88)")),
+        ("Modelos", "Lo que dice la ficha oficial de cada modelo: forma, materiales, estilo, medidas, tipo de lista y qué hace el asistente con su paleta", "Revisar; muchas medidas faltan porque la web no las publica", "Balmoral: sofá modular, estilo elegante", rows_of("Modelos")),
+        ("Opciones oficiales", "Los acabados que el asistente ofrece bajo pedido, en el orden en que se recorre el tour", "Un vistazo; NO si un acabado no existe o está mal escrito", "Balmoral · Nabuk Eagle · Black", rows_of("Opciones oficiales")),
+        ("Paletas por confirmar", "Las listas de línea que la web repite en varias fichas", "PRIORIDAD 2. SI / NO / en qué modelos no aplica", "Tessuto Jenny → Couple sí, Arden no", rows_of("Paletas por confirmar")),
+        ("Paletas genéricas", "Lo que contienen esas listas, cada acabado una vez", "Opcional", "Tessuto Jenny · Oceania", rows_of("Paletas genéricas")),
+        ("Sinónimos", "Las palabras que entiende el asistente (forma, color, material, estilo, categoría)", "PRIORIDAD 3. Agregar o quitar palabras", "«en L» = de ángulo; «cuero» = piel", rows_of("Sinónimos")),
+        ("Colores → familia", "Cada nombre de color oficial y su familia (azul, gris…)", "Solo las filas marcadas en «Revisar»", "«Blu Notte» → azul; «Moss» → ¿verde o gris?", rows_of("Colores → familia")),
+        ("Materiales por colección", "Cada colección de acabados y su material", "Solo las marcadas «sin material»", "LACCATO LUCIDO → lacado brillante", rows_of("Materiales por colección")),
+        ("Estilos", "Qué modelos son de qué estilo, según su ficha", "Aprobar o corregir", "Balmoral → clásico elegante y contemporáneo", rows_of("Estilos")),
+        ("Armonías", "Qué colores combinan o se parecen (borrador de diseño)", "¿Se aprueba? SI / NO", "amarillo combina con café; nobuk parecido a piel", rows_of("Armonías")),
+        ("Ánimos", "Qué mostrar cuando piden algo «acogedor»", "Aprobar", "acogedor → terciopelo, bouclé, madera, tonos cálidos", rows_of("Ánimos")),
+        ("Correcciones", "Lo que la captura corrigió y lo que queda pendiente en el tour", "Solo confirmar", "Rio: decía mármol y es madera", rows_of("Correcciones")),
+        ("Preguntas abiertas", "Decisiones que solo Febal puede tomar", "PRIORIDAD 1. Responder", "¿Se reencuadra la silla Dea en el tour?", rows_of("Preguntas abiertas")),
+    ])
+
+    title("Colores del archivo")
+    table(["Color", "Qué significa", "", "", ""], [
+        ("Amarillo", "Columnas para quien revisa (¿OK?, Corrección, Nota…)", "", "", ""),
+        ("Azul suave", "Columnas de datos SI/NO", "", "", ""),
+        ("Verde fosforescente", "Cualquier NO; también el que se marque en «¿OK?»", "", "", ""),
+        ("Verde claro", "CORREGIDO: ya arreglado en los datos", "", "", ""),
+        ("Naranja", "DUDA abierta", "", "", ""),
+        ("Rojo", "PENDIENTE fuera de los datos (en el tour)", "", "", ""),
+    ])
+
+    title("Qué pasa después")
+    para("1. Se llenan las columnas amarillas. Lo mínimo útil: «Piezas», «Preguntas abiertas», «Paletas por confirmar» y «Sinónimos»; lo demás, un vistazo.")
+    para("2. El Excel se devuelve y se importa: un SI queda validado; un NO hace que el asistente deje de afirmar ese dato; cada corrección se aplica a los datos.")
+    para("3. Se regenera la base final del asistente con solo lo validado, se prueba y se conecta al servidor. Mientras tanto el asistente ya funciona y dice «no confirmado» donde falta un dato.")
+
+    title("Regla de disponibilidad (ya implementada)")
+    para("Si un color, acabado o variante no está físicamente en el tour pero la ficha oficial sí lo ofrece, el asistente dice que en el showroom no está así, que sí está disponible bajo pedido, y enlaza la ficha oficial.")
+
+    title("Glosario")
+    table(["Palabra", "Significa", "", "", ""], [
+        ("Finiture per NOTTE", "Acabados de la línea Dormitorio (camas, burós, cómodas, armarios); «notte» = noche, la «zona de noche» de la casa", "", "", ""),
+        ("GIORNO", "Línea Día: sala, comedor, librerías, aparadores", "", "", ""),
+        ("Rivestimenti", "Tapizados", "", "", ""),
+        ("Opción del showroom", "El acabado que tiene la pieza expuesta", "", "", ""),
+        ("Opciones oficiales", "Todos los acabados que la ficha ofrece para ese modelo", "", "", ""),
+    ])
+
+    title("Resumen de las capturas y de la web")
+    para(f"Pieza visible en su punto de vista: {count('visible', 'SI')}/88 · Color confirmado: {count('color', 'SI')}/88 · Material confirmado: {count('material', 'SI')}/88 · "
+         f"Forma confirmada: {count('forma', 'SI')}/88 · Opción del showroom identificada: {count('opcion_oficial', 'SI')}/88")
+    para(f"Correcciones ya aplicadas: {len(fixed)} · Pendientes en el tour: {len(pending)} · Dudas abiertas: {len(doubts)}")
+    para(f"Modelos (fichas oficiales): {len(attrs)} · Opciones propias de los modelos: {own} · Paletas de línea: {len(palettes)} con {generic_unique} acabados distintos (en la web aparecen repetidos {repeated} veces)")
+
+
+write_readme(readme)
 named = [f"{w.title}!{c.coordinate}" for w in wb.worksheets for row in w.iter_rows() for c in row
          if isinstance(c.value, str) and NAME_RE.search(c.value)]
 if named:
