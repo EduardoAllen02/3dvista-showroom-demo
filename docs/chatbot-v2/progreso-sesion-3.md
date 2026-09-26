@@ -117,7 +117,7 @@
   - Cerradas sin persona: P11 (la ficha dice «effetto pelle»), P12 (Couple leída), P13 (sin lista → enlace a la ficha), P18 (la captura muestra Marlene) y P23 (las capturas reemplazan la v1).
 - FEB-010 Diciotto: su punto de vista apuntaba a las vitrinas de Trenta (las dos capturas eran de la misma pared).
   - Diciotto es la pared de la TV y Trenta la de vitrinas con el paso al centro. Lo confirman las fichas: «pareti attrezzate» y «vano ponte / Anta Aurora».
-  - Nuevo POV: panorámica 19, yaw -60, pitch -3, fov 100. Se recapturó y re-observó. La duda se cerró, así que la hoja corta queda en 15 decisiones (`febal-casa-decisiones-2026-09-25-v2.xlsx`).
+  - Nuevo POV, el que dejó puesto Edd en el tour: panorámica 20, yaw -67.2, pitch -11.5, fov 130. Se recapturó (llega igual desde otra panorámica) y se re-observó. La duda se cerró, así que la hoja corta queda en 15 decisiones (`febal-casa-decisiones-2026-09-25-v2.xlsx`).
   - Trenta tiene una vista frontal mejor en la panorámica 19 (yaw 17, pitch 2, fov 88). Se queda en la 18 hasta arreglar "Llévame" dentro de una misma panorámica.
 - FEB-094 (silla Dea) reencuadrada en el tour: yaw 117.7, pitch -44.4, fov 75.2. Llega al widget de producción con el próximo deploy.
 - **Pendiente:** acabados exactos y materiales de las piezas.

@@ -531,44 +531,44 @@
   "section": "CASA 01 - AUTENTICA",
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-010.png",
   "landing_ok": true,
-  "capturado": "2026-09-26T05:12:29Z",
+  "capturado": "2026-09-26T05:14:25Z",
   "observado": "2026-09-25",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
    {
-    "rol": "colonne alte ad ante lisce",
-    "dominante": true,
-    "color": "antracite",
-    "material": ""
-   },
-   {
     "rol": "boiserie con mensole e porta TV",
-    "dominante": false,
+    "dominante": true,
     "color": "tortora",
     "material": ""
    },
    {
-    "rol": "base sospesa",
+    "rol": "base sospesa con top vassoio",
     "dominante": false,
-    "color": "noce",
+    "color": "noce; tortora",
     "material": "venatura legno"
+   },
+   {
+    "rol": "colonne alte ad ante lisce",
+    "dominante": false,
+    "color": "antracite",
+    "material": ""
    }
   ],
   "color": {
    "confirmado": "SI",
-   "valor": "antracite; tortora; noce",
-   "evidencia": "dos columnas altas lisas gris muy oscuro a los lados; al centro boiserie tortora con repisas inclinadas y la TV; base suspendida con veta de nogal"
+   "valor": "tortora; noce; antracite",
+   "evidencia": "al centro boiserie tortora con repisas delgadas oscuras y la TV; base suspendida con frentes de veta de nogal y top tortora; a los lados columnas altas lisas gris muy oscuro"
   },
   "material": {
    "confirmado": "NO",
    "valor": "",
-   "evidencia": "las puertas lisas pueden ser laca o nobilitato; la base tiene veta de nogal pero no se distingue si es chapa o nobilitato"
+   "evidencia": "la boiserie y las puertas lisas pueden ser laca o nobilitato; los frentes de la base tienen veta de nogal pero no se distingue si es chapa o nobilitato"
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete attrezzata porta TV con boiserie, mensole, base sospesa e colonne",
-   "evidencia": "pared de TV completa: dos columnas altas, boiserie central con repisas y base suspendida"
+   "valor": "parete attrezzata porta TV con boiserie, mensole, base sospesa con top vassoio e colonne",
+   "evidencia": "pared de TV completa; la base lleva un top con marco grueso, como el «Top vassoio … cornice in forte spessore» de su ficha"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -576,15 +576,15 @@
    "evidencia": "colores lisos y una veta de nogal con varios candidatos en la ficha"
   },
   "notas": [
-   "CORREGIDO (punto de vista en el tour): la cámara apuntaba a las vitrinas de la librería Trenta; se reencuadró el 2026-09-25 a la pared de la TV (yaw -60, pitch -3, fov 100), que tiene sus dos marcadores. Sus fichas lo confirman: Diciotto es «pareti attrezzate per la zona living» y Trenta la librería con «vano ponte» y «Anta Aurora»."
+   "CORREGIDO (punto de vista en el tour): la cámara apuntaba a las vitrinas de la librería Trenta; se reencuadró el 2026-09-25 de frente a la pared de la TV (panorámica 20, yaw -67.2, pitch -11.5, fov 130), con su marcador. Sus fichas lo confirman: Diciotto es «pareti attrezzate per la zona living» y Trenta la librería con «vano ponte» y «Anta Aurora»."
   ],
   "observed": {
    "name": "Sistema Diciotto",
    "colors": [
-    "antracite"
+    "tortora"
    ],
    "materials": [],
-   "shape": "parete attrezzata porta TV con boiserie, mensole, base sospesa e colonne"
+   "shape": "parete attrezzata porta TV con boiserie, mensole, base sospesa con top vassoio e colonne"
   }
  },
  {
