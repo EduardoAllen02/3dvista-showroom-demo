@@ -472,14 +472,12 @@ QUESTIONS = [
     ("P11", "Profile/Leather: la puerta es «effetto pelle» (similpiel). ¿Correcto que el asistente nunca diga «de piel»?", "Ver FEB-079 y FEB-096.", ""),
     ("P12", "Letto Couple (FEB-039): la ficha solo trae la paleta genérica «Finiture per NOTTE». ¿Qué acabados reales tiene?", "", ""),
     ("P13", "Fichas sin lista de acabados (Andy, Rio, Ink, Nina, Polar, Leeds, Dea, Daniel, Windsor…): ¿hay catálogo de acabados en otro lado?", "Hoy el asistente dice que el dato no está confirmado y enlaza la ficha.", ""),
-    ("P14", "FEB-010 Sistema Diciotto y FEB-012 Libreria Trenta son la misma pared vista desde dos lados: ¿qué parte es cada modelo?", "", ""),
     ("P15", "FEB-031 Sistema Origina: la ficha asignada es «Anta Libeskind», pero esas puertas son lisas de madera. ¿Qué anta es?", "", ""),
     ("P16", "FEB-035 Madia Libeskind022: el top se ve travertino, pero la ficha solo lista Gres Calacatta y Stone Grey. ¿Acabado especial?", "", ""),
     ("P17", "FEB-037 Armario Momenti: la ficha asignada es de lavandería (mobili di servizio). ¿Cuál es la ficha correcta?", "", ""),
     ("P18", "FEB-056 estaba enlazado a la cama Astrid; la captura muestra un buró Marlene. Se volvió a enlazar a Marlene: ¿correcto?", "", ""),
     ("P19", "FEB-077: el tour muestra la etiqueta «CASA 01: AUTENTICA» en esa panorámica, pero el catálogo la pone en CASA 04. ¿Cuál es la zona correcta?", "", ""),
     ("P20", "FEB-085 Cucina Telaio Alluminio vetro: el marcador cae sobre la península; las puertas de aluminio y vidrio se ven al fondo. ¿Qué parte es la pieza?", "", ""),
-    ("P21", "FEB-094 Sedia Dea: su punto de vista apunta al muestrario y la silla casi no se ve. ¿Se reencuadra el punto de vista en el tour?", "", ""),
     ("P22", "FEB-099 Armadio Barret con Portale: la captura es compatible con puertas abatibles (sin rieles). ¿Es Barret battente?", "", ""),
     ("P23", "FEB-026 / FEB-027: el catálogo v1 traía datos de prueba («cognac» para Camden, que en realidad es verde). ¿Hay más datos de prueba?", "", ""),
 ]
@@ -573,7 +571,7 @@ def write_readme(ws):
     table(["Marca", "Qué significa", "Qué hacer", "Ejemplo", ""], [
         ("CORREGIDO (verde)", "Ya se arregló en los datos: el asistente ya usa el valor bueno. La nota solo cuenta qué decía antes, para que quede constancia.", "Nada, o confirmar con SI", "FEB-004 Rio: el catálogo anterior decía mármol; ya dice madera", ""),
         ("DUDA (naranja)", "Falta un dato que la foto o la web no resuelven.", "Escribir el dato en «Corrección» o responder la pregunta", "FEB-077: ¿Casa 1 o Casa 4?", ""),
-        ("PENDIENTE (rojo)", "Hay que arreglarlo fuera de los datos (en el tour).", "Decidir si se hace", "FEB-094: la cámara de la silla Dea apunta al muestrario", ""),
+        ("PENDIENTE (rojo)", "Hay que arreglarlo fuera de los datos (en el tour).", "Decidir si se hace", "Si una cámara del tour apunta mal a su pieza (hoy no queda ninguno)", ""),
     ])
 
     title("Cómo marcar")
@@ -615,7 +613,7 @@ def write_readme(ws):
         ("Armonías", "Qué colores combinan o se parecen (borrador de diseño)", "¿Se aprueba? SI / NO", "amarillo combina con café; nobuk parecido a piel", rows_of("Armonías")),
         ("Ánimos", "Qué mostrar cuando piden algo «acogedor»", "Aprobar", "acogedor → terciopelo, bouclé, madera, tonos cálidos", rows_of("Ánimos")),
         ("Correcciones", "Lo que la captura corrigió y lo que queda pendiente en el tour", "Solo confirmar", "Rio: decía mármol y es madera", rows_of("Correcciones")),
-        ("Preguntas abiertas", "Decisiones que solo Febal puede tomar", "PRIORIDAD 1. Responder", "¿Se reencuadra la silla Dea en el tour?", rows_of("Preguntas abiertas")),
+        ("Preguntas abiertas", "Decisiones que solo Febal puede tomar", "PRIORIDAD 1. Responder", "¿La cama Couple lleva de verdad todos los acabados de la línea?", rows_of("Preguntas abiertas")),
     ])
 
     title("Colores del archivo")

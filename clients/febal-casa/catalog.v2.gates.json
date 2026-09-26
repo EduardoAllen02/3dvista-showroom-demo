@@ -1,5 +1,5 @@
 {
- "mode": "dev",
+ "mode": "strict",
  "exhibits": 88,
  "models": 56,
  "gates": [
@@ -22,7 +22,7 @@
   {
    "id": "G3",
    "label": "Pieza con material del componente dominante",
-   "pass": 34,
+   "pass": 35,
    "total": 88,
    "ok": false,
    "missing": [
@@ -148,7 +148,7 @@
   {
    "id": "G6",
    "label": "Colección con material",
-   "pass": 489,
+   "pass": 491,
    "total": 500,
    "ok": false,
    "missing": [
@@ -156,9 +156,7 @@
     "diciotto/text-1",
     "lapis/text-0",
     "leeds/text-1",
-    "madia-onda/text-2",
     "origina-anta-libeskind/text-1",
-    "tipologia-armadi-ante-battente-barret/text-0",
     "tipologia-armadi-ante-battente-barret/text-1",
     "tipologia-armadi-ante-battente-profile-block/text-0",
     "tipologia-armadi-ante-battente-profile-block/text-1",
@@ -167,52 +165,11 @@
   },
   {
    "id": "G7",
-   "label": "Hechos validados por Andrea",
-   "pass": 0,
-   "total": 818,
-   "ok": false,
-   "missing": [
-    "F-andy-shape",
-    "F-andy-style",
-    "F-arden-shape",
-    "F-arden-style",
-    "F-arden-materials",
-    "F-arden-dims",
-    "F-arden/letti-telaio-alluminio/telaio-alluminio",
-    "F-arden/letti-impiallacciato-ecomeri/impiallacciato-ecomeri",
-    "F-arden/letti-specchio/specchio",
-    "F-arden/letti-nobilitato/nobilitato",
-    "F-arden/letti-gres/gres",
-    "F-arden/letti-pet/pet",
-    "F-arden/letti-metal-skin/metal-skin",
-    "F-arden/letti-laccato-opaco/laccato-opaco",
-    "F-arden/letti-laccato-lucido/laccato-lucido",
-    "F-arden/letti-tessuto-jenny/tessuto-jenny",
-    "F-arden/letti-tessuto-bentley/tessuto-bentley",
-    "F-arden/letti-tessuto-queens/tessuto-queens",
-    "F-arden/letti-similpelle-inca/similpelle-inca",
-    "F-arden/letti-similpelle-tape/similpelle-tape",
-    "F-arden/letti-tessuto-ritual/tessuto-ritual",
-    "F-arden/letti-tessuto-cavaliere/tessuto-cavaliere",
-    "F-arden/letti-tessuto-colonna/tessuto-colonna",
-    "F-arden/letti-tessuto-key-west/tessuto-key-west",
-    "F-arden/letti-tessuto-medici/tessuto-medici",
-    "F-arden/letti-tessuto-jolie/tessuto-jolie",
-    "F-arden/letti-tessuto-roma/tessuto-roma",
-    "F-arden/letti-microfibra-bellezza/microfibra-bellezza",
-    "F-arden/text-0",
-    "F-astor-shape",
-    "F-astor-style",
-    "F-astor-materials",
-    "F-astor/astor/nabuk-eagle",
-    "F-astor/astor/bellezza",
-    "F-astor/astor/cavaliere",
-    "F-astor/astor/colonna",
-    "F-astor/astor/earth",
-    "F-astor/astor/jolie",
-    "F-astor/astor/key-west",
-    "F-astor/astor/medici"
-   ]
+   "label": "Hechos con fuente literal o validados (sin rechazos)",
+   "pass": 819,
+   "total": 819,
+   "ok": true,
+   "missing": []
   }
  ]
 }

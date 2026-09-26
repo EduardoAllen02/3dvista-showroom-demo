@@ -9,8 +9,10 @@ import { proposeColor, proposeLineMaterial } from "../ontology/furniture-naming.
  * Compiles the raw, sourced product facts (tour-project/<tour>/product-facts) plus the
  * tour binding (camera/zone/image per piece) into the canonical catalog.
  *
- * mode "strict": only facts reviewed as validated are "known" (what error-0 is measured on);
- * mode "dev":    pending facts are used as known too (development/tests before review).
+ * mode "strict": a fact is "known" when it has a literal source (the official page or a tour
+ *                 capture) or was validated; the review only corrects exceptions (rejected facts).
+ *                 Legacy catalog-v1 values need an explicit validation.
+ * mode "dev":    every pending fact is used as known (development/tests).
  */
 
 // ---- raw input shapes (only the fields used here) ----------------------------------
@@ -43,6 +45,15 @@ export interface RawReview {
   /** Palette groups the client said do NOT apply to that model: never mentioned. */
   excluded_palette_groups?: string[];
 }
+/**
+ * Per model, which collections of its line palette apply, read from the page text
+ * (product-facts/palette-decisions.json). aplica -> normal on-order option; aviso -> mentioned
+ * with the "confirm on its page" caveat; no_aplica -> never mentioned. Unlisted collections take `default`.
+ */
+export type PaletteVerdict = "aplica" | "aviso" | "no_aplica";
+export interface RawPaletteDecision {
+  default: PaletteVerdict; aplica?: string[]; aviso?: string[]; no_aplica?: string[]; evidencia: string;
+}
 
 export interface CompileInput {
   tour_id: string;
@@ -56,6 +67,7 @@ export interface CompileInput {
   /** Pieces whose legacy catalog values are known to be test data and must be ignored. */
   ignore_legacy_values: string[];
   review?: RawReview;
+  palette_decisions?: Record<string, RawPaletteDecision>;
   lexicon: Lexicon;
 }
 
@@ -125,7 +137,9 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     facts.push(fact);
     return fact;
   };
-  const usable = (f: Fact) => f.review.status === "validated" || (input.mode === "dev" && f.review.status === "pending");
+  const LITERAL = new Set(["official_page", "tour_capture"]);
+  const usable = (f: Fact) => f.review.status === "validated"
+    || (f.review.status === "pending" && (input.mode === "dev" || LITERAL.has(f.source.kind)));
   function attr<T>(value: T | null, fact: Fact | null, reason: "not_captured" | "not_published" = "not_published"): Attr<T> {
     if (value === null || !fact) return { status: "unknown", reason };
     if (!usable(fact)) return { status: "unknown", reason: "pending_review" };
@@ -172,6 +186,22 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const listText = String(listVerdict?.valor ?? "");
     const line = /ARMADI/i.test(listText) ? "armadi" : /NOTTE/i.test(listText) ? "notte" : null;
     const lineBlocked = a?.paleta_de_linea?.confirmado === "NO";
+    const decision = input.palette_decisions?.[rm.model_key];
+    const verdictOf = (colName: string): PaletteVerdict | null => {
+      if (!decision) return null;
+      const n = colName.trim().toUpperCase().replace(/\s+/g, " ");
+      const has = (l?: string[]) => (l ?? []).some((c) => c.trim().toUpperCase().replace(/\s+/g, " ") === n);
+      return has(decision.aplica) ? "aplica" : has(decision.aviso) ? "aviso" : has(decision.no_aplica) ? "no_aplica" : decision.default;
+    };
+    // Review first (promoted / excluded), then the page reading, then the line default.
+    const paletteScope = (gid: string, colName: string): OptionScope => {
+      if (promoted.has(gid)) return "model";
+      if (excluded.has(gid) || !line) return "generic_palette";
+      const v = verdictOf(colName);
+      if (v === "aplica") return "model";
+      if (v === "no_aplica") return "generic_palette";
+      return v === "aviso" || !lineBlocked ? "line" : "generic_palette";
+    };
     const groups: OptionGroup[] = [];
     const seenOpt = new Set<string>();
     for (const g of rm.finish_groups) {
@@ -192,8 +222,8 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
         groups.push({
           id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category),
           material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null,
-          scope: scope === "model" || promoted.has(gid) ? "model"
-            : scope === "generic_palette" && line && !lineBlocked && !excluded.has(gid) ? "line" : "generic_palette",
+          scope: scope === "model" ? "model" : scope === "generic_palette" ? paletteScope(gid, colName)
+            : promoted.has(gid) ? "model" : "generic_palette",
           line: scope === "model" ? null : line, options, fact: listFact.id,
         });
       }
@@ -317,7 +347,7 @@ export function gateReport(cat: CanonicalCatalog): GateReport {
       g("G4", "Modelo con forma conocida", cat.models.map((m) => ({ id: m.id, ok: m.shapes.status === "known" }))),
       g("G5", "Opción oficial con familia de color", cat.models.flatMap((m) => m.option_groups.flatMap((gr) => gr.options.map((o) => ({ id: o.id, ok: o.color_family.length > 0 }))))),
       g("G6", "Colección con material", cat.models.flatMap((m) => m.option_groups.map((gr) => ({ id: gr.id, ok: !!gr.material || gr.options.every((o) => !!o.material) })))),
-      g("G7", "Hechos validados por Andrea", cat.facts.map((f) => ({ id: f.id, ok: f.review.status === "validated" }))),
+      g("G7", "Hechos con fuente literal o validados (sin rechazos)", cat.facts.map((f) => ({ id: f.id, ok: f.review.status === "validated" || (f.review.status === "pending" && ["official_page", "tour_capture"].includes(f.source.kind)) }))),
     ],
   };
 }

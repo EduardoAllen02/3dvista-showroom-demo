@@ -531,52 +531,52 @@
   "section": "CASA 01 - AUTENTICA",
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-010.png",
   "landing_ok": true,
-  "capturado": "2026-09-24T00:47:25Z",
-  "observado": "2026-09-23",
+  "capturado": "2026-09-26T05:12:29Z",
+  "observado": "2026-09-25",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
    {
-    "rol": "vitrinas",
+    "rol": "colonne alte ad ante lisce",
     "dominante": true,
-    "color": "antracite",
-    "material": "vetro"
-   },
-   {
-    "rol": "paneles",
-    "dominante": false,
     "color": "antracite",
     "material": ""
    },
    {
-    "rol": "repisas abiertas superiores",
+    "rol": "boiserie con mensole e porta TV",
     "dominante": false,
     "color": "tortora",
     "material": ""
+   },
+   {
+    "rol": "base sospesa",
+    "dominante": false,
+    "color": "noce",
+    "material": "venatura legno"
    }
   ],
   "color": {
    "confirmado": "SI",
-   "valor": "antracite; tortora",
-   "evidencia": "vitrinas de vidrio con marco gris muy oscuro y paneles antracita; arriba repisas abiertas greige"
+   "valor": "antracite; tortora; noce",
+   "evidencia": "dos columnas altas lisas gris muy oscuro a los lados; al centro boiserie tortora con repisas inclinadas y la TV; base suspendida con veta de nogal"
   },
   "material": {
    "confirmado": "NO",
-   "valor": "vetro + pannelli",
-   "evidencia": "el vidrio se ve; paneles lacados o nobilitato no se distinguen"
+   "valor": "",
+   "evidencia": "las puertas lisas pueden ser laca o nobilitato; la base tiene veta de nogal pero no se distingue si es chapa o nobilitato"
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete attrezzata con passaggio centrale",
-   "evidencia": "vitrinas a los lados de un paso hacia la cocina; repisas abiertas arriba"
+   "valor": "parete attrezzata porta TV con boiserie, mensole, base sospesa e colonne",
+   "evidencia": "pared de TV completa: dos columnas altas, boiserie central con repisas y base suspendida"
   },
   "opcion_oficial": {
    "confirmado": "NO",
    "valor": "",
-   "evidencia": "colores lisos oscuros con varios candidatos"
+   "evidencia": "colores lisos y una veta de nogal con varios candidatos en la ficha"
   },
   "notas": [
-   "DUDA de modelo: es la misma pared que FEB-012 (Libreria Trenta) vista desde el otro lado; no se sabe qué parte es Diciotto y qué parte Trenta."
+   "CORREGIDO (punto de vista en el tour): la cámara apuntaba a las vitrinas de la librería Trenta; se reencuadró el 2026-09-25 a la pared de la TV (yaw -60, pitch -3, fov 100), que tiene sus dos marcadores. Sus fichas lo confirman: Diciotto es «pareti attrezzate per la zona living» y Trenta la librería con «vano ponte» y «Anta Aurora»."
   ],
   "observed": {
    "name": "Sistema Diciotto",
@@ -584,7 +584,7 @@
     "antracite"
    ],
    "materials": [],
-   "shape": "parete attrezzata con passaggio centrale"
+   "shape": "parete attrezzata porta TV con boiserie, mensole, base sospesa e colonne"
   }
  },
  {
@@ -594,7 +594,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-012.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:47:39Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-25",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -624,7 +624,7 @@
   "forma": {
    "confirmado": "SI",
    "valor": "libreria a tutta altezza con vetrine e passaggio",
-   "evidencia": ""
+   "evidencia": "dos vitrinas de vidrio a los lados de un paso hacia la cocina (el «vano ponte» de su ficha); repisas abiertas arriba"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -632,7 +632,7 @@
    "evidencia": "el perfil coincide con el único listado (Carbon grey), pero el vidrio podría ser fumé o stop sol"
   },
   "notas": [
-   "Misma pared que FEB-010."
+   "Es la pared de vitrinas con el paso al centro; la pared de la TV contigua es Diciotto (FEB-010)."
   ],
   "observed": {
    "name": "Libreria Trenta",
@@ -4452,10 +4452,10 @@
   "section": "GALLERIA",
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-094.png",
   "landing_ok": true,
-  "capturado": "2026-09-24T04:21:02Z",
-  "observado": "2026-09-23",
+  "capturado": "2026-09-26T04:06:38Z",
+  "observado": "2026-09-25",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
-  "visible": "NO",
+  "visible": "SI",
   "componentes": [
    {
     "rol": "carcasa tapizada",
@@ -4467,32 +4467,34 @@
   "color": {
    "confirmado": "SI",
    "valor": "tortora",
-   "evidencia": "en su propio punto de vista solo se ven respaldos en la esquina; en la toma de FEB-093 (misma panorámica) las sillas Dea se ven completas en beige-pardo"
+   "evidencia": "silla envolvente beige-pardo con su marcador, vista desde arriba junto a la mesa Daniel"
   },
   "material": {
-   "confirmado": "NO",
-   "valor": "",
-   "evidencia": ""
+   "confirmado": "SI",
+   "valor": "tessuto",
+   "evidencia": "tela suave con leve pelo tipo microfibra/terciopelo, como las Dea de FEB-092"
   },
   "forma": {
    "confirmado": "SI",
    "valor": "sedia a guscio imbottita",
-   "evidencia": "vista en la toma de FEB-093"
+   "evidencia": "carcasa envolvente de una pieza"
   },
   "opcion_oficial": {
    "confirmado": "NO",
    "valor": "",
-   "evidencia": ""
+   "evidencia": "las patas no se ven en esta toma"
   },
   "notas": [
-   "PENDIENTE (punto de vista en el tour): la cámara apunta al muestrario de acabados y la silla queda en el borde; hay que reencuadrarlo en el tour, no se arregla desde los datos."
+   "CORREGIDO (punto de vista en el tour): la cámara apuntaba al muestrario y la silla quedaba en el borde; se reencuadró el 2026-09-25 (yaw 117.7, pitch -44.4, fov 75.2) y ahora muestra la silla con su marcador."
   ],
   "observed": {
    "name": "Sedia Dea",
    "colors": [
     "tortora"
    ],
-   "materials": [],
+   "materials": [
+    "tessuto"
+   ],
    "shape": "sedia a guscio imbottita"
   }
  },

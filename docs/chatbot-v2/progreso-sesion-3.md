@@ -1,13 +1,14 @@
 # Progreso de la sesión 3 (Objetivos 3 a 6)
 
 > Lo ejecuta la sesión orquestadora a pedido de Edd.
-> Última actualización: 2026-09-23.
+> Última actualización: 2026-09-25.
 
 ## Decisiones de Edd (checkpoint Obj. 3)
 - **D1.** Refactor aprobado ("dale, el caso es que funcione").
 - **D2.** Modelo: **nada de Sonnet**. Se trabaja con el GPT actual (gpt-4o-mini) y luego se compara con GPT baratos (gpt-6-luna, gpt-5-mini, gpt-5-nano). gpt-4o "normal" queda descartado porque cuesta más que Sonnet.
 - **D3.** Umbral de error 0: queda el propuesto por defecto (pass^5 con datos revisados por Andrea + UX en vivo).
 - **D4.** "Llévame a X" con destino único navega directo. Es configurable.
+- **D6.** (2026-09-25) Regla de confianza: un hecho con fuente literal (ficha oficial o captura del tour) vale sin firma. La revisión solo corrige excepciones. Revisar a mano miles de filas no es viable: lo que las fuentes no resuelven va a una hoja corta con valor por defecto.
 - **D5.** Hecho: commit baseline `b55c9a2` y commit del motor v2 `ed5e066` (sin push). Lo de este corte (capturas, Excel, diagrama) está sin commitear.
 
 ## Hecho
@@ -96,6 +97,34 @@
   - Un SI en "Paletas por confirmar" agrega los grupos a `promoted_palette_groups`, y el compilador los vuelve ofrecibles (alcance "model"), excepto en los modelos excluidos.
 - Diagrama interactivo: `docs/chatbot-v2/arquitectura-v2.html`, publicado en https://claude.ai/artifact/MdbnP2owKAdRB3mt1vCarU (privado; Edd lo comparte).
 
+### Revisión automática (2026-09-25)
+- **Regla de confianza** en `compile.ts`: en modo estricto se usan los hechos `official_page` y `tour_capture` pendientes; los de la v1 siguen necesitando validación. G7: 818/818.
+- **Paletas de línea decididas por modelo** leyendo las 18 fichas → `product-facts/palette-decisions.json` (aplica / aviso / no_aplica, con cita).
+  - aplica → opción normal bajo pedido; aviso → nivel "de la línea" con su advertencia; no_aplica → no se menciona.
+  - Los acabados interiores (FINITURE CASSA INTERNA) nunca son "aplica", para no ofrecer un color interior como color de las puertas.
+  - Resultado: 61 colecciones como opción del modelo, 76 con aviso, 133 no se mencionan.
+  - Ejemplos: Couple ofrece laca, chapa, metal skin, telas y similpiel, pero no espejo ni gres; Arden, nada.
+  - La revisión (promoted/excluded) sigue mandando sobre la lectura.
+- **Colores.** Las 5 "dudas" (Khaki, Moss, Pale, Platin, Vanilla Ice) eran el mismo nombre en telas distintas, cada una con su muestra. El clasificador tenía un hueco: los oliva y crema desaturados caían en rojo o rosa. Corregido (Moss → verde, Vanilla Ice → crema).
+- **Materiales.**
+  - «Supporti a lama» → metal (la misma ficha: «PIEDI IN METALLO»).
+  - El léxico acepta las formas femeninas italianas (nobilitate, laccate opache).
+  - Lo que queda sin material no es duda: «Forma» es una lista de formas y «Anta Libeskind» viene vacía.
+- **Hoja corta**: `scripts/build-decisions-xlsx.py` → `~/Downloads/febal-casa-decisiones-2026-09-25.xlsx`, con 16 decisiones (15 en la v2).
+  - 7 piezas con foto (FEB-010, 031, 035, 037, 077, 085, 099).
+  - 9 preguntas, incluida la lista de acabados del showroom.
+  - Cada fila dice qué pasa si queda vacía.
+  - Cerradas sin persona: P11 (la ficha dice «effetto pelle»), P12 (Couple leída), P13 (sin lista → enlace a la ficha), P18 (la captura muestra Marlene) y P23 (las capturas reemplazan la v1).
+- FEB-010 Diciotto: su punto de vista apuntaba a las vitrinas de Trenta (las dos capturas eran de la misma pared).
+  - Diciotto es la pared de la TV y Trenta la de vitrinas con el paso al centro. Lo confirman las fichas: «pareti attrezzate» y «vano ponte / Anta Aurora».
+  - Nuevo POV: panorámica 19, yaw -60, pitch -3, fov 100. Se recapturó y re-observó. La duda se cerró, así que la hoja corta queda en 15 decisiones (`febal-casa-decisiones-2026-09-25-v2.xlsx`).
+  - Trenta tiene una vista frontal mejor en la panorámica 19 (yaw 17, pitch 2, fov 88). Se queda en la 18 hasta arreglar "Llévame" dentro de una misma panorámica.
+- FEB-094 (silla Dea) reencuadrada en el tour: yaw 117.7, pitch -44.4, fov 75.2. Llega al widget de producción con el próximo deploy.
+- **Pendiente:** acabados exactos y materiales de las piezas.
+  - Con la lista del showroom se completan solos.
+  - Si no existe, se hace una pasada por foto que marca SÍ solo cuando se ve sin duda.
+- Batería run9: 24 turnos, 0 plantillas, 2 reparaciones, $0.00091/turno. C15: Couple en azul → lacas Blu Notte/Ceruleo bajo pedido.
+
 ## Métricas de la suite (gpt-4o-mini, datos en modo dev, sin validar)
 
 | Corrida | Plantilla de respaldo | Reparaciones | Costo/turno | p50 | p95 |
@@ -133,7 +162,7 @@ Casos ya resueltos de punta a punta con datos reales:
 4. Bake-off de GPT baratos con la misma batería. Suite dorada sobre un catálogo ficticio congelado.
 
 ## Bloqueos
-- Ninguno técnico. Falta la revisión de Andrea (hechos validados: 0/818).
+- Ninguno técnico. El catálogo estricto ya es usable (818/818 con fuente literal). Falta la hoja corta de decisiones y la lista de acabados del showroom.
 
 ## Gasto en APIs
-≈ US$0.13, en 7 corridas de 22 turnos con gpt-4o-mini.
+≈ US$0.17, en 9 corridas de 22 a 24 turnos con gpt-4o-mini.

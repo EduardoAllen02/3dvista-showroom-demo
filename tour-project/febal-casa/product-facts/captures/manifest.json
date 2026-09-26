@@ -221,21 +221,21 @@
   "section": "CASA 01 - AUTENTICA",
   "target": {
    "media_name": "19",
-   "yaw": 13.8,
-   "pitch": -0.4,
-   "fov": 70.6
+   "yaw": -60.0,
+   "pitch": -3.0,
+   "fov": 100.0
   },
   "landed": {
    "media_name": "19",
-   "yaw": 13.8,
-   "pitch": -0.4,
-   "fov": 70.6
+   "yaw": -59.99999999999999,
+   "pitch": -3.0000000000000004,
+   "fov": 100
   },
   "landing_ok": true,
   "retried": false,
   "window_visible": true,
-  "sha1": "4f3d1405dbd5",
-  "captured_at": "2026-09-24T00:47:25Z",
+  "sha1": "9acf92d8bde3",
+  "captured_at": "2026-09-26T05:12:29Z",
   "file": "tour-project/febal-casa/product-facts/captures/FEB-010.png",
   "identical_to": []
  },
@@ -1925,21 +1925,21 @@
   "section": "GALLERIA",
   "target": {
    "media_name": "91",
-   "yaw": 131.4,
-   "pitch": -4.6,
-   "fov": 82
+   "yaw": 117.7,
+   "pitch": -44.4,
+   "fov": 75.2
   },
   "landed": {
    "media_name": "91",
-   "yaw": 131.4,
-   "pitch": -4.6000000000000005,
-   "fov": 82
+   "yaw": 117.7,
+   "pitch": -44.4,
+   "fov": 75.2
   },
   "landing_ok": true,
   "retried": false,
   "window_visible": true,
-  "sha1": "88d407df7269",
-  "captured_at": "2026-09-24T04:21:02Z",
+  "sha1": "a9ea29951b0a",
+  "captured_at": "2026-09-26T04:06:38Z",
   "file": "tour-project/febal-casa/product-facts/captures/FEB-094.png",
   "identical_to": []
  },

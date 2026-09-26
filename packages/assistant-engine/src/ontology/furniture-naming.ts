@@ -84,6 +84,8 @@ export function swatchFamily(hex: string | null): { family: ConceptId | null; to
   if (h >= 20 && h < 50 && s < 0.45 && l > 0.55) return { family: "color.beige", tone };
   if (h >= 8 && h < 45 && l <= 0.55) return { family: "color.brown", tone };
   if (h >= 45 && h < 68 && s >= 0.3) return { family: "color.yellow", tone };
+  // Desaturated olive/khaki (Moss, Khaki) and vanilla creams: not red or pink.
+  if (h >= 45 && h < 68) return { family: l > 0.75 ? "color.cream" : l > 0.55 ? "color.beige" : "color.green", tone };
   if (h >= 15 && h < 45) return { family: s > 0.5 ? "color.orange" : "color.beige", tone };
   if (h >= 68 && h < 170) return { family: "color.green", tone };
   if (h >= 170 && h < 260) return { family: "color.blue", tone };
@@ -133,6 +135,7 @@ const HEADER_ELSEWHERE: Record<string, [ConceptId, string]> = {
   "key west": ["material.fabric", "'TESSUTO KEY WEST' en la paleta NOTTE"], medici: ["material.fabric", "'TESSUTO MEDICI' en la paleta NOTTE"],
   jolie: ["material.fabric", "'TESSUTO JOLIE' en la paleta NOTTE"], roma: ["material.fabric", "'TESSUTO ROMA' en la paleta NOTTE"],
   bellezza: ["material.microfiber", "'MICROFIBRA BELLEZZA' en la paleta NOTTE"],
+  "supporti a lama": ["material.metal", "'PIEDI IN METALLO' (Carbon Grey, Silver Shade) en la ficha de Madia Onda"],
 };
 const UPHOLSTERY_LINES = ["boston", "campsbay", "city", "cloud", "miracle", "new lucca", "orlando", "pulse", "rimini", "solaris", "earth", "natural", "tecno", "pisa", "cheyenne", "mirabella"];
 

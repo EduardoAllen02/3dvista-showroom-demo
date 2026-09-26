@@ -5,12 +5,13 @@
  *   npx tsx scripts/build-catalog-v2.ts febal-casa --strict  # only facts validated by the client
  *
  * Inputs:  tour-project/<tour>/product-facts/{models,model-attributes,placements?}.json,
+ *          palette-decisions.json (which line-palette collections apply to each model, read from its page),
  *          *.reviewed.json (client review, when present), clients/<tour>/catalog.json (tour binding).
  * Outputs: clients/<tour>/catalog.v2.json and clients/<tour>/catalog.v2.gates.json
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { compileCatalog, type RawObservation, type RawReview } from "../packages/assistant-engine/src/catalog/compile.js";
+import { compileCatalog, type RawObservation, type RawPaletteDecision, type RawReview } from "../packages/assistant-engine/src/catalog/compile.js";
 import { Lexicon } from "../packages/assistant-engine/src/ontology/lexicon.js";
 import { FURNITURE_PACK } from "../packages/assistant-engine/src/ontology/furniture-pack.js";
 
@@ -35,6 +36,10 @@ if (existsSync(placementsPath)) {
 }
 const reviewPath = path.join(facts, "review.reviewed.json");
 const review: RawReview | undefined = existsSync(reviewPath) ? read(reviewPath) : undefined;
+const decisionsPath = path.join(facts, "palette-decisions.json");
+const palette_decisions = existsSync(decisionsPath)
+  ? Object.fromEntries(Object.entries(read(decisionsPath)).filter(([k]) => !k.startsWith("_"))) as Record<string, RawPaletteDecision>
+  : undefined;
 
 const { catalog, report } = compileCatalog({
   tour_id: tour,
@@ -46,6 +51,7 @@ const { catalog, report } = compileCatalog({
   observations,
   ignore_legacy_values: ["FEB-026", "FEB-027"], // seeded test data (HANDOFF_FEBAL_CASA.md)
   review,
+  palette_decisions,
   lexicon: new Lexicon(FURNITURE_PACK),
 });
 

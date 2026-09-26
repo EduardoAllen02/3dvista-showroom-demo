@@ -1,0 +1,99 @@
+{
+ "_doc": "Which collections of a line palette ('Finiture per NOTTE' = bedroom line, the shared wardrobe palette) apply to each model, read by hand from the page text (python scripts/facts-page-text.py <model>). aplica = offered as a normal on-order option; aviso = mentioned only with 'check its page that it applies to this model'; no_aplica = never mentioned. Collections not listed take 'default'. Interior finishes (FINITURE CASSA INTERNA) are never 'aplica', so an interior colour is not offered as the colour of the doors.",
+ "_leido": "2026-09-25",
+ "arden": {
+  "default": "no_aplica",
+  "evidencia": "disponibile in Rovere Dark, Rovere e Noce … Il legno non viene addolcito da rivestimenti (sus 3 maderas ya salen del texto de la ficha)"
+ },
+ "astrid": {
+  "default": "aviso",
+  "no_aplica": ["TESSUTO JENNY", "TESSUTO BENTLEY", "TESSUTO QUEENS", "TESSUTO RITUAL", "TESSUTO CAVALIERE", "TESSUTO COLONNA", "TESSUTO KEY WEST", "TESSUTO MEDICI", "TESSUTO JOLIE", "TESSUTO ROMA", "MICROFIBRA BELLEZZA", "SIMILPELLE INCA", "SIMILPELLE TAPE"],
+  "evidencia": "Il vassoio superiore in cristallo … La struttura articola fessure e pannelli (grupo de cómodas, sin tapizado)"
+ },
+ "couple": {
+  "default": "no_aplica",
+  "aplica": ["IMPIALLACCIATO ECOMERI", "LACCATO OPACO", "LACCATO LUCIDO", "METAL SKIN", "TESSUTO JENNY", "TESSUTO BENTLEY", "TESSUTO QUEENS", "TESSUTO RITUAL", "TESSUTO CAVALIERE", "TESSUTO COLONNA", "TESSUTO KEY WEST", "TESSUTO MEDICI", "TESSUTO JOLIE", "TESSUTO ROMA", "MICROFIBRA BELLEZZA", "SIMILPELLE INCA", "SIMILPELLE TAPE"],
+  "evidencia": "L'alternanza tra superfici rigide (impiallacciato, laccato, laccato metal) e zone imbottite in tessuto o similpelle"
+ },
+ "febal-notte-gruppo-como-e-comodino-marlene": {
+  "default": "aviso",
+  "aplica": ["NOBILITATO", "LACCATO OPACO", "LACCATO LUCIDO", "GRES"],
+  "no_aplica": ["TESSUTO JENNY", "TESSUTO BENTLEY", "TESSUTO QUEENS", "TESSUTO RITUAL", "TESSUTO CAVALIERE", "TESSUTO COLONNA", "TESSUTO KEY WEST", "TESSUTO MEDICI", "TESSUTO JOLIE", "TESSUTO ROMA", "MICROFIBRA BELLEZZA", "SIMILPELLE INCA", "SIMILPELLE TAPE", "SPECCHIO", "TELAIO ALLUMINIO"],
+  "evidencia": "Il top personalizzabile — in nobilitato, laccato o gres (cómoda y burós, sin tapizado)"
+ },
+ "aurora-porta-battente": {
+  "default": "no_aplica",
+  "aplica": ["VETRI"],
+  "aviso": ["FINITURE CASSA INTERNA", "SIMILPELLE INCA", "TELAIO ALLUMINIO"],
+  "evidencia": "L'anta battente Aurora … può accogliere un vetro Ombra fumé o Stop-sol … All'interno, l'anta Aurora si abbina a casse in nobilitato Noce … Il telaio estraibile Plus … il ripiano rivestito in similpelle Inca"
+ },
+ "febal-notte-armadio-scorrevole-halley-01": {
+  "default": "aviso",
+  "aplica": ["IMPIALLACIATI ECCIMERI", "NOBILITATI"],
+  "evidencia": "Halley gioca sui contrasti tra superfici lignee e texture materiche … I quadrotti che compongono l'anta possono essere personalizzati singolarmente in finiture e materiali"
+ },
+ "hype": {
+  "default": "aplica",
+  "aviso": ["FINITURE CASSA INTERNA"],
+  "evidencia": "Le finiture disponibili della collezione NOTTE offrono un'ampia scelta cromatica e materica"
+ },
+ "lewitt-lumia": {
+  "default": "aviso",
+  "aplica": ["LACCATO OPACO"],
+  "evidencia": "La luce mette in risalto le superfici laccate opache … Proposta in laccato opaco Bianco Kent, l'anta Lumia si abbina a interni in nobilitato Noce"
+ },
+ "lewitt-plus": {
+  "default": "no_aplica",
+  "aplica": ["NOBILITATI", "LACCATO OPACO", "LACCATO LUCIDO", "IMPIALLACIATI ECCIMERI"],
+  "aviso": ["FINITURE CASSA INTERNA", "SIMILPELLE INCA", "VETRI"],
+  "evidencia": "I pannelli principali possono essere scelti tra finiture nobilitate, laccate o in legno impiallacciato … casse interne in nobilitato Leather grey … top in similpelle … ripiani in vetro"
+ },
+ "rodin": {
+  "default": "no_aplica",
+  "aplica": ["LACCATO OPACO"],
+  "aviso": ["FINITURE CASSA INTERNA"],
+  "evidencia": "I quadrotti che compongono l'anta sono personalizzabili singolarmente con finiture e colori laccati opachi a catalogo"
+ },
+ "tipologia-armadi-ante-battente-barret": {
+  "default": "no_aplica",
+  "aplica": ["NOBILITATI", "LACCATO OPACO"],
+  "aviso": ["FINITURE CASSA INTERNA", "SIMILPELLE INCA"],
+  "evidencia": "finiture nobilitate e laccate opache della collezione NOTTE … Gli interni in nobilitato Noce o Desert … ripiani rivestiti in similpelle"
+ },
+ "tipologia-armadi-ante-battente-profile-block": {
+  "default": "no_aplica",
+  "aplica": ["NOBILITATI"],
+  "aviso": ["LACCATO OPACO", "FINITURE CASSA INTERNA"],
+  "evidencia": "Le ante in nobilitato disegnano una superficie piena … Il profilo brunito o laccato"
+ },
+ "tipologia-armadi-ante-battente-profile-leather": {
+  "default": "no_aplica",
+  "aplica": ["SIMILPELLE INCA"],
+  "aviso": ["FINITURE CASSA INTERNA"],
+  "evidencia": "si distingue per il rivestimento effetto pelle … profilo verticale in metallo brunito"
+ },
+ "tipologia-armadi-ante-battente-profile-reflex": {
+  "default": "no_aplica",
+  "aviso": ["VETRI", "FINITURE CASSA INTERNA"],
+  "evidencia": "utilizza ante in vetro riflettente fumé (el vidrio reflejante no está nombrado igual en la lista VETRI)"
+ },
+ "tipologia-armadi-ante-battente-profile-solid": {
+  "default": "no_aplica",
+  "aplica": ["NOBILITATI"],
+  "aviso": ["FINITURE CASSA INTERNA"],
+  "evidencia": "le ante in finiture effetto legno o cemento (la colección Nobilitati trae Rovere, Noce, Eucalipto, Cemento Masdar)"
+ },
+ "tipologia-armadi-cassettiere-square": {
+  "default": "aviso",
+  "evidencia": "valorizzata da finiture e materiali pregiati … top vaschetta, disponibili in diversi materiali"
+ },
+ "tipologia-cabine-armadio-lapis": {
+  "default": "aviso",
+  "evidencia": "Le finiture selezionabili si armonizzano con la palette materica della collezione NOTTE (dice que combinan con la paleta, no que estén todas; estructura abierta sin puertas)"
+ },
+ "tipologia-cabine-armadio-telaio": {
+  "default": "aviso",
+  "aplica": ["VETRI", "TELAIO ALLUMINIO"],
+  "evidencia": "struttura in metallo … pannelli in vetro … vetri trasparenti o fumé … proposta in più varianti di finitura"
+ }
+}
