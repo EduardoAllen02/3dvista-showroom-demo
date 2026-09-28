@@ -15,6 +15,9 @@ const S = {
   in: { es: "en", it: "in", en: "in" } as L,
   noShowroom: { es: "En el showroom no lo tenemos así", it: "In showroom non l'abbiamo così", en: "We don't have it like that in the showroom" } as L,
   butOrder: { es: "pero sí está disponible bajo pedido", it: "ma è disponibile su ordinazione", en: "but it is available to order" } as L,
+  orderIn: { es: "disponible bajo pedido en", it: "disponibile su ordinazione in", en: "available to order in" } as L,
+  inShowroom: { es: "en el showroom:", it: "in showroom:", en: "in the showroom:" } as L,
+  alsoOrder: { es: "También bajo pedido", it: "Anche su ordinazione", en: "Also on order" } as L,
   shownAs: { es: "en el showroom está en", it: "in showroom è in", en: "in the showroom it is in" } as L,
   seeIt: { es: "mira", it: "vedi", en: "see" } as L,
   lineNot: { es: "no lo tengo confirmado así para este modelo, pero", it: "non l'ho confermato così per questo modello, ma", en: "isn't confirmed like that for this model, but" } as L,
@@ -39,6 +42,9 @@ const S = {
   detailKnown: { es: "Según su ficha:", it: "Secondo la scheda:", en: "According to its page:" } as L,
   detailUnknown: { es: "No tengo ese dato confirmado;", it: "Non ho questo dato confermato;", en: "I don't have that detail confirmed;" } as L,
   notFound: { es: "No encontré esa pieza. ¿Me dices cuál es?", it: "Non ho trovato quel pezzo. Mi dici quale?", en: "I couldn't find that piece. Which one do you mean?" } as L,
+  noPrice: { es: "No manejo precios: dependen de las medidas y los acabados. En su ficha puedes reservar una cita gratis con un asesor:", it: "Non gestisco i prezzi: dipendono da misure e finiture. Nella sua scheda puoi prenotare un appuntamento gratuito con un consulente:", en: "I don't have prices: they depend on sizes and finishes. On its page you can book a free appointment with an adviser:" } as L,
+  moreInfo: { es: "Más detalles en", it: "Più dettagli nella", en: "More details on" } as L,
+  price: { es: "No manejo precios: dependen de las medidas y los acabados que elijas. Un asesor te los da en la tienda; en la ficha de cada modelo puedes reservar una cita gratis. ¿Qué mueble te interesa?", it: "Non gestisco i prezzi: dipendono dalle misure e dalle finiture che scegli. Un consulente te li dà in negozio; nella scheda di ogni modello puoi prenotare un appuntamento gratuito. Quale arredo ti interessa?", en: "I don't have prices: they depend on the sizes and finishes you choose. An adviser gives them in the store; on each model's page you can book a free appointment. Which piece are you interested in?" } as L,
   out_of_scope: { es: "Solo puedo ayudarte con los muebles de este showroom. ¿Te muestro sofás, cocinas o armarios?", it: "Posso aiutarti solo con gli arredi di questo showroom. Ti mostro divani, cucine o armadi?", en: "I can only help with the furniture in this showroom. Shall I show you sofas, kitchens or wardrobes?" } as L,
   smalltalk: { es: "Te ayudo con gusto a encontrar muebles del showroom. ¿Qué estás buscando?", it: "Ti aiuto volentieri a trovare arredi dello showroom. Cosa stai cercando?", en: "Happy to help you find furniture in the showroom. What are you looking for?" } as L,
   greeting: { es: "¡Hola! ¿Qué te gustaría ver hoy?", it: "Ciao! Cosa ti piacerebbe vedere oggi?", en: "Hi! What would you like to see today?" } as L,
@@ -82,18 +88,22 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer): Segment
       const id = bundle.groups[0]?.cards[0]?.exhibit_id;
       if (!id) return [{ text: S.notFound[lang], claims: [] }];
       const known = (bundle.details ?? []).filter((d) => d.status === "known");
-      const unknown = (bundle.details ?? []).filter((d) => d.status === "unknown");
+      const unknown = (bundle.details ?? []).filter((d) => d.status === "unknown" && d.field !== "price");
+      const price = (bundle.details ?? []).some((d) => d.field === "price");
       if (known.length) seg.push({ text: `{{p:${id}}} — ${S.detailKnown[lang]} ${known.map((d) => `{{f:${d.field}}}`).join("; ")}.`, claims: [] });
       if (unknown.length) seg.push({ text: `{{p:${id}}}: ${S.detailUnknown[lang]} ${S.checkPage[lang]} {{link:${id}}}.`, claims: unknown.map((d) => `unk:${id}:${d.field}`) });
+      if (price) seg.push({ text: `${S.noPrice[lang]} {{link:${id}}}.`, claims: [`price:${id}`] });
+      if (!unknown.length && !price) seg.push({ text: `${S.moreInfo[lang]} {{link:${id}}}.`, claims: [`lnk:${id}`] });
       break;
     }
     default: {
-      for (const g of by("exact_exhibited")) seg.push({ text: `${S.exact[lang]} ${g.cards.slice(0, 4).map((c) => `{{p:${c.exhibit_id}}} (${S.in[lang]} {{z:${c.exhibit_id}}})`).join(", ")}.`, claims: [] });
+      for (const g of by("exact_exhibited")) seg.push({ text: `${S.exact[lang]} ${g.cards.slice(0, 4).map((c) => `{{p:${c.exhibit_id}}} ${S.in[lang]} {{z:${c.exhibit_id}}}`).join(", ")}.`, claims: [] });
       const absClaimed = obl("abs:");
       for (const g of by("exact_on_order")) {
-        for (const [i, c] of g.cards.slice(0, 3).entries()) {
+        // Only the pieces the engine asked to name (the rest are in the cards).
+        for (const [i, c] of g.cards.filter((x) => bundle.obligations.includes(`ord:${x.exhibit_id}`)).entries()) {
           const claims = [`ord:${c.exhibit_id}`, ...(i === 0 ? absClaimed : [])];
-          seg.push({ text: `${S.noShowroom[lang]}: {{p:${c.exhibit_id}}} ${c.shown_as ? `${S.shownAs[lang]} {{shown:${c.exhibit_id}}}, ` : ""}${S.butOrder[lang]}: {{v:${c.exhibit_id}}}; ${S.seeIt[lang]} {{link:${c.exhibit_id}}}.`, claims });
+          seg.push({ text: `${i === 0 ? `${by("exact_exhibited").length ? S.alsoOrder[lang] : S.noShowroom[lang]}: ` : ""}{{p:${c.exhibit_id}}}${c.shown_as ? ` (${S.inShowroom[lang]} {{shown:${c.exhibit_id}}})` : ""}, ${S.orderIn[lang]} {{v:${c.exhibit_id}}}; ${S.seeIt[lang]} {{link:${c.exhibit_id}}}.`, claims });
         }
       }
       for (const g of by("line_on_order")) {
@@ -141,20 +151,48 @@ export function completeObligations(segments: Segment[], bundle: Bundle, lang: L
   for (const ob of bundle.obligations) {
     const [kind, a] = ob.split(":");
     if (kind === "vals" && !linksOnly && !has(`{{vals:${a}}}`)) extra.push({ text: `${S.values[lang]} {{vals:${a}}}.`, claims: [ob] });
-    if (kind === "ord" && has(`{{p:${a}}}`)) {
-      if (!has(`{{v:${a}}}`)) { if (!linksOnly) extra.push({ text: `{{p:${a}}}: ${S.butOrder[lang]} {{v:${a}}}; ${S.seeIt[lang]} {{link:${a}}}.`, claims: [ob] }); }
-      else if (!has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.seeIt[lang])} {{link:${a}}}.`, claims: [ob] });
+    if (kind === "ord") {
+      // A piece it forgot altogether (second try only) or named without its options: add one short sentence.
+      if (!has(`{{v:${a}}}`)) { if (!linksOnly) extra.push({ text: `{{p:${a}}}: ${S.orderIn[lang]} {{v:${a}}}; ${S.seeIt[lang]} {{link:${a}}}.`, claims: [ob] }); }
+      else if (!has(`{{link:${a}}}`)) extra.push({ text: `{{p:${a}}}: ${S.seeIt[lang]} {{link:${a}}}.`, claims: [ob] });
     }
     if (kind === "lin" && has(`{{p:${a}}}`)) {
       if (!has(`{{v:${a}}}`) || !has(`{{line:${a}}}`)) { if (!linksOnly) extra.push({ text: `{{p:${a}}}: {{line:${a}}} ${S.lineHas[lang]} {{v:${a}}}; ${S.lineCheck[lang]} {{link:${a}}} ${S.lineApplies[lang]}.`, claims: [ob] }); }
-      else if (!has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.lineCheck[lang])} {{link:${a}}} ${S.lineApplies[lang]}.`, claims: [ob] });
+      else if (!has(`{{link:${a}}}`)) extra.push({ text: `{{p:${a}}}: ${S.lineCheck[lang]} {{link:${a}}} ${S.lineApplies[lang]}.`, claims: [ob] });
     }
     if (kind === "unk" && has(`{{p:${a}}}`) && !has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.checkPage[lang])} {{link:${a}}}.`, claims: [ob] });
+    if (kind === "price" && !has(`{{link:${a}}}`)) extra.push({ text: `${S.noPrice[lang]} {{link:${a}}}.`, claims: [ob] });
+    if (kind === "lnk" && !has(`{{link:${a}}}`) && !bundle.obligations.includes(`price:${a}`)) extra.push({ text: `${S.moreInfo[lang]} {{link:${a}}}.`, claims: [ob] });
   }
   if (!extra.length) return null;
+  // Before the closing question (the question can share a segment with the rest of the answer).
   const last = segments[segments.length - 1];
-  if (last && last.text.trim().endsWith("?")) return [...segments.slice(0, -1), ...extra, last];
-  return [...segments, ...extra];
+  const t = last?.text.trim() ?? "";
+  if (!t.endsWith("?")) return [...segments, ...extra];
+  const open = t.lastIndexOf("¿");
+  const stop = Math.max(t.lastIndexOf(". ", t.length - 2), t.lastIndexOf("! ", t.length - 2));
+  const cut = open >= 0 ? open : stop >= 0 ? stop + 2 : 0;
+  const head = t.slice(0, cut).trim();
+  return [...segments.slice(0, -1), ...(head ? [{ text: head, claims: last.claims }] : []), ...extra, { text: t.slice(cut).trim(), claims: head ? [] : last.claims }];
 }
 
 const cap = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);
+
+/**
+ * One question, at the end: the composer sometimes asks mid-answer ("¿Te gustaría verlo? Además…").
+ * Keeps every statement in order and only the LAST question, which goes to the end unless a short
+ * closing sentence follows it ("¿Te muestro Couple en azul? Está disponible bajo pedido.").
+ */
+export function oneClosingQuestion(text: string): string {
+  const isQ = (s: string) => s.trim().endsWith("?");
+  const all = text.split(/(?<=[.!?])\s+(?=[¿¡\p{Lu}*\[])/u);
+  const lastQ = all.map(isQ).lastIndexOf(true);
+  if (lastQ < 0) return text;
+  const kept = all.filter((s, i) => !isQ(s) || i === lastQ);
+  const q = kept.findIndex(isQ);
+  const after = kept.slice(q + 1).join(" ").replace(/\{\{[^}]+\}\}|\[[^\]]*\]\([^)]*\)/g, "x").split(/\s+/).filter(Boolean).length;
+  return (after <= 10 ? kept : [...kept.slice(0, q), ...kept.slice(q + 1), kept[q]]).join(" ");
+}
+
+/** Said once when the visitor writes in a language the assistant does not speak (answers go in English). */
+export const FOREIGN_OFFER = "I can help you in English, Italian (italiano) or Spanish (español).";

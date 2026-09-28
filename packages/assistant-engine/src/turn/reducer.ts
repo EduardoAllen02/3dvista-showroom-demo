@@ -3,7 +3,7 @@ import type { Lexicon } from "../ontology/lexicon.js";
 import { normalizeText } from "../ontology/lexicon.js";
 import type { ActiveConstraint, ConstraintFacet } from "../engine/types.js";
 import type { ConversationState, Topic } from "./state.js";
-import { detectLang } from "./state.js";
+import { detectLang, foreignLang } from "./state.js";
 import type { PlanConstraint, TurnPlan } from "./planner.js";
 
 /**
@@ -24,21 +24,26 @@ export type EngineAction =
   | { kind: "navigate"; exhibit: string }
   | { kind: "show"; exhibits: string[] }
   | { kind: "clarify"; candidates: string[]; reason: "ambiguous_ref" | "no_focus" | "empty" }
-  | { kind: "template"; template: "out_of_scope" | "smalltalk" | "decline" | "greeting" };
+  | { kind: "template"; template: "out_of_scope" | "smalltalk" | "decline" | "greeting" | "price" };
 
-export interface ReduceResult { state: ConversationState; action: EngineAction; notes: string[] }
+export interface ReduceResult { state: ConversationState; action: EngineAction; notes: string[]; foreign?: string }
 
 export class Reducer {
   private exhibitIds: Set<string>;
   private modelIds: Set<string>;
   private exhibitModel = new Map<string, string>();
   private exhibitCategory = new Map<string, ConceptId>();
+  private broadStyles = new Set<string>();
   private nameIndex: { norm: string; model: string }[] = [];
 
   constructor(private catalog: CanonicalCatalog, private lx: Lexicon) {
     this.exhibitIds = new Set(catalog.exhibits.map((e) => e.id));
     this.modelIds = new Set(catalog.models.map((m) => m.id));
     for (const e of catalog.exhibits) { this.exhibitModel.set(e.id, e.model_id); this.exhibitCategory.set(e.id, e.category); }
+    // Styles most of the showroom has ("elegante"): asked alone they narrow nothing, so ask the furniture type first.
+    const styleCount = new Map<string, number>();
+    for (const e of catalog.exhibits) if (e.styles.status === "known") for (const st of e.styles.value) styleCount.set(st, (styleCount.get(st) ?? 0) + 1);
+    for (const [st, n] of styleCount) if (n / catalog.exhibits.length >= 0.3) this.broadStyles.add(st);
     // Distinctive model names mentioned in a message ("Melrose", "Profile Leather", "Madeira").
     const generic = new Set(["anta", "battente", "scorrevole", "origina", "square", "sistema", "struttura", "madia", "isola", "cassettiera", "camerette", "componibili", "per", "bambini", "e", "ragazzi"]);
     for (const m of catalog.models) {
@@ -57,12 +62,15 @@ export class Reducer {
     return [...new Set(this.nameIndex.filter((n) => msg.includes(` ${n.norm} `)).map((n) => n.model))];
   }
 
-  reduce(prev: ConversationState, plan: TurnPlan, message: string): ReduceResult {
+  /** foreign: the visitor wrote in fr/de/pt and `message` is its English translation. */
+  reduce(prev: ConversationState, plan: TurnPlan, message: string, foreign: string | null = foreignLang(message)): ReduceResult {
     const notes: string[] = [];
     const s: ConversationState = structuredClone(prev);
     s.turn += 1;
     s.lang = detectLang(message, prev.lang);
     if (s.lang !== plan.lang) notes.push(`lang: detector=${s.lang} plan=${plan.lang}`);
+    // A language the assistant does not speak: answer in English (the offer of the three languages is added once).
+    if (foreign) { s.lang = "en"; plan.lang = "en"; notes.push(`foreign language ${foreign} → English`); }
 
     // ---- references: only ids the visitor can actually be pointing at
     // The planner sometimes returns "FEB-101 Letto Arden": keep the id it contains.
@@ -109,13 +117,20 @@ export class Reducer {
     // Normalize the intent: "list" only for a bare category; "variant" needs a single focused piece.
     if (plan.intent === "list" && proposed.some((c) => c.facet !== "category") ) { plan.intent = "search"; notes.push("list→search (has attributes)"); }
     if (plan.intent === "variant" && !focus) { plan.intent = "search"; notes.push("variant→search (no single focus)"); }
+    // "algo verde" is a search even when the planner calls it chit-chat or a recommendation.
+    const concrete = lexHits.some((h) => ["category", "color", "material", "shape"].includes(h.facet) && !negated(h.start));
+    if ((plan.intent === "smalltalk" || (plan.intent === "recommend" && !prev.wishlist.length)) && !focus && concrete) {
+      notes.push(`${plan.intent}→search (the visitor named what they want)`);
+      plan.intent = "search";
+    }
     const moodOnly = proposed.length > 0 && proposed.every((c) => c.facet === "mood");
     if (plan.intent === "recommend" && moodOnly) { plan.intent = "search"; notes.push("recommend→mood search"); }
     // Concepts the visitor clearly said that the plan forgot (only for facets it left empty).
     const searching = ["search", "variant", "list"].includes(plan.intent);
     if (searching) {
-      for (const facet of ["category", "material", "color", "shape", "mood"] as const) {
-        const hits = lexHits.filter((h) => h.facet === facet);
+      for (const facet of ["category", "material", "color", "shape", "style", "mood"] as const) {
+        // A word that is also a mood ("acogedor") stays a soft mood preference, never a style filter.
+        const hits = lexHits.filter((h) => h.facet === facet && !(facet === "style" && lexHits.some((m) => m.facet === "mood" && m.start === h.start)));
         if (hits.length && !proposed.some((c) => c.facet === facet)) {
           if (facet === "category" && plan.intent === "variant") continue;
           for (const h of facet === "mood" ? hits : hits.slice(0, 1)) {
@@ -128,10 +143,29 @@ export class Reducer {
 
     if (plan.intent === "list" && proposed.some((c) => c.facet !== "category")) { plan.intent = "search"; notes.push("list→search (attributes from lexicon)"); }
 
+    // A variant of the linked piece itself ("¿y la Arden en azul?" linked to Arden) is not a
+    // "goes with X" topic: it would add "harmonizes with Arden" on top of "Arden in blue".
+    if (plan.topic === "linked" && focus && valid(plan.linked_ref)
+      && (plan.linked_ref === focus || (plan.intent === "variant" && this.exhibitModel.get(plan.linked_ref!) === this.exhibitModel.get(focus)))) {
+      plan.topic = "continue";
+      notes.push("linked → continue (variant of the linked piece itself)");
+    }
+    // Prices are never in the data: "¿cuánto cuesta?" is a detail (price) of the piece in focus.
+    const priceAsked = PRICE.test(message);
+    if (priceAsked && focus) {
+      plan.intent = "detail";
+      if (!plan.detail_fields.includes("price")) plan.detail_fields = [...plan.detail_fields, "price"];
+      notes.push("price asked → detail(price)");
+    }
     // ---- topic invariant: a different category without an explicit link = new topic
     const curCat = s.topic.constraints.find((c) => c.facet === "category" && c.op === "is")?.value;
     const newCat = proposed.find((c) => c.facet === "category" && c.op === "is")?.value;
     const related = (a: ConceptId, b: ConceptId) => this.lx.isA(a, b) || this.lx.isA(b, a);
+    // Adding a furniture type to a search that had none ("algo elegante" → "sofás") narrows it.
+    if (plan.topic === "new" && newCat && !curCat && s.topic.constraints.some((c) => c.facet !== "model")) {
+      plan.topic = "continue";
+      notes.push("new → continue (first furniture type for the current search)");
+    }
     let topicMode = plan.topic;
     if (plan.topic !== "linked" && newCat && curCat && !related(newCat, curCat)) {
       if (plan.topic !== "new") notes.push("topic forced to new (category changed)");
@@ -177,9 +211,9 @@ export class Reducer {
     if (focus) { s.focus = focus; s.mentioned = [focus, ...s.mentioned.filter((x) => x !== focus)].slice(0, 12); }
 
     // ---- action
-    const action = this.decide(plan, s, focus, named, notes);
+    const action: EngineAction = priceAsked && !focus ? { kind: "template", template: "price" } : this.decide(plan, s, focus, named, notes);
     if (s.pending && s.pending.expires_turn < s.turn) s.pending = null;
-    return { state: s, action, notes };
+    return { state: s, action, notes, foreign: foreign ?? undefined };
   }
 
   private validValue(c: PlanConstraint, notes: string[]): boolean {
@@ -201,6 +235,10 @@ export class Reducer {
       case "variant":
         if (!cons.some((c) => c.strength === "must")) {
           if (cons.some((c) => c.facet === "mood")) return { kind: "mood", constraints: cons };
+          return { kind: "clarify", candidates: [], reason: "empty" };
+        }
+        if (cons.filter((c) => c.strength === "must").every((c) => c.facet === "style" && this.broadStyles.has(c.value ?? ""))) {
+          notes.push("broad style alone → ask the furniture type");
           return { kind: "clarify", candidates: [], reason: "empty" };
         }
         return { kind: "search", constraints: cons };
@@ -249,6 +287,8 @@ export class Reducer {
     }
   }
 }
+
+const PRICE = /(cu[aá]nto\s+(cuesta|cuestan|vale|valen|sale|salen)|\bprecios?\b|\bprezz[oi]\b|quanto\s+cost|how\s+much|\bprices?\b|\bcost(o|s)?\b)/i;
 
 const NEGATORS = new Set(["no", "sin", "ni", "non", "senza", "not", "without", "except", "excepto", "tranne", "nada"]);
 

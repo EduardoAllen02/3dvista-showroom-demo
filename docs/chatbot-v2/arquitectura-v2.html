@@ -160,6 +160,7 @@
         <div class="chips" role="group" aria-label="Ejemplos">
           <button type="button" class="chip" id="sc-amarillo" aria-pressed="false">«¿Lo tienes en amarillo?»</button>
           <button type="button" class="chip" id="sc-cuero" aria-pressed="false">«Quiero un sofá de cuero»</button>
+          <button type="button" class="chip" id="sc-azul" aria-pressed="false">«¿Tienes la cama Couple en azul?»</button>
         </div>
         <div class="stepbar" id="stepbar" hidden>
           <span class="count" id="stepCount">Paso 1 de 9</span>
@@ -167,7 +168,7 @@
           <button type="button" id="next" aria-label="Paso siguiente">Siguiente ›</button>
           <button type="button" id="exit" aria-label="Salir del recorrido">✕</button>
         </div>
-        <div class="say" id="stepText">Los dos ejemplos salen de la última batería con gpt-4o-mini (23 de septiembre de 2026): mismo texto, mismas piezas, mismos tiempos.</div>
+        <div class="say" id="stepText">Los ejemplos salen de las baterías con gpt-4o-mini del 23 y el 25 de septiembre de 2026: mismo texto, mismas piezas, mismos tiempos.</div>
       </section>
 
       <section class="detail" id="detail" aria-live="polite"></section>
@@ -201,13 +202,13 @@
       d: "gpt-4o-mini lee el mensaje y devuelve únicamente un JSON con vocabulario cerrado: la intención (buscar, listar, variante, detalle, ubicar, recomendar…) y los atributos como identificadores (color.yellow, shape.corner). No escribe nada para el visitante ni decide qué existe.",
       f: ["src/turn/planner.ts"], kv: [["Tiempo típico", "≈1,3 s"]] },
     { id: "lexicon", x: 710, y: 64, k: "data", t: "Diccionario de sinónimos", s: "es · it · en",
-      d: "Traduce cómo habla la gente a conceptos: «en L» = de ángulo, «cuero» = piel, «vino» = rojo, «fino» = elegante. Distingue falsos amigos: similpiel y nobuk NO son piel. Se pueden agregar o quitar sinónimos en la hoja «Sinónimos» del Excel de revisión.",
+      d: "Traduce cómo habla la gente a conceptos: «en L» = de ángulo, «cuero» = piel, «vino» = rojo, «fino» = elegante. Distingue falsos amigos: similpiel y nobuk NO son piel. Se pueden agregar o quitar sinónimos en la hoja «Sinónimos» de la base de datos en Excel.",
       f: ["src/ontology/furniture-pack.ts", "src/ontology/lexicon.ts"], kv: [["Conceptos", "110"], ["Sinónimos", "≈1.100"]] },
     { id: "reducer", x: 710, y: 170, k: "code", t: "Reductor", s: "valida y traduce el plan",
       d: "Código que no se fía del LLM: valida cada identificador, detecta negaciones («que no sea negra»), completa con el diccionario lo que el LLM olvidó y lo combina con la memoria. El resultado son filtros exactos para el motor.",
       f: ["src/turn/reducer.ts"] },
     { id: "engine", x: 930, y: 170, k: "code", t: "Motor de búsqueda", s: "decide qué existe · sin LLM",
-      d: "Es quien decide qué hay. Cuatro niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la lista propia de la ficha lo ofrece: regla de disponibilidad), DE LA LÍNEA (solo la paleta de la línea lo tiene, p. ej. «Finiture per NOTTE» = línea Dormitorio: se menciona con el aviso de confirmar en la ficha si aplica al modelo) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
+      d: "Es quien decide qué hay. Cuatro niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la lista propia de la ficha lo ofrece: regla de disponibilidad), DE LA LÍNEA (la paleta compartida de la línea, p. ej. «Finiture per NOTTE» = línea Dormitorio; qué colecciones aplican a cada modelo se decidió leyendo su ficha: las que aplican pasan a bajo pedido, las dudosas se mencionan con el aviso de confirmar en la ficha y las que no aplican nunca se mencionan) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
       f: ["src/engine/engine.ts"], kv: [["Costo de relajar", "categoría 100 · modelo 50 · forma 6 · material 5 · color 4"]] },
     { id: "oracle", x: 1180, y: 64, k: "code", t: "Oráculo de pruebas", s: "segunda implementación",
       d: "Una segunda versión del motor, escrita por separado, contra la que se compara el motor real en todas las combinaciones de 1 a 3 filtros. Si alguna vez difieren, la prueba falla.",
@@ -223,7 +224,7 @@
       f: ["src/turn/verifier.ts"] },
     { id: "fallback", x: 270, y: 404, k: "code", t: "Reparar o plantilla", s: "si el verificador falla", h: 58,
       d: "Si la respuesta no pasa: el redactor recibe la lista de errores y lo intenta una vez más; si vuelve a fallar, se usa una plantilla escrita en código (es / it / en), que siempre es correcta aunque suene menos natural.",
-      f: ["src/turn/templates.ts"], kv: [["Última batería", "5 reparaciones y 1 plantilla en 22 turnos"]] },
+      f: ["src/turn/templates.ts"], kv: [["Última batería", "2 reparaciones y 0 plantillas en 24 turnos"]] },
     { id: "respuesta", x: 50, y: 320, k: "ui", t: "Respuesta + tarjetas", s: "botón «Llévame» al mueble",
       d: "El visitante ve el texto, tarjetas agrupadas con el motivo (p. ej. «amarillo ✓ · bajo pedido») y el botón «Llévame», que mueve la cámara del tour hasta la pieza. El LLM nunca ve coordenadas de cámara.",
       f: ["src/turn/render.ts (tarjetas)", "packages/tour-bridge (navegación)"] },
@@ -232,29 +233,32 @@
       d: "La web oficial: una ficha por modelo con listas de acabados, medidas y texto. Es la fuente de lo que se puede pedir.",
       f: [] },
     { id: "scraper", x: 290, y: 548, k: "data", t: "Fichas leídas", s: "scraper + lectura a mano", w: 200,
-      d: "Un script descarga cada ficha y extrae los acabados con su muestra de color. Después se leyeron a mano las 56 fichas: forma, materiales, estilo y medidas como SI/NO con la cita literal. Hallazgo: 18 listas son paletas genéricas (no se ofrecen como opción segura).",
+      d: "Un script descarga cada ficha y extrae los acabados con su muestra de color. Después se leyeron a mano las 56 fichas: forma, materiales, estilo y medidas como SI/NO con la cita literal. Hallazgo: 18 fichas muestran la paleta compartida de su línea en vez de una lista propia; cada una se leyó para decidir qué colecciones le aplican (caja «Paletas por modelo»).",
       f: ["scripts/scrape-febal-facts.py", "product-facts/models.json", "product-facts/model-attributes.json"], kv: [["Opciones", "5.138"]] },
+    { id: "paletas", x: 620, y: 548, k: "data", t: "Paletas por modelo", s: "18 fichas · aplica / aviso / no",
+      d: "Para cada una de las 18 fichas con paleta de línea se leyó el texto y se decidió colección por colección, con la cita: aplica (se ofrece bajo pedido), aviso (se menciona pidiendo confirmar en la ficha) o no aplica (nunca se menciona). Ejemplos: la cama Couple maneja laca, chapa, metal skin, telas y similpiel, pero no espejo ni gres; la cama Arden es solo madera; la puerta Aurora es de vidrio. Los acabados interiores nunca se ofrecen como color de las puertas.",
+      f: ["product-facts/palette-decisions.json"], kv: [["Opción del modelo", "61 colecciones"], ["Con aviso", "76"], ["No se mencionan", "133"]] },
     { id: "tour", x: 50, y: 648, k: "ui", t: "Tour 3DVista", s: "88 piezas activas",
       d: "El tour virtual del showroom: cada pieza tiene su punto de vista (panorámica y cámara) y su zona (Casa 1 a 4 y Galleria).",
       f: ["clients/febal-casa/catalog.json"] },
     { id: "capturas", x: 290, y: 648, k: "data", t: "Capturas del tour", s: "88, una por una", w: 200,
-      d: "Una captura por pieza desde su punto de vista, moviendo la cámara con la API del tour (sin arrastrar el mouse), revisada a ojo: color, material, forma y opción oficial, cada uno SI/NO con evidencia. Corrigió 8 errores del catálogo anterior (p. ej. una mesita de madera anotada como mármol).",
-      f: ["scripts/cdp_nav_one.py", "product-facts/placements.json", "product-facts/captures/"], kv: [["Color confirmado", "88/88"], ["Material confirmado", "42/88"]] },
+      d: "Una captura por pieza desde su punto de vista, moviendo la cámara con la API del tour (sin arrastrar el mouse), revisada a ojo: color, material, forma y opción oficial, cada uno SI/NO con evidencia. Corrigió 8 errores del catálogo anterior (p. ej. una mesita de madera anotada como mármol). Dos puntos de vista se reencuadraron: la silla Dea y el sistema Diciotto, que apuntaba a la librería de al lado.",
+      f: ["scripts/cdp_nav_one.py", "product-facts/placements.json", "product-facts/captures/"], kv: [["Color confirmado", "88/88"], ["Material confirmado", "43/88"]] },
     { id: "ontologia", x: 290, y: 748, k: "data", t: "Ontología", s: "conceptos, cercanías, armonías", w: 200,
       d: "El mismo paquete que usa el diccionario: formas, colores, materiales, estilos y categorías; cercanías («nobuk se parece a piel») y armonías de color, que son borrador hasta que se aprueben.",
       f: ["src/ontology/furniture-pack.ts"] },
     { id: "compilador", x: 620, y: 648, k: "code", t: "Compilador", s: "une todo en un catálogo",
-      d: "Une fichas, capturas, ontología y revisión en un solo catálogo. Cada dato es un «hecho» con su fuente y su estado de revisión. En modo desarrollo usa también lo pendiente; en modo estricto solo lo validado en la revisión.",
+      d: "Une fichas, capturas, paletas por modelo, ontología y correcciones en un solo catálogo. Cada dato es un «hecho» con su fuente. Regla de confianza: lo que viene literal de la ficha oficial o de una captura del tour vale sin firma, y la revisión solo corrige excepciones. Los datos del catálogo anterior (v1) sí necesitan validación.",
       f: ["src/catalog/compile.ts", "scripts/build-catalog-v2.ts"] },
     { id: "catalogo", x: 1150, y: 620, k: "data", t: "Catálogo canónico v2", s: "la única fuente de verdad", w: 230, h: 104,
       d: "Lo que el motor y el renderizador consultan. Cada pieza expuesta apunta a su modelo; cada modelo, a sus opciones oficiales; cada dato, a su evidencia.",
-      f: ["clients/febal-casa/catalog.v2.json"], kv: [["Modelos", "56"], ["Piezas", "88"], ["Opciones", "5.138"], ["Hechos", "818 (0 validados aún)"]] },
-    { id: "excel", x: 1150, y: 790, k: "review", t: "Excel de revisión", s: "11 hojas, foto de cada pieza", w: 230,
-      d: "El libro de revisión: piezas con su captura, modelos, opciones con muestra de color, sinónimos, armonías y preguntas abiertas. Columnas SI/NO, Corrección y Nota.",
-      f: ["scripts/build-review-xlsx.py", "Descargas/febal-casa-revision-2026-09-23.xlsx"] },
-    { id: "validacion", x: 620, y: 790, k: "review", t: "Validación", s: "SI / NO / corrección",
-      d: "Cada dato se marca SI o NO. Un importador convierte el Excel en la lista de hechos validados y rechazados; el catálogo estricto solo usa lo validado. Mientras tanto, lo pendiente se usa en pruebas.",
-      f: ["scripts/import-review-xlsx.py", "product-facts/review.reviewed.json"] },
+      f: ["clients/febal-casa/catalog.v2.json"], kv: [["Modelos", "56"], ["Piezas", "88"], ["Opciones", "5.138"], ["Hechos", "819, todos con fuente literal"]] },
+    { id: "excel", x: 1150, y: 790, k: "review", t: "Hoja de decisiones", s: "14 decisiones · valor por defecto", w: 230,
+      d: "Solo lo que las fichas y las capturas no resuelven: 5 piezas con foto (qué ficha es, en qué zona está…) y 9 preguntas, por ejemplo si existe una lista de los acabados exactos del showroom. Cada fila dice qué pasa si queda vacía, así que nada se bloquea. Junto a ella está la base de datos en Excel: todos los datos del asistente, con Léeme en español e italiano, y columnas ✎ que se editan y se devuelven.",
+      f: ["scripts/build-decisions-xlsx.py", "Descargas/febal-casa-decisiones.xlsx", "scripts/build-database-xlsx.py", "Descargas/febal-casa-base-de-datos.xlsx"] },
+    { id: "validacion", x: 620, y: 790, k: "review", t: "Correcciones", s: "solo las excepciones",
+      d: "Las respuestas de la hoja corta y lo que se edite en la base de datos en Excel (piezas, paletas por modelo, sinónimos, familias de color, materiales, armonías) se importan: el importador muestra qué cambió, lo aplica, regenera el catálogo, corre las pruebas y rehace el Excel. Lo que nadie cambia sigue valiendo si tiene fuente literal.",
+      f: ["scripts/import-database-xlsx.py", "product-facts/palette-decisions.json · color-overrides.json · material-overrides.json", "clients/febal-casa/ontology.overrides.json"] },
   ];
 
   // ---------------------------------------------------------------- edges
@@ -284,17 +288,19 @@
 
     { a: "web", b: "scraper", d: line(R(n.web), L(n.scraper)) },
     { a: "tour", b: "capturas", d: line(R(n.tour), L(n.capturas)) },
+    { a: "scraper", b: "paletas", d: line(R(n.scraper), L(n.paletas)), lab: "se leen", lx: 555, ly: 572 },
+    { a: "paletas", b: "compilador", d: line(B(n.paletas), T(n.compilador)) },
     { a: "scraper", b: "compilador", d: curve(R(n.scraper), [620, 666]) },
     { a: "capturas", b: "compilador", d: line(R(n.capturas), [620, 680]) },
     { a: "ontologia", b: "compilador", d: curve(R(n.ontologia), [620, 694]) },
     { a: "compilador", b: "catalogo", d: line([800, 680], [1150, 680]), lab: "catalog.v2.json", lx: 975, ly: 672 },
-    { a: "catalogo", b: "excel", d: line(B(n.catalogo), T(n.excel)), lab: "se genera", lx: 1275, ly: 760, anchor: "start" },
-    { a: "excel", b: "validacion", d: line(L(n.excel), R(n.validacion)), lab: "se envía a revisar", lx: 975, ly: 814 },
-    { a: "validacion", b: "compilador", d: line(T(n.validacion), B(n.compilador)), lab: "validados", lx: 720, ly: 752, anchor: "start" },
+    { a: "catalogo", b: "excel", d: line(B(n.catalogo), T(n.excel)), lab: "lo no resuelto", lx: 1275, ly: 760, anchor: "start" },
+    { a: "excel", b: "validacion", d: line(L(n.excel), R(n.validacion)), lab: "respuestas y ediciones", lx: 975, ly: 814 },
+    { a: "validacion", b: "compilador", d: line(T(n.validacion), B(n.compilador)), lab: "correcciones", lx: 720, ly: 752, anchor: "start" },
   ];
 
   const LANES = [
-    { x: 20, y: 20, w: 1400, h: 472, t: "Un turno de conversación", note: "≈2,9 s y ≈US$0,0008 por turno con gpt-4o-mini" },
+    { x: 20, y: 20, w: 1400, h: 472, t: "Un turno de conversación", note: "≈2,1 s y ≈US$0,0009 por turno con gpt-4o-mini" },
     { x: 20, y: 508, w: 1400, h: 392, t: "De dónde salen los datos", note: "se prepara antes; el visitante nunca espera esto" },
   ];
   const WORLD = { w: 1440, h: 920 };
@@ -326,7 +332,7 @@
     const b = el("text", { x: nd.x + 12, y: nd.y + 17, class: "badge", style: `fill:var(${K.c})` }, g); b.textContent = K.who.split(" (")[0];
     const t1 = el("text", { x: nd.x + 12, y: nd.y + 36, class: "t1" }, g); t1.textContent = nd.t;
     const t2 = el("text", { x: nd.x + 12, y: nd.y + 53, class: "t2" }, g); t2.textContent = nd.s;
-    if (nd.id === "catalogo") { const t3 = el("text", { x: nd.x + 12, y: nd.y + 76, class: "t2" }, g); t3.textContent = "56 modelos · 88 piezas"; const t4 = el("text", { x: nd.x + 12, y: nd.y + 93, class: "t2" }, g); t4.textContent = "5.138 opciones · 818 hechos"; }
+    if (nd.id === "catalogo") { const t3 = el("text", { x: nd.x + 12, y: nd.y + 76, class: "t2" }, g); t3.textContent = "56 modelos · 88 piezas"; const t4 = el("text", { x: nd.x + 12, y: nd.y + 93, class: "t2" }, g); t4.textContent = "5.138 opciones · 819 hechos"; }
     g.addEventListener("click", (ev) => { if (moved) return; select(nd.id); });
     g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(nd.id); } });
     nodeEls[nd.id] = g;
@@ -405,16 +411,18 @@
       <ul class="rules">
         <li>El LLM entiende y redacta; <b>el código decide qué existe</b> y escribe cada nombre, opción, zona, medida y enlace.</li>
         <li>Si un color o acabado no está en el tour pero la ficha lo ofrece: «aquí no está así, pero sí bajo pedido» + enlace (regla de disponibilidad).</li>
+        <li>Si la paleta de la línea aplica al modelo según su ficha, se ofrece bajo pedido; si hay duda, se menciona con aviso; si no aplica, no se menciona.</li>
         <li>Lo que no está confirmado se dice «sin confirmar»; nunca se rellena.</li>
+        <li>Lo que viene literal de la ficha o de una foto del tour vale sin firma; una persona solo decide lo que las fuentes no resuelven.</li>
         <li>Cada respuesta pasa por el verificador; si falla, se repara o se usa una plantilla.</li>
         <li>El LLM nunca ve coordenadas de cámara.</li>
       </ul>
       <dl class="kv">
-        <dt>Última batería</dt><dd>22 turnos, gpt-4o-mini</dd>
-        <dt>Costo</dt><dd>US$0,0177 en total (≈US$0,0008 por turno)</dd>
-        <dt>Tiempo</dt><dd>p50 2,9 s · p95 4,6 s</dd>
-        <dt>Plantillas</dt><dd>1 de 22 · reparaciones 5</dd>
-        <dt>Datos validados</dt><dd>0 de 818 (pendiente de revisión)</dd>
+        <dt>Última batería</dt><dd>24 turnos, gpt-4o-mini (25 sep 2026)</dd>
+        <dt>Costo</dt><dd>US$0,0219 en total (≈US$0,0009 por turno)</dd>
+        <dt>Tiempo</dt><dd>p50 2,1 s · p95 3,6 s</dd>
+        <dt>Plantillas</dt><dd>0 de 24 · reparaciones 2</dd>
+        <dt>Datos</dt><dd>819 hechos con fuente literal · 14 decisiones abiertas</dd>
       </dl>`;
   }
 
@@ -441,10 +449,21 @@
       ["fallback", "Se repara una vez: el redactor recibe el error y corrige. No hizo falta la plantilla."],
       ["respuesta", "«En el showroom no tenemos sofás de piel, pero <b>Balmoral</b>, que aquí está en verde oliva claro, sí se puede pedir en Nabuk Eagle Black, Stone, Grey, Sand y más. […] También tenemos opciones en bouclé, tela, microfibra, nobuk, terciopelo.» Ya no dice que el sillón Vivienne sea de piel: la captura no lo confirma."],
     ] },
+    azul: { title: "«¿Tienes la cama Couple en azul?»", steps: [
+      ["visitante", "El visitante escribe <b>«¿Tienes la cama Couple en azul?»</b>."],
+      ["planner", "El planificador devuelve: intención <code>variant</code>, foco Couple (FEB-039), agrega <code>color.blue</code>. 0,96 s."],
+      ["reducer", "El reductor valida el id y arma los filtros: <b>Couple · azul</b>."],
+      ["paletas", "Esto se decidió antes de la charla. La ficha de Couple no trae lista propia: muestra la paleta de la línea Dormitorio. Su texto habla de superficies de impiallacciato, laccato y laccato metal y de zonas tapizadas en tessuto o similpelle, así que <b>laca, chapa, metal skin, telas y similpiel aplican</b>; espejo, gres y aluminio no."],
+      ["engine", "El motor: en el showroom Couple está en blanco hielo, no en azul. <b>Bajo pedido sí</b>: las lacas Blu Notte y Ceruleo, opacas y brillantes. Resultado <code>on_order_only</code>; obligación: decir que así no está y ofrecerla bajo pedido con enlace."],
+      ["composer", "El redactor escribe con etiquetas, p. ej. «…{{p:FEB-039}}, que aquí está en {{shown:FEB-039}}, sí está disponible bajo pedido en {{v:FEB-039}}; míralo en {{link:FEB-039}}». 0,94 s."],
+      ["renderer", "El código pone <b>Couple</b>, «blanco hielo», las lacas azules oficiales y el enlace a su ficha."],
+      ["verifier", "El verificador revisa nombres, idioma y obligaciones. Pasa al primer intento."],
+      ["respuesta", "«En el showroom no tenemos la cama <b>Couple</b> en azul, ya que aquí está en blanco hielo. Sin embargo, sí está disponible bajo pedido en Laccato Opaco Blu Notte, Laccato Opaco Ceruleo, Laccato Lucido Blu Notte, Laccato Lucido Ceruleo y más; míralo en su ficha.» · 1 tarjeta · 1,9 s en total."],
+    ] },
   };
   let tour = null, step = 0;
   const stepbar = document.getElementById("stepbar"), stepText = document.getElementById("stepText"), stepCount = document.getElementById("stepCount"), tourTitle = document.getElementById("tourTitle");
-  const chips = { amarillo: document.getElementById("sc-amarillo"), cuero: document.getElementById("sc-cuero") };
+  const chips = { amarillo: document.getElementById("sc-amarillo"), cuero: document.getElementById("sc-cuero"), azul: document.getElementById("sc-azul") };
   function show() {
     const sc = SCEN[tour], [id, text] = sc.steps[step];
     const path = sc.steps.slice(0, step + 1).map((s) => s[0]);
@@ -470,11 +489,12 @@
     Object.values(chips).forEach((b) => b.setAttribute("aria-pressed", "false"));
     Object.values(nodeEls).forEach((g) => g.classList.remove("on", "current", "sel"));
     edgeEls.forEach((e) => { e.g.classList.remove("on"); e.p.setAttribute("marker-end", "url(#arrow)"); });
-    stepText.textContent = "Los dos ejemplos salen de la última batería con gpt-4o-mini (23 de septiembre de 2026): mismo texto, mismas piezas, mismos tiempos.";
+    stepText.textContent = "Los ejemplos salen de las baterías con gpt-4o-mini del 23 y el 25 de septiembre de 2026: mismo texto, mismas piezas, mismos tiempos.";
     overview(); fit();
   }
   chips.amarillo.onclick = () => startTour("amarillo");
   chips.cuero.onclick = () => startTour("cuero");
+  chips.azul.onclick = () => startTour("azul");
   document.getElementById("prev").onclick = () => { if (step > 0) { step--; show(); } };
   document.getElementById("next").onclick = () => { if (step < SCEN[tour].steps.length - 1) { step++; show(); } };
   document.getElementById("exit").onclick = exitTour;

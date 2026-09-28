@@ -1,8 +1,8 @@
 /**
- * Dumps the ontology pack (concepts + synonyms, relations, moods) to JSON so the review
- * workbook builder (scripts/build-review-xlsx.py) can list every synonym for the client.
+ * Dumps the ontology pack the tour runs with (code pack + the client's edits) to JSON, for the
+ * database workbook (scripts/febal_database.py): concepts + synonyms, relations, moods.
  *
- *   npx tsx scripts/v2-export-ontology.mts > .scratch/ontology.json
+ *   npx tsx scripts/v2-export-ontology.mts [tour=febal-casa] > .scratch/ontology.json
  */
-import { FURNITURE_PACK } from "../packages/assistant-engine/src/index.js";
-process.stdout.write(JSON.stringify(FURNITURE_PACK));
+import { loadPack } from "./load-pack.js";
+process.stdout.write(JSON.stringify(loadPack(process.argv[2] ?? "febal-casa")));

@@ -3,17 +3,21 @@
  * replies, cards, verifier results, tokens, cost and latency.
  *
  *   npx tsx scripts/v2-chat.mts [model=gpt-4o-mini] [--only C2] [--json out.json]
+ *   npx tsx scripts/v2-chat.mts --ask "algo clásico" --ask "un sofá || ¿en azul?"   # ad-hoc: one conversation per --ask, turns split by "||"
  *
- * Reads OPENAI_API_KEY from server/.env (never printed).
+ * Reads OPENAI_API_KEY from server/.env (never printed). V2_DEBUG=1 prints every composer draft (2: also what the composer was given).
  */
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { Lexicon, FURNITURE_PACK, TurnGateway, MemoryStateStore, type TurnResult } from "../packages/assistant-engine/src/index.js";
+import { Lexicon, TurnGateway, MemoryStateStore, type TurnResult } from "../packages/assistant-engine/src/index.js";
+import { loadPack } from "./load-pack.js";
 import { createOpenAiJsonClient } from "../packages/model-adapters/src/openai-json.js";
 
 const root = path.resolve(import.meta.dirname, "..");
 const args = process.argv.slice(2);
-const model = args.find((a) => !a.startsWith("--") && !a.includes(".json") && !/^C\d+$/.test(a)) ?? "gpt-4o-mini";
+const flagValues = new Set(args.flatMap((a, i) => (["--ask", "--only", "--json"].includes(a) ? [i + 1] : [])));
+const asks = args.flatMap((a, i) => (a === "--ask" ? [args[i + 1]] : []));
+const model = args.find((a, i) => !a.startsWith("--") && !flagValues.has(i)) ?? "gpt-4o-mini";
 const only = args.includes("--only") ? args[args.indexOf("--only") + 1] : null;
 const jsonOut = args.includes("--json") ? args[args.indexOf("--json") + 1] : null;
 
@@ -30,7 +34,7 @@ const price = PRICES[model] ?? [0, 0, 0];
 const cost = (u: TurnResult["trace"]["usage"]) =>
   ((u.input_tokens - u.cached_input_tokens) * price[0] + u.cached_input_tokens * price[1] + u.output_tokens * price[2]) / 1e6;
 
-const CONVERSATIONS: Record<string, string[]> = {
+const SCRIPTED: Record<string, string[]> = {
   C1_cuero: ["Quiero un sofá de cuero"],
   C2_angulo_amarillo_cocinas: ["¿Tienes sofás de ángulo?", "¿Lo tienes en amarillo?", "cocinas"],
   C3_variante_cafe: ["Muéstrame el sofá Balmoral", "¿lo tienes en café?"],
@@ -47,11 +51,19 @@ const CONVERSATIONS: Record<string, string[]> = {
   C14_negacion: ["quiero una silla", "que no sea negra"],
   // Line palette ("Finiture per NOTTE"): Couple may mention it with a caveat; Arden's page restricts it to wood.
   C15_paleta_linea: ["¿tienes la cama Couple en azul?", "¿y la Arden en azul?"],
+  C16_marmol: ["¿tienen mesas de mármol?", "¿y algo clásico para la sala?"],
 };
 
+const CONVERSATIONS: Record<string, string[]> = asks.length
+  ? Object.fromEntries(asks.map((q, i) => [`ASK${i + 1}`, q.split("||").map((t) => t.trim()).filter(Boolean)]))
+  : SCRIPTED;
+
 const catalog = JSON.parse(readFileSync(path.join(root, "clients/febal-casa/catalog.v2.json"), "utf8"));
-const llm = createOpenAiJsonClient(env.OPENAI_API_KEY, model);
-const gateway = new TurnGateway(catalog, new Lexicon(FURNITURE_PACK), llm, new MemoryStateStore());
+const baseLlm = createOpenAiJsonClient(env.OPENAI_API_KEY, model);
+const llm: typeof baseLlm = process.env.V2_DEBUG
+  ? { ...baseLlm, json: async (req) => { const r = await baseLlm.json(req); if (req.schemaName === "answer") { if (process.env.V2_DEBUG === "2") console.log(`  view: ${req.user}`); console.log(`  draft: ${r.text}`); } return r; } }
+  : baseLlm;
+const gateway = new TurnGateway(catalog, new Lexicon(loadPack("febal-casa")), llm, new MemoryStateStore());
 
 const out: unknown[] = [];
 let totalCost = 0, turns = 0, templates = 0, repaired = 0;

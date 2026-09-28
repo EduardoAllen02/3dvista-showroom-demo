@@ -78,7 +78,8 @@ export interface Bundle {
   /** For a requested value with zero support in scope: the real values that exist. */
   available_values: { constraint: string; facet: ConstraintFacet; values: ConceptId[] }[];
   /** Detail mode: facts per requested field. */
-  details?: { exhibit_id: string; field: string; status: "known" | "unknown"; text?: string; facts: FactId[] }[];
+  /** concepts: the same datum as concepts, so it can be said in the visitor's language (the text is the page's Italian). */
+  details?: { exhibit_id: string; field: string; status: "known" | "unknown"; text?: string; concepts?: ConceptId[]; facts: FactId[] }[];
 }
 
 export interface RelaxPolicy {

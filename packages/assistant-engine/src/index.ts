@@ -4,6 +4,8 @@ export type { CompileInput, GateReport } from "./catalog/compile.js";
 export * from "./ontology/types.js";
 export { Lexicon, normalizeText } from "./ontology/lexicon.js";
 export { FURNITURE_PACK } from "./ontology/furniture-pack.js";
+export { applyOverrides } from "./ontology/overrides.js";
+export type { PackOverrides } from "./ontology/overrides.js";
 export { proposeColor, proposeLineMaterial, swatchFamily } from "./ontology/furniture-naming.js";
 export * from "./engine/types.js";
 export { QueryEngine } from "./engine/engine.js";

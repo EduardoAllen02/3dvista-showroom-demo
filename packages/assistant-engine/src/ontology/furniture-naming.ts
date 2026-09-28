@@ -22,7 +22,8 @@ const BASIC: Record<string, ConceptId> = {
 // Descriptive words seen in febalcasa.com option names (IT/EN), beyond the ontology synonyms.
 const DESCRIPTIVE: Record<string, ConceptId> = {
   panna: "color.cream", avorio: "color.cream", ivory: "color.cream", cream: "color.cream", perla: "color.cream", pearl: "color.cream",
-  shell: "color.cream", swan: "color.white", feather: "color.white", marble: "color.white", calacatta: "color.white",
+  shell: "color.cream", swan: "color.white", feather: "color.beige", crema: "color.cream",
+  extrawhite: "color.white", snowwhite: "color.white", ottico: "color.white", marble: "color.white", calacatta: "color.white",
   valacatta: "color.white", arabescato: "color.white", statuario: "color.white", neve: "color.white", kent: "color.white", snow: "color.white",
   sabbia: "color.beige", sand: "color.beige", tortora: "color.beige", taupe: "color.beige", canapa: "color.beige", linen: "color.beige",
   dune: "color.beige", sahara: "color.beige", desert: "color.beige", natural: "color.beige", nature: "color.beige", mandorla: "color.beige",
@@ -31,24 +32,30 @@ const DESCRIPTIVE: Record<string, ConceptId> = {
   moka: "color.brown", mocha: "color.brown", caffe: "color.brown", coffee: "color.brown", choco: "color.brown", chocolate: "color.brown",
   bison: "color.brown", liver: "color.brown", camel: "color.brown", corteccia: "color.brown", moro: "color.brown", rosewood: "color.brown",
   noce: "color.brown", walnut: "color.brown", rovere: "color.natural_wood", oak: "color.natural_wood", eucalipto: "color.natural_wood",
+  cacao: "color.brown", castano: "color.brown", braun: "color.brown",
+  acacia: "color.natural_wood", termotrattato: "color.natural_wood", termo: "color.natural_wood", wood: "color.natural_wood", ilice: "color.natural_wood",
   antracite: "color.anthracite", anthracite: "color.anthracite", anthrancite: "color.anthracite", grafite: "color.anthracite",
   graphite: "color.anthracite", carbone: "color.anthracite", charcoal: "color.anthracite", coal: "color.anthracite", ardesia: "color.anthracite",
   piombo: "color.grey", pewter: "color.grey", cemento: "color.grey", cement: "color.grey", stone: "color.grey", steel: "color.grey",
   iron: "color.grey", silver: "color.grey", argento: "color.grey", platinum: "color.grey", titanio: "color.grey", titan: "color.grey",
-  mineral: "color.grey", dust: "color.grey", fume: "color.grey", fumo: "color.grey", ghiaia: "color.grey", basalto: "color.anthracite",
+  mineral: "color.grey", dust: "color.grey", fume: "color.grey", fumo: "color.grey", ghiaia: "color.grey", basalto: "color.grey",
+  greystone: "color.grey", stopsol: "color.grey", carbon: "color.anthracite",
   caviar: "color.black", raven: "color.black", noir: "color.black", ink: "color.blue", intenso: "color.black",
   mustard: "color.yellow", senape: "color.yellow", sunflower: "color.yellow", curry: "color.yellow", ocra: "color.yellow",
   lemon: "color.yellow", mais: "color.yellow", sun: "color.yellow", gold: "color.gold", oro: "color.gold", champagne: "color.gold",
   ottone: "color.gold", brass: "color.gold", bronzo: "color.bronze", bronze: "color.bronze", copper: "color.bronze", rame: "color.bronze",
-  terracotta: "color.orange", pumpkin: "color.orange", rust: "color.orange", ruggine: "color.orange", coral: "color.orange",
+  terracotta: "color.orange", pumpkin: "color.orange", rust: "color.orange", ruggine: "color.orange", coral: "color.orange", melon: "color.orange",
   mattone: "color.red", brick: "color.red", marsala: "color.red", bordeaux: "color.red", strawberry: "color.red", wine: "color.red",
   blush: "color.pink", rose: "color.pink", cipria: "color.pink", antico: "color.pink",
   navy: "color.blue", denim: "color.blue", petrol: "color.blue", petrolio: "color.blue", ottanio: "color.blue", oceano: "color.blue",
   ocean: "color.blue", ceruleo: "color.blue", turquoise: "color.blue", turchese: "color.blue", niagara: "color.blue", horizon: "color.blue",
-  notte: "color.blue", azure: "color.blue",
+  notte: "color.blue", azure: "color.blue", jeans: "color.blue",
   olive: "color.green", oliva: "color.green", sage: "color.green", salvia: "color.green", salice: "color.green", emerald: "color.green",
   thyme: "color.green", ivy: "color.green", hunter: "color.green", lime: "color.green", turtle: "color.green", cinabro: "color.green",
-  vintage: "color.green", antigua: "color.green", lilla: "color.purple", plum: "color.purple",
+  vintage: "color.green", antigua: "color.green", mint: "color.green", menta: "color.green", smeraldo: "color.green",
+  pine: "color.green", pino: "color.green",
+  lilla: "color.purple", plum: "color.purple", lilac: "color.purple", lila: "color.purple", pureple: "color.purple",
+  trasparente: "color.transparent", transparent: "color.transparent",
 };
 
 export interface ColorProposal {
@@ -98,7 +105,10 @@ export function proposeColor(name: string, hex: string | null): ColorProposal {
   const toks = normalizeText(name).split(" ");
   const basic = [...new Set(toks.map((t) => BASIC[t]).filter(Boolean))];
   const desc = [...new Set(toks.map((t) => DESCRIPTIVE[t]).filter(Boolean))];
-  const byName = basic.length ? basic : desc.slice(0, 2);
+  // A basic word wins over descriptive ones, except refinements it implies: "Grigio Antracite" is
+  // also anthracite, "Oro Rosa" is also gold.
+  const extras = desc.filter((f) => (f === "color.anthracite" && basic.includes("color.grey")) || f === "color.gold");
+  const byName = basic.length ? [...basic, ...extras.filter((f) => !basic.includes(f))] : desc.slice(0, 2);
   const sw = swatchFamily(hex);
   let tone = sw.tone;
   if (toks.some((t) => ["scuro", "dark", "deep", "notte"].includes(t))) tone = "dark";
@@ -145,12 +155,12 @@ export function proposeLineMaterial(lexicon: Lexicon, collection: string): Mater
   if (norm === "velvet") return { material: "material.velvet", source: "name_inference", note: "'Velvet' = terciopelo" };
   if (norm.includes("leather grey")) return { material: "material.melamine", source: "page_text", note: "'casse interne in nobilitato Leather grey' (Lewitt Plus)" };
   if (norm.includes("cassa interna")) return { material: "material.melamine", source: "to_confirm", note: "interiores: Eucalipto, Leather Grey, Trama Natural, Noce" };
-  if (norm === "scenario") return { material: "material.stone_effect", source: "to_confirm", note: "frontales de boiserie; el catálogo v1 los describía como efecto piedra" };
+  if (norm === "scenario") return { material: "material.marble_effect", source: "to_confirm", note: "frontales de boiserie: Calacatta, Nero Marquinia, Black Saint Laurent (efecto mármol), Travertino, Brown Stone" };
   if (norm === "pet" || norm.startsWith("pet ")) return { material: "material.plastic", source: "page_header" };
   if (norm.includes("metalskin") || norm.includes("metal skin")) return { material: "material.metal_skin", source: "page_header" };
   if (norm.includes("impiallac")) return { material: "material.wood_veneer", source: "page_header", note: norm.includes("impiallaciat") ? "la web escribe 'IMPIALLACIATI' (typo)" : undefined };
   if (norm.includes("fenix")) return { material: "material.laminate", source: "page_header" };
-  if (norm.includes("supermarmo")) return { material: "material.marble", source: "page_header", note: "acabado efecto mármol ('supermarmo')" };
+  if (norm.includes("supermarmo")) return { material: "material.marble_effect", source: "page_header", note: "acabado efecto mármol ('supermarmo')" };
   if (HEADER_ELSEWHERE[norm]) return { material: HEADER_ELSEWHERE[norm][0], source: "page_header", note: HEADER_ELSEWHERE[norm][1] };
   if (UPHOLSTERY_LINES.includes(norm)) return { material: "material.fabric", source: "to_confirm", note: "la ficha del sofá/sillón dice 'tessuti' en general" };
   const hits = lexicon.match(collection, ["material"]);

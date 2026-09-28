@@ -22,7 +22,7 @@ export interface TurnPlan {
   add: PlanConstraint[];
   remove: PlanFacet[];
   linked_ref: string | null;
-  detail_fields: ("dimensions" | "materials" | "style" | "shape" | "options" | "location")[];
+  detail_fields: ("dimensions" | "materials" | "style" | "shape" | "options" | "location" | "price")[];
   nav_target: string | null;
   unknown_terms: string[];
 }
@@ -58,7 +58,7 @@ export const PLAN_SCHEMA = {
     },
     remove: { type: "array", items: { type: "string", enum: FACETS } },
     linked_ref: { type: ["string", "null"] },
-    detail_fields: { type: "array", items: { type: "string", enum: ["dimensions", "materials", "style", "shape", "options", "location"] } },
+    detail_fields: { type: "array", items: { type: "string", enum: ["dimensions", "materials", "style", "shape", "options", "location", "price"] } },
     nav_target: { type: ["string", "null"] },
     unknown_terms: { type: "array", items: { type: "string" } },
   },
@@ -87,7 +87,7 @@ REGLAS
 6. Negaciones ("que no sea gris") → op "not". "Mejor en tela" → add material.fabric (el sistema reemplaza el material anterior). "Me da igual la forma" → remove ["shape"].
 7. "Muéstrame todos los sofás", "¿qué cocinas tienes?" → intent "list" con la categoría.
 8. "¿Dónde está X?" → "locate" (focus = X si es una pieza o el primer id de ese modelo). "Llévame (a X)" → "navigate", nav_target = pieza (o null si no está claro).
-9. "¿Qué medidas tiene?", "¿de qué material es?" → "detail" con detail_fields.
+9. "¿Qué medidas tiene?", "¿de qué material es?" → "detail" con detail_fields. "¿Cuánto cuesta?", "precio" → "detail" con detail_fields ["price"].
 10. "¿Qué más me recomiendas?", "algo que combine con lo que guardé" → "recommend".
 11. "Ver alternativas", "¿qué otras opciones hay?" sobre una pieza → "alternatives" con focus.
 12. "Sí"/"dale"/"ok" tras una oferta del asistente → "confirm"; "no" → "decline".
@@ -115,7 +115,7 @@ foco: ${state.focus ? `${state.focus} ${names(state.focus)}` : "—"}
 ÚLTIMAS TARJETAS: ${last}
 MENCIONADOS (recientes primero): ${state.mentioned.slice(0, 6).map((id) => `${id} ${names(id)}`).join(", ") || "—"}
 VISOR (pieza centrada en el tour): ${state.viewer.centered ? `${state.viewer.centered} ${names(state.viewer.centered)}` : "—"}
-OFERTA PENDIENTE: ${state.pending ? JSON.stringify(state.pending) : "—"}
+OFERTA PENDIENTE: ${state.pending ? JSON.stringify({ kind: state.pending.kind, exhibit_ids: "exhibit_ids" in state.pending ? state.pending.exhibit_ids : [state.pending.exhibit_id] }) : "—"}
 GUARDADOS (wishlist): ${state.wishlist.map((id) => `${id} ${names(id)}`).join(", ") || "—"}
 
 CONVERSACIÓN RECIENTE

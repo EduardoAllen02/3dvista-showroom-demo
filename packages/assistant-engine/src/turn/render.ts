@@ -51,6 +51,8 @@ export interface UiCard {
   official_url: string | null;
 }
 
+const PAGE_SAYS: Record<Lang, string> = { es: "en la ficha", it: "nella scheda", en: "on the page" };
+
 export class Renderer {
   private exhibits: Map<string, Exhibit>;
   private models: Map<string, Model>;
@@ -101,7 +103,8 @@ export class Renderer {
       const card = cards.find((c) => c.exhibit_id === arg);
       switch (kind) {
         case "p": return card ? `**${this.displayName(arg)}**` : whole;
-        case "v": return card ? this.variantsText(card, lang) : whole;
+        // Three or more pieces named with their options: two each in the text (the cards list more).
+        case "v": return card ? this.variantsText(card, lang, bundle.obligations.filter((o) => /^(ord|lin):/.test(o)).length >= 3 ? 2 : 4) : whole;
         case "line": return card ? this.lineName(card, lang) ?? whole : whole;
         case "z": { const e = this.exhibits.get(arg); return e ? this.zoneLabel(e.zone) : whole; }
         case "shown": return card?.shown_as ? localizeObserved(card.shown_as, lang) : (this.exhibits.get(arg) ? "—" : whole);
@@ -115,7 +118,13 @@ export class Renderer {
           return av ? av.values.map((v) => this.concept(v, lang)).join(", ") : whole;
         }
         case "n": { const g = bundle.groups.find((x) => x.id === arg); return g ? String(g.total) : whole; }
-        case "f": { const d = bundle.details?.find((x) => x.field === arg && x.status === "known"); return d?.text ?? whole; }
+        case "f": {
+          const d = bundle.details?.find((x) => x.field === arg && x.status === "known");
+          if (!d) return whole;
+          // Said in the visitor's language, with the page's own words after it.
+          if (d.concepts?.length && lang !== "it") return `${d.concepts.map((c) => this.concept(c, lang)).join(", ")} (${PAGE_SAYS[lang]}: «${d.text}»)`;
+          return d.text ?? whole;
+        }
         default: return whole;
       }
     });
@@ -165,6 +174,8 @@ export class Renderer {
       case "harm": { const [x, y] = ob.slice(5).split(">"); return `Di que {{c:${y}}} combina con {{c:${x}}}.`; }
       case "vals": return `Di que no existe ese valor y nombra los que sí hay con {{vals:${a}}}.`;
       case "unk": return `Di que de {{p:${a}}} ese dato no está confirmado y ofrece {{link:${a}}}.`;
+      case "price": return `No tenemos precios (dependen de medidas y acabados): dilo claramente, SIN dar cifras, y ofrece {{link:${a}}} para reservar una cita con un asesor.`;
+      case "lnk": return `Incluye {{link:${a}}} para ver la ficha oficial.`;
       case "fact": return `Da el dato con {{f:${a}}}: SÍ lo tenemos, no digas que falta.`;
       case "inf": return `Explica cómo interpretas el deseo del visitante ({{c:${ob.slice(4)}}}) antes de proponer.`;
       case "nav": return "Pregunta a cuál de las zonas quiere ir.";
@@ -236,7 +247,8 @@ export class Renderer {
           pieza: `{{p:${c.exhibit_id}}}`, nombre: this.displayName(c.exhibit_id),
           categoria: this.concept(this.exhibits.get(c.exhibit_id)!.category, lang),
           disponibilidad: c.availability, zona: `{{z:${c.exhibit_id}}}`,
-          como_se_ve: c.shown_as ? `{{shown:${c.exhibit_id}}}` : null,
+          // The value next to the tag, so the composer knows what it says (it still writes the tag).
+          como_se_ve: c.shown_as ? `{{shown:${c.exhibit_id}}} (= ${localizeObserved(c.shown_as, lang)})` : null,
           bajo_pedido: c.availability === "on_order" ? `{{v:${c.exhibit_id}}}` : null,
           de_la_linea: c.availability === "line" ? { linea: `{{line:${c.exhibit_id}}}`, opciones: `{{v:${c.exhibit_id}}}`, aviso: "confirmar en la ficha si aplica a este modelo" } : null,
           ficha: this.models.get(c.model_id)?.official_url ? `{{link:${c.exhibit_id}}}` : null,
@@ -285,5 +297,8 @@ const OBS: Record<string, { es: string; en: string }> = {
 };
 export function localizeObserved(text: string, lang: Lang): string {
   if (lang === "it") return text;
-  return text.split(/(\s+|\/|,)/).map((w) => OBS[w.toLowerCase()]?.[lang] ?? w).join("");
+  const tr = (w: string) => OBS[w.toLowerCase()]?.[lang] ?? w;
+  if (lang === "es") return text.split(/(\s+|\/|,)/).map(tr).join("");
+  // English puts the modifiers first: "grigio caldo chiaro" → "light warm grey".
+  return text.split(/\s*([,/])\s*/).map((p) => (p === "," || p === "/" ? p : p.split(/\s+/).filter(Boolean).map(tr).reverse().join(" "))).join("").replace(/,/g, ", ");
 }

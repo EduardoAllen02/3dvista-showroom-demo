@@ -119,6 +119,103 @@
   - Diciotto es la pared de la TV y Trenta la de vitrinas con el paso al centro. Lo confirman las fichas: «pareti attrezzate» y «vano ponte / Anta Aurora».
   - Nuevo POV, el que dejó puesto Edd en el tour: panorámica 20, yaw -67.2, pitch -11.5, fov 130. Se recapturó (llega igual desde otra panorámica) y se re-observó. La duda se cerró, así que la hoja corta queda en 15 decisiones (`febal-casa-decisiones-2026-09-25-v2.xlsx`).
   - Trenta tiene una vista frontal mejor en la panorámica 19 (yaw 17, pitch 2, fov 88). Se queda en la 18 hasta arreglar "Llévame" dentro de una misma panorámica.
+- Respuestas a la hoja corta (2026-09-26):
+  - FEB-031: la ficha «Sistema Origina · Anta Libeskind» es correcta. Es la composición de cocina completa: la isla Libeskind022 (FEB-030) más las columnas de «ante rientranti» con hornos y cava.
+  - FEB-035: la pregunta ahora es concreta: ¿el top es Gres Travertino Silver Bocciardato o Scenario Travertino, y se puede pedir así?
+  - La hoja queda en 14 decisiones: `febal-casa-decisiones-2026-09-26.xlsx`.
+- **Dos Excel vivos en Descargas, con nombre fijo** (2026-09-26):
+  - `febal-casa-decisiones.xlsx`: lo que falta decidir. Hoy son 5 piezas y 9 preguntas.
+  - `febal-casa-base-de-datos.xlsx`: todos los datos del asistente, con Léeme (es) y Leggimi (it), sin columnas de OK ni preguntas.
+    - 12 hojas: piezas con foto, modelos, opciones que ofrece, paletas por modelo, acabados de paletas, sinónimos, colores → familia, materiales, estilos, armonías, ánimos y correcciones.
+    - Las columnas ✎ (encabezado verde) se editan.
+  - Ida y vuelta:
+    - `python scripts/import-database-xlsx.py <archivo>` muestra los cambios y valida los valores;
+    - con `--apply` los escribe, reconstruye el catálogo estricto, corre las pruebas y regenera el Excel.
+  - Dónde se guardan las ediciones:
+    - `palette-decisions.json`, `color-overrides.json`, `material-overrides.json` y `placements.json` (vía facts-placement);
+    - `clients/febal-casa/ontology.overrides.json` (sinónimos, armonías, ánimos), que el motor aplica con `scripts/load-pack.ts`.
+  - Una sola definición de hojas (`scripts/febal_database.py`) la comparten el generador y el importador.
+  - Probado:
+    - importar el archivo sin tocar da 0 cambios;
+    - 6 ediciones de prueba llegaron al catálogo y al diccionario, y se revirtieron;
+    - un valor inválido frena todo;
+    - un cambio en una columna de consulta se reporta y no se importa.
+  - `build-review-xlsx.py` e `import-review-xlsx.py` quedaron reemplazados. Los Excel anteriores están en `Descargas/febal-casa-versiones-anteriores/`.
+- **Revisión fila por fila de la base de datos** (2026-09-27): modelos, piezas, 533 colores, 114 colecciones, 3.112 opciones, 110 conceptos, armonías y ánimos.
+  - **Mecánica nueva:**
+    - frases que no son concepto (`stop_phrases` del paquete: "anta square", "schienali scorrevoli", "maniglie a ponte", "tv girevole", "gambe lineari", "portale tv"…);
+    - forma según el tipo de mueble ("penisola" en cocina = península; "a isola" fuera de cocina = al centro de la habitación);
+    - una pieza cuya foto dice "cucina" es cocina;
+    - las columnas «lo que entiende el asistente» se editan en el Excel (`concept-overrides.json`, fuente "curated").
+  - **Formas:**
+    - se quitaron falsas en Navigli, 3 cocinas "square", Origina telaio legno, Madeira, Trenta, Dea, Boiserie y la cocina Libeskind (chaise → península);
+    - se agregó "curvo" en Nives, Arden, Camden y Marlene;
+    - FEB-098 pasó de isla a centro de la habitación.
+  - **Materiales:**
+    - "lucido/opaco/mate/brillante" sueltos ya no son lacado (Madeira, Phoenix, PET, vidrio, chapa);
+    - "nobilitato Noce/Leather grey" es melamina, no nogal ni piel;
+    - concepto nuevo "efecto madera" (Profile Solid, FEB-086);
+    - "metalskin" y "lignea" se reconocen;
+    - FEB-065 y FEB-076 son vidrio con efecto metal (ficha);
+    - en listas del texto, un color ya no cambia el material (latón).
+  - **Categorías:** FEB-029 e Ink → mesa de centro (su ficha: "coffee table"); Astrid → grupo de noche; FEB-021 → cocina.
+  - **Colores (24 nombres):**
+    - Castano/Cacao/Braun → café; Smeraldo/Mint/Irish Mint → verde; Jeans → azul; Lilac/Pureple → morado;
+    - Extrawhite/Snowwhite/Ottico → blanco; Greystone/Basalto/Stopsol → gris; Melon → naranja; Vetro trasparente → transparente;
+    - maderas (Acacia, Ilice Wood, Rovere asiatico) → madera natural;
+    - "Grigio Antracite" también es antracita; "Oro Rosa" también es dorado; "grigio perla" solo gris.
+  - **Etiquetas:**
+    - 116 limpiadas (prefijo Nobilitato1/2, "(1)/(2)", Rovere asiatico, gres lucido/opaco);
+    - 20 opciones repetidas o vacías quitadas (5.138 → 5.118).
+  - **Vocabulario:** fuera "abatible" (extensible) y "fino a terra" (de piso a techo).
+  - Motor ≡ oráculo en 23.045 combinaciones. Batería run10: los 24 turnos con el mismo resultado que run9, 0 plantillas.
+  - **Dudas resueltas con Edd:**
+    - **Paredes Sistema Origina:** se revisó la foto de cada una. FEB-008, 009, 020, 031, 068 y 077 tienen hornos, copas o tarja, así que son cocina; ninguna está en la sala.
+    - **Mármol y piedra:**
+      - conceptos nuevos "efecto mármol" (supermarmo, Scenario) y "piedra natural", separados de mármol y efecto piedra (cercanía 0,2);
+      - si piden mármol, primero va el real (hoy no hay ninguno) y luego el efecto, aclarando que es efecto;
+      - el motor ya no excluye de las alternativas las piezas "sin confirmar" que no mostró (antes faltaban Madeira y Daniel).
+    - **Estilo:** "clásico" y "elegante" son dos estilos. Quedan 5 modelos clásicos y 28 elegantes.
+    - **"Osso" era "Rosso":** la web le quita la "R" (su muestra es `…_pet_rosso.jpg`). El limpiador de etiquetas la restaura con el nombre del archivo.
+  - **Arreglos que salieron de las pruebas:**
+    - "vinculado" a la misma pieza que se pide en variante pasa a "continúa" (antes Arden en azul terminaba en plantilla);
+    - la lista agrupa por modelo y aspecto (una sola cocina Origina cannettato, un solo Dea).
+  - Batería run12: 26 turnos (con C16 mármol/clásico), 0 plantillas, 4 reparaciones, $0.00081/turno. Motor ≡ oráculo en 23.828 combinaciones.
+- **Estilos probados como cliente** (2026-09-27, `v2-chat.mts --ask "…"` para preguntas sueltas):
+  - el reductor recupera el estilo que el planificador olvida ("sofá clásico" ya no lista todos los sofás ni dice "clásicos" sin serlo), salvo si la palabra también es un ánimo ("acogedor" sigue siendo una preferencia);
+  - un estilo que tiene ≥30 % del showroom pedido solo ("algo elegante") → se pregunta el tipo de mueble; "sofás" después afina la búsqueda en vez de abrir otra;
+  - "algo verde" que el planificador llama charla o recomendación se trata como búsqueda;
+  - "mesa de comedor" es su propia categoría (hija de mesa), así que ya no trae mesas de centro; "mesa" trae las dos;
+  - "sala" = sofá (uso de México);
+  - idioma: palabras que solo existen en uno ("armario", "armadio"…) desempatan ("un armario elegante" ya responde en español).
+  - Batería run14: 26 turnos, 0 plantillas, $0.00084/turno; frente a run12 solo cambió "algo clásico para la sala" (ahora Balmoral y Camden). Motor ≡ oráculo en 25.015 combinaciones.
+- **Hoja de decisiones resuelta en el tour** (2026-09-27):
+  - **FEB-077:** su zona es Casa 4; el letrero de las panorámicas 78 y 79 dice "CASA 01" y hay que corregirlo en 3DVista (PENDIENTE).
+  - **FEB-099:** es Barret battente con portal (sin rieles, jaladeras de barra).
+  - **FEB-085:** es la cocina completa: la cocina escondida tras "ante rientranti" más la isla con mesa redonda, con el mismo marcador 621. Su POV nuevo abre la vista con las puertas abiertas (82-opening, encuadrado por Edd).
+  - **FEB-037:** es Momenti, no lavandería (url-overrides, models.json, catalog.json); FEB-056 también apunta ya a la ficha de Marlene en el widget.
+  - **Chaise / penisola:** es un tipo de sofá de ángulo (decisión de Edd). "En L" y "esquinero" traen Balmoral, Melrose y Navigli; "con chaise" trae Melrose y Navigli.
+  - **Idioma:** pistas nuevas ("sofá", "sala", "hay", "qué"…).
+  - **Queda para Andrea:** FEB-035 travertino, la lista de acabados del showroom y Nabuk, más las 71 relaciones y 4 ánimos que revisa con Edd.
+- **Preguntas 4–7 aprobadas por Edd y probadas como cliente** (2026-09-27):
+  - **Tarjetas:** 8 por respuesta, 12 en un listado. El texto nombra como mucho 4 piezas del showroom y da el total con {{n}}; bajo pedido nombra 2 junto a piezas del showroom, 3 si no hay (el resto va en las tarjetas). Con 3 o más, cada una lleva 2 acabados en el texto.
+  - **Otro idioma (fr/de/pt):**
+    - el mensaje se traduce primero al inglés con una llamada corta y todo el turno trabaja sobre esa traducción ("graue Sofas" → gris, "cozinha branca" → cocina blanca);
+    - responde en inglés y ofrece los tres idiomas una sola vez.
+  - **"Nada negro":** se reinicia al cambiar de tipo de mueble (silla → mesas: salen las 7).
+  - **Falta un dato o preguntan precio:** enlace a la ficha oficial (tiene el botón de cita). Sin pieza en foco, se explica que no hay precios y se pregunta qué mueble le interesa. Los detalles se dicen en el idioma del cliente con el texto de la ficha entre comillas.
+  - **Arreglos que salieron de estas pruebas:**
+    - "Lo que sí tenemos es: …" ya no se agrega cuando ya se ofreció un sustituto (efecto mármol, nobuk, café que combina);
+    - al decir "sí" a una oferta se conserva cómo calificaba la pieza (Couple en azul bajo pedido, con enlace), no solo cuál era;
+    - "su ficha" siempre lleva enlace;
+    - la oferta final puede llevar una frase corta después de la pregunta, y solo queda una pregunta, al final;
+    - los enlaces que completa el código van antes de la pregunta final y con el nombre del modelo;
+    - colores del showroom en inglés en orden natural ("light olive green", no "green olive light");
+    - "Boiserie (Boiserie)" y "gris cálido (gris cálido)" ya no se repiten;
+    - cantidades con letras solo si son el total real;
+    - verificador: los `\b` de "Casa N" (V4/V8) eran caracteres de retroceso desde el primer commit, así que esas dos reglas nunca reconocían "Casa 01". Ya están corregidos.
+  - `V2_DEBUG=1` en `v2-chat.mts` imprime cada borrador del redactor (`=2` también lo que recibió).
+  - Batería run17: 26 turnos, 0 plantillas, 4 reparaciones, $0.00084/turno, p95 3,6 s. Motor ≡ oráculo en 25.015 combinaciones.
 - FEB-094 (silla Dea) reencuadrada en el tour: yaw 117.7, pitch -44.4, fov 75.2. Llega al widget de producción con el próximo deploy.
 - **Pendiente:** acabados exactos y materiales de las piezas.
   - Con la lista del showroom se completan solos.
@@ -134,6 +231,8 @@
 | run4 | 0/22 | 6 | $0.00085 | 2,6 s | 5,2 s |
 | run5 (datos de capturas) | 1/22 | 5 | $0.00081 | 2,9 s | 4,6 s |
 | run6 (+ ajustes de redacción) | 0/22 | 4 | $0.00094 | 2,6 s | 4,6 s |
+| run14 (estilos) | 0/26 | 5 | $0.00084 | 2,3 s | 4,0 s |
+| run17 (preguntas 4–7) | 0/26 | 4 | $0.00084 | 2,2 s | 3,6 s |
 
 Las trazas completas están en `eval/runs/`.
 
@@ -150,10 +249,9 @@ Casos ya resueltos de punta a punta con datos reales:
 - **UC-15** negación.
 
 ## Siguiente
-1. Edd envía el Excel a Andrea. Con su respuesta:
-   - `python scripts/import-review-xlsx.py <archivo>`;
-   - aplicar `review-corrections.json`;
-   - `npx tsx scripts/build-catalog-v2.ts febal-casa --strict`.
+1. Edd comparte los dos Excel de Descargas. Con lo que vuelva:
+   - decisiones: se aplican a mano;
+   - base de datos: `python scripts/import-database-xlsx.py <archivo>` (y luego `--apply`).
 2. Tarea aparte: "Llévame" en la misma panorámica con `setPosition` (widget).
 3. Integración en `server` con el flag `ASSISTANT_ENGINE=v2` y el widget:
    - grupos y chips de motivo;
@@ -165,4 +263,4 @@ Casos ya resueltos de punta a punta con datos reales:
 - Ninguno técnico. El catálogo estricto ya es usable (818/818 con fuente literal). Falta la hoja corta de decisiones y la lista de acabados del showroom.
 
 ## Gasto en APIs
-≈ US$0.17, en 9 corridas de 22 a 24 turnos con gpt-4o-mini.
+≈ US$0.40 estimado: 17 corridas de 22 a 26 turnos más las pruebas sueltas de cliente, todo con gpt-4o-mini.

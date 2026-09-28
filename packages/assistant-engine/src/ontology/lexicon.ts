@@ -32,11 +32,13 @@ export interface LexiconMatch {
   surface: string;   // normalized surface form that matched
   start: number;     // token index
   end: number;       // exclusive token index
+  stop?: boolean;    // a stop phrase: only hides shorter matches, never returned
 }
 
 export class Lexicon {
   readonly concepts = new Map<ConceptId, Concept>();
   private readonly forms = new Map<string, Set<ConceptId>>(); // normalized form -> concepts
+  private readonly stops = new Set<string>();
   private maxTokens = 1;
   private readonly relations: ConceptRelation[];
 
@@ -46,6 +48,12 @@ export class Lexicon {
       this.concepts.set(concept.id, concept);
       const surfaces = [...Object.values(concept.labels), ...Object.values(concept.synonyms).flat()];
       for (const s of surfaces) this.addForm(s, concept.id);
+    }
+    for (const s of pack.stop_phrases ?? []) {
+      const norm = normalizeText(s);
+      if (!norm) continue;
+      this.stops.add(norm);
+      this.maxTokens = Math.max(this.maxTokens, norm.split(" ").length);
     }
   }
 
@@ -67,6 +75,7 @@ export class Lexicon {
         const head = toks.slice(i, i + len - 1);
         for (const last of tokenVariants(toks[i + len - 1])) {
           const form = [...head, last].join(" ");
+          if (this.stops.has(form)) found.push({ concept: "", facet: "category", surface: form, start: i, end: i + len, stop: true });
           const ids = this.forms.get(form);
           if (!ids) continue;
           for (const id of ids) {
@@ -85,7 +94,7 @@ export class Lexicon {
       const dup = kept.some((k) => k.concept === m.concept && k.start === m.start && k.end === m.end);
       if (!clash && !dup) kept.push(m);
     }
-    return kept.sort((a, b) => a.start - b.start);
+    return kept.filter((m) => !m.stop).sort((a, b) => a.start - b.start);
   }
 
   facetOf(id: ConceptId): Facet | undefined {

@@ -71,12 +71,11 @@
   {
    "id": "G4",
    "label": "Modelo con forma conocida",
-   "pass": 37,
+   "pass": 34,
    "total": 56,
    "ok": false,
    "missing": [
     "andy",
-    "arden",
     "astrid",
     "aurora",
     "couple",
@@ -85,9 +84,13 @@
     "leaf",
     "libeskind022",
     "madia-onda",
+    "modula-anta-square",
     "nina",
     "origina-anta-sagoma37",
+    "origina-anta-square",
+    "origina-anta-square-cannettato",
     "origina-anta-telaio-alluminio",
+    "origina-anta-telaio-legno",
     "polar",
     "rio",
     "tipologia-cabine-armadio-telaio",
@@ -99,16 +102,14 @@
   {
    "id": "G5",
    "label": "Opción oficial con familia de color",
-   "pass": 5085,
-   "total": 5138,
+   "pass": 5071,
+   "total": 5118,
    "ok": false,
    "missing": [
     "arden/letti-specchio/specchio/specchio",
     "arden/letti-tessuto-bentley/tessuto-bentley/oceania",
     "astrid/letti-specchio/specchio/specchio",
     "astrid/letti-tessuto-bentley/tessuto-bentley/oceania",
-    "aurora/fianchi/telaio-alluminio-aurora/x",
-    "aurora/frontali/telaio-alluminio-aurora/x",
     "aurora-porta-battente/text-0/vetro-stop-sol",
     "couple/letti-specchio/specchio/specchio",
     "couple/letti-tessuto-bentley/tessuto-bentley/oceania",
@@ -142,7 +143,9 @@
     "origina-isola-onda/text-0/metal-iridio-onda",
     "rio/text-0/laccato-opaco",
     "rio/text-0/impiallacciato",
-    "rodin/text-0/laccati-opachi-a-catalogo"
+    "rodin/text-0/laccati-opachi-a-catalogo",
+    "tipologia-armadi-ante-battente-barret/text-0/finiture-nobilitate",
+    "tipologia-armadi-ante-battente-barret/text-0/laccate-opache"
    ]
   },
   {
@@ -166,8 +169,8 @@
   {
    "id": "G7",
    "label": "Hechos con fuente literal o validados (sin rechazos)",
-   "pass": 819,
-   "total": 819,
+   "pass": 821,
+   "total": 821,
    "ok": true,
    "missing": []
   }

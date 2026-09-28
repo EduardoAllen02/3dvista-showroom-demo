@@ -2,13 +2,16 @@ import type { CanonicalCatalog, Lang } from "../catalog/types.js";
 import type { Lexicon } from "../ontology/lexicon.js";
 import { QueryEngine } from "../engine/engine.js";
 import type { Bundle, CardRef } from "../engine/types.js";
-import { MemoryStateStore, newState, detectLang, type ConversationState, type StateStore } from "./state.js";
+import { MemoryStateStore, newState, detectLang, foreignLang, type ConversationState, type StateStore } from "./state.js";
 import { PLAN_SCHEMA, parsePlan, plannerSystemPrompt, plannerUserPrompt, type TurnPlan } from "./planner.js";
 import { Reducer, type EngineAction } from "./reducer.js";
 import { Renderer, type UiCard } from "./render.js";
 import { Verifier, type Segment } from "./verifier.js";
 import { COMPOSER_SCHEMA, COMPOSER_SYSTEM, composerUserPrompt, parseSegments, repairUserPrompt } from "./composer.js";
-import { clarifyAnswer, completeObligations, fixedAnswer, navigationAnswer, templateAnswer } from "./templates.js";
+import { FOREIGN_OFFER, clarifyAnswer, completeObligations, fixedAnswer, navigationAnswer, oneClosingQuestion, templateAnswer } from "./templates.js";
+
+const TRANSLATE_SYSTEM = "Translate the visitor's message to English, literally: keep every colour, material, shape and product name, add nothing. Output JSON {\"english\": \"...\"}.";
+const TRANSLATE_SCHEMA = { type: "object", additionalProperties: false, required: ["english"], properties: { english: { type: "string" } } };
 
 /** Provider seam: one JSON-structured completion. The server wires OpenAI (gpt-4o-mini today). */
 export interface LlmJsonClient {
@@ -75,22 +78,36 @@ export class TurnGateway {
       prev.mentioned = [req.clicked.exhibit_id, ...prev.mentioned.filter((x) => x !== req.clicked!.exhibit_id)];
     }
 
+    // 0) a language the assistant does not speak: the turn runs on an English translation (the lexicon
+    //    and the planner understand English; a German colour word would otherwise be lost).
+    let plannerMs = 0;
+    const foreignIn = foreignLang(req.message);
+    let message = req.message;
+    if (foreignIn && this.llm) {
+      try {
+        const r = await this.llm.json({ system: TRANSLATE_SYSTEM, user: req.message, schemaName: "translation", schema: TRANSLATE_SCHEMA, maxTokens: 200 });
+        plannerMs += r.latency_ms; addUsage(r.usage);
+        const t = (JSON.parse(r.text) as { english?: string }).english?.trim();
+        if (t) message = t;
+      } catch { /* keep the original: the reducer still answers in English with the offer */ }
+    }
+
     // 1) plan (LLM) — degraded lexicon plan when no LLM / failure
     let plan: TurnPlan | null = null;
-    let plannerMs = 0;
     if (this.llm) {
       try {
         const r = await this.llm.json({
-          system: this.plannerSystem, user: plannerUserPrompt(prev, req.history, req.message, (id) => this.renderer.exhibit(id)?.name ?? id),
+          system: this.plannerSystem, user: plannerUserPrompt(prev, req.history, message, (id) => this.renderer.exhibit(id)?.name ?? id),
           schemaName: "turn_plan", schema: PLAN_SCHEMA, maxTokens: 500,
         });
-        plannerMs = r.latency_ms; addUsage(r.usage); plan = parsePlan(r.text);
+        plannerMs += r.latency_ms; addUsage(r.usage); plan = parsePlan(r.text);
       } catch { plan = null; }
     }
-    plan ??= this.degradedPlan(req.message, prev);
+    plan ??= this.degradedPlan(message, prev);
 
     // 2) reduce (code) → action
-    const { state, action, notes } = this.reducer.reduce(prev, plan, req.message);
+    const { state, action, notes, foreign } = this.reducer.reduce(prev, plan, message, foreignIn);
+    if (message !== req.message) notes.unshift(`translated: "${message}"`);
     const lang = state.lang;
 
     // 3) engine
@@ -113,7 +130,12 @@ export class TurnGateway {
         state.focus = action.exhibit; state.focus_source = "navigation";
         break;
       }
-      case "show": bundle = this.showBundle(action.exhibits, "list"); break;
+      case "show": {
+        const offered = state.pending?.kind === "offer_group" && state.pending.cards?.length
+          && state.pending.exhibit_ids.join() === action.exhibits.join() ? state.pending.cards : null;
+        bundle = offered ? this.offerBundle(offered) : this.showBundle(action.exhibits, "list");
+        break;
+      }
       case "clarify": bundle = this.showBundle(action.candidates, "list"); fixed = clarifyAnswer(action.candidates, lang, action.reason); break;
       case "template": fixed = fixedAnswer(action.template, lang); break;
     }
@@ -125,7 +147,7 @@ export class TurnGateway {
     if (!fixed && bundle) {
       const view = this.renderer.composerView(bundle, lang);
       if (this.llm) {
-        let user = composerUserPrompt(view, lang, req.message);
+        let user = composerUserPrompt(view, lang, message);
         for (attempts = 1; attempts <= 2; attempts++) {
           try {
             const r = await this.llm.json({ system: COMPOSER_SYSTEM, user, schemaName: "answer", schema: COMPOSER_SCHEMA, maxTokens: 700 });
@@ -151,7 +173,10 @@ export class TurnGateway {
     }
 
     // 5) render + state bookkeeping
-    const reply = segments.map((s) => this.renderer.renderTags(s.text, bundle ?? this.emptyBundle(), lang)).join(" ").replace(/\s+/g, " ").trim();
+    let reply = segments.map((s) => this.renderer.renderTags(s.text, bundle ?? this.emptyBundle(), lang)).join(" ").replace(/\s+/g, " ").trim()
+      .replace(/\b([\p{L}][\p{L} ]{2,40}?) \(\1\)/giu, "$1");   // "warm grey (warm grey)": the tag plus the value written by hand
+    reply = oneClosingQuestion(reply);
+    if (foreign && !state.langs_offered) { reply = `${FOREIGN_OFFER} ${reply}`; state.langs_offered = true; }
     const cards = bundle && action.kind !== "template" ? this.renderer.uiCards(bundle, lang) : [];
     if (bundle && cards.length) {
       state.last_cards = { turn: state.turn, groups: bundle.groups.map((g) => ({ id: g.id, role: g.role, items: g.cards.map((c) => c.exhibit_id) })) };
@@ -160,7 +185,7 @@ export class TurnGateway {
       state.seen = [...new Set([...state.seen, ...shown])];
       if (cards.length === 1) { state.focus = cards[0].product_id; state.focus_source = state.focus_source ?? "mention"; }
       const off = bundle.groups.find((g) => bundle!.obligations.includes(`off:${g.id}`));
-      if (off) state.pending = { kind: "offer_group", exhibit_ids: off.cards.map((c) => c.exhibit_id), expires_turn: state.turn + 1 };
+      if (off) state.pending = { kind: "offer_group", exhibit_ids: off.cards.map((c) => c.exhibit_id), cards: off.cards, expires_turn: state.turn + 1 };
       else if (bundle.obligations.includes("nav:ask")) state.pending = { kind: "disambiguate_nav", exhibit_ids: bundle.groups[0].cards.map((c) => c.exhibit_id), expires_turn: state.turn + 1 };
       else if (action.kind !== "navigate") state.pending = null;
     }
@@ -193,7 +218,8 @@ export class TurnGateway {
       const re = new RegExp(`(?<![\\w{:])(\\*\\*)?${esc}(\\*\\*)?(?![\\w}])`, "gi");
       out = out.split(/(\{\{[^}]+\}\})/).map((part) => (part.startsWith("{{") ? part : part.replace(re, `{{p:${c.exhibit_id}}}`))).join("");
     }
-    return out;
+    // A name that is also the kind of piece ("Boiserie (boiserie)") ends up tagged twice: keep one.
+    return out.replace(/\{\{p:([^}]+)\}\}\s*\(\{\{p:\1\}\}\)/g, "{{p:$1}}");
   }
 
   /** No LLM (provider down): lexicon-only plan. Correct by construction, less flexible. */
@@ -212,6 +238,18 @@ export class TurnGateway {
     const cards: CardRef[] = ids.map((id) => this.renderer.exhibit(id)).filter((e): e is NonNullable<typeof e> => !!e)
       .map((e) => ({ exhibit_id: e.id, model_id: e.model_id, availability: "exhibited" as const, match: {}, evidence: [], shown_as: this.engine.shownAs(e) }));
     return { query_id: "show", mode, constraints: [], outcome: mode === "list" ? "list" : "locate", groups: cards.length ? [{ id: "g1", role: mode, relaxation: [], cards, total: cards.length }] : [], obligations: [], available_values: [] };
+  }
+
+  /** The visitor accepted an offered group: show it as an exact answer, keeping how each piece qualified. */
+  private offerBundle(cards: CardRef[]): Bundle {
+    const by = (a: CardRef["availability"]) => cards.filter((c) => c.availability === a);
+    const [T1, T2, L, U] = [by("exhibited"), by("on_order"), by("line"), by("unknown")];
+    const groups: Bundle["groups"] = [];
+    const add = (role: Bundle["groups"][number]["role"], cs: CardRef[]) => { if (cs.length) groups.push({ id: `g${groups.length + 1}`, role, relaxation: [], cards: cs, total: cs.length }); };
+    add("exact_exhibited", T1); add("exact_on_order", T2); add("line_on_order", L); add("unknown", U);
+    const obligations = [...T2.slice(0, T1.length ? 2 : 3).map((c) => `ord:${c.exhibit_id}`), ...L.slice(0, 2).map((c) => `lin:${c.exhibit_id}`)];
+    const outcome = T1.length ? "exact" : T2.length ? "on_order_only" : L.length ? "line_only" : "unknown_only";
+    return { query_id: "offer", mode: "search", constraints: [], outcome, groups, obligations, available_values: [] };
   }
 
   private emptyBundle(): Bundle {

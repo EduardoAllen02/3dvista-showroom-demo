@@ -10,7 +10,8 @@ import { proposeColor, proposeLineMaterial } from "../ontology/furniture-naming.
  * tour binding (camera/zone/image per piece) into the canonical catalog.
  *
  * mode "strict": a fact is "known" when it has a literal source (the official page or a tour
- *                 capture) or was validated; the review only corrects exceptions (rejected facts).
+ *                 capture), was curated by hand in the database workbook, or was validated; the
+ *                 review only corrects exceptions (rejected facts).
  *                 Legacy catalog-v1 values need an explicit validation.
  * mode "dev":    every pending fact is used as known (development/tests).
  */
@@ -55,6 +56,12 @@ export interface RawPaletteDecision {
   default: PaletteVerdict; aplica?: string[]; aviso?: string[]; no_aplica?: string[]; evidencia: string;
 }
 
+export interface ConceptOverrides {
+  models?: Record<string, { shapes?: ConceptId[]; materials?: ConceptId[]; styles?: ConceptId[] }>;
+  /** material: first = the dominant surface, rest = other parts. */
+  pieces?: Record<string, { shape?: ConceptId[]; color?: ConceptId[]; material?: ConceptId[] }>;
+}
+
 export interface CompileInput {
   tour_id: string;
   data_version: string;
@@ -68,6 +75,12 @@ export interface CompileInput {
   ignore_legacy_values: string[];
   review?: RawReview;
   palette_decisions?: Record<string, RawPaletteDecision>;
+  /** Client edits from the database workbook: color families per official option name (lowercase). */
+  color_overrides?: Record<string, ConceptId[]>;
+  /** Client edits: material per collection name (uppercase); null = the collection has no material. */
+  material_overrides?: Record<string, ConceptId | null>;
+  /** Client edits to what the assistant understood (the "lo que entiende" columns of the database workbook). */
+  concept_overrides?: ConceptOverrides;
   lexicon: Lexicon;
 }
 
@@ -78,17 +91,29 @@ const NAME_OVERRIDES: Record<string, string> = {
 
 const CATEGORY_MAP: Record<string, ConceptId> = {
   divani: "category.sofa", poltrone: "category.armchair", pouf: "category.pouf", sedie: "category.chair",
-  sgabelli: "category.stool", tavoli: "category.table", tavolini: "category.coffee_table", madie: "category.sideboard",
+  sgabelli: "category.stool", tavoli: "category.dining_table", tavolini: "category.coffee_table", madie: "category.sideboard",
   librerie: "category.bookcase", "sistemi modulari": "category.modular_system", cucine: "category.kitchen",
   armadi: "category.wardrobe", cassettiere: "category.drawer_unit", "camera da letto": "category.bed",
   boiserie: "category.boiserie", altro: "category.mirror",
 };
+
+/** Words whose shape depends on the piece: "penisola" is a chaise on a sofa but a peninsula in a
+ *  kitchen; "a isola" is a kitchen island, but a drawer unit "a isola" stands in the middle of the room. */
+function fitShapes(ids: ConceptId[], category: ConceptId): ConceptId[] {
+  const kitchen = category === "category.kitchen";
+  return [...new Set(ids.map((id) => (kitchen && id === "shape.chaise" ? "shape.peninsula"
+    : !kitchen && id === "shape.island" ? "shape.freestanding" : id)))];
+}
+
+/** Models with no piece in the tour take their category from the page ("gruppo notte: comodino, comò, settimino"). */
+const MODEL_CATEGORY: Record<string, ConceptId> = { astrid: "category.night_group" };
 
 function pieceCategory(p: RawPiece): ConceptId {
   const n = normalizeText(p.name);
   if (n.startsWith("cabina armadio")) return "category.walk_in_closet";
   if (n.startsWith("gruppo notte")) return "category.night_group";
   if (n.startsWith("specchio")) return "category.mirror";
+  if (n.startsWith("tavolin")) return "category.coffee_table";   // "Tavolini Ink": its page says "coffee table"
   return CATEGORY_MAP[p.category] ?? "category.modular_system";
 }
 
@@ -103,14 +128,14 @@ function roleFor(groupTitle: string | null, collection: string, category: Concep
   if (/telaio/.test(c)) return ["frame"];
   if (/fianchi|cassa|schien/.test(g)) return ["carcass"];
   if (["category.sofa", "category.armchair", "category.pouf", "category.chair", "category.stool"].includes(category)) return ["upholstery"];
-  if (["category.table", "category.coffee_table"].includes(category)) return ["top"];
+  if (["category.dining_table", "category.coffee_table"].includes(category)) return ["top"];
   if (["category.wardrobe", "category.walk_in_closet", "category.kitchen"].includes(category)) return ["doors", "front"];
   return ["whole"];
 }
 
 function dominantRole(category: ConceptId): ComponentRole {
   if (["category.sofa", "category.armchair", "category.pouf", "category.chair", "category.stool"].includes(category)) return "upholstery";
-  if (["category.table", "category.coffee_table"].includes(category)) return "top";
+  if (["category.dining_table", "category.coffee_table"].includes(category)) return "top";
   if (["category.wardrobe", "category.walk_in_closet", "category.kitchen", "category.sideboard"].includes(category)) return "front";
   return "whole";
 }
@@ -130,6 +155,11 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
   const promoted = new Set(input.review?.promoted_palette_groups ?? []);
   const excluded = new Set(input.review?.excluded_palette_groups ?? []);
   const now = new Date().toISOString();
+  const colorOf = (name: string, proposed: ConceptId[]) => input.color_overrides?.[name.trim().toLowerCase()] ?? proposed;
+  const materialOf = (collection: string, proposed: ConceptId | null) => {
+    const k = collection.trim().toUpperCase();
+    return input.material_overrides && k in input.material_overrides ? input.material_overrides[k] : proposed;
+  };
 
   const addFact = (f: Omit<Fact, "review">): Fact => {
     const status = rejected.has(f.id) ? "rejected" : validated.has(f.id) ? "validated" : "pending";
@@ -137,7 +167,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     facts.push(fact);
     return fact;
   };
-  const LITERAL = new Set(["official_page", "tour_capture"]);
+  const LITERAL = new Set(["official_page", "tour_capture", "curated"]);
   const usable = (f: Fact) => f.review.status === "validated"
     || (f.review.status === "pending" && (input.mode === "dev" || LITERAL.has(f.source.kind)));
   function attr<T>(value: T | null, fact: Fact | null, reason: "not_captured" | "not_published" = "not_published"): Attr<T> {
@@ -145,6 +175,13 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     if (!usable(fact)) return { status: "unknown", reason: "pending_review" };
     return { status: "known", value, facts: [fact.id] };
   }
+  /** A hand edit from the database workbook replaces what was derived from the text. */
+  const curatedAttr = (subject: string, what: string, ids: ConceptId[] | undefined): Attr<ConceptId[]> | null => {
+    if (!ids) return null;
+    const f = addFact({ id: `F-${subject}-${what}-curated`, subject, claim: `${what}: ${ids.join(", ") || "(ninguno)"}`,
+      source: { kind: "curated", captured_at: now.slice(0, 10), evidence: "editado en la base de datos en Excel" } });
+    return attr(ids.length ? ids : null, f);
+  };
   const concepts = (text: string, facet: "shape" | "style" | "material" | "color") =>
     [...new Set(lx.match(text.replace(PARENTHESIS, " "), [facet]).map((m) => m.concept))];
 
@@ -159,12 +196,13 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const refs = rm.catalog_refs.map((r) => piecesById.get(r.product_id)).filter((p): p is RawPiece => !!p);
     for (const r of rm.catalog_refs) modelOfPiece.set(r.product_id, rm.model_key);
     const cats = refs.map(pieceCategory);
+    const mo = input.concept_overrides?.models?.[rm.model_key];
     const category = cats.includes("category.kitchen") ? "category.kitchen"
-      : [...cats].sort((x, y) => cats.filter((c) => c === y).length - cats.filter((c) => c === x).length)[0] ?? "category.modular_system";
+      : [...cats].sort((x, y) => cats.filter((c) => c === y).length - cats.filter((c) => c === x).length)[0] ?? MODEL_CATEGORY[rm.model_key] ?? "category.modular_system";
     const src = (evidence: string) => ({ kind: "official_page" as const, url: rm.url, captured_at: a?.leido ?? rm.scraped_at, evidence });
 
     const shapeFact = a?.forma?.confirmado === "SI" ? addFact({ id: `F-${rm.model_key}-shape`, subject: rm.model_key, claim: `Forma: ${String(a.forma.valor)}`, source: src(a.forma.evidencia) }) : null;
-    const shapeIds = a?.forma?.confirmado === "SI" ? concepts(String(a.forma.valor), "shape") : [];
+    const shapeIds = a?.forma?.confirmado === "SI" ? fitShapes(concepts(String(a.forma.valor), "shape"), category) : [];
     const styleFact = a?.estilo?.confirmado === "SI" ? addFact({ id: `F-${rm.model_key}-style`, subject: rm.model_key, claim: `Estilo: ${String(a.estilo.valor)}`, source: src(a.estilo.evidencia) }) : null;
     const styleIds = a?.estilo?.confirmado === "SI" ? concepts(String(a.estilo.valor), "style") : [];
     const matTexts = a?.materiales?.confirmado === "SI" ? (a.materiales.valor as string[]) : [];
@@ -211,17 +249,23 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
         const listFact = addFact({ id: `F-${gid}`, subject: gid, claim: `Lista '${colName}' en la ficha (${g.group ?? "sin grupo"})`, source: src(`${g.group ?? ""} › ${colName}: ${col.options.length} muestras`) });
         const mat = proposeLineMaterial(lx, colName);
         const options: Option[] = [];
+        const names = new Set<string>();
         for (const o of col.options) {
+          // No label and no swatch ("missing-file.png") is not an option; the same name twice in a
+          // collection is the same finish (two photos of one panel, a "(2)" copy on the site).
+          if (!o.label && !o.code && (!o.swatch_url || o.swatch_url.includes("missing-file"))) continue;
           const name = o.label ?? o.code ?? "—";
+          if (names.has(normalizeText(name))) continue;
+          names.add(normalizeText(name));
           let oid = `${gid}/${slug(name)}`;
           while (seenOpt.has(oid)) oid += "~";
           seenOpt.add(oid);
           const cp = proposeColor(name, o.swatch_hex);
-          options.push({ id: oid, official_name: name, code: o.code, color_family: cp.families, tone: cp.tone ?? undefined, swatch: { url: o.swatch_url, hex: o.swatch_hex }, fact: listFact.id });
+          options.push({ id: oid, official_name: name, code: o.code, color_family: colorOf(name, cp.families), tone: cp.tone ?? undefined, swatch: { url: o.swatch_url, hex: o.swatch_hex }, fact: listFact.id });
         }
         groups.push({
           id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category),
-          material: mat.material, price_band: g.tier ? `CAT. ${g.tier}` : null,
+          material: materialOf(colName, mat.material), price_band: g.tier ? `CAT. ${g.tier}` : null,
           scope: scope === "model" ? "model" : scope === "generic_palette" ? paletteScope(gid, colName)
             : promoted.has(gid) ? "model" : "generic_palette",
           line: scope === "model" ? null : line, options, fact: listFact.id,
@@ -236,13 +280,15 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
       const names = m[2].split(/,|\bo\b|\be\b|;/).map((s) => s.replace(PARENTHESIS, "").trim()).filter((s) => s.length > 1 && s.length < 40);
       const gid = `${rm.model_key}/text-${i}`;
       const tFact = addFact({ id: `F-${gid}`, subject: gid, claim: `Opciones en el texto: ${line}`, source: src(line) });
+      const groupMat = materialOf(gname, proposeLineMaterial(lx, gname).material);
       groups.push({
         id: gid, name: gname, group_title: "texto de la ficha", applies_to: roleFor(null, gname, category),
-        material: proposeLineMaterial(lx, gname).material, price_band: null, scope: "text",
+        material: groupMat, price_band: null, scope: "text",
         options: names.map((n) => {
           const cp = proposeColor(n, null);
-          const mat = mostSpecific(lx, concepts(n, "material"));
-          return { id: `${gid}/${slug(n)}`, official_name: n, code: null, color_family: cp.families, material: mat ?? undefined, tone: cp.tone ?? undefined, swatch: { url: null, hex: null }, fact: tFact.id };
+          // "Base metallo: Nero, Ottone scuro": when the list names its material, an option is a colour of it.
+          const mat = groupMat ? null : mostSpecific(lx, concepts(n, "material"));
+          return { id: `${gid}/${slug(n)}`, official_name: n, code: null, color_family: colorOf(n, cp.families), material: mat ?? undefined, tone: cp.tone ?? undefined, swatch: { url: null, hex: null }, fact: tFact.id };
         }),
         fact: tFact.id,
       });
@@ -254,11 +300,11 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
       name: NAME_OVERRIDES[rm.model_key] ?? rm.heading ?? rm.model_key,
       category,
       official_url: rm.url || null,
-      shapes: attr(shapeIds.length ? shapeIds : null, shapeFact),
+      shapes: curatedAttr(rm.model_key, "shapes", mo?.shapes) ?? attr(shapeIds.length ? shapeIds : null, shapeFact),
       shape_text: a?.forma?.confirmado === "SI" ? String(a.forma.valor) : null,
-      styles: attr(styleIds.length ? styleIds : null, styleFact),
+      styles: curatedAttr(rm.model_key, "styles", mo?.styles) ?? attr(styleIds.length ? styleIds : null, styleFact),
       style_text: a?.estilo?.confirmado === "SI" ? String(a.estilo.valor) : null,
-      materials: attr(matIds.length ? matIds : null, matFact),
+      materials: curatedAttr(rm.model_key, "materials", mo?.materials) ?? attr(matIds.length ? matIds : null, matFact),
       materials_text: matTexts,
       dimensions: attr(dims, dimFact),
       option_groups: groups,
@@ -273,7 +319,9 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
   const viewpoints: Viewpoint[] = [];
   const active = input.pieces.filter((p) => p.active);
   for (const p of active) {
-    const category = pieceCategory(p);
+    // What the capture shows wins over the old catalog label: FEB-021 "Sistema Origina" is "cucina a U".
+    const shown = input.observations[p.product_id]?.shape ?? "";
+    const category = /\bcucina\b/i.test(shown) ? "category.kitchen" : pieceCategory(p);
     const modelId = modelOfPiece.get(p.product_id) ?? `orphan-${p.product_id}`;
     const obs = input.observations[p.product_id];
     const legacyOk = !input.ignore_legacy_values.includes(p.product_id);
@@ -285,24 +333,30 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const kind = obs ? "tour_capture" as const : "catalog_v1" as const;
     const evidence = obs ? `captura ${p.product_id}: ${obs.colors.join(", ")} / ${obs.materials.join(", ")}` : `catálogo v1 (CASA 01 manual): ${p.colors.join(", ")} / ${p.materials.join(", ")}`;
 
+    const po = input.concept_overrides?.pieces?.[p.product_id];
     let configuration: Attr<ConfiguredComponent[]> = { status: "unknown", reason: "not_captured" };
-    if (colorsText.length || matsText.length) {
-      const f = addFact({ id: `F-${p.product_id}-conf`, subject: p.product_id, claim: `Se ve: ${colorsText.join(", ")} · ${matsText.join(", ")}`, source: { kind, captured_at: now.slice(0, 10), evidence } });
-      const colorIds = [...new Set(colorsText.flatMap((t) => [
+    if (colorsText.length || matsText.length || po?.color || po?.material) {
+      const curated = !!(po?.color || po?.material);
+      const f = addFact({ id: `F-${p.product_id}-conf`, subject: p.product_id, claim: `Se ve: ${colorsText.join(", ")} · ${matsText.join(", ")}`,
+        source: curated ? { kind: "curated", captured_at: now.slice(0, 10), evidence: `${evidence} (conceptos editados en la base de datos en Excel)` } : { kind, captured_at: now.slice(0, 10), evidence } });
+      const colorIds = po?.color ?? [...new Set(colorsText.flatMap((t) => [
         ...concepts(t, "color"),
         ...t.split(/[\/,;]| e | y | and /).flatMap((part) => proposeColor(part, null).families),
       ]))];
       // The first observed material is the dominant surface; refine it to its most specific concept.
-      const firstMats = concepts(matsText[0] ?? "", "material");
+      const firstMats = po?.material ? po.material.slice(0, 1) : concepts(matsText[0] ?? "", "material");
       const dominantMat = mostSpecific(lx, firstMats);
-      const otherMats = [...new Set(matsText.slice(1).flatMap((t) => concepts(t, "material")))].filter((m) => !firstMats.includes(m));
+      const otherMats = po?.material ? po.material.slice(1)
+        : [...new Set(matsText.slice(1).flatMap((t) => concepts(t, "material")))].filter((m) => !firstMats.includes(m));
       const comp: ConfiguredComponent = { role: dominantRole(category), dominant: true, material: dominantMat, color_family: colorIds, observed_color: colorsText.join(", ") || null };
       const extra: ConfiguredComponent[] = otherMats.map((m) => ({ role: "whole", dominant: false, material: m, color_family: [], observed_color: null }));
       configuration = attr([comp, ...extra], f, "not_captured");
     }
     let shapeAs: Attr<ConceptId[]> = { status: "unknown", reason: "not_captured" };
-    const shapeIds = shapeText ? concepts(shapeText, "shape") : [];
-    if (shapeIds.length) {
+    const shapeIds = shapeText ? fitShapes(concepts(shapeText, "shape"), category) : [];
+    if (po?.shape) {
+      shapeAs = curatedAttr(p.product_id, "shape", po.shape)!;
+    } else if (shapeIds.length) {
       const f = addFact({ id: `F-${p.product_id}-shape`, subject: p.product_id, claim: `Forma expuesta: ${shapeText}`, source: { kind, captured_at: now.slice(0, 10), evidence: shapeText } });
       shapeAs = attr(shapeIds, f, "not_captured");
     }

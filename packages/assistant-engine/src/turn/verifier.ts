@@ -32,6 +32,18 @@ const SURE_ORDER: Record<Lang, RegExp> = {
   it: /su ordinazione|si pu[òo] ordinare/i,
   en: /available (to|on) order|can (be )?order/i,
 };
+// Quantities spelled out to dodge V4 ("treinta y cuatro piezas"): fine only when it is a real group total.
+const NUMBER_WORDS: Record<Lang, Record<string, number>> = {
+  es: { cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, once: 11, doce: 12, veinte: 20, treinta: 30, cuarenta: 40, cincuenta: 50 },
+  it: { quattro: 4, cinque: 5, sette: 7, otto: 8, nove: 9, dieci: 10, undici: 11, dodici: 12, venti: 20, trenta: 30, quaranta: 40, cinquanta: 50 },
+  en: { four: 4, five: 5, six: 6, seven: 7, eight: 8, nine: 9, ten: 10, eleven: 11, twelve: 12, twenty: 20, thirty: 30, forty: 40, fifty: 50 },
+};
+// "its page" said in words: must be the {{link:ID}} tag instead, or the visitor gets no link.
+const PAGE_WORDS: Record<Lang, RegExp> = {
+  es: /\b(su|la) ficha\b/i,
+  it: /\b(sua|la) scheda\b/i,
+  en: /\b(its|the) (product )?page\b/i,
+};
 const COMBINE: Record<Lang, RegExp> = {
   es: /combin|armoniz|queda bien/i,
   it: /abbin|si sposa|armonizz|sta bene/i,
@@ -66,11 +78,22 @@ export class Verifier {
         (kind === "vals" && bundle.available_values.some((a) => a.constraint === arg)) ||
         (kind === "n" && bundle.groups.some((g) => g.id === arg)) ||
         (kind === "f" && !!bundle.details?.some((d) => d.field === arg && d.status === "known"));
-      if (!ok) v.push(`V1 etiqueta inválida {{${kind}:${arg}}}`);
+      if (!ok && kind === "v" && cardIds.has(arg)) v.push(`V1 {{v:${arg}}} no existe: {{p:${arg}}} ya está en el showroom tal como lo pidió; no nombres opciones bajo pedido de esa pieza`);
+      else if (!ok && kind === "n") v.push(`V1 {{n:${arg}}} no existe: los grupos son ${bundle.groups.map((g) => `{{n:${g.id}}} (${g.total})`).join(", ") || "ninguno"}`);
+      else if (!ok) v.push(`V1 etiqueta inválida {{${kind}:${arg}}}`);
     }
     const plain = full.replace(/\{\{[^}]+\}\}/g, " ");
     // V4 no digits outside tags (measures, prices, coordinates can't be invented); zone numbers are checked by V8
-    if (/\d/.test(plain.replace(/casa\s*0?\d+/gi, " "))) v.push("V4 hay números fuera de etiquetas: usa {{f:…}} o {{n:…}}");
+    if (/\d/.test(plain.replace(/\bcasa\s*0?\d+/gi, " "))) v.push("V4 hay números fuera de etiquetas: usa {{f:…}} o {{n:…}}");
+    const nTags = bundle.groups.map((g) => `{{n:${g.id}}} (${g.total})`).join(", ");
+    const totals = new Set(bundle.groups.map((g) => g.total));
+    const spelled = normalizeText(plain).split(/\s+/).map((w) => NUMBER_WORDS[lang][w]).filter((n): n is number => n !== undefined);
+    if (spelled.some((n) => !totals.has(n) || n >= 20)) v.push(`V4 no escribas cantidades con letras: para cuántas hay usa ${nTags || "{{n:gN}}"}`);
+    // V4c at most a handful of pieces by name: the rest are in the cards
+    const named = new Set([...full.matchAll(/\{\{p:([^}]+)\}\}/g)].map((m) => m[1]));
+    if (named.size > 6) v.push(`V4 nombras ${named.size} piezas: nombra como mucho 4 (más las que pidan las obligaciones); el resto ya está en las tarjetas`);
+    // V4b "its page" only as a real link
+    if (PAGE_WORDS[lang].test(plain) && !full.includes("{{link:")) v.push("V4 mencionas la ficha sin enlace: usa {{link:ID}}");
     // V5 no raw product names outside tags
     const normPlain = ` ${normalizeText(plain)} `;
     for (const n of this.names) if (normPlain.includes(` ${n} `)) v.push(`V5 nombre de producto sin etiqueta: "${n}" → usa {{p:ID}}`);
@@ -89,7 +112,7 @@ export class Verifier {
     }
     // V8 zones written by hand must be zones of the bundle's pieces
     const zones = new Set(cards.map((c) => this.catalog.exhibits.find((e) => e.id === c.exhibit_id)?.zone.match(/CASA\s*0?(\d+)/i)?.[1]).filter(Boolean));
-    for (const [, n] of plain.matchAll(/casa\s*0?(\d+)/gi)) if (!zones.has(n)) v.push(`V8 zona "Casa ${n}" no corresponde a ninguna tarjeta → usa {{z:ID}}`);
+    for (const [, n] of plain.matchAll(/\bcasa\s*0?(\d+)/gi)) if (!zones.has(n)) v.push(`V8 zona "Casa ${n}" no corresponde a ninguna tarjeta → usa {{z:ID}}`);
     // V9 obligations — structural, over the whole answer (claims are only a tracing aid)
     const has = (tag: string) => full.includes(tag);
     for (const ob of bundle.obligations) {
@@ -107,13 +130,18 @@ export class Verifier {
         case "grp": case "off": {
           const g = bundle.groups.find((x) => x.id === a);
           if (!g || !g.cards.some((c) => has(`{{p:${c.exhibit_id}}}`))) v.push(`V9 ${ob}: menciona al menos una pieza del grupo ${a} con {{p:ID}}`);
-          if (kind === "off" && !full.trim().endsWith("?")) v.push(`V9 ${ob}: termina ofreciendo el grupo ${a} con una pregunta`);
+          // The offer is the LAST question and comes after the offered piece, so a "yes" points at it
+          // (a short closing sentence after the question is fine).
+          const at = Math.min(...(g?.cards ?? []).map((c) => full.indexOf(`{{p:${c.exhibit_id}}}`)).filter((i) => i >= 0));
+          if (kind === "off" && !(full.lastIndexOf("?") > at)) v.push(`V9 ${ob}: termina ofreciendo el grupo ${a} con una pregunta`);
           break;
         }
         case "harm": if (!COMBINE[lang].test(plain)) v.push(`V9 ${ob}: di que el color alternativo combina con el pedido`); break;
         case "vals": if (!has(`{{vals:${a}}}`)) v.push(`V9 ${ob}: nombra los valores que sí existen con {{vals:${a}}}`); break;
         case "unk": if (!has(`{{p:${a}}}`) || !(NEG[lang].test(plain) || has(`{{link:${a}}}`))) v.push(`V9 ${ob}: di que ese dato de {{p:${a}}} no está confirmado y ofrece {{link:${a}}}`); break;
         case "fact": if (!has(`{{f:${a}}}`)) v.push(`V9 ${ob}: da el dato con {{f:${a}}} (sí lo tenemos)`); break;
+        case "price": if (!has(`{{link:${a}}}`)) v.push(`V9 ${ob}: di que no tienes precios y ofrece {{link:${a}}} para una cita con un asesor`); break;
+        case "lnk": if (!has(`{{link:${a}}}`)) v.push(`V9 ${ob}: incluye {{link:${a}}}`); break;
         case "inf": if (!has(`{{c:${ob.slice(4)}}}`) && !this.lx.match(plain, ["mood", "style"]).length) v.push(`V9 ${ob}: di cómo interpretas el deseo ("entiendo acogedor como…")`); break;
         case "nav": if (!full.trim().endsWith("?")) v.push("V9 nav:ask: pregunta a cuál quiere ir"); break;
       }

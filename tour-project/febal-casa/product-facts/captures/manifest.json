@@ -1732,22 +1732,22 @@
   "name": "Cucina Anta Telaio Alluminio vetro",
   "section": "GALLERIA",
   "target": {
-   "media_name": "80-opening",
-   "yaw": 19.3,
-   "pitch": -30.5,
-   "fov": 87.6
+   "media_name": "82-opening",
+   "yaw": -112.1,
+   "pitch": -9.2,
+   "fov": 101.1
   },
   "landed": {
-   "media_name": "80-opening",
-   "yaw": 19.3,
-   "pitch": -30.5,
-   "fov": 87.6
+   "media_name": "82-opening",
+   "yaw": -112.1,
+   "pitch": -9.200000000000001,
+   "fov": 101.1
   },
   "landing_ok": true,
   "retried": false,
   "window_visible": true,
-  "sha1": "4a7dcb90904a",
-  "captured_at": "2026-09-24T04:18:00Z",
+  "sha1": "b55f51e2f87b",
+  "captured_at": "2026-09-27T20:48:44Z",
   "file": "tour-project/febal-casa/product-facts/captures/FEB-085.png",
   "identical_to": []
  },

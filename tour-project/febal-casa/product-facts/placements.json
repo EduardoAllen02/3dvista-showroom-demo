@@ -414,7 +414,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-008.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:45:33Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -443,8 +443,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete colonne a tutta altezza",
-   "evidencia": ""
+   "valor": "parete colonne cucina a tutta altezza con forni e vetrine",
+   "evidencia": "columnas con hornos y vitrinas con vajilla, junto a la isla de la cocina"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -452,7 +452,8 @@
    "evidencia": ""
   },
   "notas": [
-   "v1 también listaba 'marmo': en esta vista no hay mármol (es la cubierta de la isla FEB-007)."
+   "v1 también listaba 'marmo': en esta vista no hay mármol (es la cubierta de la isla FEB-007).",
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (columnas con hornos y vitrinas con vajilla, junto a la isla de la cocina), así que cuenta como cocina (2026-09-27)."
   ],
   "observed": {
    "name": "Sistema Origina",
@@ -463,7 +464,7 @@
     "impiallacciato cannettato",
     "vetro"
    ],
-   "shape": "parete colonne a tutta altezza"
+   "shape": "parete colonne cucina a tutta altezza con forni e vetrine"
   }
  },
  {
@@ -473,7 +474,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-009.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:45:42Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -502,8 +503,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete colonne a tutta altezza",
-   "evidencia": ""
+   "valor": "parete colonne cucina a tutta altezza con forni e vetrine",
+   "evidencia": "la misma pared de hornos vista detrás de la isla de la cocina"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -511,7 +512,8 @@
    "evidencia": ""
   },
   "notas": [
-   "Mismo sistema que FEB-008, otra panorámica. También se ve la campana suspendida de metal negro."
+   "Mismo sistema que FEB-008, otra panorámica. También se ve la campana suspendida de metal negro.",
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (la misma pared de hornos vista detrás de la isla de la cocina), así que cuenta como cocina (2026-09-27)."
   ],
   "observed": {
    "name": "Sistema Origina",
@@ -522,7 +524,7 @@
     "impiallacciato cannettato",
     "vetro"
    ],
-   "shape": "parete colonne a tutta altezza"
+   "shape": "parete colonne cucina a tutta altezza con forni e vetrine"
   }
  },
  {
@@ -928,7 +930,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-020.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:49:00Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -963,8 +965,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete vetrine a tutta altezza con passaggio",
-   "evidencia": "portal oscuro al centro hacia el comedor"
+   "valor": "parete vetrine cucina a tutta altezza con passaggio",
+   "evidencia": "vitrinas con copas y alacenas de la cocina, con un paso hacia el comedor"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -973,7 +975,8 @@
   },
   "notas": [
    "v1 listaba 'marmo nero venato oro': no aparece en esta vista.",
-   "Las etiquetas de TELAIO VETRO traían una 'I' sobrante ('Ilaccato…', 'Irovere…'); ya se limpiaron."
+   "Las etiquetas de TELAIO VETRO traían una 'I' sobrante ('Ilaccato…', 'Irovere…'); ya se limpiaron.",
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (vitrinas con copas y alacenas de la cocina, con un paso hacia el comedor), así que cuenta como cocina (2026-09-27)."
   ],
   "observed": {
    "name": "Sistema Origina",
@@ -983,7 +986,7 @@
    "materials": [
     "telaio laccato opaco con vetro"
    ],
-   "shape": "parete vetrine a tutta altezza con passaggio"
+   "shape": "parete vetrine cucina a tutta altezza con passaggio"
   }
  },
  {
@@ -1462,7 +1465,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-031.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:51:49Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -1497,16 +1500,17 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete colonne con zona lavaggio",
-   "evidencia": ""
+   "valor": "parete colonne cucina con forni, cantinette e zona lavaggio",
+   "evidencia": "hornos, cavas y tarja: la pared de la cocina"
   },
   "opcion_oficial": {
    "confirmado": "NO",
    "valor": "",
-   "evidencia": "las puertas aquí son planas: la ficha asignada (Anta Libeskind) no corresponde a esta parte"
+   "evidencia": "las puertas lisas son las «ante rientranti» / «ante a terra» que describe la ficha; su acabado exacto no se identifica"
   },
   "notas": [
-   "DUDA de ficha: el modelo asignado es 'Origina Anta Libeskind', pero las puertas de esta pared son lisas de madera, no Libeskind."
+   "Ficha confirmada: «Sistema Origina · Anta Libeskind» es la ficha de toda la composición de cocina. Además de la puerta Libeskind022 de la isla (FEB-030), describe los armarios de «ante rientranti» que esconden hornos, refrigerador y alacena, las «ante a terra» y la «dispensa & cantina»: es esta pared.",
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (hornos, cavas y tarja), así que cuenta como cocina (2026-09-27)."
   ],
   "observed": {
    "name": "Sistema Origina",
@@ -1514,7 +1518,7 @@
     "rovere scuro"
    ],
    "materials": [],
-   "shape": "parete colonne con zona lavaggio"
+   "shape": "parete colonne cucina con forni, cantinette e zona lavaggio"
   }
  },
  {
@@ -1800,7 +1804,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-037.png",
   "landing_ok": true,
   "capturado": "2026-09-24T00:53:51Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -1832,7 +1836,7 @@
    "evidencia": "la ficha asignada es 'mobili di servizio laundry' y no tiene acabados"
   },
   "notas": [
-   "DUDA de ficha: la ficha asignada (lavandería) no parece corresponder a este armario de la colección Momenti."
+   "CORREGIDO (ficha): estaba enlazado a la ficha de lavandería (mobili di servizio). El marcador del tour lo llama «Armadio Collezione Momenti», igual que los armarios de la recámara Momenti de Casa 3, y tiene su mismo gris cálido claro con puertas lisas; el cuarto es un gimnasio, sin nada de lavandería. Ahora está enlazado a la ficha de Momenti (2026-09-27)."
   ],
   "observed": {
    "name": "Armadio Collezione Momenti.",
@@ -3239,7 +3243,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-065.png",
   "landing_ok": true,
   "capturado": "2026-09-24T04:12:11Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -3247,7 +3251,7 @@
     "rol": "frentes con relieve de onda",
     "dominante": true,
     "color": "grigio bronzo",
-    "material": "metal"
+    "material": "vetro fuso retroverniciato effetto metallo"
    }
   ],
   "color": {
@@ -3257,8 +3261,8 @@
   },
   "material": {
    "confirmado": "SI",
-   "valor": "frontale metal (Metal Onda)",
-   "evidencia": "el texto de la ficha solo ofrece frentes 'Metal Onda, Metal Bronzo Onda, Metal Champagne Onda, Metal Iridio Onda'"
+   "valor": "frontale in vetro fuso retroverniciato effetto metallo (Metal Onda)",
+   "evidencia": "se ve metálico, pero la ficha dice: «il frontale in vetro fuso retroverniciato effetto metallo»"
   },
   "forma": {
    "confirmado": "SI",
@@ -3270,14 +3274,16 @@
    "valor": "Metal Onda o Metal Bronzo Onda",
    "evidencia": "dos tonos parecidos"
   },
-  "notas": [],
+  "notas": [
+   "CORREGIDO (material): se había anotado metal; su ficha dice «il frontale in vetro fuso retroverniciato effetto metallo»: es vidrio con efecto metal (2026-09-27)."
+  ],
   "observed": {
    "name": "Madia Onda - Zaha Hadid Architects",
    "colors": [
     "grigio bronzo"
    ],
    "materials": [
-    "metal"
+    "vetro fuso retroverniciato effetto metallo"
    ],
    "shape": "madia 3 ante con rilievo a onda"
   }
@@ -3396,7 +3402,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-068.png",
   "landing_ok": true,
   "capturado": "2026-09-24T04:13:16Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -3419,22 +3425,24 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete colonne a tutta altezza",
-   "evidencia": ""
+   "valor": "parete colonne cucina a tutta altezza",
+   "evidencia": "columnas altas de madera detrás de las islas de la cocina"
   },
   "opcion_oficial": {
    "confirmado": "NO",
    "valor": "",
    "evidencia": ""
   },
-  "notas": [],
+  "notas": [
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (columnas altas de madera detrás de las islas de la cocina), así que cuenta como cocina (2026-09-27)."
+  ],
   "observed": {
    "name": "Sistema Origina",
    "colors": [
     "noce scuro"
    ],
    "materials": [],
-   "shape": "parete colonne a tutta altezza"
+   "shape": "parete colonne cucina a tutta altezza"
   }
  },
  {
@@ -3710,7 +3718,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-076.png",
   "landing_ok": true,
   "capturado": "2026-09-24T04:15:21Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -3718,7 +3726,7 @@
     "rol": "puertas con relieve de onda",
     "dominante": true,
     "color": "bronzo",
-    "material": "metal"
+    "material": "vetro fuso retroverniciato effetto metallo"
    },
    {
     "rol": "cubierta",
@@ -3734,8 +3742,8 @@
   },
   "material": {
    "confirmado": "SI",
-   "valor": "ante metal (Metal Onda); piano acciaio inox",
-   "evidencia": "la ficha solo ofrece puertas 'Metal ... Onda'; el acero cepillado y la tarja integrada se ven"
+   "valor": "ante in vetro fuso retroverniciato effetto metallo (Metal Onda); piano acciaio inox",
+   "evidencia": "se ve metálico, pero la ficha dice: «ante in vetro fuso retroverniciato effetto metallo»"
   },
   "forma": {
    "confirmado": "SI",
@@ -3747,14 +3755,16 @@
    "valor": "Metal Bronzo Onda o Metal Champagne Onda",
    "evidencia": ""
   },
-  "notas": [],
+  "notas": [
+   "CORREGIDO (material): se había anotado metal; su ficha dice «ante in vetro fuso retroverniciato effetto metallo»: es vidrio con efecto metal (2026-09-27)."
+  ],
   "observed": {
    "name": "Isola Onda - Zaha Hadid Architects",
    "colors": [
     "bronzo"
    ],
    "materials": [
-    "metal",
+    "vetro fuso retroverniciato effetto metallo",
     "acciaio inox"
    ],
    "shape": "cucina a isola"
@@ -3767,7 +3777,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-077.png",
   "landing_ok": true,
   "capturado": "2026-09-24T04:15:42Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -3790,8 +3800,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "parete colonne a tutta altezza",
-   "evidencia": ""
+   "valor": "parete colonne cucina a tutta altezza con forni",
+   "evidencia": "tres hornos y una cafetera junto a la tarja"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -3799,7 +3809,8 @@
    "evidencia": ""
   },
   "notas": [
-   "DUDA de zona: en esta panorámica el tour muestra la etiqueta 'CASA 01: AUTENTICA', pero el catálogo la pone en CASA 04 - A-MARE."
+   "PENDIENTE (letrero del tour): la panorámica 78 muestra «CASA 01: AUTENTICA», pero la pieza está en Casa 4 - A-Mare: desde ese punto hay marcadores de la isla Onda (FEB-076) y del sofá Navigli (FEB-066), ambos de Casa 4, y Navigli se ve detrás. La zona del catálogo es correcta; hay que corregir el letrero en el proyecto del tour (2026-09-27).",
+   "CORREGIDO (categoría): estaba como sistema modular; la foto muestra la pared de la cocina (tres hornos y una cafetera junto a la tarja), así que cuenta como cocina (2026-09-27)."
   ],
   "observed": {
    "name": "Sistema Origina anta Square",
@@ -3807,7 +3818,7 @@
     "rovere naturale"
    ],
    "materials": [],
-   "shape": "parete colonne a tutta altezza"
+   "shape": "parete colonne cucina a tutta altezza con forni"
   }
  },
  {
@@ -4022,28 +4033,34 @@
   "section": "GALLERIA",
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-085.png",
   "landing_ok": true,
-  "capturado": "2026-09-24T04:18:00Z",
-  "observado": "2026-09-23",
+  "capturado": "2026-09-27T20:48:44Z",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
    {
-    "rol": "isla / península",
+    "rol": "cocina detrás de ante rientranti",
     "dominante": true,
     "color": "grigio caldo chiaro",
     "material": ""
    },
    {
-    "rol": "mesa redonda integrada",
+    "rol": "isla con mesa redonda integrada",
     "dominante": false,
-    "color": "grigio chiaro",
+    "color": "grigio caldo chiaro",
+    "material": ""
+   },
+   {
+    "rol": "ante rientranti",
+    "dominante": false,
+    "color": "rovere",
     "material": ""
    }
   ],
   "color": {
    "confirmado": "SI",
-   "valor": "grigio caldo chiaro",
-   "evidencia": "península de cubierta greige claro mate con mesa redonda integrada"
+   "valor": "grigio caldo chiaro; rovere",
+   "evidencia": "gabinetes y cubiertas gris cálido claro en la cocina y en la isla; puertas escamoteables de madera"
   },
   "material": {
    "confirmado": "NO",
@@ -4052,8 +4069,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "penisola cucina con tavolo rotondo integrato",
-   "evidencia": ""
+   "valor": "cucina con ante rientranti e penisola con tavolo rotondo integrato",
+   "evidencia": "cocina escondida tras puertas escamoteables + isla con mesa redonda integrada (mismo marcador 621)"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -4061,7 +4078,8 @@
    "evidencia": ""
   },
   "notas": [
-   "DUDA de pieza: el marcador está sobre la península; las puertas de 'Telaio Alluminio vetro' (marco oscuro con vidrio) solo se ven al fondo. ¿Qué parte es la pieza del catálogo?"
+   "Confirmado en el tour (2026-09-27): la pieza es la cocina completa. Detrás de puertas de madera que se esconden a los lados (las «ante rientranti» de su ficha) hay una cocina con tarja, gabinetes gris cálido y alacenas; al abrirlas (icono de puerta, panorámica 82-opening) el mismo marcador 621 aparece en esa cubierta y en la isla con mesa redonda integrada. La pared de madera con el marcador 622 es el armario Barret FEB-086; las puertas de vidrio del pasillo son la zona de armarios de la Galleria.",
+   "CORREGIDO (punto de vista en el tour): la cámara mostraba la isla con las puertas cerradas; ahora abre la vista con las puertas abiertas y la cocina completa (panorámica 82-opening, yaw -112.1, pitch -9.2, fov 101.1), encuadrada a mano el 2026-09-27."
   ],
   "observed": {
    "name": "Cucina Anta Telaio Alluminio vetro",
@@ -4069,7 +4087,7 @@
     "grigio caldo chiaro"
    ],
    "materials": [],
-   "shape": "penisola cucina con tavolo rotondo integrato"
+   "shape": "cucina con ante rientranti e penisola con tavolo rotondo integrato"
   }
  },
  {
@@ -4735,7 +4753,7 @@
   "captura": "tour-project/febal-casa/product-facts/captures/FEB-099.png",
   "landing_ok": true,
   "capturado": "2026-09-24T04:23:17Z",
-  "observado": "2026-09-23",
+  "observado": "2026-09-27",
   "fuente": "captura del tour desde su POV verificado, observada a mano",
   "visible": "SI",
   "componentes": [
@@ -4758,8 +4776,8 @@
   },
   "forma": {
    "confirmado": "SI",
-   "valor": "armadio con portale passante",
-   "evidencia": "puertas planas sin rieles de corredera visibles: compatible con la ficha Barret battente"
+   "valor": "armadio battente con portale passante",
+   "evidencia": "puertas abatibles al ras con jaladeras horizontales y un paso tipo portal en medio"
   },
   "opcion_oficial": {
    "confirmado": "NO",
@@ -4767,7 +4785,7 @@
    "evidencia": "paleta genérica de armarios"
   },
   "notas": [
-   "DUDA de tipo de puerta: la ficha Barret battente (puertas abatibles) es compatible con la captura, no se ven rieles de corredera; falta confirmarlo."
+   "Confirmado en el tour (2026-09-27): puertas abatibles al ras, sin rieles arriba, con jaladeras horizontales de barra (las «maniglie dedicate» de Barret battente); el portal es una de sus «soluzioni a ponte»."
   ],
   "observed": {
    "name": "Armadio Barret con Portale",
@@ -4775,7 +4793,7 @@
     "grigio talpa scuro"
    ],
    "materials": [],
-   "shape": "armadio con portale passante"
+   "shape": "armadio battente con portale passante"
   }
  },
  {

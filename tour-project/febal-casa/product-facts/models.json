@@ -7712,130 +7712,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_madie_aurora_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },
@@ -12280,130 +12294,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },
@@ -17609,130 +17637,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },
@@ -18125,40 +18167,44 @@
       "name": "NOBILITATO 1",
       "options": [
        {
-        "label": "Nobilitato1 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato1 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato1 Noce"
        },
        {
-        "label": "Nobilitato1 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato1 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato1 eucalipto"
        },
        {
-        "label": "Nobilitato1 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato1 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato1 grigio dorian"
        },
        {
-        "label": "Nobilitato1 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato1 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato1_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato1 noce gold"
        }
       ]
      },
@@ -18187,130 +18233,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },
@@ -26589,22 +26649,24 @@
         "label_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_Nobilitato2_rovere europeo"
        },
        {
-        "label": "Nobilitato2overe asiativo",
+        "label": "Rovere asiatico",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2overe asiativo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/rovere_asiatico.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/rovere_asiatico-1x1.jpg",
-        "swatch_hex": "#28231f"
+        "swatch_hex": "#28231f",
+        "label_raw": "Nobilitato2overe asiativo"
        },
        {
-        "label": "Nobilitato2 marmo imperiale",
+        "label": "Marmo imperiale",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 marmo imperiale",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/marmo_imperiale.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/marmo_imperiale-1x1.jpg",
-        "swatch_hex": "#262216"
+        "swatch_hex": "#262216",
+        "label_raw": "Nobilitato2 marmo imperiale"
        }
       ]
      },
@@ -30945,7 +31007,7 @@
       "name": "GRES",
       "options": [
        {
-        "label": "Calacatta",
+        "label": "Calacatta lucido",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_Gres Lucido_calacatta",
@@ -30955,7 +31017,7 @@
         "label_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_Gres Lucido_calacatta"
        },
        {
-        "label": "Stone grey",
+        "label": "Stone grey lucido",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_Gres Lucido_stone grey",
@@ -30965,7 +31027,7 @@
         "label_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_Gres Lucido_stone grey"
        },
        {
-        "label": "Calacatta",
+        "label": "Calacatta opaco",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_GresOpaco_Calacatta",
@@ -30975,7 +31037,7 @@
         "label_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_GresOpaco_Calacatta"
        },
        {
-        "label": "Stone Grey",
+        "label": "Stone Grey opaco",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Copia di FebalCasa_Giorno_Madie_Aurora_Finiture_GresOpaco_Stone Grey",
@@ -37605,7 +37667,7 @@
         "label_raw": "C Bianco Kent BK8X"
        },
        {
-        "label": "Castoro CS7H (1)",
+        "label": "Castoro CS7H",
         "code": null,
         "label_source": "alt",
         "alt_raw": "C Castoro CS7H (1)",
@@ -37764,16 +37826,17 @@
         "swatch_hex": "#00555c"
        },
        {
-        "label": "Bianco Neve Opaco (1)",
+        "label": "Bianco Neve Opaco",
         "code": null,
         "label_source": "alt",
         "alt_raw": "bianco neve opaco (1)",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucido_febalcasa_origina_finiture_bianco_neve_opaco_(1).jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucido_febalcasa_origina_finiture_bianco_neve_opaco_(1)-1x1.jpg",
-        "swatch_hex": "#f8f9f3"
+        "swatch_hex": "#f8f9f3",
+        "label_raw": "Bianco Neve Opaco (1)"
        },
        {
-        "label": "Castoro CS7H (2)",
+        "label": "Castoro CS7H",
         "code": null,
         "label_source": "alt",
         "alt_raw": "C Castoro CS7H (2)",
@@ -37891,13 +37954,14 @@
         "swatch_hex": "#827c6e"
        },
        {
-        "label": "Lucidobianco neve opaco (2)",
+        "label": "Bianco neve opaco",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Laccato Lucidobianco neve opaco (2)",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucidobianco_neve_opaco_(2).jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucidobianco_neve_opaco_(2)-1x1.jpg",
-        "swatch_hex": "#334d44"
+        "swatch_hex": "#334d44",
+        "label_raw": "Lucidobianco neve opaco (2)"
        }
       ]
      }
@@ -38388,13 +38452,14 @@
         "swatch_hex": "#070b0e"
        },
        {
-        "label": "Osso",
+        "label": "Rosso",
         "code": null,
         "label_source": "alt",
         "alt_raw": "osso",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_pet_pet_rosso.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_pet_pet_rosso-1x1.jpg",
-        "swatch_hex": "#4a2836"
+        "swatch_hex": "#4a2836",
+        "label_raw": "Osso"
        },
        {
         "label": "Verde",
@@ -39084,7 +39149,7 @@
         "label_raw": "C Bianco Kent BK8X"
        },
        {
-        "label": "Castoro CS7H (1)",
+        "label": "Castoro CS7H",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Laccato Lucido C Castoro CS7H (1)",
@@ -39252,7 +39317,7 @@
         "swatch_hex": "#f8f9f3"
        },
        {
-        "label": "Castoro CS7H (2)",
+        "label": "Castoro CS7H",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Laccato Lucido C Castoro CS7H (2)",
@@ -39370,13 +39435,14 @@
         "swatch_hex": "#827c6e"
        },
        {
-        "label": "Lucidobianco neve opaco (2)",
+        "label": "Bianco neve opaco",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Laccato Lucidobianco neve opaco (2)",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucidobianco_neve_opaco_(2).jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_origina_finiture_laccatolucidobianco_neve_opaco_(2)-1x1.jpg",
-        "swatch_hex": "#334d44"
+        "swatch_hex": "#334d44",
+        "label_raw": "Lucidobianco neve opaco (2)"
        }
       ]
      },
@@ -53990,14 +54056,7 @@
   "source": "febalcasa.com (static HTML)",
   "raw_html": "raw-html/tipologia-mobili-di-servizi-mobili-di-servizi-laundry.html",
   "integrity_ok": true,
-  "catalog_refs": [
-   {
-    "product_id": "FEB-037",
-    "name": "Armadio Collezione Momenti.",
-    "category": "armadi",
-    "section": "CASA 02 - PERFETTA"
-   }
-  ],
+  "catalog_refs": [],
   "page_title": "Mobili per la lavanderia - Febal Casa",
   "heading": null,
   "canonical": "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/",
@@ -54071,6 +54130,12 @@
     "name": "Libreria Collezione Momenti.",
     "category": "librerie",
     "section": "CASA 03 - AUDACE"
+   },
+   {
+    "product_id": "FEB-037",
+    "name": "Armadio Collezione Momenti.",
+    "category": "armadi",
+    "section": "CASA 02 - PERFETTA"
    }
   ],
   "page_title": "Camerette per bambini - Febal Casa",
@@ -54290,130 +54355,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },
@@ -54756,139 +54835,154 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        },
        {
-        "label": "Nobilitato2overe asiativo",
+        "label": "Rovere asiatico",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2overe asiativo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/rovere_asiatico.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/rovere_asiatico-1x1.jpg",
-        "swatch_hex": "#28231f"
+        "swatch_hex": "#28231f",
+        "label_raw": "Nobilitato2overe asiativo"
        },
        {
-        "label": "Nobilitato2 marmo imperiale",
+        "label": "Marmo imperiale",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 marmo imperiale",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/marmo_imperiale.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/marmo_imperiale-1x1.jpg",
-        "swatch_hex": "#262216"
+        "swatch_hex": "#262216",
+        "label_raw": "Nobilitato2 marmo imperiale"
        },
        {
         "label": "Desert",
@@ -55736,130 +55830,144 @@
       "name": "NOBILITATO 2",
       "options": [
        {
-        "label": "Nobilitato2 Basalto",
+        "label": "Basalto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Basalto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_basalto-1x1.jpg",
-        "swatch_hex": "#9e9a91"
+        "swatch_hex": "#9e9a91",
+        "label_raw": "Nobilitato2 Basalto"
        },
        {
-        "label": "Nobilitato2 Canapa",
+        "label": "Canapa",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Canapa",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_canapa-1x1.jpg",
-        "swatch_hex": "#babead"
+        "swatch_hex": "#babead",
+        "label_raw": "Nobilitato2 Canapa"
        },
        {
-        "label": "Nobilitato2 Cemento Masdar",
+        "label": "Cemento Masdar",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Cemento Masdar",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_cemento_masdar-1x1.jpg",
-        "swatch_hex": "#aea79d"
+        "swatch_hex": "#aea79d",
+        "label_raw": "Nobilitato2 Cemento Masdar"
        },
        {
-        "label": "Nobilitato2 Grigio Titanio",
+        "label": "Grigio Titanio",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Grigio Titanio",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_titanio-1x1.jpg",
-        "swatch_hex": "#525b5a"
+        "swatch_hex": "#525b5a",
+        "label_raw": "Nobilitato2 Grigio Titanio"
        },
        {
-        "label": "Nobilitato2 Marmo Botticino",
+        "label": "Marmo Botticino",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Marmo Botticino",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_marmo_botticino-1x1.jpg",
-        "swatch_hex": "#e4ddd5"
+        "swatch_hex": "#e4ddd5",
+        "label_raw": "Nobilitato2 Marmo Botticino"
        },
        {
-        "label": "Nobilitato2 Noce",
+        "label": "Noce",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Noce",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce-1x1.jpg",
-        "swatch_hex": "#b08461"
+        "swatch_hex": "#b08461",
+        "label_raw": "Nobilitato2 Noce"
        },
        {
-        "label": "Nobilitato2 Rovere White",
+        "label": "Rovere White",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe White",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_white-1x1.jpg",
-        "swatch_hex": "#f7f4ed"
+        "swatch_hex": "#f7f4ed",
+        "label_raw": "Nobilitato2 Rovere White"
        },
        {
-        "label": "Nobilitato2 Stone gray icona",
+        "label": "Stone gray icona",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 Stone gray icona",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_stone_gray_icona-1x1.jpg",
-        "swatch_hex": "#2c2f34"
+        "swatch_hex": "#2c2f34",
+        "label_raw": "Nobilitato2 Stone gray icona"
        },
        {
-        "label": "Nobilitato2 calacatta",
+        "label": "Calacatta",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 calacatta",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_calacatta-1x1.jpg",
-        "swatch_hex": "#e6eadc"
+        "swatch_hex": "#e6eadc",
+        "label_raw": "Nobilitato2 calacatta"
        },
        {
-        "label": "Nobilitato2 eucalipto",
+        "label": "Eucalipto",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 eucalipto",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_eucalipto-1x1.jpg",
-        "swatch_hex": "#5e4e37"
+        "swatch_hex": "#5e4e37",
+        "label_raw": "Nobilitato2 eucalipto"
        },
        {
-        "label": "Nobilitato2 grigio dorian",
+        "label": "Grigio dorian",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 grigio dorian",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_grigio_dorian-1x1.jpg",
-        "swatch_hex": "#aabdb9"
+        "swatch_hex": "#aabdb9",
+        "label_raw": "Nobilitato2 grigio dorian"
        },
        {
-        "label": "Nobilitato2 moka",
+        "label": "Moka",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 moka",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_moka-1x1.jpg",
-        "swatch_hex": "#767062"
+        "swatch_hex": "#767062",
+        "label_raw": "Nobilitato2 moka"
        },
        {
-        "label": "Nobilitato2 noce gold",
+        "label": "Noce gold",
         "code": null,
         "label_source": "alt",
         "alt_raw": "Nobilitato2 noce gold",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_noce_gold-1x1.jpg",
-        "swatch_hex": "#977f65"
+        "swatch_hex": "#977f65",
+        "label_raw": "Nobilitato2 noce gold"
        },
        {
-        "label": "Nobilitato2 Rovere Europeo",
+        "label": "Rovere Europeo",
         "code": null,
         "label_source": "alt + 'r' restored from file name (site alt drops '_r')",
         "alt_raw": "Nobilitato2overe europeo",
         "swatch_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo.jpg",
         "swatch_1x1_url": "https://www.febalcasa.com/wp-content/uploads/finishes/febalcasa_giorno_finiture_nobilitato2_rovere_europeo-1x1.jpg",
-        "swatch_hex": "#6f6d56"
+        "swatch_hex": "#6f6d56",
+        "label_raw": "Nobilitato2 Rovere Europeo"
        }
       ]
      },

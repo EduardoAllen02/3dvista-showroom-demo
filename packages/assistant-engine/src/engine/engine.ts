@@ -18,15 +18,15 @@ const COMPLEMENTS: Record<string, ConceptId[]> = {
   "category.armchair": ["category.sofa", "category.coffee_table", "category.pouf"],
   "category.pouf": ["category.sofa", "category.armchair"],
   "category.coffee_table": ["category.sofa", "category.armchair"],
-  "category.table": ["category.chair", "category.sideboard"],
-  "category.chair": ["category.table"],
-  "category.stool": ["category.kitchen", "category.table"],
-  "category.kitchen": ["category.stool", "category.table"],
+  "category.dining_table": ["category.chair", "category.sideboard"],
+  "category.chair": ["category.dining_table"],
+  "category.stool": ["category.kitchen", "category.dining_table"],
+  "category.kitchen": ["category.stool", "category.dining_table"],
   "category.bed": ["category.night_group", "category.wardrobe"],
   "category.night_group": ["category.bed", "category.wardrobe"],
   "category.wardrobe": ["category.bed", "category.night_group", "category.walk_in_closet"],
   "category.walk_in_closet": ["category.wardrobe", "category.drawer_unit"],
-  "category.sideboard": ["category.table", "category.modular_system"],
+  "category.sideboard": ["category.dining_table", "category.modular_system"],
   "category.bookcase": ["category.modular_system", "category.boiserie"],
   "category.modular_system": ["category.bookcase", "category.boiserie", "category.sofa"],
   "category.boiserie": ["category.modular_system", "category.sofa"],
@@ -265,7 +265,8 @@ export class QueryEngine {
     if (T1.length) groups.push({ id: `g${++gi}`, role: "exact_exhibited", relaxation: [], cards: T1.slice(0, cap), total: T1.length });
     if (T2.length) {
       groups.push({ id: `g${++gi}`, role: "exact_on_order", relaxation: [], cards: T2.slice(0, cap), total: T2.length });
-      for (const c of T2.slice(0, cap)) obligations.push(`ord:${c.exhibit_id}`);
+      // Named in the text: two next to showroom pieces, three at most otherwise (the rest are in the cards).
+      for (const c of T2.slice(0, T1.length ? 2 : 3)) obligations.push(`ord:${c.exhibit_id}`);
     }
     // Only when nothing is exact or orderable from the model's own lists: the line palette, with its caveat.
     if (!T1.length && !T2.length && L.length) {
@@ -286,7 +287,10 @@ export class QueryEngine {
     const available: Bundle["available_values"] = [];
 
     if (needRelax) {
-      const shown = new Set([...T1, ...T2, ...L, ...U].map((c) => c.exhibit_id));
+      // Unconfirmed pieces are excluded only when their group was shown: a table whose own top is
+      // unconfirmed can still be the alternative the visitor needs (supermarmo on order for "marble").
+      const unknownShown = groups.some((g) => g.role === "unknown");
+      const shown = new Set([...T1, ...T2, ...L, ...(unknownShown ? U : [])].map((c) => c.exhibit_id));
       const candidates = this.relaxCandidates(cs, physicalOnly, shown);
       const newCs = cs.filter((c) => c.role === "new" && c.facet !== "category" && c.strength === "must");
       const keepsNew = (k: RelaxCandidate) => newCs.every((c) => !k.ops.some((o) => o.constraint === c.id));
@@ -302,9 +306,11 @@ export class QueryEngine {
         obligations.push(role === "alt_keep_frame" ? `grp:${id}` : `off:${id}`);
         for (const op of k.ops) if (op.via === "harmonizes") obligations.push(`harm:${cs.find((c) => c.id === op.constraint)?.value}>${op.to}`);
       });
-      // A requested value with zero support among the pieces of the same category: list real values.
+      // A requested value with zero support among the pieces of the same category: list real values,
+      // unless a group already offers a substitute for it (the substitute is the answer; the full list is noise).
+      const substituted = new Set(picked.flatMap((k) => k.ops.filter((o) => o.kind === "substitute").map((o) => o.constraint)));
       for (const c of newCs) {
-        if (c.op !== "is" || !["color", "material", "shape", "style"].includes(c.facet)) continue;
+        if (c.op !== "is" || !["color", "material", "shape", "style"].includes(c.facet) || substituted.has(c.id)) continue;
         const scope = cs.filter((x) => x.facet === "category" || x.facet === "model");
         const probe = this.evaluate([...scope, c]);
         if (!probe.T1.length && !probe.T2.length && !probe.L.length) {
@@ -380,7 +386,8 @@ export class QueryEngine {
   list(cs: ActiveConstraint[]): Bundle {
     const qid = `q${++this.queryCounter}`;
     const { T1, T2, U } = this.evaluate(cs);
-    const all = [...T1, ...U];
+    // One card per (model, look), as in search: an island and its column wall in the same oak are one kitchen.
+    const all = dedupeByModel([...T1, ...U]);
     const cards = all.slice(0, this.policy.list_max_cards);
     const groups: CardGroup[] = all.length ? [{ id: "g1", role: "list", relaxation: [], cards, total: all.length }] : [];
     if (T2.length) groups.push({ id: "g2", role: "exact_on_order", relaxation: [], cards: T2.slice(0, this.policy.max_cards), total: T2.length });
@@ -507,13 +514,13 @@ export class QueryEngine {
         ? { exhibit_id: e.id, field: f, status: "known", text: m.dimensions.value.map((d) => `${d.label}: ${d.text}`).join(" · "), facts: m.dimensions.facts }
         : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       else if (f === "materials") details.push(m.materials.status === "known"
-        ? { exhibit_id: e.id, field: f, status: "known", text: m.materials_text.join("; "), facts: m.materials.facts }
+        ? { exhibit_id: e.id, field: f, status: "known", text: m.materials_text.join("; "), concepts: m.materials.value, facts: m.materials.facts }
         : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       else if (f === "style") details.push(m.styles.status === "known"
-        ? { exhibit_id: e.id, field: f, status: "known", text: m.style_text ?? "", facts: m.styles.facts }
+        ? { exhibit_id: e.id, field: f, status: "known", text: m.style_text ?? "", concepts: m.styles.value, facts: m.styles.facts }
         : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       else if (f === "shape") details.push(m.shapes.status === "known"
-        ? { exhibit_id: e.id, field: f, status: "known", text: m.shape_text ?? "", facts: m.shapes.facts }
+        ? { exhibit_id: e.id, field: f, status: "known", text: m.shape_text ?? "", concepts: m.shapes.value, facts: m.shapes.facts }
         : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       else if (f === "options") {
         const own = m.option_groups.filter((g) => g.scope === "model" || g.scope === "text");
@@ -521,14 +528,17 @@ export class QueryEngine {
           ? { exhibit_id: e.id, field: f, status: "known", text: own.map((g) => `${g.name} (${g.options.length})`).join(", "), facts: own.map((g) => g.fact) }
           : { exhibit_id: e.id, field: f, status: "unknown", facts: [] });
       } else if (f === "location") details.push({ exhibit_id: e.id, field: f, status: "known", text: e.zone, facts: [] });
+      else if (f === "price") details.push({ exhibit_id: e.id, field: f, status: "unknown", facts: [] });   // prices are never in the data
       else details.push({ exhibit_id: e.id, field: f, status: "unknown", facts: [] });
     }
     return {
       query_id: qid, mode: "detail", constraints: [], outcome: "detail",
       groups: [{ id: "g1", role: "detail", relaxation: [], cards: [{ ...this.card(e, "exhibited", {}), shown_as: this.shownAs(e) }], total: 1 }],
       obligations: [
-        ...details.filter((d) => d.status === "unknown").map((d) => `unk:${e.id}:${d.field}`),
+        ...details.filter((d) => d.status === "unknown" && d.field !== "price").map((d) => `unk:${e.id}:${d.field}`),
         ...details.filter((d) => d.status === "known").map((d) => `fact:${d.field}`),
+        ...(details.some((d) => d.field === "price") ? [`price:${e.id}`] : []),
+        `lnk:${e.id}`,   // every detail answer points to the official page
       ], available_values: [], details,
     };
   }

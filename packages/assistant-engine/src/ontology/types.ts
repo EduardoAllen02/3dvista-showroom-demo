@@ -37,4 +37,11 @@ export interface OntologyPack {
   concepts: Concept[];
   relations: ConceptRelation[];
   moods: MoodExpansion[];
+  /**
+   * Phrases that contain a concept word but are a name or a part, never that concept:
+   * "anta square" is a door model (not a square shape), "schienali scorrevoli" are sliding
+   * backrests (not sliding doors). Matched like synonyms; a longer stop phrase hides the
+   * shorter concept inside it and yields nothing itself.
+   */
+  stop_phrases?: string[];
 }

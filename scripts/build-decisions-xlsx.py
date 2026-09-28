@@ -1,7 +1,7 @@
 """
 Short decisions workbook: only what the official pages and the tour captures cannot settle.
 
-    python scripts/build-decisions-xlsx.py [out.xlsx]
+    python scripts/build-decisions-xlsx.py [out.xlsx]    # default: ~/Downloads/febal-casa-decisiones.xlsx
 
 Everything else is resolved from literal sources (see compile.ts, palette-decisions.json).
 Every row carries what happens if it is left blank, so an unanswered row never blocks.
@@ -15,14 +15,19 @@ import sys
 from openpyxl import Workbook
 from openpyxl.drawing.image import Image as XLImage
 from openpyxl.styles import Alignment, Border, Font, PatternFill, Side
+from openpyxl.worksheet.datavalidation import DataValidation
 from PIL import Image
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+sys.stdout.reconfigure(encoding="utf-8")   # the Windows console defaults to cp1252
+import febal_database as db  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FACTS = os.path.join(ROOT, "tour-project", "febal-casa", "product-facts")
 CAPTURES = os.path.join(FACTS, "captures")
 THUMBS = os.path.join(ROOT, ".scratch", "decision-thumbs")
 TODAY = dt.date.today().isoformat()
-OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.expanduser("~"), "Downloads", f"febal-casa-decisiones-{TODAY}.xlsx")
+OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(os.path.expanduser("~"), "Downloads", "febal-casa-decisiones.xlsx")
 
 load = lambda name: json.load(open(os.path.join(FACTS, name), encoding="utf-8"))
 placements = {p["product_id"]: p for p in load("placements.json")}
@@ -40,39 +45,18 @@ WRAP = Alignment(wrap_text=True, vertical="top")
 
 # (piece, what we do not know, what happens if left blank)
 PIECES = [
-    ("FEB-031", "Está enlazada a la ficha «Origina Anta Libeskind», pero las puertas de esta pared son lisas de madera. ¿Qué puerta es?",
-     "Sigue enlazada a «Origina Anta Libeskind»."),
-    ("FEB-035", "El top se ve travertino, pero la ficha solo lista Gres Calacatta y Stone Grey para el top. ¿Es un acabado especial?",
+    ("FEB-035", "¿El top es travertino? ¿Cuál: Gres Travertino Silver Bocciardato o Scenario Travertino? ¿Se puede pedir la madia así? "
+                "(Su ficha solo lista para el top Gres Calacatta, casi blanco con vetas, y Gres Stone Grey, gris oscuro; "
+                "esos dos travertinos aparecen en otras fichas de Febal: las camas de la línea Dormitorio y la librería Trenta.)",
      "Se describe lo que se ve (travertino) y bajo pedido solo se ofrece lo que lista la ficha."),
-    ("FEB-037", "Está enlazado a la ficha de lavandería (mobili di servizio). ¿Cuál es la ficha correcta de este armario Momenti?",
-     "Sigue enlazado a la ficha de lavandería."),
-    ("FEB-077", "En esa panorámica el tour muestra la etiqueta «CASA 01: AUTENTICA», pero el catálogo lo pone en CASA 04. ¿En qué zona está?",
-     "Se queda en CASA 04 - A-MARE, como dice el catálogo."),
-    ("FEB-085", "El marcador cae sobre la península; las puertas de aluminio y vidrio se ven al fondo. ¿Qué parte es la pieza?",
-     "Se describe lo que muestra el marcador."),
-    ("FEB-099", "La foto es compatible con puertas abatibles (no se ven rieles de corredera). ¿Es Barret battente?",
-     "Se trata como Barret battente (puertas abatibles)."),
 ]
 
 # (question, what happens if left blank)
 GENERAL = [
-    ("¿Existe una lista de los acabados exactos de las piezas del showroom (qué tela, qué laca, qué madera tiene cada una)?",
+    ("¿Existe una lista de los acabados exactos de las piezas del showroom (qué tela, qué laca, qué madera tiene cada una)? "
+     "Si alguno ya no se vende, márcalo.",
      f"Con esa lista se completan solos los acabados exactos ({missing_option} piezas) y los materiales ({missing_material} piezas). "
      "Sin ella, se sacan de las fotos del tour solo cuando se ven sin duda; lo demás queda como «sin confirmar» con enlace a la ficha."),
-    ("¿Una chaise longue o una penisola cuentan como sofá «de ángulo»?",
-     "Salen como alternativa cercana de un sofá en L, no como coincidencia exacta."),
-    ("¿Se aprueban las combinaciones de colores y los ánimos («acogedor», «luminoso»…) que propone el asistente?",
-     "El asistente las presenta solo como sugerencia, nunca como regla de la marca."),
-    ("¿Qué debe decir el asistente si una pieza expuesta tiene un acabado que ya no se fabrica?",
-     "Describe la pieza como se ve y ofrece los acabados que lista su ficha hoy."),
-    ("¿Cuántas tarjetas de productos como máximo por respuesta?",
-     "8, y 12 cuando piden un listado completo."),
-    ("¿Qué hacer si escriben en un idioma distinto de español, italiano o inglés?",
-     "Se programa así: responde en inglés y ofrece los tres idiomas (hoy elige el más cercano de los tres)."),
-    ("Si el cliente dice algo general («nada negro») y luego cambia de tipo de mueble, ¿se sigue respetando?",
-     "No: al cambiar de tipo de mueble se empieza de cero."),
-    ("¿A qué canal se envía al cliente cuando falta un dato (correo, WhatsApp, cita en tienda)?",
-     "Enlace a la ficha oficial del modelo, que tiene el botón para reservar cita."),
     ("Nabuk Eagle: ¿es piel (nobuk) o microfibra? ¿Se puede ofrecer cuando piden piel?",
      "Nunca se dice que es piel; se ofrece como alternativa cercana aclarando que no es piel."),
 ]
@@ -105,11 +89,38 @@ def thumb(pid):
     return XLImage(dst)
 
 
+# Vocabulary the tour runs with (code + client edits): every relation and mood, to review one by one.
+onto = db.export_ontology()
+concepts = {c["id"]: c for c in onto["concepts"]}
+es = lambda cid: concepts[cid]["labels"]["es"] if cid in concepts else cid
+FACET = {"color": "Color", "material": "Material", "style": "Estilo", "category": "Tipo de mueble", "shape": "Forma"}
+KIND_ORDER = {"harmonizes": 0, "near": 1}
+RELATIONS = sorted(onto["relations"], key=lambda r: (KIND_ORDER[r["type"]], r["from"].split(".")[0], r["from"], r["distance"], r["to"]))
+MOODS = onto["moods"]
+# Indicative swatch per colour family (the real finishes are in the database workbook).
+SWATCH = {"color.white": "F4F3EF", "color.cream": "EDE3CC", "color.beige": "C9B89C", "color.grey": "9C9C9A", "color.anthracite": "3F4245",
+          "color.black": "1E1E1E", "color.brown": "6B4A34", "color.natural_wood": "B08A5A", "color.yellow": "D9B23A", "color.gold": "C9A24A",
+          "color.bronze": "8C6A45", "color.orange": "C8743A", "color.red": "A8322E", "color.pink": "D79AA6", "color.purple": "6E4A7A",
+          "color.blue": "2F5A8A", "color.green": "5B7A4A", "color.transparent": "DDE8EA"}
+
+
+def closeness(d):
+    return "casi igual" if d <= 0.2 else "muy cercano" if d <= 0.3 else "cercano" if d <= 0.4 else "algo cercano" if d <= 0.5 else "lejano"
+
+
+def how(rel):
+    a, b = es(rel["from"]), es(rel["to"])
+    if rel["type"] == "harmonizes":
+        return f"Si piden {a} y no hay, puede ofrecer piezas en {b} diciendo que combinan (y al revés). También lo usa al recomendar."
+    return f"Si piden {a} y no hay, ofrece {b} como alternativa parecida, aclarando que no es lo mismo (y al revés)."
+
+
 wb = Workbook()
 ws = wb.active
 ws.title = "Piezas"
-intro(ws, f"Solo {len(PIECES) + len(GENERAL)} decisiones: {len(PIECES)} piezas en esta hoja y {len(GENERAL)} preguntas en «Preguntas». "
-          "Todo lo demás se resolvió con las fichas oficiales y las fotos del tour. "
+intro(ws, f"Actualizado el {TODAY}. Pendiente: {len(PIECES)} pieza en esta hoja, {len(GENERAL)} preguntas en «Preguntas», "
+          f"{len(RELATIONS)} relaciones en «Combinaciones y parecidos» y {len(MOODS)} ánimos en «Ánimos». "
+          "Todo lo demás se resolvió con las fichas oficiales y las fotos del tour; todos los datos del asistente están en «febal-casa-base-de-datos.xlsx». "
           "Llena solo la columna amarilla; si una fila queda vacía, se aplica lo que dice «Si no se responde».", 7)
 header(ws, 2, ["#", "Foto (tour)", "Pieza", "Zona", "Qué no sabemos", "Si no se responde", "Respuesta"], [5, 60, 26, 20, 46, 36, 40])
 for i, (pid, q, default) in enumerate(PIECES, start=1):
@@ -148,7 +159,71 @@ for i, (q, default) in enumerate(GENERAL, start=len(PIECES) + 1):
     ws.row_dimensions[r].height = 16 * max(2, -(-max(len(q), len(default)) // 55))
 ws.freeze_panes = "B3"
 
+# ------------------------------------------------------------------ every relation, to review one by one
+ws = wb.create_sheet("Combinaciones y parecidos")
+intro(ws, "Todas las relaciones que usa el asistente. «Combina con» es criterio de diseño: cuando no hay el color pedido, "
+          "ofrece uno que combina («no está en azul, pero sí en café, que combina con azul»). «Parecido a» decide qué alternativa ofrece "
+          "cuando no hay lo pedido («no hay piel, pero sí nobuk, que se parece»). Marca SI o NO en cada fila; en «Comentario» escribe "
+          "cambios, y abajo agrega lo que falte. Las muestras de color son orientativas.", 10)
+header(ws, 2, ["#", "Tipo", "Qué", "De", "", "Con", "", "Qué tan cerca", "Qué hace el asistente", "¿Se aprueba? (SI/NO)", "Comentario"],
+       [5, 16, 14, 18, 5, 18, 5, 13, 60, 13, 40])
+dv = DataValidation(type="list", formula1='"SI,NO"', allow_blank=True)
+ws.add_data_validation(dv)
+for i, rel in enumerate(RELATIONS, start=1):
+    r = i + 2
+    ws.cell(r, 1, i)
+    ws.cell(r, 2, "Combina con" if rel["type"] == "harmonizes" else "Parecido a")
+    ws.cell(r, 3, FACET.get(rel["from"].split(".")[0], rel["from"].split(".")[0]))
+    ws.cell(r, 4, es(rel["from"]))
+    ws.cell(r, 6, es(rel["to"]))
+    ws.cell(r, 8, closeness(rel["distance"]))
+    ws.cell(r, 9, how(rel))
+    for col, cid in ((5, rel["from"]), (7, rel["to"])):
+        if cid in SWATCH:
+            ws.cell(r, col).fill = PatternFill("solid", fgColor=SWATCH[cid])
+    ws.cell(r, 10).fill = ANSWER
+    ws.cell(r, 11).fill = ANSWER
+    for col in range(1, 12):
+        ws.cell(r, col).alignment, ws.cell(r, col).border = WRAP, BOX
+    ws.row_dimensions[r].height = 32
+dv.add(f"J3:J{len(RELATIONS) + 2}")
+r = len(RELATIONS) + 4
+ws.cell(r, 4, "¿Falta alguna? Escríbela aquí (tipo, de, con, comentario):").font = Font(bold=True)
+for k in range(1, 8):
+    for col in (2, 4, 6, 11):
+        ws.cell(r + k, col).fill = ANSWER
+        ws.cell(r + k, col).border = BOX
+ws.freeze_panes = "E3"
+ws.auto_filter.ref = f"A2:K{len(RELATIONS) + 2}"
+
+# ------------------------------------------------------------------ moods
+ws = wb.create_sheet("Ánimos")
+intro(ws, "Cuando alguien pide un ambiente en vez de un mueble («algo acogedor»), el asistente muestra primero lo que está en "
+          "«Muestra primero…». Solo cambia el orden: nunca esconde nada. Marca SI o NO y escribe en «Cambios» qué quitarías o agregarías.", 6)
+header(ws, 2, ["#", "Ánimo", "Cuando el cliente dice…", "Muestra primero…", "¿Se aprueba? (SI/NO)", "Cambios"], [5, 16, 42, 62, 13, 45])
+dv = DataValidation(type="list", formula1='"SI,NO"', allow_blank=True)
+ws.add_data_validation(dv)
+for i, mo in enumerate(MOODS, start=1):
+    r = i + 2
+    c = concepts.get(mo["mood"], {"labels": {"es": mo["mood"]}, "synonyms": {}})
+    ws.cell(r, 1, i)
+    ws.cell(r, 2, c["labels"]["es"])
+    ws.cell(r, 3, ", ".join(c["synonyms"].get("es", [])))
+    ws.cell(r, 4, ", ".join(es(x) for x in mo["prefer"]))
+    ws.cell(r, 5).fill = ANSWER
+    ws.cell(r, 6).fill = ANSWER
+    for col in range(1, 7):
+        ws.cell(r, col).alignment, ws.cell(r, col).border = WRAP, BOX
+    ws.row_dimensions[r].height = 48
+dv.add(f"E3:E{len(MOODS) + 2}")
+ws.freeze_panes = "B3"
+
 if any(re.search(r"Andrea|\bEdd\b", str(c.value or "")) for s in wb for row in s.iter_rows() for c in row):
     sys.exit("the workbook must not name people")
-wb.save(OUT)
-print(f"{OUT}: {len(PIECES)} piezas + {len(GENERAL)} preguntas")
+try:
+    wb.save(OUT)
+except PermissionError:
+    OUT = OUT.replace(".xlsx", f" ({dt.datetime.now():%H%M}).xlsx")
+    wb.save(OUT)
+    print(f"AVISO: el archivo estaba abierto en Excel; se guardó como {OUT}")
+print(f"{OUT}: {len(PIECES)} piezas + {len(GENERAL)} preguntas + {len(RELATIONS)} relaciones + {len(MOODS)} ánimos")
