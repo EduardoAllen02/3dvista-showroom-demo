@@ -329,6 +329,7 @@ export function createWishlistLayer(
   const hotspotOverlay = createHotspotHeartOverlay({
     wishlist: deps.wishlist,
     manifest: deps.manifest,
+    bridge: deps.tourBridge,
     onNativePreviewChange: (state) => {
       previewOpen = state.open;
       previewProduct = state.product;

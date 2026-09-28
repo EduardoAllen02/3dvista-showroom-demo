@@ -3,7 +3,9 @@ import type {
   OptionGroup, OptionScope, Viewpoint,
 } from "./types.js";
 import { Lexicon, normalizeText } from "../ontology/lexicon.js";
-import { proposeColor, proposeLineMaterial } from "../ontology/furniture-naming.js";
+import { proposeColor, proposeLineMaterial } from "../adapters/febal/naming.js";
+import { MODEL_CATEGORY, NAME_OVERRIDES, febalRoleFromTitles, pieceCategory } from "../adapters/febal/source-map.js";
+import type { DomainRules } from "../ontology/types.js";
 
 /**
  * Compiles the raw, sourced product facts (tour-project/<tour>/product-facts) plus the
@@ -84,60 +86,22 @@ export interface CompileInput {
   lexicon: Lexicon;
 }
 
-const NAME_OVERRIDES: Record<string, string> = {
-  arden: "Arden", astrid: "Astrid", couple: "Couple", "febal-notte-gruppo-como-e-comodino-marlene": "Marlene",
-  "tipologia-mobili-di-servizi-mobili-di-servizi-laundry": "Laundry", "tipologia-momenti-cameretta": "Momenti (camerette)",
-};
 
-const CATEGORY_MAP: Record<string, ConceptId> = {
-  divani: "category.sofa", poltrone: "category.armchair", pouf: "category.pouf", sedie: "category.chair",
-  sgabelli: "category.stool", tavoli: "category.dining_table", tavolini: "category.coffee_table", madie: "category.sideboard",
-  librerie: "category.bookcase", "sistemi modulari": "category.modular_system", cucine: "category.kitchen",
-  armadi: "category.wardrobe", cassettiere: "category.drawer_unit", "camera da letto": "category.bed",
-  boiserie: "category.boiserie", altro: "category.mirror",
-};
-
-/** Words whose shape depends on the piece: "penisola" is a chaise on a sofa but a peninsula in a
- *  kitchen; "a isola" is a kitchen island, but a drawer unit "a isola" stands in the middle of the room. */
-function fitShapes(ids: ConceptId[], category: ConceptId): ConceptId[] {
-  const kitchen = category === "category.kitchen";
-  return [...new Set(ids.map((id) => (kitchen && id === "shape.chaise" ? "shape.peninsula"
-    : !kitchen && id === "shape.island" ? "shape.freestanding" : id)))];
-}
-
-/** Models with no piece in the tour take their category from the page ("gruppo notte: comodino, comò, settimino"). */
-const MODEL_CATEGORY: Record<string, ConceptId> = { astrid: "category.night_group" };
-
-function pieceCategory(p: RawPiece): ConceptId {
-  const n = normalizeText(p.name);
-  if (n.startsWith("cabina armadio")) return "category.walk_in_closet";
-  if (n.startsWith("gruppo notte")) return "category.night_group";
-  if (n.startsWith("specchio")) return "category.mirror";
-  if (n.startsWith("tavolin")) return "category.coffee_table";   // "Tavolini Ink": its page says "coffee table"
-  return CATEGORY_MAP[p.category] ?? "category.modular_system";
+/** Words whose shape depends on the piece (the pack's shape_by_category: chaise → peninsula in a kitchen). */
+function fitShapes(ids: ConceptId[], category: ConceptId, rules: DomainRules): ConceptId[] {
+  const fit = (id: ConceptId) => rules.shape_by_category?.find((r) => r.from === id
+    && (!r.in || r.in.includes(category)) && (!r.not_in || !r.not_in.includes(category)))?.to ?? id;
+  return [...new Set(ids.map(fit))];
 }
 
 const slug = (s: string) => normalizeText(s).replace(/\s+/g, "-") || "x";
 
-function roleFor(groupTitle: string | null, collection: string, category: ConceptId): ComponentRole[] {
-  const g = normalizeText(groupTitle ?? ""), c = normalizeText(collection);
-  if (/piedi|struttura|metallo$/.test(c) || g.startsWith("struttura")) return ["base", "legs"];
-  if (g.startsWith("piano") || g === "top") return ["top"];
-  if (/interne|interno|cassa interna/.test(g + " " + c)) return ["interior"];
-  if (/frontali|anta/.test(g) || /vetro onda|^vetri?$|frontal/.test(c)) return ["front", "doors"];
-  if (/telaio/.test(c)) return ["frame"];
-  if (/fianchi|cassa|schien/.test(g)) return ["carcass"];
-  if (["category.sofa", "category.armchair", "category.pouf", "category.chair", "category.stool"].includes(category)) return ["upholstery"];
-  if (["category.dining_table", "category.coffee_table"].includes(category)) return ["top"];
-  if (["category.wardrobe", "category.walk_in_closet", "category.kitchen"].includes(category)) return ["doors", "front"];
-  return ["whole"];
+function roleFor(groupTitle: string | null, collection: string, category: ConceptId, rules: DomainRules): ComponentRole[] {
+  return febalRoleFromTitles(groupTitle, collection) ?? rules.option_roles?.[category] ?? ["whole"];
 }
 
-function dominantRole(category: ConceptId): ComponentRole {
-  if (["category.sofa", "category.armchair", "category.pouf", "category.chair", "category.stool"].includes(category)) return "upholstery";
-  if (["category.dining_table", "category.coffee_table"].includes(category)) return "top";
-  if (["category.wardrobe", "category.walk_in_closet", "category.kitchen", "category.sideboard"].includes(category)) return "front";
-  return "whole";
+function dominantRole(category: ConceptId, rules: DomainRules): ComponentRole {
+  return rules.dominant_role?.[category] ?? "whole";
 }
 
 const PARENTHESIS = /\([^)]*\)/g;
@@ -149,6 +113,7 @@ function mostSpecific(lx: Lexicon, ids: ConceptId[]): ConceptId | null {
 
 export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog; report: GateReport } {
   const { lexicon: lx } = input;
+  const rules: DomainRules = lx.pack.domain ?? {};
   const facts: Fact[] = [];
   const validated = new Set(input.review?.validated_fact_ids ?? []);
   const rejected = new Set(input.review?.rejected_fact_ids ?? []);
@@ -202,7 +167,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const src = (evidence: string) => ({ kind: "official_page" as const, url: rm.url, captured_at: a?.leido ?? rm.scraped_at, evidence });
 
     const shapeFact = a?.forma?.confirmado === "SI" ? addFact({ id: `F-${rm.model_key}-shape`, subject: rm.model_key, claim: `Forma: ${String(a.forma.valor)}`, source: src(a.forma.evidencia) }) : null;
-    const shapeIds = a?.forma?.confirmado === "SI" ? fitShapes(concepts(String(a.forma.valor), "shape"), category) : [];
+    const shapeIds = a?.forma?.confirmado === "SI" ? fitShapes(concepts(String(a.forma.valor), "shape"), category, rules) : [];
     const styleFact = a?.estilo?.confirmado === "SI" ? addFact({ id: `F-${rm.model_key}-style`, subject: rm.model_key, claim: `Estilo: ${String(a.estilo.valor)}`, source: src(a.estilo.evidencia) }) : null;
     const styleIds = a?.estilo?.confirmado === "SI" ? concepts(String(a.estilo.valor), "style") : [];
     const matTexts = a?.materiales?.confirmado === "SI" ? (a.materiales.valor as string[]) : [];
@@ -264,7 +229,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
           options.push({ id: oid, official_name: name, code: o.code, color_family: colorOf(name, cp.families), tone: cp.tone ?? undefined, swatch: { url: o.swatch_url, hex: o.swatch_hex }, fact: listFact.id });
         }
         groups.push({
-          id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category),
+          id: gid, name: colName, group_title: g.group, applies_to: roleFor(g.group, colName, category, rules),
           material: materialOf(colName, mat.material), price_band: g.tier ? `CAT. ${g.tier}` : null,
           scope: scope === "model" ? "model" : scope === "generic_palette" ? paletteScope(gid, colName)
             : promoted.has(gid) ? "model" : "generic_palette",
@@ -282,7 +247,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
       const tFact = addFact({ id: `F-${gid}`, subject: gid, claim: `Opciones en el texto: ${line}`, source: src(line) });
       const groupMat = materialOf(gname, proposeLineMaterial(lx, gname).material);
       groups.push({
-        id: gid, name: gname, group_title: "texto de la ficha", applies_to: roleFor(null, gname, category),
+        id: gid, name: gname, group_title: "texto de la ficha", applies_to: roleFor(null, gname, category, rules),
         material: groupMat, price_band: null, scope: "text",
         options: names.map((n) => {
           const cp = proposeColor(n, null);
@@ -348,12 +313,12 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
       const dominantMat = mostSpecific(lx, firstMats);
       const otherMats = po?.material ? po.material.slice(1)
         : [...new Set(matsText.slice(1).flatMap((t) => concepts(t, "material")))].filter((m) => !firstMats.includes(m));
-      const comp: ConfiguredComponent = { role: dominantRole(category), dominant: true, material: dominantMat, color_family: colorIds, observed_color: colorsText.join(", ") || null };
+      const comp: ConfiguredComponent = { role: dominantRole(category, rules), dominant: true, material: dominantMat, color_family: colorIds, observed_color: colorsText.join(", ") || null };
       const extra: ConfiguredComponent[] = otherMats.map((m) => ({ role: "whole", dominant: false, material: m, color_family: [], observed_color: null }));
       configuration = attr([comp, ...extra], f, "not_captured");
     }
     let shapeAs: Attr<ConceptId[]> = { status: "unknown", reason: "not_captured" };
-    const shapeIds = shapeText ? fitShapes(concepts(shapeText, "shape"), category) : [];
+    const shapeIds = shapeText ? fitShapes(concepts(shapeText, "shape"), category, rules) : [];
     if (po?.shape) {
       shapeAs = curatedAttr(p.product_id, "shape", po.shape)!;
     } else if (shapeIds.length) {

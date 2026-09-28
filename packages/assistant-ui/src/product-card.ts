@@ -1,18 +1,17 @@
 import type { ProductCard } from "@3dvista-assistant/assistant-core";
 import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
+import { t } from "./ui-text.js";
 
 export interface ProductCardHandlers {
   onVerAlternativas: (card: ProductCard) => void;
   isWishlisted: (productId: string) => boolean;
   onToggleWishlist: (card: ProductCard) => void;
-  /** Called when "Ver ficha" is clicked — should open the product's info panel in the tour. */
-  onVerFicha?: (card: ProductCard) => void;
 }
 
 /**
  * Trims a product description down to a short ~3-word teaser line for the
  * card (the reference UI shows a brief spec-like line, not the full
- * description — the full text is still available via "Ver ficha").
+ * description — the full text is on the official page).
  */
 function shortDescription(description: string, wordCount = 3): string {
   const words = description.trim().split(/\s+/).slice(0, wordCount);
@@ -21,7 +20,7 @@ function shortDescription(description: string, wordCount = 3): string {
 
 /**
  * Renders a product's INFO ONLY (larger thumbnail + name + short teaser +
- * "Ver ficha" link), as its own message-like element — matches the
+ * official page link), as its own message-like element — matches the
  * reference UI's horizontal layout (image on the left, text on the right).
  * No action buttons here; see renderProductActions for those, rendered as a
  * separate element right after. Uses textContent exclusively for
@@ -38,7 +37,7 @@ export function renderProductInfo(card: ProductCard, handlers: ProductCardHandle
   const syncHeart = (saved: boolean): void => {
     heartBtn.classList.toggle("tva-wishlist-heart--saved", saved);
     heartBtn.setAttribute("aria-pressed", String(saved));
-    heartBtn.setAttribute("aria-label", saved ? "Rimuovi dalla mia collezione" : "Salva nella mia collezione");
+    heartBtn.setAttribute("aria-label", saved ? t("unsave") : t("save"));
   };
   syncHeart(handlers.isWishlisted(card.product_id));
   heartBtn.innerHTML =
@@ -65,19 +64,17 @@ export function renderProductInfo(card: ProductCard, handlers: ProductCardHandle
   desc.textContent = shortDescription(card.description);
   body.append(title, desc);
 
-  if (card.detail_url || handlers.onVerFicha) {
-    const fichaBtn = document.createElement("button");
-    fichaBtn.type = "button";
-    fichaBtn.className = "tva-product-card-link";
-    fichaBtn.textContent = "Vedi scheda ›";
-    fichaBtn.addEventListener("click", () => {
-      if (handlers.onVerFicha) {
-        handlers.onVerFicha(card);
-      } else if (card.detail_url) {
-        window.open(card.detail_url, "_blank", "noopener,noreferrer");
-      }
-    });
-    body.appendChild(fichaBtn);
+  // Only the official page link here: "Llévame" (below) already takes the visitor to the piece,
+  // and why a card matches is said in the reply text (the labels crowded the card).
+  const site = card.official_url ?? card.detail_url;
+  if (site && /^https?:\/\//i.test(site)) {
+    const link = document.createElement("a");
+    link.className = "tva-product-card-link";
+    link.href = site;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = t("officialSite");
+    body.appendChild(link);
   }
 
   el.appendChild(body);
@@ -104,7 +101,7 @@ export function renderProductActions(
   const goBtn = document.createElement("button");
   goBtn.type = "button";
   goBtn.className = "tva-primary";
-  goBtn.textContent = "Portami lì";
+  goBtn.textContent = t("takeMe");
   goBtn.addEventListener("click", () => {
     // The nav target was already resolved server-side from the validated
     // catalog — this button only ever plays back coordinates the backend
@@ -120,7 +117,7 @@ export function renderProductActions(
   if (card.alternativesAvailable) {
     const altBtn = document.createElement("button");
     altBtn.type = "button";
-    altBtn.textContent = "Vedi alternative";
+    altBtn.textContent = t("alternatives");
     altBtn.addEventListener("click", () => handlers.onVerAlternativas(card));
     actions.appendChild(altBtn);
   }

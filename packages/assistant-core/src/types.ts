@@ -26,6 +26,22 @@ export interface ProductCard {
   /** Whether to render "Ver alternativas" for this card — false for cards
    * that already ARE an alternatives reveal (see server's tools.ts). */
   alternativesAvailable: boolean;
+  // v2 engine only (absent from v1 replies): which group the card belongs to
+  // ("En el showroom", "Disponible bajo pedido"…), already in the visitor's
+  // language, why it matches, and the official product page.
+  group_id?: string;
+  group_title?: string;
+  availability?: "exhibited" | "on_order" | "line" | "unknown";
+  reasons?: string[];
+  official_url?: string | null;
+}
+
+/** Where the visitor is looking — sent so "this one" can be resolved server-side (v2). */
+export interface ViewerSnapshot {
+  media_name: string | null;
+  yaw?: number;
+  pitch?: number;
+  hfov?: number;
 }
 
 /**
@@ -63,6 +79,8 @@ export interface ChatResponseBody {
   product_cards: ProductCard[];
   /** Present only when the agent itself navigated this turn — apply immediately. */
   navigate: NavTarget | null;
+  /** v2: the conversation's language ("it" | "es" | "en"); the widget's own labels follow it. */
+  lang?: string;
   usage: {
     input_tokens: number;
     output_tokens: number;

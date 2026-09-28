@@ -1,4 +1,5 @@
 import Fastify, { type FastifyInstance } from "fastify";
+import { config } from "./config.js";
 import { registerCors } from "./middleware/cors.js";
 import { registerChatRoute } from "./routes/chat.js";
 import { registerAlternativesRoute } from "./routes/alternatives.js";
@@ -12,7 +13,7 @@ export async function buildApp(): Promise<FastifyInstance> {
   registerAlternativesRoute(app);
   registerRecommendationsRoute(app);
 
-  app.get("/health", async () => ({ ok: true }));
+  app.get("/health", async () => ({ ok: true, engine: config.ASSISTANT_ENGINE }));
 
   return app;
 }

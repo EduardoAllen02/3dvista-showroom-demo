@@ -168,13 +168,6 @@ def readme_es(ws, s):
     R.para("Aquí está todo lo que sabe el asistente del showroom: cada pieza del tour, cada modelo de la web oficial, los acabados que puede ofrecer, "
            "las palabras que entiende y cómo las agrupa. Sirve para dos cosas: ver con exactitud qué sabe, y corregirlo o completarlo directamente aquí.")
 
-    R.title("Los dos archivos")
-    R.table(["Archivo", "Para qué", "Qué se hace con él", "", ""], [
-        ("febal-casa-base-de-datos.xlsx (este)", "Ver todos los datos del asistente y corregirlos", "Editar las columnas verdes ✎ y devolverlo", "", ""),
-        ("febal-casa-decisiones.xlsx", "Lo poco que falta decidir o aclarar", "Llenar la columna «Respuesta» y devolverlo", "", ""),
-    ])
-    R.para("Los dos se regeneran con el mismo nombre, en Descargas, cada vez que se aplican cambios.")
-
     R.title("Cómo corregir algo")
     R.table(["Paso", "Qué hacer", "", "", ""], [
         ("1", "Busca la hoja y la fila. Los filtros de la primera fila ayudan.", "", "", ""),
@@ -264,13 +257,6 @@ def readme_it(ws, s):
     R.para("Qui c'è tutto ciò che l'assistente sa dello showroom: ogni pezzo del tour, ogni modello del sito ufficiale, le finiture che può proporre, "
            "le parole che capisce e come le raggruppa. Serve a due cose: vedere con esattezza cosa sa, e correggerlo o completarlo direttamente qui. "
            "I nomi dei fogli e delle colonne sono in spagnolo; questa pagina li spiega.")
-
-    R.title("I due file")
-    R.table(["File", "A cosa serve", "Cosa farne", "", ""], [
-        ("febal-casa-base-de-datos.xlsx (questo)", "Vedere tutti i dati dell'assistente e correggerli", "Modificare le colonne verdi ✎ e rimandarlo", "", ""),
-        ("febal-casa-decisiones.xlsx", "Le poche cose ancora da decidere o chiarire", "Compilare la colonna «Respuesta» e rimandarlo", "", ""),
-    ])
-    R.para("Entrambi vengono rigenerati con lo stesso nome, nella cartella Download, ogni volta che si applicano modifiche.")
 
     R.title("Come correggere qualcosa")
     R.table(["Passo", "Cosa fare", "", "", ""], [

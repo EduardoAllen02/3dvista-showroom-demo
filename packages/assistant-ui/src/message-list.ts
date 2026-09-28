@@ -40,7 +40,18 @@ export function createMessageList(
       container.appendChild(bubble);
       if (isNew && !firstNewEl) firstNewEl = bubble;
 
+      // v2 cards come in groups ("En el showroom", "Disponible bajo pedido"…): a small
+      // header each time the group changes. v1 cards carry no group and show none.
+      let lastGroup: string | undefined;
       for (const card of message.cards) {
+        if (card.group_title && card.group_id !== lastGroup) {
+          const head = document.createElement("div");
+          head.className = "tva-card-group";
+          head.textContent = card.group_title;
+          if (isNew) head.classList.add("tva-msg-enter");
+          container.appendChild(head);
+        }
+        lastGroup = card.group_id;
         // Every card in message.cards is a proposal (get_product/
         // get_alternatives) — navigate_to_product never produces one — so
         // it always gets the info block AND its own action buttons.

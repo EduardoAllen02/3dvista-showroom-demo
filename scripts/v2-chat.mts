@@ -10,7 +10,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { Lexicon, TurnGateway, MemoryStateStore, type TurnResult } from "../packages/assistant-engine/src/index.js";
-import { loadPack } from "./load-pack.js";
+import { loadPack, loadProfile } from "./load-pack.js";
 import { createOpenAiJsonClient } from "../packages/model-adapters/src/openai-json.js";
 
 const root = path.resolve(import.meta.dirname, "..");
@@ -63,7 +63,7 @@ const baseLlm = createOpenAiJsonClient(env.OPENAI_API_KEY, model);
 const llm: typeof baseLlm = process.env.V2_DEBUG
   ? { ...baseLlm, json: async (req) => { const r = await baseLlm.json(req); if (req.schemaName === "answer") { if (process.env.V2_DEBUG === "2") console.log(`  view: ${req.user}`); console.log(`  draft: ${r.text}`); } return r; } }
   : baseLlm;
-const gateway = new TurnGateway(catalog, new Lexicon(loadPack("febal-casa")), llm, new MemoryStateStore());
+const gateway = new TurnGateway(catalog, new Lexicon(loadPack("febal-casa")), llm, new MemoryStateStore(), loadProfile("febal-casa"));
 
 const out: unknown[] = [];
 let totalCost = 0, turns = 0, templates = 0, repaired = 0;

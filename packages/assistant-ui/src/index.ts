@@ -100,7 +100,8 @@ export function init(config: AssistantConfig): void {
   // hotspot overlay) all read and write through this ONE store, so saving
   // a product from either surface is reflected everywhere immediately.
   const wishlist = new WishlistState();
-  const tourBridge = createTourBridge(config.navStrategy);
+  // One viewer bridge for chat and wishlist: the host platform's, or 3DVista's.
+  const tourBridge = config.bridge ?? createTourBridge(config.navStrategy);
   const api = createApiClient({
     apiBaseUrl: config.apiBaseUrl,
     tourId: config.tourId,
@@ -118,6 +119,7 @@ export function init(config: AssistantConfig): void {
   const { element: cardEl, toggleOpen, open: openChat } = createChatCard(
     config,
     wishlist,
+    tourBridge,
     () => openWishlist(),
     (open) => onChatOpenChange(open)
   );

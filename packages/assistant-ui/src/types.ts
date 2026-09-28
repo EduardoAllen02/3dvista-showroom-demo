@@ -1,3 +1,5 @@
+import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
+
 export interface AssistantTheme {
   primaryColor: string;
   position: "bottom-right" | "bottom-left";
@@ -18,4 +20,6 @@ export interface AssistantConfig {
   theme: AssistantTheme;
   /** Preferred tour-bridge navigation strategy, per Fase 0 findings for this tour. */
   navStrategy?: "hash" | "player-api";
+  /** Another viewer platform's bridge; when absent, the 3DVista bridge (createTourBridge) is used. */
+  bridge?: TourBridgeStrategy;
 }

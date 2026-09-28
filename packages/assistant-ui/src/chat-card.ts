@@ -5,9 +5,10 @@ import {
   type ProductCard,
   type WishlistState,
 } from "@3dvista-assistant/assistant-core";
-import { createTourBridge } from "@3dvista-assistant/tour-bridge";
+import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
 import type { AssistantConfig } from "./types.js";
 import { createMessageList } from "./message-list.js";
+import { chipText, setUiLang, t } from "./ui-text.js";
 
 /**
  * The chatbot is ONE of two independent layers on top of the tour — see
@@ -23,15 +24,18 @@ import { createMessageList } from "./message-list.js";
 export function createChatCard(
   config: AssistantConfig,
   wishlist: WishlistState,
+  tourBridge: TourBridgeStrategy,
   onOpenWishlist?: () => void,
   onOpenChange?: (open: boolean) => void
 ): { element: HTMLElement; toggleOpen: () => void; open: () => void } {
   const state = new ChatState();
-  const tourBridge = createTourBridge(config.navStrategy);
   const api = createApiClient({
     apiBaseUrl: config.apiBaseUrl,
     tourId: config.tourId,
-    sessionId: getOrCreateSessionId(),
+    // One conversation per page load: the chat history on screen lives in memory, and the
+    // v2 backend keeps the conversation's state (topic, focus, pending offer) per session —
+    // after a reload both start clean. The visitor part stays the same for the usage logs.
+    sessionId: `${getOrCreateSessionId()}:${crypto.randomUUID().slice(0, 8)}`,
   });
 
   const card = document.createElement("div");
@@ -63,14 +67,14 @@ export function createChatCard(
   const nameEl = document.createElement("strong");
   nameEl.textContent = config.assistantName;
   const subEl = document.createElement("span");
-  subEl.textContent = "Il tuo consulente d'arredamento";
+  subEl.textContent = t("subtitle");
   titleWrap.append(nameEl, subEl);
 
   const switchToWishlistBtn = document.createElement("button");
   switchToWishlistBtn.type = "button";
   switchToWishlistBtn.className = "tva-card-switch-btn";
-  switchToWishlistBtn.setAttribute("aria-label", "Apri la mia lista");
-  switchToWishlistBtn.textContent = "La mia lista";
+  switchToWishlistBtn.setAttribute("aria-label", t("openMyList"));
+  switchToWishlistBtn.textContent = t("myList");
   switchToWishlistBtn.addEventListener("click", () => {
     setOpen(false);
     onOpenWishlist?.();
@@ -78,7 +82,7 @@ export function createChatCard(
 
   const closeBtn = document.createElement("button");
   closeBtn.type = "button";
-  closeBtn.setAttribute("aria-label", "Chiudi");
+  closeBtn.setAttribute("aria-label", t("close"));
   closeBtn.textContent = "×";
 
   header.append(avatar, titleWrap, switchToWishlistBtn, closeBtn);
@@ -93,14 +97,6 @@ export function createChatCard(
     onVerAlternativas: (productCard: ProductCard) => void showAlternatives(productCard),
     isWishlisted: (productId: string) => wishlist.has(productId),
     onToggleWishlist: (productCard: ProductCard) => wishlist.toggle(productCard),
-    // Replicates a real click on the product's own tour hotspot: moves the
-    // camera there AND opens the same info panel (see tour-bridge's
-    // openProductPanel — optional because the hash-fallback strategy has
-    // no way to do this; silently a no-op there instead of throwing).
-    onVerFicha: (productCard: ProductCard) => {
-      tourBridge.navigateTo(productCard.navTarget);
-      tourBridge.openProductPanel?.(productCard.navTarget);
-    },
   });
 
   // Only one request that appends to `state`/`messageList` runs at a time.
@@ -120,28 +116,11 @@ export function createChatCard(
     sendBtn.disabled = busy;
   }
 
-  // Deterministic reveal — no LLM round-trip, so no "sí, entérate" prose to
-  // wait on. This is also what keeps a fresh proposal down to exactly one
-  // card: the model never has a reason to pre-empt this button by calling
-  // get_alternatives itself (see orchestrator.ts's one-proposal-per-turn
-  // guard for the structural backstop on that side too).
+  // "Vedi alternative" is a normal chat turn marked with the card it came from:
+  // the v2 backend answers it without the planner (the action is already known)
+  // and it stays part of the conversation ("¿y en azul?" afterwards works).
   async function showAlternatives(productCard: ProductCard): Promise<void> {
-    if (requestInFlight) return;
-    setBusy(true);
-    messageList.showTyping();
-    try {
-      const altCards = await api.getAlternatives(productCard.product_id);
-      messageList.hideTyping();
-      state.addAssistantMessage(
-        altCards.length > 0 ? "Ecco altre alternative:" : "Non ho trovato altre alternative per questo prodotto.",
-        altCards
-      );
-    } catch {
-      messageList.hideTyping();
-      state.addAssistantMessage("Mi dispiace, non sono riuscito a caricare le alternative. Riprova.", []);
-    }
-    messageList.render(state.getMessages());
-    setBusy(false);
+    await sendMessage(`${t("alternativesTo")} ${productCard.name}`, { exhibit_id: productCard.product_id, action: "alternatives" });
   }
 
   // Input row
@@ -149,11 +128,11 @@ export function createChatCard(
   inputRow.className = "tva-input-row";
   const input = document.createElement("input");
   input.type = "text";
-  input.placeholder = "Scrivi la tua domanda...";
-  input.setAttribute("aria-label", "Messaggio per l'assistente");
+  input.placeholder = t("placeholder");
+  input.setAttribute("aria-label", t("messageLabel"));
   const sendBtn = document.createElement("button");
   sendBtn.type = "button";
-  sendBtn.setAttribute("aria-label", "Invia");
+  sendBtn.setAttribute("aria-label", t("send"));
   sendBtn.textContent = "➤";
   inputRow.append(input, sendBtn);
   card.appendChild(inputRow);
@@ -164,19 +143,37 @@ export function createChatCard(
   suggestions.className = "tva-suggestions";
   const suggestionsLabel = document.createElement("span");
   suggestionsLabel.className = "tva-suggestions-label";
-  suggestionsLabel.textContent = "Suggerimenti:";
+  suggestionsLabel.textContent = t("suggestions");
   suggestions.appendChild(suggestionsLabel);
+  const chips: { el: HTMLButtonElement; configured: string }[] = [];
   for (const question of config.suggestedQuestions) {
     const chip = document.createElement("button");
     chip.type = "button";
     chip.className = "tva-chip";
-    chip.textContent = question;
-    chip.addEventListener("click", () => void sendMessage(question));
+    chip.textContent = chipText(question);
+    chip.addEventListener("click", () => void sendMessage(chipText(question)));
     suggestions.appendChild(chip);
+    chips.push({ el: chip, configured: question });
   }
   card.appendChild(suggestions);
 
-  async function sendMessage(text: string): Promise<void> {
+  // Re-labels the widget's own words when the conversation changes language.
+  function applyUiText(): void {
+    subEl.textContent = t("subtitle");
+    switchToWishlistBtn.setAttribute("aria-label", t("openMyList"));
+    switchToWishlistBtn.textContent = t("myList");
+    closeBtn.setAttribute("aria-label", t("close"));
+    input.placeholder = t("placeholder");
+    input.setAttribute("aria-label", t("messageLabel"));
+    sendBtn.setAttribute("aria-label", t("send"));
+    suggestionsLabel.textContent = t("suggestions");
+    for (const c of chips) c.el.textContent = chipText(c.configured);
+  }
+
+  async function sendMessage(
+    text: string,
+    clicked?: { exhibit_id: string; action: "alternatives" | "take_me" | "sheet" }
+  ): Promise<void> {
     const trimmed = text.trim();
     if (!trimmed || requestInFlight) return;
     setBusy(true);
@@ -220,12 +217,23 @@ export function createChatCard(
     messageList.showTyping();
 
     try {
+      // What the visitor is looking at right now ("¿y este en azul?"). Read-only;
+      // the backend maps it to a piece and never shows coordinates to the model.
+      let viewer = null;
+      try {
+        viewer = tourBridge.getViewer?.() ?? null;
+      } catch {
+        viewer = null;
+      }
       const response = await api.sendMessage(
         trimmed,
         history,
-        wishlist.getAll().map((c) => c.product_id)
+        wishlist.getAll().map((c) => c.product_id),
+        viewer,
+        clicked
       );
       messageList.hideTyping();
+      if (setUiLang(response.lang)) applyUiText();
       state.addAssistantMessage(response.reply, response.product_cards);
       // The agent itself decided to navigate this turn (explicit
       // "llévame"/selección) — apply it immediately, no card/button
@@ -236,10 +244,7 @@ export function createChatCard(
       }
     } catch {
       messageList.hideTyping();
-      state.addAssistantMessage(
-        "Mi dispiace, ho avuto un problema nel rispondere. Riprova tra un momento.",
-        []
-      );
+      state.addAssistantMessage(t("error"), []);
     }
     messageList.render(state.getMessages());
     setBusy(false);

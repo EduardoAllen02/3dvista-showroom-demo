@@ -13,24 +13,6 @@ import {
  */
 
 const ROLE_FACETS = new Set(["color", "material", "tone"]);
-const COMPLEMENTS: Record<string, ConceptId[]> = {
-  "category.sofa": ["category.coffee_table", "category.armchair", "category.pouf"],
-  "category.armchair": ["category.sofa", "category.coffee_table", "category.pouf"],
-  "category.pouf": ["category.sofa", "category.armchair"],
-  "category.coffee_table": ["category.sofa", "category.armchair"],
-  "category.dining_table": ["category.chair", "category.sideboard"],
-  "category.chair": ["category.dining_table"],
-  "category.stool": ["category.kitchen", "category.dining_table"],
-  "category.kitchen": ["category.stool", "category.dining_table"],
-  "category.bed": ["category.night_group", "category.wardrobe"],
-  "category.night_group": ["category.bed", "category.wardrobe"],
-  "category.wardrobe": ["category.bed", "category.night_group", "category.walk_in_closet"],
-  "category.walk_in_closet": ["category.wardrobe", "category.drawer_unit"],
-  "category.sideboard": ["category.dining_table", "category.modular_system"],
-  "category.bookcase": ["category.modular_system", "category.boiserie"],
-  "category.modular_system": ["category.bookcase", "category.boiserie", "category.sofa"],
-  "category.boiserie": ["category.modular_system", "category.sofa"],
-};
 
 export class QueryEngine {
   readonly exhibits: Map<string, Exhibit>;
@@ -427,7 +409,7 @@ export class QueryEngine {
     scored.sort((a, b) => b.score - a.score || a.card.exhibit_id.localeCompare(b.card.exhibit_id));
     const cards = dedupeByModel(scored.map((s) => s.card)).slice(0, this.policy.max_cards);
     return {
-      query_id: qid, mode: "alternatives", constraints: [], outcome: cards.length ? "alternatives" : "not_found",
+      query_id: qid, mode: "alternatives", source: exhibitId, constraints: [], outcome: cards.length ? "alternatives" : "not_found",
       groups: cards.length ? [{ id: "g1", role: "alternatives", relaxation: [], cards, total: scored.length }] : [], obligations: [], available_values: [],
     };
   }
@@ -443,7 +425,7 @@ export class QueryEngine {
       const why: Record<string, MatchMark> = {};
       for (const s of seeds) {
         if (s.co_exhibited_with.includes(e.id)) { score += 3; why["co_exhibited"] = "yes"; }
-        if ((COMPLEMENTS[s.category] ?? []).some((c) => this.lx.isA(e.category, c))) { score += 2; why["complement"] = "yes"; }
+        if ((this.lx.pack.domain?.complements?.[s.category] ?? []).some((c) => this.lx.isA(e.category, c))) { score += 2; why["complement"] = "yes"; }
         const sm = this.models.get(s.model_id), em = this.models.get(e.model_id);
         if (sm?.styles.status === "known" && em?.styles.status === "known" && sm.styles.value.some((x) => em.styles.status === "known" && em.styles.value.includes(x))) { score += 2; why["style"] = "yes"; }
         const sf = this.dominant(s).flatMap((d) => d.color_family), ef = this.dominant(e).flatMap((d) => d.color_family);
@@ -467,7 +449,7 @@ export class QueryEngine {
     const qid = `q${++this.queryCounter}`;
     const scope = cs.filter((c) => c.strength === "must");
     const wanted = cs.filter((c) => c.facet === "mood").flatMap((c) => moods.find((m) => m.mood === c.value)?.prefer ?? []);
-    const living = ["category.sofa", "category.armchair", "category.pouf", "category.coffee_table"];
+    const living = this.lx.pack.domain?.mood_scope ?? [];
     const scored: { card: CardRef; score: number }[] = [];
     for (const e of this.exhibits.values()) {
       if (scope.length ? !scope.every((c) => this.satExhibit(e, c) === "yes") : !living.some((cat) => this.lx.isA(e.category, cat))) continue;

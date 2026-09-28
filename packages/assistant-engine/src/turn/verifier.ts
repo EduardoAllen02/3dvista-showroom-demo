@@ -1,6 +1,7 @@
 import type { CanonicalCatalog, ConceptId, Lang } from "../catalog/types.js";
 import type { Lexicon } from "../ontology/lexicon.js";
 import { normalizeText } from "../ontology/lexicon.js";
+import { DEFAULT_PROFILE, type AssistantProfile } from "./profile.js";
 import type { Bundle } from "../engine/types.js";
 import { allCards } from "./render.js";
 import { detectLang } from "./state.js";
@@ -52,7 +53,7 @@ const COMBINE: Record<Lang, RegExp> = {
 
 export class Verifier {
   private names: string[];
-  constructor(private catalog: CanonicalCatalog, private lx: Lexicon) {
+  constructor(private catalog: CanonicalCatalog, private lx: Lexicon, private profile: AssistantProfile = DEFAULT_PROFILE) {
     // Proper product names that are not ordinary words in es/it/en ("Leaf", "Hype", "Trenta", "Couple" are).
     const PROPER = ["balmoral", "melrose", "camden", "navigli", "isabelle", "vivienne", "astor", "madeira", "phoenix", "leeds",
       "diciotto", "arden", "astrid", "marlene", "halley", "rodin", "lumia", "lewitt", "barret", "windsor", "libeskind022", "libeskind", "sagoma"];
@@ -72,19 +73,21 @@ export class Verifier {
     for (const [, kind, arg] of full.matchAll(/\{\{(\w+):([^}]+)\}\}/g)) {
       const ok =
         (["p", "z", "shown", "link"].includes(kind) && cardIds.has(arg)) ||
+        (kind === "p" && arg === bundle.source) ||
         (kind === "v" && (onOrder.has(arg) || onLine.has(arg))) ||
         (kind === "line" && onLine.has(arg)) ||
         (kind === "c" && this.lx.concepts.has(arg)) ||
         (kind === "vals" && bundle.available_values.some((a) => a.constraint === arg)) ||
         (kind === "n" && bundle.groups.some((g) => g.id === arg)) ||
         (kind === "f" && !!bundle.details?.some((d) => d.field === arg && d.status === "known"));
-      if (!ok && kind === "v" && cardIds.has(arg)) v.push(`V1 {{v:${arg}}} no existe: {{p:${arg}}} ya está en el showroom tal como lo pidió; no nombres opciones bajo pedido de esa pieza`);
+      if (!ok && kind === "v" && cardIds.has(arg)) v.push(`V1 {{v:${arg}}} no existe: {{p:${arg}}} ya está ${this.profile.prompt.in_venue} tal como lo pidió; no nombres opciones bajo pedido de esa pieza`);
       else if (!ok && kind === "n") v.push(`V1 {{n:${arg}}} no existe: los grupos son ${bundle.groups.map((g) => `{{n:${g.id}}} (${g.total})`).join(", ") || "ninguno"}`);
       else if (!ok) v.push(`V1 etiqueta inválida {{${kind}:${arg}}}`);
     }
     const plain = full.replace(/\{\{[^}]+\}\}/g, " ");
     // V4 no digits outside tags (measures, prices, coordinates can't be invented); zone numbers are checked by V8
-    if (/\d/.test(plain.replace(/\bcasa\s*0?\d+/gi, " "))) v.push("V4 hay números fuera de etiquetas: usa {{f:…}} o {{n:…}}");
+    const spoken = this.profile.zones?.spoken;
+    if (/\d/.test(spoken ? plain.replace(new RegExp(`\\b${spoken}\\s*0?\\d+`, "gi"), " ") : plain)) v.push("V4 hay números fuera de etiquetas: usa {{f:…}} o {{n:…}}");
     const nTags = bundle.groups.map((g) => `{{n:${g.id}}} (${g.total})`).join(", ");
     const totals = new Set(bundle.groups.map((g) => g.total));
     const spelled = normalizeText(plain).split(/\s+/).map((w) => NUMBER_WORDS[lang][w]).filter((n): n is number => n !== undefined);
@@ -111,15 +114,18 @@ export class Verifier {
       }
     }
     // V8 zones written by hand must be zones of the bundle's pieces
-    const zones = new Set(cards.map((c) => this.catalog.exhibits.find((e) => e.id === c.exhibit_id)?.zone.match(/CASA\s*0?(\d+)/i)?.[1]).filter(Boolean));
-    for (const [, n] of plain.matchAll(/\bcasa\s*0?(\d+)/gi)) if (!zones.has(n)) v.push(`V8 zona "Casa ${n}" no corresponde a ninguna tarjeta → usa {{z:ID}}`);
+    if (spoken && this.profile.zones) {
+      const zonePattern = new RegExp(this.profile.zones.pattern, "i");
+      const zones = new Set(cards.map((c) => zonePattern.exec(this.catalog.exhibits.find((e) => e.id === c.exhibit_id)?.zone ?? "")?.[1]).filter(Boolean));
+      for (const [, n] of plain.matchAll(new RegExp(`\\b${spoken}\\s*0?(\\d+)`, "gi"))) if (!zones.has(n)) v.push(`V8 zona "${spoken.charAt(0).toUpperCase() + spoken.slice(1)} ${n}" no corresponde a ninguna tarjeta → usa {{z:ID}}`);
+    }
     // V9 obligations — structural, over the whole answer (claims are only a tracing aid)
     const has = (tag: string) => full.includes(tag);
     for (const ob of bundle.obligations) {
       const [kind, a] = ob.split(":");
       switch (kind) {
         case "abs": if (!NEG[lang].test(plain)) v.push(`V9 ${ob}: di explícitamente que NO hay exactamente lo pedido`); break;
-        case "ord": if (!has(`{{p:${a}}}`) || !has(`{{v:${a}}}`) || !has(`{{link:${a}}}`)) v.push(`V9 ${ob}: di que {{p:${a}}} no está así en el showroom pero sí disponible bajo pedido en {{v:${a}}}, y enlaza {{link:${a}}}`); break;
+        case "ord": if (!has(`{{p:${a}}}`) || !has(`{{v:${a}}}`) || !has(`{{link:${a}}}`)) v.push(`V9 ${ob}: di que {{p:${a}}} no está así ${this.profile.prompt.in_venue} pero sí disponible bajo pedido en {{v:${a}}}, y enlaza {{link:${a}}}`); break;
         case "lin":
           if (!has(`{{p:${a}}}`) || !has(`{{v:${a}}}`) || !has(`{{line:${a}}}`) || !has(`{{link:${a}}}`) || !CONFIRM[lang].test(plain))
             v.push(`V9 ${ob}: di que {{line:${a}}} maneja {{v:${a}}} para {{p:${a}}}, CON el aviso de confirmar en {{link:${a}}} si aplica a ese modelo`);

@@ -6,8 +6,14 @@ export interface NavTarget {
   hotspot_name: string | null;
 }
 
+/**
+ * Everything the widget (chat, wishlist, mood board) needs from a 360° viewer. 3DVista is
+ * one implementation (createTourBridge); another platform passes its own object to init().
+ * Only navigateTo is required: without getViewer the assistant just can't resolve "this one",
+ * without hotspots there are no hearts over the tour's own markers.
+ */
 export interface TourBridgeStrategy {
-  readonly name: "hash" | "player-api";
+  readonly name: string;
   isAvailable(): boolean;
   navigateTo(target: NavTarget): Promise<void> | void;
   /**
@@ -17,6 +23,32 @@ export interface TourBridgeStrategy {
    * hash-based fallback).
    */
   openProductPanel?(target: NavTarget): void;
+  /** Current panorama and camera, read-only ("¿y este?", projecting points on screen). */
+  getViewer?(): ViewerState | null;
+  /** The viewer's own product hotspots, when it has them. */
+  hotspots?: HotspotSignals;
+}
+
+/** The same contract under the name the platform integration uses. */
+export type ViewerBridge = TourBridgeStrategy;
+
+export interface ViewerState {
+  media_name: string | null;
+  yaw: number;
+  pitch: number;
+  hfov: number;
+}
+
+/** Product hotspots drawn by the viewer itself, identified by a platform-specific key. */
+export interface HotspotSignals {
+  /** Key of the product hotspot under the pointer right now. */
+  hovered(): string | null;
+  /** Where that hotspot sits in the panorama. */
+  anchor(key: string): { yaw: number; pitch: number } | null;
+  /** The viewer's own product panel: open or not, and for which hotspot (null when unknown). */
+  openPanel(): { open: boolean; key: string | null };
+  /** The key a catalog entry's hotspot_name corresponds to. */
+  keyOf(hotspotName: string): string | null;
 }
 
 /**
@@ -37,6 +69,8 @@ export interface TdvRootPlayer {
 export interface TdvObject {
   get(key: string): unknown;
   set?(key: string, value: unknown): unknown;
+  /** Active panorama player only: moves AND repaints the view (set("yaw"…) only updates properties). */
+  setPosition?(yaw: number, pitch: number, roll: number, hfov: number): unknown;
 }
 
 export interface TdvPlayerRegistry {

@@ -1,0 +1,632 @@
+[
+  {
+    "rowIndex": 6,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 100 - B_107",
+    "prodotto_ita": "Tavolini Pagoda (Bontempi)",
+    "prodotto_eng": "Pagoda Coffee Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "100",
+      "107"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 7,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 100 - B_108",
+    "prodotto_ita": "Poltrona Lady (Bontempi)",
+    "prodotto_eng": "Lady Armchair (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "100",
+      "108"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 14,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 120 - B_126",
+    "prodotto_ita": "Pouff Windsor",
+    "prodotto_eng": "Windsor Pouffe",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/windsor/",
+    "link_eng": "https://www.febalcasa.com/en/products/windsor/",
+    "box_numbers": [
+      "120",
+      "126"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 15,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 140 - B_140",
+    "prodotto_ita": "Tavolini H20 (Bontempi)",
+    "prodotto_eng": "H20 Coffee tables (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "140",
+      "140"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 19,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 140 - B_144",
+    "prodotto_ita": "Tavolo Kimono (Bontempi)",
+    "prodotto_eng": "Kimono Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "140",
+      "144"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 20,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 140 - B_145",
+    "prodotto_ita": "Sedia Drop (Bontempi)",
+    "prodotto_eng": "Drop Chair (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "140",
+      "145"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 22,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 140 - B_147",
+    "prodotto_ita": "Poltrone Kodi (Bontempi)",
+    "prodotto_eng": "Kodi Armchair (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "140",
+      "147"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 26,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 160 - B_164",
+    "prodotto_ita": "Tavolo Kimono (Bontempi)",
+    "prodotto_eng": "Kimono Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "160",
+      "164"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 27,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 160 - B_165",
+    "prodotto_ita": "Sedia Amelie (Bontempi)",
+    "prodotto_eng": "Amelie Chair (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "160",
+      "165"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 30,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 170 - B_171",
+    "prodotto_ita": "Cucina Origina Anta Iosa Ghini",
+    "prodotto_eng": "Origina Iosa Ghini Wood-Framed Door Kitchen",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/",
+    "link_eng": "https://www.febalcasa.com/en/products/origina-door-wood-framed/",
+    "box_numbers": [
+      "170",
+      "171"
+    ],
+    "best_candidate": "FB Sistema Origina BOX 170",
+    "best_score": 0.16666666666666666
+  },
+  {
+    "rowIndex": 36,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 180 - B_183",
+    "prodotto_ita": "Letto Marguerite",
+    "prodotto_eng": "Marguerite Bed",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "180",
+      "183"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 37,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 180 - B_184",
+    "prodotto_ita": "Gruppo Notte Liz",
+    "prodotto_eng": "Liz Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "180",
+      "184"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 38,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 180 - B_185",
+    "prodotto_ita": "Gruppo Notte Liz",
+    "prodotto_eng": "Liz Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "180",
+      "185"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 44,
+    "casa": "CASA 01 - AUTENTICA",
+    "nome": "BOX 180 - B_196",
+    "prodotto_ita": "Consolle Amadeo (Bontempi)",
+    "prodotto_eng": "Amadeo Consolle (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "180",
+      "196"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 50,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 200 - B_206",
+    "prodotto_ita": "Tavolini Cross (Bontempi)",
+    "prodotto_eng": "Cross Coffee Tables (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "200",
+      "206"
+    ],
+    "best_candidate": "FB Tavolini Ink BOX 200",
+    "best_score": 0.25
+  },
+  {
+    "rowIndex": 56,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 240 - B_243",
+    "prodotto_ita": "Sedie Kuga (Bontempi)",
+    "prodotto_eng": "Kuga Chair (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "240",
+      "243"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 59,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 240 - B_246",
+    "prodotto_ita": "Tavolino Cross Mini (Bontempi)",
+    "prodotto_eng": "Cross Mini Coffee Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "240",
+      "246"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 62,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 280 - B_280",
+    "prodotto_ita": "Tavolini Millennium (Bontempi)",
+    "prodotto_eng": "Millennium Coffee Tables (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "280",
+      "280"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 64,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 280 - B_282",
+    "prodotto_ita": "Gruppo Notte Pat",
+    "prodotto_eng": "Pat Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "280",
+      "282"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 65,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 280 - B_283",
+    "prodotto_ita": "Gruppo Notte Pat",
+    "prodotto_eng": "Pat Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "280",
+      "283"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 68,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 280 - B_286",
+    "prodotto_ita": "Pouff Pons (Bontempi)",
+    "prodotto_eng": "Pons Pouffe (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "280",
+      "286"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 70,
+    "casa": "CASA 02 - PERFETTA",
+    "nome": "BOX 290 - B_292",
+    "prodotto_ita": "Libreria Lapis",
+    "prodotto_eng": "Lapis Bookshelf",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/lapis/",
+    "link_eng": "https://www.febalcasa.com/en/products/lapis/",
+    "box_numbers": [
+      "290",
+      "292"
+    ],
+    "best_candidate": "FB Cabina Armadio Lapis BOX 290",
+    "best_score": 0.25
+  },
+  {
+    "rowIndex": 78,
+    "casa": "CASA 03 - AUDACE",
+    "nome": "BOX 300 - B_305",
+    "prodotto_ita": "Tavolino Letto (Bontempi)",
+    "prodotto_eng": "Letto Coffee Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "300",
+      "305"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 79,
+    "casa": "CASA 03 - AUDACE",
+    "nome": "BOX 300 - B_306",
+    "prodotto_ita": "Tavolino Letto (Bontempi)",
+    "prodotto_eng": "Letto Coffee Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "300",
+      "306"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 81,
+    "casa": "CASA 03 - AUDACE",
+    "nome": "BOX 320 - B_320",
+    "prodotto_ita": "Madia Madison Cristallo (Bontempi)",
+    "prodotto_eng": "Madison Cristallo Sideboard (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "320",
+      "320"
+    ],
+    "best_candidate": "FB Madia Leaf BOX 320",
+    "best_score": 0.2
+  },
+  {
+    "rowIndex": 100,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 400 - B_404",
+    "prodotto_ita": "Tavolino Serif",
+    "prodotto_eng": "Serif Coffee Table",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/serif/",
+    "link_eng": "https://www.febalcasa.com/en/products/serif-2/",
+    "box_numbers": [
+      "400",
+      "404"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 101,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 400 - B_405",
+    "prodotto_ita": "Tavolino Circus (Bontempi)",
+    "prodotto_eng": "Circus Coffee Table (Bontempi)",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "400",
+      "405"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 110,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 460 - B_462",
+    "prodotto_ita": "Letto Jacques",
+    "prodotto_eng": "Jacques Bed",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "460",
+      "462"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 111,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 460 - B_463",
+    "prodotto_ita": "Gruppo Notte Cini",
+    "prodotto_eng": "Cini Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "460",
+      "463"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 112,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 460 - B_464",
+    "prodotto_ita": "Gruppo Notte Cini",
+    "prodotto_eng": "Cini Nightstand Set",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "460",
+      "464"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 114,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 460 - B_466",
+    "prodotto_ita": "Pouff Grace",
+    "prodotto_eng": "Grace Pouffe",
+    "link_ita": null,
+    "link_eng": null,
+    "box_numbers": [
+      "460",
+      "466"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 115,
+    "casa": "CASA 04 - A-MARE",
+    "nome": "BOX 460 - B_467",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "460",
+      "467"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 124,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_606",
+    "prodotto_ita": "Armadio Profile/ Reflex",
+    "prodotto_eng": "Profile/ Reflex Wardrobe",
+    "link_ita": "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-reflex/",
+    "link_eng": "https://www.febalcasa.com/en/kind/wardrobes/doors/hinged/profile-reflex/",
+    "box_numbers": [
+      "600",
+      "606"
+    ],
+    "best_candidate": "FB Armadio battente Aurora  BOX 600",
+    "best_score": 0.2
+  },
+  {
+    "rowIndex": 126,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_608",
+    "prodotto_ita": "Armadio battente Aurora",
+    "prodotto_eng": "Aurora hinged-door Wardrobe",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/aurora-porta-battente/",
+    "link_eng": "https://www.febalcasa.com/en/products/aurora-hinged-door/",
+    "box_numbers": [
+      "600",
+      "608"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 127,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_611",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "611"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 128,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_612",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "612"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 129,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_613",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "613"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 130,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_614",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "614"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 131,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_615",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "615"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 132,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_616",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "616"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 133,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_617",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "617"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  },
+  {
+    "rowIndex": 134,
+    "casa": "GALLERIA",
+    "nome": "BOX 600 - B_618",
+    "prodotto_ita": "Boiserie",
+    "prodotto_eng": "Boiserie",
+    "link_ita": "https://www.febalcasa.com/it/prodotti/boiserie/",
+    "link_eng": "https://www.febalcasa.com/en/products/boiserie/",
+    "box_numbers": [
+      "600",
+      "618"
+    ],
+    "best_candidate": null,
+    "best_score": 0
+  }
+]

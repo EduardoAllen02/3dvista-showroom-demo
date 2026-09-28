@@ -1,0 +1,3893 @@
+{
+ "id": "furniture",
+ "version": "1.0.0",
+ "concepts": [
+  {
+   "id": "category.seating",
+   "facet": "category",
+   "labels": {
+    "es": "asiento",
+    "it": "seduta",
+    "en": "seating"
+   },
+   "synonyms": {
+    "es": [
+     "asiento",
+     "asientos"
+    ],
+    "it": [
+     "sedute"
+    ],
+    "en": [
+     "seating"
+    ]
+   }
+  },
+  {
+   "id": "category.sofa",
+   "facet": "category",
+   "parent": "category.seating",
+   "labels": {
+    "es": "sofá",
+    "it": "divano",
+    "en": "sofa"
+   },
+   "synonyms": {
+    "es": [
+     "sofá",
+     "sofás",
+     "sofa",
+     "sofas",
+     "sillón de sala",
+     "love seat",
+     "loveseat",
+     "sala",
+     "salas"
+    ],
+    "it": [
+     "divano",
+     "divani",
+     "divanetto"
+    ],
+    "en": [
+     "sofa",
+     "sofas",
+     "couch",
+     "couches",
+     "settee"
+    ]
+   },
+   "note": "Sofá de varias plazas. En México 'sala' también se usa para el conjunto de sofás."
+  },
+  {
+   "id": "category.armchair",
+   "facet": "category",
+   "parent": "category.seating",
+   "labels": {
+    "es": "sillón",
+    "it": "poltrona",
+    "en": "armchair"
+   },
+   "synonyms": {
+    "es": [
+     "sillón",
+     "sillones",
+     "butaca",
+     "butacas",
+     "poltrona",
+     "poltronas"
+    ],
+    "it": [
+     "poltrona",
+     "poltrone",
+     "poltroncina",
+     "poltroncine"
+    ],
+    "en": [
+     "armchair",
+     "armchairs",
+     "lounge chair"
+    ]
+   }
+  },
+  {
+   "id": "category.pouf",
+   "facet": "category",
+   "parent": "category.seating",
+   "labels": {
+    "es": "puf",
+    "it": "pouf",
+    "en": "pouf"
+   },
+   "synonyms": {
+    "es": [
+     "puf",
+     "pufs",
+     "pouf",
+     "poufs",
+     "otomana",
+     "otomanas",
+     "reposapiés"
+    ],
+    "it": [
+     "pouf",
+     "pouff",
+     "poggiapiedi"
+    ],
+    "en": [
+     "pouf",
+     "poufs",
+     "ottoman",
+     "ottomans",
+     "footstool"
+    ]
+   }
+  },
+  {
+   "id": "category.chair",
+   "facet": "category",
+   "parent": "category.seating",
+   "labels": {
+    "es": "silla",
+    "it": "sedia",
+    "en": "chair"
+   },
+   "synonyms": {
+    "es": [
+     "silla",
+     "sillas"
+    ],
+    "it": [
+     "sedia",
+     "sedie"
+    ],
+    "en": [
+     "chair",
+     "chairs",
+     "dining chair"
+    ]
+   }
+  },
+  {
+   "id": "category.stool",
+   "facet": "category",
+   "parent": "category.seating",
+   "labels": {
+    "es": "taburete",
+    "it": "sgabello",
+    "en": "stool"
+   },
+   "synonyms": {
+    "es": [
+     "taburete",
+     "taburetes",
+     "banco alto",
+     "bancos altos",
+     "banco de barra"
+    ],
+    "it": [
+     "sgabello",
+     "sgabelli"
+    ],
+    "en": [
+     "stool",
+     "stools",
+     "bar stool",
+     "barstool"
+    ]
+   }
+  },
+  {
+   "id": "category.table",
+   "facet": "category",
+   "labels": {
+    "es": "mesa",
+    "it": "tavolo",
+    "en": "table"
+   },
+   "synonyms": {
+    "es": [
+     "mesa",
+     "mesas"
+    ],
+    "it": [
+     "tavolo",
+     "tavoli"
+    ],
+    "en": [
+     "table",
+     "tables"
+    ]
+   },
+   "note": "Cualquier mesa: de comedor o de centro."
+  },
+  {
+   "id": "category.dining_table",
+   "facet": "category",
+   "parent": "category.table",
+   "labels": {
+    "es": "mesa de comedor",
+    "it": "tavolo da pranzo",
+    "en": "dining table"
+   },
+   "synonyms": {
+    "es": [
+     "mesa de comedor",
+     "mesas de comedor",
+     "comedor"
+    ],
+    "it": [
+     "tavolo da pranzo",
+     "tavoli da pranzo"
+    ],
+    "en": [
+     "dining table",
+     "dining tables"
+    ]
+   }
+  },
+  {
+   "id": "category.coffee_table",
+   "facet": "category",
+   "parent": "category.table",
+   "labels": {
+    "es": "mesa de centro",
+    "it": "tavolino",
+    "en": "coffee table"
+   },
+   "synonyms": {
+    "es": [
+     "mesa de centro",
+     "mesas de centro",
+     "mesita",
+     "mesitas",
+     "mesa auxiliar",
+     "mesas auxiliares",
+     "mesa baja",
+     "mesa ratona"
+    ],
+    "it": [
+     "tavolino",
+     "tavolini",
+     "coffee table",
+     "tavolino da salotto"
+    ],
+    "en": [
+     "coffee table",
+     "coffee tables",
+     "side table",
+     "side tables"
+    ]
+   }
+  },
+  {
+   "id": "category.sideboard",
+   "facet": "category",
+   "labels": {
+    "es": "aparador",
+    "it": "madia",
+    "en": "sideboard"
+   },
+   "synonyms": {
+    "es": [
+     "aparador",
+     "aparadores",
+     "trinchador",
+     "trinchadores",
+     "credenza",
+     "bufetera"
+    ],
+    "it": [
+     "madia",
+     "madie",
+     "credenza",
+     "credenze"
+    ],
+    "en": [
+     "sideboard",
+     "sideboards",
+     "buffet",
+     "credenza"
+    ]
+   }
+  },
+  {
+   "id": "category.bookcase",
+   "facet": "category",
+   "labels": {
+    "es": "librero",
+    "it": "libreria",
+    "en": "bookcase"
+   },
+   "synonyms": {
+    "es": [
+     "librero",
+     "libreros",
+     "librería",
+     "estantería",
+     "estanterías",
+     "estante",
+     "repisa"
+    ],
+    "it": [
+     "libreria",
+     "librerie",
+     "scaffale"
+    ],
+    "en": [
+     "bookcase",
+     "bookcases",
+     "bookshelf",
+     "bookshelves",
+     "shelving"
+    ]
+   }
+  },
+  {
+   "id": "category.modular_system",
+   "facet": "category",
+   "labels": {
+    "es": "sistema modular",
+    "it": "sistema modulare",
+    "en": "modular system"
+   },
+   "synonyms": {
+    "es": [
+     "sistema modular",
+     "mueble modular",
+     "pared equipada",
+     "mueble de tv",
+     "centro de entretenimiento",
+     "mueble de sala"
+    ],
+    "it": [
+     "sistema modulare",
+     "sistemi modulari",
+     "parete attrezzata",
+     "pareti attrezzate",
+     "mobile tv"
+    ],
+    "en": [
+     "modular system",
+     "wall unit",
+     "tv unit",
+     "media wall"
+    ]
+   }
+  },
+  {
+   "id": "category.kitchen",
+   "facet": "category",
+   "labels": {
+    "es": "cocina",
+    "it": "cucina",
+    "en": "kitchen"
+   },
+   "synonyms": {
+    "es": [
+     "cocina",
+     "cocinas",
+     "cocina integral",
+     "cocinas integrales"
+    ],
+    "it": [
+     "cucina",
+     "cucine"
+    ],
+    "en": [
+     "kitchen",
+     "kitchens"
+    ]
+   }
+  },
+  {
+   "id": "category.wardrobe",
+   "facet": "category",
+   "labels": {
+    "es": "armario",
+    "it": "armadio",
+    "en": "wardrobe"
+   },
+   "synonyms": {
+    "es": [
+     "armario",
+     "armarios",
+     "clóset",
+     "closet",
+     "clósets",
+     "closets",
+     "ropero",
+     "roperos",
+     "guardarropa"
+    ],
+    "it": [
+     "armadio",
+     "armadi",
+     "guardaroba"
+    ],
+    "en": [
+     "wardrobe",
+     "wardrobes",
+     "closet",
+     "closets"
+    ]
+   }
+  },
+  {
+   "id": "category.walk_in_closet",
+   "facet": "category",
+   "parent": "category.wardrobe",
+   "labels": {
+    "es": "vestidor",
+    "it": "cabina armadio",
+    "en": "walk-in closet"
+   },
+   "synonyms": {
+    "es": [
+     "vestidor",
+     "vestidores",
+     "cuarto de vestir"
+    ],
+    "it": [
+     "cabina armadio",
+     "cabine armadio"
+    ],
+    "en": [
+     "walk-in closet",
+     "walk in closet",
+     "dressing room"
+    ]
+   }
+  },
+  {
+   "id": "category.drawer_unit",
+   "facet": "category",
+   "labels": {
+    "es": "cajonera",
+    "it": "cassettiera",
+    "en": "chest of drawers"
+   },
+   "synonyms": {
+    "es": [
+     "cajonera",
+     "cajoneras"
+    ],
+    "it": [
+     "cassettiera",
+     "cassettiere"
+    ],
+    "en": [
+     "chest of drawers",
+     "drawer unit"
+    ]
+   }
+  },
+  {
+   "id": "category.bedroom",
+   "facet": "category",
+   "labels": {
+    "es": "recámara",
+    "it": "camera da letto",
+    "en": "bedroom"
+   },
+   "synonyms": {
+    "es": [
+     "recámara",
+     "recámaras",
+     "dormitorio",
+     "dormitorios",
+     "habitación"
+    ],
+    "it": [
+     "camera da letto",
+     "zona notte"
+    ],
+    "en": [
+     "bedroom",
+     "bedrooms"
+    ]
+   }
+  },
+  {
+   "id": "category.bed",
+   "facet": "category",
+   "parent": "category.bedroom",
+   "labels": {
+    "es": "cama",
+    "it": "letto",
+    "en": "bed"
+   },
+   "synonyms": {
+    "es": [
+     "cama",
+     "camas",
+     "cabecera",
+     "cabeceras"
+    ],
+    "it": [
+     "letto",
+     "letti",
+     "testata",
+     "testiera"
+    ],
+    "en": [
+     "bed",
+     "beds",
+     "headboard"
+    ]
+   }
+  },
+  {
+   "id": "category.night_group",
+   "facet": "category",
+   "parent": "category.bedroom",
+   "labels": {
+    "es": "mesita de noche",
+    "it": "gruppo notte",
+    "en": "nightstand"
+   },
+   "synonyms": {
+    "es": [
+     "mesita de noche",
+     "mesitas de noche",
+     "buró",
+     "burós",
+     "cómoda",
+     "cómodas",
+     "sinfonier"
+    ],
+    "it": [
+     "comodino",
+     "comodini",
+     "comò",
+     "settimino",
+     "gruppo notte"
+    ],
+    "en": [
+     "nightstand",
+     "nightstands",
+     "bedside table",
+     "dresser"
+    ]
+   }
+  },
+  {
+   "id": "category.boiserie",
+   "facet": "category",
+   "labels": {
+    "es": "boiserie",
+    "it": "boiserie",
+    "en": "wall panelling"
+   },
+   "synonyms": {
+    "es": [
+     "boiserie",
+     "panel de pared",
+     "paneles de pared",
+     "revestimiento de pared",
+     "pared decorativa",
+     "lambrín"
+    ],
+    "it": [
+     "boiserie",
+     "pannelli a parete"
+    ],
+    "en": [
+     "boiserie",
+     "wall panelling",
+     "wall paneling",
+     "wall panels"
+    ]
+   }
+  },
+  {
+   "id": "category.mirror",
+   "facet": "category",
+   "labels": {
+    "es": "espejo",
+    "it": "specchio",
+    "en": "mirror"
+   },
+   "synonyms": {
+    "es": [
+     "espejo",
+     "espejos"
+    ],
+    "it": [
+     "specchio",
+     "specchi",
+     "specchiera"
+    ],
+    "en": [
+     "mirror",
+     "mirrors"
+    ]
+   }
+  },
+  {
+   "id": "shape.corner",
+   "facet": "shape",
+   "labels": {
+    "es": "de ángulo",
+    "it": "ad angolo",
+    "en": "corner"
+   },
+   "synonyms": {
+    "es": [
+     "de ángulo",
+     "en ángulo",
+     "angular",
+     "esquinero",
+     "esquineros",
+     "esquinera",
+     "rinconero",
+     "rinconera",
+     "en l",
+     "en forma de l",
+     "de esquina"
+    ],
+    "it": [
+     "ad angolo",
+     "angolare",
+     "angolari",
+     "a elle",
+     "a l"
+    ],
+    "en": [
+     "corner",
+     "l-shaped",
+     "l shaped",
+     "sectional corner"
+    ]
+   },
+   "note": "Forma en L o esquinero. Incluye los sofás con chaise longue / penisola (decisión del cliente): un sofá con chaise es de ángulo."
+  },
+  {
+   "id": "shape.chaise",
+   "facet": "shape",
+   "parent": "shape.corner",
+   "labels": {
+    "es": "con chaise longue",
+    "it": "con chaise longue",
+    "en": "with chaise"
+   },
+   "synonyms": {
+    "es": [
+     "chaise longue",
+     "chaiselongue",
+     "con chaise",
+     "diván"
+    ],
+    "it": [
+     "chaise longue",
+     "chaiselongue",
+     "penisola"
+    ],
+    "en": [
+     "chaise",
+     "chaise longue",
+     "chaise lounge"
+    ]
+   },
+   "note": "Módulo alargado sin respaldo para estirar las piernas (it. 'penisola' en sofás). En cocinas 'penisola' es península."
+  },
+  {
+   "id": "shape.modular",
+   "facet": "shape",
+   "labels": {
+    "es": "modular",
+    "it": "modulare",
+    "en": "modular"
+   },
+   "synonyms": {
+    "es": [
+     "modular",
+     "modulares",
+     "componible",
+     "seccional",
+     "por módulos"
+    ],
+    "it": [
+     "modulare",
+     "modulari",
+     "componibile",
+     "componibili"
+    ],
+    "en": [
+     "modular",
+     "sectional"
+    ]
+   }
+  },
+  {
+   "id": "shape.curved",
+   "facet": "shape",
+   "labels": {
+    "es": "curvo",
+    "it": "curvo",
+    "en": "curved"
+   },
+   "synonyms": {
+    "es": [
+     "curvo",
+     "curva",
+     "curvado",
+     "redondeado",
+     "curvilíneo",
+     "curvilínea",
+     "sinuoso",
+     "sinuosa"
+    ],
+    "it": [
+     "curvo",
+     "curva",
+     "curvilineo",
+     "curvilinea",
+     "curvilinee",
+     "sinuoso",
+     "sinuosa",
+     "curvato",
+     "curvata",
+     "curvatura",
+     "arrotondato",
+     "arrotondata"
+    ],
+    "en": [
+     "curved",
+     "rounded",
+     "curvy"
+    ]
+   }
+  },
+  {
+   "id": "shape.linear",
+   "facet": "shape",
+   "labels": {
+    "es": "lineal",
+    "it": "lineare",
+    "en": "linear"
+   },
+   "synonyms": {
+    "es": [
+     "lineal",
+     "recto",
+     "recta"
+    ],
+    "it": [
+     "lineare",
+     "lineari"
+    ],
+    "en": [
+     "linear",
+     "straight"
+    ]
+   }
+  },
+  {
+   "id": "shape.island",
+   "facet": "shape",
+   "labels": {
+    "es": "con isla",
+    "it": "a isola",
+    "en": "island"
+   },
+   "synonyms": {
+    "es": [
+     "isla",
+     "con isla",
+     "de isla"
+    ],
+    "it": [
+     "isola",
+     "a isola"
+    ],
+    "en": [
+     "island",
+     "kitchen island"
+    ]
+   }
+  },
+  {
+   "id": "shape.peninsula",
+   "facet": "shape",
+   "labels": {
+    "es": "con península",
+    "it": "a penisola",
+    "en": "peninsula"
+   },
+   "synonyms": {
+    "es": [
+     "península",
+     "con península"
+    ],
+    "it": [
+     "penisola cucina"
+    ],
+    "en": [
+     "peninsula"
+    ]
+   }
+  },
+  {
+   "id": "shape.round",
+   "facet": "shape",
+   "labels": {
+    "es": "redondo",
+    "it": "rotondo",
+    "en": "round"
+   },
+   "synonyms": {
+    "es": [
+     "redonda",
+     "redondo",
+     "redondas",
+     "redondos",
+     "circular",
+     "circulares"
+    ],
+    "it": [
+     "rotondo",
+     "rotonda",
+     "rotondi",
+     "tondo",
+     "tonda"
+    ],
+    "en": [
+     "round",
+     "circular"
+    ]
+   }
+  },
+  {
+   "id": "shape.oval",
+   "facet": "shape",
+   "labels": {
+    "es": "ovalado",
+    "it": "ovale",
+    "en": "oval"
+   },
+   "synonyms": {
+    "es": [
+     "ovalada",
+     "ovalado",
+     "ovaladas",
+     "oval"
+    ],
+    "it": [
+     "ovale",
+     "ovali"
+    ],
+    "en": [
+     "oval"
+    ]
+   }
+  },
+  {
+   "id": "shape.rectangular",
+   "facet": "shape",
+   "labels": {
+    "es": "rectangular",
+    "it": "rettangolare",
+    "en": "rectangular"
+   },
+   "synonyms": {
+    "es": [
+     "rectangular",
+     "rectangulares"
+    ],
+    "it": [
+     "rettangolare",
+     "rettangolari"
+    ],
+    "en": [
+     "rectangular"
+    ]
+   }
+  },
+  {
+   "id": "shape.square",
+   "facet": "shape",
+   "labels": {
+    "es": "cuadrado",
+    "it": "quadrato",
+    "en": "square"
+   },
+   "synonyms": {
+    "es": [
+     "cuadrada",
+     "cuadrado",
+     "cuadradas"
+    ],
+    "it": [
+     "quadrato",
+     "quadrata",
+     "quadrati"
+    ],
+    "en": [
+     "square"
+    ]
+   }
+  },
+  {
+   "id": "shape.barrel",
+   "facet": "shape",
+   "labels": {
+    "es": "de tonel",
+    "it": "a botte",
+    "en": "barrel"
+   },
+   "synonyms": {
+    "es": [
+     "de tonel",
+     "tipo barril"
+    ],
+    "it": [
+     "a botte"
+    ],
+    "en": [
+     "barrel",
+     "tonneau"
+    ]
+   }
+  },
+  {
+   "id": "shape.extendable",
+   "facet": "shape",
+   "labels": {
+    "es": "extensible",
+    "it": "allungabile",
+    "en": "extendable"
+   },
+   "synonyms": {
+    "es": [
+     "extensible",
+     "extensibles",
+     "extendible"
+    ],
+    "it": [
+     "allungabile",
+     "allungabili"
+    ],
+    "en": [
+     "extendable",
+     "extending",
+     "expandable"
+    ]
+   }
+  },
+  {
+   "id": "shape.swivel",
+   "facet": "shape",
+   "labels": {
+    "es": "giratorio",
+    "it": "girevole",
+    "en": "swivel"
+   },
+   "synonyms": {
+    "es": [
+     "giratorio",
+     "giratoria",
+     "giratorios"
+    ],
+    "it": [
+     "girevole",
+     "girevoli"
+    ],
+    "en": [
+     "swivel"
+    ]
+   }
+  },
+  {
+   "id": "shape.hinged_doors",
+   "facet": "shape",
+   "labels": {
+    "es": "puertas abatibles",
+    "it": "ante battenti",
+    "en": "hinged doors"
+   },
+   "synonyms": {
+    "es": [
+     "puertas abatibles",
+     "puerta abatible",
+     "batiente",
+     "batientes"
+    ],
+    "it": [
+     "battente",
+     "battenti",
+     "ante battenti"
+    ],
+    "en": [
+     "hinged",
+     "hinged doors"
+    ]
+   }
+  },
+  {
+   "id": "shape.sliding_doors",
+   "facet": "shape",
+   "labels": {
+    "es": "puertas corredizas",
+    "it": "ante scorrevoli",
+    "en": "sliding doors"
+   },
+   "synonyms": {
+    "es": [
+     "corredizas",
+     "corrediza",
+     "puertas corredizas",
+     "deslizantes"
+    ],
+    "it": [
+     "scorrevole",
+     "scorrevoli",
+     "ante scorrevoli"
+    ],
+    "en": [
+     "sliding",
+     "sliding doors"
+    ]
+   }
+  },
+  {
+   "id": "shape.bridge",
+   "facet": "shape",
+   "labels": {
+    "es": "de puente",
+    "it": "a ponte",
+    "en": "bridge"
+   },
+   "synonyms": {
+    "es": [
+     "de puente",
+     "con puente",
+     "portal",
+     "con portal",
+     "tipo puente"
+    ],
+    "it": [
+     "a ponte",
+     "con ponte",
+     "portale",
+     "vano ponte"
+    ],
+    "en": [
+     "bridge",
+     "over-bed"
+    ]
+   }
+  },
+  {
+   "id": "shape.freestanding",
+   "facet": "shape",
+   "labels": {
+    "es": "centro de la habitación",
+    "it": "centro stanza",
+    "en": "freestanding"
+   },
+   "synonyms": {
+    "es": [
+     "centro de la habitación",
+     "al centro",
+     "exento",
+     "divisor"
+    ],
+    "it": [
+     "centro stanza",
+     "divisorio"
+    ],
+    "en": [
+     "freestanding",
+     "room divider"
+    ]
+   }
+  },
+  {
+   "id": "shape.full_height",
+   "facet": "shape",
+   "labels": {
+    "es": "de piso a techo",
+    "it": "a tutta altezza",
+    "en": "full height"
+   },
+   "synonyms": {
+    "es": [
+     "de piso a techo",
+     "hasta el techo",
+     "a toda altura"
+    ],
+    "it": [
+     "a tutta altezza",
+     "da terra a soffitto",
+     "fino al soffitto"
+    ],
+    "en": [
+     "full height",
+     "floor to ceiling"
+    ]
+   }
+  },
+  {
+   "id": "shape.u_shaped",
+   "facet": "shape",
+   "labels": {
+    "es": "en U",
+    "it": "a U",
+    "en": "U-shaped"
+   },
+   "synonyms": {
+    "es": [
+     "en u",
+     "en forma de u",
+     "de herradura"
+    ],
+    "it": [
+     "a u",
+     "a ferro di cavallo"
+    ],
+    "en": [
+     "u-shaped",
+     "u shaped",
+     "horseshoe"
+    ]
+   }
+  },
+  {
+   "id": "shape.cylindrical",
+   "facet": "shape",
+   "labels": {
+    "es": "cilíndrico",
+    "it": "cilindrico",
+    "en": "cylindrical"
+   },
+   "synonyms": {
+    "es": [
+     "cilíndrico",
+     "cilíndrica",
+     "cilindro",
+     "tipo tambor"
+    ],
+    "it": [
+     "cilindrico",
+     "cilindrica",
+     "cilindro"
+    ],
+    "en": [
+     "cylindrical",
+     "cylinder",
+     "drum"
+    ]
+   }
+  },
+  {
+   "id": "shape.enveloping",
+   "facet": "shape",
+   "labels": {
+    "es": "envolvente",
+    "it": "avvolgente",
+    "en": "wraparound"
+   },
+   "synonyms": {
+    "es": [
+     "envolvente",
+     "tipo concha",
+     "de concha"
+    ],
+    "it": [
+     "avvolgente",
+     "a guscio",
+     "a pozzetto"
+    ],
+    "en": [
+     "wraparound",
+     "shell",
+     "tub chair"
+    ]
+   }
+  },
+  {
+   "id": "shape.armless",
+   "facet": "shape",
+   "labels": {
+    "es": "sin brazos",
+    "it": "senza braccioli",
+    "en": "armless"
+   },
+   "synonyms": {
+    "es": [
+     "sin brazos",
+     "sin descansabrazos"
+    ],
+    "it": [
+     "senza braccioli"
+    ],
+    "en": [
+     "armless",
+     "without arms"
+    ]
+   }
+  },
+  {
+   "id": "shape.with_arms",
+   "facet": "shape",
+   "labels": {
+    "es": "con brazos",
+    "it": "con braccioli",
+    "en": "with arms"
+   },
+   "synonyms": {
+    "es": [
+     "con brazos",
+     "con descansabrazos",
+     "con reposabrazos"
+    ],
+    "it": [
+     "con braccioli",
+     "con bracciolo"
+    ],
+    "en": [
+     "with arms",
+     "with armrests",
+     "armchair-style"
+    ]
+   }
+  },
+  {
+   "id": "shape.footrest",
+   "facet": "shape",
+   "labels": {
+    "es": "con reposapiés",
+    "it": "con poggiapiedi",
+    "en": "with footstool"
+   },
+   "synonyms": {
+    "es": [
+     "con reposapiés",
+     "con otomana",
+     "con banquito"
+    ],
+    "it": [
+     "con poggiapiedi",
+     "con pouf"
+    ],
+    "en": [
+     "with footstool",
+     "with ottoman"
+    ]
+   }
+  },
+  {
+   "id": "shape.open",
+   "facet": "shape",
+   "labels": {
+    "es": "sin puertas",
+    "it": "a giorno",
+    "en": "open shelving"
+   },
+   "synonyms": {
+    "es": [
+     "sin puertas",
+     "repisas abiertas",
+     "estantería abierta",
+     "librero abierto"
+    ],
+    "it": [
+     "a giorno",
+     "senza ante"
+    ],
+    "en": [
+     "open shelving",
+     "open shelves",
+     "without doors"
+    ]
+   }
+  },
+  {
+   "id": "shape.tv_unit",
+   "facet": "shape",
+   "labels": {
+    "es": "para TV",
+    "it": "porta TV",
+    "en": "for TV"
+   },
+   "synonyms": {
+    "es": [
+     "para tv",
+     "para la tele",
+     "para televisión",
+     "para la televisión"
+    ],
+    "it": [
+     "porta tv",
+     "porta-tv"
+    ],
+    "en": [
+     "tv stand",
+     "for the tv",
+     "for tv"
+    ]
+   }
+  },
+  {
+   "id": "shape.double_bed",
+   "facet": "shape",
+   "labels": {
+    "es": "matrimonial",
+    "it": "matrimoniale",
+    "en": "double bed"
+   },
+   "synonyms": {
+    "es": [
+     "matrimonial",
+     "de matrimonio",
+     "queen size",
+     "king size",
+     "tamaño queen",
+     "tamaño king"
+    ],
+    "it": [
+     "matrimoniale",
+     "matrimoniali",
+     "due piazze"
+    ],
+    "en": [
+     "double bed",
+     "queen size",
+     "king size",
+     "queen-size",
+     "king-size"
+    ]
+   }
+  },
+  {
+   "id": "shape.single_bed",
+   "facet": "shape",
+   "labels": {
+    "es": "de una plaza",
+    "it": "una piazza",
+    "en": "single bed"
+   },
+   "synonyms": {
+    "es": [
+     "de una plaza",
+     "una plaza",
+     "plaza y media"
+    ],
+    "it": [
+     "una piazza",
+     "piazza e mezza",
+     "singolo"
+    ],
+    "en": [
+     "single bed",
+     "twin bed",
+     "twin size"
+    ]
+   }
+  },
+  {
+   "id": "material.leather",
+   "facet": "material",
+   "labels": {
+    "es": "piel",
+    "it": "pelle",
+    "en": "leather"
+   },
+   "synonyms": {
+    "es": [
+     "piel",
+     "cuero",
+     "piel auténtica",
+     "piel natural",
+     "cuero genuino"
+    ],
+    "it": [
+     "pelle",
+     "cuoio",
+     "vera pelle",
+     "pelle naturale"
+    ],
+    "en": [
+     "leather",
+     "genuine leather",
+     "real leather"
+    ]
+   },
+   "note": "Piel animal auténtica. NO incluye similpiel/ecopelle/efecto piel (material.faux_leather) ni nobuk/nabuk (material.nubuck)."
+  },
+  {
+   "id": "material.faux_leather",
+   "facet": "material",
+   "labels": {
+    "es": "similpiel",
+    "it": "similpelle",
+    "en": "faux leather"
+   },
+   "synonyms": {
+    "es": [
+     "similpiel",
+     "piel sintética",
+     "cuero sintético",
+     "ecopiel",
+     "polipiel",
+     "vinipiel",
+     "efecto piel",
+     "piel vegana",
+     "imitación piel"
+    ],
+    "it": [
+     "similpelle",
+     "ecopelle",
+     "effetto pelle",
+     "finta pelle"
+    ],
+    "en": [
+     "faux leather",
+     "leatherette",
+     "eco-leather",
+     "vegan leather",
+     "leather-look",
+     "leather look"
+    ]
+   }
+  },
+  {
+   "id": "material.nubuck",
+   "facet": "material",
+   "labels": {
+    "es": "nobuk",
+    "it": "nabuk",
+    "en": "nubuck"
+   },
+   "synonyms": {
+    "es": [
+     "nobuk",
+     "nubuck",
+     "nabuk"
+    ],
+    "it": [
+     "nabuk",
+     "nubuck"
+    ],
+    "en": [
+     "nubuck",
+     "nabuk"
+    ]
+   },
+   "note": "Acabado tipo nobuk. Si es piel real o microfibra está pendiente de validar (Nabuk Eagle)."
+  },
+  {
+   "id": "material.fabric",
+   "facet": "material",
+   "labels": {
+    "es": "tela",
+    "it": "tessuto",
+    "en": "fabric"
+   },
+   "synonyms": {
+    "es": [
+     "tela",
+     "telas",
+     "tejido",
+     "tejidos",
+     "tapizado de tela",
+     "textil"
+    ],
+    "it": [
+     "tessuto",
+     "tessuti",
+     "stoffa"
+    ],
+    "en": [
+     "fabric",
+     "fabrics",
+     "textile",
+     "upholstery fabric",
+     "cloth"
+    ]
+   }
+  },
+  {
+   "id": "material.velvet",
+   "facet": "material",
+   "parent": "material.fabric",
+   "labels": {
+    "es": "terciopelo",
+    "it": "velluto",
+    "en": "velvet"
+   },
+   "synonyms": {
+    "es": [
+     "terciopelo",
+     "aterciopelado"
+    ],
+    "it": [
+     "velluto",
+     "vellutato"
+    ],
+    "en": [
+     "velvet"
+    ]
+   }
+  },
+  {
+   "id": "material.boucle",
+   "facet": "material",
+   "parent": "material.fabric",
+   "labels": {
+    "es": "bouclé",
+    "it": "bouclé",
+    "en": "bouclé"
+   },
+   "synonyms": {
+    "es": [
+     "bouclé",
+     "boucle",
+     "borreguito"
+    ],
+    "it": [
+     "bouclé",
+     "boucle"
+    ],
+    "en": [
+     "bouclé",
+     "boucle"
+    ]
+   }
+  },
+  {
+   "id": "material.microfiber",
+   "facet": "material",
+   "parent": "material.fabric",
+   "labels": {
+    "es": "microfibra",
+    "it": "microfibra",
+    "en": "microfiber"
+   },
+   "synonyms": {
+    "es": [
+     "microfibra"
+    ],
+    "it": [
+     "microfibra"
+    ],
+    "en": [
+     "microfiber",
+     "microfibre"
+    ]
+   }
+  },
+  {
+   "id": "material.wood",
+   "facet": "material",
+   "labels": {
+    "es": "madera",
+    "it": "legno",
+    "en": "wood"
+   },
+   "synonyms": {
+    "es": [
+     "madera",
+     "maderas"
+    ],
+    "it": [
+     "legno",
+     "legni",
+     "in legno",
+     "ligneo",
+     "lignea"
+    ],
+    "en": [
+     "wood",
+     "wooden",
+     "timber"
+    ]
+   }
+  },
+  {
+   "id": "material.wood_effect",
+   "facet": "material",
+   "labels": {
+    "es": "efecto madera",
+    "it": "effetto legno",
+    "en": "wood effect"
+   },
+   "synonyms": {
+    "es": [
+     "efecto madera",
+     "imitación madera",
+     "tipo madera"
+    ],
+    "it": [
+     "effetto legno",
+     "aspetto legno",
+     "finto legno"
+    ],
+    "en": [
+     "wood effect",
+     "wood look",
+     "wood-look"
+    ]
+   },
+   "note": "Superficie que imita la madera (nobilitato, laminado): NO es madera ni chapa de madera."
+  },
+  {
+   "id": "material.wood_veneer",
+   "facet": "material",
+   "parent": "material.wood",
+   "labels": {
+    "es": "chapa de madera",
+    "it": "impiallacciato",
+    "en": "wood veneer"
+   },
+   "synonyms": {
+    "es": [
+     "chapa",
+     "chapa de madera",
+     "enchapado",
+     "chapeado"
+    ],
+    "it": [
+     "impiallacciato",
+     "impiallacciati",
+     "impiallacciatura"
+    ],
+    "en": [
+     "veneer",
+     "wood veneer"
+    ]
+   }
+  },
+  {
+   "id": "material.oak",
+   "facet": "material",
+   "parent": "material.wood",
+   "labels": {
+    "es": "roble",
+    "it": "rovere",
+    "en": "oak"
+   },
+   "synonyms": {
+    "es": [
+     "roble"
+    ],
+    "it": [
+     "rovere"
+    ],
+    "en": [
+     "oak"
+    ]
+   }
+  },
+  {
+   "id": "material.walnut",
+   "facet": "material",
+   "parent": "material.wood",
+   "labels": {
+    "es": "nogal",
+    "it": "noce",
+    "en": "walnut"
+   },
+   "synonyms": {
+    "es": [
+     "nogal"
+    ],
+    "it": [
+     "noce"
+    ],
+    "en": [
+     "walnut"
+    ]
+   }
+  },
+  {
+   "id": "material.eucalyptus",
+   "facet": "material",
+   "parent": "material.wood",
+   "labels": {
+    "es": "eucalipto",
+    "it": "eucalipto",
+    "en": "eucalyptus"
+   },
+   "synonyms": {
+    "es": [
+     "eucalipto"
+    ],
+    "it": [
+     "eucalipto"
+    ],
+    "en": [
+     "eucalyptus"
+    ]
+   }
+  },
+  {
+   "id": "material.melamine",
+   "facet": "material",
+   "labels": {
+    "es": "melamina",
+    "it": "nobilitato",
+    "en": "melamine"
+   },
+   "synonyms": {
+    "es": [
+     "melamina",
+     "melamínico",
+     "aglomerado"
+    ],
+    "it": [
+     "nobilitato",
+     "nobilitati",
+     "nobilitata",
+     "nobilitate",
+     "nobilitato noce",
+     "nobilitato rovere",
+     "nobilitato leather grey"
+    ],
+    "en": [
+     "melamine",
+     "laminated board"
+    ]
+   }
+  },
+  {
+   "id": "material.laminate",
+   "facet": "material",
+   "labels": {
+    "es": "laminado",
+    "it": "laminato",
+    "en": "laminate"
+   },
+   "synonyms": {
+    "es": [
+     "laminado",
+     "fenix"
+    ],
+    "it": [
+     "laminato",
+     "laminati",
+     "fenix"
+    ],
+    "en": [
+     "laminate",
+     "hpl"
+    ]
+   }
+  },
+  {
+   "id": "material.lacquer",
+   "facet": "material",
+   "labels": {
+    "es": "lacado",
+    "it": "laccato",
+    "en": "lacquer"
+   },
+   "synonyms": {
+    "es": [
+     "lacado",
+     "laqueado",
+     "laca",
+     "lacados"
+    ],
+    "it": [
+     "laccato",
+     "laccati",
+     "laccata",
+     "laccate",
+     "laccatura"
+    ],
+    "en": [
+     "lacquer",
+     "lacquered"
+    ]
+   }
+  },
+  {
+   "id": "material.lacquer_matt",
+   "facet": "material",
+   "parent": "material.lacquer",
+   "labels": {
+    "es": "lacado mate",
+    "it": "laccato opaco",
+    "en": "matt lacquer"
+   },
+   "synonyms": {
+    "es": [
+     "lacado mate",
+     "laca mate"
+    ],
+    "it": [
+     "laccato opaco",
+     "laccati opachi",
+     "laccata opaca",
+     "laccate opache"
+    ],
+    "en": [
+     "matt lacquer",
+     "matte lacquer"
+    ]
+   }
+  },
+  {
+   "id": "material.lacquer_gloss",
+   "facet": "material",
+   "parent": "material.lacquer",
+   "labels": {
+    "es": "lacado brillante",
+    "it": "laccato lucido",
+    "en": "gloss lacquer"
+   },
+   "synonyms": {
+    "es": [
+     "lacado brillante",
+     "laca brillante",
+     "alto brillo"
+    ],
+    "it": [
+     "laccato lucido",
+     "monolaccato lucido"
+    ],
+    "en": [
+     "gloss lacquer",
+     "high gloss"
+    ]
+   }
+  },
+  {
+   "id": "material.metal_skin",
+   "facet": "material",
+   "labels": {
+    "es": "efecto metal",
+    "it": "metal skin",
+    "en": "metal-effect"
+   },
+   "synonyms": {
+    "es": [
+     "efecto metal",
+     "metálico",
+     "metal skin"
+    ],
+    "it": [
+     "metal skin",
+     "metalskin",
+     "laccato metal",
+     "laccato metalskin",
+     "effetto metallo"
+    ],
+    "en": [
+     "metal skin",
+     "metal effect",
+     "metallic finish"
+    ]
+   }
+  },
+  {
+   "id": "material.metal",
+   "facet": "material",
+   "labels": {
+    "es": "metal",
+    "it": "metallo",
+    "en": "metal"
+   },
+   "synonyms": {
+    "es": [
+     "metal",
+     "hierro"
+    ],
+    "it": [
+     "metallo",
+     "ferro"
+    ],
+    "en": [
+     "metal",
+     "iron"
+    ]
+   }
+  },
+  {
+   "id": "material.aluminium",
+   "facet": "material",
+   "parent": "material.metal",
+   "labels": {
+    "es": "aluminio",
+    "it": "alluminio",
+    "en": "aluminium"
+   },
+   "synonyms": {
+    "es": [
+     "aluminio"
+    ],
+    "it": [
+     "alluminio"
+    ],
+    "en": [
+     "aluminium",
+     "aluminum"
+    ]
+   }
+  },
+  {
+   "id": "material.brass",
+   "facet": "material",
+   "parent": "material.metal",
+   "labels": {
+    "es": "latón",
+    "it": "ottone",
+    "en": "brass"
+   },
+   "synonyms": {
+    "es": [
+     "latón"
+    ],
+    "it": [
+     "ottone"
+    ],
+    "en": [
+     "brass"
+    ]
+   }
+  },
+  {
+   "id": "material.steel",
+   "facet": "material",
+   "parent": "material.metal",
+   "labels": {
+    "es": "acero",
+    "it": "acciaio",
+    "en": "steel"
+   },
+   "synonyms": {
+    "es": [
+     "acero",
+     "acero inoxidable"
+    ],
+    "it": [
+     "acciaio",
+     "inox"
+    ],
+    "en": [
+     "steel",
+     "stainless steel"
+    ]
+   }
+  },
+  {
+   "id": "material.glass",
+   "facet": "material",
+   "labels": {
+    "es": "vidrio",
+    "it": "vetro",
+    "en": "glass"
+   },
+   "synonyms": {
+    "es": [
+     "vidrio",
+     "cristal",
+     "vidrios",
+     "cristales"
+    ],
+    "it": [
+     "vetro",
+     "vetri",
+     "cristallo",
+     "cristallo velvet"
+    ],
+    "en": [
+     "glass",
+     "crystal"
+    ]
+   }
+  },
+  {
+   "id": "material.mirror",
+   "facet": "material",
+   "parent": "material.glass",
+   "labels": {
+    "es": "espejo",
+    "it": "specchio",
+    "en": "mirror"
+   },
+   "synonyms": {
+    "es": [
+     "espejo",
+     "espejado"
+    ],
+    "it": [
+     "specchio",
+     "specchiato"
+    ],
+    "en": [
+     "mirror",
+     "mirrored"
+    ]
+   }
+  },
+  {
+   "id": "material.ceramic",
+   "facet": "material",
+   "labels": {
+    "es": "cerámica",
+    "it": "ceramica",
+    "en": "ceramic"
+   },
+   "synonyms": {
+    "es": [
+     "cerámica",
+     "porcelánico",
+     "porcelanato",
+     "gres",
+     "laminam",
+     "neolith",
+     "superceramica"
+    ],
+    "it": [
+     "ceramica",
+     "gres",
+     "superceramica",
+     "laminam",
+     "neolith",
+     "grès"
+    ],
+    "en": [
+     "ceramic",
+     "porcelain",
+     "stoneware",
+     "sintered stone"
+    ]
+   }
+  },
+  {
+   "id": "material.marble",
+   "facet": "material",
+   "labels": {
+    "es": "mármol",
+    "it": "marmo",
+    "en": "marble"
+   },
+   "synonyms": {
+    "es": [
+     "mármol",
+     "marmol",
+     "mármol natural"
+    ],
+    "it": [
+     "marmo",
+     "marmo naturale"
+    ],
+    "en": [
+     "marble",
+     "natural marble"
+    ]
+   },
+   "note": "Mármol natural. NO incluye efecto mármol (supermarmo, Scenario): eso es material.marble_effect."
+  },
+  {
+   "id": "material.marble_effect",
+   "facet": "material",
+   "labels": {
+    "es": "efecto mármol",
+    "it": "effetto marmo",
+    "en": "marble effect"
+   },
+   "synonyms": {
+    "es": [
+     "efecto mármol",
+     "efecto marmol",
+     "imitación mármol",
+     "tipo mármol"
+    ],
+    "it": [
+     "effetto marmo",
+     "supermarmo",
+     "finto marmo"
+    ],
+    "en": [
+     "marble effect",
+     "marble look",
+     "faux marble"
+    ]
+   },
+   "note": "Superficie que imita el mármol (supermarmo, Scenario): NO es mármol natural; decirlo así."
+  },
+  {
+   "id": "material.stone",
+   "facet": "material",
+   "labels": {
+    "es": "piedra",
+    "it": "pietra",
+    "en": "stone"
+   },
+   "synonyms": {
+    "es": [
+     "piedra",
+     "piedra natural"
+    ],
+    "it": [
+     "pietra",
+     "pietra naturale"
+    ],
+    "en": [
+     "stone",
+     "natural stone"
+    ]
+   },
+   "note": "Piedra natural. NO incluye efecto piedra ni efecto cemento (material.stone_effect)."
+  },
+  {
+   "id": "material.stone_effect",
+   "facet": "material",
+   "labels": {
+    "es": "efecto piedra",
+    "it": "effetto pietra",
+    "en": "stone effect"
+   },
+   "synonyms": {
+    "es": [
+     "efecto piedra",
+     "efecto cemento",
+     "cemento",
+     "efecto travertino"
+    ],
+    "it": [
+     "effetto pietra",
+     "effetto cemento",
+     "cemento",
+     "effetto travertino"
+    ],
+    "en": [
+     "stone effect",
+     "concrete",
+     "concrete effect"
+    ]
+   },
+   "note": "Superficie que imita piedra o cemento: NO es piedra natural; decirlo así."
+  },
+  {
+   "id": "material.plastic",
+   "facet": "material",
+   "labels": {
+    "es": "PET / plexiglás",
+    "it": "PET / plexiglass",
+    "en": "PET / plexiglass"
+   },
+   "synonyms": {
+    "es": [
+     "plexiglás",
+     "acrílico",
+     "pet"
+    ],
+    "it": [
+     "plexiglass",
+     "pet"
+    ],
+    "en": [
+     "plexiglass",
+     "acrylic",
+     "pet"
+    ]
+   }
+  },
+  {
+   "id": "color.white",
+   "facet": "color",
+   "labels": {
+    "es": "blanco",
+    "it": "bianco",
+    "en": "white"
+   },
+   "synonyms": {
+    "es": [
+     "blanco",
+     "blanca",
+     "blancos",
+     "blancas"
+    ],
+    "it": [
+     "bianco",
+     "bianca",
+     "bianchi"
+    ],
+    "en": [
+     "white"
+    ]
+   }
+  },
+  {
+   "id": "color.cream",
+   "facet": "color",
+   "labels": {
+    "es": "crema",
+    "it": "panna",
+    "en": "cream"
+   },
+   "synonyms": {
+    "es": [
+     "crema",
+     "marfil",
+     "hueso",
+     "perla"
+    ],
+    "it": [
+     "panna",
+     "crema",
+     "avorio",
+     "perla"
+    ],
+    "en": [
+     "cream",
+     "ivory",
+     "off-white",
+     "off white"
+    ]
+   }
+  },
+  {
+   "id": "color.beige",
+   "facet": "color",
+   "labels": {
+    "es": "beige",
+    "it": "beige",
+    "en": "beige"
+   },
+   "synonyms": {
+    "es": [
+     "beige",
+     "beis",
+     "arena",
+     "arenas",
+     "topo",
+     "greige"
+    ],
+    "it": [
+     "beige",
+     "sabbia",
+     "tortora",
+     "corda",
+     "canapa",
+     "talpa"
+    ],
+    "en": [
+     "beige",
+     "sand",
+     "taupe",
+     "greige",
+     "linen"
+    ]
+   }
+  },
+  {
+   "id": "color.grey",
+   "facet": "color",
+   "labels": {
+    "es": "gris",
+    "it": "grigio",
+    "en": "grey"
+   },
+   "synonyms": {
+    "es": [
+     "gris",
+     "grises",
+     "gris oscuro",
+     "gris claro",
+     "plata",
+     "plateado",
+     "gris perla"
+    ],
+    "it": [
+     "grigio",
+     "grigi",
+     "grigia",
+     "argento",
+     "grigio perla"
+    ],
+    "en": [
+     "grey",
+     "gray",
+     "silver",
+     "pearl grey",
+     "pearl gray"
+    ]
+   }
+  },
+  {
+   "id": "color.anthracite",
+   "facet": "color",
+   "parent": "color.grey",
+   "labels": {
+    "es": "antracita",
+    "it": "antracite",
+    "en": "anthracite"
+   },
+   "synonyms": {
+    "es": [
+     "antracita",
+     "grafito",
+     "carbón",
+     "gris carbón"
+    ],
+    "it": [
+     "antracite",
+     "grafite",
+     "carbone"
+    ],
+    "en": [
+     "anthracite",
+     "graphite",
+     "charcoal"
+    ]
+   }
+  },
+  {
+   "id": "color.black",
+   "facet": "color",
+   "labels": {
+    "es": "negro",
+    "it": "nero",
+    "en": "black"
+   },
+   "synonyms": {
+    "es": [
+     "negro",
+     "negra",
+     "negros",
+     "negras"
+    ],
+    "it": [
+     "nero",
+     "nera",
+     "neri"
+    ],
+    "en": [
+     "black"
+    ]
+   }
+  },
+  {
+   "id": "color.brown",
+   "facet": "color",
+   "labels": {
+    "es": "café",
+    "it": "marrone",
+    "en": "brown"
+   },
+   "synonyms": {
+    "es": [
+     "café",
+     "cafés",
+     "marrón",
+     "marrones",
+     "chocolate",
+     "cognac",
+     "coñac",
+     "tabaco",
+     "moka",
+     "caramelo",
+     "camel",
+     "avellana"
+    ],
+    "it": [
+     "marrone",
+     "marroni",
+     "moro",
+     "testa di moro",
+     "cioccolato",
+     "tabacco",
+     "caffè",
+     "cognac",
+     "moka",
+     "nocciola"
+    ],
+    "en": [
+     "brown",
+     "chocolate",
+     "cognac",
+     "tobacco",
+     "coffee",
+     "espresso",
+     "mocha",
+     "camel",
+     "caramel",
+     "hazelnut"
+    ]
+   },
+   "note": "En México 'café' es el color marrón."
+  },
+  {
+   "id": "color.natural_wood",
+   "facet": "color",
+   "parent": "color.brown",
+   "labels": {
+    "es": "madera natural",
+    "it": "legno naturale",
+    "en": "natural wood"
+   },
+   "synonyms": {
+    "es": [
+     "madera natural",
+     "tono madera",
+     "color madera",
+     "roble natural"
+    ],
+    "it": [
+     "legno naturale",
+     "naturale"
+    ],
+    "en": [
+     "natural wood",
+     "wood tone"
+    ]
+   }
+  },
+  {
+   "id": "color.yellow",
+   "facet": "color",
+   "labels": {
+    "es": "amarillo",
+    "it": "giallo",
+    "en": "yellow"
+   },
+   "synonyms": {
+    "es": [
+     "amarillo",
+     "amarilla",
+     "amarillos",
+     "amarillas",
+     "mostaza",
+     "ocre",
+     "dorado claro",
+     "limón"
+    ],
+    "it": [
+     "giallo",
+     "gialla",
+     "gialli",
+     "senape",
+     "ocra",
+     "limone"
+    ],
+    "en": [
+     "yellow",
+     "mustard",
+     "ochre",
+     "ocher",
+     "lemon",
+     "sunflower",
+     "curry"
+    ]
+   }
+  },
+  {
+   "id": "color.gold",
+   "facet": "color",
+   "labels": {
+    "es": "dorado",
+    "it": "oro",
+    "en": "gold"
+   },
+   "synonyms": {
+    "es": [
+     "dorado",
+     "dorada",
+     "oro",
+     "champán",
+     "champagne"
+    ],
+    "it": [
+     "oro",
+     "dorato",
+     "champagne",
+     "ottone"
+    ],
+    "en": [
+     "gold",
+     "golden",
+     "champagne",
+     "brass"
+    ]
+   }
+  },
+  {
+   "id": "color.bronze",
+   "facet": "color",
+   "labels": {
+    "es": "bronce",
+    "it": "bronzo",
+    "en": "bronze"
+   },
+   "synonyms": {
+    "es": [
+     "bronce",
+     "cobre",
+     "cobrizo"
+    ],
+    "it": [
+     "bronzo",
+     "rame"
+    ],
+    "en": [
+     "bronze",
+     "copper"
+    ]
+   }
+  },
+  {
+   "id": "color.orange",
+   "facet": "color",
+   "labels": {
+    "es": "naranja",
+    "it": "arancione",
+    "en": "orange"
+   },
+   "synonyms": {
+    "es": [
+     "naranja",
+     "naranjas",
+     "anaranjado",
+     "terracota",
+     "óxido"
+    ],
+    "it": [
+     "arancione",
+     "arancio",
+     "terracotta",
+     "ruggine"
+    ],
+    "en": [
+     "orange",
+     "terracotta",
+     "rust"
+    ]
+   }
+  },
+  {
+   "id": "color.red",
+   "facet": "color",
+   "labels": {
+    "es": "rojo",
+    "it": "rosso",
+    "en": "red"
+   },
+   "synonyms": {
+    "es": [
+     "rojo",
+     "roja",
+     "rojos",
+     "rojas",
+     "vino",
+     "tinto",
+     "borgoña",
+     "burdeos",
+     "granate",
+     "ladrillo"
+    ],
+    "it": [
+     "rosso",
+     "rossa",
+     "rossi",
+     "bordeaux",
+     "mattone",
+     "marsala"
+    ],
+    "en": [
+     "red",
+     "burgundy",
+     "wine",
+     "brick",
+     "marsala"
+    ]
+   }
+  },
+  {
+   "id": "color.pink",
+   "facet": "color",
+   "labels": {
+    "es": "rosa",
+    "it": "rosa",
+    "en": "pink"
+   },
+   "synonyms": {
+    "es": [
+     "rosa",
+     "rosado",
+     "rosada",
+     "palo de rosa",
+     "rosa palo"
+    ],
+    "it": [
+     "rosa",
+     "rosato",
+     "cipria"
+    ],
+    "en": [
+     "pink",
+     "blush",
+     "rose",
+     "powder pink"
+    ]
+   }
+  },
+  {
+   "id": "color.purple",
+   "facet": "color",
+   "labels": {
+    "es": "morado",
+    "it": "viola",
+    "en": "purple"
+   },
+   "synonyms": {
+    "es": [
+     "morado",
+     "morada",
+     "violeta",
+     "lila",
+     "berenjena"
+    ],
+    "it": [
+     "viola",
+     "lilla",
+     "melanzana"
+    ],
+    "en": [
+     "purple",
+     "violet",
+     "lilac",
+     "plum"
+    ]
+   }
+  },
+  {
+   "id": "color.blue",
+   "facet": "color",
+   "labels": {
+    "es": "azul",
+    "it": "blu",
+    "en": "blue"
+   },
+   "synonyms": {
+    "es": [
+     "azul",
+     "azules",
+     "azul marino",
+     "marino",
+     "petróleo",
+     "turquesa",
+     "celeste"
+    ],
+    "it": [
+     "blu",
+     "azzurro",
+     "blu notte",
+     "ottanio",
+     "turchese",
+     "petrolio"
+    ],
+    "en": [
+     "blue",
+     "navy",
+     "petrol",
+     "teal",
+     "turquoise",
+     "denim"
+    ]
+   }
+  },
+  {
+   "id": "color.green",
+   "facet": "color",
+   "labels": {
+    "es": "verde",
+    "it": "verde",
+    "en": "green"
+   },
+   "synonyms": {
+    "es": [
+     "verde",
+     "verdes",
+     "verde oliva",
+     "oliva",
+     "salvia",
+     "esmeralda",
+     "menta",
+     "verdoso"
+    ],
+    "it": [
+     "verde",
+     "verdi",
+     "oliva",
+     "salvia",
+     "smeraldo",
+     "menta",
+     "verdastro",
+     "verdognolo"
+    ],
+    "en": [
+     "green",
+     "olive",
+     "sage",
+     "emerald",
+     "mint"
+    ]
+   }
+  },
+  {
+   "id": "color.transparent",
+   "facet": "color",
+   "labels": {
+    "es": "transparente",
+    "it": "trasparente",
+    "en": "transparent"
+   },
+   "synonyms": {
+    "es": [
+     "transparente",
+     "fumé",
+     "ahumado"
+    ],
+    "it": [
+     "trasparente",
+     "fumé",
+     "fume"
+    ],
+    "en": [
+     "transparent",
+     "clear",
+     "smoked"
+    ]
+   }
+  },
+  {
+   "id": "tone.light",
+   "facet": "tone",
+   "labels": {
+    "es": "claro",
+    "it": "chiaro",
+    "en": "light"
+   },
+   "synonyms": {
+    "es": [
+     "claro",
+     "clara",
+     "claros",
+     "claritos",
+     "clarito",
+     "más claro"
+    ],
+    "it": [
+     "chiaro",
+     "chiara",
+     "chiari",
+     "più chiaro"
+    ],
+    "en": [
+     "light",
+     "lighter",
+     "pale"
+    ]
+   }
+  },
+  {
+   "id": "tone.dark",
+   "facet": "tone",
+   "labels": {
+    "es": "oscuro",
+    "it": "scuro",
+    "en": "dark"
+   },
+   "synonyms": {
+    "es": [
+     "oscuro",
+     "oscura",
+     "oscuros",
+     "más oscuro"
+    ],
+    "it": [
+     "scuro",
+     "scura",
+     "scuri",
+     "più scuro"
+    ],
+    "en": [
+     "dark",
+     "darker",
+     "deep"
+    ]
+   }
+  },
+  {
+   "id": "style.contemporary",
+   "facet": "style",
+   "labels": {
+    "es": "contemporáneo",
+    "it": "contemporaneo",
+    "en": "contemporary"
+   },
+   "synonyms": {
+    "es": [
+     "contemporáneo",
+     "contemporánea",
+     "moderno",
+     "moderna",
+     "actual"
+    ],
+    "it": [
+     "contemporaneo",
+     "contemporanea",
+     "moderno",
+     "moderna",
+     "attuale"
+    ],
+    "en": [
+     "contemporary",
+     "modern"
+    ]
+   }
+  },
+  {
+   "id": "style.minimal",
+   "facet": "style",
+   "labels": {
+    "es": "minimalista",
+    "it": "minimal",
+    "en": "minimal"
+   },
+   "synonyms": {
+    "es": [
+     "minimalista",
+     "minimal",
+     "sobrio",
+     "esencial",
+     "racional",
+     "limpio",
+     "lineal"
+    ],
+    "it": [
+     "minimal",
+     "minimale",
+     "minimalista",
+     "essenziale",
+     "razionale",
+     "rigoroso",
+     "lineare"
+    ],
+    "en": [
+     "minimal",
+     "minimalist",
+     "essential",
+     "clean"
+    ]
+   }
+  },
+  {
+   "id": "style.classic",
+   "facet": "style",
+   "labels": {
+    "es": "clásico",
+    "it": "classico",
+    "en": "classic"
+   },
+   "synonyms": {
+    "es": [
+     "clásico",
+     "clásica",
+     "atemporal",
+     "tradicional",
+     "señorial"
+    ],
+    "it": [
+     "classico",
+     "classica",
+     "senza tempo",
+     "tradizionale",
+     "signorile",
+     "intramontabile"
+    ],
+    "en": [
+     "classic",
+     "timeless",
+     "traditional"
+    ]
+   }
+  },
+  {
+   "id": "style.elegant",
+   "facet": "style",
+   "labels": {
+    "es": "elegante",
+    "it": "elegante",
+    "en": "elegant"
+   },
+   "synonyms": {
+    "es": [
+     "elegante",
+     "elegantes",
+     "refinado",
+     "refinada",
+     "sofisticado",
+     "sofisticada",
+     "fino",
+     "fina",
+     "chic",
+     "distinguido",
+     "lujoso",
+     "lujosa",
+     "de lujo",
+     "exclusivo"
+    ],
+    "it": [
+     "elegante",
+     "eleganza",
+     "raffinato",
+     "raffinata",
+     "raffinatezza",
+     "sofisticato",
+     "chic",
+     "lussuoso",
+     "di lusso",
+     "esclusivo"
+    ],
+    "en": [
+     "elegant",
+     "refined",
+     "sophisticated",
+     "fancy",
+     "chic",
+     "luxurious",
+     "upscale",
+     "posh",
+     "classy"
+    ]
+   },
+   "note": "Elegante NO es clásico: muchas piezas modernas son elegantes."
+  },
+  {
+   "id": "style.warm",
+   "facet": "style",
+   "labels": {
+    "es": "cálido y acogedor",
+    "it": "caldo accogliente",
+    "en": "warm and cozy"
+   },
+   "synonyms": {
+    "es": [
+     "cálido",
+     "cálida",
+     "acogedor",
+     "acogedora",
+     "confortable",
+     "hogareño"
+    ],
+    "it": [
+     "caldo",
+     "accogliente",
+     "avvolgente"
+    ],
+    "en": [
+     "warm",
+     "cozy",
+     "cosy",
+     "inviting"
+    ]
+   }
+  },
+  {
+   "id": "style.natural",
+   "facet": "style",
+   "labels": {
+    "es": "natural",
+    "it": "naturale",
+    "en": "natural"
+   },
+   "synonyms": {
+    "es": [
+     "natural",
+     "orgánico"
+    ],
+    "it": [
+     "naturale",
+     "organico"
+    ],
+    "en": [
+     "natural",
+     "organic"
+    ]
+   }
+  },
+  {
+   "id": "style.industrial",
+   "facet": "style",
+   "labels": {
+    "es": "industrial",
+    "it": "industriale",
+    "en": "industrial"
+   },
+   "synonyms": {
+    "es": [
+     "industrial"
+    ],
+    "it": [
+     "industriale"
+    ],
+    "en": [
+     "industrial"
+    ]
+   }
+  },
+  {
+   "id": "style.nordic",
+   "facet": "style",
+   "labels": {
+    "es": "nórdico",
+    "it": "nordico",
+    "en": "nordic"
+   },
+   "synonyms": {
+    "es": [
+     "nórdico",
+     "escandinavo",
+     "escandinava"
+    ],
+    "it": [
+     "nordico",
+     "scandinavo"
+    ],
+    "en": [
+     "nordic",
+     "scandinavian",
+     "scandi"
+    ]
+   }
+  },
+  {
+   "id": "style.rustic",
+   "facet": "style",
+   "labels": {
+    "es": "rústico",
+    "it": "rustico",
+    "en": "rustic"
+   },
+   "synonyms": {
+    "es": [
+     "rústico",
+     "rústica",
+     "campestre"
+    ],
+    "it": [
+     "rustico",
+     "country"
+    ],
+    "en": [
+     "rustic",
+     "farmhouse",
+     "country"
+    ]
+   }
+  },
+  {
+   "id": "style.vintage",
+   "facet": "style",
+   "labels": {
+    "es": "vintage",
+    "it": "vintage",
+    "en": "vintage"
+   },
+   "synonyms": {
+    "es": [
+     "vintage",
+     "retro",
+     "retró"
+    ],
+    "it": [
+     "vintage",
+     "rétro"
+    ],
+    "en": [
+     "vintage",
+     "retro"
+    ]
+   }
+  },
+  {
+   "id": "mood.cozy",
+   "facet": "mood",
+   "labels": {
+    "es": "acogedor",
+    "it": "accogliente",
+    "en": "cozy"
+   },
+   "synonyms": {
+    "es": [
+     "acogedor",
+     "acogedora",
+     "calidez",
+     "cómodo"
+    ],
+    "it": [
+     "accogliente",
+     "comodo"
+    ],
+    "en": [
+     "cozy",
+     "cosy",
+     "comfy"
+    ]
+   }
+  },
+  {
+   "id": "mood.bright",
+   "facet": "mood",
+   "labels": {
+    "es": "luminoso",
+    "it": "luminoso",
+    "en": "bright"
+   },
+   "synonyms": {
+    "es": [
+     "luminoso",
+     "luminosa",
+     "con luz"
+    ],
+    "it": [
+     "luminoso",
+     "luminosa"
+    ],
+    "en": [
+     "bright",
+     "airy"
+    ]
+   }
+  },
+  {
+   "id": "mood.bold",
+   "facet": "mood",
+   "labels": {
+    "es": "atrevido",
+    "it": "audace",
+    "en": "bold"
+   },
+   "synonyms": {
+    "es": [
+     "atrevido",
+     "llamativo",
+     "audaz",
+     "con carácter"
+    ],
+    "it": [
+     "audace",
+     "di carattere"
+    ],
+    "en": [
+     "bold",
+     "statement"
+    ]
+   }
+  },
+  {
+   "id": "mood.compact",
+   "facet": "mood",
+   "labels": {
+    "es": "compacto",
+    "it": "compatto",
+    "en": "compact"
+   },
+   "synonyms": {
+    "es": [
+     "pequeño",
+     "pequeña",
+     "compacto",
+     "compacta",
+     "poco espacio",
+     "espacio reducido"
+    ],
+    "it": [
+     "piccolo",
+     "compatto",
+     "salvaspazio"
+    ],
+    "en": [
+     "small",
+     "compact",
+     "space-saving"
+    ]
+   }
+  }
+ ],
+ "relations": [
+  {
+   "from": "color.yellow",
+   "to": "color.brown",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.grey",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.blue",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.6,
+   "status": "draft"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.black",
+   "type": "harmonizes",
+   "distance": 0.6,
+   "status": "draft"
+  },
+  {
+   "from": "color.green",
+   "to": "color.beige",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.green",
+   "to": "color.brown",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.green",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.green",
+   "to": "color.pink",
+   "type": "harmonizes",
+   "distance": 0.6,
+   "status": "draft"
+  },
+  {
+   "from": "color.pink",
+   "to": "color.grey",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.pink",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.blue",
+   "to": "color.beige",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.blue",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.blue",
+   "to": "color.brown",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.red",
+   "to": "color.grey",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.red",
+   "to": "color.beige",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.orange",
+   "to": "color.blue",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.orange",
+   "to": "color.beige",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.purple",
+   "to": "color.grey",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.brown",
+   "to": "color.beige",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.brown",
+   "to": "color.cream",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "color.black",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.5,
+   "status": "draft"
+  },
+  {
+   "from": "color.grey",
+   "to": "color.white",
+   "type": "harmonizes",
+   "distance": 0.4,
+   "status": "draft"
+  },
+  {
+   "from": "material.leather",
+   "to": "material.nubuck",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.leather",
+   "to": "material.faux_leather",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.velvet",
+   "to": "material.fabric",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.boucle",
+   "to": "material.fabric",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.microfiber",
+   "to": "material.fabric",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.lacquer_matt",
+   "to": "material.lacquer_gloss",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "material.wood_veneer",
+   "to": "material.melamine",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "material.wood_effect",
+   "to": "material.wood",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.wood_effect",
+   "to": "material.wood_veneer",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "material.marble",
+   "to": "material.marble_effect",
+   "type": "near",
+   "distance": 0.2,
+   "status": "signed"
+  },
+  {
+   "from": "material.stone",
+   "to": "material.stone_effect",
+   "type": "near",
+   "distance": 0.2,
+   "status": "signed"
+  },
+  {
+   "from": "material.marble_effect",
+   "to": "material.stone_effect",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.marble_effect",
+   "to": "material.ceramic",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "material.marble",
+   "to": "material.ceramic",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "material.marble",
+   "to": "material.stone",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "shape.corner",
+   "to": "shape.modular",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "shape.round",
+   "to": "shape.oval",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "shape.island",
+   "to": "shape.peninsula",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "shape.rectangular",
+   "to": "shape.square",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "shape.rectangular",
+   "to": "shape.barrel",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.gold",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "color.yellow",
+   "to": "color.orange",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "color.beige",
+   "to": "color.cream",
+   "type": "near",
+   "distance": 0.2,
+   "status": "signed"
+  },
+  {
+   "from": "color.cream",
+   "to": "color.white",
+   "type": "near",
+   "distance": 0.2,
+   "status": "signed"
+  },
+  {
+   "from": "color.grey",
+   "to": "color.anthracite",
+   "type": "near",
+   "distance": 0.2,
+   "status": "signed"
+  },
+  {
+   "from": "color.anthracite",
+   "to": "color.black",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "color.brown",
+   "to": "color.bronze",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "color.brown",
+   "to": "color.beige",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "color.red",
+   "to": "color.pink",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "color.red",
+   "to": "color.orange",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "color.purple",
+   "to": "color.pink",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "color.blue",
+   "to": "color.green",
+   "type": "near",
+   "distance": 0.6,
+   "status": "signed"
+  },
+  {
+   "from": "style.minimal",
+   "to": "style.contemporary",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "style.industrial",
+   "to": "style.minimal",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "style.nordic",
+   "to": "style.natural",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "style.nordic",
+   "to": "style.minimal",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "style.rustic",
+   "to": "style.natural",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "style.vintage",
+   "to": "style.classic",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "style.classic",
+   "to": "style.elegant",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "style.warm",
+   "to": "style.natural",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "category.sofa",
+   "to": "category.armchair",
+   "type": "near",
+   "distance": 0.6,
+   "status": "signed"
+  },
+  {
+   "from": "category.armchair",
+   "to": "category.pouf",
+   "type": "near",
+   "distance": 0.6,
+   "status": "signed"
+  },
+  {
+   "from": "category.dining_table",
+   "to": "category.coffee_table",
+   "type": "near",
+   "distance": 0.7,
+   "status": "signed"
+  },
+  {
+   "from": "category.bookcase",
+   "to": "category.modular_system",
+   "type": "near",
+   "distance": 0.4,
+   "status": "signed"
+  },
+  {
+   "from": "category.wardrobe",
+   "to": "category.walk_in_closet",
+   "type": "near",
+   "distance": 0.3,
+   "status": "signed"
+  },
+  {
+   "from": "category.sideboard",
+   "to": "category.modular_system",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "category.chair",
+   "to": "category.stool",
+   "type": "near",
+   "distance": 0.5,
+   "status": "signed"
+  },
+  {
+   "from": "category.bed",
+   "to": "category.night_group",
+   "type": "near",
+   "distance": 0.7,
+   "status": "signed"
+  }
+ ],
+ "moods": [
+  {
+   "mood": "mood.cozy",
+   "prefer": [
+    "style.warm",
+    "material.velvet",
+    "material.boucle",
+    "material.fabric",
+    "material.wood",
+    "color.brown",
+    "color.beige",
+    "color.yellow",
+    "color.green"
+   ]
+  },
+  {
+   "mood": "mood.bright",
+   "prefer": [
+    "color.white",
+    "color.cream",
+    "color.beige",
+    "tone.light",
+    "material.glass",
+    "material.mirror"
+   ]
+  },
+  {
+   "mood": "mood.bold",
+   "prefer": [
+    "color.yellow",
+    "color.blue",
+    "color.green",
+    "color.red",
+    "material.velvet",
+    "material.metal_skin"
+   ]
+  },
+  {
+   "mood": "mood.compact",
+   "prefer": [
+    "category.armchair",
+    "category.pouf"
+   ]
+  }
+ ],
+ "stop_phrases": [
+  "anta square",
+  "ante square",
+  "schienali scorrevoli",
+  "schienale scorrevole",
+  "maniglie a ponte",
+  "maniglia a ponte",
+  "tv girevole",
+  "centrotavola girevole",
+  "gambe lineari",
+  "portale tv"
+ ],
+ "domain": {
+  "complements": {
+   "category.sofa": [
+    "category.coffee_table",
+    "category.armchair",
+    "category.pouf"
+   ],
+   "category.armchair": [
+    "category.sofa",
+    "category.coffee_table",
+    "category.pouf"
+   ],
+   "category.pouf": [
+    "category.sofa",
+    "category.armchair"
+   ],
+   "category.coffee_table": [
+    "category.sofa",
+    "category.armchair"
+   ],
+   "category.dining_table": [
+    "category.chair",
+    "category.sideboard"
+   ],
+   "category.chair": [
+    "category.dining_table"
+   ],
+   "category.stool": [
+    "category.kitchen",
+    "category.dining_table"
+   ],
+   "category.kitchen": [
+    "category.stool",
+    "category.dining_table"
+   ],
+   "category.bed": [
+    "category.night_group",
+    "category.wardrobe"
+   ],
+   "category.night_group": [
+    "category.bed",
+    "category.wardrobe"
+   ],
+   "category.wardrobe": [
+    "category.bed",
+    "category.night_group",
+    "category.walk_in_closet"
+   ],
+   "category.walk_in_closet": [
+    "category.wardrobe",
+    "category.drawer_unit"
+   ],
+   "category.sideboard": [
+    "category.dining_table",
+    "category.modular_system"
+   ],
+   "category.bookcase": [
+    "category.modular_system",
+    "category.boiserie"
+   ],
+   "category.modular_system": [
+    "category.bookcase",
+    "category.boiserie",
+    "category.sofa"
+   ],
+   "category.boiserie": [
+    "category.modular_system",
+    "category.sofa"
+   ]
+  },
+  "mood_scope": [
+   "category.sofa",
+   "category.armchair",
+   "category.pouf",
+   "category.coffee_table"
+  ],
+  "option_roles": {
+   "category.sofa": [
+    "upholstery"
+   ],
+   "category.armchair": [
+    "upholstery"
+   ],
+   "category.pouf": [
+    "upholstery"
+   ],
+   "category.chair": [
+    "upholstery"
+   ],
+   "category.stool": [
+    "upholstery"
+   ],
+   "category.dining_table": [
+    "top"
+   ],
+   "category.coffee_table": [
+    "top"
+   ],
+   "category.wardrobe": [
+    "doors",
+    "front"
+   ],
+   "category.walk_in_closet": [
+    "doors",
+    "front"
+   ],
+   "category.kitchen": [
+    "doors",
+    "front"
+   ]
+  },
+  "dominant_role": {
+   "category.sofa": "upholstery",
+   "category.armchair": "upholstery",
+   "category.pouf": "upholstery",
+   "category.chair": "upholstery",
+   "category.stool": "upholstery",
+   "category.dining_table": "top",
+   "category.coffee_table": "top",
+   "category.wardrobe": "front",
+   "category.walk_in_closet": "front",
+   "category.kitchen": "front",
+   "category.sideboard": "front"
+  },
+  "shape_by_category": [
+   {
+    "from": "shape.chaise",
+    "to": "shape.peninsula",
+    "in": [
+     "category.kitchen"
+    ]
+   },
+   {
+    "from": "shape.island",
+    "to": "shape.freestanding",
+    "not_in": [
+     "category.kitchen"
+    ]
+   }
+  ],
+  "planner_hint": "cuero/piel/pelle/leather → material.leather; similpiel/ecopelle/efecto piel → material.faux_leather; nobuk/nabuk → material.nubuck; café/marrón/marrone/brown → color.brown; mostaza/senape/mustard → color.yellow; esquinero/en L/rinconero/angolare → shape.corner; redonda/rotondo → shape.round."
+ }
+}

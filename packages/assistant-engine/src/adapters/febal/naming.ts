@@ -1,5 +1,5 @@
-import type { ConceptId } from "../catalog/types.js";
-import { Lexicon, normalizeText } from "./lexicon.js";
+import type { ConceptId } from "../../catalog/types.js";
+import { Lexicon, normalizeText } from "../../ontology/lexicon.js";
 
 /**
  * Proposals (never truth until reviewed) that turn official finish names into

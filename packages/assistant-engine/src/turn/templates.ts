@@ -10,7 +10,7 @@ import type { Renderer } from "./render.js";
  */
 
 type L = Record<Lang, string>;
-const S = {
+export const DEFAULT_TEXTS = {
   exact: { es: "Sí, en el showroom tenemos", it: "Sì, in showroom abbiamo", en: "Yes, in the showroom we have" } as L,
   in: { es: "en", it: "in", en: "in" } as L,
   noShowroom: { es: "En el showroom no lo tenemos así", it: "In showroom non l'abbiamo così", en: "We don't have it like that in the showroom" } as L,
@@ -54,9 +54,11 @@ const S = {
   navigating: { es: "Te llevo a", it: "Ti porto a", en: "Taking you to" } as L,
 };
 
+export type Texts = typeof DEFAULT_TEXTS;
+
 const ps = (g: CardGroup, max = 4) => g.cards.slice(0, max).map((c) => `{{p:${c.exhibit_id}}}`).join(", ");
 
-export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer): Segment[] {
+export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer, S: Texts = DEFAULT_TEXTS): Segment[] {
   const seg: Segment[] = [];
   const by = (role: string) => bundle.groups.filter((g) => g.role === role);
   const obl = (prefix: string) => bundle.obligations.filter((o) => o.startsWith(prefix));
@@ -126,15 +128,15 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer): Segment
   return seg.length ? seg : [{ text: S.noExact[lang], claims: bundle.obligations.filter((o) => o.startsWith("abs:")) }];
 }
 
-export function fixedAnswer(kind: keyof typeof S, lang: Lang): Segment[] {
+export function fixedAnswer(kind: keyof Texts, lang: Lang, S: Texts = DEFAULT_TEXTS): Segment[] {
   return [{ text: S[kind][lang], claims: [] }];
 }
 
-export function navigationAnswer(exhibitId: string, lang: Lang): Segment[] {
+export function navigationAnswer(exhibitId: string, lang: Lang, S: Texts = DEFAULT_TEXTS): Segment[] {
   return [{ text: `${S.navigating[lang]} {{p:${exhibitId}}} ({{z:${exhibitId}}}).`, claims: [] }];
 }
 
-export function clarifyAnswer(candidates: string[], lang: Lang, reason: "ambiguous_ref" | "no_focus" | "empty"): Segment[] {
+export function clarifyAnswer(candidates: string[], lang: Lang, reason: "ambiguous_ref" | "no_focus" | "empty", S: Texts = DEFAULT_TEXTS): Segment[] {
   if (reason === "empty" || !candidates.length) return [{ text: S.clarifyEmpty[lang], claims: [] }];
   return [{ text: `${S.clarifyWhich[lang]} ${candidates.map((id) => `{{p:${id}}}`).join(", ")}`, claims: [] }];
 }
@@ -144,7 +146,7 @@ export function clarifyAnswer(candidates: string[], lang: Lang, reason: "ambiguo
  * values that do exist, the on-order options of a piece it already named). Never rewrites what the
  * LLM said; appends before a closing question so the answer still ends with it.
  */
-export function completeObligations(segments: Segment[], bundle: Bundle, lang: Lang, linksOnly = false): Segment[] | null {
+export function completeObligations(segments: Segment[], bundle: Bundle, lang: Lang, linksOnly = false, S: Texts = DEFAULT_TEXTS): Segment[] | null {
   const full = segments.map((s) => s.text).join(" ");
   const has = (t: string) => full.includes(t);
   const extra: Segment[] = [];

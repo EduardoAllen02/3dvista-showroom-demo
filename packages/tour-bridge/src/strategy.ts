@@ -1,6 +1,28 @@
 import { hashNavigator } from "./hash-navigator.js";
 import { playerApiNavigator } from "./player-api-navigator.js";
-import type { NavTarget, TourBridgeStrategy } from "./types.js";
+import type { HotspotSignals, NavTarget, TourBridgeStrategy, ViewerState } from "./types.js";
+import { getActiveMediaName, getCameraState } from "./camera-reader.js";
+import { deriveOverlayPrefix, findEnabledDugmePrefix, findHotspotAnchor, findOpenNativePreview, normalizePrefix } from "./product-panel.js";
+
+/** 3DVista's product hotspots: "BOX 100 - B_103" markers with their "b103 dugme" overlays. */
+const TDV_HOTSPOTS: HotspotSignals = {
+  hovered: () => findEnabledDugmePrefix(),
+  anchor: (key) => findHotspotAnchor(key),
+  openPanel: () => {
+    const s = findOpenNativePreview();
+    return { open: s.open, key: s.prefix };
+  },
+  keyOf: (hotspotName) => {
+    const derived = deriveOverlayPrefix(hotspotName);
+    return derived != null ? normalizePrefix(derived) : null;
+  },
+};
+
+/** Null until the player has a camera (no made-up angles: "nothing in view" would be wrong). */
+function tdvViewer(): ViewerState | null {
+  const camera = getCameraState();
+  return camera ? { media_name: getActiveMediaName(), ...camera } : null;
+}
 
 export type PreferredStrategy = "hash" | "player-api";
 
@@ -44,5 +66,7 @@ export function createTourBridge(preferred: PreferredStrategy = "player-api"): T
         fallback.openProductPanel?.(target);
       }
     },
+    getViewer: tdvViewer,
+    hotspots: TDV_HOTSPOTS,
   };
 }

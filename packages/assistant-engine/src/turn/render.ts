@@ -1,5 +1,6 @@
 import type { CanonicalCatalog, Exhibit, Lang, Model, Viewpoint } from "../catalog/types.js";
 import type { Lexicon } from "../ontology/lexicon.js";
+import { DEFAULT_PROFILE, withOverrides, zoneLabel, type AssistantProfile } from "./profile.js";
 import type { ActiveConstraint, Bundle, CardGroup, CardRef, MatchMark } from "../engine/types.js";
 
 /**
@@ -8,7 +9,7 @@ import type { ActiveConstraint, Bundle, CardGroup, CardRef, MatchMark } from "..
  * the LLM writes tags ({{p:FEB-048}}, {{v:FEB-048}}, {{link:FEB-048}} …) and code fills them.
  */
 
-const T = {
+const DEFAULT_LABELS = {
   link: { es: "su ficha", it: "la sua scheda", en: "its product page" },
   and_more: { es: "y más", it: "e altro", en: "and more" },
   on_order: { es: "Bajo pedido", it: "Su ordinazione", en: "On order" },
@@ -30,6 +31,11 @@ const T = {
   locate: { es: "Dónde está", it: "Dove si trova", en: "Where it is" },
   cat_sub: { es: "otra categoría", it: "altra categoria", en: "other category" },
   instead: { es: "en vez de", it: "invece di", en: "instead of" },
+  same_model: { es: "mismo modelo", it: "stesso modello", en: "same model" },
+  same_color: { es: "mismo color", it: "stesso colore", en: "same colour" },
+  same_material: { es: "mismo material", it: "stesso materiale", en: "same material" },
+  same_shape: { es: "misma forma", it: "stessa forma", en: "same shape" },
+  same_style: { es: "mismo estilo", it: "stesso stile", en: "same style" },
 } as const;
 
 export interface UiCard {
@@ -58,7 +64,10 @@ export class Renderer {
   private models: Map<string, Model>;
   private viewpoints: Map<string, Viewpoint>;
 
-  constructor(private catalog: CanonicalCatalog, private lx: Lexicon) {
+  private T: Record<keyof typeof DEFAULT_LABELS, Record<Lang, string>>;
+
+  constructor(private catalog: CanonicalCatalog, private lx: Lexicon, readonly profile: AssistantProfile = DEFAULT_PROFILE) {
+    this.T = withOverrides(DEFAULT_LABELS, profile.labels);
     this.exhibits = new Map(catalog.exhibits.map((e) => [e.id, e]));
     this.models = new Map(catalog.models.map((m) => [m.id, m]));
     this.viewpoints = new Map(catalog.viewpoints.map((v) => [v.exhibit_id, v]));
@@ -74,22 +83,20 @@ export class Renderer {
   }
 
   zoneLabel(zone: string): string {
-    const m = /^CASA\s*0?(\d+)\s*-\s*(.+)$/i.exec(zone);
-    if (m) return `Casa ${m[1]} (${m[2].charAt(0) + m[2].slice(1).toLowerCase()})`;
-    return zone.charAt(0) + zone.slice(1).toLowerCase();
+    return zoneLabel(zone, this.profile.zones);
   }
 
   variantsText(card: CardRef, lang: Lang, max = 4): string {
     const parts = (card.variants ?? []).flatMap((v) => v.option_names.map((n) => `${titleCase(v.group_name)} ${n}`));
     const shown = parts.slice(0, max).join(", ");
-    return parts.length > max ? `${shown} ${T.and_more[lang]}` : shown;
+    return parts.length > max ? `${shown} ${this.T.and_more[lang]}` : shown;
   }
 
   /** "la línea Dormitorio de Febal": the line whose palette gave the card its variants. */
   lineName(card: CardRef, lang: Lang): string | null {
     const m = this.models.get(card.model_id);
     const line = (card.variants ?? []).map((v) => m?.option_groups.find((g) => g.id === v.group_id)?.line).find(Boolean);
-    return line ? LINE[line][lang] : null;
+    return line ? this.profile.line_names?.[line]?.[lang] ?? null : null;
   }
 
   concept(id: string, lang: Lang): string {
@@ -102,7 +109,7 @@ export class Renderer {
     return text.replace(/\{\{(\w+):([^}]+)\}\}/g, (whole, kind: string, arg: string) => {
       const card = cards.find((c) => c.exhibit_id === arg);
       switch (kind) {
-        case "p": return card ? `**${this.displayName(arg)}**` : whole;
+        case "p": return card || arg === bundle.source ? `**${this.displayName(arg)}**` : whole;
         // Three or more pieces named with their options: two each in the text (the cards list more).
         case "v": return card ? this.variantsText(card, lang, bundle.obligations.filter((o) => /^(ord|lin):/.test(o)).length >= 3 ? 2 : 4) : whole;
         case "line": return card ? this.lineName(card, lang) ?? whole : whole;
@@ -110,7 +117,7 @@ export class Renderer {
         case "shown": return card?.shown_as ? localizeObserved(card.shown_as, lang) : (this.exhibits.get(arg) ? "—" : whole);
         case "link": {
           const e = this.exhibits.get(arg); const url = e ? this.models.get(e.model_id)?.official_url : null;
-          return url ? `[${T.link[lang]}](${url})` : whole;
+          return url ? `[${this.T.link[lang]}](${url})` : whole;
         }
         case "c": return this.lx.concepts.has(arg) ? this.concept(arg, lang) : whole;
         case "vals": {
@@ -130,17 +137,22 @@ export class Renderer {
     });
   }
 
-  groupTitle(g: CardGroup, bundle: Bundle, lang: Lang): string {
+  /**
+   * forVisitor: the card header the visitor sees keeps only what matches ("café ✓", "beige (combina con
+   * azul)"); what the piece is NOT ("cama (en vez de mesita de noche)", "no de ángulo") stays for the
+   * composer, which must know it, but is never shown as a label.
+   */
+  groupTitle(g: CardGroup, bundle: Bundle, lang: Lang, forVisitor = false): string {
     const c = (id: string) => bundle.constraints.find((x) => x.id === id);
     switch (g.role) {
-      case "exact_exhibited": return T.exact[lang];
-      case "exact_on_order": return T.orderable[lang];
-      case "line_on_order": return T.line_title[lang];
-      case "unknown": return T.unconfirmed[lang];
-      case "list": return T.list[lang];
-      case "alternatives": return T.alternatives[lang];
-      case "recommend": return T.recommend[lang];
-      case "locate": return T.locate[lang];
+      case "exact_exhibited": return this.T.exact[lang];
+      case "exact_on_order": return this.T.orderable[lang];
+      case "line_on_order": return this.T.line_title[lang];
+      case "unknown": return this.T.unconfirmed[lang];
+      case "list": return this.T.list[lang];
+      case "alternatives": return this.T.alternatives[lang];
+      case "recommend": return this.T.recommend[lang];
+      case "locate": return this.T.locate[lang];
       case "alt_keep_frame":
       case "alt_keep_new": {
         const touched = new Set(g.relaxation.map((op) => op.constraint));
@@ -149,12 +161,16 @@ export class Renderer {
         const parts = g.relaxation.map((op) => {
           const orig = c(op.constraint);
           if (!orig) return "";
-          if (op.kind === "drop") return orig.facet === "model" ? "" : `${T.not[lang].toLowerCase()} ${this.constraintLabel(orig, lang)}`;
-          if (orig.facet === "category") return `${this.concept(op.to!, lang)} (${T.instead[lang]} ${this.constraintLabel(orig, lang)})`;
-          const rel = op.via === "harmonizes" ? T.combines[lang] : T.similar[lang];
+          if (op.kind === "drop") return orig.facet === "model" || forVisitor ? "" : `${this.T.not[lang].toLowerCase()} ${this.constraintLabel(orig, lang)}`;
+          if (orig.facet === "category") return forVisitor ? "" : `${this.concept(op.to!, lang)} (${this.T.instead[lang]} ${this.constraintLabel(orig, lang)})`;
+          const rel = op.via === "harmonizes" ? this.T.combines[lang] : this.T.similar[lang];
           return `${this.concept(op.to!, lang)} (${rel} ${this.constraintLabel(orig, lang)})`;
         }).filter(Boolean);
-        return [...kept, ...parts].join(" · ");
+        const title = [...kept, ...parts].join(" · ");
+        if (title || !forVisitor) return title;
+        // Nothing positive to say: where the pieces are.
+        return g.cards.every((x) => x.availability === "on_order") ? this.T.orderable[lang]
+          : g.cards.every((x) => x.availability === "exhibited") ? this.T.exact[lang] : this.T.alternative[lang];
       }
       default: return "";
     }
@@ -166,8 +182,8 @@ export class Renderer {
     const g = bundle.groups.find((x) => x.id === a);
     const gp = g ? g.cards.slice(0, 3).map((c) => `{{p:${c.exhibit_id}}}`).join(", ") : "";
     switch (kind) {
-      case "abs": return `Di claramente que NO hay en el showroom exactamente: ${req}.`;
-      case "ord": return `Di que {{p:${a}}} en el showroom está en {{shown:${a}}} (no como lo pidió), PERO SÍ está disponible bajo pedido en {{v:${a}}}; incluye {{link:${a}}}.`;
+      case "abs": return `Di claramente que NO hay ${this.profile.prompt.in_venue} exactamente: ${req}.`;
+      case "ord": return `Di que {{p:${a}}} ${this.profile.prompt.in_venue} está en {{shown:${a}}} (no como lo pidió), PERO SÍ está disponible bajo pedido en {{v:${a}}}; incluye {{link:${a}}}.`;
       case "lin": return `Di que {{p:${a}}} (aquí en {{shown:${a}}}) no lo tienes confirmado así para ese modelo, pero {{line:${a}}} maneja {{v:${a}}}; pide que CONFIRME en {{link:${a}}} si aplica a ese modelo. Nunca digas que está disponible sin ese aviso.`;
       case "grp": return `Presenta como alternativa: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}).`;
       case "off": return `Al final ofrece como pregunta: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}). La respuesta termina en "?".`;
@@ -185,26 +201,32 @@ export class Renderer {
 
   constraintLabel(c: ActiveConstraint, lang: Lang): string {
     if (c.facet === "model") return this.models.get(c.value ?? "")?.name ?? c.value ?? "";
-    if (c.op === "harmonizes_with") return `${T.combines[lang]} ${this.displayName(c.ref ?? "")}`;
+    if (c.op === "harmonizes_with") return `${this.T.combines[lang]} ${this.displayName(c.ref ?? "")}`;
     return this.concept(c.value ?? "", lang);
   }
 
   reasons(card: CardRef, bundle: Bundle, lang: Lang): string[] {
+    // Alternatives: what the card shares with the piece it is an alternative to.
+    if (bundle.mode === "alternatives") {
+      const SAME = { model: this.T.same_model, color: this.T.same_color, material: this.T.same_material, shape: this.T.same_shape, style: this.T.same_style } as const;
+      return (Object.keys(SAME) as (keyof typeof SAME)[]).filter((k) => card.match[k] === "yes").map((k) => SAME[k][lang]);
+    }
     const out: string[] = [];
     for (const c of bundle.constraints) {
-      if (c.facet === "category" || c.strength === "prefer") continue;
+      // The kind of piece and the model itself ("Melrose ✓" on Melrose's card) say nothing new.
+      if (c.facet === "category" || c.facet === "model" || c.strength === "prefer") continue;
       const m: MatchMark | undefined = card.match[c.id];
       if (!m) continue;
       const label = this.constraintLabel(c, lang);
-      if (m === "yes") out.push(`${c.op === "not" ? `${T.not[lang]} ${label}` : label} ✓`);
-      else if (m === "no" || m === "drop") out.push(`${T.not[lang]} ${label}`);
-      else if (m === "unknown") out.push(`${label}: ${T.unknown[lang]}`);
+      if (m === "yes") out.push(`${c.op === "not" ? `${this.T.not[lang]} ${label}` : label} ✓`);
+      else if (m === "no" || m === "drop") out.push(`${this.T.not[lang]} ${label}`);
+      else if (m === "unknown") out.push(`${label}: ${this.T.unknown[lang]}`);
       else if (m.startsWith("sub:")) out.push(this.concept(m.slice(4), lang));
     }
     if (card.availability === "on_order" || card.availability === "line") {
       const v = this.variantsText(card, lang, 3);
-      if (v) out.push(`${card.availability === "line" ? T.in_line[lang] : T.on_order[lang]}: ${v}`);
-      if (card.shown_as) out.push(`${T.in_showroom[lang]}: ${localizeObserved(card.shown_as, lang)}`);
+      if (v) out.push(`${card.availability === "line" ? this.T.in_line[lang] : this.T.on_order[lang]}: ${v}`);
+      if (card.shown_as) out.push(`${this.T.in_showroom[lang]}: ${localizeObserved(card.shown_as, lang)}`);
     }
     return out;
   }
@@ -213,7 +235,7 @@ export class Renderer {
     const out: UiCard[] = [];
     const seen = new Set<string>();
     for (const g of bundle.groups) {
-      const title = this.groupTitle(g, bundle, lang);
+      const title = this.groupTitle(g, bundle, lang, true);
       for (const card of g.cards) {
         if (seen.has(card.exhibit_id)) continue;
         seen.add(card.exhibit_id);
@@ -240,6 +262,7 @@ export class Renderer {
     const view = {
       idioma: lang,
       resultado: bundle.outcome,
+      ...(bundle.source ? { alternativas_a: { pieza: `{{p:${bundle.source}}}`, nombre: this.displayName(bundle.source) } } : {}),
       pedido: bundle.constraints.map((c) => ({ id: c.id, que: `${c.op === "not" ? "NO " : ""}${this.constraintLabel(c, lang)}`, tipo: c.facet, nuevo: c.role === "new" })),
       grupos: bundle.groups.map((g) => ({
         id: g.id, tipo: g.role, titulo: this.groupTitle(g, bundle, lang), total: g.total,
@@ -263,10 +286,6 @@ export class Renderer {
   }
 }
 
-const LINE: Record<"notte" | "armadi", Record<Lang, string>> = {
-  notte: { es: "la línea Dormitorio de Febal", it: "la linea Notte di Febal", en: "Febal's bedroom line" },
-  armadi: { es: "la línea de armarios de Febal", it: "la linea armadi di Febal", en: "Febal's wardrobe line" },
-};
 
 export function allCards(b: Bundle): CardRef[] {
   return b.groups.flatMap((g) => g.cards);

@@ -1,0 +1,458 @@
+{
+  "https://www.febalcasa.com/it/prodotti/boiserie/": {
+    "description": "La boiserie è concepita come un sistema in grado di dialogare con tutti gli altri arredi della gamma Febal Casa, un elemento versatile che si innesta con soluzione di continuità arrivando fino a terra.",
+    "h1": "Boiserie",
+    "slug": "boiserie",
+    "image_source_url": "https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/design-rigato-boiserie.jpg",
+    "image_local_path": "assets/febal-casa/products/boiserie.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/balmoral/": {
+    "description": "Un divano componibile pensato per interpretare le esigenze abitative contemporanee, coniugando estetica, ergonomia e versatilità. La scelta ideale per un soggiorno elegante, accogliente e su misura.",
+    "h1": "Balmoral",
+    "slug": "balmoral",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/09/FebalCasa_Sofas_Balmoral_Ambienti.png",
+    "image_local_path": "assets/febal-casa/products/balmoral.png",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/rio/": {
+    "description": "Il tavolino Rio è contraddistinto da una struttura in metallo che presenta la particolarità di poter accogliere riviste e giornali. Una funzione che lo rende il compagno ideale nei momenti di relax. Il piano può essere configurato a seconda del proprio gusto in finitura laccata opaca o impiallacciata.",
+    "h1": "Rio",
+    "slug": "rio",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-square-cannettato/": {
+    "description": null,
+    "h1": "Origina anta square cannettato",
+    "slug": "origina-anta-square-cannettato",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/windsor/": {
+    "description": "Il pouf Windsor completa la gamma dei pouf della collezione divani Febal Casa. Grazie alle dimensioni e ai rivestimenti in cui è disponibile, è un elemento estremamente versatile che risponde a qualsiasi esigenza. La sua leggerezza permette di offrire soluzioni dinamiche per ogni stile di vita.",
+    "h1": "Windsor",
+    "slug": "windsor",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/diciotto/": {
+    "description": "Diciotto è una parete attrezzata per la zona living di design: pratico, versatile e funzionale permette una modularità altissima.",
+    "h1": "Diciotto",
+    "slug": "diciotto",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Giorno_ParetiAttrezzate_Diciotto_a.jpg",
+    "image_local_path": "assets/febal-casa/products/diciotto.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/trenta/": {
+    "description": "Trenta è la libreria interpretata da Febal Casa come elemento chiave intorno cui viene progettata la zona giorno.",
+    "h1": "Trenta",
+    "slug": "trenta",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Giorno_ParetiAttrezzate_Trenta_Milano.jpg",
+    "image_local_path": "assets/febal-casa/products/trenta.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/aurora/": {
+    "description": "La madia Aurora si distingue per la leggerezza dei volumi e l’estetica ricercata. Arreda la tua Casa con Febal Casa.",
+    "h1": "Aurora",
+    "slug": "aurora",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Giorno_Madie_StillLife_Aurora_a.jpg",
+    "image_local_path": "assets/febal-casa/products/aurora.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-block/": {
+    "description": "L'armadio con anta battente Profile Block si distingue per le sue linee nette e moderne, perfetta per un armadio dal carattere deciso.",
+    "h1": "Profile Block",
+    "slug": "profile-block",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/lapis/": {
+    "description": "Il sistema libreria Lapis, configurabile a parete e centro stanza, si adatta perfettamente anche ad ambienti giorno e notte regalando estremo rigore e contenimento. Il suo design inedito è personalizzabile grazie a diversi elementi compositivi: ripiani in vetro, in metallo o in pannello, pensili e basi in differenti modularità per soddisfare qualsiasi esigenza.",
+    "h1": "Lapis",
+    "slug": "lapis",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-legno/": {
+    "description": "L’anta a telaio è simbolo di un uno stile classico che può essere abbinato a aperture a gola, a maniglie e a pomoli.",
+    "h1": "Origina anta telaio legno",
+    "slug": "origina-anta-telaio-legno",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/ispirazioni/armadio-con-passaggio-con-ponte/": {
+    "description": "Scopri gli armadi a ponte con passaggio Febal Casa: soluzioni architettoniche che ottimizzano lo spazio con stile e funzionalità.",
+    "h1": "Armadio con passaggio con Ponte",
+    "slug": "armadio-con-passaggio-con-ponte",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-leather/": {
+    "description": "L'armadio con anta battente Profile Leather di Febal Casa combina eleganza materica e funzionalità per un arredo raffinato.",
+    "h1": "Profile Leather",
+    "slug": "profile-leather",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/cabine-armadio/telaio/": {
+    "description": "Una cabina armadio dal design architettonico, con struttura in metallo e pannelli in vetro per un guardaroba con effetto leggero e luminoso.",
+    "h1": "Struttura Telaio",
+    "slug": "telaio",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_CabineArmadio_StrutturaTelaio_Compo1_b.jpg",
+    "image_local_path": "assets/febal-casa/products/telaio.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/cassettiere/square/": {
+    "description": null,
+    "h1": "Cassettiera Square",
+    "slug": "square",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/10/FebalCasa_Armadi_CabineArmadio_Cassettiera_Square_10.jpg",
+    "image_local_path": "assets/febal-casa/products/square.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/camden/": {
+    "description": "Camden unisce eleganza e comfort in un design armonioso e avvolgente. Personalizzabile nei rivestimenti, si adatta a spazi classici e moderni, offrendo stile, calore e funzionalità a ogni ambiente living.",
+    "h1": "Camden",
+    "slug": "camden",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Sofas_Camden_Compo1_a.jpg",
+    "image_local_path": "assets/febal-casa/products/camden.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/astor/": {
+    "description": "La poltrona Astor rappresenta una perfetta sintesi tra estetica e funzionalità. Dotata di un'ampia seduta ergonomica e una struttura solida, offre il massimo del comfort per il relax quotidiano. La base girevole, disponibile in versione circolare o a raggiera, aggiunge praticità e movimento, rendendola ideale anche per ambienti dinamici. Il design pulito e contemporaneo la rende un complemento perfetto per soggiorni moderni o salotti raffinati. Astor è disponibile in una selezione di tessuti di alta qualità e tonalità neutre o vivaci, per adattarsi con eleganza a ogni stile d'arredo. Una poltrona confortevole, di design, progettata per chi desidera un ambiente accogliente e ricercato.",
+    "h1": "Astor",
+    "slug": "astor",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Sofas_Poltrona_Astor_a.jpg",
+    "image_local_path": "assets/febal-casa/products/astor.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/ink/": {
+    "description": "Elegante e funzionale, il coffee table Ink è adatto a qualsiasi stile. E' il complemento perfetto per accogliere una tazza di caffè durante una conversazione o per esporre una selezione di oggetti preziosi in occasione di ospiti.",
+    "h1": "Ink",
+    "slug": "ink",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-libeskind/": {
+    "description": null,
+    "h1": "Anta Libeskind",
+    "slug": "origina-anta-libeskind",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/phoenix/": {
+    "description": "Un'armonia di forme per il tavolo Phoenix, caratterizzato da un'imponente base geometrica e dal piano configurabile secondo il proprio stile. Il suggestivo accostamento di materiali e finiture e l'equilibrio tra le proporzioni ne fanno un complemento di grande impatto estetico, in grado di donare prestigio a ogni ambiente. Il tavolo Phoenix è proposto con piani di varie dimensioni di forma rettangolare in variabile fissa o allungabile. I piani sono in Cristallo Lucido, Cristallo Velvet, Superceramica, Supermarmo Opaco, Supermarmo Lucido e Impiallacciato. La struttura è in metallo finitura Ottone scuro, Nero, Antracite o Sabbia.",
+    "h1": "Phoenix",
+    "slug": "phoenix",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Dining_TavoliDesign_Phoenix4.jpg",
+    "image_local_path": "assets/febal-casa/products/phoenix.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/libeskind022/": {
+    "description": "Il design è minimale e al contempo complesso: a seconda di come viene colpito dalla luce muta costantemente creando una superficie dinamica che si integra allo stile di vita contemporaneo. Ad impreziosire il living e il dining, la madia LIBESKIND022 può essere configurata in 3 diverse tipologie: altezza H 75 cm in versione 3 ante o 4 ante e altezza H 154 cm in versione 2 ante. Oltre a poter essere configurata con ripiani interni in pannello o vetro e con un top laccato opaco o gres, la madia prevede la possibilità di inserire una cassettiera interna con maniglia integrata in legno per la versione H 75 cm e un kit allestimento bar per la versione H 154 cm con cassetto e un comodo piano estraibile.",
+    "h1": "Libeskind022",
+    "slug": "libeskind022",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/vivienne/": {
+    "description": "La poltrona Vivienne è la scelta ideale per chi cerca un elemento d'arredo elegante e versatile per il soggiorno o la zona lettura. Il suo design raffinato e contemporaneo si distingue per linee morbide e proporzioni equilibrate, mentre la possibilità di scegliere tra base girevole a raggiera o circolare la rende funzionale e personalizzabile. Perfetta in contesti moderni o classici, Vivienne è realizzata con tessuti pregiati e finiture curate nei minimi dettagli. Una poltrona di design che coniuga estetica e benessere, pensata per completare con stile ogni ambiente living. Disponibile in diversi colori e rivestimenti, si adatta facilmente ad arredi contemporanei, diventando un'icona di comfort senza tempo.",
+    "h1": "Vivienne",
+    "slug": "vivienne",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Sofas_Poltrona_Vivienne_a.jpg",
+    "image_local_path": "assets/febal-casa/products/vivienne.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/": {
+    "description": "La lavanderia è l'ambiente della casa che richiede un occhio di riguardo, non solo dal punto di vista estetico, ma anche da quello pratico.",
+    "h1": null,
+    "slug": "mobili-di-servizi-laundry",
+    "image_source_url": "https://www.febalcasa.com/it/tipologia/mobili-di-servizi/mobili-di-servizi-laundry/15152",
+    "image_local_path": "assets/febal-casa/products/mobili-di-servizi-laundry.jpg",
+    "image_strategy": "computed-bg"
+  },
+  "https://www.febalcasa.com/it/prodotti/isabelle/": {
+    "description": "Le poltroncine Isabelle sono la scelta ideale per chi desidera aggiungere un tocco di stile e comfort agli interni più curati. Compatte e raffinate, sono perfette per soggiorni eleganti, ingressi o angoli lettura. La loro forma armoniosa e i dettagli sartoriali valorizzano ogni ambiente, mentre i rivestimenti in tessuti di pregio ne esaltano il carattere ricercato. Isabelle si adatta facilmente a contesti moderni o classici, offrendo una soluzione versatile per chi cerca una poltroncina di design, comoda e dallo stile senza tempo. Disponibile in una gamma di finiture eleganti, è la poltroncina perfetta per completare il tuo arredamento con grazia e funzionalità.",
+    "h1": "Isabelle",
+    "slug": "isabelle",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/polar/": {
+    "description": "La specchiera Polar è progettata per essere posizionata a terra e offrire una visione completa della figura. Inoltre, può essere spostata agilmente e trovare posto in più ambienti della casa in base alle necessità del momento.",
+    "h1": "Polar",
+    "slug": "polar",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/cabine-armadio/lapis/": {
+    "description": "Il sistema Lapis, configurabile a parete o a centro stanza, si integra perfettamente nella cabina armadio su misura e, grazie alla sua struttura, lascia filtrare la luce.",
+    "h1": "Lapis",
+    "slug": "lapis",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_CabineArmadio_Lapis_Compo1_b-e1776850945126.jpg",
+    "image_local_path": "assets/febal-casa/products/lapis.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/lewitt-plus/": {
+    "description": "L'armadio con anta battente Lewitt Plus con presa a gola continua unisce design e massima personalizzazione, ideale per ambienti contemporanei.",
+    "h1": "Lewitt Plus Anta Battente",
+    "slug": "lewitt-plus",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/melrose/": {
+    "description": "Melrose è un divano modulare dal design moderno e accogliente, pensato per unire stile, comfort e versatilità. Le linee morbide e i rivestimenti sartoriali lo rendono ideale per arredare con eleganza ogni spazio living contemporaneo.",
+    "h1": "Melrose",
+    "slug": "melrose",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Sofas_Melrose_Compo1_b.jpg",
+    "image_local_path": "assets/febal-casa/products/melrose.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/andy/": {
+    "description": "Moderna e contemporanea, la nuova poltrona Andy presenta un design distintivo e allo stesso tempo confortevole per la vita di tutti i giorni. Le sue geometrie catturano l'attenzione e la rendono la protagonista dell'ambiente.",
+    "h1": "Andy",
+    "slug": "andy",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/05/Febal_Casa_Sofas_Must_poltrona_Andy.jpg",
+    "image_local_path": "assets/febal-casa/products/andy.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/febal-notte-gruppo-como-e-comodino-marlene/": {
+    "description": "Marlene di Febal Casa: gruppo notte dalle forme curvilinee, disponibile con maniglia verticale in metallo e inserto in pelle. Top in gres e ampie opzioni di personalizzazione.",
+    "h1": null,
+    "slug": "febal-notte-gruppo-como-e-comodino-marlene",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/03/FebalCasa_Notte_Gruppi_Marlene2.jpg",
+    "image_local_path": "assets/febal-casa/products/febal-notte-gruppo-como-e-comodino-marlene.jpg",
+    "image_strategy": "computed-bg"
+  },
+  "https://www.febalcasa.com/it/prodotti/modula-anta-square/": {
+    "description": null,
+    "h1": "Modula anta square",
+    "slug": "modula-anta-square",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/madeira/": {
+    "description": "L'armonioso intreccio di archi definisce un tavolo unico, protagonista di ogni ambiente. Le gambe inclinate e sovrapposte formano un disegno geometrico di grande impatto visivo che gioca con la tridimensionalità ottenendo un risultato perfetto nato dall'eleganza, dall'equilibrio e dalla leggerezza dei volumi. La base in metallo è disponibile in finitura Ottone Scuro, Nero, Antracite e Sabbia. Il piano è di forma rotonda, ovale fisso o allungabile ed è configurabile in Cristallo Lucido, Cristallo Velvet, Superceramica, Supermarmo opaco, Supermarmo lucido e legno Impiallacciato. La versione fissa può essere arricchita con il piano centrotavola girevole, un dispositivo rotante che permette di condividere facilmente cibi e oggetti con tutti i commensali.",
+    "h1": "Madeira",
+    "slug": "madeira",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Dining_TavoliDesign_Madeira2.jpg",
+    "image_local_path": "assets/febal-casa/products/madeira.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/nina/": {
+    "description": "La sedia Nina può essere personalizzata con struttura in metallo oppure rivestita in abbinamento alla scocca. Il design è studiato per offrire una seduta confortevole e, se lo si desidera, aggiungere un tocco di colore alla zona dining.",
+    "h1": "Nina",
+    "slug": "nina",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/leaf/": {
+    "description": "La madia Leaf, disponibile in due diverse altezze, si caratterizza per il suo disegno razionale impreziosito dalla maniglia incassata.",
+    "h1": "Leaf",
+    "slug": "leaf",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Giorno_Madie_StillLife_Leaf_a.jpg",
+    "image_local_path": "assets/febal-casa/products/leaf.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/febal-notte-armadio-scorrevole-halley-01/": {
+    "description": "L’armadio con anta scorrevole Halley gioca sui contrasti cromatici e materici esaltati dalla luce led integrata che unisce efficacia ed estetica.",
+    "h1": "Halley Anta Scorrevole",
+    "slug": "halley",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_ArmadiScorrevoli_Halley_Compo1_b.jpg",
+    "image_local_path": "assets/febal-casa/products/halley.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/allure/": {
+    "description": "Allure di Febal Casa: letto imbottito con testata dalle linee verticali che evocano il fusto di una colonna. Discrezione e carattere per la camera da letto matrimoniale.",
+    "h1": null,
+    "slug": "allure",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2026/05/FebalCasa_Notte_Letti_Imbottiti_Ambientate_Allure2.jpg",
+    "image_local_path": "assets/febal-casa/products/allure.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/astrid/": {
+    "description": "Astrid di Febal Casa: gruppo notte con vassoio superiore in cristallo e maniglie integrate nel disegno. Eleganza trasparente per la camera da letto contemporanea.",
+    "h1": null,
+    "slug": "astrid",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/03/FebalCasa_Notte_Gruppi_Astrid2.jpg",
+    "image_local_path": "assets/febal-casa/products/astrid.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/tipologia/momenti/cameretta/": {
+    "description": null,
+    "h1": "Camerette\ncomponibili\nper bambini e ragazzi",
+    "slug": "cameretta",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Momenti_Camerette_CompoK44_a.jpg",
+    "image_local_path": "assets/febal-casa/products/cameretta.jpg",
+    "image_strategy": "computed-bg"
+  },
+  "https://www.febalcasa.com/it/prodotti/madia-onda/": {
+    "description": null,
+    "h1": "Madia ONDA",
+    "slug": "madia-onda",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/navigli/": {
+    "description": "Disponibile in diverse tonalità e rivestimenti, il Divano Navigli è caratterizzato dall’ampiezza della seduta e dall’effetto trapuntatura continua.",
+    "h1": "Navigli",
+    "slug": "navigli",
+    "image_source_url": "https://www.febalcasa.com/wp-content/themes/febalcasa_nooo/dist/img/placeholder--origina-01.jpg",
+    "image_local_path": "assets/febal-casa/products/navigli.jpg",
+    "image_strategy": "computed-bg"
+  },
+  "https://www.febalcasa.com/it/prodotti/serif/": {
+    "description": "Disponibile in diverse misure, Serif è un tavolino elegante in grado di soddisfare ogni esigenza. Essenziale nella linea, ma non nella scelta dei materiali e",
+    "h1": "Serif",
+    "slug": "serif",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Soggiorno_CoffeeTable_Serif2.jpg",
+    "image_local_path": "assets/febal-casa/products/serif.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-sagoma37/": {
+    "description": "Il design dell'anta sagoma37 è caratterizzato da una lavorazione inclinata a 37 gradi, scopri tutta la linea di mobili.",
+    "h1": "Origina anta sagoma 37",
+    "slug": "origina-anta-sagoma37",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/leeds/": {
+    "description": "Il tavolo Leeds è disponibile in versione fissa e allungabile e in forma rettangolare o a botte per incontrare ogni esigenza di stile e spazio. La base scultorea è la caratteristica distintiva del modello: personalizzabile in cinque finiture metallo è in grado di abbinarsi perfettamente con i materiali del piano e dare vita a composizioni uniche.",
+    "h1": "Leeds",
+    "slug": "leeds",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/nives/": {
+    "description": "Eleganti e di design la sedia e la poltroncina Nives sono anche estremamente accoglienti grazie alla seduta imbottita e ai braccioli che assicurano avvolgenza e comodità. Le linee dolci e sinuose, la versatilità, l'ergonomia della seduta e dello schienale rendono Nives una vera e propria icona di comfort. L'alta qualità dei materiali, la cura sartoriale della realizzazione e i numerosi rivestimenti e finiture fanno di Nives l'elemento d'arredo giusto per conferire eleganza e forte personalità a qualsiasi ambiente. Le gambe sono personalizzabili in metallo verniciato nelle finiture Ottone scuro, Nero, Antracite e Sabbia per incontrare ogni esigenza.",
+    "h1": "Nives",
+    "slug": "nives",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Dining_SedieDesign_Nives1.jpg",
+    "image_local_path": "assets/febal-casa/products/nives.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/rodin/": {
+    "description": "L’armadio con anta scorrevole Rodin si distingue per la maniglia orizzontale con LED integrato, regolabile via app o telecomando.",
+    "h1": "Rodin Anta Scorrevole",
+    "slug": "rodin",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_ArmadiScorrevoli_Rodin_Compo1_b.jpg",
+    "image_local_path": "assets/febal-casa/products/rodin.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/hype/": {
+    "description": "Hype è un sistema modulare per cabine armadio con struttura a cremagliera, pensato per soluzioni lineari, angolari o su misura.",
+    "h1": "Hype",
+    "slug": "hype",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_CabineArmadio_Hype_Compo1_b.jpg",
+    "image_local_path": "assets/febal-casa/products/hype.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-isola-onda/": {
+    "description": null,
+    "h1": "Isola ONDA",
+    "slug": "origina-isola-onda",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-square/": {
+    "description": "L’anta square, disponibile con maniglia o con gola sagomata, integra perfettamente ambiente cucina e living creando spazi unici e multifunzionali.",
+    "h1": "Origina anta square",
+    "slug": "origina-anta-square",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-solid/": {
+    "description": "Solidità e design si incontrano nell’anta Profile Solid, per armadi battenti dal carattere moderno e di design.",
+    "h1": "Profile Solid",
+    "slug": "profile-solid",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/tipologia/armadi/ante/battente/profile-reflex/": {
+    "description": "L'armadio con anta battente Profile Reflex riflette lo stile contemporaneo con finiture luminose e dettagli eleganti.",
+    "h1": "Profile Reflex",
+    "slug": "profile-reflex",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/aurora-porta-battente/": {
+    "description": "L'armadio con anta battente Aurora è disegnata con un profilo a doppia cornice in metallo Carbon grey e può accogliere un vetro Ombra fumé o Stop-sol.",
+    "h1": "Aurora Anta Battente",
+    "slug": "aurora",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_ArmadiBattenti_Aurora_Compo1_d.jpg",
+    "image_local_path": "assets/febal-casa/products/aurora.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/origina-anta-telaio-alluminio/": {
+    "description": "L’anta con telaio in alluminio offre molteplici possibilità di personalizzazione grazie alle numerose finiture e possibilità di apertura.",
+    "h1": "Origina anta telaio alluminio",
+    "slug": "origina-anta-telaio-alluminio",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  },
+  "https://www.febalcasa.com/it/prodotti/barret/": {
+    "description": "L'armadio con anta battente Barret è contraddistinta da una piacevole essenzialità formale personalizzabile grazie alla gamma di maniglie dedicate.",
+    "h1": "Barret Anta Battente",
+    "slug": "barret",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_ArmadiBattenti_Barret_Compo2_a.jpg",
+    "image_local_path": "assets/febal-casa/products/barret.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/lola/": {
+    "description": "Disponibile con spalliera alta o bassa e in versione sgabello fisso o girevole, Lola presenta un design lineare ed estremo comfort. Accogliente e raffinata Lola è adatta ad ogni contesto, anche il più sofisticato, grazie ai numerosi rivestimenti e alla forte ergonomia del modello. Lo schienale flessibile, offre una seduta estremamente comoda e piacevole che agevola l'appoggio della schiena assecondando il movimento del corpo. Le gambe sono disponibili in metallo verniciato nelle finiture Ottone scuro, nero, Antracite e Sabbia oppure rivestite in abbinamento alla seduta.",
+    "h1": "Lola",
+    "slug": "lola",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Dining_SedieDesign_Lola4.jpg",
+    "image_local_path": "assets/febal-casa/products/lola.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/lewitt-lumia/": {
+    "description": "L'armadio con anta battente Lumia è un classico senza tempo nell'arredo della zona notte. Lumia presenta l’esclusiva illuminazione led integrata.",
+    "h1": "Lumia Anta Battente",
+    "slug": "lumia",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2025/08/FebalCasa_Armadi_ArmadiBattenti_Lumia_Compo1_b-e1776961642185.jpg",
+    "image_local_path": "assets/febal-casa/products/lumia.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/dea/": {
+    "description": "La sedia Dea è perfetta per progetti raffinati in ogni dettaglio. La linearità delle gambe in metallo verniciato disponibile nelle finiture Ottone scuro, Antracite, Nero e Sabbia è ammorbidita dalle forme curve e accoglienti della seduta e dello schienale, arricchite da un prezioso tocco sartoriale che si rivela con il grazioso movimento di pieghe che enfatizza i volumi e il senso di comfort. Dea è una sedia di valore che cattura inevitabilmente l'ammirazione di chiunque la osservi.",
+    "h1": "Dea",
+    "slug": "dea",
+    "image_source_url": "https://www.febalcasa.com/wp-content/uploads/2024/02/FebalCasa_Dining_Sedia_Dea_d.jpg",
+    "image_local_path": "assets/febal-casa/products/dea.jpg",
+    "image_strategy": "slug-match"
+  },
+  "https://www.febalcasa.com/it/prodotti/daniel/": {
+    "description": "Sinonimo di estrema eleganza, il tavolo Daniel con struttura ponte gamba rappresenta il punto centrale della sala da pranzo, il luogo dove si riuniscono familiari e amici. Il suo piano personalizzabile in cristallo, superceramica e supermarmo accoglie comodamente i commensali garantendo qualità negli anni. Il modello è disponibile in forma quadrata, rettangolare e rettangolare allungabile.",
+    "h1": "Daniel",
+    "slug": "daniel",
+    "image_source_url": null,
+    "image_local_path": null,
+    "image_strategy": "none"
+  }
+}

@@ -1,11 +1,6 @@
 import type { HotspotManifestEntry, WishlistState } from "@3dvista-assistant/assistant-core";
 import {
-  deriveOverlayPrefix,
-  findEnabledDugmePrefix,
-  findHotspotAnchor,
-  findOpenNativePreview,
-  getCameraState,
-  normalizePrefix,
+  type TourBridgeStrategy,
 } from "@3dvista-assistant/tour-bridge";
 import { projectToScreen } from "./hotspot-projection.js";
 
@@ -43,6 +38,8 @@ export interface NativePreviewState {
 export interface HotspotHeartOverlayDeps {
   wishlist: WishlistState;
   manifest: HotspotManifestEntry[];
+  /** The viewer: its camera and its own product hotspots (no hotspots → the overlay stays hidden). */
+  bridge: TourBridgeStrategy;
   /** Fired only on actual change (open/closed, or which product), never
    * every frame — see the tick loop below. */
   onNativePreviewChange?: (state: NativePreviewState) => void;
@@ -156,7 +153,8 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
   // forcing one initial callback even if nothing is open.
   let lastSignature: string | undefined = undefined;
   function checkNativePreview(): void {
-    const signal = findOpenNativePreview();
+    const panel = deps.bridge.hotspots?.openPanel() ?? { open: false, key: null };
+    const signal = { open: panel.open, prefix: panel.key };
     previewOpen = signal.open;
     if (!deps.onNativePreviewChange) return;
     const signature = `${signal.open}:${signal.prefix ?? ""}`;
@@ -194,8 +192,7 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
     return (
       deps.manifest.find((p) => {
         if (!p.hotspot_name) return false;
-        const derived = deriveOverlayPrefix(p.hotspot_name);
-        return derived != null && normalizePrefix(derived) === prefix;
+        return deps.bridge.hotspots?.keyOf(p.hotspot_name) === prefix;
       }) ?? null
     );
   }
@@ -223,7 +220,7 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
     // OWN dugme-enabled-on-hover flag (see findEnabledDugmePrefix). Only
     // decides WHICH hotspot is active; positioning below is independent of
     // the mouse entirely.
-    const hoveredPrefix = findEnabledDugmePrefix();
+    const hoveredPrefix = deps.bridge.hotspots?.hovered() ?? null;
     if (hoveredPrefix) {
       const product = resolveProductForPrefix(hoveredPrefix);
       if (product) {
@@ -235,8 +232,8 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
         // — no jitter, no dependency on exactly where within the hover area
         // the cursor happened to be (an earlier version anchored to that
         // instead, see git history).
-        const anchor = findHotspotAnchor(hoveredPrefix);
-        const camera = getCameraState();
+        const anchor = deps.bridge.hotspots?.anchor(hoveredPrefix) ?? null;
+        const camera = deps.bridge.getViewer?.() ?? null;
         const pt = anchor && camera ? projectToScreen(camera, anchor, window.innerWidth, window.innerHeight) : null;
         if (pt && pt.visible) {
           current = product;

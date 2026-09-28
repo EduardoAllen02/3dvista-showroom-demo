@@ -101,6 +101,24 @@ const POST_ACTIVATION_REWRITE_SCHEDULE_MS = [600, 1200, 2000, 3000];
 // navigation and yank the camera back to the wrong place.
 let navigationGeneration = 0;
 
+/**
+ * FIFTH correction (Febal Casa, verified live via CDP with byte-identical
+ * screenshots): `activePlayer.set("yaw"/"pitch"/"hfov")` updates the player's
+ * properties but the rendered view stays where it was, so a same-panorama
+ * "Llévame" read back the right numbers and never moved. `setPosition(yaw,
+ * pitch, roll, hfov)` moves and repaints. Used everywhere the live camera is
+ * written; set() stays as the fallback for builds without setPosition.
+ */
+function applyCamera(activePlayer: TdvObject, target: NavTarget): void {
+  if (activePlayer.setPosition) {
+    activePlayer.setPosition(target.yaw, target.pitch, 0, target.fov);
+    return;
+  }
+  activePlayer.set?.("yaw", target.yaw);
+  activePlayer.set?.("pitch", target.pitch);
+  activePlayer.set?.("hfov", target.fov);
+}
+
 export const playerApiNavigator: TourBridgeStrategy = {
   name: "player-api",
   isAvailable(): boolean {
@@ -153,10 +171,7 @@ export const playerApiNavigator: TourBridgeStrategy = {
       // camera directly instead; safe here since no activation/transition
       // is about to run that would reset it afterward.
       const viewer = rootPlayer.getMainViewer();
-      const activePlayer = rootPlayer.getActivePlayerWithViewer(viewer);
-      activePlayer.set?.("yaw", target.yaw);
-      activePlayer.set?.("pitch", target.pitch);
-      activePlayer.set?.("hfov", target.fov);
+      applyCamera(rootPlayer.getActivePlayerWithViewer(viewer), target);
     } else {
       rootPlayer.setMainMediaByName(target.media_name);
       // Fallback for 3DVista builds that don't apply initialPosition to the
@@ -168,10 +183,7 @@ export const playerApiNavigator: TourBridgeStrategy = {
         setTimeout(() => {
           if (thisGeneration !== navigationGeneration) return; // superseded by a newer navigateTo() call
           const viewer = rootPlayer.getMainViewer();
-          const activePlayer = rootPlayer.getActivePlayerWithViewer(viewer);
-          activePlayer.set?.("yaw", target.yaw);
-          activePlayer.set?.("pitch", target.pitch);
-          activePlayer.set?.("hfov", target.fov);
+          applyCamera(rootPlayer.getActivePlayerWithViewer(viewer), target);
         }, delay);
       }
     }

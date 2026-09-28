@@ -406,15 +406,25 @@
   color: var(--assistant-primary);
   text-decoration: none;
   cursor: pointer;
-  /* This is a <button>, not an <a> — without this reset it kept the
-     browser's native button chrome (grey background/border), which made
-     the red text hard to read (flagged live). Transparent lets the
-     containing product card's own background show through instead. */
+  /* The official page link (an <a> now; it was a <button> for "Ver ficha").
+     The reset keeps it plain red text over the card's own background. */
   background: transparent;
   border: none;
   padding: 0;
 }
 .tva-product-card-link:hover { text-decoration: underline; }
+
+/* v2: group header above its cards (only what matches: «café ✓», «disponible bajo pedido»). */
+.tva-card-group {
+  align-self: stretch;
+  margin: 6px 2px 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--assistant-text-muted);
+}
+
 .tva-product-card-link:focus-visible { outline: 2px solid var(--assistant-primary); outline-offset: 1px; }
 
 /* Action buttons — ~70% width, right-aligned (matches the reference UI),

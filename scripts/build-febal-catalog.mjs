@@ -16,6 +16,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "..");
 const TOUR_DIR = path.join(ROOT, "tour-project", "febal-casa");
 const CLIENT_DIR = path.join(ROOT, "clients", "febal-casa");
+// Official images that show another product (Navigli's is a kitchen drawer) or a model it no longer is (FEB-037).
+const TOUR_IMAGE_OVERRIDES = new Set(["FEB-037", "FEB-066"]);
+function tourImage(productId, scrapedEntry) {
+  const tour = path.join(CLIENT_DIR, "assets", "products", "tour", `${productId}.jpg`);
+  const official = scrapedEntry && scrapedEntry.image_local_path;
+  if (official && !TOUR_IMAGE_OVERRIDES.has(productId)) return official;
+  return fs.existsSync(tour) ? `assets/febal-casa/products/tour/${productId}.jpg` : official || null;
+}
 fs.mkdirSync(CLIENT_DIR, { recursive: true });
 
 function readJsonIfExists(p, fallback) {
@@ -278,7 +286,9 @@ function buildRecord(row, isMatched) {
     pitch,
     fov,
     hotspot_name: row.nome || null,
-    image_url: (scrapedEntry && scrapedEntry.image_local_path) || "assets/febal-casa/placeholder-product.png",
+    // No official image (or a wrong one, see TOUR_IMAGE_OVERRIDES): the piece as it looks in the tour,
+    // cropped from its clean capture (clients/febal-casa/assets/products/tour/<id>.jpg).
+    image_url: tourImage(productId, scrapedEntry) || "assets/febal-casa/placeholder-product.png",
     detail_url: link,
     alternatives_group: slugify(category),
     active: hasCoords,

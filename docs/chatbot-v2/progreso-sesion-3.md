@@ -216,6 +216,48 @@
     - verificador: los `\b` de "Casa N" (V4/V8) eran caracteres de retroceso desde el primer commit, así que esas dos reglas nunca reconocían "Casa 01". Ya están corregidos.
   - `V2_DEBUG=1` en `v2-chat.mts` imprime cada borrador del redactor (`=2` también lo que recibió).
   - Batería run17: 26 turnos, 0 plantillas, 4 reparaciones, $0.00084/turno, p95 3,6 s. Motor ≡ oráculo en 25.015 combinaciones.
+- **v2 conectado al tour** (2026-09-27):
+  - **Servidor:**
+    - `ASSISTANT_ENGINE=v2` (por omisión `v1`) hace que `/chat` use `server/src/v2/turn-v2.ts`;
+    - el motor se arma una vez con `catalog.v2.json` y las ediciones del cliente;
+    - cada turno queda con su traza en `server/data/v2-turns.jsonl`;
+    - "Ver alternativas" (la ruta del v1) se oculta en v2.
+  - **Widget:**
+    - manda la panorámica y la cámara; el servidor calcula qué piezas están a la vista y cuál al centro ("¿este lo tienen en azul?" → la pieza que mira). El LLM solo ve IDs;
+    - tarjetas con encabezado de grupo ("En el showroom", "Disponible bajo pedido"), motivos como etiquetas y enlace "Sito ufficiale ↗".
+  - **"Llévame" en la misma panorámica:** usa `setPosition` (antes `set()` no repintaba la vista). Si el modelo pedido tiene una pieza a la vista, lleva a esa (Trenta en Casa 3 y no en Casa 1).
+  - **Fotos de tarjeta:**
+    - 37 de 88 salían con marcador de posición, Navigli mostraba cajones de cocina y FEB-037 apuntaba a la lavandería;
+    - las 39 usan ahora la captura limpia del tour recortada sin letreros (`clients/febal-casa/assets/products/tour/`);
+    - `build-febal-catalog.mjs` hace lo mismo si se regenera.
+  - Probado en el tour por CDP: Melrose (otra panorámica), "este en azul" → Melrose, Trenta en la misma panorámica, cocinas con foto.
+- **v2 por omisión** (decisión de Edd, 2026-09-27):
+  - `ASSISTANT_ENGINE` vale `v2` si no se indica; `v1` queda solo como respaldo.
+  - **"Ver alternativas":** manda un turno de chat marcado con la pieza ("Alternativas a Divano Melrose"). El v2 lo resuelve sin planificador, con el motor de alternativas. Las tarjetas dicen qué comparten ("mismo material · misma forma · mismo estilo") y el redactor sabe de qué pieza son alternativas.
+  - **Idioma del widget:** botones, placeholder, sugerencias, encabezado y avisos siguen el idioma de la conversación (italiano al inicio; cambian con `lang` de la respuesta). La capa "La mia collezione" sigue el idioma del tour.
+  - Batería run18: 26 turnos, 0 plantillas, 3 reparaciones, $0.00091/turno, p95 3,5 s.
+- **Portabilidad, fases 1, 2 y 5** (2026-09-27). Método: una foto determinista del comportamiento (`scripts/v2-snapshot.mts`, 45 turnos sin LLM + los dos prompts) que debe salir idéntica después de cada fase, más el oráculo y la comparación del catálogo reconstruido.
+  - **Fase 1, el dominio fuera del núcleo:**
+    - el vocabulario es un archivo de datos (`packages/assistant-engine/src/packs/furniture.json`);
+    - lleva además las reglas de dominio: qué combina con qué, dónde buscar un ambiente, qué parte viste cada opción, formas según el mueble y ejemplos de sinónimos para el planificador;
+    - lo específico de la fuente Febal (nombrado de colores de sus fichas, categorías en italiano, nombres a mano, títulos "Piedi/Frontali") pasó a `src/adapters/febal/`;
+    - el motor ya no tiene ninguna categoría de mueble escrita en código.
+  - **Fase 2, el tono por tour:** `clients/<tour>/assistant.json` define:
+    - quién es el asistente y dónde está (prompts);
+    - la marca y el formato de las zonas ("CASA 03 - AUDACE" → "Casa 3 (Audace)");
+    - los nombres de las líneas;
+    - los ejemplos del redactor;
+    - cualquier texto o etiqueta a reemplazar por clave.
+
+    Probado con un perfil de museo: cambia el tono y los textos, y en los prompts no queda nada de Febal.
+  - **Fase 5, el puente del visor:** `ViewerBridge` = navegar, abrir panel, `getViewer()` (panorámica y cámara) y `hotspots` (bajo el puntero, posición, panel nativo, clave de un producto).
+    - 3DVista es una implementación (`createTourBridge`);
+    - el chat y la wishlist ya no llaman a 3DVista directo;
+    - el widget usa un solo puente, el que la plataforma anfitriona pase en `init({ bridge })` o el de 3DVista.
+
+    Probado en un tour aparte (5502 + backend 8962): Llévame, "este", Trenta en la misma panorámica, Ver alternativas y overlay de la wishlist, sin errores.
+  - **Arreglo:** si el redactor escribe la etiqueta y el nombre, ya no sale "Balmoral Balmoral".
+  - **Pendiente para el mood board:** las recomendaciones de la wishlist todavía usan la ruta `/recommendations` del v1.
 - FEB-094 (silla Dea) reencuadrada en el tour: yaw 117.7, pitch -44.4, fov 75.2. Llega al widget de producción con el próximo deploy.
 - **Pendiente:** acabados exactos y materiales de las piezas.
   - Con la lista del showroom se completan solos.
@@ -252,12 +294,8 @@ Casos ya resueltos de punta a punta con datos reales:
 1. Edd comparte los dos Excel de Descargas. Con lo que vuelva:
    - decisiones: se aplican a mano;
    - base de datos: `python scripts/import-database-xlsx.py <archivo>` (y luego `--apply`).
-2. Tarea aparte: "Llévame" en la misma panorámica con `setPosition` (widget).
-3. Integración en `server` con el flag `ASSISTANT_ENGINE=v2` y el widget:
-   - grupos y chips de motivo;
-   - enlace "Sito ufficiale ↗";
-   - contexto del visor.
-4. Bake-off de GPT baratos con la misma batería. Suite dorada sobre un catálogo ficticio congelado.
+2. Hecho: "Llévame" en la misma panorámica, integración v2 (por omisión), "Ver alternativas" en v2 y widget en el idioma de la conversación.
+3. Bake-off de GPT baratos con la misma batería. Suite dorada sobre un catálogo ficticio congelado.
 
 ## Bloqueos
 - Ninguno técnico. El catálogo estricto ya es usable (818/818 con fuente literal). Falta la hoja corta de decisiones y la lista de acabados del showroom.

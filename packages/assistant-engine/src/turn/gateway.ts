@@ -7,8 +7,9 @@ import { PLAN_SCHEMA, parsePlan, plannerSystemPrompt, plannerUserPrompt, type Tu
 import { Reducer, type EngineAction } from "./reducer.js";
 import { Renderer, type UiCard } from "./render.js";
 import { Verifier, type Segment } from "./verifier.js";
-import { COMPOSER_SCHEMA, COMPOSER_SYSTEM, composerUserPrompt, parseSegments, repairUserPrompt } from "./composer.js";
-import { FOREIGN_OFFER, clarifyAnswer, completeObligations, fixedAnswer, navigationAnswer, oneClosingQuestion, templateAnswer } from "./templates.js";
+import { COMPOSER_SCHEMA, composerSystem, composerUserPrompt, parseSegments, repairUserPrompt } from "./composer.js";
+import { DEFAULT_PROFILE, withOverrides, type AssistantProfile } from "./profile.js";
+import { DEFAULT_TEXTS, FOREIGN_OFFER, clarifyAnswer, completeObligations, fixedAnswer, navigationAnswer, oneClosingQuestion, templateAnswer, type Texts } from "./templates.js";
 
 const TRANSLATE_SYSTEM = "Translate the visitor's message to English, literally: keep every colour, material, shape and product name, add nothing. Output JSON {\"english\": \"...\"}.";
 const TRANSLATE_SCHEMA = { type: "object", additionalProperties: false, required: ["english"], properties: { english: { type: "string" } } };
@@ -54,14 +55,22 @@ export class TurnGateway {
   readonly reducer: Reducer;
   readonly renderer: Renderer;
   readonly verifier: Verifier;
-  private plannerSystem: string;
+  /** The prompts this tour runs with (profile + domain pack + catalog), exposed for snapshots and debugging. */
+  readonly plannerSystem: string;
+  readonly composerSystem: string;
+  private texts: Texts;
 
-  constructor(readonly catalog: CanonicalCatalog, readonly lx: Lexicon, private llm: LlmJsonClient | null, readonly store: StateStore = new MemoryStateStore()) {
+  constructor(
+    readonly catalog: CanonicalCatalog, readonly lx: Lexicon, private llm: LlmJsonClient | null,
+    readonly store: StateStore = new MemoryStateStore(), readonly profile: AssistantProfile = DEFAULT_PROFILE,
+  ) {
     this.engine = new QueryEngine(catalog, lx);
     this.reducer = new Reducer(catalog, lx);
-    this.renderer = new Renderer(catalog, lx);
-    this.verifier = new Verifier(catalog, lx);
-    this.plannerSystem = plannerSystemPrompt(catalog, lx);
+    this.renderer = new Renderer(catalog, lx, profile);
+    this.verifier = new Verifier(catalog, lx, profile);
+    this.plannerSystem = plannerSystemPrompt(catalog, lx, profile);
+    this.composerSystem = composerSystem(profile);
+    this.texts = withOverrides(DEFAULT_TEXTS, profile.texts);
   }
 
   async turn(req: TurnRequest): Promise<TurnResult> {
@@ -81,7 +90,9 @@ export class TurnGateway {
     // 0) a language the assistant does not speak: the turn runs on an English translation (the lexicon
     //    and the planner understand English; a German colour word would otherwise be lost).
     let plannerMs = 0;
-    const foreignIn = foreignLang(req.message);
+    // A card button ("Vedi alternative") already says what to do: no planner, no translation.
+    const clickedAlt = req.clicked?.action === "alternatives" && this.renderer.exhibit(req.clicked.exhibit_id) ? req.clicked.exhibit_id : null;
+    const foreignIn = clickedAlt ? null : foreignLang(req.message);
     let message = req.message;
     if (foreignIn && this.llm) {
       try {
@@ -93,8 +104,10 @@ export class TurnGateway {
     }
 
     // 1) plan (LLM) — degraded lexicon plan when no LLM / failure
-    let plan: TurnPlan | null = null;
-    if (this.llm) {
+    let plan: TurnPlan | null = clickedAlt
+      ? { lang: prev.lang, intent: "alternatives", topic: "continue", refs: [], focus: clickedAlt, add: [], remove: [], linked_ref: null, detail_fields: [], nav_target: null, unknown_terms: [] }
+      : null;
+    if (!plan && this.llm) {
       try {
         const r = await this.llm.json({
           system: this.plannerSystem, user: plannerUserPrompt(prev, req.history, message, (id) => this.renderer.exhibit(id)?.name ?? id),
@@ -124,7 +137,7 @@ export class TurnGateway {
       case "detail": bundle = this.engine.detail(action.exhibit, action.fields); break;
       case "navigate": {
         bundle = this.showBundle([action.exhibit], "locate");
-        fixed = navigationAnswer(action.exhibit, lang);
+        fixed = navigationAnswer(action.exhibit, lang, this.texts);
         const vp = this.catalog.viewpoints.find((v) => v.exhibit_id === action.exhibit)!;
         navigate = { media_name: vp.media_name, yaw: vp.yaw, pitch: vp.pitch, fov: vp.fov, hotspot_name: vp.hotspot_name };
         state.focus = action.exhibit; state.focus_source = "navigation";
@@ -136,8 +149,8 @@ export class TurnGateway {
         bundle = offered ? this.offerBundle(offered) : this.showBundle(action.exhibits, "list");
         break;
       }
-      case "clarify": bundle = this.showBundle(action.candidates, "list"); fixed = clarifyAnswer(action.candidates, lang, action.reason); break;
-      case "template": fixed = fixedAnswer(action.template, lang); break;
+      case "clarify": bundle = this.showBundle(action.candidates, "list"); fixed = clarifyAnswer(action.candidates, lang, action.reason, this.texts); break;
+      case "template": fixed = fixedAnswer(action.template, lang, this.texts); break;
     }
 
     // 4) compose (LLM) → verify → repair once → template
@@ -150,7 +163,7 @@ export class TurnGateway {
         let user = composerUserPrompt(view, lang, message);
         for (attempts = 1; attempts <= 2; attempts++) {
           try {
-            const r = await this.llm.json({ system: COMPOSER_SYSTEM, user, schemaName: "answer", schema: COMPOSER_SCHEMA, maxTokens: 700 });
+            const r = await this.llm.json({ system: this.composerSystem, user, schemaName: "answer", schema: COMPOSER_SCHEMA, maxTokens: 700 });
             composerMs += r.latency_ms; addUsage(r.usage);
             const parsed = parseSegments(r.text);
             if (!parsed) { violations.push(["JSON inválido"]); continue; }
@@ -159,7 +172,7 @@ export class TurnGateway {
             if (verdict.ok) { segments = segs; break; }
             // Cheap fix first: a forgotten link. Anything else goes back to the LLM once; full
             // completion by code is the last resort before the template (it can duplicate prose).
-            const completed = completeObligations(segs, bundle, lang, attempts === 1);
+            const completed = completeObligations(segs, bundle, lang, attempts === 1, this.texts);
             if (completed && this.verifier.verify(completed, bundle, lang).ok) { segments = completed; completedByCode = true; break; }
             violations.push(verdict.violations);
             user = repairUserPrompt(view, lang, req.message, segs, verdict.violations);
@@ -169,7 +182,7 @@ export class TurnGateway {
           }
         }
       }
-      if (!segments.length) { segments = templateAnswer(bundle, lang, this.renderer); templateUsed = true; }
+      if (!segments.length) { segments = templateAnswer(bundle, lang, this.renderer, this.texts); templateUsed = true; }
     }
 
     // 5) render + state bookkeeping
@@ -210,16 +223,18 @@ export class TurnGateway {
   autoTag(text: string, bundle: Bundle): string {
     let out = text;
     const seen = new Set<string>();
-    for (const g of bundle.groups) for (const c of g.cards) {
-      const name = this.renderer.displayName(c.exhibit_id);
+    const ids = [...bundle.groups.flatMap((g) => g.cards.map((c) => c.exhibit_id)), ...(bundle.source ? [bundle.source] : [])];
+    for (const id of ids) {
+      const name = this.renderer.displayName(id);
       if (!name || seen.has(name.toLowerCase()) || name.length < 3) continue;
       seen.add(name.toLowerCase());
       const esc = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       const re = new RegExp(`(?<![\\w{:])(\\*\\*)?${esc}(\\*\\*)?(?![\\w}])`, "gi");
-      out = out.split(/(\{\{[^}]+\}\})/).map((part) => (part.startsWith("{{") ? part : part.replace(re, `{{p:${c.exhibit_id}}}`))).join("");
+      out = out.split(/(\{\{[^}]+\}\})/).map((part) => (part.startsWith("{{") ? part : part.replace(re, `{{p:${id}}}`))).join("");
     }
-    // A name that is also the kind of piece ("Boiserie (boiserie)") ends up tagged twice: keep one.
-    return out.replace(/\{\{p:([^}]+)\}\}\s*\(\{\{p:\1\}\}\)/g, "{{p:$1}}");
+    // The same piece tagged twice in a row: a name that is also the kind of piece ("Boiserie (boiserie)"),
+    // or the composer writing the tag AND the name ("{{p:X}} Balmoral"). Keep one.
+    return out.replace(/\{\{p:([^}]+)\}\}\s*(?:\(\{\{p:\1\}\}\)|\{\{p:\1\}\})/g, "{{p:$1}}");
   }
 
   /** No LLM (provider down): lexicon-only plan. Correct by construction, less flexible. */

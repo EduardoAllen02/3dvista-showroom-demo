@@ -18,6 +18,10 @@ const EnvSchema = z
     OPENAI_API_KEY: z.string().optional(),
     ANTHROPIC_API_KEY: z.string().optional(),
     MODEL_ID: z.string().default("gpt-4o-mini"),
+    // "v2" (default): packages/assistant-engine (sourced catalog + query engine; the LLM only
+    // plans and writes; needs OPENAI_API_KEY). "v1": the old tool-calling orchestrator, kept as
+    // a fallback only.
+    ASSISTANT_ENGINE: z.enum(["v1", "v2"]).default("v2"),
     TOUR_ID: z.string().default("demo-showroom"),
     ALLOWED_ORIGIN: z.string().default("http://localhost:5500"),
     USAGE_LOG_PATH: z.string().default("./data/usage.jsonl"),

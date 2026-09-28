@@ -261,6 +261,10 @@ export class Reducer {
       case "navigate": {
         // Explicit imperative with a single, resolved destination counts as confirmation (policy D4).
         const target = plan.nav_target && this.exhibitIds.has(plan.nav_target) ? plan.nav_target : focus;
+        // Same model in several places: the one the visitor has in front of them wins
+        // ("llévame a la Trenta" standing next to a Trenta).
+        const inView = target ? this.exhibitsOfModel(this.exhibitModel.get(target)!).find((id) => s.viewer.visible.includes(id)) : undefined;
+        if (inView && inView !== target) { notes.push(`navigate: ${inView} is in view (same model as ${target})`); return { kind: "navigate", exhibit: inView }; }
         if (target && named.length > 1 && new Set(named.map((id) => this.exhibitModel.get(id))).size === 1 && !plan.nav_target) {
           return { kind: "locate", target };
         }

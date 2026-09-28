@@ -1,4 +1,4 @@
-import type { ChatResponseBody, HotspotManifestEntry, ProductCard } from "./types.js";
+import type { ChatResponseBody, HotspotManifestEntry, ProductCard, ViewerSnapshot } from "./types.js";
 
 /**
  * Fetched once per page load (module-level cache) — it's static build
@@ -37,7 +37,9 @@ export function createApiClient(config: ApiClientConfig) {
     async sendMessage(
       message: string,
       history: { role: string; text: string; product_ids?: string[] }[],
-      wishlistProductIds: string[] = []
+      wishlistProductIds: string[] = [],
+      viewer?: ViewerSnapshot | null,
+      clicked?: { exhibit_id: string; action: "alternatives" | "take_me" | "sheet" }
     ): Promise<ChatResponseBody> {
       const res = await fetch(`${config.apiBaseUrl}/chat`, {
         method: "POST",
@@ -48,6 +50,8 @@ export function createApiClient(config: ApiClientConfig) {
           message,
           history,
           wishlist_product_ids: wishlistProductIds,
+          ...(viewer ? { viewer } : {}),
+          ...(clicked ? { clicked } : {}),
         }),
       });
       if (!res.ok) {

@@ -75,6 +75,8 @@ export interface Bundle {
   groups: CardGroup[];
   /** Obligations the answer text must meet (checked by the verifier). */
   obligations: string[];
+  /** Alternatives mode: the piece the alternatives are for (not one of the cards). */
+  source?: string;
   /** For a requested value with zero support in scope: the real values that exist. */
   available_values: { constraint: string; facet: ConstraintFacet; values: ConceptId[] }[];
   /** Detail mode: facts per requested field. */

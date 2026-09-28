@@ -1,0 +1,2720 @@
+[
+  {
+    "overlay_id": "overlay_7562BEF4_9ED6_788E_41C6_CD6F6CE4028F",
+    "event_lable": "FB Libreria Trenta BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -17,
+    "yaw": -23,
+    "panorama_id": "panorama_AE4CE370_89EF_E71E_41B8_2DB281F8185E",
+    "media_name": "47"
+  },
+  {
+    "overlay_id": "overlay_7567CEF6_9ED6_788A_41E0_786C89823338",
+    "event_lable": "FB Gruppo Notte Marlene  BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -37,
+    "yaw": 127,
+    "panorama_id": "panorama_AE4CE370_89EF_E71E_41B8_2DB281F8185E",
+    "media_name": "47"
+  },
+  {
+    "overlay_id": "overlay_9E2A0D4D_954A_199E_4178_79F7C5295415",
+    "event_lable": "FB Boiserie  BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -21,
+    "yaw": 139,
+    "panorama_id": "panorama_AE4CE370_89EF_E71E_41B8_2DB281F8185E",
+    "media_name": "47"
+  },
+  {
+    "overlay_id": "overlay_0B5A3214_96F6_0B8E_41D8_81162C7C811E",
+    "event_lable": "Armadio Lewitt Plus BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -2,
+    "yaw": 136,
+    "panorama_id": "panorama_A069807E_89E9_A102_41D2_9FEB9FC313C5",
+    "media_name": "59a"
+  },
+  {
+    "overlay_id": "overlay_0E763005_96CA_078E_41D9_3AA118F5B8F1",
+    "event_lable": "FB Cabina Armadio Lapis BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -10,
+    "yaw": -128,
+    "panorama_id": "panorama_A069807E_89E9_A102_41D2_9FEB9FC313C5",
+    "media_name": "59a"
+  },
+  {
+    "overlay_id": "overlay_9E277060_957A_0786_41C9_AFA2DEE6CD21",
+    "event_lable": "FB Boiserie BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": 2,
+    "yaw": -100,
+    "panorama_id": "panorama_A069807E_89E9_A102_41D2_9FEB9FC313C5",
+    "media_name": "59a"
+  },
+  {
+    "overlay_id": "overlay_72B75494_A615_0A7B_41D0_6C8B6C3E9B23",
+    "event_lable": "Armadio Lewitt Plus BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -5,
+    "yaw": -175,
+    "panorama_id": "panorama_A069807E_89E9_A102_41D2_9FEB9FC313C5",
+    "media_name": "59a"
+  },
+  {
+    "overlay_id": "overlay_0CA7C244_96CA_0B8E_41D6_DAD2628F17A1",
+    "event_lable": "FB Armadio Collezione Momenti. BOX 260",
+    "box_raw": "BOX 260",
+    "pitch": -2,
+    "yaw": -147,
+    "panorama_id": "panorama_A16B0463_8A19_E102_41D2_6E7B83B91A33",
+    "media_name": "66"
+  },
+  {
+    "overlay_id": "overlay_B608CD09_934A_7986_41A2_54263D78EC8B",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -17,
+    "yaw": -6,
+    "panorama_id": "panorama_B6CA5A30_934A_3B86_41C4_F6E599634924",
+    "media_name": "7"
+  },
+  {
+    "overlay_id": "overlay_2CFA8010_9D56_0786_41CB_FA5E6455156E",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -30,
+    "yaw": -55,
+    "panorama_id": "panorama_AE969E19_89E9_610E_41D6_567EAF6D471D",
+    "media_name": "45"
+  },
+  {
+    "overlay_id": "overlay_2CE9E019_9D56_0786_418E_EBA91CAE1114",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 13,
+    "yaw": 160,
+    "panorama_id": "panorama_AE969E19_89E9_610E_41D6_567EAF6D471D",
+    "media_name": "45"
+  },
+  {
+    "overlay_id": "overlay_5FFFA99A_9D4E_38BA_41B4_43D97B677BB7",
+    "event_lable": "Divano Melrose",
+    "box_raw": null,
+    "pitch": -60,
+    "yaw": 175,
+    "panorama_id": "panorama_AE969E19_89E9_610E_41D6_567EAF6D471D",
+    "media_name": "45"
+  },
+  {
+    "overlay_id": "overlay_E5B1C096_975A_088A_41E0_88BA2A062507",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -38,
+    "yaw": -18,
+    "panorama_id": "panorama_E5EAAED7_975A_188A_414D_38B921E2734E",
+    "media_name": "55"
+  },
+  {
+    "overlay_id": "overlay_EC10AF5E_975A_39BA_41DC_C7687FAB247B",
+    "event_lable": "FB Madia Libeskind022 BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -45,
+    "yaw": 158,
+    "panorama_id": "panorama_E5EAAED7_975A_188A_414D_38B921E2734E",
+    "media_name": "55"
+  },
+  {
+    "overlay_id": "overlay_B2296DB2_B769_E967_41C9_5012C3DEF5A5",
+    "event_lable": "FB Libreria Trenta BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": 2,
+    "yaw": 47,
+    "panorama_id": "panorama_E5EAAED7_975A_188A_414D_38B921E2734E",
+    "media_name": "55"
+  },
+  {
+    "overlay_id": "overlay_9BD1B14D_92D6_099E_41D7_F71410EC0480",
+    "event_lable": "FB Isola Onda - Zaha Hadid Architects BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -25,
+    "yaw": 92,
+    "panorama_id": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+    "media_name": "77"
+  },
+  {
+    "overlay_id": "overlay_9BD1B150_92D6_0986_41B4_B38032BCF4C1",
+    "event_lable": "FB Tavolo Leeds BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -12,
+    "yaw": 146,
+    "panorama_id": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+    "media_name": "77"
+  },
+  {
+    "overlay_id": "overlay_9BD5FF83_92D9_F88A_41D4_BB31BF25C194",
+    "event_lable": "FB Sistema Origina anta Square BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -15,
+    "yaw": 26,
+    "panorama_id": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+    "media_name": "77"
+  },
+  {
+    "overlay_id": "overlay_ADB8BB8B_AD77_6925_41E1_1A0C7B43BD3C",
+    "event_lable": "FB Sedia Nives BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -19,
+    "yaw": 138,
+    "panorama_id": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+    "media_name": "77"
+  },
+  {
+    "overlay_id": "overlay_ADB9B6EB_AD69_78E5_41CC_0E2EEE3C8A30",
+    "event_lable": "FB Boiserie BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -4,
+    "yaw": 166,
+    "panorama_id": "panorama_9BD1506E_92D6_079A_41CF_66E87B49205B",
+    "media_name": "77"
+  },
+  {
+    "overlay_id": "overlay_9DCA04B0_96CA_0886_41AF_2BE0BCCD3130",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -47,
+    "yaw": 89,
+    "panorama_id": "panorama_3C59B1AE_A2CF_E16B_41C8_0F6F07BF695B",
+    "media_name": "88-open"
+  },
+  {
+    "overlay_id": "overlay_9DCA04B1_96CA_0886_41DA_808F10A58069",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -30,
+    "yaw": 62,
+    "panorama_id": "panorama_3C59B1AE_A2CF_E16B_41C8_0F6F07BF695B",
+    "media_name": "88-open"
+  },
+  {
+    "overlay_id": "overlay_9DCA04B2_96CA_088A_41A6_88C538B8460B",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -2,
+    "yaw": 55,
+    "panorama_id": "panorama_3C59B1AE_A2CF_E16B_41C8_0F6F07BF695B",
+    "media_name": "88-open"
+  },
+  {
+    "overlay_id": "overlay_9DCA04B3_96CA_088A_41C8_FBAE4407C9C7",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": 6,
+    "yaw": -146,
+    "panorama_id": "panorama_3C59B1AE_A2CF_E16B_41C8_0F6F07BF695B",
+    "media_name": "88-open"
+  },
+  {
+    "overlay_id": "overlay_9D8F5156_974A_098A_41DA_5D223B758B82",
+    "event_lable": "FB Armadio Barret BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": 2,
+    "yaw": -27,
+    "panorama_id": "panorama_63513A1A_8D94_CCFC_4196_0C081F2088F9",
+    "media_name": "31"
+  },
+  {
+    "overlay_id": "overlay_9D8F5158_974A_0986_41E1_53BB20DDF9FC",
+    "event_lable": "FB Sgabello Lola BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -29,
+    "yaw": 6,
+    "panorama_id": "panorama_63513A1A_8D94_CCFC_4196_0C081F2088F9",
+    "media_name": "31"
+  },
+  {
+    "overlay_id": "overlay_9D905DC7_9756_388A_41E3_070F00E5D128",
+    "event_lable": "FB Armadio Profile/ Reflex  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": -5,
+    "yaw": -179,
+    "panorama_id": "panorama_63513A1A_8D94_CCFC_4196_0C081F2088F9",
+    "media_name": "31"
+  },
+  {
+    "overlay_id": "overlay_B20F7091_B729_F725_41D5_ACD493751127",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -15,
+    "yaw": 18,
+    "panorama_id": "panorama_63513A1A_8D94_CCFC_4196_0C081F2088F9",
+    "media_name": "31"
+  },
+  {
+    "overlay_id": "overlay_9C0B80BE_954A_08FA_41E1_2D7FCA74B261",
+    "event_lable": "FB Libreria Lapis BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": 5,
+    "yaw": 50,
+    "panorama_id": "panorama_9C0B6071_954A_0786_41D4_410AF107312A",
+    "media_name": "68"
+  },
+  {
+    "overlay_id": "overlay_9C0B80C1_954A_0886_41BE_89569A2E0069",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -22,
+    "yaw": 115,
+    "panorama_id": "panorama_9C0B6071_954A_0786_41D4_410AF107312A",
+    "media_name": "68"
+  },
+  {
+    "overlay_id": "overlay_ADB1A491_AD79_1F25_41E3_609DE608C3B1",
+    "event_lable": "FB Sistema Origina BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -2,
+    "yaw": 112,
+    "panorama_id": "panorama_9C0B6071_954A_0786_41D4_410AF107312A",
+    "media_name": "68"
+  },
+  {
+    "overlay_id": "overlay_ADB1FFE0_AD78_E8E3_41C6_721CD7442DD2",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -9,
+    "yaw": 84,
+    "panorama_id": "panorama_9C0B6071_954A_0786_41D4_410AF107312A",
+    "media_name": "68"
+  },
+  {
+    "overlay_id": "overlay_9C3E0BB2_954A_188A_41D0_361A851370B1",
+    "event_lable": "FB Armadio Scorrevole Rodin BOX 460",
+    "box_raw": "BOX 460",
+    "pitch": 2,
+    "yaw": -130,
+    "panorama_id": "panorama_9C43B7B1_953A_0886_41E0_41126C6A8367",
+    "media_name": "74"
+  },
+  {
+    "overlay_id": "overlay_9C3E0BB7_954A_1889_4191_D7D28494ED04",
+    "event_lable": "FB Cabina Armadio Hype BOX 460",
+    "box_raw": "BOX 460",
+    "pitch": -2,
+    "yaw": 43,
+    "panorama_id": "panorama_9C43B7B1_953A_0886_41E0_41126C6A8367",
+    "media_name": "74"
+  },
+  {
+    "overlay_id": "overlay_EE34A2DC_974A_08BE_41A9_E6884654E755",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -40,
+    "yaw": 69,
+    "panorama_id": "panorama_A3E902C2_89E7_A102_41DB_BC94169D7A6C",
+    "media_name": "62"
+  },
+  {
+    "overlay_id": "overlay_128FFBA6_973B_F88A_41CE_CEC0739B0706",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -20,
+    "yaw": -9,
+    "panorama_id": "panorama_A3E902C2_89E7_A102_41DB_BC94169D7A6C",
+    "media_name": "62"
+  },
+  {
+    "overlay_id": "overlay_B2233610_B719_7B23_41E2_94B0BD0E6120",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -10,
+    "yaw": 32,
+    "panorama_id": "panorama_A3E902C2_89E7_A102_41DB_BC94169D7A6C",
+    "media_name": "62"
+  },
+  {
+    "overlay_id": "overlay_EDEDAABC_9779_F8FE_41DA_E3AFACBF67F2",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -38,
+    "yaw": -99,
+    "panorama_id": "panorama_A1F337FA_89EE_AF02_41C7_D0500F53D1BD",
+    "media_name": "52"
+  },
+  {
+    "overlay_id": "overlay_ED0421DC_977E_08BE_41DB_863D392777C3",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -20,
+    "yaw": 46,
+    "panorama_id": "panorama_A1F337FA_89EE_AF02_41C7_D0500F53D1BD",
+    "media_name": "52"
+  },
+  {
+    "overlay_id": "overlay_EAB26791_9756_0886_41C0_56AA48102A08",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -18,
+    "yaw": -40,
+    "panorama_id": "panorama_A1F337FA_89EE_AF02_41C7_D0500F53D1BD",
+    "media_name": "52"
+  },
+  {
+    "overlay_id": "overlay_EA66D9E8_974A_1886_41AD_7620B97C49E1",
+    "event_lable": "FB Tavolini Ink BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -28,
+    "yaw": -12,
+    "panorama_id": "panorama_A1F337FA_89EE_AF02_41C7_D0500F53D1BD",
+    "media_name": "52"
+  },
+  {
+    "overlay_id": "overlay_DA5BDBAC_93CE_789E_41E1_A6028F2E7938",
+    "event_lable": "FB Armadio Profile/ Leather BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -5,
+    "yaw": -50,
+    "panorama_id": "panorama_6D488D9A_8D94_C7FC_41D6_F4F04C1E4C93",
+    "media_name": "35"
+  },
+  {
+    "overlay_id": "overlay_DF08E67C_93CA_087E_41DC_39EB3A820258",
+    "event_lable": "FB Cabina Armadio Telaio BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -2,
+    "yaw": 158,
+    "panorama_id": "panorama_6D488D9A_8D94_C7FC_41D6_F4F04C1E4C93",
+    "media_name": "35"
+  },
+  {
+    "overlay_id": "overlay_DDF92148_93CA_0986_419A_6EE40DADF22A",
+    "event_lable": "FB Cassettiera Square BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -25,
+    "yaw": -121,
+    "panorama_id": "panorama_6D488D9A_8D94_C7FC_41D6_F4F04C1E4C93",
+    "media_name": "35"
+  },
+  {
+    "overlay_id": "overlay_9D98C35A_9756_09BA_41C8_60C246AD9370",
+    "event_lable": "FB Armadio Barret BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -3,
+    "yaw": -60,
+    "panorama_id": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+    "media_name": "84"
+  },
+  {
+    "overlay_id": "overlay_9D98C35D_9756_09BE_41E2_01514D284215",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -19,
+    "yaw": -104,
+    "panorama_id": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+    "media_name": "84"
+  },
+  {
+    "overlay_id": "overlay_9D9B482E_974A_079A_41E2_891A382A33D4",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -33,
+    "yaw": 129,
+    "panorama_id": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+    "media_name": "84"
+  },
+  {
+    "overlay_id": "overlay_9DB9FAC1_9749_F886_41D4_53226E40E588",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -23,
+    "yaw": 146,
+    "panorama_id": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+    "media_name": "84"
+  },
+  {
+    "overlay_id": "overlay_9DBBDADA_974A_38BA_41C8_F4BED193D701",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -3,
+    "yaw": 75,
+    "panorama_id": "panorama_9D989ECA_9756_389A_41DE_6A707434CFE9",
+    "media_name": "84"
+  },
+  {
+    "overlay_id": "overlay_FAFE499E_975A_38BA_41C5_F17B7CDA7BCA",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -30,
+    "yaw": -68,
+    "panorama_id": "panorama_A1B559D2_89E9_A302_41D5_D27514567F18",
+    "media_name": "54"
+  },
+  {
+    "overlay_id": "overlay_E415F2BA_975E_08FA_41D9_9F2BA8460E99",
+    "event_lable": "FB Madia Libeskind022 BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -20,
+    "yaw": 13,
+    "panorama_id": "panorama_A1B559D2_89E9_A302_41D5_D27514567F18",
+    "media_name": "54"
+  },
+  {
+    "overlay_id": "overlay_B224AB9E_B71F_695F_41CA_F5B27517F0AD",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -15,
+    "yaw": 127,
+    "panorama_id": "panorama_A1B559D2_89E9_A302_41D5_D27514567F18",
+    "media_name": "54"
+  },
+  {
+    "overlay_id": "overlay_41B8F402_9EFA_0F8A_41E1_B04DF56F9C46",
+    "event_lable": "FB Libreria Trenta BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -28,
+    "yaw": -105,
+    "panorama_id": "panorama_AE30E3D8_89EF_A70E_41D6_F4454F991C97",
+    "media_name": "46"
+  },
+  {
+    "overlay_id": "overlay_78AD4972_9EFE_198A_41DF_79EE578B72EA",
+    "event_lable": "FB Gruppo Notte Marlene  BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -25,
+    "yaw": 112,
+    "panorama_id": "panorama_AE30E3D8_89EF_A70E_41D6_F4454F991C97",
+    "media_name": "46"
+  },
+  {
+    "overlay_id": "overlay_AD962605_AD3B_1B2D_41D3_41010E6673AA",
+    "event_lable": "FB Boiserie  BOX 340",
+    "box_raw": "BOX 340",
+    "pitch": -14,
+    "yaw": 109,
+    "panorama_id": "panorama_AE30E3D8_89EF_A70E_41D6_F4454F991C97",
+    "media_name": "46"
+  },
+  {
+    "overlay_id": "overlay_48966970_9EDA_1986_41D4_372E80768018",
+    "event_lable": "FB Tavolo Madeira BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -41,
+    "yaw": 100,
+    "panorama_id": "panorama_73886CB8_93CA_1886_41AE_619E34E2F985",
+    "media_name": "97"
+  },
+  {
+    "overlay_id": "overlay_489BC973_9EDA_198A_41D8_47D80E1D2B4D",
+    "event_lable": "FB Sedia Nina BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -40,
+    "yaw": 40,
+    "panorama_id": "panorama_73886CB8_93CA_1886_41AE_619E34E2F985",
+    "media_name": "97"
+  },
+  {
+    "overlay_id": "overlay_48983974_9EDA_198E_41DF_FDAC436172E9",
+    "event_lable": "FB Cucina Modula anta Square BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": 3,
+    "yaw": 52,
+    "panorama_id": "panorama_73886CB8_93CA_1886_41AE_619E34E2F985",
+    "media_name": "97"
+  },
+  {
+    "overlay_id": "overlay_F55F2DCE_DCAF_4B70_41C2_3816F4511A96",
+    "event_lable": "FB Madia Leaf BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -8.24,
+    "yaw": -17.02,
+    "panorama_id": "panorama_73886CB8_93CA_1886_41AE_619E34E2F985",
+    "media_name": "97"
+  },
+  {
+    "overlay_id": "overlay_9C0A4797_954A_088A_4170_ED102A599806",
+    "event_lable": "FB Libreria Lapis BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": 0,
+    "yaw": -61.02,
+    "panorama_id": "panorama_9C0A2046_954A_078A_41CF_4EF9CFA566A5",
+    "media_name": "70"
+  },
+  {
+    "overlay_id": "overlay_9C0A4799_954A_0886_41D9_CBC524F14465",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -26,
+    "yaw": -122,
+    "panorama_id": "panorama_9C0A2046_954A_078A_41CF_4EF9CFA566A5",
+    "media_name": "70"
+  },
+  {
+    "overlay_id": "overlay_9BE1BC2F_92F6_7F9A_41E0_4CA1BDB43973",
+    "event_lable": "FB Isola Onda - Zaha Hadid Architects BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -29,
+    "yaw": -51,
+    "panorama_id": "panorama_9BE191BE_92F6_08FA_41D6_0E0F3F749454",
+    "media_name": "79"
+  },
+  {
+    "overlay_id": "overlay_9BE1BC32_92F6_7F8A_41DC_F35E9014BEB9",
+    "event_lable": "FB Sistema Origina anta Square BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": 6,
+    "yaw": 77,
+    "panorama_id": "panorama_9BE191BE_92F6_08FA_41D6_0E0F3F749454",
+    "media_name": "79"
+  },
+  {
+    "overlay_id": "overlay_ADBF733D_AD69_F95D_41CF_B11096B5D4A6",
+    "event_lable": "FB Sistema Origina anta Square BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -3,
+    "yaw": -114,
+    "panorama_id": "panorama_9BE191BE_92F6_08FA_41D6_0E0F3F749454",
+    "media_name": "79"
+  },
+  {
+    "overlay_id": "overlay_9BE28DF6_92FA_188A_41E3_07A7F11C3E4C",
+    "event_lable": "FB Isola Onda - Zaha Hadid Architects BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -23,
+    "yaw": -30,
+    "panorama_id": "panorama_0061054A_A63D_0AEF_41DA_3DA142A20926",
+    "media_name": "78"
+  },
+  {
+    "overlay_id": "overlay_9BE28DF9_92FA_1886_4170_E67484749890",
+    "event_lable": "FB Sistema Origina anta Square BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -1,
+    "yaw": 11,
+    "panorama_id": "panorama_0061054A_A63D_0AEF_41DA_3DA142A20926",
+    "media_name": "78"
+  },
+  {
+    "overlay_id": "overlay_9BE39CB5_92FA_388E_41D7_7107A558D421",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -30,
+    "yaw": -105,
+    "panorama_id": "panorama_0061054A_A63D_0AEF_41DA_3DA142A20926",
+    "media_name": "78"
+  },
+  {
+    "overlay_id": "overlay_ADBDDFE1_AD69_28E5_41E1_7C956DE94033",
+    "event_lable": "FB Sistema Origina anta Square BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -4,
+    "yaw": 102,
+    "panorama_id": "panorama_0061054A_A63D_0AEF_41DA_3DA142A20926",
+    "media_name": "78"
+  },
+  {
+    "overlay_id": "overlay_9C363357_955A_098A_41E0_A1366FADB901",
+    "event_lable": "FB Armadio Scorrevole Rodin BOX 460",
+    "box_raw": "BOX 460",
+    "pitch": 2,
+    "yaw": 10,
+    "panorama_id": "panorama_9C354EF9_955E_1886_41DC_858B6724EE48",
+    "media_name": "73"
+  },
+  {
+    "overlay_id": "overlay_A98107C6_93CA_088A_41D8_A2E8ABA70653",
+    "event_lable": "FB Madie Aurora BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -31,
+    "yaw": -173,
+    "panorama_id": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+    "media_name": "19"
+  },
+  {
+    "overlay_id": "overlay_D741D92A_AD2F_E967_41E3_0B8AD573DA25",
+    "event_lable": "FB Libreria Trenta BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -4,
+    "yaw": -150,
+    "panorama_id": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+    "media_name": "19"
+  },
+  {
+    "overlay_id": "overlay_D421A701_AD17_1925_41D6_DAE3A433876E",
+    "event_lable": "FB Sistema Diciotto BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -3,
+    "yaw": -91,
+    "panorama_id": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+    "media_name": "19"
+  },
+  {
+    "overlay_id": "overlay_D7349466_AD17_FFEF_41AE_9DC4BCF1ED18",
+    "event_lable": "FB Sistema Diciotto BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -3,
+    "yaw": -21,
+    "panorama_id": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+    "media_name": "19"
+  },
+  {
+    "overlay_id": "overlay_2D764873_AD1B_17E5_41DA_5FFD9B09D062",
+    "event_lable": "FB Tavolino Rio",
+    "box_raw": null,
+    "pitch": -26,
+    "yaw": 41,
+    "panorama_id": "panorama_18929C1B_85F4_44FC_41B3_B709C95F5FB8",
+    "media_name": "19"
+  },
+  {
+    "overlay_id": "overlay_AB715EE1_8E63_87CD_41C0_4AD8A9CB8194",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -48,
+    "yaw": -135,
+    "panorama_id": "panorama_A8236525_8E60_7A55_41D0_44CD4EFFE6C9",
+    "media_name": "11"
+  },
+  {
+    "overlay_id": "overlay_A26019F3_8E60_8DCD_41DA_BF9ED0FAD68F",
+    "event_lable": "FB Tavolino Rio BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -48,
+    "yaw": 89,
+    "panorama_id": "panorama_A8236525_8E60_7A55_41D0_44CD4EFFE6C9",
+    "media_name": "11"
+  },
+  {
+    "overlay_id": "overlay_A5A971B0_A1DA_2177_41C0_AD3FF024CD20",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -17,
+    "yaw": -19,
+    "panorama_id": "panorama_A8236525_8E60_7A55_41D0_44CD4EFFE6C9",
+    "media_name": "11"
+  },
+  {
+    "overlay_id": "overlay_6D12222B_A958_AAF0_4194_725933CF90F7",
+    "event_lable": "FB Tavolino Rio BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -22,
+    "yaw": -44,
+    "panorama_id": "panorama_A8236525_8E60_7A55_41D0_44CD4EFFE6C9",
+    "media_name": "11"
+  },
+  {
+    "overlay_id": "overlay_D29ED299_AD29_FB25_41CA_11A813ADDCA3",
+    "event_lable": "FB Libreria Trenta BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": 2,
+    "yaw": 22,
+    "panorama_id": "panorama_19560208_85F4_5CDC_41A2_C405344A0E34",
+    "media_name": "20"
+  },
+  {
+    "overlay_id": "overlay_D11F1DC3_AD29_6925_41E0_DFCDF0D06D12",
+    "event_lable": "FB Sistema Diciotto BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -4,
+    "yaw": -136,
+    "panorama_id": "panorama_19560208_85F4_5CDC_41A2_C405344A0E34",
+    "media_name": "20"
+  },
+  {
+    "overlay_id": "overlay_D0CB0CB1_AD29_2F65_41E0_A935FF4883D5",
+    "event_lable": "FB Sistema Diciotto BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -2,
+    "yaw": -5,
+    "panorama_id": "panorama_19560208_85F4_5CDC_41A2_C405344A0E34",
+    "media_name": "20"
+  },
+  {
+    "overlay_id": "overlay_D4F6ACFE_AD19_28DF_41D6_F618528195B8",
+    "event_lable": "FB Madie Aurora BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -15,
+    "yaw": 144,
+    "panorama_id": "panorama_19560208_85F4_5CDC_41A2_C405344A0E34",
+    "media_name": "20"
+  },
+  {
+    "overlay_id": "overlay_B2514410_935A_0F86_41DC_379EB028CB85",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -5,
+    "yaw": 10,
+    "panorama_id": "panorama_D1299B1D_83AC_F367_41C4_343D71F38710",
+    "media_name": "3"
+  },
+  {
+    "overlay_id": "overlay_B10FABC0_934A_7886_41E0_FC6D050792CE",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -28,
+    "yaw": -123,
+    "panorama_id": "panorama_D1299B1D_83AC_F367_41C4_343D71F38710",
+    "media_name": "3"
+  },
+  {
+    "overlay_id": "overlay_A367D79B_935A_08BA_41E1_9D37D50233D2",
+    "event_lable": "FB Sistema Diciotto BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -3,
+    "yaw": -74,
+    "panorama_id": "panorama_1F184D72_85F4_474C_41DF_1AA449448618",
+    "media_name": "18"
+  },
+  {
+    "overlay_id": "overlay_BC0DC678_9356_0B86_41E2_5DDE764F25C9",
+    "event_lable": "FB Madie Aurora BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -25,
+    "yaw": 83,
+    "panorama_id": "panorama_1F184D72_85F4_474C_41DF_1AA449448618",
+    "media_name": "18"
+  },
+  {
+    "overlay_id": "overlay_A33C6F74_934E_198E_41C1_8D4603B1F9F5",
+    "event_lable": "FB Libreria Trenta",
+    "box_raw": null,
+    "pitch": -2,
+    "yaw": 146,
+    "panorama_id": "panorama_1F184D72_85F4_474C_41DF_1AA449448618",
+    "media_name": "18"
+  },
+  {
+    "overlay_id": "overlay_A5133A0B_933A_3B9A_41BF_D9566E6BC201",
+    "event_lable": "FB Tavolino Rio BOX 140",
+    "box_raw": "BOX 140",
+    "pitch": -36,
+    "yaw": -62,
+    "panorama_id": "panorama_1F184D72_85F4_474C_41DF_1AA449448618",
+    "media_name": "18"
+  },
+  {
+    "overlay_id": "overlay_B241353C_933E_09FE_41DC_80A5C1982E79",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": 4,
+    "yaw": -7,
+    "panorama_id": "panorama_D21AD553_83A4_B7E3_41DB_B5ADCBAB5B33",
+    "media_name": "2"
+  },
+  {
+    "overlay_id": "overlay_B2E9B6E3_9356_088A_41B7_5EA37AFE6130",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -3,
+    "yaw": 150,
+    "panorama_id": "panorama_D21AD553_83A4_B7E3_41DB_B5ADCBAB5B33",
+    "media_name": "2"
+  },
+  {
+    "overlay_id": "overlay_B28F9BF7_9356_F88A_41D2_0ED85C6F8547",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -35,
+    "yaw": 160,
+    "panorama_id": "panorama_D21AD553_83A4_B7E3_41DB_B5ADCBAB5B33",
+    "media_name": "2"
+  },
+  {
+    "overlay_id": "overlay_20BDF12C_9D76_099E_41DA_E1384A3BDB6F",
+    "event_lable": "FB Poltrona Andy BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -31,
+    "yaw": -154,
+    "panorama_id": "panorama_AE1E6B74_89EB_A706_41A2_70F780C3953C",
+    "media_name": "42"
+  },
+  {
+    "overlay_id": "overlay_AD81FADC_AD18_EB23_41C2_6BD7D79F7B37",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 2,
+    "yaw": -178,
+    "panorama_id": "panorama_AE1E6B74_89EB_A706_41A2_70F780C3953C",
+    "media_name": "42"
+  },
+  {
+    "overlay_id": "overlay_AD89A282_AD29_1B27_41A4_E641B44BEEAB",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -11,
+    "yaw": 136,
+    "panorama_id": "panorama_AE1E6B74_89EB_A706_41A2_70F780C3953C",
+    "media_name": "42"
+  },
+  {
+    "overlay_id": "overlay_9877784F_DAC4_A9F3_41D6_3CE2FD45C3CF",
+    "event_lable": "FB Madia Leaf BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -15.34,
+    "yaw": -117.04,
+    "panorama_id": "panorama_AE1E6B74_89EB_A706_41A2_70F780C3953C",
+    "media_name": "42"
+  },
+  {
+    "overlay_id": "overlay_C8E8966F_934A_0B9A_41D2_A1057F12CF1B",
+    "event_lable": "FB Boiserie BOX 180",
+    "box_raw": "BOX 180",
+    "pitch": -0.17,
+    "yaw": -163.96,
+    "panorama_id": "panorama_6D88F622_8D94_44CC_41DC_C135485D2E47",
+    "media_name": "34"
+  },
+  {
+    "overlay_id": "overlay_C8E4CF83_934B_F88A_41DD_CE183175C53B",
+    "event_lable": "FB Libreria Trenta BOX 180",
+    "box_raw": "BOX 180",
+    "pitch": -6,
+    "yaw": 75,
+    "panorama_id": "panorama_6D88F622_8D94_44CC_41DC_C135485D2E47",
+    "media_name": "34"
+  },
+  {
+    "overlay_id": "overlay_C8F55029_934A_0786_41BA_91BD2E366FC4",
+    "event_lable": "FB Armadio Barret con Portale BOX 180",
+    "box_raw": "BOX 180",
+    "pitch": 1,
+    "yaw": 133,
+    "panorama_id": "panorama_6D88F622_8D94_44CC_41DC_C135485D2E47",
+    "media_name": "34"
+  },
+  {
+    "overlay_id": "overlay_0BC67373_96CE_098A_41C4_C1068886245C",
+    "event_lable": "FB Pouff Windsor BOX 220",
+    "box_raw": "BOX 220",
+    "pitch": -40,
+    "yaw": 160,
+    "panorama_id": "panorama_A3FEC439_89E7_E10E_41D2_5DB1A3B47D18",
+    "media_name": "61"
+  },
+  {
+    "overlay_id": "overlay_31C02D3D_96CA_39FE_41D5_75B2848638D0",
+    "event_lable": "FB Cucina Origina Anta Libeskind022 BOX 220",
+    "box_raw": "BOX 220",
+    "pitch": -30,
+    "yaw": -140,
+    "panorama_id": "panorama_A3FEC439_89E7_E10E_41D2_5DB1A3B47D18",
+    "media_name": "61"
+  },
+  {
+    "overlay_id": "overlay_3B182A87_9536_388A_41B1_583B818794C3",
+    "event_lable": "FB Sistema Origina BOX 220",
+    "box_raw": "BOX 220",
+    "pitch": 5,
+    "yaw": -143,
+    "panorama_id": "panorama_A3FEC439_89E7_E10E_41D2_5DB1A3B47D18",
+    "media_name": "61"
+  },
+  {
+    "overlay_id": "overlay_E15302DC_974A_08BE_41C8_1F53AC3DAD47",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -38,
+    "yaw": -99,
+    "panorama_id": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+    "media_name": "51"
+  },
+  {
+    "overlay_id": "overlay_E5D859C9_974E_1886_41DC_FC912741F41A",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -18,
+    "yaw": 53,
+    "panorama_id": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+    "media_name": "51"
+  },
+  {
+    "overlay_id": "overlay_E40551CF_974E_089A_41D9_6FF6BACAF49D",
+    "event_lable": "FB Libreria Trenta Anta Libeskind022 BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": 2,
+    "yaw": -117,
+    "panorama_id": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+    "media_name": "51"
+  },
+  {
+    "overlay_id": "overlay_E355DBCA_974A_789A_41DD_9751337A12DD",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -29,
+    "yaw": 120,
+    "panorama_id": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+    "media_name": "51"
+  },
+  {
+    "overlay_id": "overlay_EE916931_9776_1986_41B9_AF25EC80CCE9",
+    "event_lable": "FB Tavolini Ink BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -18,
+    "yaw": 108,
+    "panorama_id": "panorama_AE15CAF3_89EE_E102_41CC_B3AB1893BFA2",
+    "media_name": "51"
+  },
+  {
+    "overlay_id": "overlay_FA397BF2_9759_F88A_41A1_6C7A87BB0525",
+    "event_lable": "FB Libreria Trenta BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": 3,
+    "yaw": 150,
+    "panorama_id": "panorama_A12A7873_89EB_A102_41D3_39027C33F8D4",
+    "media_name": "56"
+  },
+  {
+    "overlay_id": "overlay_E44DCC51_975A_FF86_41CB_3509C0684283",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -28,
+    "yaw": 29,
+    "panorama_id": "panorama_A12A7873_89EB_A102_41D3_39027C33F8D4",
+    "media_name": "56"
+  },
+  {
+    "overlay_id": "overlay_E9A5455C_975A_09BE_41DD_6D20F964D0B1",
+    "event_lable": "FB Madia Libeskind022 BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -24,
+    "yaw": -62,
+    "panorama_id": "panorama_A12A7873_89EB_A102_41D3_39027C33F8D4",
+    "media_name": "56"
+  },
+  {
+    "overlay_id": "overlay_B22CF95D_B768_E9DD_41E2_EDB15A909454",
+    "event_lable": "FB Poltrona Vivienne BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -12,
+    "yaw": 101,
+    "panorama_id": "panorama_A12A7873_89EB_A102_41D3_39027C33F8D4",
+    "media_name": "56"
+  },
+  {
+    "overlay_id": "overlay_0D12FDD9_96DA_7886_41D1_8BCF0ED5A96F",
+    "event_lable": "FB Armadio Collezione Momenti. BOX 260",
+    "box_raw": "BOX 260",
+    "pitch": -2,
+    "yaw": -147,
+    "panorama_id": "panorama_A36059F4_89E6_E306_41B7_E5F346DD513B",
+    "media_name": "65"
+  },
+  {
+    "overlay_id": "overlay_38C3D6B6_96DA_088A_41C0_9F8289202C3E",
+    "event_lable": "FB Boiserie BOX 260",
+    "box_raw": "BOX 260",
+    "pitch": 10,
+    "yaw": 85,
+    "panorama_id": "panorama_A36059F4_89E6_E306_41B7_E5F346DD513B",
+    "media_name": "65"
+  },
+  {
+    "overlay_id": "overlay_9DD085E4_96D6_088E_41DE_9D902D2F135F",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -30,
+    "yaw": 147,
+    "panorama_id": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+    "media_name": "85"
+  },
+  {
+    "overlay_id": "overlay_9DD085E6_96D6_088A_41D0_9AF93DF778FC",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -22,
+    "yaw": 124,
+    "panorama_id": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+    "media_name": "85"
+  },
+  {
+    "overlay_id": "overlay_9DD085E8_96D6_0886_41D7_C35CCBDC6F91",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -3,
+    "yaw": -165,
+    "panorama_id": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+    "media_name": "85"
+  },
+  {
+    "overlay_id": "overlay_9DD085E8_96D6_0886_41E2_8792113172C8",
+    "event_lable": "FB Armadio Lewitt Plus BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -4,
+    "yaw": 163,
+    "panorama_id": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+    "media_name": "85"
+  },
+  {
+    "overlay_id": "overlay_421AD5EC_ADEB_18E3_41D5_5283E616C31F",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -15,
+    "yaw": 20,
+    "panorama_id": "panorama_A44770A2_8A19_A102_41C5_97EFB72F2628",
+    "media_name": "85"
+  },
+  {
+    "overlay_id": "overlay_B2BB3EC5_934E_188E_41E0_E233A441B381",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -1,
+    "yaw": -173,
+    "panorama_id": "panorama_B628E2E9_9376_0886_41D4_762C36376A4B",
+    "media_name": "5"
+  },
+  {
+    "overlay_id": "overlay_B2D22E4F_934E_7B9A_41E1_201889A8B715",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -24,
+    "yaw": -106,
+    "panorama_id": "panorama_B628E2E9_9376_0886_41D4_762C36376A4B",
+    "media_name": "5"
+  },
+  {
+    "overlay_id": "overlay_9E1AEE31_954A_1B86_41DD_BA117E42ADF4",
+    "event_lable": "FB Boiserie BOX 660",
+    "box_raw": "BOX 660",
+    "pitch": 10,
+    "yaw": 25,
+    "panorama_id": "panorama_A5D5D333_8A29_A702_41C0_1F2EE63FE805",
+    "media_name": "91"
+  },
+  {
+    "overlay_id": "overlay_9E1AEE33_954A_1B8A_41D1_89662AD2F4C4",
+    "event_lable": "FB Sedia Dea BOX 660",
+    "box_raw": "BOX 660",
+    "pitch": -33,
+    "yaw": 121,
+    "panorama_id": "panorama_A5D5D333_8A29_A702_41C0_1F2EE63FE805",
+    "media_name": "91"
+  },
+  {
+    "overlay_id": "overlay_9E1AEE34_954A_1B8E_41C6_164615DFA563",
+    "event_lable": "FB Tavolo Daniel BOX 660",
+    "box_raw": "BOX 660",
+    "pitch": -31,
+    "yaw": 69,
+    "panorama_id": "panorama_A5D5D333_8A29_A702_41C0_1F2EE63FE805",
+    "media_name": "91"
+  },
+  {
+    "overlay_id": "overlay_A25E8573_8E61_BACD_41DA_FEBFE7A3F3F2",
+    "event_lable": "FB Boiserie camino BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -4,
+    "yaw": -81,
+    "panorama_id": "panorama_BAD99671_8E20_86CD_41D0_9C2F67FF2301",
+    "media_name": "14"
+  },
+  {
+    "overlay_id": "overlay_9E1EE314_954A_098E_41CD_178A61C37372",
+    "event_lable": "FB Boiserie BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": 7,
+    "yaw": 46,
+    "panorama_id": "panorama_BAD99671_8E20_86CD_41D0_9C2F67FF2301",
+    "media_name": "14"
+  },
+  {
+    "overlay_id": "overlay_17B5D248_A95F_EAB0_41A3_985D7A66956A",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -22,
+    "yaw": -178,
+    "panorama_id": "panorama_BAD99671_8E20_86CD_41D0_9C2F67FF2301",
+    "media_name": "14"
+  },
+  {
+    "overlay_id": "overlay_B20D8C2F_B729_2F7D_41DE_2F628B7D843F",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -38,
+    "yaw": 19,
+    "panorama_id": "panorama_9DF48366_96DE_098A_419E_BFB4347F3D55",
+    "media_name": "80-opening"
+  },
+  {
+    "overlay_id": "overlay_AB8F0144_8E61_9ACB_41D2_C9BBAE76BB88",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -37,
+    "yaw": -102,
+    "panorama_id": "panorama_A9F704BB_8E63_BBBD_41DE_09963AB83129",
+    "media_name": "13"
+  },
+  {
+    "overlay_id": "overlay_15EB43E8_A958_A970_41C6_BCC10014BCFB",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -12,
+    "yaw": -52,
+    "panorama_id": "panorama_A9F704BB_8E63_BBBD_41DE_09963AB83129",
+    "media_name": "13"
+  },
+  {
+    "overlay_id": "overlay_9DDA9F6A_96CA_399A_41C0_460CDA4C7ED7",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -47,
+    "yaw": 89,
+    "panorama_id": "panorama_9DD9CEDB_96D6_18BA_41C1_3FA1DFEB3A28",
+    "media_name": "89-open"
+  },
+  {
+    "overlay_id": "overlay_9DDA9F6C_96CA_399E_41BD_53E7B3C54CA2",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -30,
+    "yaw": 62,
+    "panorama_id": "panorama_9DD9CEDB_96D6_18BA_41C1_3FA1DFEB3A28",
+    "media_name": "89-open"
+  },
+  {
+    "overlay_id": "overlay_9DDA9F6D_96CA_399E_41DD_3AA3EEE724E4",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -2,
+    "yaw": 55,
+    "panorama_id": "panorama_9DD9CEDB_96D6_18BA_41C1_3FA1DFEB3A28",
+    "media_name": "89-open"
+  },
+  {
+    "overlay_id": "overlay_9DDA9F6E_96CA_399A_41DE_A9B324592D3B",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": 6,
+    "yaw": -146,
+    "panorama_id": "panorama_9DD9CEDB_96D6_18BA_41C1_3FA1DFEB3A28",
+    "media_name": "89-open"
+  },
+  {
+    "overlay_id": "overlay_5744E946_9EDA_398A_41D3_D545294F54F7",
+    "event_lable": "FB Libreria Collezione Momenti. BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": 10,
+    "yaw": 35,
+    "panorama_id": "panorama_648C73AB_934A_089A_41D5_710FCBD9036E",
+    "media_name": "92"
+  },
+  {
+    "overlay_id": "overlay_48D290FD_9EDA_087E_41E2_528EE6486867",
+    "event_lable": "FB Letto Collezione Momenti. BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": -28,
+    "yaw": 165,
+    "panorama_id": "panorama_648C73AB_934A_089A_41D5_710FCBD9036E",
+    "media_name": "92"
+  },
+  {
+    "overlay_id": "overlay_435320C0_9ED6_0886_41D9_433D1E85F25B",
+    "event_lable": "FB Pouff Windsor BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": -22,
+    "yaw": 132,
+    "panorama_id": "panorama_648C73AB_934A_089A_41D5_710FCBD9036E",
+    "media_name": "92"
+  },
+  {
+    "overlay_id": "overlay_48328681_9ECA_0886_41D4_AA5994F64802",
+    "event_lable": "FB Armadio Collezione Momenti.  BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": 2,
+    "yaw": 119,
+    "panorama_id": "panorama_648C73AB_934A_089A_41D5_710FCBD9036E",
+    "media_name": "92"
+  },
+  {
+    "overlay_id": "overlay_D38F83C4_93CA_088E_41D1_CADCBB434AD8",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 10,
+    "yaw": -20,
+    "panorama_id": "panorama_26227211_85F4_3CCC_41DE_75C7D44BF168",
+    "media_name": "22"
+  },
+  {
+    "overlay_id": "overlay_D140ABAB_93CA_189A_41CF_BF8D2753A8D3",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 1,
+    "yaw": -76,
+    "panorama_id": "panorama_26227211_85F4_3CCC_41DE_75C7D44BF168",
+    "media_name": "22"
+  },
+  {
+    "overlay_id": "overlay_D9A141E6_93FE_088A_41B7_C59DBB0A64E8",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 5,
+    "yaw": 126,
+    "panorama_id": "panorama_26227211_85F4_3CCC_41DE_75C7D44BF168",
+    "media_name": "22"
+  },
+  {
+    "overlay_id": "overlay_9DCE290B_96CA_199A_418E_B978D248AED0",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -47,
+    "yaw": 89,
+    "panorama_id": "panorama_9DC7DB9F_973A_38BA_41CB_606162433F73",
+    "media_name": "86-open"
+  },
+  {
+    "overlay_id": "overlay_9DCE290D_96CA_199E_41E1_B060ED8A13B1",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -30,
+    "yaw": 71,
+    "panorama_id": "panorama_9DC7DB9F_973A_38BA_41CB_606162433F73",
+    "media_name": "86-open"
+  },
+  {
+    "overlay_id": "overlay_9DCE290F_96CA_199A_41DF_7AB729F26F16",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": 2,
+    "yaw": -90,
+    "panorama_id": "panorama_9DC7DB9F_973A_38BA_41CB_606162433F73",
+    "media_name": "86-open"
+  },
+  {
+    "overlay_id": "overlay_9DCE2910_96CA_1986_41D6_6165FE4070DE",
+    "event_lable": "FB Armadio Lewitt Plus BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -9,
+    "yaw": 148,
+    "panorama_id": "panorama_9DC7DB9F_973A_38BA_41CB_606162433F73",
+    "media_name": "86-open"
+  },
+  {
+    "overlay_id": "overlay_B9B70895_8EE1_8A75_41B0_F92C75D7307F",
+    "event_lable": "FB Pouff Windsor BOX 160",
+    "box_raw": "BOX 160",
+    "pitch": -40,
+    "yaw": 32,
+    "panorama_id": "panorama_7F95BDB7_8FB4_4734_41DE_09D921B9B8CA",
+    "media_name": "17"
+  },
+  {
+    "overlay_id": "overlay_CD85FDCF_8EEF_85D5_41DD_80AB681C2207",
+    "event_lable": "FB Boiserie TV BOX 160",
+    "box_raw": "BOX 160",
+    "pitch": 14,
+    "yaw": 38,
+    "panorama_id": "panorama_7F95BDB7_8FB4_4734_41DE_09D921B9B8CA",
+    "media_name": "17"
+  },
+  {
+    "overlay_id": "overlay_B36965D7_8EE0_85F5_41CE_54A0204E8B11",
+    "event_lable": "FB Libreria Lapis BOX 160",
+    "box_raw": "BOX 160",
+    "pitch": 4,
+    "yaw": 110,
+    "panorama_id": "panorama_7F95BDB7_8FB4_4734_41DE_09D921B9B8CA",
+    "media_name": "17"
+  },
+  {
+    "overlay_id": "overlay_37354E21_954A_FB86_41D1_623A012E406F",
+    "event_lable": "FB Armadio Profile/ Block BOX 160",
+    "box_raw": "BOX 160",
+    "pitch": -4,
+    "yaw": -171,
+    "panorama_id": "panorama_7F95BDB7_8FB4_4734_41DE_09D921B9B8CA",
+    "media_name": "17"
+  },
+  {
+    "overlay_id": "overlay_57201A6C_9EDA_1B9E_41D0_AA376DDA84C4",
+    "event_lable": "FB Tavolo Madeira BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -42,
+    "yaw": -83,
+    "panorama_id": "panorama_6CB35494_935A_088E_41DE_B3AAB6998D37",
+    "media_name": "95"
+  },
+  {
+    "overlay_id": "overlay_48D03A6F_9EDA_1B9A_41E1_DEDDB7B4890E",
+    "event_lable": "FB Sedia Nina BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -27,
+    "yaw": -50,
+    "panorama_id": "panorama_6CB35494_935A_088E_41DE_B3AAB6998D37",
+    "media_name": "95"
+  },
+  {
+    "overlay_id": "overlay_48D09A71_9EDA_1B86_4197_1D6B65427F6A",
+    "event_lable": "FB Cucina Modula anta Square BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": 5,
+    "yaw": 71,
+    "panorama_id": "panorama_6CB35494_935A_088E_41DE_B3AAB6998D37",
+    "media_name": "95"
+  },
+  {
+    "overlay_id": "overlay_F4190B73_DCAB_4F10_41D8_ACB87DE04452",
+    "event_lable": "FB Madia Leaf BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -8.92,
+    "yaw": -42.75,
+    "panorama_id": "panorama_6CB35494_935A_088E_41DE_B3AAB6998D37",
+    "media_name": "95"
+  },
+  {
+    "overlay_id": "overlay_9C306745_9556_098E_41B9_DF237C87B997",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -43,
+    "yaw": -177,
+    "panorama_id": "panorama_9C2FBCC8_954A_7886_41E0_985E25992051",
+    "media_name": "72"
+  },
+  {
+    "overlay_id": "overlay_9C306748_9556_0986_41D8_3BDF7AC5A6A5",
+    "event_lable": "FB Madia Onda - Zaha Hadid Architects BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -23,
+    "yaw": -115,
+    "panorama_id": "panorama_9C2FBCC8_954A_7886_41E0_985E25992051",
+    "media_name": "72"
+  },
+  {
+    "overlay_id": "overlay_9C3067AA_9556_089A_41D6_537A68B366F7",
+    "event_lable": "FB Libreria Trenta BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 6,
+    "yaw": -58,
+    "panorama_id": "panorama_9C2FBCC8_954A_7886_41E0_985E25992051",
+    "media_name": "72"
+  },
+  {
+    "overlay_id": "overlay_C11223C3_933E_088A_41D5_E8039874259B",
+    "event_lable": "FB Armadio Profile/ Leather BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": 1,
+    "yaw": 12,
+    "panorama_id": "panorama_7AF041CD_8F94_3F54_41D8_1D1FEFB54F19",
+    "media_name": "38"
+  },
+  {
+    "overlay_id": "overlay_C26C1446_933A_0F8A_41DB_F3974808F1BB",
+    "event_lable": "FB Cabina Armadio Telaio BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": 4,
+    "yaw": 78,
+    "panorama_id": "panorama_7AF041CD_8F94_3F54_41D8_1D1FEFB54F19",
+    "media_name": "38"
+  },
+  {
+    "overlay_id": "overlay_C067DF69_9336_7986_41E2_5723D134F0A1",
+    "event_lable": "FB Cassettiera Square BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -22,
+    "yaw": 41,
+    "panorama_id": "panorama_7AF041CD_8F94_3F54_41D8_1D1FEFB54F19",
+    "media_name": "38"
+  },
+  {
+    "overlay_id": "overlay_4C3B5B38_9EF6_1986_419E_8F777F4F5ED4",
+    "event_lable": "FB Libreria Collezione Momenti. BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": 6,
+    "yaw": 21,
+    "panorama_id": "panorama_9BA9CC38_9376_1F86_41E0_BE16060FD435",
+    "media_name": "93"
+  },
+  {
+    "overlay_id": "overlay_4C09FB3A_9EF6_19FA_41CE_851D374B7981",
+    "event_lable": "FB Letto Collezione Momenti. BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": -44,
+    "yaw": -103,
+    "panorama_id": "panorama_9BA9CC38_9376_1F86_41E0_BE16060FD435",
+    "media_name": "93"
+  },
+  {
+    "overlay_id": "overlay_4C092B3B_9EF6_19FA_41C1_141847C1992A",
+    "event_lable": "FB Pouff Windsor BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": -56,
+    "yaw": 140,
+    "panorama_id": "panorama_9BA9CC38_9376_1F86_41E0_BE16060FD435",
+    "media_name": "93"
+  },
+  {
+    "overlay_id": "overlay_4C0A5B3C_9EF6_19FE_41A8_D54DA83ECAB6",
+    "event_lable": "FB Armadio Collezione Momenti.  BOX 360",
+    "box_raw": "BOX 360",
+    "pitch": 11,
+    "yaw": 100,
+    "panorama_id": "panorama_9BA9CC38_9376_1F86_41E0_BE16060FD435",
+    "media_name": "93"
+  },
+  {
+    "overlay_id": "overlay_A80BF6AA_8E60_865F_41CD_A67E83197C60",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -37,
+    "yaw": -20,
+    "panorama_id": "panorama_A85C88CD_8E63_8BD5_41D6_AEB961AE89C5",
+    "media_name": "12"
+  },
+  {
+    "overlay_id": "overlay_12E68D13_96CE_198A_4180_35D2DD0FADA7",
+    "event_lable": "FB Poltrona Isabelle BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -34,
+    "yaw": 89,
+    "panorama_id": "panorama_A0F4D671_89EA_A11E_41C8_DADFBA87FC05",
+    "media_name": "58"
+  },
+  {
+    "overlay_id": "overlay_1C3CCA56_96D6_3B8A_41E2_B9BD77EFBBE3",
+    "event_lable": "FB Specchio Polar BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -10,
+    "yaw": 123,
+    "panorama_id": "panorama_A0F4D671_89EA_A11E_41C8_DADFBA87FC05",
+    "media_name": "58"
+  },
+  {
+    "overlay_id": "overlay_B285C908_9356_3986_41D8_52F7FA9A14D6",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -7,
+    "yaw": -135,
+    "panorama_id": "panorama_B09866BA_8EE1_87BF_41D4_C35C9CF30E47",
+    "media_name": "4"
+  },
+  {
+    "overlay_id": "overlay_B152A38F_934A_089A_41D3_FF192B245430",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -42,
+    "yaw": 150,
+    "panorama_id": "panorama_B09866BA_8EE1_87BF_41D4_C35C9CF30E47",
+    "media_name": "4"
+  },
+  {
+    "overlay_id": "overlay_B003DAE1_934A_3886_41D2_488C2F2A12A7",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -5,
+    "yaw": 135,
+    "panorama_id": "panorama_B09866BA_8EE1_87BF_41D4_C35C9CF30E47",
+    "media_name": "4"
+  },
+  {
+    "overlay_id": "overlay_2BE7CB1D_9D7A_19BE_41B9_06AC9E7EE6AB",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -21,
+    "yaw": 91,
+    "panorama_id": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+    "media_name": "44"
+  },
+  {
+    "overlay_id": "overlay_2BEBBB27_9D7A_198A_41C4_D9E5550D9F9A",
+    "event_lable": "FB Divano Melrose BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -15,
+    "yaw": 130,
+    "panorama_id": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+    "media_name": "44"
+  },
+  {
+    "overlay_id": "overlay_2BEBAB29_9D7A_1986_41DA_177D4F148753",
+    "event_lable": "FB Poltrona Andy BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -35,
+    "yaw": 144,
+    "panorama_id": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+    "media_name": "44"
+  },
+  {
+    "overlay_id": "overlay_2BEA8B2A_9D7A_199A_41C3_44B122C7CC99",
+    "event_lable": "FB Sistema Diciotto BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -1,
+    "yaw": -120,
+    "panorama_id": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+    "media_name": "44"
+  },
+  {
+    "overlay_id": "overlay_AD81798E_AD19_E93F_41E3_A0499177E7C0",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 3,
+    "yaw": 129,
+    "panorama_id": "panorama_AE9958BA_89EA_E102_41D0_411CFDD887C9",
+    "media_name": "44"
+  },
+  {
+    "overlay_id": "overlay_50FF92E2_9ECE_088A_41AD_0939EF6C587C",
+    "event_lable": "FB Tavolo Madeira BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -30,
+    "yaw": 22,
+    "panorama_id": "panorama_72BB3CFC_93C9_F87E_41C8_70C2B43AA971",
+    "media_name": "96"
+  },
+  {
+    "overlay_id": "overlay_52EF440C_9ECE_0F9E_41C8_B1B2077761A6",
+    "event_lable": "FB Sedia Nina BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -25,
+    "yaw": -10,
+    "panorama_id": "panorama_72BB3CFC_93C9_F87E_41C8_70C2B43AA971",
+    "media_name": "96"
+  },
+  {
+    "overlay_id": "overlay_53068365_9ECA_098E_41D0_597F59E2C4A0",
+    "event_lable": "FB Cucina Modula anta Square BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": 2,
+    "yaw": 58,
+    "panorama_id": "panorama_72BB3CFC_93C9_F87E_41C8_70C2B43AA971",
+    "media_name": "96"
+  },
+  {
+    "overlay_id": "overlay_F42318C7_DCA9_497F_41E5_C44E16957CA5",
+    "event_lable": "FB Madia Leaf BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -3.94,
+    "yaw": 2.7,
+    "panorama_id": "panorama_72BB3CFC_93C9_F87E_41C8_70C2B43AA971",
+    "media_name": "96"
+  },
+  {
+    "overlay_id": "overlay_9E108D42_9556_198A_41A6_73A9A8BD5EED",
+    "event_lable": "FB Sedia Dea BOX 660",
+    "box_raw": "BOX 660",
+    "pitch": -51,
+    "yaw": -160,
+    "panorama_id": "panorama_A4CE7CD8_8A26_A10E_41D3_7F979D360CE6",
+    "media_name": "90"
+  },
+  {
+    "overlay_id": "overlay_9E108E16_9556_1B8A_41D9_CCCB3436A495",
+    "event_lable": "FB Tavolo Daniel BOX 660",
+    "box_raw": "BOX 660",
+    "pitch": -50,
+    "yaw": 118,
+    "panorama_id": "panorama_A4CE7CD8_8A26_A10E_41D3_7F979D360CE6",
+    "media_name": "90"
+  },
+  {
+    "overlay_id": "overlay_9E529DB4_95DA_388E_41E3_9FFF4382CC89",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -38,
+    "yaw": 19,
+    "panorama_id": "panorama_9E517695_95D6_088E_41E0_823D2B99A47D",
+    "media_name": "82-opening"
+  },
+  {
+    "overlay_id": "overlay_9E531185_95DA_088E_41BC_44F526EB4367",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -24,
+    "yaw": -92,
+    "panorama_id": "panorama_9E517695_95D6_088E_41E0_823D2B99A47D",
+    "media_name": "82-opening"
+  },
+  {
+    "overlay_id": "overlay_9D918B76_9756_198A_41CE_6E87CFCEA262",
+    "event_lable": "FB Armadio Barret BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": 6,
+    "yaw": 40,
+    "panorama_id": "panorama_9D913B0B_9756_799A_41D9_9A6F82A57E02",
+    "media_name": "83"
+  },
+  {
+    "overlay_id": "overlay_9D918B78_9756_1986_41DF_DA50B2FEF821",
+    "event_lable": "FB Sgabello Lola BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -40,
+    "yaw": -74,
+    "panorama_id": "panorama_9D913B0B_9756_799A_41D9_9A6F82A57E02",
+    "media_name": "83"
+  },
+  {
+    "overlay_id": "overlay_9D93DE8B_975A_389A_41DF_64D3F93FE7FB",
+    "event_lable": "FB Cucina Anta Telaio Alluminio vetro BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -26,
+    "yaw": -132,
+    "panorama_id": "panorama_9D913B0B_9756_799A_41D9_9A6F82A57E02",
+    "media_name": "83"
+  },
+  {
+    "overlay_id": "overlay_9BF6F700_92DA_0986_41DD_07248BA9BBD5",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -31,
+    "yaw": -112,
+    "panorama_id": "panorama_9C08DC26_9536_3F8A_41D3_E836FF75A76A",
+    "media_name": "69"
+  },
+  {
+    "overlay_id": "overlay_9C05A5D2_953E_088A_41E1_4C2BEC3E2B9F",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -30,
+    "yaw": 75,
+    "panorama_id": "panorama_9C08DC26_9536_3F8A_41D3_E836FF75A76A",
+    "media_name": "69"
+  },
+  {
+    "overlay_id": "overlay_9BEE7B7C_92CA_F87E_41D9_C8A4869FE8AD",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -37,
+    "yaw": -66,
+    "panorama_id": "panorama_9BEE5897_92CA_388A_41E2_7E5787D58B4B",
+    "media_name": "71"
+  },
+  {
+    "overlay_id": "overlay_ADA6564B_AD1B_3B25_41E1_FBC48A5D46ED",
+    "event_lable": "FB Libreria Trenta BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 1,
+    "yaw": -43,
+    "panorama_id": "panorama_9BEE5897_92CA_388A_41E2_7E5787D58B4B",
+    "media_name": "71"
+  },
+  {
+    "overlay_id": "overlay_ADA7A609_AD19_1B25_41C7_B50E96B52530",
+    "event_lable": "FB Madia Onda - Zaha Hadid Architects BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -10,
+    "yaw": -66,
+    "panorama_id": "panorama_9BEE5897_92CA_388A_41E2_7E5787D58B4B",
+    "media_name": "71"
+  },
+  {
+    "overlay_id": "overlay_ADA8B5AB_AD17_7965_41E1_8C2BDE2749CD",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -12,
+    "yaw": -123,
+    "panorama_id": "panorama_9BEE5897_92CA_388A_41E2_7E5787D58B4B",
+    "media_name": "71"
+  },
+  {
+    "overlay_id": "overlay_9DFBBE25_96CA_7B8E_41C9_F2E7332D668E",
+    "event_lable": "FB Sedia Dea BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -47,
+    "yaw": 89,
+    "panorama_id": "panorama_9DF9AD27_96D6_198A_41C0_EEF1916FE3DB",
+    "media_name": "87-open"
+  },
+  {
+    "overlay_id": "overlay_9DFBBE26_96CA_7B8A_41C5_C4D249C6869E",
+    "event_lable": "FB Tavolo Madeira BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -30,
+    "yaw": 71,
+    "panorama_id": "panorama_9DF9AD27_96D6_198A_41C0_EEF1916FE3DB",
+    "media_name": "87-open"
+  },
+  {
+    "overlay_id": "overlay_9DFBBE28_96CA_7B86_41BF_57155AE1356D",
+    "event_lable": "FB Armadio Lumia BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": 2,
+    "yaw": -90,
+    "panorama_id": "panorama_9DF9AD27_96D6_198A_41C0_EEF1916FE3DB",
+    "media_name": "87-open"
+  },
+  {
+    "overlay_id": "overlay_9DFBBE29_96CA_7B86_41CC_0B2E7648C3B0",
+    "event_lable": "FB Armadio Lewitt Plus BOX 640",
+    "box_raw": "BOX 640",
+    "pitch": -9,
+    "yaw": 148,
+    "panorama_id": "panorama_9DF9AD27_96D6_198A_41C0_EEF1916FE3DB",
+    "media_name": "87-open"
+  },
+  {
+    "overlay_id": "overlay_D2F65792_93DE_088A_41D1_EF48820AB977",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 4,
+    "yaw": -121,
+    "panorama_id": "panorama_1BA7C729_858C_C4DC_41CB_4633ACE5BE99",
+    "media_name": "25"
+  },
+  {
+    "overlay_id": "overlay_D17F3C43_93DE_1F8A_41D0_A1494D4BC69D",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 5,
+    "yaw": -65,
+    "panorama_id": "panorama_1BA7C729_858C_C4DC_41CB_4633ACE5BE99",
+    "media_name": "25"
+  },
+  {
+    "overlay_id": "overlay_02C25D58_96DA_1986_41DB_3445CCEC3DA6",
+    "event_lable": "Armadio Lewitt Plus BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -4,
+    "yaw": 53,
+    "panorama_id": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+    "media_name": "59b"
+  },
+  {
+    "overlay_id": "overlay_192ED1EC_96CA_089E_41C0_E0F427124965",
+    "event_lable": "FB Cabina Armadio Lapis BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -5,
+    "yaw": 5,
+    "panorama_id": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+    "media_name": "59b"
+  },
+  {
+    "overlay_id": "overlay_1A3AEDCA_96F6_F89A_41DF_18DE3AC674FF",
+    "event_lable": "Armadio Lewitt Plus BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -2,
+    "yaw": -92,
+    "panorama_id": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+    "media_name": "59b"
+  },
+  {
+    "overlay_id": "overlay_9E26D156_957A_098A_41C9_A08E967933D3",
+    "event_lable": "FB Boiserie BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": 7,
+    "yaw": -5,
+    "panorama_id": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+    "media_name": "59b"
+  },
+  {
+    "overlay_id": "overlay_7E221CC1_A615_FBDD_41DC_9FD54EF14026",
+    "event_lable": "Cabina Armadio LApis BOX 290",
+    "box_raw": "BOX 290",
+    "pitch": -14,
+    "yaw": -158,
+    "panorama_id": "panorama_00FFA1DB_96F6_08BA_41E2_81BB75222E8E",
+    "media_name": "59b"
+  },
+  {
+    "overlay_id": "overlay_EE32E86B_975E_079A_41C3_6372B4F6B467",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -30,
+    "yaw": -135,
+    "panorama_id": "panorama_A1BFFA72_89E9_6102_41B8_369ED772D9ED",
+    "media_name": "53"
+  },
+  {
+    "overlay_id": "overlay_17C65D80_9756_1886_41C1_028FC375389E",
+    "event_lable": "FB Libreria Trenta Anta Libeskind022 BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": 3,
+    "yaw": 152,
+    "panorama_id": "panorama_A1BFFA72_89E9_6102_41B8_369ED772D9ED",
+    "media_name": "53"
+  },
+  {
+    "overlay_id": "overlay_EA4A08CE_9756_789A_41DA_4B42EAB6CAC1",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -37,
+    "yaw": -29,
+    "panorama_id": "panorama_A1BFFA72_89E9_6102_41B8_369ED772D9ED",
+    "media_name": "53"
+  },
+  {
+    "overlay_id": "overlay_B227B4A8_B719_7F63_41DD_5319174A8211",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -12,
+    "yaw": -56,
+    "panorama_id": "panorama_A1BFFA72_89E9_6102_41B8_369ED772D9ED",
+    "media_name": "53"
+  },
+  {
+    "overlay_id": "overlay_2BD17B1F_9D76_19BA_41B9_F6B09CBFD513",
+    "event_lable": "FB Poltrona Andy BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -43,
+    "yaw": 110,
+    "panorama_id": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+    "media_name": "41"
+  },
+  {
+    "overlay_id": "overlay_21478150_9D4A_0986_41B9_B2C6D0D59B5E",
+    "event_lable": "FB Sistema Diciotto BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -5,
+    "yaw": 15,
+    "panorama_id": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+    "media_name": "41"
+  },
+  {
+    "overlay_id": "overlay_AD82A511_AD1B_1925_41E4_BA7BB0B6DEC8",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 2,
+    "yaw": 131,
+    "panorama_id": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+    "media_name": "41"
+  },
+  {
+    "overlay_id": "overlay_AD8A27A7_AD2B_196D_41DC_631FB5282F59",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -8,
+    "yaw": 105,
+    "panorama_id": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+    "media_name": "41"
+  },
+  {
+    "overlay_id": "overlay_98974C15_DAC5_A996_41E7_3D4BECDDBF7B",
+    "event_lable": "FB Madia Leaf  BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -25.9,
+    "yaw": -169.16,
+    "panorama_id": "panorama_A29EFBC0_89E9_677E_41C5_29ABEFE49068",
+    "media_name": "41"
+  },
+  {
+    "overlay_id": "overlay_C06D63F9_933A_0886_41DA_F885F7334C75",
+    "event_lable": "FB Armadio Profile/ Leather BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": 5,
+    "yaw": -11,
+    "panorama_id": "panorama_776312F4_8F94_3D34_41D1_A038C7844C12",
+    "media_name": "37"
+  },
+  {
+    "overlay_id": "overlay_C12D7B12_933A_198A_41D2_9593E22ED15E",
+    "event_lable": "FB Cabina Armadio Telaio BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": 1,
+    "yaw": 165,
+    "panorama_id": "panorama_776312F4_8F94_3D34_41D1_A038C7844C12",
+    "media_name": "37"
+  },
+  {
+    "overlay_id": "overlay_C1D0DB94_9336_188E_41BA_E2167A115344",
+    "event_lable": "FB Cassettiera Square BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -49,
+    "yaw": -177,
+    "panorama_id": "panorama_776312F4_8F94_3D34_41D1_A038C7844C12",
+    "media_name": "37"
+  },
+  {
+    "overlay_id": "overlay_FAE9B348_974A_0986_41E0_3AFD7C61D8EC",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -27,
+    "yaw": 144,
+    "panorama_id": "panorama_AE3CBC56_89EF_6102_41DD_45E4076F9E6C",
+    "media_name": "49"
+  },
+  {
+    "overlay_id": "overlay_E79D5700_974A_0986_41D5_D884F658D446",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": 4,
+    "yaw": 43,
+    "panorama_id": "panorama_AE3CBC56_89EF_6102_41DD_45E4076F9E6C",
+    "media_name": "49"
+  },
+  {
+    "overlay_id": "overlay_E5253435_9756_0F8E_41BD_2C81365B8835",
+    "event_lable": "FB Poltrona Vivienne BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -20,
+    "yaw": -74,
+    "panorama_id": "panorama_AE3CBC56_89EF_6102_41DD_45E4076F9E6C",
+    "media_name": "49"
+  },
+  {
+    "overlay_id": "overlay_B22DCD73_B769_29E5_4194_411254FC0B14",
+    "event_lable": "FB Madia Libeskind022 BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -11,
+    "yaw": 109,
+    "panorama_id": "panorama_AE3CBC56_89EF_6102_41DD_45E4076F9E6C",
+    "media_name": "49"
+  },
+  {
+    "overlay_id": "overlay_A5BDAE82_8E67_864F_4174_6066FEE0F5DD",
+    "event_lable": "FB Tavolino Rio BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -27,
+    "yaw": -120,
+    "panorama_id": "panorama_6C73EA94_8C8B_CDF4_41DB_8D2CF0C6C38F",
+    "media_name": "10"
+  },
+  {
+    "overlay_id": "overlay_05A980AD_A93F_67F0_41DE_141F65243FA6",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -37,
+    "yaw": 50,
+    "panorama_id": "panorama_6C73EA94_8C8B_CDF4_41DB_8D2CF0C6C38F",
+    "media_name": "10"
+  },
+  {
+    "overlay_id": "overlay_1B223780_A938_A9B0_41D3_374F52BD709A",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -17,
+    "yaw": -88,
+    "panorama_id": "panorama_6C73EA94_8C8B_CDF4_41DB_8D2CF0C6C38F",
+    "media_name": "10"
+  },
+  {
+    "overlay_id": "overlay_D21DFE80_93CA_1886_4191_40A2CAAFF648",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 10,
+    "yaw": 80,
+    "panorama_id": "panorama_1A17496C_858C_CF54_41DE_A3202E247916",
+    "media_name": "24"
+  },
+  {
+    "overlay_id": "overlay_B010D1DA_B337_3927_41A5_C48CA6E9A4CF",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 3,
+    "yaw": -27,
+    "panorama_id": "panorama_1A17496C_858C_CF54_41DE_A3202E247916",
+    "media_name": "24"
+  },
+  {
+    "overlay_id": "overlay_B01130E6_B339_78EF_41D5_C695233B3857",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 1,
+    "yaw": -83,
+    "panorama_id": "panorama_1A17496C_858C_CF54_41DE_A3202E247916",
+    "media_name": "24"
+  },
+  {
+    "overlay_id": "overlay_E54954B4_975A_088E_41D0_5FEA24D194F5",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -33,
+    "yaw": -26,
+    "panorama_id": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+    "media_name": "50"
+  },
+  {
+    "overlay_id": "overlay_B22624EE_B71B_18FF_41D5_9D42C573C2F2",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -9,
+    "yaw": 131,
+    "panorama_id": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+    "media_name": "50"
+  },
+  {
+    "overlay_id": "overlay_B228C950_B717_2923_41DE_ED7D148DC07C",
+    "event_lable": "FB Libreria Trenta BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": 2,
+    "yaw": -33,
+    "panorama_id": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+    "media_name": "50"
+  },
+  {
+    "overlay_id": "overlay_B22A8713_B76B_1925_41E5_40ED0196E2C8",
+    "event_lable": "FB Madia Libeskind022 BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -12,
+    "yaw": 28,
+    "panorama_id": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+    "media_name": "50"
+  },
+  {
+    "overlay_id": "overlay_B22E69C7_B76B_E92D_4183_5C460939EDBD",
+    "event_lable": "FB Poltrona Vivienne BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -14,
+    "yaw": -79,
+    "panorama_id": "panorama_AE2C7C07_89EE_A102_41C9_12A85371CB1F",
+    "media_name": "50"
+  },
+  {
+    "overlay_id": "overlay_9D58A68B_97D6_0899_41B6_2ABD7053BD5D",
+    "event_lable": "FB Armadio Profile/ Leather  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": 6,
+    "yaw": -58,
+    "panorama_id": "panorama_919E4669_8E1A_9FCB_41D5_291F50DA2468",
+    "media_name": "26"
+  },
+  {
+    "overlay_id": "overlay_9D5C63AD_97CE_089E_41E3_125C54E637ED",
+    "event_lable": "FB Armadio Profile/ Leather  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": 5,
+    "yaw": 84,
+    "panorama_id": "panorama_919E4669_8E1A_9FCB_41D5_291F50DA2468",
+    "media_name": "26"
+  },
+  {
+    "overlay_id": "overlay_CC4C1D7A_935A_787A_41E0_C6AF6D0F17E2",
+    "event_lable": "FB Libreria Trenta BOX 180",
+    "box_raw": "BOX 180",
+    "pitch": -8,
+    "yaw": -43,
+    "panorama_id": "panorama_6C5695D5_8D97_C774_41E0_3530A2F92450",
+    "media_name": "33"
+  },
+  {
+    "overlay_id": "overlay_EE3A9326_974A_098A_41E1_AC28EE37217E",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -44,
+    "yaw": 142,
+    "panorama_id": "panorama_A36D846D_89E7_A106_41B7_A0EBA93C6A9D",
+    "media_name": "60"
+  },
+  {
+    "overlay_id": "overlay_0B9B8C9C_9536_18BE_41D6_C3AD0F597A61",
+    "event_lable": "FB Sistema Origina BOX 220",
+    "box_raw": "BOX 220",
+    "pitch": -4,
+    "yaw": -51,
+    "panorama_id": "panorama_A36D846D_89E7_A106_41B7_A0EBA93C6A9D",
+    "media_name": "60"
+  },
+  {
+    "overlay_id": "overlay_B223AF02_B719_6927_41DB_E4A88DB03437",
+    "event_lable": "FB Divano Camden BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -10,
+    "yaw": 154,
+    "panorama_id": "panorama_A36D846D_89E7_A106_41B7_A0EBA93C6A9D",
+    "media_name": "60"
+  },
+  {
+    "overlay_id": "overlay_B22566D5_B719_1B2D_41E1_B694F533E3EF",
+    "event_lable": "FB Poltrone Astor BOX 200",
+    "box_raw": "BOX 200",
+    "pitch": -12,
+    "yaw": 112,
+    "panorama_id": "panorama_A36D846D_89E7_A106_41B7_A0EBA93C6A9D",
+    "media_name": "60"
+  },
+  {
+    "overlay_id": "overlay_9C0D6FBD_954E_18FE_41C5_3886497EA5D9",
+    "event_lable": "FB Libreria Lapis BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": 5,
+    "yaw": 10,
+    "panorama_id": "panorama_9C0D53B9_954E_0886_41E2_3E4B3538B899",
+    "media_name": "67"
+  },
+  {
+    "overlay_id": "overlay_9C0D6FC1_954E_1886_41E0_C2B4376E2727",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -19,
+    "yaw": 33,
+    "panorama_id": "panorama_9C0D53B9_954E_0886_41E2_3E4B3538B899",
+    "media_name": "67"
+  },
+  {
+    "overlay_id": "overlay_ADB2FA1D_AD78_EB5D_41E0_7C84A8F7F915",
+    "event_lable": "FB Cucina Origina Anta Sagoma 37 BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": -9,
+    "yaw": 55,
+    "panorama_id": "panorama_9C0D53B9_954E_0886_41E2_3E4B3538B899",
+    "media_name": "67"
+  },
+  {
+    "overlay_id": "overlay_ADB435E0_AD7F_78E3_41CD_B54B359E2CCA",
+    "event_lable": "FB Sistema Origina BOX 420",
+    "box_raw": "BOX 420",
+    "pitch": 3,
+    "yaw": 86,
+    "panorama_id": "panorama_9C0D53B9_954E_0886_41E2_3E4B3538B899",
+    "media_name": "67"
+  },
+  {
+    "overlay_id": "overlay_27EAF60F_8595_C4D4_41BE_FA64A89A145F",
+    "event_lable": "FB Tavolino Rio BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -41,
+    "yaw": 88,
+    "panorama_id": "panorama_A45B8D81_8E61_8A4D_41D0_65B85181FE74",
+    "media_name": "9"
+  },
+  {
+    "overlay_id": "overlay_A63A55AE_8E60_9A57_41DD_BEF8EF2B2AF4",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -20,
+    "yaw": 160,
+    "panorama_id": "panorama_A45B8D81_8E61_8A4D_41D0_65B85181FE74",
+    "media_name": "9"
+  },
+  {
+    "overlay_id": "overlay_1EC35A39_A938_9AD0_41CD_7497BB890F1B",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -20,
+    "yaw": 80,
+    "panorama_id": "panorama_A45B8D81_8E61_8A4D_41D0_65B85181FE74",
+    "media_name": "9"
+  },
+  {
+    "overlay_id": "overlay_9D752BFF_97DE_187A_4161_8D9D86237F21",
+    "event_lable": "FB Armadio battente Aurora  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": 3,
+    "yaw": -92,
+    "panorama_id": "panorama_2595A324_858D_DCD4_41DF_3254403BF6AB",
+    "media_name": "28"
+  },
+  {
+    "overlay_id": "overlay_9D76796B_97DA_F99A_41C9_A002CBB8C919",
+    "event_lable": "FB Armadio Profile/ Solid  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": 1,
+    "yaw": 85,
+    "panorama_id": "panorama_2595A324_858D_DCD4_41DF_3254403BF6AB",
+    "media_name": "28"
+  },
+  {
+    "overlay_id": "overlay_9D8735EB_973A_089A_41E0_CDEE6F04CBC0",
+    "event_lable": "FB Sgabello Lola BOX 620",
+    "box_raw": "BOX 620",
+    "pitch": -21,
+    "yaw": -33,
+    "panorama_id": "panorama_208F2A18_858C_CCFC_41B4_46D1F5CE11DD",
+    "media_name": "30"
+  },
+  {
+    "overlay_id": "overlay_9BC9FCB5_92C9_F88E_41C8_4CD5DBD0530A",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -36,
+    "yaw": 57,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_9BCB02A7_92CA_088A_41DD_E5F4E1DC5C54",
+    "event_lable": "FB Tavolo Leeds BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -25,
+    "yaw": -93,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_9BCD2EB2_92CE_188A_41E2_99A99EECDDAE",
+    "event_lable": "FB Sedia Nives BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -40,
+    "yaw": -62,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_9BCF434B_92CA_099A_41BC_4D442B41803A",
+    "event_lable": "FB Boiserie BOX 440",
+    "box_raw": "BOX 440",
+    "pitch": -1,
+    "yaw": -69,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_ADA53E9E_AD19_6B5F_41DF_58016476DDCD",
+    "event_lable": "FB Libreria Trenta BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 2,
+    "yaw": 102,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_ADA73DDC_AD19_6923_41E5_5E69C1D2FA0A",
+    "event_lable": "FB Madia Onda - Zaha Hadid Architects BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -9,
+    "yaw": 127,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_ADA9EE3B_AD68_EB65_41D8_D5D94D9F2038",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -14,
+    "yaw": 157,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_ADC1A6F5_AD19_18ED_41AA_5AB8BB8A6CB6",
+    "event_lable": "FB Isola Onda - Zaha Hadid Architects BOX 500",
+    "box_raw": "BOX 500",
+    "pitch": -18,
+    "yaw": -5,
+    "panorama_id": "panorama_9BC9DCA8_9336_3886_41B9_8DED392BA0BE",
+    "media_name": "75"
+  },
+  {
+    "overlay_id": "overlay_9BC769D7_933A_188A_4191_1C857996DE54",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -31,
+    "yaw": 110,
+    "panorama_id": "panorama_9BED5F0B_92CE_399A_41D2_DB1DF8F4BB2D",
+    "media_name": "74a"
+  },
+  {
+    "overlay_id": "overlay_9BC769D9_933A_1886_41DA_826D642C9822",
+    "event_lable": "FB Madia Onda - Zaha Hadid Architects BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -12,
+    "yaw": 58,
+    "panorama_id": "panorama_9BED5F0B_92CE_399A_41D2_DB1DF8F4BB2D",
+    "media_name": "74a"
+  },
+  {
+    "overlay_id": "overlay_ADA5BE28_AD19_6B63_41E2_76F035C1D061",
+    "event_lable": "FB Libreria Trenta BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 2,
+    "yaw": 22,
+    "panorama_id": "panorama_9BED5F0B_92CE_399A_41D2_DB1DF8F4BB2D",
+    "media_name": "74a"
+  },
+  {
+    "overlay_id": "overlay_ADA92769_AD69_19E5_41E5_A1C4174C0BEF",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -20,
+    "yaw": -31,
+    "panorama_id": "panorama_9BED5F0B_92CE_399A_41D2_DB1DF8F4BB2D",
+    "media_name": "74a"
+  },
+  {
+    "overlay_id": "overlay_B71F7504_937A_098E_41DD_FD7109C0ACDF",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -3,
+    "yaw": -150,
+    "panorama_id": "panorama_B7F0ED93_9376_388A_41E1_418EAB7DCA6F",
+    "media_name": "6"
+  },
+  {
+    "overlay_id": "overlay_B74C71EB_9376_089A_41C0_878A8A28CBC8",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -30,
+    "yaw": 21,
+    "panorama_id": "panorama_B7F0ED93_9376_388A_41E1_418EAB7DCA6F",
+    "media_name": "6"
+  },
+  {
+    "overlay_id": "overlay_272F23DC_AD6F_1923_41A9_CA59C9C84505",
+    "event_lable": "FB Sistema Origina BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -1,
+    "yaw": 34,
+    "panorama_id": "panorama_B7F0ED93_9376_388A_41E1_418EAB7DCA6F",
+    "media_name": "6"
+  },
+  {
+    "overlay_id": "overlay_2E808CF2_9D3A_388A_41CC_29F391F88E30",
+    "event_lable": "FB Divano Melrose BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -40,
+    "yaw": -144,
+    "panorama_id": "panorama_045FA93C_A635_1AAB_41E3_6B874667ECB1",
+    "media_name": "39"
+  },
+  {
+    "overlay_id": "overlay_2E806CF4_9D3A_388E_41DE_0C1A85F343C2",
+    "event_lable": "FB Poltrona Andy BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -25,
+    "yaw": 150,
+    "panorama_id": "panorama_045FA93C_A635_1AAB_41E3_6B874667ECB1",
+    "media_name": "39"
+  },
+  {
+    "overlay_id": "overlay_2725F72D_9D3E_099E_41CA_CB360B4CAE76",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 6,
+    "yaw": -136,
+    "panorama_id": "panorama_045FA93C_A635_1AAB_41E3_6B874667ECB1",
+    "media_name": "39"
+  },
+  {
+    "overlay_id": "overlay_AD8B3AF6_AD29_68EF_41B6_3F84B4EC2F60",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -10,
+    "yaw": -161,
+    "panorama_id": "panorama_045FA93C_A635_1AAB_41E3_6B874667ECB1",
+    "media_name": "39"
+  },
+  {
+    "overlay_id": "overlay_174540DD_973A_08BE_41E0_D8802FA9F7C0",
+    "event_lable": "FB Letto Couple BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -29,
+    "yaw": 68,
+    "panorama_id": "panorama_A09F6AC7_89EA_E102_41CB_525BF8EF3414",
+    "media_name": "57"
+  },
+  {
+    "overlay_id": "overlay_0C5AB916_96CA_198A_41DA_B2E4AE28B7E2",
+    "event_lable": "FB Specchio Polar BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -10,
+    "yaw": 123,
+    "panorama_id": "panorama_A09F6AC7_89EA_E102_41CB_525BF8EF3414",
+    "media_name": "57"
+  },
+  {
+    "overlay_id": "overlay_B23432AE_B77F_7B7F_41A5_B083E7F4DC38",
+    "event_lable": "FB Poltrona Isabelle BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -18,
+    "yaw": 104,
+    "panorama_id": "panorama_A09F6AC7_89EA_E102_41CB_525BF8EF3414",
+    "media_name": "57"
+  },
+  {
+    "overlay_id": "overlay_D26E2241_93CA_0B86_41D2_953F24923348",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 9,
+    "yaw": 157,
+    "panorama_id": "panorama_1B9F9A41_858C_4D4C_41C1_8AA014FE2615",
+    "media_name": "23"
+  },
+  {
+    "overlay_id": "overlay_B00FA14C_B329_1923_41CE_50B1B4F9CA00",
+    "event_lable": "FB Sistema Origina BOX 170",
+    "box_raw": "BOX 170",
+    "pitch": 1,
+    "yaw": -75,
+    "panorama_id": "panorama_1B9F9A41_858C_4D4C_41C1_8AA014FE2615",
+    "media_name": "23"
+  },
+  {
+    "overlay_id": "overlay_A2253DD4_8E61_85CB_41D3_B29F3D71FF0B",
+    "event_lable": "FB Boiserie camino BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -18,
+    "yaw": -63,
+    "panorama_id": "panorama_BFA72184_8E20_BA4B_41D4_1242A1970851",
+    "media_name": "15"
+  },
+  {
+    "overlay_id": "overlay_159B230D_A959_6AB0_41D9_0F945624E1B0",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -16,
+    "yaw": 161,
+    "panorama_id": "panorama_BFA72184_8E20_BA4B_41D4_1242A1970851",
+    "media_name": "15"
+  },
+  {
+    "overlay_id": "overlay_C0A4271A_933E_09BA_41C9_853FEF8F87A9",
+    "event_lable": "FB Cabina Armadio Telaio BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": 3,
+    "yaw": 119,
+    "panorama_id": "panorama_602A48FA_8CB4_CD3C_417E_5E08EA8C3385",
+    "media_name": "36"
+  },
+  {
+    "overlay_id": "overlay_C1F481D4_933A_088E_41AB_101C75CD1F53",
+    "event_lable": "FB Cassettiera Square BOX 190",
+    "box_raw": "BOX 190",
+    "pitch": -42,
+    "yaw": -48,
+    "panorama_id": "panorama_602A48FA_8CB4_CD3C_417E_5E08EA8C3385",
+    "media_name": "36"
+  },
+  {
+    "overlay_id": "overlay_F332321B_935A_0BBA_41D8_7809069BBD47",
+    "event_lable": "FB Poltrona Vivienne BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -24,
+    "yaw": 32,
+    "panorama_id": "panorama_7BC9FE75_A13A_23F9_41C1_5FA4D9B14AA6",
+    "media_name": "48"
+  },
+  {
+    "overlay_id": "overlay_E1AC02A0_974E_0886_41D7_E86F3B164DC2",
+    "event_lable": "FB Tavolo Phoenix BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": -19,
+    "yaw": 117,
+    "panorama_id": "panorama_7BC9FE75_A13A_23F9_41C1_5FA4D9B14AA6",
+    "media_name": "48"
+  },
+  {
+    "overlay_id": "overlay_B2286BD4_B717_E923_41C8_BE4C80281E09",
+    "event_lable": "FB Libreria Trenta BOX 240",
+    "box_raw": "BOX 240",
+    "pitch": 2,
+    "yaw": 52,
+    "panorama_id": "panorama_7BC9FE75_A13A_23F9_41C1_5FA4D9B14AA6",
+    "media_name": "48"
+  },
+  {
+    "overlay_id": "overlay_9D8020C7_9736_088A_41AA_5AAD724422B0",
+    "event_lable": "FB Armadio Profile/ Solid  BOX 600",
+    "box_raw": "BOX 600",
+    "pitch": 7,
+    "yaw": 144,
+    "panorama_id": "panorama_9D6C294F_97CE_199A_41D1_66DBE52C3C1B",
+    "media_name": "27"
+  },
+  {
+    "overlay_id": "overlay_48CAAD39_9EDA_1986_41D5_4B28EAED6A05",
+    "event_lable": "FB Tavolo Madeira BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -30,
+    "yaw": -154,
+    "panorama_id": "panorama_709F5488_933A_0886_41E2_E5B1F86277CE",
+    "media_name": "94"
+  },
+  {
+    "overlay_id": "overlay_48FF4D3B_9EDA_19FA_41D6_6B65822C2ADC",
+    "event_lable": "FB Sedia Nina BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -41,
+    "yaw": -154,
+    "panorama_id": "panorama_709F5488_933A_0886_41E2_E5B1F86277CE",
+    "media_name": "94"
+  },
+  {
+    "overlay_id": "overlay_48FCFD3B_9EDA_19FA_419B_D3C906E0C7F5",
+    "event_lable": "FB Cucina Modula anta Square BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": 3,
+    "yaw": 118,
+    "panorama_id": "panorama_709F5488_933A_0886_41E2_E5B1F86277CE",
+    "media_name": "94"
+  },
+  {
+    "overlay_id": "overlay_F34B8B8F_DCA7_4FF0_41C4_1369523EF739",
+    "event_lable": "FB Madia Leaf BOX 320",
+    "box_raw": "BOX 320",
+    "pitch": -17.89,
+    "yaw": -94.2,
+    "panorama_id": "panorama_709F5488_933A_0886_41E2_E5B1F86277CE",
+    "media_name": "94"
+  },
+  {
+    "overlay_id": "overlay_A2A97F95_8E60_8675_41C0_640914B2AFCF",
+    "event_lable": "FB Boiserie camino BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -7,
+    "yaw": 84,
+    "panorama_id": "panorama_A35D187F_8E60_8AB5_41CB_A7EE5C618057",
+    "media_name": "16"
+  },
+  {
+    "overlay_id": "overlay_157B6DE5_A948_B970_41DC_7EBD5AD566C0",
+    "event_lable": "FB Divano Balmoral BOX 100",
+    "box_raw": "BOX 100",
+    "pitch": -22,
+    "yaw": -161,
+    "panorama_id": "panorama_A35D187F_8E60_8AB5_41CB_A7EE5C618057",
+    "media_name": "16"
+  },
+  {
+    "overlay_id": "overlay_E4F6328F_77A3_DAE4_41D0_1F6D1E58D3C4",
+    "event_lable": "FB Cucina Origina Anta Square Cannettato BOX 120",
+    "box_raw": "BOX 120",
+    "pitch": -14.82,
+    "yaw": 105.3,
+    "panorama_id": "panorama_6CB348B5_8C8C_4D34_41CE_57DFC158CFB8",
+    "media_name": "1"
+  },
+  {
+    "overlay_id": "overlay_101FC3CB_96CA_089A_41E2_41AE2B2D66EF",
+    "event_lable": "FB Poltrona Isabelle BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -38,
+    "yaw": -83,
+    "panorama_id": "panorama_A0D85DBB_89E9_A302_41B5_35E91BD5EE00",
+    "media_name": "59"
+  },
+  {
+    "overlay_id": "overlay_1CFF2262_96DA_0B8A_41D8_37762101CF59",
+    "event_lable": "FB Specchio Polar BOX 280",
+    "box_raw": "BOX 280",
+    "pitch": -6,
+    "yaw": -48,
+    "panorama_id": "panorama_A0D85DBB_89E9_A302_41B5_35E91BD5EE00",
+    "media_name": "59"
+  },
+  {
+    "overlay_id": "overlay_9BAE477C_934A_087E_41D9_9C135B9D0862",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -30,
+    "yaw": -105,
+    "panorama_id": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+    "media_name": "76"
+  },
+  {
+    "overlay_id": "overlay_9BB1BB9E_9356_78BA_4191_E9D66A5E006F",
+    "event_lable": "FB Madia Onda - Zaha Hadid Architects BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -33,
+    "yaw": 88,
+    "panorama_id": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+    "media_name": "76"
+  },
+  {
+    "overlay_id": "overlay_9BB93CFA_9356_787A_41DD_2668588533A0",
+    "event_lable": "FB Libreria Trenta BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 4,
+    "yaw": 34,
+    "panorama_id": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+    "media_name": "76"
+  },
+  {
+    "overlay_id": "overlay_9BBD2BD0_934E_1886_41D8_D1452525F38F",
+    "event_lable": "FB Boiserie BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": 18,
+    "yaw": 22,
+    "panorama_id": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+    "media_name": "76"
+  },
+  {
+    "overlay_id": "overlay_ADAA760B_AD6B_FB25_41E4_A84C8EEA9FC1",
+    "event_lable": "FB Divano Navigli BOX 400",
+    "box_raw": "BOX 400",
+    "pitch": -17,
+    "yaw": 157,
+    "panorama_id": "panorama_9BC5D8F4_933E_388E_41D5_7E6F3D8C5D7F",
+    "media_name": "76"
+  },
+  {
+    "overlay_id": "overlay_5A2DC1DD_9D4A_08BE_41C7_9D6165F3266B",
+    "event_lable": "FB Divano Melrose BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -20,
+    "yaw": 145,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_5A2CC1DE_9D4A_08BA_418A_77C920D2E7D3",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 4,
+    "yaw": 138,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_5A2D61DF_9D4A_08BA_41D4_2D09C8B16FFF",
+    "event_lable": "FB Poltrona Andy BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -45,
+    "yaw": 68,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_5A2C01E0_9D4A_0886_41DD_8634C4523C92",
+    "event_lable": "FB Sistema Diciotto BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -8.29,
+    "yaw": 14.76,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_AD8AB950_AD2B_6923_41E1_0ACED3608D64",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -9,
+    "yaw": 109,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_9A7057A8_DACC_A6BE_41E2_8E321106AB64",
+    "event_lable": "madia leaf",
+    "box_raw": null,
+    "pitch": -46.27,
+    "yaw": -114.32,
+    "panorama_id": "panorama_7B6B1B5B_8F94_437C_41CE_429918E736D5",
+    "media_name": "40"
+  },
+  {
+    "overlay_id": "overlay_3E283F08_954A_7986_41C3_48B88B9E7D87",
+    "event_lable": "Gruppo Notte Marlene BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -24,
+    "yaw": -68,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  },
+  {
+    "overlay_id": "overlay_3B7B209B_954A_08BA_41D3_68C2B1F38BF8",
+    "event_lable": "FB Divano Melrose BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -24,
+    "yaw": 24,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  },
+  {
+    "overlay_id": "overlay_213F4ED7_9D5A_388A_41C7_594B97D0356B",
+    "event_lable": "FB Libreria Trenta BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": 6,
+    "yaw": 11,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  },
+  {
+    "overlay_id": "overlay_2D04AAD1_9D4A_3886_41DF_73A0A41D031D",
+    "event_lable": "Poltrona Andy",
+    "box_raw": null,
+    "pitch": -50,
+    "yaw": -97,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  },
+  {
+    "overlay_id": "overlay_3567CC13_9D4E_3F8A_41C7_33C8E7496852",
+    "event_lable": "FB Sistema Diciotto BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -3,
+    "yaw": -160,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  },
+  {
+    "overlay_id": "overlay_986A8EDF_DAC7_6693_41D6_C0536DB4260C",
+    "event_lable": "FB Madia Leaf BOX 300",
+    "box_raw": "BOX 300",
+    "pitch": -15.12,
+    "yaw": 100.49,
+    "panorama_id": "panorama_AED20C1E_89EB_6102_41CC_ADDB8FAC15E2",
+    "media_name": "43"
+  }
+]
