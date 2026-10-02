@@ -31,7 +31,8 @@ export interface Fact {
   subject: string;
   claim: string;
   source: {
-    kind: "official_page" | "tour_capture" | "curated" | "catalog_v1";
+    /** official_document: a client document, e.g. the showroom's composition book (finish per part). */
+    kind: "official_page" | "official_document" | "tour_capture" | "curated" | "catalog_v1";
     url?: string;
     captured_at: string;
     evidence: string;

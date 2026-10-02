@@ -1,6 +1,9 @@
 import { WishlistState, createApiClient, getOrCreateSessionId, loadCatalogManifest, type HotspotManifestEntry } from "@3dvista-assistant/assistant-core";
+import { STRINGS_EN, STRINGS_ES, STRINGS_IT, createMoodboard, createMoodboardApi, type MoodboardHandle } from "@3dvista-assistant/moodboard-ui";
 import { createTourBridge } from "@3dvista-assistant/tour-bridge";
 import type { AssistantConfig } from "./types.js";
+import { setUiLang, styleLabel, uiLang, type UiLang } from "./ui-text.js";
+import { createGreetingBubble } from "./greeting-bubble.js";
 import { applyTheme } from "./theme.js";
 import { createLauncher } from "./launcher.js";
 import { createChatCard } from "./chat-card.js";
@@ -10,6 +13,8 @@ export type { AssistantConfig, AssistantTheme } from "./types.js";
 
 const MOUNT_ID = "tva-mount-root";
 const MOBILE_BREAKPOINT_PX = 480;
+/** How long after entering the tour the welcome bubble pops up. */
+const GREETING_DELAY_MS = 1500;
 
 /**
  * Whether we're on a phone-sized device — deliberately NOT a CSS
@@ -102,11 +107,41 @@ export function init(config: AssistantConfig): void {
   const wishlist = new WishlistState();
   // One viewer bridge for chat and wishlist: the host platform's, or 3DVista's.
   const tourBridge = config.bridge ?? createTourBridge(config.navStrategy);
+  // Wake the backend while the visitor is still looking around: a free host (Render) sleeps after
+  // a while idle and takes ~30 s to answer the first request. Fire-and-forget; failures don't matter.
+  fetch(`${config.apiBaseUrl}/health`, { mode: "no-cors", cache: "no-store" }).catch(() => undefined);
+  const sessionId = getOrCreateSessionId();
   const api = createApiClient({
     apiBaseUrl: config.apiBaseUrl,
     tourId: config.tourId,
-    sessionId: getOrCreateSessionId(),
+    sessionId,
   });
+
+  // The moodboard is its own component (packages/moodboard-ui): it only reads the wishlist's saved
+  // ids and hands navigation back to the viewer. Opt-in per tour (features.moodboard). Built on
+  // first open, and again after the conversation changed language: its texts, and the language of
+  // what it generates, follow the chat's.
+  let moodboard: { lang: UiLang; handle: MoodboardHandle } | null = null;
+  const MOODBOARD_STRINGS = { it: STRINGS_IT, es: STRINGS_ES, en: STRINGS_EN };
+  function openMoodboard(): void {
+    const lang = uiLang();
+    if (!moodboard || moodboard.lang !== lang) {
+      moodboard?.handle.element.remove();
+      const handle = createMoodboard({
+        wishlist,
+        api: createMoodboardApi({ apiBaseUrl: config.apiBaseUrl, tourId: config.tourId, sessionId, locale: lang }),
+        brandName: config.assistantName.replace(/^(asistente|assistente|assistant)\s+/i, ""),
+        strings: MOODBOARD_STRINGS[lang],
+        formatStyle: styleLabel,
+        onNavigate: (anchor) => tourBridge.navigateTo(anchor.navTarget),
+      });
+      // Inside .tva-root so it inherits the tour's theme variables and the mobile unit; last, so
+      // it stacks above the chat and the wishlist panel.
+      root.append(handle.element);
+      moodboard = { lang, handle };
+    }
+    moodboard.handle.open();
+  }
 
   // Mutable refs so each panel can open the other, and the wishlist's own
   // toggle button can hide itself while the chat is open — all resolved
@@ -124,6 +159,8 @@ export function init(config: AssistantConfig): void {
     (open) => onChatOpenChange(open)
   );
   const launcher = createLauncher(toggleOpen);
+  // "¡Hola! Soy tu asistente virtual" next to the chat button until the chat is first opened.
+  const greeting = config.features?.greeting ? createGreetingBubble(() => openChat()) : null;
 
   // Populated in place once the manifest fetch resolves (see below) — the
   // hotspot overlay reads this SAME array reference on every animation
@@ -137,9 +174,14 @@ export function init(config: AssistantConfig): void {
     assistantName: config.assistantName,
     fetchRecommendations: (productIds) => api.getRecommendations(productIds),
     onOpenChat: () => openChat(),
+    onOpenMoodboard: config.features?.moodboard ? openMoodboard : undefined,
+    contactForm: config.features?.contactForm,
   });
   openWishlist = _openWishlist;
-  onChatOpenChange = setChatOpen;
+  onChatOpenChange = (open) => {
+    setChatOpen(open);
+    if (open) greeting?.dismiss();
+  };
   loadCatalogManifest(config.assetsBaseUrl)
     .then((entries) => hotspotManifest.push(...entries))
     .catch(() => {
@@ -147,8 +189,17 @@ export function init(config: AssistantConfig): void {
       // and the chat's own heart still work fully off `wishlist` alone.
     });
 
-  root.append(cardEl, launcher, wishlistLayerEl);
+  root.append(cardEl, launcher, ...(greeting ? [greeting.element] : []), wishlistLayerEl);
   document.body.appendChild(root);
+
+  // The tour's own skin, per tour (Febal: no zone label on the right, map button a bit higher).
+  // Retried until the viewer exists; applying twice changes nothing.
+  const skin = config.skin;
+  const applySkin = (triesLeft: number): void => {
+    if (!skin || !tourBridge.applySkinTweaks) return;
+    if (!tourBridge.applySkinTweaks(skin) && triesLeft > 0) window.setTimeout(() => applySkin(triesLeft - 1), 500);
+  };
+  applySkin(40);
 
   // The launcher/wishlist-toggle stay hidden (see [data-tva-tour-entered]
   // in assistant.css) until the visitor is actually inside the tour —
@@ -168,6 +219,14 @@ export function init(config: AssistantConfig): void {
   function onFirstInteraction(): void {
     root.dataset.tvaTourEntered = "true";
     window.removeEventListener("pointerdown", onFirstInteraction, true);
+    applySkin(10);
+    window.setTimeout(() => {
+      // The language the visitor picked on the viewer's own first screen (IT/EN) is the widget's
+      // until the conversation says otherwise.
+      const locale = tourBridge.getLocale?.();
+      if (locale) setUiLang(locale.slice(0, 2));
+      greeting?.show();
+    }, GREETING_DELAY_MS);
   }
   window.addEventListener("pointerdown", onFirstInteraction, true);
 

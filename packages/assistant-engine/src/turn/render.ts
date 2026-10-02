@@ -23,6 +23,7 @@ const DEFAULT_LABELS = {
   exact: { es: "En el showroom", it: "In showroom", en: "In the showroom" },
   orderable: { es: "Disponible bajo pedido", it: "Disponibile su ordinazione", en: "Available on order" },
   unconfirmed: { es: "Sin confirmar", it: "Da confermare", en: "Not confirmed" },
+  check_page: { es: "Consulta su ficha", it: "Vedi la scheda", en: "See its page" },
   alternative: { es: "Alternativa", it: "Alternativa", en: "Alternative" },
   but_not: { es: "pero no", it: "ma non", en: "but not" },
   list: { es: "Resultados", it: "Risultati", en: "Results" },
@@ -55,6 +56,8 @@ export interface UiCard {
   variants_text: string | null;
   shown_as: string | null;
   official_url: string | null;
+  short_name: string;
+  teaser: string;
 }
 
 const PAGE_SAYS: Record<Lang, string> = { es: "en la ficha", it: "nella scheda", en: "on the page" };
@@ -103,13 +106,41 @@ export class Renderer {
     return this.lx.label(id, lang);
   }
 
+  /**
+   * Pieces of one answer that share a name: they get what tells them apart after the name, or the
+   * visitor reads "Madeira y Madeira". Another kind of piece → the kind; same kind elsewhere → the zone.
+   */
+  homonyms(ids: string[]): Map<string, "kind" | "zone"> {
+    const byName = new Map<string, string[]>();
+    for (const id of new Set(ids)) {
+      const key = this.displayName(id).toLowerCase();
+      byName.set(key, [...(byName.get(key) ?? []), id]);
+    }
+    const out = new Map<string, "kind" | "zone">();
+    for (const group of [...byName.values()].filter((g) => g.length > 1)) {
+      const kinds = new Set(group.map((id) => this.exhibits.get(id)?.category));
+      const zones = new Set(group.map((id) => this.exhibits.get(id)?.zone));
+      for (const id of group) if (kinds.size > 1 || zones.size > 1) out.set(id, kinds.size > 1 ? "kind" : "zone");
+    }
+    return out;
+  }
+
   /** Replace every tag; unknown tags are left visible (the verifier rejects them before this point). */
-  renderTags(text: string, bundle: Bundle, lang: Lang): string {
+  renderTags(text: string, bundle: Bundle, lang: Lang, homonyms: Map<string, "kind" | "zone"> = new Map()): string {
     const cards = allCards(bundle);
-    return text.replace(/\{\{(\w+):([^}]+)\}\}/g, (whole, kind: string, arg: string) => {
+    return text.replace(/\{\{(\w+):([^}]+)\}\}/g, (whole, kind: string, arg: string, at: number) => {
       const card = cards.find((c) => c.exhibit_id === arg);
       switch (kind) {
-        case "p": return card || arg === bundle.source ? `**${this.displayName(arg)}**` : whole;
+        case "p": {
+          if (!card && arg !== bundle.source) return whole;
+          const name = `**${this.displayName(arg)}**`;
+          const e = this.exhibits.get(arg)!;
+          if (homonyms.get(arg) === "zone") return text.includes(`{{z:${arg}}}`) ? name : `${name} (${this.zoneLabel(e.zone)})`;
+          if (homonyms.get(arg) !== "kind") return name;
+          const kindLabel = this.concept(e.category, lang);
+          // "la cocina {{p:X}}" already says which one.
+          return text.slice(Math.max(0, at - kindLabel.length - 1), at).trim().toLowerCase() === kindLabel.toLowerCase() ? name : `${name} (${kindLabel})`;
+        }
         // Three or more pieces named with their options: two each in the text (the cards list more).
         case "v": return card ? this.variantsText(card, lang, bundle.obligations.filter((o) => /^(ord|lin):/.test(o)).length >= 3 ? 2 : 4) : whole;
         case "line": return card ? this.lineName(card, lang) ?? whole : whole;
@@ -130,6 +161,7 @@ export class Renderer {
           if (!d) return whole;
           // Said in the visitor's language, with the page's own words after it.
           if (d.concepts?.length && lang !== "it") return `${d.concepts.map((c) => this.concept(c, lang)).join(", ")} (${PAGE_SAYS[lang]}: «${d.text}»)`;
+          if (d.field === "dimensions" && d.text && lang !== "it") return translateDims(d.text, lang);
           return d.text ?? whole;
         }
         default: return whole;
@@ -148,7 +180,7 @@ export class Renderer {
       case "exact_exhibited": return this.T.exact[lang];
       case "exact_on_order": return this.T.orderable[lang];
       case "line_on_order": return this.T.line_title[lang];
-      case "unknown": return this.T.unconfirmed[lang];
+      case "unknown": return forVisitor ? this.T.check_page[lang] : this.T.unconfirmed[lang];
       case "list": return this.T.list[lang];
       case "alternatives": return this.T.alternatives[lang];
       case "recommend": return this.T.recommend[lang];
@@ -158,14 +190,23 @@ export class Renderer {
         const touched = new Set(g.relaxation.map((op) => op.constraint));
         const kept = bundle.constraints.filter((x) => x.role === "new" && x.facet !== "category" && x.strength === "must" && !touched.has(x.id))
           .map((x) => `${this.constraintLabel(x, lang)} ✓`);
+        // Several substitutes for one request share one header: "efecto mármol · gres (parecido a mármol)".
+        const byTarget = new Map<string, { to: string[]; rel: string; orig: ActiveConstraint }>();
         const parts = g.relaxation.map((op) => {
           const orig = c(op.constraint);
           if (!orig) return "";
           if (op.kind === "drop") return orig.facet === "model" || forVisitor ? "" : `${this.T.not[lang].toLowerCase()} ${this.constraintLabel(orig, lang)}`;
           if (orig.facet === "category") return forVisitor ? "" : `${this.concept(op.to!, lang)} (${this.T.instead[lang]} ${this.constraintLabel(orig, lang)})`;
           const rel = op.via === "harmonizes" ? this.T.combines[lang] : this.T.similar[lang];
-          return `${this.concept(op.to!, lang)} (${rel} ${this.constraintLabel(orig, lang)})`;
-        }).filter(Boolean);
+          const key = `${op.constraint}|${rel}`;
+          const seen = byTarget.get(key);
+          if (seen) { seen.to.push(this.concept(op.to!, lang)); return ""; }
+          byTarget.set(key, { to: [this.concept(op.to!, lang)], rel, orig });
+          return key;
+        }).filter(Boolean).map((p) => {
+          const t = byTarget.get(p);
+          return t ? `${t.to.join(" · ")} (${t.rel} ${this.constraintLabel(t.orig, lang)})` : p;
+        });
         const title = [...kept, ...parts].join(" · ");
         if (title || !forVisitor) return title;
         // Nothing positive to say: where the pieces are.
@@ -185,7 +226,16 @@ export class Renderer {
       case "abs": return `Di claramente que NO hay ${this.profile.prompt.in_venue} exactamente: ${req}.`;
       case "ord": return `Di que {{p:${a}}} ${this.profile.prompt.in_venue} está en {{shown:${a}}} (no como lo pidió), PERO SÍ está disponible bajo pedido en {{v:${a}}}; incluye {{link:${a}}}.`;
       case "lin": return `Di que {{p:${a}}} (aquí en {{shown:${a}}}) no lo tienes confirmado así para ese modelo, pero {{line:${a}}} maneja {{v:${a}}}; pide que CONFIRME en {{link:${a}}} si aplica a ese modelo. Nunca digas que está disponible sin ese aviso.`;
-      case "grp": return `Presenta como alternativa: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}).`;
+      case "grp": {
+        // What each of them is made of when it stands in for the request ("Madeira: top de gres").
+        const subs = g ? g.relaxation.flatMap((op) => (op.kind === "substitute" && op.to ? [op.to] : [])) : [];
+        const made = (g?.cards ?? []).slice(0, 4).map((c) => {
+          const what = this.substituteView(c, subs, lang);
+          return what ? `{{p:${c.exhibit_id}}} → ${what}` : "";
+        }).filter(Boolean);
+        return `Presenta como alternativa: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}).` +
+          (made.length ? ` Di de qué es cada una: ${made.join("; ")}. Aclara que no es el material pedido tal cual.` : "");
+      }
       case "off": return `Al final ofrece como pregunta: ${gp} (${g ? this.groupTitle(g, bundle, lang) : ""}). La respuesta termina en "?".`;
       case "harm": { const [x, y] = ob.slice(5).split(">"); return `Di que {{c:${y}}} combina con {{c:${x}}}.`; }
       case "vals": return `Di que no existe ese valor y nombra los que sí hay con {{vals:${a}}}.`;
@@ -195,6 +245,18 @@ export class Renderer {
       case "fact": return `Da el dato con {{f:${a}}}: SÍ lo tenemos, no digas que falta.`;
       case "inf": return `Explica cómo interpretas el deseo del visitante ({{c:${ob.slice(4)}}}) antes de proponer.`;
       case "nav": return "Pregunta a cuál de las zonas quiere ir.";
+      case "sim": return `Di en qué se parece a {{p:${bundle.source}}} cada pieza que nombres, con su "se_parece_en" (p. ej. "{{p:X}} también es {{c:…}}, en {{c:…}}"). Nombra primero las más parecidas.`;
+      case "ans": {
+        // "¿La madia es de mármol?": yes/no decided by the engine from the piece in the showroom.
+        const [, id, t] = ob.split(":");
+        const c = bundle.constraints.find((x) => x.id === id);
+        const x = bundle.groups[0]?.cards[0]?.exhibit_id;
+        if (!c || !x) return "";
+        const what = `{{c:${c.value}}}`;
+        if (t === "yes") return `Responde primero que SÍ: {{p:${x}}} es de/en ${what}; di qué parte, según como_se_ve u otras_partes.`;
+        if (t === "no") return `Responde primero que NO: {{p:${x}}} no es de/en ${what}. Luego di cómo es ${this.profile.prompt.in_venue}: {{shown:${x}}} y sus otras_partes con su material (si una se parece a lo pedido, como gres con aspecto de mármol, dilo y aclara que no es lo mismo).`;
+        return `Di que no tienes confirmado si {{p:${x}}} es de/en ${what}, di cómo se ve ({{shown:${x}}}) y ofrece {{link:${x}}}.`;
+      }
       default: return ob;
     }
   }
@@ -242,17 +304,52 @@ export class Renderer {
         const e = this.exhibits.get(card.exhibit_id)!;
         const m = this.models.get(e.model_id);
         const vp = this.viewpoints.get(e.id)!;
+        // The catalog's description is the Italian page text: the card says what it is and how it looks here.
+        const kindLabel = this.concept(e.category, lang);
+        const teaser = `${kindLabel.charAt(0).toUpperCase()}${kindLabel.slice(1)} · ${card.shown_as ? localizeObserved(card.shown_as, lang) : this.zoneLabel(e.zone)}`;
         out.push({
-          product_id: e.id, name: e.name, description: e.description, image_url: e.image_url, section: e.zone,
+          product_id: e.id, name: e.name, description: teaser, teaser, image_url: e.image_url, section: this.zoneLabel(e.zone),
           detail_url: m?.official_url ?? null,
           navTarget: { media_name: vp.media_name, yaw: vp.yaw, pitch: vp.pitch, fov: vp.fov, hotspot_name: vp.hotspot_name },
           alternativesAvailable: g.role !== "alternatives",
           group_id: g.id, group_title: title, availability: card.availability,
           reasons: this.reasons(card, bundle, lang),
           variants_text: card.availability === "on_order" || card.availability === "line" ? this.variantsText(card, lang) : null,
-          shown_as: card.shown_as ?? null, official_url: m?.official_url ?? null,
+          shown_as: card.shown_as ?? null, official_url: m?.official_url ?? null, short_name: this.displayName(e.id),
         });
       }
+    }
+    return out;
+  }
+
+  /**
+   * The part of a showroom piece that carries the substitute material ("top: antracite (gres)" for
+   * "marble"), so the composer says what it is instead of just "marble effect".
+   */
+  private substituteView(card: CardRef, subs: string[], lang: Lang): string | null {
+    const e = this.exhibits.get(card.exhibit_id);
+    if (!subs.length || e?.configuration.status !== "known") return null;
+    const parts = e.configuration.value.filter((p) => p.material && subs.some((s) => this.lx.isA(p.material!, s)));
+    // The dominant surface's colour is already {{shown}}: only its material; a secondary part by its finish.
+    return parts.length ? parts.map((p) => (p.dominant || !p.observed_color
+      ? this.concept(p.material!, lang)
+      : `${localizeObserved(p.observed_color, lang)} (${this.concept(p.material!, lang)})`)).join("; ") : null;
+  }
+
+  /** Secondary parts with a finish the client named ("top: travertino (efecto mármol)"), for the composer. */
+  private partsView(exhibitId: string, lang: Lang): string | null {
+    const e = this.exhibits.get(exhibitId);
+    const parts = e?.configuration.status === "known" ? e.configuration.value.filter((p) => !p.dominant && p.observed_color && p.material) : [];
+    return parts.length ? parts.map((p) => `${p.role}: ${localizeObserved(p.observed_color!, lang)} (${this.concept(p.material!, lang)})`).join("; ") : null;
+  }
+
+  /** What an alternative shares with the piece it replaces, by kind ("mismo tipo: sofá", "forma: {{c:shape.corner}} (= de ángulo)"). */
+  private sharedView(card: CardRef, lang: Lang): Record<string, string> {
+    const out: Record<string, string> = {};
+    for (const x of card.shared ?? []) {
+      const facet = this.lx.facetOf(x);
+      const key = facet === "category" ? "mismo_tipo" : facet === "shape" ? "forma" : facet === "color" ? "color" : facet === "material" ? "material" : facet ?? "otro";
+      out[key] = `{{c:${x}}} (= ${this.concept(x, lang)})`;
     }
     return out;
   }
@@ -262,20 +359,25 @@ export class Renderer {
     const view = {
       idioma: lang,
       resultado: bundle.outcome,
-      ...(bundle.source ? { alternativas_a: { pieza: `{{p:${bundle.source}}}`, nombre: this.displayName(bundle.source) } } : {}),
+      ...(bundle.source ? { [bundle.mode === "recommend" ? "combina_con" : "alternativas_a"]: { pieza: `{{p:${bundle.source}}}`, nombre: this.displayName(bundle.source) } } : {}),
       pedido: bundle.constraints.map((c) => ({ id: c.id, que: `${c.op === "not" ? "NO " : ""}${this.constraintLabel(c, lang)}`, tipo: c.facet, nuevo: c.role === "new" })),
       grupos: bundle.groups.map((g) => ({
         id: g.id, tipo: g.role, titulo: this.groupTitle(g, bundle, lang), total: g.total,
         tarjetas: g.cards.map((c) => ({
           pieza: `{{p:${c.exhibit_id}}}`, nombre: this.displayName(c.exhibit_id),
+          ...(allCards(bundle).some((o) => o.exhibit_id !== c.exhibit_id && this.displayName(o.exhibit_id) === this.displayName(c.exhibit_id)) ? { mismo_nombre_que_otra: true } : {}),
           categoria: this.concept(this.exhibits.get(c.exhibit_id)!.category, lang),
           disponibilidad: c.availability, zona: `{{z:${c.exhibit_id}}}`,
           // The value next to the tag, so the composer knows what it says (it still writes the tag).
           como_se_ve: c.shown_as ? `{{shown:${c.exhibit_id}}} (= ${localizeObserved(c.shown_as, lang)})` : null,
+          ...(this.partsView(c.exhibit_id, lang) ? { otras_partes: this.partsView(c.exhibit_id, lang) } : {}),
+          ...(this.substituteView(c, g.relaxation.flatMap((op) => (op.kind === "substitute" && op.to ? [op.to] : [])), lang)
+            ? { acabado_parecido: this.substituteView(c, g.relaxation.flatMap((op) => (op.kind === "substitute" && op.to ? [op.to] : [])), lang) } : {}),
           bajo_pedido: c.availability === "on_order" ? `{{v:${c.exhibit_id}}}` : null,
           de_la_linea: c.availability === "line" ? { linea: `{{line:${c.exhibit_id}}}`, opciones: `{{v:${c.exhibit_id}}}`, aviso: "confirmar en la ficha si aplica a este modelo" } : null,
           ficha: this.models.get(c.model_id)?.official_url ? `{{link:${c.exhibit_id}}}` : null,
           cumple: this.reasons(c, bundle, lang),
+          ...(bundle.mode === "alternatives" ? { se_parece_en: this.sharedView(c, lang) } : {}),
         })),
       })),
       valores_disponibles: bundle.available_values.map((a) => ({ tag: `{{vals:${a.constraint}}}`, valores: a.values.map((v) => this.concept(v, lang)) })),
@@ -295,6 +397,27 @@ function titleCase(s: string): string {
   return s.toLowerCase().replace(/(^|\s)\S/g, (x) => x.toUpperCase());
 }
 
+/**
+ * Measures come from the Italian page ("rotondo fisso: D 110 H 75 (4 posti)"): the numbers stay, the
+ * words are said in the visitor's language. Longest phrases first.
+ */
+const DIMS: [RegExp, { es: string; en: string }][] = ([
+  ["rotondo fisso", "redonda fija", "fixed round"], ["rotondo allungabile", "redonda extensible", "extendable round"],
+  ["ovale fisso", "ovalada fija", "fixed oval"], ["ingombro totale", "medidas totales", "overall size"],
+  ["mensole spessore", "grosor de los estantes", "shelf thickness"], ["cassa standard", "módulo estándar", "standard cabinet"],
+  ["cassa over", "módulo alto", "tall cabinet"], ["basamento h", "altura de la base", "base height"],
+  ["(\\d+) cassetti", "de $1 cajones", "with $1 drawers"], ["(\\d+) posti", "$1 plazas", "$1 seats"],
+  ["materasso", "colchón", "mattress"], ["ingombro", "medidas", "overall size"], ["comodino", "mesita de noche", "nightstand"],
+  ["comò", "cómoda", "chest of drawers"], ["settimino", "semanario", "tall chest"], ["testata", "cabecero", "headboard"],
+  ["sommier", "somier", "bed base"], ["altezze", "alturas", "heights"], ["fisso", "fija", "fixed"], ["allungabile", "extensible", "extendable"],
+  ["frontale", "frente", "front"], ["ante", "puertas", "doors"], ["zoccolo", "zócalo", "plinth"], ["lunghezza", "largo", "length"],
+  ["profondità", "fondo", "depth"], ["profondita", "fondo", "depth"], ["o", "o", "or"],
+] as const).map(([it, es, en]) => [new RegExp(`(?<![\\p{L}])${it}(?![\\p{L}])`, "giu"), { es, en }]);
+export function translateDims(text: string, lang: Lang): string {
+  if (lang === "it") return text;
+  return DIMS.reduce((t, [re, tr]) => t.replace(re, tr[lang]), text);
+}
+
 /** Observations were written in Italian ("grigio chiaro", "senape/ocra"): translate colour words word by word. */
 const OBS: Record<string, { es: string; en: string }> = {
   bianco: { es: "blanco", en: "white" }, bianca: { es: "blanca", en: "white" }, nero: { es: "negro", en: "black" }, nera: { es: "negra", en: "black" },
@@ -312,10 +435,15 @@ const OBS: Record<string, { es: string; en: string }> = {
   vetro: { es: "vidrio", en: "glass" }, nocciola: { es: "avellana", en: "hazelnut" }, materico: { es: "texturizado", en: "textured" },
   verdastro: { es: "verdoso", en: "greenish" }, lucido: { es: "brillante", en: "glossy" }, alluminio: { es: "aluminio", en: "aluminium" },
   acciaio: { es: "acero", en: "steel" }, travertino: { es: "travertino", en: "travertine" },
+  opaco: { es: "mate", en: "matt" }, ottone: { es: "latón", en: "brass" }, caffè: { es: "café", en: "coffee" },
   e: { es: "y", en: "and" },
 };
 export function localizeObserved(text: string, lang: Lang): string {
   if (lang === "it") return text;
+  // «…» is the official finish name ("sabbia «Earth Dune R215»"): quoted as is, never translated.
+  return text.split(/(\s*«[^»]*»)/).map((seg) => (seg.includes("«") ? seg : localizeWords(seg, lang))).join("");
+}
+function localizeWords(text: string, lang: "es" | "en"): string {
   const tr = (w: string) => OBS[w.toLowerCase()]?.[lang] ?? w;
   if (lang === "es") return text.split(/(\s+|\/|,)/).map(tr).join("");
   // English puts the modifiers first: "grigio caldo chiaro" → "light warm grey".

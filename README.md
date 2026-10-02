@@ -10,6 +10,10 @@ Núcleo privado reutilizable para el chatbot/agente embebido en tours virtuales 
 - `scripts/` — build del bundle por tour, validación de catálogo, adaptador Excel→JSON.
 - `dist/<tour>/` — bundle final (`assistant.bundle.js` + `.css`) para inyectar en la skin de ese tour.
 
+## Moodboard de la wishlist
+
+Componente independiente que convierte el estilo de la wishlist ("Tu estilo") en un moodboard con las fotos reales de los productos guardados, paleta y texturas generadas: `packages/moodboard-engine` (servidor), `packages/moodboard-ui` (widget) y las rutas `/moodboard` del backend. Opt-in por tour (`features.moodboard` en `tour.config.json`). Ver [`docs/moodboard/README.md`](docs/moodboard/README.md).
+
 ## Regla de seguridad central
 
 El modelo de IA **nunca** inventa `media_name`/`yaw`/`pitch`/`fov`. Solo elige un `product_id` mediante la herramienta `navigate_to_product`; el backend resuelve las coordenadas reales desde el catálogo validado de ese tour.

@@ -61,7 +61,7 @@ TESTS = [
          [say("sofá con chaise")]),
     ]),
     ("Lo que no está tal cual: bajo pedido y parecidos", [
-        (NEW, "Quiero un sofá de cuero", "Dice que en el showroom no hay piel. Ofrece Balmoral en nobuk (Nabuk Eagle…) aclarando que se parece pero no es piel, con enlace a su ficha.",
+        (NEW, "Quiero un sofá de cuero", "Dice que en el showroom no hay sofás de piel y ofrece Balmoral en piel Nabuk Eagle bajo pedido (el nobuk cuenta como piel), con enlace a su ficha.",
          [say("Quiero un sofá de cuero")]),
         (NEW, "Muéstrame el sofá Balmoral  →  luego: ¿lo tienes en café?", "Aquí está en verde oliva claro; bajo pedido en Nabuk Eagle Camel, Nabuk Eagle Chocolate, Bellezza Mud… con enlace a su ficha.",
          [say("Muéstrame el sofá Balmoral"), say("¿lo tienes en café?")]),
@@ -73,7 +73,7 @@ TESTS = [
          [say("¿y la Arden en azul?")]),
         (PREV, "sí", "Muestra Couple en azul bajo pedido con sus acabados y enlace (no Couple en blanco).",
          [say("sí")]),
-        (NEW, "¿tienen mesas de mármol?", "No hay mármol real; ofrece efecto mármol: Phoenix, Madeira y Daniel. No suelta una lista de todos los materiales.",
+        (NEW, "¿tienen mesas de mármol?", "No hay mármol natural; ofrece acabados parecidos: Madeira (cubierta de gres), Phoenix y Daniel (supermarmo bajo pedido), aclarando que no es mármol natural. No suelta una lista de todos los materiales.",
          [say("¿tienen mesas de mármol?")]),
         (NEW, "¿tienes armarios blancos?", "Ninguno blanco en el showroom; nombra 2 o 3 bajo pedido (Profile Block, Lewitt Plus, Rodin…) con enlace; el resto va en tarjetas.",
          [say("¿tienes armarios blancos?")]),
@@ -83,7 +83,7 @@ TESTS = [
     ("Estilos y ambientes", [
         (NEW, "busco algo de estilo industrial", "No hay industrial; ofrece piezas minimalistas parecidas (Profile Block, Anta Libeskind…) aclarando que no son industriales.",
          [say("busco algo de estilo industrial")]),
-        (NEW, "algo elegante  →  luego: sofás", "Primero pregunta qué tipo de mueble busca; con «sofás» muestra los sofás.",
+        (NEW, "algo elegante  →  luego: sofás", "Primero pregunta qué tipo de mueble busca; con «sofás» muestra los 4 sofás (Navigli cuenta como elegante).",
          [say("algo elegante"), say("sofás")]),
         (NEW, "algo clásico para la sala", "Balmoral y Camden («sala» = sofá).",
          [say("algo clásico para la sala")]),
@@ -190,7 +190,7 @@ def run_battery():
                         body["message"] = step["say"]
                     else:
                         card = next(c for c in session["last_cards"] if step["alt"] in c["name"])
-                        body["message"] = f"Alternativas a {card['name']}"
+                        body["message"] = f"Alternativas a {card.get('short_name') or card['name']}"
                         body["clicked"] = {"exhibit_id": card["product_id"], "action": "alternatives"}
                         did.append(f"(clic en «Ver alternativas» de {card['name']}: manda «{body['message']}»)")
                     r = post(body)

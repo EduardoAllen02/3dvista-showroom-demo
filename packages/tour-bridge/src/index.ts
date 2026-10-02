@@ -1,4 +1,5 @@
-export type { HotspotSignals, NavTarget, TourBridgeStrategy, ViewerBridge, ViewerState } from "./types.js";
+export type { HotspotSignals, NavTarget, SkinTweaks, TourBridgeStrategy, ViewerBridge, ViewerState } from "./types.js";
+export { applyTdvSkinTweaks, tdvLocale } from "./skin.js";
 export { hashNavigator } from "./hash-navigator.js";
 export { playerApiNavigator } from "./player-api-navigator.js";
 export { createTourBridge } from "./strategy.js";

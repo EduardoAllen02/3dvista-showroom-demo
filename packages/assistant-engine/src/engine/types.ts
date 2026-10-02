@@ -39,6 +39,8 @@ export interface CardRef {
   shown_as?: string | null;
   match: Record<string, MatchMark>;
   evidence: FactId[];
+  /** Alternatives: what it has in common with the piece it replaces (kind, shape, colour family, material). */
+  shared?: ConceptId[];
 }
 
 export interface RelaxOp {
@@ -75,7 +77,8 @@ export interface Bundle {
   groups: CardGroup[];
   /** Obligations the answer text must meet (checked by the verifier). */
   obligations: string[];
-  /** Alternatives mode: the piece the alternatives are for (not one of the cards). */
+  /** Alternatives: the piece the alternatives are for; recommend: the piece asked about ("what goes with
+   * Camden"). Not one of the cards, but the answer may name it. */
   source?: string;
   /** For a requested value with zero support in scope: the real values that exist. */
   available_values: { constraint: string; facet: ConstraintFacet; values: ConceptId[] }[];

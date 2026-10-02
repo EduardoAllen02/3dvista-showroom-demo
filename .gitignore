@@ -9,6 +9,7 @@ data/panoramas/source/
 .DS_Store
 *.tsbuildinfo
 server/data/debug-*.json
+server/data/moodboards/
 ~$*.xlsx
 ~$*.docx
 .captures/

@@ -1,6 +1,8 @@
 import type { HotspotManifestEntry, ProductCard, WishlistState } from "@3dvista-assistant/assistant-core";
 import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
-import { createHotspotHeartOverlay } from "./hotspot-heart-overlay.js";
+import { createHotspotHeartOverlay, isCompositionSaved, toggleComposition } from "./hotspot-heart-overlay.js";
+import { onUiLangChange, styleLabel, t, uiLocale } from "./ui-text.js";
+import { newContactState, renderContactView } from "./contact-panel.js";
 
 export interface WishlistLayerDeps {
   wishlist: WishlistState;
@@ -9,12 +11,24 @@ export interface WishlistLayerDeps {
   assistantName: string;
   fetchRecommendations: (productIds: string[]) => Promise<{ dominantStyle: string | null; cards: ProductCard[] }>;
   onOpenChat?: () => void;
+  /**
+   * Opens the moodboard (a separate component, see packages/moodboard-ui).
+   * The panel only offers it once it has a style to show: the moodboard is
+   * that style made visual. Omitted, the panel looks exactly as before.
+   */
+  onOpenMoodboard?: () => void;
+  /** "Contáctame" (nearest store + form) instead of "send by email". */
+  contactForm?: boolean;
 }
 
 const HEART_SVG =
   '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
   '<path d="M12 20.5s-7.5-4.8-10-9.4C.5 7.8 2.3 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.3.5 5.1 3.8 3.6 7.1-2.5 4.6-10 9.4-10 9.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' +
   "</svg>";
+
+const SPARK_SVG =
+  '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
+  '<path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z" fill="currentColor"/></svg>';
 
 const CHEVRON_LEFT_SVG =
   '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
@@ -38,13 +52,16 @@ function brandName(assistantName: string): string {
 }
 
 function formatExportDate(): string {
-  return new Date().toLocaleDateString("it-IT", { day: "numeric", month: "long", year: "numeric" });
+  return new Date().toLocaleDateString(uiLocale(), { day: "numeric", month: "long", year: "numeric" });
+}
+
+function itemCount(n: number): string {
+  return n === 1 ? t("itemsOne") : t("itemsMany", { n });
 }
 
 function buildSummaryText(items: ProductCard[], assistantName: string): string {
   const brand = brandName(assistantName);
-  const count = items.length === 1 ? "1 prodotto" : `${items.length} prodotti`;
-  const lines = [`La mia collezione — ${brand}`, `${formatExportDate()} · ${count}`, ""];
+  const lines = [`${t("collection")} — ${brand}`, `${formatExportDate()} · ${itemCount(items.length)}`, ""];
   items.forEach((item, i) => {
     lines.push(`${i + 1}. ${item.name}`);
     if (item.description) lines.push(`   ${item.description}`);
@@ -68,7 +85,7 @@ function downloadAsPdf(items: ProductCard[], assistantName: string, primaryColor
   const win = window.open("", "_blank");
   if (!win) return;
   const brand = brandName(assistantName);
-  const count = items.length === 1 ? "1 prodotto" : `${items.length} prodotti`;
+  const count = itemCount(items.length);
   const rows = items
     .map(
       (item, i) => `
@@ -79,13 +96,13 @@ function downloadAsPdf(items: ProductCard[], assistantName: string, primaryColor
           <strong>${item.name}</strong>
           ${item.section ? `<span class="section">${item.section}</span>` : ""}
           ${item.description ? `<p>${item.description}</p>` : ""}
-          ${item.detail_url ? `<a href="${item.detail_url}">Vedi la scheda completa →</a>` : ""}
+          ${item.detail_url ? `<a href="${item.detail_url}">${t("fullPage")}</a>` : ""}
         </div>
       </div>`
     )
     .join("");
   win.document.write(
-    `<!doctype html><html><head><title>La mia collezione — ${brand}</title><meta charset="utf-8"><style>
+    `<!doctype html><html><head><title>${t("collection")} — ${brand}</title><meta charset="utf-8"><style>
       * { box-sizing: border-box; }
       body { font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; margin: 0; color: #1a1a1a; }
       header { background: ${primaryColor}; color: #fff; padding: 36px 40px; }
@@ -107,7 +124,7 @@ function downloadAsPdf(items: ProductCard[], assistantName: string, primaryColor
     </style></head><body>
       <header>
         <div class="brand">${brand}</div>
-        <div class="subtitle">La mia collezione</div>
+        <div class="subtitle">${t("collection")}</div>
         <div class="meta">${formatExportDate()} · ${count}</div>
       </header>
       <main>${rows}</main>
@@ -121,7 +138,7 @@ function downloadAsPdf(items: ProductCard[], assistantName: string, primaryColor
 
 function emailWishlist(items: ProductCard[], assistantName: string): void {
   const body = buildSummaryText(items, assistantName);
-  const url = `mailto:?subject=${encodeURIComponent("La mia collezione — " + brandName(assistantName))}&body=${encodeURIComponent(body)}`;
+  const url = `mailto:?subject=${encodeURIComponent(`${t("collection")} — ${brandName(assistantName)}`)}&body=${encodeURIComponent(body)}`;
   window.open(url, "_blank");
 }
 
@@ -160,7 +177,7 @@ function renderItemRow(item: ProductCard, deps: WishlistLayerDeps, onChanged: ()
   const goBtn = document.createElement("button");
   goBtn.type = "button";
   goBtn.className = "tva-wl-item-go";
-  goBtn.textContent = "Portami lì";
+  goBtn.textContent = t("takeMe");
   goBtn.addEventListener("click", () => deps.tourBridge.navigateTo(item.navTarget));
   body.appendChild(goBtn);
   row.appendChild(body);
@@ -170,7 +187,7 @@ function renderItemRow(item: ProductCard, deps: WishlistLayerDeps, onChanged: ()
   const heart = document.createElement("button");
   heart.type = "button";
   heart.className = "tva-wl-item-heart tva-wl-item-heart--saved";
-  heart.setAttribute("aria-label", `Rimuovi ${item.name} dalla mia collezione`);
+  heart.setAttribute("aria-label", t("removeItem", { name: item.name }));
   heart.innerHTML = HEART_SVG;
   heart.addEventListener("click", () => {
     deps.wishlist.remove(item.product_id);
@@ -202,14 +219,14 @@ function createRecommendationsRow(cards: ProductCard[], deps: WishlistLayerDeps)
   const prevBtn = document.createElement("button");
   prevBtn.type = "button";
   prevBtn.className = "tva-wl-rec-arrow tva-wl-rec-arrow--prev tva-wl-rec-arrow--hidden";
-  prevBtn.setAttribute("aria-label", "Precedente");
+  prevBtn.setAttribute("aria-label", t("previous"));
   prevBtn.innerHTML = CHEVRON_LEFT_SVG;
   wrap.appendChild(prevBtn);
 
   const nextBtn = document.createElement("button");
   nextBtn.type = "button";
   nextBtn.className = "tva-wl-rec-arrow tva-wl-rec-arrow--next";
-  nextBtn.setAttribute("aria-label", "Successivo");
+  nextBtn.setAttribute("aria-label", t("next"));
   nextBtn.innerHTML = CHEVRON_RIGHT_SVG;
   wrap.appendChild(nextBtn);
 
@@ -341,18 +358,18 @@ export function createWishlistLayer(
   const collectionBtn = document.createElement("button");
   collectionBtn.type = "button";
   collectionBtn.className = "tva-wl-toggle";
-  collectionBtn.textContent = "La mia collezione";
+  collectionBtn.textContent = t("collection");
   root.appendChild(collectionBtn);
 
   const previewHeartBtn = document.createElement("button");
   previewHeartBtn.type = "button";
   previewHeartBtn.className = "tva-wl-preview-heart tva-wl-preview-heart--hidden";
-  previewHeartBtn.setAttribute("aria-label", "Salva nella mia collezione");
+  previewHeartBtn.setAttribute("aria-label", t("save"));
   previewHeartBtn.innerHTML = HEART_SVG;
   root.appendChild(previewHeartBtn);
 
   function syncPreviewHeartVisual(): void {
-    const saved = previewProduct ? deps.wishlist.has(previewProduct.product_id) : false;
+    const saved = previewProduct ? isCompositionSaved(deps.wishlist, deps.manifest, previewProduct) : false;
     previewHeartBtn.classList.toggle("tva-wl-preview-heart--saved", saved);
   }
 
@@ -361,17 +378,7 @@ export function createWishlistLayer(
     // shows (explicit direction, see onNativePreviewChange), it just has
     // nothing to save. Silent no-op, not an error state.
     if (!previewProduct) return;
-    const p = previewProduct;
-    deps.wishlist.toggle({
-      product_id: p.product_id,
-      name: p.name,
-      description: "",
-      image_url: p.image_url,
-      section: "",
-      detail_url: p.detail_url,
-      navTarget: { media_name: p.media_name, yaw: p.yaw, pitch: p.pitch, fov: p.fov, hotspot_name: p.hotspot_name },
-      alternativesAvailable: false,
-    });
+    toggleComposition(deps.wishlist, deps.manifest, previewProduct, previewProduct.hotspot_name);
     syncPreviewHeartVisual();
   });
 
@@ -386,26 +393,42 @@ export function createWishlistLayer(
   const panel = document.createElement("aside");
   panel.className = "tva-wl-panel";
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "La mia collezione");
+  panel.setAttribute("aria-label", t("collection"));
   root.appendChild(panel);
+
+  // The panel shows the list or, after "Contáctame", the contact form in its place.
+  let view: "list" | "contact" = "list";
+  let contact = newContactState();
 
   function renderPanel(): void {
     const items = deps.wishlist.getAll();
     panel.innerHTML = "";
+    if (view === "contact") {
+      renderContactView(panel, contact, {
+        itemCount: items.length,
+        onBack: (sent) => {
+          view = "list";
+          if (sent) contact = newContactState();
+          renderPanel();
+        },
+        onChange: () => renderPanel(),
+      });
+      return;
+    }
 
     const header = document.createElement("div");
     header.className = "tva-wl-header";
     const titleWrap = document.createElement("div");
     const h2 = document.createElement("h2");
-    h2.textContent = "La mia collezione";
+    h2.textContent = t("collection");
     const count = document.createElement("span");
-    count.textContent = items.length === 1 ? "1 prodotto salvato" : `${items.length} prodotti salvati`;
+    count.textContent = items.length === 1 ? t("savedOne") : t("savedMany", { n: items.length });
     titleWrap.append(h2, count);
     const switchToChatBtn = document.createElement("button");
     switchToChatBtn.type = "button";
     switchToChatBtn.className = "tva-wl-switch-btn";
-    switchToChatBtn.setAttribute("aria-label", "Apri assistente");
-    switchToChatBtn.textContent = "Assistente";
+    switchToChatBtn.setAttribute("aria-label", t("openAssistant"));
+    switchToChatBtn.textContent = t("assistant");
     switchToChatBtn.addEventListener("click", () => {
       setOpen(false);
       deps.onOpenChat?.();
@@ -414,7 +437,7 @@ export function createWishlistLayer(
     const closeBtn = document.createElement("button");
     closeBtn.type = "button";
     closeBtn.className = "tva-wl-close";
-    closeBtn.setAttribute("aria-label", "Chiudi");
+    closeBtn.setAttribute("aria-label", t("close"));
     closeBtn.textContent = "×";
     closeBtn.addEventListener("click", () => setOpen(false));
     // Grouped together so both sit flush against the right edge, next to
@@ -431,8 +454,7 @@ export function createWishlistLayer(
     if (items.length === 0) {
       const empty = document.createElement("p");
       empty.className = "tva-wl-empty";
-      empty.textContent =
-        "Non hai ancora salvato nulla. Passa il cursore su qualsiasi prodotto nel tour, oppure usa il cuore nella chat, per iniziare la tua collezione.";
+      empty.textContent = t("emptyList");
       panel.appendChild(empty);
       return;
     }
@@ -454,7 +476,7 @@ export function createWishlistLayer(
     styleSection.className = "tva-wl-style-section";
     const loading = document.createElement("p");
     loading.className = "tva-wl-style-loading";
-    loading.textContent = "Analizzando il tuo stile…";
+    loading.textContent = t("analyzingStyle");
     styleSection.appendChild(loading);
     bottom.appendChild(styleSection);
 
@@ -465,11 +487,11 @@ export function createWishlistLayer(
         if (dominantStyle) {
           const label = document.createElement("div");
           label.className = "tva-wl-style-label";
-          label.innerHTML =
-            '<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">' +
-            '<path d="M12 3l1.8 5.4L19 10l-5.2 1.6L12 17l-1.8-5.4L5 10l5.2-1.6L12 3Z" fill="currentColor"/></svg>';
+          label.innerHTML = SPARK_SVG;
           const text = document.createElement("span");
-          text.innerHTML = `<strong>Il tuo stile: ${dominantStyle}.</strong> Questo potrebbe piacerti.`;
+          const strong = document.createElement("strong");
+          strong.textContent = `${t("yourStyle")} ${styleLabel(dominantStyle)}.`;
+          text.append(strong, ` ${t("mightLike")}`);
           label.appendChild(text);
           styleSection.appendChild(label);
         }
@@ -477,6 +499,15 @@ export function createWishlistLayer(
           styleSection.appendChild(createRecommendationsRow(cards, deps));
         } else if (!dominantStyle) {
           styleSection.remove();
+        }
+        if (dominantStyle && deps.onOpenMoodboard) {
+          const moodboardBtn = document.createElement("button");
+          moodboardBtn.type = "button";
+          moodboardBtn.className = "tva-wl-moodboard-btn";
+          moodboardBtn.innerHTML = SPARK_SVG;
+          moodboardBtn.append(t("createMoodboard"));
+          moodboardBtn.addEventListener("click", () => deps.onOpenMoodboard?.());
+          styleSection.appendChild(moodboardBtn);
         }
       })
       .catch(() => styleSection.remove());
@@ -490,7 +521,7 @@ export function createWishlistLayer(
     actions.className = "tva-wl-actions";
     const actionDefs: Array<[string, string, () => void]> = [
       [
-        "Scarica PDF",
+        t("downloadPdf"),
         "pdf",
         () =>
           downloadAsPdf(
@@ -499,7 +530,17 @@ export function createWishlistLayer(
             getComputedStyle(panel).getPropertyValue("--assistant-primary").trim() || "#e20613"
           ),
       ],
-      ["Invia via email", "mail", () => emailWishlist(items, deps.assistantName)],
+      deps.contactForm
+        ? [
+            t("contactMe"),
+            "contact",
+            () => {
+              view = "contact";
+              renderPanel();
+              panel.scrollTop = 0;
+            },
+          ]
+        : [t("sendEmail"), "mail", () => emailWishlist(items, deps.assistantName)],
       ["WhatsApp", "whatsapp", () => shareOnWhatsapp(items, deps.assistantName)],
     ];
     for (const [label, iconKind, handler] of actionDefs) {
@@ -516,12 +557,21 @@ export function createWishlistLayer(
 
   function setOpen(next: boolean): void {
     open = next;
+    if (!next) view = "list";
     panel.classList.toggle("tva-wl-panel--open", open);
     syncEntryButtons();
     if (open) renderPanel();
   }
 
   collectionBtn.addEventListener("click", () => setOpen(true));
+
+  // Follows the conversation's language (a visitor who writes in Spanish gets "Mi lista").
+  onUiLangChange(() => {
+    collectionBtn.textContent = t("collection");
+    previewHeartBtn.setAttribute("aria-label", t("save"));
+    panel.setAttribute("aria-label", t("collection"));
+    if (open) renderPanel();
+  });
 
   deps.wishlist.subscribe(() => {
     syncPreviewHeartVisual();

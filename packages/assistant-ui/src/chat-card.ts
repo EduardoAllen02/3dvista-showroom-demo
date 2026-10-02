@@ -8,7 +8,7 @@ import {
 import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
 import type { AssistantConfig } from "./types.js";
 import { createMessageList } from "./message-list.js";
-import { chipText, setUiLang, t } from "./ui-text.js";
+import { chipText, onUiLangChange, setUiLang, t, uiLang } from "./ui-text.js";
 
 /**
  * The chatbot is ONE of two independent layers on top of the tour — see
@@ -120,7 +120,7 @@ export function createChatCard(
   // the v2 backend answers it without the planner (the action is already known)
   // and it stays part of the conversation ("¿y en azul?" afterwards works).
   async function showAlternatives(productCard: ProductCard): Promise<void> {
-    await sendMessage(`${t("alternativesTo")} ${productCard.name}`, { exhibit_id: productCard.product_id, action: "alternatives" });
+    await sendMessage(`${t("alternativesTo")} ${productCard.short_name ?? productCard.name}`, { exhibit_id: productCard.product_id, action: "alternatives" });
   }
 
   // Input row
@@ -169,6 +169,11 @@ export function createChatCard(
     suggestionsLabel.textContent = t("suggestions");
     for (const c of chips) c.el.textContent = chipText(c.configured);
   }
+  // The language can also change from outside the chat (the tour's own language pick).
+  onUiLangChange(() => {
+    applyUiText();
+    messageList.render(state.getMessages());
+  });
 
   async function sendMessage(
     text: string,
@@ -233,7 +238,7 @@ export function createChatCard(
         clicked
       );
       messageList.hideTyping();
-      if (setUiLang(response.lang)) applyUiText();
+      setUiLang(response.lang);
       state.addAssistantMessage(response.reply, response.product_cards);
       // The agent itself decided to navigate this turn (explicit
       // "llévame"/selección) — apply it immediately, no card/button
@@ -283,7 +288,7 @@ export function createChatCard(
       requestAnimationFrame(() => input.focus());
       if (!welcomed) {
         welcomed = true;
-        state.addAssistantMessage(config.welcomeMessage, []);
+        state.addAssistantMessage(config.welcomeMessages?.[uiLang()] ?? config.welcomeMessage, []);
         messageList.render(state.getMessages());
       }
     }

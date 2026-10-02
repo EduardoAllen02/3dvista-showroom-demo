@@ -7,13 +7,14 @@
  * Inputs:  tour-project/<tour>/product-facts/{models,model-attributes,placements?}.json,
  *          palette-decisions.json (which line-palette collections apply to each model, read from its page),
  *          color-/material-/concept-overrides.json (client edits from the database workbook),
+ *          book-compo-finishes.json (finish of each part from the client's composition book; wins over captures),
  *          clients/<tour>/ontology.overrides.json (client edits to synonyms, via scripts/load-pack.ts),
  *          *.reviewed.json (client review, when present), clients/<tour>/catalog.json (tour binding).
  * Outputs: clients/<tour>/catalog.v2.json and clients/<tour>/catalog.v2.gates.json
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
-import { compileCatalog, type ConceptOverrides, type RawObservation, type RawPaletteDecision, type RawReview } from "../packages/assistant-engine/src/catalog/compile.js";
+import { compileCatalog, type ConceptOverrides, type OfficialFinishes, type RawObservation, type RawPaletteDecision, type RawReview } from "../packages/assistant-engine/src/catalog/compile.js";
 import { Lexicon } from "../packages/assistant-engine/src/ontology/lexicon.js";
 import { loadPack } from "./load-pack.js";
 
@@ -58,6 +59,8 @@ const { catalog, report } = compileCatalog({
   color_overrides: optional<Record<string, string[]>>("color-overrides.json"),
   material_overrides: optional<Record<string, string | null>>("material-overrides.json"),
   concept_overrides: optional<ConceptOverrides>("concept-overrides.json"),
+  // The client's composition book (finish of every part, per hotspot box): wins over the captures.
+  official_finishes: optional<OfficialFinishes>("book-compo-finishes.json"),
   lexicon: new Lexicon(loadPack(tour)),
 });
 

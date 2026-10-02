@@ -4,6 +4,7 @@
  *
  *   npx tsx scripts/v2-chat.mts [model=gpt-4o-mini] [--only C2] [--json out.json]
  *   npx tsx scripts/v2-chat.mts --ask "algo clásico" --ask "un sofá || ¿en azul?"   # ad-hoc: one conversation per --ask, turns split by "||"
+ *   npx tsx scripts/v2-chat.mts --ask "muéstrame todos los sofás || [alt:Melrose]"   # [alt:X]: the «Ver alternativas» button of card X
  *
  * Reads OPENAI_API_KEY from server/.env (never printed). V2_DEBUG=1 prints every composer draft (2: also what the composer was given).
  */
@@ -72,8 +73,15 @@ for (const [name, msgs] of Object.entries(CONVERSATIONS)) {
   if (only && !name.startsWith(only)) continue;
   console.log(`\n==================== ${name}`);
   const history: { role: "user" | "assistant"; text: string }[] = [];
-  for (const m of msgs) {
-    const r = await gateway.turn({ session_id: name, message: m, history, wishlist: [] });
+  let lastCards: TurnResult["cards"] = [];
+  for (let m of msgs) {
+    // "[alt:Melrose]": the card's «Ver alternativas» button on the previous answer.
+    const alt = /^\[alt:(.+)\]$/.exec(m);
+    const card = alt ? lastCards.find((c) => c.name.includes(alt[1])) : undefined;
+    if (alt && !card) throw new Error(`no card "${alt[1]}" in the previous answer`);
+    if (card) m = `Alternativas a ${card.short_name}`;
+    const r = await gateway.turn({ session_id: name, message: m, history, wishlist: [], ...(card ? { clicked: { exhibit_id: card.product_id, action: "alternatives" as const } } : {}) });
+    if (r.cards.length) lastCards = r.cards;
     history.push({ role: "user", text: m }, { role: "assistant", text: r.reply });
     const c = cost(r.trace.usage);
     totalCost += c; turns++; latencies.push(r.trace.latency_ms.total);

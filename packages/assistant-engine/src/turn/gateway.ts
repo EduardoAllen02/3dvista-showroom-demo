@@ -11,6 +11,15 @@ import { COMPOSER_SCHEMA, composerSystem, composerUserPrompt, parseSegments, rep
 import { DEFAULT_PROFILE, withOverrides, type AssistantProfile } from "./profile.js";
 import { DEFAULT_TEXTS, FOREIGN_OFFER, clarifyAnswer, completeObligations, fixedAnswer, navigationAnswer, oneClosingQuestion, templateAnswer, type Texts } from "./templates.js";
 
+/** "nel showroom" → "nello showroom": the article before s + consonant (the composer gets it wrong). */
+function italianArticles(text: string): string {
+  const FIX: Record<string, string> = { nel: "nello", del: "dello", al: "allo", dal: "dallo", sul: "sullo", il: "lo" };
+  return text.replace(/\b(nel|del|al|dal|sul|il) (showroom|spazio|studio)\b/gi, (_w, art: string, noun: string) => {
+    const fixed = FIX[art.toLowerCase()];
+    return `${art[0] === art[0].toUpperCase() ? fixed[0].toUpperCase() + fixed.slice(1) : fixed} ${noun}`;
+  });
+}
+
 const TRANSLATE_SYSTEM = "Translate the visitor's message to English, literally: keep every colour, material, shape and product name, add nothing. Output JSON {\"english\": \"...\"}.";
 const TRANSLATE_SCHEMA = { type: "object", additionalProperties: false, required: ["english"], properties: { english: { type: "string" } } };
 
@@ -121,6 +130,8 @@ export class TurnGateway {
     // 2) reduce (code) → action
     const { state, action, notes, foreign } = this.reducer.reduce(prev, plan, message, foreignIn);
     if (message !== req.message) notes.unshift(`translated: "${message}"`);
+    // The widget wrote that message in the conversation's language ("Alternativas a Melrose" is not English).
+    if (clickedAlt) state.lang = prev.lang;
     const lang = state.lang;
 
     // 3) engine
@@ -132,9 +143,9 @@ export class TurnGateway {
       case "mood": bundle = this.engine.moodSearch(action.constraints, this.lx.pack.moods); break;
       case "list": bundle = this.engine.list(action.constraints); break;
       case "alternatives": bundle = this.engine.alternatives(action.exhibit); break;
-      case "recommend": bundle = this.engine.recommend(action.seeds, action.seen); break;
+      case "recommend": bundle = this.engine.recommend(action.seeds, action.seen, action.anchor); break;
       case "locate": bundle = this.engine.locate(action.target); break;
-      case "detail": bundle = this.engine.detail(action.exhibit, action.fields); break;
+      case "detail": bundle = this.engine.detail(action.exhibit, action.fields, action.asked); break;
       case "navigate": {
         bundle = this.showBundle([action.exhibit], "locate");
         fixed = navigationAnswer(action.exhibit, lang, this.texts);
@@ -172,7 +183,7 @@ export class TurnGateway {
             if (verdict.ok) { segments = segs; break; }
             // Cheap fix first: a forgotten link. Anything else goes back to the LLM once; full
             // completion by code is the last resort before the template (it can duplicate prose).
-            const completed = completeObligations(segs, bundle, lang, attempts === 1, this.texts);
+            const completed = completeObligations(segs, bundle, lang, attempts === 1, this.texts, (ob) => this.verifier.covers(ob, segs, bundle!));
             if (completed && this.verifier.verify(completed, bundle, lang).ok) { segments = completed; completedByCode = true; break; }
             violations.push(verdict.violations);
             user = repairUserPrompt(view, lang, req.message, segs, verdict.violations);
@@ -186,8 +197,14 @@ export class TurnGateway {
     }
 
     // 5) render + state bookkeeping
-    let reply = segments.map((s) => this.renderer.renderTags(s.text, bundle ?? this.emptyBundle(), lang)).join(" ").replace(/\s+/g, " ").trim()
-      .replace(/\b([\p{L}][\p{L} ]{2,40}?) \(\1\)/giu, "$1");   // "warm grey (warm grey)": the tag plus the value written by hand
+    const homonyms = this.renderer.homonyms(segments.flatMap((s) => [...s.text.matchAll(/\{\{p:([^}]+)\}\}/g)].map((m) => m[1])));
+    let reply = segments.map((s) => this.renderer.renderTags(s.text, bundle ?? this.emptyBundle(), lang, homonyms)).join(" ").replace(/\s+/g, " ").trim()
+      .replace(/\b([\p{L}][\p{L} ]{2,40}?) \(\1\)/giu, "$1")   // "warm grey (warm grey)": the tag plus the value written by hand
+      // "(Casa 3 (Audace))", "(Casa 3 (Audace), antracita)": a zone label inside the composer's parentheses.
+      .replace(/\(([^()]+?) \(([^()]+)\)([^()]*)\)/g, "($1, $2$3)");
+    if (lang === "it") reply = italianArticles(reply);
+    // A greeting belongs to the first turn only ("sí" → "¡Hola! En el showroom tenemos…").
+    if (prev.turn > 0) reply = reply.replace(/^(¡?hola|ciao|hi|hello)\s*[!,.]\s*(?=\S)/i, "").replace(/^\p{Ll}/u, (c) => c.toUpperCase());
     reply = oneClosingQuestion(reply);
     if (foreign && !state.langs_offered) { reply = `${FOREIGN_OFFER} ${reply}`; state.langs_offered = true; }
     const cards = bundle && action.kind !== "template" ? this.renderer.uiCards(bundle, lang) : [];
@@ -233,8 +250,8 @@ export class TurnGateway {
       out = out.split(/(\{\{[^}]+\}\})/).map((part) => (part.startsWith("{{") ? part : part.replace(re, `{{p:${id}}}`))).join("");
     }
     // The same piece tagged twice in a row: a name that is also the kind of piece ("Boiserie (boiserie)"),
-    // or the composer writing the tag AND the name ("{{p:X}} Balmoral"). Keep one.
-    return out.replace(/\{\{p:([^}]+)\}\}\s*(?:\(\{\{p:\1\}\}\)|\{\{p:\1\}\})/g, "{{p:$1}}");
+    // or the composer writing the tag AND the name ("{{p:X}} Balmoral", "{{p:X}} \"Balmoral\""). Keep one.
+    return out.replace(/\{\{p:([^}]+)\}\}\s*(?:[("“«]\s*\{\{p:\1\}\}\s*[)"”»]|\{\{p:\1\}\})/g, "{{p:$1}}");
   }
 
   /** No LLM (provider down): lexicon-only plan. Correct by construction, less flexible. */

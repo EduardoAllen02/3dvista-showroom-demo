@@ -1,5 +1,5 @@
 {
- "mode": "strict",
+ "mode": "dev",
  "exhibits": 88,
  "models": 56,
  "gates": [
@@ -22,50 +22,16 @@
   {
    "id": "G3",
    "label": "Pieza con material del componente dominante",
-   "pass": 35,
+   "pass": 82,
    "total": 88,
    "ok": false,
    "missing": [
     "FEB-002",
     "FEB-006",
-    "FEB-010",
-    "FEB-015",
     "FEB-018",
-    "FEB-021",
-    "FEB-023",
-    "FEB-024",
-    "FEB-025",
-    "FEB-028",
-    "FEB-029",
-    "FEB-030",
-    "FEB-031",
-    "FEB-033",
-    "FEB-035",
-    "FEB-036",
-    "FEB-037",
-    "FEB-038",
-    "FEB-039",
     "FEB-041",
-    "FEB-042",
-    "FEB-043",
-    "FEB-045",
-    "FEB-046",
-    "FEB-047",
-    "FEB-050",
-    "FEB-051",
-    "FEB-052",
-    "FEB-054",
-    "FEB-055",
-    "FEB-056",
     "FEB-057",
-    "FEB-058",
-    "FEB-060",
-    "FEB-063",
-    "FEB-064",
-    "FEB-068",
-    "FEB-069",
-    "FEB-072",
-    "FEB-073"
+    "FEB-095"
    ]
   },
   {
@@ -170,9 +136,11 @@
    "id": "G7",
    "label": "Hechos con fuente literal o validados (sin rechazos)",
    "pass": 821,
-   "total": 821,
-   "ok": true,
-   "missing": []
+   "total": 822,
+   "ok": false,
+   "missing": [
+    "F-navigli-styles-curated"
+   ]
   }
  ]
 }

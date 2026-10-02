@@ -1394,7 +1394,7 @@
      "real leather"
     ]
    },
-   "note": "Piel animal auténtica. NO incluye similpiel/ecopelle/efecto piel (material.faux_leather) ni nobuk/nabuk (material.nubuck)."
+   "note": "Piel animal auténtica, incluido el nobuk/nabuk (Nabuk Eagle cuenta como piel: decisión de Febal, 28/09/2026). NO incluye similpiel/ecopelle/efecto piel (material.faux_leather)."
   },
   {
    "id": "material.faux_leather",
@@ -1455,7 +1455,8 @@
      "nabuk"
     ]
    },
-   "note": "Acabado tipo nobuk. Si es piel real o microfibra está pendiente de validar (Nabuk Eagle)."
+   "note": "Piel con acabado nobuk (Nabuk Eagle): cuenta como piel y se ofrece cuando piden piel (decisión de Febal, 28/09/2026).",
+   "parent": "material.leather"
   },
   {
    "id": "material.fabric",
@@ -2007,9 +2008,9 @@
    "id": "material.ceramic",
    "facet": "material",
    "labels": {
-    "es": "cerámica",
-    "it": "ceramica",
-    "en": "ceramic"
+    "es": "gres",
+    "it": "gres",
+    "en": "stoneware"
    },
    "synonyms": {
     "es": [
@@ -2035,7 +2036,8 @@
      "stoneware",
      "sintered stone"
     ]
-   }
+   },
+   "note": "Cerámica y gres (la cubierta de la Madeira es gres). Al buscar mármol se ofrece como alternativa, aclarando que es gres y no mármol natural."
   },
   {
    "id": "material.marble",
@@ -2075,20 +2077,26 @@
      "efecto mármol",
      "efecto marmol",
      "imitación mármol",
-     "tipo mármol"
+     "tipo mármol",
+     "travertino",
+     "efecto travertino"
     ],
     "it": [
      "effetto marmo",
      "supermarmo",
-     "finto marmo"
+     "finto marmo",
+     "travertino",
+     "effetto travertino"
     ],
     "en": [
      "marble effect",
      "marble look",
-     "faux marble"
+     "faux marble",
+     "travertine",
+     "travertine look"
     ]
    },
-   "note": "Superficie que imita el mármol (supermarmo, Scenario): NO es mármol natural; decirlo así."
+   "note": "Superficie que imita el mármol (supermarmo, Scenario, travertino): NO es mármol natural; decirlo así."
   },
   {
    "id": "material.stone",
@@ -3356,13 +3364,6 @@
   },
   {
    "from": "material.leather",
-   "to": "material.nubuck",
-   "type": "near",
-   "distance": 0.3,
-   "status": "signed"
-  },
-  {
-   "from": "material.leather",
    "to": "material.faux_leather",
    "type": "near",
    "distance": 0.3,
@@ -3449,7 +3450,7 @@
    "from": "material.marble",
    "to": "material.ceramic",
    "type": "near",
-   "distance": 0.4,
+   "distance": 0.2,
    "status": "signed"
   },
   {

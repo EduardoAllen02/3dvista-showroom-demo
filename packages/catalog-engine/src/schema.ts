@@ -18,7 +18,11 @@ export const ProductSchema = z.object({
   media_name: z.string().min(1),
   yaw: z.number().min(-180).max(180),
   pitch: z.number().min(-90).max(90),
-  fov: z.number().min(20).max(120),
+  // 180 is the physical ceiling for a horizontal FOV. The old 120 predates
+  // the live POV captures (scripts/cdp-capture-panel.py), which read up to
+  // 130 straight from 3DVista's own player for wide pieces (boiserie,
+  // wardrobes); with 120, loadCatalog() rejected the whole catalog.
+  fov: z.number().min(20).max(180),
   hotspot_name: z.string().nullable(),
   image_url: z.string().min(1),
   detail_url: z.string().nullable(),

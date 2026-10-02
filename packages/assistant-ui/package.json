@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@3dvista-assistant/assistant-core": "*",
+    "@3dvista-assistant/moodboard-ui": "*",
     "@3dvista-assistant/tour-bridge": "*"
   }
 }

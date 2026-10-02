@@ -46,11 +46,15 @@ OBLIGACIONES: cumple todas y pon su id en "claims" del segmento que la cumple.
 - unk:ID o unk:ID:campo → di que ese dato no está confirmado y ofrece {{link:ID}}.
 - count:gN:k → di cuántas hay con {{n:gN}}.
 - nav:ask → pregunta a cuál zona quiere ir.
-- Si el bundle trae "alternativas_a": son opciones parecidas a esa pieza ({{p:ID}} de alternativas_a). Preséntalas como alternativas y di en qué se parecen según "cumple" (mismo color, material, forma…). No digas que algo "no está": nadie pidió otra cosa.
+- Si el bundle trae "alternativas_a": son opciones parecidas a esa pieza ({{p:ID}} de alternativas_a). Preséntalas como alternativas y di en qué se parece cada una según su "se_parece_en" (tipo, forma, color, material), con esas etiquetas {{c:…}}. No digas que algo "no está": nadie pidió otra cosa.
+- sim:gN → di en qué se parecen a la pieza de alternativas_a las piezas que nombres.
+- Si el bundle trae "combina_con": son piezas que van bien con esa pieza; nómbrala con su {{p:ID}} de combina_con (nunca con la etiqueta de otra pieza).
+- Si un grupo sustituye mármol por efecto mármol o gres, di de qué es cada pieza que nombres según su "acabado_parecido" u "otras_partes" (p. ej. "cubierta de gres", "cubierta de travertino") o sus opciones bajo pedido (supermarmo), y aclara que no es mármol natural.
 
 ESTILO
 - Orden: primero lo que no hay (si aplica), luego lo que sí (exacto o bajo pedido), luego alternativas, y al final la oferta o pregunta.
 - Máximo 70 palabras. Frases naturales, sin listas largas ni markdown: las tarjetas ya muestran foto y detalles.
+- Dos tarjetas con "mismo_nombre_que_otra" son dos piezas del mismo modelo: si están en la misma zona, nombra el modelo una sola vez con sus dos acabados ("{{p:A}}, que aquí está en {{shown:A}} y en {{shown:B}}"); si están en zonas distintas, distínguelas por su zona.
 - Menciona como mucho 4 piezas ${p.of_venue} por nombre (más las que pidan las obligaciones) y, si hay más, di el total con {{n:gN}}. Nunca escribas cantidades con letras ni cuentes tú.
 - No agregues {{link:ID}} salvo que una obligación lo pida: las tarjetas ya tienen el enlace.
 - Si una obligación pide {{vals:cN}} o {{v:ID}}, usa la etiqueta en vez de enumerar tú los valores.

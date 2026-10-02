@@ -263,6 +263,37 @@
   - Con la lista del showroom se completan solos.
   - Si no existe, se hace una pasada por foto que marca SÍ solo cuando se ve sin duda.
 - Batería run9: 24 turnos, 0 plantillas, 2 reparaciones, $0.00091/turno. C15: Couple en azul → lacas Blu Notte/Ceruleo bajo pedido.
+- **Batería manual de Edd (44 pruebas, `scripts/build-manual-tests-xlsx.py --run`).**
+  - Primera corrida (27/09 23:41): 41 SI y 3 NO (#15 sin total, #21 «lo» tomado como una sola pieza, #28 alternativas sin decir en qué se parecen). El veredicto va en `eval/runs/manual-<ts>.verdicts.json` y el Excel lo pone en la columna G.
+  - **Arreglos (todos menos la #15, que Edd dejó fuera):**
+    - «¿Lo tienes en amarillo?» tras una lista de varias piezas pregunta por todas; un «sí» a una oferta pendiente siempre la acepta, diga lo que diga el planificador.
+    - «Ver alternativas»: el motor calcula qué comparte cada pieza con la original (tipo, forma, color, material), el redactor debe decirlo (obligación `sim`) y el botón manda «Alternativas a Melrose», no «Divano Melrose».
+    - Nombres repetidos: dos piezas del mismo modelo en la misma zona se nombran una vez con sus dos acabados; en zonas distintas, el código añade la zona al nombre.
+    - Nada en italiano dentro de una respuesta en otro idioma: medidas traducidas por código, descripción corta de la tarjeta = tipo + cómo se ve aquí, panel «Mi lista» y nombres de estilo en el idioma del chat.
+    - Encabezado «Consulta su ficha» en vez de «Sin confirmar»; sin la lista de materiales repetida; «Nello showroom»; «Te llevo a Melrose, en Casa 3 (Audace)»; «sus fichas» sin enlace se rechaza; sin «¡Hola!» a mitad de la conversación; «llevame» sin acento se entiende como español.
+    - «¿y cuánto pesa?»: los datos pedidos se filtran por las palabras del mensaje (el planificador a veces pedía los siete).
+  - La regresión sin LLM cambió solo donde se buscaba (reglas nuevas del redactor, encabezado de «unknown» y el «sí» del caso 2); línea base en `eval/baselines/v2-snapshot.json`.
+- **Moodboard integrado** (venía de `feature/moodboard`, ver `docs/moodboard/README.md`):
+  - paquetes `moodboard-engine` y `moodboard-ui`, rutas `/moodboard` y botón «Crea tu moodboard» en «Mi lista», activado en `febal-casa`;
+  - corregido el tope de `fov` (120 → 180) que tumbaba `/recommendations` con el catálogo actual;
+  - al integrar: los reintentos de texturas pasan por el límite de gasto, y el moodboard se crea en el idioma de la conversación;
+  - probado en el tour: Balmoral + Camden → «Clásico elegante», lema, paleta, 4 texturas y descripción en español en unos 20 s, por $0.01.
+- **Tras la llamada con el cliente (28/09) — la PoC queda aprobada:**
+  - **«Contáctame»** en «Mi lista», en lugar de «Enviar por correo» (`contact-panel.ts`, `features.contactForm`):
+    - flujo: CAP → tienda más cercana con mapa de Google contraíble → nombre, apellido, correo → casilla de informativa privacy (art. 13 GDPR, popup con lorem ipsum) → confirmación;
+    - es solo UI de demo: la tienda es de ejemplo y no se envía nada.
+  - **Globo de bienvenida** («¡Hola! Soy tu asistente virtual») sobre el botón del chat (`greeting-bubble.ts`, `features.greeting`):
+    - sale 1,5 s después de entrar al tour, con animación de globo y de escritura, y se va al abrir el chat;
+    - el idioma inicial del widget sale del que se eligió en el tour (IT/EN).
+  - **Skin del tour** (`skin` en `tour.config.json`, aplicado por el bridge de 3DVista): sin el letrero de la casa a la derecha; «Mappa Showroom» 55 px más arriba.
+  - **Decisiones de datos** (ver `docs/chatbot-v2/dudas-febal.md` y `product-facts/concept-overrides.json`):
+    - el nobuk cuenta como piel;
+    - Navigli, elegante;
+    - la cubierta de la Madeira es gres;
+    - la madia Libeskind022 tiene cubierta de travertino.
+    Al buscar mármol se ofrecen el efecto mármol y el gres, diciendo de qué es cada pieza y que no es mármol natural.
+  - **Batería final:** 43 SI y 1 NO (la #15, fuera de ronda).
+  - **Analítica:** propuesta en `docs/analytics/propuesta-analitica.md` y reporte de ejemplo con `node scripts/analytics-sample-report.mjs`.
 
 ## Métricas de la suite (gpt-4o-mini, datos en modo dev, sin validar)
 

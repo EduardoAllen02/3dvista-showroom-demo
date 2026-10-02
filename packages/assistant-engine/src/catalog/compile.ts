@@ -61,8 +61,31 @@ export interface RawPaletteDecision {
 export interface ConceptOverrides {
   models?: Record<string, { shapes?: ConceptId[]; materials?: ConceptId[]; styles?: ConceptId[] }>;
   /** material: first = the dominant surface, rest = other parts. */
-  pieces?: Record<string, { shape?: ConceptId[]; color?: ConceptId[]; material?: ConceptId[] }>;
+  pieces?: Record<string, {
+    shape?: ConceptId[]; color?: ConceptId[]; material?: ConceptId[];
+    /** Secondary parts the client named ("top" in travertino), with the finish as it is said. */
+    parts?: { role: ComponentRole; material: ConceptId; observed: string }[];
+  }>;
 }
+
+/** One part of a piece as the client's composition book lists it ("Rivestimento: Tessuto Earth Dune R215"). */
+export interface OfficialFinishPart {
+  parte: string;
+  /** The finish, literally. */
+  acabado: string;
+  /** What answers say between «» (the finish's own name, untranslated). */
+  nombre: string;
+  material: ConceptId | null;
+  /** Plain colour in Italian, localized by the renderer ("sabbia"). */
+  color: string;
+  familias: ConceptId[];
+  rol: ComponentRole;
+  principal: boolean;
+}
+export interface OfficialFinish { caja: string; pagina: number; nombre_libro: string; partes: OfficialFinishPart[]; nota?: string }
+export interface OfficialDocument { documento: string; titulo: string; fecha_documento: string }
+/** product-facts/book-compo-finishes.json: `_fuente` describes the document, every other key is a piece. */
+export type OfficialFinishes = { _fuente: OfficialDocument } & Record<string, OfficialFinish | OfficialDocument>;
 
 export interface CompileInput {
   tour_id: string;
@@ -83,6 +106,8 @@ export interface CompileInput {
   material_overrides?: Record<string, ConceptId | null>;
   /** Client edits to what the assistant understood (the "lo que entiende" columns of the database workbook). */
   concept_overrides?: ConceptOverrides;
+  /** The finish of each part per the client's composition book: wins over the capture when present. */
+  official_finishes?: OfficialFinishes;
   lexicon: Lexicon;
 }
 
@@ -132,7 +157,7 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     facts.push(fact);
     return fact;
   };
-  const LITERAL = new Set(["official_page", "tour_capture", "curated"]);
+  const LITERAL = new Set(["official_page", "official_document", "tour_capture", "curated"]);
   const usable = (f: Fact) => f.review.status === "validated"
     || (f.review.status === "pending" && (input.mode === "dev" || LITERAL.has(f.source.kind)));
   function attr<T>(value: T | null, fact: Fact | null, reason: "not_captured" | "not_published" = "not_published"): Attr<T> {
@@ -299,9 +324,32 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
     const evidence = obs ? `captura ${p.product_id}: ${obs.colors.join(", ")} / ${obs.materials.join(", ")}` : `catálogo v1 (CASA 01 manual): ${p.colors.join(", ")} / ${p.materials.join(", ")}`;
 
     const po = input.concept_overrides?.pieces?.[p.product_id];
+    const book = p.product_id.startsWith("_") ? undefined : input.official_finishes?.[p.product_id] as OfficialFinish | undefined;
     let configuration: Attr<ConfiguredComponent[]> = { status: "unknown", reason: "not_captured" };
-    if (colorsText.length || matsText.length || po?.color || po?.material) {
-      const curated = !!(po?.color || po?.material);
+    if (book) {
+      // The composition book names the finish of each part: it replaces what the capture inferred.
+      // Its name goes between «» so answers quote it as is ("sabbia «Earth Dune R215»").
+      const doc = input.official_finishes!._fuente;
+      const curated = !!(po?.color || po?.material || po?.parts);
+      const f = addFact({ id: `F-${p.product_id}-conf`, subject: p.product_id,
+        claim: `Acabados (${book.caja}): ${book.partes.map((pt) => `${pt.parte}: ${pt.acabado}`).join("; ")}`,
+        source: { kind: curated ? "curated" : "official_document", url: doc.documento, captured_at: doc.fecha_documento,
+          evidence: `${doc.titulo}, pág. ${book.pagina}, ${book.caja} ${book.nombre_libro}: ${book.partes.map((pt) => `${pt.parte}: ${pt.acabado}`).join("; ")}${curated ? " (conceptos editados en la base de datos en Excel)" : ""}` } });
+      const comps: ConfiguredComponent[] = book.partes.map((pt) => ({
+        role: pt.principal ? dominantRole(category, rules) : pt.rol, dominant: pt.principal,
+        material: pt.principal && po?.material ? po.material[0] : pt.material,
+        color_family: pt.principal && po?.color ? po.color : pt.familias,
+        observed_color: pt.nombre && normalizeText(pt.nombre) !== normalizeText(pt.color) ? `${pt.color} «${pt.nombre}»` : pt.color,
+      }));
+      // Parts the book does not list but the capture saw (a metal base, a glass lid) keep their material.
+      const listed = new Set(comps.map((c) => c.material));
+      for (const t of matsText.slice(1)) {
+        for (const m of concepts(t, "material")) if (!listed.has(m)) { listed.add(m); comps.push({ role: "whole", dominant: false, material: m, color_family: [], observed_color: null }); }
+      }
+      for (const pt of po?.parts ?? []) comps.push({ role: pt.role, dominant: false, material: pt.material, color_family: [], observed_color: pt.observed });
+      configuration = attr(comps, f, "not_captured");
+    } else if (colorsText.length || matsText.length || po?.color || po?.material || po?.parts) {
+      const curated = !!(po?.color || po?.material || po?.parts);
       const f = addFact({ id: `F-${p.product_id}-conf`, subject: p.product_id, claim: `Se ve: ${colorsText.join(", ")} · ${matsText.join(", ")}`,
         source: curated ? { kind: "curated", captured_at: now.slice(0, 10), evidence: `${evidence} (conceptos editados en la base de datos en Excel)` } : { kind, captured_at: now.slice(0, 10), evidence } });
       const colorIds = po?.color ?? [...new Set(colorsText.flatMap((t) => [
@@ -314,7 +362,10 @@ export function compileCatalog(input: CompileInput): { catalog: CanonicalCatalog
       const otherMats = po?.material ? po.material.slice(1)
         : [...new Set(matsText.slice(1).flatMap((t) => concepts(t, "material")))].filter((m) => !firstMats.includes(m));
       const comp: ConfiguredComponent = { role: dominantRole(category, rules), dominant: true, material: dominantMat, color_family: colorIds, observed_color: colorsText.join(", ") || null };
-      const extra: ConfiguredComponent[] = otherMats.map((m) => ({ role: "whole", dominant: false, material: m, color_family: [], observed_color: null }));
+      const extra: ConfiguredComponent[] = [
+        ...otherMats.map((m): ConfiguredComponent => ({ role: "whole", dominant: false, material: m, color_family: [], observed_color: null })),
+        ...(po?.parts ?? []).map((pt): ConfiguredComponent => ({ role: pt.role, dominant: false, material: pt.material, color_family: [], observed_color: pt.observed })),
+      ];
       configuration = attr([comp, ...extra], f, "not_captured");
     }
     let shapeAs: Attr<ConceptId[]> = { status: "unknown", reason: "not_captured" };
@@ -366,7 +417,7 @@ export function gateReport(cat: CanonicalCatalog): GateReport {
       g("G4", "Modelo con forma conocida", cat.models.map((m) => ({ id: m.id, ok: m.shapes.status === "known" }))),
       g("G5", "Opción oficial con familia de color", cat.models.flatMap((m) => m.option_groups.flatMap((gr) => gr.options.map((o) => ({ id: o.id, ok: o.color_family.length > 0 }))))),
       g("G6", "Colección con material", cat.models.flatMap((m) => m.option_groups.map((gr) => ({ id: gr.id, ok: !!gr.material || gr.options.every((o) => !!o.material) })))),
-      g("G7", "Hechos con fuente literal o validados (sin rechazos)", cat.facts.map((f) => ({ id: f.id, ok: f.review.status === "validated" || (f.review.status === "pending" && ["official_page", "tour_capture"].includes(f.source.kind)) }))),
+      g("G7", "Hechos con fuente literal o validados (sin rechazos)", cat.facts.map((f) => ({ id: f.id, ok: f.review.status === "validated" || (f.review.status === "pending" && ["official_page", "official_document", "tour_capture"].includes(f.source.kind)) }))),
     ],
   };
 }

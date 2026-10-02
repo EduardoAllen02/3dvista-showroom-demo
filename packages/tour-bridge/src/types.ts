@@ -27,6 +27,19 @@ export interface TourBridgeStrategy {
   getViewer?(): ViewerState | null;
   /** The viewer's own product hotspots, when it has them. */
   hotspots?: HotspotSignals;
+  /** The language the visitor chose in the viewer itself ("it-IT", "en-US"), when it has one. */
+  getLocale?(): string | null;
+  /** Per-tour edits to the viewer's own skin; false while the viewer isn't ready (retry later). */
+  applySkinTweaks?(tweaks: SkinTweaks): boolean;
+}
+
+/**
+ * Edits to the viewer's own skin, configured per tour. Keys are component ids or editor names
+ * (3DVista: "broj-panorame"); raise = pixels to add to the component's distance from the bottom.
+ */
+export interface SkinTweaks {
+  hide?: string[];
+  raise?: Record<string, number>;
 }
 
 /** The same contract under the name the platform integration uses. */
@@ -45,8 +58,9 @@ export interface HotspotSignals {
   hovered(): string | null;
   /** Where that hotspot sits in the panorama. */
   anchor(key: string): { yaw: number; pitch: number } | null;
-  /** The viewer's own product panel: open or not, and for which hotspot (null when unknown). */
-  openPanel(): { open: boolean; key: string | null };
+  /** The viewer's own product panel: open or not, for which hotspot (null when unknown), and the
+   * page it shows (null when unknown). */
+  openPanel(): { open: boolean; key: string | null; url?: string | null };
   /** The key a catalog entry's hotspot_name corresponds to. */
   keyOf(hotspotName: string): string | null;
 }
@@ -75,12 +89,14 @@ export interface TdvObject {
 
 export interface TdvPlayerRegistry {
   getById<T = TdvObject>(id: string): T | undefined;
+  getByClassName?(cls: string): TdvObject[];
 }
 
 declare global {
   interface Window {
     tour?: {
       player?: TdvPlayerRegistry;
+      locManager?: { currentLocaleID?: string };
     };
   }
 }

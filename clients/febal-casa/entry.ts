@@ -13,9 +13,12 @@ AssistantWidget.init({
   assetsBaseUrl,
   assistantName: tourConfig.assistant.assistantName,
   welcomeMessage: tourConfig.assistant.welcomeMessage,
+  welcomeMessages: tourConfig.assistant.welcomeMessages,
   suggestedQuestions: tourConfig.assistant.suggestedQuestions,
   theme: {
     primaryColor: tourConfig.theme.primaryColor,
     position: tourConfig.theme.position,
   },
+  features: tourConfig.features,
+  skin: tourConfig.skin,
 });

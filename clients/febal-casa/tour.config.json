@@ -498,10 +498,27 @@
       "Cucine",
       "Armadi",
       "Tavoli"
-    ]
+    ],
+    "welcomeMessages": {
+      "en": "Hi! I'm Febal Casa's virtual assistant. Ask me about any piece in the showroom and I'll take you straight to it.",
+      "es": "¡Hola! Soy el asistente virtual de Febal Casa. Pregúntame por cualquier mueble del showroom y te llevo directamente."
+    }
   },
   "theme": {
     "primaryColor": "#E20613",
     "position": "bottom-right"
+  },
+  "features": {
+    "moodboard": true,
+    "contactForm": true,
+    "greeting": true
+  },
+  "skin": {
+    "hide": [
+      "broj-panorame"
+    ],
+    "raise": {
+      "Image_9EA60A4A_957A_1B9A_41DE_A484D12A9A55": 55
+    }
   }
 }

@@ -41,9 +41,21 @@ const NUMBER_WORDS: Record<Lang, Record<string, number>> = {
 };
 // "its page" said in words: must be the {{link:ID}} tag instead, or the visitor gets no link.
 const PAGE_WORDS: Record<Lang, RegExp> = {
-  es: /\b(su|la) ficha\b/i,
-  it: /\b(sua|la) scheda\b/i,
-  en: /\b(its|the) (product )?page\b/i,
+  es: /\b(su|la|sus|las|cada|respectiv[ao]s?) fichas?\b/i,
+  it: /\b(sua|la|le|sue|loro|ogni|rispettiv[ae]) schede?\b/i,
+  en: /\b(its|the|their|each|respective) (product )?pages?\b/i,
+};
+// Alternatives must say what they share with the piece they replace ("también de ángulo", "lo stesso grigio").
+const SIMILAR: Record<Lang, RegExp> = {
+  es: /mism[oa]s?|tambi[eé]n|parec|igual|como |compart/i,
+  it: /stess[oa]|stessi|stesse|anche|simil|come |condivid/i,
+  en: /same|also|similar|like |shares?|too\b|as well/i,
+};
+// "We don't have it" at the start of the answer (normalized text: no accents).
+const DENY: Record<Lang, RegExp> = {
+  es: / (no (tenemos|tengo|hay|contamos)|ninguna?|ningun) /,
+  it: / (non (abbiamo|ho|ce|ci sono|c e)|nessun[oa]?) /,
+  en: / (we don t have|we do not have|there (are|is) no|we have no|i don t have) /,
 };
 const COMBINE: Record<Lang, RegExp> = {
   es: /combin|armoniz|queda bien/i,
@@ -84,7 +96,10 @@ export class Verifier {
       else if (!ok && kind === "n") v.push(`V1 {{n:${arg}}} no existe: los grupos son ${bundle.groups.map((g) => `{{n:${g.id}}} (${g.total})`).join(", ") || "ninguno"}`);
       else if (!ok) v.push(`V1 etiqueta inválida {{${kind}:${arg}}}`);
     }
-    const plain = full.replace(/\{\{[^}]+\}\}/g, " ");
+    // An official finish name quoted from the cards' data («Earth Dune R215», «Laminam Marmo Imperiale»)
+    // is the catalog's own literal: its digits and colour/material words aren't claims to check.
+    const quoted = this.quotedNames(bundle);
+    const plain = full.replace(/\{\{[^}]+\}\}/g, " ").replace(/«([^»]*)»/g, (m, name: string) => (quoted.has(normalizeText(name)) ? " " : m));
     // V4 no digits outside tags (measures, prices, coordinates can't be invented); zone numbers are checked by V8
     const spoken = this.profile.zones?.spoken;
     if (/\d/.test(spoken ? plain.replace(new RegExp(`\\b${spoken}\\s*0?\\d+`, "gi"), " ") : plain)) v.push("V4 hay números fuera de etiquetas: usa {{f:…}} o {{n:…}}");
@@ -95,8 +110,20 @@ export class Verifier {
     // V4c at most a handful of pieces by name: the rest are in the cards
     const named = new Set([...full.matchAll(/\{\{p:([^}]+)\}\}/g)].map((m) => m[1]));
     if (named.size > 6) v.push(`V4 nombras ${named.size} piezas: nombra como mucho 4 (más las que pidan las obligaciones); el resto ya está en las tarjetas`);
+    // V4d two exhibits of one model in the same zone read as a name said twice ("Anta Libeskind y Anta Libeskind")
+    const sameName = new Map<string, string[]>();
+    for (const id of named) {
+      const e = this.catalog.exhibits.find((x) => x.id === id);
+      const m = e && this.catalog.models.find((x) => x.id === e.model_id);
+      const key = `${(m && !m.id.startsWith("orphan") ? m.name : e?.name ?? id).toLowerCase()}|${e?.zone}`;
+      sameName.set(key, [...(sameName.get(key) ?? []), id]);
+    }
+    for (const [a, b] of [...sameName.values()].filter((ids) => ids.length > 1)) {
+      v.push(`V4 {{p:${a}}} y {{p:${b}}} tienen el mismo nombre y están en la misma zona: nómbralo una sola vez y di sus dos acabados ("{{p:${a}}}, que aquí está en {{shown:${a}}} y en {{shown:${b}}}")`);
+    }
+    // Same name in different zones ("Madeira" in Casa 3 and in Galleria): the renderer adds the zone.
     // V4b "its page" only as a real link
-    if (PAGE_WORDS[lang].test(plain) && !full.includes("{{link:")) v.push("V4 mencionas la ficha sin enlace: usa {{link:ID}}");
+    if (PAGE_WORDS[lang].test(plain) && !full.includes("{{link:")) v.push("V4 mencionas la ficha sin enlace: quita esa frase (las tarjetas ya enlazan su ficha) o usa {{link:ID}}");
     // V5 no raw product names outside tags
     const normPlain = ` ${normalizeText(plain)} `;
     for (const n of this.names) if (normPlain.includes(` ${n} `)) v.push(`V5 nombre de producto sin etiqueta: "${n}" → usa {{p:ID}}`);
@@ -119,6 +146,11 @@ export class Verifier {
       const zones = new Set(cards.map((c) => zonePattern.exec(this.catalog.exhibits.find((e) => e.id === c.exhibit_id)?.zone ?? "")?.[1]).filter(Boolean));
       for (const [, n] of plain.matchAll(new RegExp(`\\b${spoken}\\s*0?(\\d+)`, "gi"))) if (!zones.has(n)) v.push(`V8 zona "${spoken.charAt(0).toUpperCase() + spoken.slice(1)} ${n}" no corresponde a ninguna tarjeta → usa {{z:ID}}`);
     }
+    // V9b what was asked IS in the showroom: the answer must not open by denying it
+    if (bundle.groups.some((g) => g.role === "exact_exhibited")) {
+      const opening = normalizeText(plain.split(/(?<=[.!?])\s/)[0] ?? "");
+      if (DENY[lang].test(` ${opening} `)) v.push(`V9 lo pedido SÍ está ${this.profile.prompt.in_venue} (${bundle.groups.find((g) => g.role === "exact_exhibited")!.cards.slice(0, 2).map((c) => `{{p:${c.exhibit_id}}}`).join(", ")}): no digas que no lo hay`);
+    }
     // V9 obligations — structural, over the whole answer (claims are only a tracing aid)
     const has = (tag: string) => full.includes(tag);
     for (const ob of bundle.obligations) {
@@ -136,6 +168,17 @@ export class Verifier {
         case "grp": case "off": {
           const g = bundle.groups.find((x) => x.id === a);
           if (!g || !g.cards.some((c) => has(`{{p:${c.exhibit_id}}}`))) v.push(`V9 ${ob}: menciona al menos una pieza del grupo ${a} con {{p:ID}}`);
+          // A named showroom piece standing in with another material ("marble" → gres top): say which one.
+          const subs = (g?.relaxation ?? []).flatMap((op) => (op.kind === "substitute" && op.to && this.lx.facetOf(op.to) === "material" ? [op.to] : []));
+          const plainNorm = ` ${normalizeText(plain)} `;
+          for (const c of (g?.cards ?? []).filter((x) => has(`{{p:${x.exhibit_id}}}`))) {
+            const e = this.catalog.exhibits.find((x) => x.id === c.exhibit_id);
+            const mats = e?.configuration.status === "known" ? e.configuration.value.map((p) => p.material).filter((m): m is string => !!m && subs.some((s) => this.lx.isA(m, s))) : [];
+            for (const m of mats) {
+              const word = normalizeText(this.lx.label(m, lang));
+              if (!plainNorm.includes(` ${word} `)) v.push(`V9 ${ob}: di que {{p:${c.exhibit_id}}} es de ${this.lx.label(m, lang)} (no del material pedido)`);
+            }
+          }
           // The offer is the LAST question and comes after the offered piece, so a "yes" points at it
           // (a short closing sentence after the question is fine).
           const at = Math.min(...(g?.cards ?? []).map((c) => full.indexOf(`{{p:${c.exhibit_id}}}`)).filter((i) => i >= 0));
@@ -143,19 +186,65 @@ export class Verifier {
           break;
         }
         case "harm": if (!COMBINE[lang].test(plain)) v.push(`V9 ${ob}: di que el color alternativo combina con el pedido`); break;
-        case "vals": if (!has(`{{vals:${a}}}`)) v.push(`V9 ${ob}: nombra los valores que sí existen con {{vals:${a}}}`); break;
+        case "vals": if (!this.covers(ob, segments, bundle)) v.push(`V9 ${ob}: nombra los valores que sí existen con {{vals:${a}}}`); break;
         case "unk": if (!has(`{{p:${a}}}`) || !(NEG[lang].test(plain) || has(`{{link:${a}}}`))) v.push(`V9 ${ob}: di que ese dato de {{p:${a}}} no está confirmado y ofrece {{link:${a}}}`); break;
         case "fact": if (!has(`{{f:${a}}}`)) v.push(`V9 ${ob}: da el dato con {{f:${a}}} (sí lo tenemos)`); break;
+        case "ans": {
+          // A yes/no about the piece's own material or colour: it must be answered, and a "no" said as no.
+          const [, id, t] = ob.split(":");
+          const c = bundle.constraints.find((x) => x.id === id);
+          if (!c?.value) break;
+          const said = has(`{{c:${c.value}}}`) || this.lx.match(plain, [c.facet as "material" | "color"]).some((h) => h.concept === c.value || this.lx.isA(h.concept, c.value!));
+          if (!said) v.push(`V9 ${ob}: responde si es de/en {{c:${c.value}}} (sí o no)`);
+          else if (t === "no" && !NEG[lang].test(plain)) v.push(`V9 ${ob}: di claramente que NO es de/en {{c:${c.value}}}`);
+          break;
+        }
         case "price": if (!has(`{{link:${a}}}`)) v.push(`V9 ${ob}: di que no tienes precios y ofrece {{link:${a}}} para una cita con un asesor`); break;
         case "lnk": if (!has(`{{link:${a}}}`)) v.push(`V9 ${ob}: incluye {{link:${a}}}`); break;
         case "inf": if (!has(`{{c:${ob.slice(4)}}}`) && !this.lx.match(plain, ["mood", "style"]).length) v.push(`V9 ${ob}: di cómo interpretas el deseo ("entiendo acogedor como…")`); break;
-        case "nav": if (!full.trim().endsWith("?")) v.push("V9 nav:ask: pregunta a cuál quiere ir"); break;
+        case "nav": {
+          if (!full.trim().endsWith("?")) v.push("V9 nav:ask: pregunta a cuál quiere ir");
+          const noZone = (bundle.groups[0]?.cards ?? []).filter((c) => !full.includes(`{{z:${c.exhibit_id}}}`));
+          if (noZone.length) v.push(`V9 nav:ask: di en qué zona está cada una con ${noZone.map((c) => `{{z:${c.exhibit_id}}}`).join(" y ")}`);
+          break;
+        }
+        case "sim": {
+          const g = bundle.groups.find((x) => x.id === a);
+          const shared = new Set((g?.cards ?? []).filter((c) => has(`{{p:${c.exhibit_id}}}`)).flatMap((c) => c.shared ?? []));
+          const said = [...full.matchAll(/\{\{c:([^}]+)\}\}/g)].some((m) => shared.has(m[1]))
+            || this.lx.match(plain, ["category", "shape", "color", "material"]).some((h) => [...shared].some((x) => this.lx.isA(h.concept, x)));
+          if (!said || !SIMILAR[lang].test(plain)) v.push(`V9 ${ob}: di en qué se parecen a {{p:${bundle.source}}} las piezas que nombras, según su "se_parece_en" (p. ej. "también es {{c:…}}")`);
+          break;
+        }
       }
     }
     return { ok: v.length === 0, violations: [...new Set(v)] };
   }
 
+  /** An obligation the text already fulfils in its own words: the values that do exist, all listed by hand. */
+  covers(ob: string, segments: Segment[], bundle: Bundle): boolean {
+    const [kind, a] = ob.split(":");
+    if (kind !== "vals") return false;
+    const full = segments.map((s) => s.text).join(" ");
+    if (full.includes(`{{vals:${a}}}`)) return true;
+    const values = bundle.available_values.find((x) => x.constraint === a)?.values ?? [];
+    const said = new Set([...this.lx.match(full.replace(/\{\{[^}]+\}\}/g, " "), ["color", "material", "shape", "style"]).map((h) => h.concept),
+      ...[...full.matchAll(/\{\{c:([^}]+)\}\}/g)].map((m) => m[1])]);
+    return values.length > 0 && values.every((x) => said.has(x));
+  }
+
   /** Concepts the text may name: what was asked, relaxation targets, and what the cards actually have. */
+  /** The «…» finish names in the configuration of the bundle's pieces (normalized). */
+  private quotedNames(bundle: Bundle): Set<string> {
+    const out = new Set<string>();
+    for (const card of allCards(bundle)) {
+      const e = this.catalog.exhibits.find((x) => x.id === card.exhibit_id);
+      if (e?.configuration.status !== "known") continue;
+      for (const comp of e.configuration.value) for (const [, n] of (comp.observed_color ?? "").matchAll(/«([^»]*)»/g)) out.add(normalizeText(n));
+    }
+    return out;
+  }
+
   private claimable(bundle: Bundle): Set<ConceptId> {
     const out = new Set<ConceptId>();
     for (const c of bundle.constraints) if (c.value) out.add(c.value);

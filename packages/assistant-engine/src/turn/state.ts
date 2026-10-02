@@ -89,7 +89,7 @@ export function detectLang(text: string, previous: Lang): Lang {
   if (/[ñ¿¡]/.test(text)) score.es += 2;
   // Words only one language uses ("un armario elegante" is Spanish, "un armadio elegante" Italian).
   if (/(^|[^\p{L}])(ciao|grazie|avete|vorrei|cerco|mostrami|dove|qualcosa|divano|divani|cucina|cucine|tavolo|tavoli|armadio|armadi|sedia|sedie|letto|letti|poltrona|comodino)(?![\p{L}])/iu.test(text)) score.it += 1;
-  if (/(^|[^\p{L}])(quiero|busco|tienen|tienes|muéstrame|muestrame|dónde|donde|algo|armario|armarios|clóset|closet|mesa|mesas|silla|sillas|sillón|cama|camas|cocina|cocinas|recámara|buró|sofá|sofás|sala|salas|sillones|esquinero|hola|gracias|hay|qué|cuál|cuánto|cuesta)(?![\p{L}])/iu.test(text)) score.es += 1;
+  if (/(^|[^\p{L}])(quiero|busco|tienen|tienes|muéstrame|muestrame|llévame|llevame|enséñame|ensename|dime|necesito|quisiera|dónde|donde|algo|armario|armarios|clóset|closet|mesa|mesas|silla|sillas|sillón|cama|camas|cocina|cocinas|recámara|buró|sofá|sofás|sala|salas|sillones|esquinero|hola|gracias|hay|qué|cuál|cuánto|cuesta)(?![\p{L}])/iu.test(text)) score.es += 1;
   const best = (Object.keys(score) as Lang[]).sort((a, b) => score[b] - score[a])[0];
   const second = (Object.keys(score) as Lang[]).sort((a, b) => score[b] - score[a])[1];
   if (score[best] === 0 || score[best] === score[second]) return previous;

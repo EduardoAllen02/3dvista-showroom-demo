@@ -1,3 +1,8 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Mapa del asistente Febal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,15 +48,19 @@
     --review: #E07E97; --review-soft: #3A2229; --ui: #9AA8DA; --ui-soft: #252B40; --focus: #6FC0B8;
     --shadow: 0 1px 2px rgba(0, 0, 0, .4), 0 6px 18px rgba(0, 0, 0, .25);
   }
-  html, body { height: 100%; }
+  html, body { height: 100%; margin: 0; }
   body { background: var(--ground); color: var(--ink); font-family: var(--body); font-size: 14px; line-height: 1.5; }
-  .app { height: 100%; display: grid; grid-template-rows: auto 1fr; padding-inline: 16px; padding-block: 12px; gap: 12px; box-sizing: border-box; }
+  .app { height: 100%; display: grid; grid-template-rows: auto auto 1fr; padding-inline: 16px; padding-block: 12px; gap: 10px; box-sizing: border-box; }
   header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
   h1 { font-family: var(--display); font-stretch: 88%; font-weight: 750; font-size: 26px; line-height: 1.1; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
-  .sub { color: var(--ink-2); margin: 4px 0 0; max-width: 70ch; }
+  .sub { color: var(--ink-2); margin: 4px 0 0; max-width: 78ch; }
+  .scope { display: inline-block; margin-top: 6px; font-size: 12.5px; color: var(--review); background: var(--review-soft); border-radius: 6px; padding: 2px 8px; }
   .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 12.5px; color: var(--ink-2); }
   .legend span { display: inline-flex; align-items: center; gap: 6px; }
   .sw { width: 12px; height: 12px; border-radius: 3px; border: 2px solid; display: inline-block; box-sizing: border-box; }
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tabs button { font: 600 13.5px/1 var(--body); color: var(--ink-2); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; cursor: pointer; }
+  .tabs button[aria-selected="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
   .main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 12px; min-height: 0; }
   .stage { position: relative; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; min-height: 380px; box-shadow: var(--shadow); }
   svg#map { width: 100%; height: 100%; display: block; touch-action: none; cursor: grab; user-select: none; }
@@ -70,8 +79,10 @@
   .tour h2, .detail h2 { font-family: var(--display); font-stretch: 92%; font-weight: 700; font-size: 17px; margin: 0; line-height: 1.25; text-wrap: balance; }
   .eyebrow { font: 600 11px var(--body); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 2px; }
   .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { height: auto; min-height: 36px; padding: 8px 10px; text-align: left; line-height: 1.25; }
   .chip[aria-pressed="true"] { background: var(--ink); color: var(--surface); border-color: var(--ink); }
   .stepbar { display: flex; align-items: center; gap: 8px; }
+  .stepbar[hidden] { display: none; }
   .stepbar .count { font: 500 12px var(--mono); color: var(--ink-2); margin-right: auto; font-variant-numeric: tabular-nums; }
   .say { background: var(--surface-2); border-radius: 8px; padding: 10px 12px; font-size: 13.5px; }
   .say b { font-weight: 600; }
@@ -90,6 +101,7 @@
   .lane .lanenote { font-family: var(--body); font-weight: 400; font-size: 12px; font-stretch: 100%; fill: var(--ink-3); }
   .node { cursor: pointer; }
   .node rect.box { stroke-width: 2; }
+  .node.future rect.box { stroke-dasharray: 6 4; }
   .node .t1 { font: 600 14px var(--body); fill: var(--ink); }
   .node .t2 { font: 400 11.5px var(--body); fill: var(--ink-2); }
   .node .badge { font: 600 10px var(--body); letter-spacing: .06em; text-transform: uppercase; }
@@ -116,18 +128,24 @@
 <div class="app">
   <header>
     <div>
-      <p class="eyebrow">Febal Casa · asistente del showroom · versión 2</p>
-      <h1>Cómo responde el asistente, paso a paso</h1>
+      <p class="eyebrow">Febal Casa · asistente del showroom · versión actual (28 de septiembre de 2026)</p>
+      <h1>Cómo funciona el asistente de Febal</h1>
       <p class="sub">El modelo de lenguaje entiende y redacta; el código decide qué existe y pone cada dato. Arrastra para moverte, rueda o botones para acercar, y toca una caja para ver qué hace.</p>
+      <span class="scope">Solo describe el asistente de Febal tal como está hoy; al moverlo a la nueva plataforma (refactor de portabilidad) la arquitectura puede cambiar.</span>
     </div>
     <div class="legend" aria-label="Quién hace cada paso">
       <span><i class="sw" style="border-color:var(--code);background:var(--code-soft)"></i>Código (reglas fijas)</span>
-      <span><i class="sw" style="border-color:var(--llm);background:var(--llm-soft)"></i>LLM gpt-4o-mini</span>
+      <span><i class="sw" style="border-color:var(--llm);background:var(--llm-soft)"></i>Modelo de IA</span>
       <span><i class="sw" style="border-color:var(--data);background:var(--data-soft)"></i>Datos</span>
-      <span><i class="sw" style="border-color:var(--review);background:var(--review-soft)"></i>Revisión</span>
+      <span><i class="sw" style="border-color:var(--review);background:var(--review-soft)"></i>Revisión / pendiente</span>
       <span><i class="sw" style="border-color:var(--ui);background:var(--ui-soft)"></i>Visitante / tour</span>
     </div>
   </header>
+
+  <nav class="tabs" role="tablist" aria-label="Hojas del diagrama">
+    <button type="button" role="tab" id="tab-chat" aria-selected="true">El chat, paso a paso</button>
+    <button type="button" role="tab" id="tab-lista" aria-selected="false">Mi lista y moodboard</button>
+  </nav>
 
   <div class="main">
     <div class="stage">
@@ -154,21 +172,17 @@
     <aside>
       <section class="tour" aria-label="Recorrido con un ejemplo real">
         <div>
-          <p class="eyebrow">Recorrido con una conversación real</p>
+          <p class="eyebrow">Recorrido con un ejemplo real</p>
           <h2 id="tourTitle">Elige un ejemplo</h2>
         </div>
-        <div class="chips" role="group" aria-label="Ejemplos">
-          <button type="button" class="chip" id="sc-amarillo" aria-pressed="false">«¿Lo tienes en amarillo?»</button>
-          <button type="button" class="chip" id="sc-cuero" aria-pressed="false">«Quiero un sofá de cuero»</button>
-          <button type="button" class="chip" id="sc-azul" aria-pressed="false">«¿Tienes la cama Couple en azul?»</button>
-        </div>
+        <div class="chips" role="group" aria-label="Ejemplos" id="chips"></div>
         <div class="stepbar" id="stepbar" hidden>
           <span class="count" id="stepCount">Paso 1 de 9</span>
           <button type="button" id="prev" aria-label="Paso anterior">‹ Anterior</button>
           <button type="button" id="next" aria-label="Paso siguiente">Siguiente ›</button>
           <button type="button" id="exit" aria-label="Salir del recorrido">✕</button>
         </div>
-        <div class="say" id="stepText">Los ejemplos salen de las baterías con gpt-4o-mini del 23 y el 25 de septiembre de 2026: mismo texto, mismas piezas, mismos tiempos.</div>
+        <div class="say" id="stepText"></div>
       </section>
 
       <section class="detail" id="detail" aria-live="polite"></section>
@@ -180,173 +194,383 @@
 (() => {
   const KIND = {
     code:   { c: "--code",   s: "--code-soft",   who: "Código" },
-    llm:    { c: "--llm",    s: "--llm-soft",    who: "LLM (gpt-4o-mini)" },
+    llm:    { c: "--llm",    s: "--llm-soft",    who: "Modelo de IA" },
     data:   { c: "--data",   s: "--data-soft",   who: "Datos" },
     review: { c: "--review", s: "--review-soft", who: "Revisión" },
     ui:     { c: "--ui",     s: "--ui-soft",     who: "Visitante / tour" },
   };
+  const BADGE = { code: "Código", llm: "IA", data: "Datos", review: "Revisión", ui: "Visitante / tour" };
 
-  // ---------------------------------------------------------------- nodes
-  const N = [
-    { id: "visitante", x: 50, y: 170, k: "ui", t: "Visitante escribe", s: "chat dentro del tour 3DVista",
-      d: "El visitante escribe en el chat que vive dentro del tour virtual. Puede hacerlo en español, italiano o inglés, y cambiar de idioma a mitad de la conversación.",
-      f: ["widget (packages/tour-bridge)", "server (conexión v2: siguiente paso)"],
-      kv: [["Estado", "v1 sigue en producción; v2 se conecta con la opción ASSISTANT_ENGINE=v2"]] },
-    { id: "estado", x: 270, y: 64, k: "code", t: "Memoria de la charla", s: "idioma · tema · filtros · foco",
-      d: "Recuerda de qué se está hablando: el idioma, el tema (por ejemplo «sofás de ángulo»), los filtros activos y la pieza en foco. Si el visitante cambia de categoría («ahora cocinas»), abre un tema nuevo y no arrastra filtros que no aplican.",
-      f: ["packages/assistant-engine/src/turn/state.ts"] },
-    { id: "gateway", x: 270, y: 170, k: "code", t: "Coordinador del turno", s: "lee, llama, verifica, guarda",
-      d: "Dirige cada turno de principio a fin: lee la memoria, pide el plan al LLM, consulta el motor, pide la redacción, la verifica y guarda la memoria. Pase lo que pase con el LLM, el visitante siempre recibe una respuesta.",
-      f: ["src/turn/gateway.ts"] },
-    { id: "planner", x: 490, y: 170, k: "llm", t: "Planificador", s: "entiende qué pide · solo JSON",
-      d: "gpt-4o-mini lee el mensaje y devuelve únicamente un JSON con vocabulario cerrado: la intención (buscar, listar, variante, detalle, ubicar, recomendar…) y los atributos como identificadores (color.yellow, shape.corner). No escribe nada para el visitante ni decide qué existe.",
-      f: ["src/turn/planner.ts"], kv: [["Tiempo típico", "≈1,3 s"]] },
-    { id: "lexicon", x: 710, y: 64, k: "data", t: "Diccionario de sinónimos", s: "es · it · en",
-      d: "Traduce cómo habla la gente a conceptos: «en L» = de ángulo, «cuero» = piel, «vino» = rojo, «fino» = elegante. Distingue falsos amigos: similpiel y nobuk NO son piel. Se pueden agregar o quitar sinónimos en la hoja «Sinónimos» de la base de datos en Excel.",
-      f: ["src/ontology/furniture-pack.ts", "src/ontology/lexicon.ts"], kv: [["Conceptos", "110"], ["Sinónimos", "≈1.100"]] },
-    { id: "reducer", x: 710, y: 170, k: "code", t: "Reductor", s: "valida y traduce el plan",
-      d: "Código que no se fía del LLM: valida cada identificador, detecta negaciones («que no sea negra»), completa con el diccionario lo que el LLM olvidó y lo combina con la memoria. El resultado son filtros exactos para el motor.",
-      f: ["src/turn/reducer.ts"] },
-    { id: "engine", x: 930, y: 170, k: "code", t: "Motor de búsqueda", s: "decide qué existe · sin LLM",
-      d: "Es quien decide qué hay. Cuatro niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la lista propia de la ficha lo ofrece: regla de disponibilidad), DE LA LÍNEA (la paleta compartida de la línea, p. ej. «Finiture per NOTTE» = línea Dormitorio; qué colecciones aplican a cada modelo se decidió leyendo su ficha: las que aplican pasan a bajo pedido, las dudosas se mencionan con el aviso de confirmar en la ficha y las que no aplican nunca se mencionan) y SIN CONFIRMAR. Si no hay nada exacto, relaja primero lo menos importante y propone alternativas cercanas (nobuk en vez de piel, sillón en vez de sofá). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
-      f: ["src/engine/engine.ts"], kv: [["Costo de relajar", "categoría 100 · modelo 50 · forma 6 · material 5 · color 4"]] },
-    { id: "oracle", x: 1180, y: 64, k: "code", t: "Oráculo de pruebas", s: "segunda implementación",
-      d: "Una segunda versión del motor, escrita por separado, contra la que se compara el motor real en todas las combinaciones de 1 a 3 filtros. Si alguna vez difieren, la prueba falla.",
-      f: ["eval/oracle.ts", "packages/assistant-engine/test/oracle-diff.test.ts"], kv: [["Combinaciones", "22.664"], ["Diferencias", "0"]] },
-    { id: "composer", x: 930, y: 320, k: "llm", t: "Redactor", s: "escribe con etiquetas",
-      d: "gpt-4o-mini redacta la respuesta en el idioma del visitante, pero en lugar de nombres, opciones, zonas o enlaces escribe etiquetas: {{p:FEB-003}} (pieza), {{v:FEB-003}} (opciones bajo pedido), {{link:FEB-003}} (ficha), {{z:FEB-003}} (zona). Así no puede inventar un nombre ni un color.",
-      f: ["src/turn/composer.ts"], kv: [["Tiempo típico", "≈1,6 s"]] },
-    { id: "renderer", x: 710, y: 320, k: "code", t: "Renderizador", s: "pone los datos reales",
-      d: "Sustituye cada etiqueta por el dato real del catálogo: nombre del modelo, zona (Casa 1 Autentica…), opciones oficiales, enlace a la ficha, medidas. Todo lo que es un dato lo escribe el código.",
-      f: ["src/turn/render.ts"] },
-    { id: "verifier", x: 490, y: 320, k: "code", t: "Verificador", s: "revisa antes de mostrar",
-      d: "Revisa cada respuesta antes de mostrarla. V1 etiquetas válidas · V3 ningún atributo sin respaldo · V4 ningún número inventado · V5 ningún nombre suelto · V7 idioma correcto · V8 zonas correctas · V9 dice todo lo obligatorio (p. ej. «no lo tenemos así, pero sí bajo pedido»).",
-      f: ["src/turn/verifier.ts"] },
-    { id: "fallback", x: 270, y: 404, k: "code", t: "Reparar o plantilla", s: "si el verificador falla", h: 58,
-      d: "Si la respuesta no pasa: el redactor recibe la lista de errores y lo intenta una vez más; si vuelve a fallar, se usa una plantilla escrita en código (es / it / en), que siempre es correcta aunque suene menos natural.",
-      f: ["src/turn/templates.ts"], kv: [["Última batería", "2 reparaciones y 0 plantillas en 24 turnos"]] },
-    { id: "respuesta", x: 50, y: 320, k: "ui", t: "Respuesta + tarjetas", s: "botón «Llévame» al mueble",
-      d: "El visitante ve el texto, tarjetas agrupadas con el motivo (p. ej. «amarillo ✓ · bajo pedido») y el botón «Llévame», que mueve la cámara del tour hasta la pieza. El LLM nunca ve coordenadas de cámara.",
-      f: ["src/turn/render.ts (tarjetas)", "packages/tour-bridge (navegación)"] },
-
-    { id: "web", x: 50, y: 548, k: "ui", t: "febalcasa.com", s: "56 fichas oficiales",
-      d: "La web oficial: una ficha por modelo con listas de acabados, medidas y texto. Es la fuente de lo que se puede pedir.",
-      f: [] },
-    { id: "scraper", x: 290, y: 548, k: "data", t: "Fichas leídas", s: "scraper + lectura a mano", w: 200,
-      d: "Un script descarga cada ficha y extrae los acabados con su muestra de color. Después se leyeron a mano las 56 fichas: forma, materiales, estilo y medidas como SI/NO con la cita literal. Hallazgo: 18 fichas muestran la paleta compartida de su línea en vez de una lista propia; cada una se leyó para decidir qué colecciones le aplican (caja «Paletas por modelo»).",
-      f: ["scripts/scrape-febal-facts.py", "product-facts/models.json", "product-facts/model-attributes.json"], kv: [["Opciones", "5.138"]] },
-    { id: "paletas", x: 620, y: 548, k: "data", t: "Paletas por modelo", s: "18 fichas · aplica / aviso / no",
-      d: "Para cada una de las 18 fichas con paleta de línea se leyó el texto y se decidió colección por colección, con la cita: aplica (se ofrece bajo pedido), aviso (se menciona pidiendo confirmar en la ficha) o no aplica (nunca se menciona). Ejemplos: la cama Couple maneja laca, chapa, metal skin, telas y similpiel, pero no espejo ni gres; la cama Arden es solo madera; la puerta Aurora es de vidrio. Los acabados interiores nunca se ofrecen como color de las puertas.",
-      f: ["product-facts/palette-decisions.json"], kv: [["Opción del modelo", "61 colecciones"], ["Con aviso", "76"], ["No se mencionan", "133"]] },
-    { id: "tour", x: 50, y: 648, k: "ui", t: "Tour 3DVista", s: "88 piezas activas",
-      d: "El tour virtual del showroom: cada pieza tiene su punto de vista (panorámica y cámara) y su zona (Casa 1 a 4 y Galleria).",
-      f: ["clients/febal-casa/catalog.json"] },
-    { id: "capturas", x: 290, y: 648, k: "data", t: "Capturas del tour", s: "88, una por una", w: 200,
-      d: "Una captura por pieza desde su punto de vista, moviendo la cámara con la API del tour (sin arrastrar el mouse), revisada a ojo: color, material, forma y opción oficial, cada uno SI/NO con evidencia. Corrigió 8 errores del catálogo anterior (p. ej. una mesita de madera anotada como mármol). Dos puntos de vista se reencuadraron: la silla Dea y el sistema Diciotto, que apuntaba a la librería de al lado.",
-      f: ["scripts/cdp_nav_one.py", "product-facts/placements.json", "product-facts/captures/"], kv: [["Color confirmado", "88/88"], ["Material confirmado", "43/88"]] },
-    { id: "ontologia", x: 290, y: 748, k: "data", t: "Ontología", s: "conceptos, cercanías, armonías", w: 200,
-      d: "El mismo paquete que usa el diccionario: formas, colores, materiales, estilos y categorías; cercanías («nobuk se parece a piel») y armonías de color, que son borrador hasta que se aprueben.",
-      f: ["src/ontology/furniture-pack.ts"] },
-    { id: "compilador", x: 620, y: 648, k: "code", t: "Compilador", s: "une todo en un catálogo",
-      d: "Une fichas, capturas, paletas por modelo, ontología y correcciones en un solo catálogo. Cada dato es un «hecho» con su fuente. Regla de confianza: lo que viene literal de la ficha oficial o de una captura del tour vale sin firma, y la revisión solo corrige excepciones. Los datos del catálogo anterior (v1) sí necesitan validación.",
-      f: ["src/catalog/compile.ts", "scripts/build-catalog-v2.ts"] },
-    { id: "catalogo", x: 1150, y: 620, k: "data", t: "Catálogo canónico v2", s: "la única fuente de verdad", w: 230, h: 104,
-      d: "Lo que el motor y el renderizador consultan. Cada pieza expuesta apunta a su modelo; cada modelo, a sus opciones oficiales; cada dato, a su evidencia.",
-      f: ["clients/febal-casa/catalog.v2.json"], kv: [["Modelos", "56"], ["Piezas", "88"], ["Opciones", "5.138"], ["Hechos", "819, todos con fuente literal"]] },
-    { id: "excel", x: 1150, y: 790, k: "review", t: "Hoja de decisiones", s: "14 decisiones · valor por defecto", w: 230,
-      d: "Solo lo que las fichas y las capturas no resuelven: 5 piezas con foto (qué ficha es, en qué zona está…) y 9 preguntas, por ejemplo si existe una lista de los acabados exactos del showroom. Cada fila dice qué pasa si queda vacía, así que nada se bloquea. Junto a ella está la base de datos en Excel: todos los datos del asistente, con Léeme en español e italiano, y columnas ✎ que se editan y se devuelven.",
-      f: ["scripts/build-decisions-xlsx.py", "Descargas/febal-casa-decisiones.xlsx", "scripts/build-database-xlsx.py", "Descargas/febal-casa-base-de-datos.xlsx"] },
-    { id: "validacion", x: 620, y: 790, k: "review", t: "Correcciones", s: "solo las excepciones",
-      d: "Las respuestas de la hoja corta y lo que se edite en la base de datos en Excel (piezas, paletas por modelo, sinónimos, familias de color, materiales, armonías) se importan: el importador muestra qué cambió, lo aplica, regenera el catálogo, corre las pruebas y rehace el Excel. Lo que nadie cambia sigue valiendo si tiene fuente literal.",
-      f: ["scripts/import-database-xlsx.py", "product-facts/palette-decisions.json · color-overrides.json · material-overrides.json", "clients/febal-casa/ontology.overrides.json"] },
-  ];
-
-  // ---------------------------------------------------------------- edges
-  const byId = Object.fromEntries(N.map((n) => [n.id, n]));
-  N.forEach((n) => { n.w = n.w || 180; n.h = n.h || 64; });
+  // Geometry helpers (per node: x, y, w, h).
   const R = (n) => [n.x + n.w, n.y + n.h / 2], L = (n) => [n.x, n.y + n.h / 2], T = (n) => [n.x + n.w / 2, n.y], B = (n) => [n.x + n.w / 2, n.y + n.h];
   const line = (a, b) => `M${a[0]},${a[1]} L${b[0]},${b[1]}`;
   const poly = (...pts) => "M" + pts.map((p) => p.join(",")).join(" L");
   const curve = (a, b) => { const mx = (a[0] + b[0]) / 2; return `M${a[0]},${a[1]} C${mx},${a[1]} ${mx},${b[1]} ${b[0]},${b[1]}`; };
-  const n = byId;
-  const E = [
-    { a: "visitante", b: "gateway", d: line(R(n.visitante), L(n.gateway)) },
-    { a: "gateway", b: "estado", d: line(T(n.gateway), B(n.estado)), both: true, lab: "lee / guarda", lx: 290, ly: 150 },
-    { a: "gateway", b: "planner", d: line(R(n.gateway), L(n.planner)) },
-    { a: "planner", b: "reducer", d: line(R(n.planner), L(n.reducer)) },
-    { a: "lexicon", b: "reducer", d: line(B(n.lexicon), T(n.reducer)) },
-    { a: "reducer", b: "engine", d: line(R(n.reducer), L(n.engine)) },
+  const prep = (nodes) => { nodes.forEach((n) => { n.w = n.w || 180; n.h = n.h || 64; }); return Object.fromEntries(nodes.map((n) => [n.id, n])); };
+
+  // ================================================================ sheet 1: a chat turn
+  const CHAT_N = [
+    { id: "visitante", x: 50, y: 170, k: "ui", t: "Visitante escribe", s: "chat en el tour · es / it / en",
+      d: "El visitante escribe en el chat que vive dentro del tour. Con cada mensaje el widget manda en qué panorámica está y hacia dónde mira la cámara, para entender «¿y este?». Los botones de las tarjetas («Ver alternativas») también entran como un turno. El idioma del widget empieza en el que se eligió en la pantalla inicial del tour y después sigue al de la conversación.",
+      f: ["packages/assistant-ui (widget)", "packages/tour-bridge (puente con 3DVista)", "server/src/routes/chat.ts"],
+      kv: [["Motor", "v2 es el motor por defecto del tour; v1 queda solo de respaldo"]] },
+    { id: "visor", x: 50, y: 64, k: "code", t: "Contexto del visor", s: "qué pieza tiene enfrente",
+      d: "El servidor convierte la panorámica y la cámara en «qué piezas se ven y cuál está al centro», usando los puntos de vista del catálogo. El modelo de IA solo recibe identificadores de piezas: nunca ve coordenadas.",
+      f: ["server/src/v2/turn-v2.ts (viewerContext)"] },
+    { id: "estado", x: 270, y: 64, k: "code", t: "Memoria de la charla", s: "idioma · tema · foco · oferta",
+      d: "Recuerda el idioma, el tema (p. ej. «sofás de ángulo»), los filtros activos, la pieza en foco, las tarjetas que se mostraron y la oferta pendiente («¿Te muestro el Astor?»). Si cambia de categoría («ahora mesas») abre un tema nuevo y olvida filtros que ya no aplican. Una sesión por carga de página.",
+      f: ["packages/assistant-engine/src/turn/state.ts"] },
+    { id: "perfil", x: 490, y: 64, k: "data", t: "Perfil de Febal", s: "marca · zonas · textos",
+      d: "Todo lo propio de Febal fuera del código del motor: quién es el asistente y dónde está, cómo se dicen las zonas («CASA 03 - AUDACE» → «Casa 3 (Audace)»), los nombres de las líneas y los ejemplos del redactor. El motor, en cambio, no sabe nada de Febal.",
+      f: ["clients/febal-casa/assistant.json", "src/turn/profile.ts"] },
+    { id: "gateway", x: 270, y: 170, k: "code", t: "Coordinador del turno", s: "lee, llama, verifica, limpia",
+      d: "Dirige cada turno: lee la memoria, pide el plan, consulta el motor, pide la redacción, la verifica y guarda la memoria. Si el mensaje está en francés, alemán o portugués lo traduce antes y responde en inglés ofreciendo los tres idiomas. Un clic en «Ver alternativas» se salta el planificador. Al final limpia la respuesta: una sola pregunta al final, sin paréntesis dobles, artículos italianos correctos («nello showroom») y sin «¡Hola!» a mitad de la charla.",
+      f: ["src/turn/gateway.ts"] },
+    { id: "planner", x: 490, y: 170, k: "llm", t: "Planificador", s: "gpt-4o-mini · solo JSON",
+      d: "gpt-4o-mini lee el mensaje y devuelve solo un JSON con vocabulario cerrado: intención (buscar, listar, variante, detalle, ubicar, llevar, alternativas, confirmar…) y atributos como identificadores (color.yellow, material.leather). No escribe nada para el visitante ni decide qué existe.",
+      f: ["src/turn/planner.ts"], kv: [["Tiempo típico", "≈1,1 s"]] },
+    { id: "lexicon", x: 710, y: 64, k: "data", t: "Vocabulario del dominio", s: "115 conceptos · es / it / en",
+      d: "Traduce cómo habla la gente a conceptos: «en L» = de ángulo, «cuero» = piel, «vino» = rojo. Desde la llamada del 28/09 el nobuk (Nabuk Eagle) cuenta como piel, el travertino como efecto mármol y el gres queda tan cerca del mármol como el efecto mármol. La similpiel sigue siendo otra cosa. Es un archivo de datos: se editan sinónimos sin tocar código.",
+      f: ["src/packs/furniture.json", "src/ontology/lexicon.ts", "src/adapters/febal/ (nombres y categorías de Febal)"], kv: [["Conceptos", "115"], ["Sinónimos", "≈1.200"], ["Relaciones", "70 · ánimos 4"]] },
+    { id: "reducer", x: 710, y: 170, k: "code", t: "Reductor", s: "valida y corrige el plan",
+      d: "Código que no se fía del modelo: valida cada identificador, recupera negaciones («que no sea negra») y completa lo que el modelo olvidó. Además corrige sus tropiezos conocidos: «¿lo tienes en amarillo?» tras varias piezas pregunta por todas; un «sí» a una oferta pendiente siempre la acepta; «¿cuánto pesa?» no pide toda la ficha; «llévame a la Trenta» elige la que el visitante tiene enfrente.",
+      f: ["src/turn/reducer.ts"] },
+    { id: "engine", x: 930, y: 170, k: "code", t: "Motor de búsqueda", s: "decide qué existe · sin IA",
+      d: "Decide qué hay, en cuatro niveles: EN EL SHOWROOM (se ve en el tour), BAJO PEDIDO (la ficha lo ofrece), DE LA LÍNEA (paleta compartida, con aviso de confirmar) y SIN CONFIRMAR. Si no hay nada exacto relaja lo menos importante y propone lo más cercano: mármol → efecto mármol o gres; sofá → sillón. Para «Ver alternativas» calcula qué comparte cada pieza con la original (tipo, forma, color, material). También fija las «obligaciones»: lo que la respuesta tiene que decir sí o sí.",
+      f: ["src/engine/engine.ts"], kv: [["Costo de relajar", "categoría 100 · modelo 50 · forma 6 · material 5 · color 4"]] },
+    { id: "oracle", x: 1180, y: 64, k: "code", t: "Oráculo de pruebas", s: "segunda implementación",
+      d: "Una segunda versión del motor, escrita por separado, contra la que se compara el motor real en todas las combinaciones de 1 a 3 filtros. Si alguna vez difieren, la prueba falla. Además, una «foto» de 45 turnos sin IA detecta cualquier cambio de comportamiento no buscado.",
+      f: ["eval/oracle.ts", "packages/assistant-engine/test/oracle-diff.test.ts", "scripts/v2-snapshot.mts · eval/baselines/v2-snapshot.json"], kv: [["Combinaciones", "25.015"], ["Diferencias", "0"]] },
+    { id: "composer", x: 930, y: 320, k: "llm", t: "Redactor", s: "gpt-4o-mini · con etiquetas",
+      d: "gpt-4o-mini redacta en el idioma del visitante, pero en lugar de nombres, opciones, zonas o enlaces escribe etiquetas: {{p:FEB-003}} (pieza), {{v:FEB-003}} (opciones bajo pedido), {{link:FEB-003}} (ficha), {{z:FEB-003}} (zona), {{shown:FEB-003}} (cómo se ve aquí). Recibe pistas concretas: en qué se parece cada alternativa, de qué es cada pieza que sustituye al material pedido (gres, travertino) y qué piezas comparten nombre.",
+      f: ["src/turn/composer.ts"], kv: [["Tiempo típico", "≈1,4 s"]] },
+    { id: "renderer", x: 710, y: 320, k: "code", t: "Renderizador", s: "pone los datos reales",
+      d: "Sustituye cada etiqueta por el dato real: nombre del modelo, zona, opciones oficiales, enlace, medidas (traducidas: «rotondo fisso» → «redonda fija»). Si dos piezas se llaman igual añade su zona o su tipo. Arma las tarjetas: encabezado solo en positivo («Disponible bajo pedido», «efecto mármol · gres (parecido a mármol)») y una línea corta en el idioma del chat («Sofá · gris cálido»).",
+      f: ["src/turn/render.ts"] },
+    { id: "verifier", x: 490, y: 320, k: "code", t: "Verificador", s: "revisa antes de mostrar",
+      d: "Revisa cada respuesta antes de mostrarla. V1 etiquetas válidas · V3 ningún atributo sin respaldo · V4 ningún número inventado, ni cantidades con letras, ni «su ficha» sin enlace, ni la misma pieza dos veces · V5 ningún nombre suelto · V7 idioma correcto · V8 zonas correctas · V9 dice todo lo obligatorio (bajo pedido con enlace, en qué se parecen las alternativas, que la Madeira es de gres, las zonas al preguntar dónde) y no niega lo que sí hay.",
+      f: ["src/turn/verifier.ts"] },
+    { id: "fallback", x: 270, y: 404, k: "code", t: "Reparar o plantilla", s: "si el verificador falla", h: 58, w: 200,
+      d: "Si la respuesta no pasa: primero se completa por código lo que falte sin repetir lo ya dicho (un enlace olvidado, las opciones de una pieza); si no basta, el redactor recibe los errores y lo intenta una vez más; si vuelve a fallar, se usa una plantilla en código (es / it / en), siempre correcta aunque suene menos natural.",
+      f: ["src/turn/templates.ts"], kv: [["Última batería", "6 reparaciones y 1 plantilla en 56 turnos"]] },
+    { id: "respuesta", x: 50, y: 320, k: "ui", t: "Respuesta + tarjetas", s: "Llévame · Ver alternativas · ♥",
+      d: "El visitante ve el texto y las tarjetas agrupadas: foto (oficial o captura del tour), nombre, «Sitio oficial», «Llévame» (mueve la cámara a la pieza), «Ver alternativas» y el corazón para guardarla en «Mi lista». Los botones y textos del widget siguen el idioma de la conversación. Al entrar al tour, un globo con «¡Hola! Soy tu asistente virtual» sale del botón del chat hasta que se abre.",
+      f: ["packages/assistant-ui/src/product-card.ts · chat-card.ts · greeting-bubble.ts", "packages/tour-bridge (navegación)"] },
+
+    { id: "web", x: 50, y: 548, k: "ui", t: "febalcasa.com", s: "56 fichas oficiales",
+      d: "La web oficial: una ficha por modelo con listas de acabados, medidas y texto. Es la fuente de lo que se puede pedir.", f: [] },
+    { id: "scraper", x: 290, y: 548, k: "data", t: "Fichas leídas", s: "scraper + lectura a mano", w: 200,
+      d: "Un script descarga cada ficha y extrae los acabados con su muestra de color; después se leyeron a mano las 56 fichas (forma, materiales, estilo, medidas) como SI/NO con la cita literal. 18 fichas muestran la paleta compartida de su línea: se decidió colección por colección cuáles aplican.",
+      f: ["scripts/scrape-febal-facts.py", "product-facts/models.json", "product-facts/model-attributes.json"], kv: [["Opciones", "5.118"]] },
+    { id: "paletas", x: 620, y: 548, k: "data", t: "Paletas por modelo", s: "18 fichas · aplica / aviso / no",
+      d: "Para las 18 fichas con paleta de línea se decidió, con la cita, si cada colección aplica (bajo pedido), va con aviso (confirmar en la ficha) o no se menciona. Ej.: la cama Couple maneja laca, chapa, metal skin, telas y similpiel, pero no espejo ni gres; la cama Arden es solo madera.",
+      f: ["product-facts/palette-decisions.json"] },
+    { id: "tour", x: 50, y: 648, k: "ui", t: "Tour 3DVista", s: "88 piezas activas",
+      d: "El tour del showroom: cada pieza tiene su punto de vista (panorámica y cámara) y su zona (Casa 1 a 4 y Galleria). El widget también ajusta el skin del tour: sin el letrero de la casa a la derecha y con «Mappa Showroom» un poco más arriba.",
+      f: ["clients/febal-casa/catalog.json", "clients/febal-casa/tour.config.json (skin)"] },
+    { id: "capturas", x: 290, y: 648, k: "data", t: "Capturas del tour", s: "88, una por una", w: 200,
+      d: "Una captura por pieza desde su punto de vista, moviendo la cámara con la API del tour (sin arrastrar el mouse), revisada a ojo: color, material, forma y opción oficial, cada uno SI/NO con evidencia. 39 de esas capturas, recortadas, son la foto de la tarjeta cuando la web no tiene una buena.",
+      f: ["scripts/cdp_nav_one.py", "product-facts/placements.json", "clients/febal-casa/assets/products/tour/"], kv: [["Color confirmado", "88/88"], ["Fotos de tarjeta", "39 capturas del tour"]] },
+    { id: "ontologia", x: 290, y: 748, k: "data", t: "Vocabulario y relaciones", s: "conceptos, cercanías, ánimos", w: 200,
+      d: "El mismo paquete que usa el diccionario: formas, colores, materiales, estilos y categorías; cercanías («gres se parece a mármol»), armonías de color y 4 ánimos («acogedor»…). Aprobados para la PoC en la llamada del 28/09.",
+      f: ["src/packs/furniture.json"] },
+    { id: "compilador", x: 620, y: 648, k: "code", t: "Compilador", s: "une todo en un catálogo",
+      d: "Une fichas, capturas, paletas, vocabulario y decisiones del cliente en un solo catálogo. Cada dato es un «hecho» con su fuente. Lo que viene literal de la ficha o de una captura vale sin firma; la revisión solo corrige excepciones.",
+      f: ["src/catalog/compile.ts", "scripts/build-catalog-v2.ts"] },
+    { id: "catalogo", x: 1150, y: 620, k: "data", t: "Catálogo canónico v2", s: "la única fuente de verdad", w: 230, h: 104,
+      d: "Lo que el motor y el renderizador consultan. Cada pieza expuesta apunta a su modelo; cada modelo, a sus opciones oficiales; cada dato, a su evidencia.",
+      f: ["clients/febal-casa/catalog.v2.json"], kv: [["Modelos", "56"], ["Piezas", "88"], ["Opciones", "5.118"], ["Hechos", "822 (818 con fuente literal)"]], extra: ["56 modelos · 88 piezas", "5.118 opciones · 822 hechos"] },
+    { id: "excel", x: 1150, y: 790, k: "review", t: "Base de datos en Excel", s: "todo editable · Léeme es / it", w: 230,
+      d: "Todos los datos del asistente en un Excel, con Léeme en español e italiano y columnas ✎ que se editan y se devuelven. El importador muestra qué cambió, lo aplica, regenera el catálogo, corre las pruebas y rehace el Excel.",
+      f: ["scripts/build-database-xlsx.py", "scripts/import-database-xlsx.py", "Descargas/febal-casa-base-de-datos.xlsx"] },
+    { id: "decisiones", x: 620, y: 790, k: "review", t: "Decisiones del cliente", s: "PoC aprobada el 28/09",
+      d: "En la llamada del 28/09 se aprobó la PoC tal como está (combinaciones, parecidos, ánimos, paletas) y se decidió: el nobuk cuenta como piel, Navigli es elegante, la cubierta de la Madeira es gres y la madia Libeskind022 tiene cubierta de travertino (se ofrecen al buscar mármol, aclarando que no es mármol natural).",
+      f: ["product-facts/concept-overrides.json", "src/packs/furniture.json"] },
+    { id: "dudas", x: 880, y: 860, k: "review", t: "Dudas para Febal", s: "solo si pasa a producción", w: 200,
+      d: "Lo que queda por preguntar a Febal si la PoC pasa a producción: si la madia se puede pedir en travertino, confirmar Navigli como elegante, la lista exacta de acabados, la informativa privacy, las tiendas reales y el envío de correos, y las correcciones de UI que pidan. Nada de esto bloquea la demo.",
+      f: ["docs/chatbot-v2/dudas-febal.md"] },
+  ];
+  const cn = prep(CHAT_N);
+  const CHAT_E = [
+    { a: "visitante", b: "gateway", d: line(R(cn.visitante), L(cn.gateway)) },
+    { a: "visitante", b: "visor", d: line(T(cn.visitante), B(cn.visor)), lab: "panorámica y cámara", lx: 146, ly: 152, anchor: "start" },
+    { a: "visor", b: "estado", d: line(R(cn.visor), L(cn.estado)), lab: "pieza al centro", lx: 250, ly: 88 },
+    { a: "gateway", b: "estado", d: line(T(cn.gateway), B(cn.estado)), both: true, lab: "lee / guarda", lx: 366, ly: 150, anchor: "start" },
+    { a: "gateway", b: "planner", d: line(R(cn.gateway), L(cn.planner)) },
+    { a: "perfil", b: "planner", d: line(B(cn.perfil), T(cn.planner)), lab: "prompts y textos", lx: 586, ly: 150, anchor: "start" },
+    { a: "planner", b: "reducer", d: line(R(cn.planner), L(cn.reducer)) },
+    { a: "lexicon", b: "reducer", d: line(B(cn.lexicon), T(cn.reducer)) },
+    { a: "reducer", b: "engine", d: line(R(cn.reducer), L(cn.engine)) },
+    { a: "gateway", b: "engine", d: poly([360, 234], [360, 256], [1020, 256], [1020, 234]), dash: true, lab: "«Ver alternativas»: sin planificador", lx: 700, ly: 250 },
     { a: "oracle", b: "engine", d: poly([1270, 128], [1270, 190], [1110, 190]), dash: true, lab: "0 diferencias", lx: 1280, ly: 160, anchor: "start" },
     { a: "catalogo", b: "engine", d: poly([1330, 620], [1330, 216], [1110, 216]), lab: "consulta", lx: 1340, ly: 420, anchor: "start" },
-    { a: "engine", b: "composer", d: line(B(n.engine), T(n.composer)), lab: "resultados + obligaciones", lx: 1030, ly: 282, anchor: "start" },
-    { a: "composer", b: "renderer", d: line(L(n.composer), R(n.renderer)) },
-    { a: "renderer", b: "verifier", d: line(L(n.renderer), R(n.verifier)) },
-    { a: "verifier", b: "respuesta", d: line(L(n.verifier), R(n.respuesta)), lab: "✓ pasa", lx: 360, ly: 344 },
-    { a: "verifier", b: "fallback", d: poly([580, 384], [580, 433], [450, 433]), lab: "✗ falla", lx: 590, ly: 420, anchor: "start" },
+    { a: "engine", b: "composer", d: line(B(cn.engine), T(cn.composer)), lab: "resultados + obligaciones", lx: 1030, ly: 290, anchor: "start" },
+    { a: "composer", b: "renderer", d: line(L(cn.composer), R(cn.renderer)) },
+    { a: "renderer", b: "verifier", d: line(L(cn.renderer), R(cn.verifier)) },
+    { a: "verifier", b: "respuesta", d: line(L(cn.verifier), R(cn.respuesta)), lab: "✓ pasa", lx: 360, ly: 344 },
+    { a: "verifier", b: "fallback", d: poly([580, 384], [580, 433], [470, 433]), lab: "✗ falla", lx: 590, ly: 420, anchor: "start" },
     { a: "fallback", b: "respuesta", d: poly([270, 433], [140, 433], [140, 384]), lab: "plantilla", lx: 205, ly: 452 },
-    { a: "fallback", b: "composer", d: poly([360, 462], [360, 472], [1060, 472], [1060, 384]), dash: true, lab: "reparar una vez", lx: 700, ly: 466 },
+    { a: "fallback", b: "composer", d: poly([370, 462], [370, 472], [1060, 472], [1060, 384]), dash: true, lab: "reparar una vez", lx: 700, ly: 466 },
 
-    { a: "web", b: "scraper", d: line(R(n.web), L(n.scraper)) },
-    { a: "tour", b: "capturas", d: line(R(n.tour), L(n.capturas)) },
-    { a: "scraper", b: "paletas", d: line(R(n.scraper), L(n.paletas)), lab: "se leen", lx: 555, ly: 572 },
-    { a: "paletas", b: "compilador", d: line(B(n.paletas), T(n.compilador)) },
-    { a: "scraper", b: "compilador", d: curve(R(n.scraper), [620, 666]) },
-    { a: "capturas", b: "compilador", d: line(R(n.capturas), [620, 680]) },
-    { a: "ontologia", b: "compilador", d: curve(R(n.ontologia), [620, 694]) },
+    { a: "web", b: "scraper", d: line(R(cn.web), L(cn.scraper)) },
+    { a: "tour", b: "capturas", d: line(R(cn.tour), L(cn.capturas)) },
+    { a: "scraper", b: "paletas", d: line(R(cn.scraper), L(cn.paletas)), lab: "se leen", lx: 555, ly: 572 },
+    { a: "paletas", b: "compilador", d: line(B(cn.paletas), T(cn.compilador)) },
+    { a: "scraper", b: "compilador", d: curve(R(cn.scraper), [620, 666]) },
+    { a: "capturas", b: "compilador", d: line(R(cn.capturas), [620, 680]) },
+    { a: "ontologia", b: "compilador", d: curve(R(cn.ontologia), [620, 694]) },
     { a: "compilador", b: "catalogo", d: line([800, 680], [1150, 680]), lab: "catalog.v2.json", lx: 975, ly: 672 },
-    { a: "catalogo", b: "excel", d: line(B(n.catalogo), T(n.excel)), lab: "lo no resuelto", lx: 1275, ly: 760, anchor: "start" },
-    { a: "excel", b: "validacion", d: line(L(n.excel), R(n.validacion)), lab: "respuestas y ediciones", lx: 975, ly: 814 },
-    { a: "validacion", b: "compilador", d: line(T(n.validacion), B(n.compilador)), lab: "correcciones", lx: 720, ly: 752, anchor: "start" },
+    { a: "catalogo", b: "excel", d: line(B(cn.catalogo), T(cn.excel)), lab: "todos los datos", lx: 1275, ly: 760, anchor: "start" },
+    { a: "excel", b: "decisiones", d: line(L(cn.excel), R(cn.decisiones)), lab: "ediciones", lx: 975, ly: 814 },
+    { a: "decisiones", b: "compilador", d: line(T(cn.decisiones), B(cn.compilador)), lab: "correcciones", lx: 720, ly: 752, anchor: "start" },
+    { a: "decisiones", b: "dudas", d: curve(B(cn.decisiones), L(cn.dudas)), dash: true, lab: "lo que queda abierto", lx: 752, ly: 884, anchor: "end" },
   ];
 
-  const LANES = [
-    { x: 20, y: 20, w: 1400, h: 472, t: "Un turno de conversación", note: "≈2,1 s y ≈US$0,0009 por turno con gpt-4o-mini" },
-    { x: 20, y: 508, w: 1400, h: 392, t: "De dónde salen los datos", note: "se prepara antes; el visitante nunca espera esto" },
-  ];
-  const WORLD = { w: 1440, h: 920 };
+  const CHAT = {
+    nodes: CHAT_N, byId: cn, edges: CHAT_E, world: { w: 1440, h: 950 },
+    lanes: [
+      { x: 20, y: 20, w: 1400, h: 472, t: "Un turno de conversación", note: "≈2,5 s y ≈US$0,0008 por turno con gpt-4o-mini" },
+      { x: 20, y: 508, w: 1400, h: 430, t: "De dónde salen los datos", note: "se prepara antes; el visitante nunca espera esto" },
+    ],
+    intro: "Los ejemplos salen de la batería de 44 pruebas de cliente con gpt-4o-mini del 28 de septiembre de 2026 (después de las decisiones de la llamada): mismo texto y mismos tiempos.",
+    overview: () => `
+      <p class="eyebrow">Reglas de diseño</p>
+      <h2>Por qué no inventa</h2>
+      <ul class="rules">
+        <li>El modelo de IA entiende y redacta; <b>el código decide qué existe</b> y escribe cada nombre, opción, zona, medida y enlace.</li>
+        <li>Si un color o acabado no está en el tour pero la ficha lo ofrece: «aquí no está así, pero sí bajo pedido» + enlace (regla de disponibilidad).</li>
+        <li>Si no hay nada exacto se ofrece lo más cercano y se dice qué es: nobuk como piel, gres o travertino como efecto mármol (nunca como mármol natural).</li>
+        <li>Lo que no está confirmado se dice «sin confirmar»; nunca se rellena. Los encabezados de las tarjetas solo dicen lo que sí cumple.</li>
+        <li>Lo que viene literal de la ficha o de una foto del tour vale sin firma; lo que decidió el cliente queda anotado con su fecha.</li>
+        <li>Cada respuesta pasa por el verificador; si falla, se completa, se repara o se usa una plantilla.</li>
+        <li>El modelo de IA nunca ve coordenadas de cámara.</li>
+      </ul>
+      <dl class="kv">
+        <dt>Última batería</dt><dd>44 pruebas de cliente (56 turnos), 28 sep 2026: 43 pasan, 1 no (fuera de ronda)</dd>
+        <dt>Costo</dt><dd>US$0,046 en total (≈US$0,0008 por turno)</dd>
+        <dt>Tiempo</dt><dd>p50 2,5 s · p95 4,2 s</dd>
+        <dt>Plantillas</dt><dd>1 de 56 · reparaciones 6</dd>
+        <dt>Datos</dt><dd>822 hechos (818 con fuente literal) · PoC aprobada el 28/09</dd>
+        <dt>Pruebas</dt><dd>oráculo 25.015 combinaciones sin diferencias · foto de 45 turnos sin IA</dd>
+      </dl>`,
+    scen: {
+      amarillo: { chip: "«¿Lo tienes en amarillo?» → «sí»", title: "«¿Tienes sofás de ángulo?» → «¿Lo tienes en amarillo?» → «sí»", steps: [
+        ["visitante", "El visitante preguntó <b>«¿Tienes sofás de ángulo?»</b> (le mostramos Balmoral, Melrose y Navigli) y ahora escribe <b>«¿Lo tienes en amarillo?»</b>."],
+        ["estado", "La memoria sabe el tema: <b>sofá + de ángulo</b>, en español, y que la última respuesta mostró <b>tres</b> piezas."],
+        ["planner", "El planificador devuelve la intención y <code>color.yellow</code>. A veces lo toma como variante de una sola pieza (el Balmoral). 1,29 s."],
+        ["reducer", "El reductor lo corrige: «lo» después de tres piezas pregunta por <b>las tres</b>, salvo que el visitante nombre una, diga «este» o la tenga enfrente. Filtros: <b>sofá · de ángulo · amarillo</b>."],
+        ["engine", "El motor: en el showroom no hay; <b>bajo pedido sí</b>, los tres (Balmoral en Nabuk Eagle Sun…, Melrose en Boston Mustard…, Navigli en Cheyenne Mustard…). Como solo hay bajo pedido, busca algo amarillo que sí se vea: el sillón <b>Astor</b>. Obligaciones: decir que no está, las tres opciones con enlace y <b>ofrecer el Astor con una pregunta</b>."],
+        ["composer", "El redactor escribe con etiquetas, p. ej. «{{p:FEB-003}} está aquí en {{shown:FEB-003}}, pero sí está disponible bajo pedido en {{v:FEB-003}}: míralo en {{link:FEB-003}}». 2,2 s."],
+        ["verifier", "Pasa al primer intento: nombres, zonas, idioma y todas las obligaciones."],
+        ["respuesta", "«En el showroom no tenemos un sofá de ángulo en amarillo. <b>Balmoral</b>… sí está disponible bajo pedido en Nabuk Eagle Sun, Bellezza Sun y más […] <b>Melrose</b>… <b>Navigli</b>… Si prefieres un sillón, <b>Astor</b> está en Casa 2 (Perfetta) y es amarillo. ¿Te lo muestro?» · 3,5 s. La memoria guarda la <b>oferta pendiente</b>."],
+        ["reducer", "El visitante contesta <b>«sí»</b>. Aunque el planificador lo tome como otra búsqueda, un «sí» sin más con una oferta pendiente siempre la acepta."],
+        ["respuesta", "«En el showroom tenemos el sillón <b>Astor</b>, que aquí está en mostaza. ¿Te gustaría verlo más de cerca?» · 1 tarjeta con «Llévame»."],
+      ] },
+      cuero: { chip: "«Quiero un sofá de cuero»", title: "«Quiero un sofá de cuero»", steps: [
+        ["visitante", "El visitante escribe <b>«Quiero un sofá de cuero»</b>."],
+        ["lexicon", "El vocabulario reconoce <b>«cuero» = piel</b>. Desde la llamada del 28/09 el <b>nobuk cuenta como piel</b> (Nabuk Eagle); la similpiel sigue siendo otra cosa."],
+        ["planner", "El planificador: buscar, <code>material.leather</code>. El reductor completa la categoría sofá con el vocabulario. 1,09 s."],
+        ["engine", "El motor: no hay sofás de piel en el showroom, pero <b>bajo pedido sí</b>: Balmoral en piel Nabuk Eagle (Black, Stone, Grey, Sand…). Resultado <code>on_order_only</code>; obligación: decir que no está así y ofrecerla con enlace."],
+        ["composer", "El redactor escribe con etiquetas. 1,13 s."],
+        ["verifier", "Pasa al primer intento."],
+        ["respuesta", "«En el showroom no tenemos un sofá de piel, pero <b>Balmoral</b>, que aquí está en verde oliva claro, sí se puede pedir en Nabuk Eagle Black, Nabuk Eagle Stone, Nabuk Eagle Grey, Nabuk Eagle Sand y más: míralo en su ficha.» · 1 tarjeta «Disponible bajo pedido» · 2,2 s."],
+      ] },
+      marmol: { chip: "«¿Tienen mesas de mármol?»", title: "«¿Tienen mesas de mármol?»", steps: [
+        ["visitante", "El visitante escribe <b>«¿tienen mesas de mármol?»</b>."],
+        ["lexicon", "Mármol natural y efecto mármol son conceptos distintos. Por la decisión del 28/09, el <b>gres</b> y el <b>travertino</b> se ofrecen como alternativas tan cercanas como el efecto mármol."],
+        ["reducer", "El reductor arma los filtros <b>mesa · mármol</b> (del vocabulario). 1,24 s de planificador."],
+        ["engine", "El motor: no hay mesas de mármol natural. Relaja mármol → <b>efecto mármol · gres</b>: Phoenix y Daniel (supermarmo bajo pedido) y las dos Madeira (cubierta de gres). Obligaciones: decir que no hay y presentar las alternativas diciendo de qué es cada una."],
+        ["composer", "El redactor recibe la pista «Madeira → gres». 1,41 s."],
+        ["verifier", "Si no nombra el gres de la Madeira, el verificador lo rechaza (V9) y se repara."],
+        ["respuesta", "«En el showroom no tenemos mesas de mármol, pero hay opciones como <b>Phoenix</b>… <b>Madeira</b> (Casa 3, Audace)… y <b>Daniel</b>… Todas tienen efecto mármol, pero no son de mármol natural: <b>Madeira</b> (Casa 3, Audace) es de gres y <b>Madeira</b> (Galleria) también.» · encabezado «Efecto mármol · gres (parecido a mármol)» · 2,7 s."],
+      ] },
+      alternativas: { chip: "Botón «Ver alternativas»", title: "«Ver alternativas» en la tarjeta de Melrose", steps: [
+        ["respuesta", "En la lista de sofás, el visitante pulsa <b>«Ver alternativas»</b> en la tarjeta de Melrose."],
+        ["visitante", "El widget manda el turno <b>«Alternativas a Melrose»</b> (con el nombre corto, no «Divano Melrose») marcando qué tarjeta se pulsó."],
+        ["gateway", "Un clic de tarjeta no pasa por el planificador: el coordinador arma el plan «alternativas de Melrose» y conserva el idioma de la charla. 0 s de planificador."],
+        ["engine", "El motor busca piezas parecidas y calcula qué comparte cada una con Melrose: Balmoral (sofá, de ángulo, tela), Navigli (sofá, chaise longue, tela), Camden (sofá, tela)… Obligación: decir en qué se parecen."],
+        ["composer", "El redactor recibe «se_parece_en» de cada tarjeta. 1,98 s."],
+        ["verifier", "Comprueba que diga en qué se parecen (V9)."],
+        ["respuesta", "«Aquí tienes algunas alternativas a <b>Melrose</b>: <b>Balmoral</b>… también es sofá, de ángulo y de tela. <b>Navigli</b>… con chaise longue y de tela. <b>Camden</b>…» · 7 tarjetas bajo «Alternativas» · 2,0 s."],
+      ] },
+    },
+  };
 
-  // ---------------------------------------------------------------- draw
+  // ================================================================ sheet 2: my list + moodboard
+  const LIST_N = [
+    { id: "corazon", x: 50, y: 80, k: "ui", t: "Corazón ♥", s: "en la tarjeta del chat",
+      d: "El visitante guarda una pieza con el corazón de su tarjeta en el chat. Queda guardada al instante en «Mi lista».",
+      f: ["packages/assistant-ui/src/product-card.ts"] },
+    { id: "hover", x: 50, y: 190, k: "code", t: "Corazón sobre el tour", s: "hotspots de 3DVista",
+      d: "Al pasar el cursor por el marcador de una pieza en el tour (o al abrir su panel nativo) aparece un corazón encima. El widget sabe dónde están los marcadores gracias al puente del visor y a un manifiesto ligero del catálogo (id, punto de vista, foto).",
+      f: ["packages/assistant-ui/src/hotspot-heart-overlay.ts", "packages/tour-bridge (ViewerBridge.hotspots)", "dist/febal-casa/catalog-manifest.json"] },
+    { id: "wlstate", x: 290, y: 135, k: "code", t: "Estado de la lista", s: "en el navegador · compartido",
+      d: "La lista vive en el navegador del visitante (localStorage): el chat, el panel y los corazones leen y escriben lo mismo, así que guardar en un lado se ve en todos. El servidor no guarda la lista.",
+      f: ["packages/assistant-core (WishlistState)"] },
+    { id: "panel", x: 530, y: 135, k: "ui", t: "Panel «Mi lista»", s: "piezas · estilo · acciones",
+      d: "Muestra las piezas guardadas con «Llévame», el estilo del visitante («Tu estilo: Clásico elegante») con sugerencias, el botón «Crea tu moodboard» y las acciones: descargar PDF, WhatsApp y «Contáctame». Todo en el idioma de la conversación.",
+      f: ["packages/assistant-ui/src/wishlist-layer.ts", "packages/assistant-ui/src/ui-text.ts"] },
+    { id: "bridge", x: 790, y: 50, k: "code", t: "Puente del visor", s: "3DVista: mover la cámara",
+      d: "«Llévame» (en la lista, en las tarjetas y en el moodboard) mueve la cámara del tour hasta la pieza con la API del reproductor. Es la única parte que sabe de 3DVista: otra plataforma pasaría su propio puente.",
+      f: ["packages/tour-bridge/src/strategy.ts", "packages/tour-bridge/src/player-api-navigator.ts"] },
+    { id: "pdf", x: 790, y: 150, k: "ui", t: "PDF y WhatsApp", s: "exportar la lista",
+      d: "Descarga la lista como PDF (con fotos, zonas y enlaces) o la comparte por WhatsApp. «Enviar por correo» se reemplazó por «Contáctame».",
+      f: ["packages/assistant-ui/src/wishlist-layer.ts"] },
+    { id: "contacto", x: 790, y: 250, k: "ui", t: "Contáctame", s: "CAP · tienda · datos · privacidad",
+      d: "En el mismo panel: el visitante escribe su CAP y ve la tienda Febal Casa más cercana con un mapa que se contrae; luego nombre, apellido, correo y la casilla de la informativa privacy (art. 13 GDPR, con popup). Al enviar muestra la confirmación. DEMO: la tienda es de ejemplo y no se envía nada.",
+      f: ["packages/assistant-ui/src/contact-panel.ts", "clients/febal-casa/tour.config.json (features.contactForm)"] },
+    { id: "maps", x: 1050, y: 250, k: "ui", t: "Google Maps", s: "mapa embebido, sin clave",
+      d: "El mapa real: la búsqueda pública de Google Maps «Febal Casa» cerca del CAP, embebida sin clave de API.", f: [] },
+    { id: "futuro", x: 1245, y: 250, k: "review", t: "Para producción", s: "tiendas · envío · analítica", w: 165, future: true,
+      d: "Lo que falta para que «Contáctame» funcione de verdad: la lista real de tiendas y sus correos de ventas, el envío de la lista a la tienda y al visitante (servicio de correo europeo), el texto de la informativa privacy y, si se aprueba, la analítica de lo que se guarda (docs/analytics/propuesta-analitica.md).",
+      f: ["docs/chatbot-v2/dudas-febal.md", "docs/analytics/propuesta-analitica.md"] },
+    { id: "mbui", x: 530, y: 270, k: "ui", t: "Moodboard", s: "fotos · lema · paleta · texturas",
+      d: "Un overlay que convierte el estilo de la lista en algo visual: la foto real de 1 o 2 piezas guardadas, un lema, una descripción, una paleta de 6 colores y 4 texturas de materiales. Carga por partes: estilo y fotos al instante, luego el texto y la paleta, luego las texturas. Se crea en el idioma del chat y tiene su propio PDF.",
+      f: ["packages/moodboard-ui (sin dependencias)", "features.moodboard en tour.config.json"] },
+
+    { id: "catv1", x: 50, y: 590, k: "data", t: "Catálogo del tour (v1)", s: "estilos · fotos · puntos de vista",
+      d: "El catálogo con el que trabajan la lista y el moodboard: cada pieza con hasta 2 estilos de un vocabulario de 4 (Minimal, Contemporaneo, Classico elegante, Caldo accogliente), sus colores y materiales, su foto y su punto de vista. Todavía no es el catálogo v2 del chat, así que hereda sus errores (p. ej. Camden en cognac).",
+      f: ["clients/febal-casa/catalog.json", "scripts/enrich-febal-style-compat.mjs"], kv: [["Piezas", "101 (88 activas)"], ["Sin foto real", "7"]] },
+    { id: "recs", x: 290, y: 470, k: "code", t: "/recommendations", s: "estilo dominante + sugeridas",
+      d: "Cuenta los estilos de las piezas guardadas y gana el más repetido (estadística, sin IA). Devuelve ese estilo y piezas sugeridas del mismo estilo. El moodboard usa exactamente el mismo cálculo, así que nunca muestran estilos distintos.",
+      f: ["server/src/routes/recommendations.ts", "packages/catalog-engine (computeStyleProfile)"] },
+    { id: "mbplan", x: 530, y: 470, k: "code", t: "/moodboard · plan", s: "estilo + piezas ancla → clave",
+      d: "Gratis e instantáneo: con los ids guardados elige 1 o 2 «anclas» (piezas del estilo dominante, primero las que tienen foto real, de categorías distintas) y calcula una clave con el estilo, las anclas, sus datos y el idioma. La misma lista da siempre la misma clave. El navegador nunca elige modelo ni ve prompts.",
+      f: ["server/src/routes/moodboard.ts", "packages/moodboard-engine (select-anchors, key, service)"] },
+    { id: "cache", x: 530, y: 640, k: "data", t: "Caché de moodboards", s: "una carpeta por clave",
+      d: "Lo generado se guarda por clave: plan, análisis, texturas e imágenes. Si otro visitante llega a las mismas anclas y estilo, su moodboard sale al instante y gratis. Si cambia un dato del catálogo, la clave cambia y se regenera solo.",
+      f: ["server/data/moodboards/<clave>/"] },
+    { id: "limiter", x: 790, y: 640, k: "code", t: "Limitador de gasto", s: "6 por visitante/hora · 300/día",
+      d: "Solo cuentan las generaciones nuevas (lo que ya está en caché es gratis): 6 por visitante y hora, 300 al día para todo el backend (unos US$7 en el peor caso). Al pasarse, el visitante ve un aviso amable. Reintentar texturas que fallaron también cuenta.",
+      f: ["server/src/moodboard/limiter.ts"] },
+    { id: "ia1", x: 790, y: 470, k: "llm", t: "IA #1 · análisis", s: "gpt-5.6-luna · fotos + datos",
+      d: "Ve la foto oficial de las anclas y sus datos del showroom (colores, materiales, acabado, forma); si un dato contradice la foto, gana el dato. Devuelve el lema, la descripción, la paleta de 6 colores con nombre y 4 materiales. Recibe el estilo como dato cerrado: nunca lo inventa ni lo renombra.",
+      f: ["packages/moodboard-engine/src/analysis.ts"], kv: [["Tiempo", "≈7–10 s"], ["Costo", "≈US$0,001–0,004"]] },
+    { id: "ia2", x: 1050, y: 470, k: "llm", t: "IA #2 · texturas", s: "gpt-image-1-mini / 1.5",
+      d: "Pinta una textura plana por material, solo a partir de texto con el color exacto (nunca de la foto, para que no copie objetos ni perspectiva). Los materiales simples van al modelo pequeño y los complejos al grande, en paralelo.",
+      f: ["packages/moodboard-engine/src/textures.ts"], kv: [["Tiempo", "≈7–9 s"], ["Costo", "≈US$0,009–0,020"]] },
+  ];
+  const ln = prep(LIST_N);
+  const LIST_E = [
+    { a: "corazon", b: "wlstate", d: curve(R(ln.corazon), [290, 158]) },
+    { a: "hover", b: "wlstate", d: curve(R(ln.hover), [290, 176]) },
+    { a: "wlstate", b: "panel", d: line(R(ln.wlstate), L(ln.panel)) },
+    { a: "panel", b: "bridge", d: curve([710, 150], L(ln.bridge)), lab: "Llévame", lx: 748, ly: 104 },
+    { a: "panel", b: "pdf", d: line([710, 172], L(ln.pdf)) },
+    { a: "panel", b: "contacto", d: curve([710, 188], L(ln.contacto)), lab: "Contáctame", lx: 752, ly: 246, anchor: "end" },
+    { a: "contacto", b: "maps", d: line(R(ln.contacto), L(ln.maps)), lab: "CAP", lx: 1010, ly: 274 },
+    { a: "contacto", b: "futuro", d: poly([880, 314], [880, 350], [1327, 350], [1327, 314]), dash: true, lab: "enviar: hoy solo confirma (demo)", lx: 1105, ly: 344 },
+    { a: "panel", b: "mbui", d: line(B(ln.panel), T(ln.mbui)), lab: "Crea tu moodboard", lx: 628, ly: 242, anchor: "start" },
+    { a: "panel", b: "recs", d: poly([560, 199], [560, 240], [380, 240], [380, 470]), both: true, lab: "ids guardados ↔ estilo + sugeridas", lx: 390, ly: 420, anchor: "start" },
+    { a: "catv1", b: "recs", d: curve(R(ln.catv1), L(ln.recs)), lab: "estilos", lx: 262, ly: 574, anchor: "end" },
+    { a: "recs", b: "mbplan", d: line(R(ln.recs), L(ln.mbplan)), lab: "mismo cálculo", lx: 500, ly: 494 },
+    { a: "mbui", b: "mbplan", d: line(B(ln.mbui), T(ln.mbplan)), both: true, lab: "ids ↔ estilo, anclas, lema, texturas", lx: 628, ly: 404, anchor: "start" },
+    { a: "mbplan", b: "cache", d: line(B(ln.mbplan), T(ln.cache)), both: true, lab: "¿ya existe?", lx: 628, ly: 590, anchor: "start" },
+    { a: "mbplan", b: "ia1", d: line(R(ln.mbplan), L(ln.ia1)), lab: "si no está", lx: 750, ly: 494 },
+    { a: "limiter", b: "ia1", d: line(T(ln.limiter), B(ln.ia1)), dash: true, lab: "tope de gasto", lx: 888, ly: 590, anchor: "start" },
+    { a: "ia1", b: "ia2", d: line(R(ln.ia1), L(ln.ia2)), lab: "materiales", lx: 1010, ly: 494 },
+    { a: "ia2", b: "cache", d: poly([1140, 534], [1140, 740], [620, 740], [620, 704]), lab: "se guarda todo", lx: 880, ly: 734 },
+  ];
+  const LIST = {
+    nodes: LIST_N, byId: ln, edges: LIST_E, world: { w: 1440, h: 790 },
+    lanes: [
+      { x: 20, y: 20, w: 1400, h: 370, t: "En el navegador del visitante", note: "la lista vive en el navegador; nada se envía por ahora" },
+      { x: 20, y: 408, w: 1400, h: 370, t: "En el servidor del asistente", note: "el moodboard solo lee los ids guardados; no depende del chat" },
+    ],
+    intro: "El moodboard de ejemplo se generó en el tour el 28 de septiembre de 2026 con Balmoral y Camden guardados: tiempos y costos reales.",
+    overview: () => `
+      <p class="eyebrow">Cómo encajan</p>
+      <h2>Tres piezas independientes</h2>
+      <ul class="rules">
+        <li><b>Chat, lista y moodboard no se importan entre sí</b>: el widget los conecta con interfaces pequeñas (la lista solo avisa «abrir moodboard»; el moodboard solo lee los ids guardados; «Llévame» pasa por el puente del visor).</li>
+        <li>El estilo de «Tu estilo» y el del moodboard salen del mismo cálculo, sin IA: nunca se contradicen.</li>
+        <li>El moodboard nunca inventa el estilo; las texturas se pintan desde texto con el color exacto, no desde la foto.</li>
+        <li>Todo lo generado se guarda por contenido: repetirlo es instantáneo y gratis, también para otros visitantes.</li>
+        <li>El navegador nunca elige modelo, ni ve prompts ni costos; el gasto tiene tope por visitante y por día.</li>
+        <li>«Contáctame» es una demo visual: el mapa es real, la tienda es de ejemplo y no se envía nada.</li>
+      </ul>
+      <dl class="kv">
+        <dt>Moodboard nuevo</dt><dd>≈15–20 s · US$0,01–0,025</dd>
+        <dt>Moodboard en caché</dt><dd>instantáneo · US$0</dd>
+        <dt>Límites</dt><dd>6 por visitante y hora · 300 al día</dd>
+        <dt>Modelos</dt><dd>gpt-5.6-luna (análisis) · gpt-image-1-mini / 1.5 (texturas)</dd>
+        <dt>Idiomas</dt><dd>es · it · en, los del chat</dd>
+      </dl>`,
+    scen: {
+      moodboard: { chip: "Guardar y crear el moodboard", title: "Balmoral + Camden → moodboard", steps: [
+        ["corazon", "El visitante pidió los sofás en el chat y guarda <b>Balmoral</b> y <b>Camden</b> con el corazón de sus tarjetas."],
+        ["wlstate", "La lista se guarda en su navegador; el chat, el panel y los corazones del tour ven lo mismo."],
+        ["panel", "Abre <b>«Mi lista»</b>: 2 productos guardados, cada uno con «Llévame», en el idioma del chat."],
+        ["recs", "El servidor cuenta los estilos de las dos piezas: gana <b>«Classico elegante»</b>, que el widget muestra como «Tu estilo: Clásico elegante», con sugeridas."],
+        ["panel", "Aparece el botón <b>«Crea tu moodboard»</b>."],
+        ["mbui", "Se abre el overlay: el estilo y las fotos de las dos piezas salen al instante."],
+        ["mbplan", "El servidor elige las anclas (Camden y Balmoral, ambas con foto real) y calcula la clave. Gratis."],
+        ["cache", "No existía en la caché: hay que generarlo."],
+        ["limiter", "Cuenta una generación de este visitante (tope 6 por hora, 300 al día)."],
+        ["ia1", "gpt-5.6-luna ve las fotos y los datos: lema «Elegancia serena, calidez envolvente…», paleta de 6 (Cognac, Nogal oscuro, Marfil cálido, Verde oliva, Topo elegante, Carbón), 4 materiales y la descripción. 7,6 s · US$0,0012."],
+        ["ia2", "gpt-image-1-mini pinta las 4 texturas en paralelo. 8,5 s · US$0,0091."],
+        ["cache", "Todo queda guardado por su clave: la próxima vez, o para otro visitante con las mismas piezas, sale al instante."],
+        ["mbui", "El moodboard completo, en español, con «Descargar PDF» y «Llévame» desde cada foto. Unos 20 s y US$0,01 en total."],
+      ] },
+      contacto: { chip: "«Contáctame» (demo)", title: "«Contáctame» desde «Mi lista»", steps: [
+        ["panel", "Con piezas guardadas, el visitante pulsa <b>«Contáctame»</b> abajo en «Mi lista»."],
+        ["contacto", "El panel cambia al formulario, con «← Mi lista» para volver: «Te buscamos la tienda Febal Casa más cercana»."],
+        ["maps", "Escribe su CAP (20121, Milán) y pulsa «Buscar»: aparece el mapa de Google, que se puede contraer, y la tienda más cercana (hoy, de ejemplo)."],
+        ["contacto", "Escribe nombre, apellido y correo y marca «He leído la información sobre privacidad», que abre la informativa en un popup. Si falta algo, cada campo dice qué."],
+        ["futuro", "Al enviar, hoy solo muestra «¡Listo, Giulia! Tu lista de 2 productos llegará a… y a Febal Casa Store». En producción mandaría la lista a la tienda y al visitante: falta la lista real de tiendas, el servicio de correo y el texto legal."],
+      ] },
+    },
+  };
+
+  const SHEETS = { chat: CHAT, lista: LIST };
+
+  // ================================================================ drawing
   const svgNS = "http://www.w3.org/2000/svg";
   const el = (tag, attrs = {}, parent) => { const e = document.createElementNS(svgNS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
   const svg = document.getElementById("map"), world = document.getElementById("world");
-  const gl = el("g", {}, world), ge = el("g", {}, world), gn = el("g", {}, world);
-  LANES.forEach((l) => {
-    const g = el("g", { class: "lane" }, gl);
-    el("rect", { x: l.x, y: l.y, width: l.w, height: l.h, rx: 14 }, g);
-    const t = el("text", { x: l.x + 18, y: l.y + 28 }, g); t.textContent = l.t;
-    const s = el("tspan", { class: "lanenote", dx: 12 }, t); s.textContent = l.note;
-  });
-  const edgeEls = E.map((e) => {
-    const g = el("g", { class: "edge" + (e.dash ? " dash" : "") }, ge);
-    const p = el("path", { d: e.d, "marker-end": "url(#arrow)" }, g);
-    if (e.both) p.setAttribute("marker-start", "url(#arrow)");
-    if (e.lab) { const t = el("text", { x: e.lx, y: e.ly, "text-anchor": e.anchor || "middle" }, g); t.textContent = e.lab; }
-    e.g = g; e.p = p; return e;
-  });
-  const nodeEls = {};
-  N.forEach((nd) => {
-    const K = KIND[nd.k];
-    const g = el("g", { class: "node", tabindex: "0", role: "button", "aria-label": `${nd.t}: ${nd.s}` }, gn);
-    el("rect", { class: "halo", x: nd.x - 6, y: nd.y - 6, width: nd.w + 12, height: nd.h + 12, rx: 14, fill: "none", stroke: "none" }, g);
-    el("rect", { class: "box", x: nd.x, y: nd.y, width: nd.w, height: nd.h, rx: 10, style: `fill:var(${K.s});stroke:var(${K.c})` }, g);
-    const b = el("text", { x: nd.x + 12, y: nd.y + 17, class: "badge", style: `fill:var(${K.c})` }, g); b.textContent = K.who.split(" (")[0];
-    const t1 = el("text", { x: nd.x + 12, y: nd.y + 36, class: "t1" }, g); t1.textContent = nd.t;
-    const t2 = el("text", { x: nd.x + 12, y: nd.y + 53, class: "t2" }, g); t2.textContent = nd.s;
-    if (nd.id === "catalogo") { const t3 = el("text", { x: nd.x + 12, y: nd.y + 76, class: "t2" }, g); t3.textContent = "56 modelos · 88 piezas"; const t4 = el("text", { x: nd.x + 12, y: nd.y + 93, class: "t2" }, g); t4.textContent = "5.138 opciones · 819 hechos"; }
-    g.addEventListener("click", (ev) => { if (moved) return; select(nd.id); });
-    g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(nd.id); } });
-    nodeEls[nd.id] = g;
-  });
+  let sheet = CHAT, edgeEls = [], nodeEls = {};
 
-  // ---------------------------------------------------------------- pan / zoom
+  function draw() {
+    world.innerHTML = "";
+    const gl = el("g", {}, world), ge = el("g", {}, world), gn = el("g", {}, world);
+    sheet.lanes.forEach((l) => {
+      const g = el("g", { class: "lane" }, gl);
+      el("rect", { x: l.x, y: l.y, width: l.w, height: l.h, rx: 14 }, g);
+      const t = el("text", { x: l.x + 18, y: l.y + 28 }, g); t.textContent = l.t;
+      const s = el("tspan", { class: "lanenote", dx: 12 }, t); s.textContent = l.note;
+    });
+    edgeEls = sheet.edges.map((e) => {
+      const g = el("g", { class: "edge" + (e.dash ? " dash" : "") }, ge);
+      const p = el("path", { d: e.d, "marker-end": "url(#arrow)" }, g);
+      if (e.both) p.setAttribute("marker-start", "url(#arrow)");
+      if (e.lab) { const t = el("text", { x: e.lx, y: e.ly, "text-anchor": e.anchor || "middle" }, g); t.textContent = e.lab; }
+      return { ...e, g, p };
+    });
+    nodeEls = {};
+    sheet.nodes.forEach((nd) => {
+      const K = KIND[nd.k];
+      const g = el("g", { class: "node" + (nd.future ? " future" : ""), tabindex: "0", role: "button", "aria-label": `${nd.t}: ${nd.s}` }, gn);
+      el("rect", { class: "halo", x: nd.x - 6, y: nd.y - 6, width: nd.w + 12, height: nd.h + 12, rx: 14, fill: "none", stroke: "none" }, g);
+      el("rect", { class: "box", x: nd.x, y: nd.y, width: nd.w, height: nd.h, rx: 10, style: `fill:var(${K.s});stroke:var(${K.c})` }, g);
+      const b = el("text", { x: nd.x + 12, y: nd.y + 17, class: "badge", style: `fill:var(${K.c})` }, g); b.textContent = BADGE[nd.k];
+      const t1 = el("text", { x: nd.x + 12, y: nd.y + 36, class: "t1" }, g); t1.textContent = nd.t;
+      const t2 = el("text", { x: nd.x + 12, y: nd.y + 53, class: "t2" }, g); t2.textContent = nd.s;
+      (nd.extra || []).forEach((line2, i) => { const t = el("text", { x: nd.x + 12, y: nd.y + 76 + i * 17, class: "t2" }, g); t.textContent = line2; });
+      g.addEventListener("click", () => { if (moved) return; select(nd.id); });
+      g.addEventListener("keydown", (ev) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); select(nd.id); } });
+      nodeEls[nd.id] = g;
+    });
+  }
+
+  // ================================================================ pan / zoom
   let vw = 1, vh = 1, tx = 0, ty = 0, k = 1;
   const zl = document.getElementById("zlevel");
   function apply() { world.setAttribute("transform", `translate(${tx},${ty}) scale(${k})`); zl.textContent = Math.round(k * 100) + "%"; }
   function size() { const r = svg.getBoundingClientRect(); vw = r.width; vh = r.height; }
-  function fit() { size(); k = Math.min(vw / WORLD.w, vh / WORLD.h) * 0.97; tx = (vw - WORLD.w * k) / 2; ty = (vh - WORLD.h * k) / 2; apply(); }
+  function fit() { size(); const W = sheet.world; k = Math.min(vw / W.w, vh / W.h) * 0.97; tx = (vw - W.w * k) / 2; ty = (vh - W.h * k) / 2; apply(); }
   function zoomAt(f, cx, cy) { const nk = Math.max(0.25, Math.min(3.5, k * f)); tx = cx - (cx - tx) * (nk / k); ty = cy - (cy - ty) * (nk / k); k = nk; apply(); }
   function centerOn(id, scale) {
-    size(); const nd = byId[id]; const nk = scale || Math.max(k, Math.min(1.1, vw / 700));
+    size(); const nd = sheet.byId[id]; const nk = scale || Math.max(k, Math.min(1.1, vw / 700));
     k = nk; tx = vw / 2 - (nd.x + nd.w / 2) * k; ty = vh / 2 - (nd.y + nd.h / 2) * k; apply();
   }
   svg.addEventListener("wheel", (ev) => { ev.preventDefault(); const r = svg.getBoundingClientRect(); zoomAt(Math.exp(-ev.deltaY * 0.0015), ev.clientX - r.left, ev.clientY - r.top); }, { passive: false });
@@ -386,16 +610,16 @@
       const s = 40; if (ev.key === "ArrowLeft") tx += s; if (ev.key === "ArrowRight") tx -= s; if (ev.key === "ArrowUp") ty += s; if (ev.key === "ArrowDown") ty -= s; apply();
     }
   });
-  window.addEventListener("resize", () => { const pk = k; size(); if (!tour) fit(); else apply(); });
+  window.addEventListener("resize", () => { size(); if (!tour) fit(); else apply(); });
 
-  // ---------------------------------------------------------------- detail panel
+  // ================================================================ detail panel
   const detail = document.getElementById("detail");
   const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const tagify = (s) => esc(s).replace(/\{\{([a-z]+):([^}]+)\}\}/g, '<span class="tag">{{$1:$2}}</span>');
   function select(id) {
     Object.values(nodeEls).forEach((g) => g.classList.remove("sel"));
     nodeEls[id].classList.add("sel");
-    const nd = byId[id], K = KIND[nd.k];
+    const nd = sheet.byId[id], K = KIND[nd.k];
     detail.innerHTML = `
       <p class="eyebrow">Paso seleccionado</p>
       <h2>${esc(nd.t)}</h2>
@@ -404,68 +628,14 @@
       ${nd.kv ? `<dl class="kv">${nd.kv.map(([a, b]) => `<dt>${esc(a)}</dt><dd>${esc(b)}</dd>`).join("")}</dl>` : ""}
       ${nd.f && nd.f.length ? `<div class="files">${nd.f.map(esc).join("<br>")}</div>` : ""}`;
   }
-  function overview() {
-    detail.innerHTML = `
-      <p class="eyebrow">Reglas de diseño</p>
-      <h2>Por qué no inventa</h2>
-      <ul class="rules">
-        <li>El LLM entiende y redacta; <b>el código decide qué existe</b> y escribe cada nombre, opción, zona, medida y enlace.</li>
-        <li>Si un color o acabado no está en el tour pero la ficha lo ofrece: «aquí no está así, pero sí bajo pedido» + enlace (regla de disponibilidad).</li>
-        <li>Si la paleta de la línea aplica al modelo según su ficha, se ofrece bajo pedido; si hay duda, se menciona con aviso; si no aplica, no se menciona.</li>
-        <li>Lo que no está confirmado se dice «sin confirmar»; nunca se rellena.</li>
-        <li>Lo que viene literal de la ficha o de una foto del tour vale sin firma; una persona solo decide lo que las fuentes no resuelven.</li>
-        <li>Cada respuesta pasa por el verificador; si falla, se repara o se usa una plantilla.</li>
-        <li>El LLM nunca ve coordenadas de cámara.</li>
-      </ul>
-      <dl class="kv">
-        <dt>Última batería</dt><dd>24 turnos, gpt-4o-mini (25 sep 2026)</dd>
-        <dt>Costo</dt><dd>US$0,0219 en total (≈US$0,0009 por turno)</dd>
-        <dt>Tiempo</dt><dd>p50 2,1 s · p95 3,6 s</dd>
-        <dt>Plantillas</dt><dd>0 de 24 · reparaciones 2</dd>
-        <dt>Datos</dt><dd>819 hechos con fuente literal · 14 decisiones abiertas</dd>
-      </dl>`;
-  }
 
-  // ---------------------------------------------------------------- guided tour
-  const SCEN = {
-    amarillo: { title: "«¿Tienes sofás de ángulo?» → «¿Lo tienes en amarillo?»", steps: [
-      ["visitante", "El visitante ya preguntó <b>«¿Tienes sofás de ángulo?»</b> (le mostramos Balmoral y Melrose) y ahora escribe <b>«¿Lo tienes en amarillo?»</b>."],
-      ["estado", "La memoria sabe el tema: <b>sofá + de ángulo</b>, en español. «Lo» se refiere a esos sofás."],
-      ["planner", "El planificador devuelve solo esto: intención <code>variant</code>, agrega <code>color.yellow</code>, referencias Balmoral (FEB-003) y Melrose (FEB-048). 1,46 s."],
-      ["reducer", "El reductor valida los ids y los junta con la memoria: filtros <b>sofá · de ángulo · amarillo</b>."],
-      ["engine", "El motor: en el showroom no hay sofás de ángulo amarillos. <b>Bajo pedido sí</b>: Balmoral (Nabuk Eagle Sun, Bellezza Sun, Roma Lemon Sorbet, Tecno Mustard) y Melrose (Boston Mustard…). Como solo hay bajo pedido, busca algo amarillo que sí se vea: el sillón <b>Astor</b> en mostaza. Obligaciones: decir que no está, ofrecer bajo pedido con enlace, ofrecer el Astor."],
-      ["composer", "El redactor escribe con etiquetas, p. ej.: «…pero {{p:FEB-003}}, que aquí está en {{shown:FEB-003}}, sí se puede pedir en {{v:FEB-003}}: míralo en {{link:FEB-003}}». 1,85 s."],
-      ["renderer", "El código cambia cada etiqueta por el dato: <b>Balmoral</b>, «verde oliva claro», las 4 opciones amarillas oficiales y el enlace a su ficha."],
-      ["verifier", "El verificador comprueba nombres, zonas, idioma y que estén todas las obligaciones. Pasa al primer intento."],
-      ["respuesta", "«En el showroom no tenemos sofás de ángulo en amarillo, pero <b>Balmoral</b> está en verde oliva claro y SÍ está disponible bajo pedido en Nabuk Eagle Sun, Bellezza Sun, Roma Lemon Sorbet, Tecno Mustard: míralo en su ficha. […] Si prefieres un sillón, <b>Astor</b> está en Casa 2 (Perfetta) y es amarillo. ¿Te lo muestro?» · 3 tarjetas · 3,3 s en total."],
-    ] },
-    cuero: { title: "«Quiero un sofá de cuero»", steps: [
-      ["visitante", "El visitante escribe <b>«Quiero un sofá de cuero»</b>."],
-      ["lexicon", "El diccionario reconoce <b>«cuero» = piel</b> (material.leather) y «sofá» como categoría. Similpiel y nobuk son conceptos distintos: no se confunden."],
-      ["planner", "El planificador: intención <code>search</code>, agrega <code>material.leather</code>. El reductor completa la categoría sofá con el diccionario."],
-      ["engine", "El motor: <b>no hay sofás de piel</b> ni en el showroom ni bajo pedido. Relaja lo más barato: piel → <b>nobuk</b> (cercanía firmada). Balmoral se puede pedir en Nabuk Eagle. Además, nombra los materiales que sí existen en sofás."],
-      ["composer", "El redactor escribe su primera versión con etiquetas…"],
-      ["verifier", "…y el verificador la rechaza: <b>V9</b>, faltaba nombrar los materiales disponibles ({{vals:c1}})."],
-      ["fallback", "Se repara una vez: el redactor recibe el error y corrige. No hizo falta la plantilla."],
-      ["respuesta", "«En el showroom no tenemos sofás de piel, pero <b>Balmoral</b>, que aquí está en verde oliva claro, sí se puede pedir en Nabuk Eagle Black, Stone, Grey, Sand y más. […] También tenemos opciones en bouclé, tela, microfibra, nobuk, terciopelo.» Ya no dice que el sillón Vivienne sea de piel: la captura no lo confirma."],
-    ] },
-    azul: { title: "«¿Tienes la cama Couple en azul?»", steps: [
-      ["visitante", "El visitante escribe <b>«¿Tienes la cama Couple en azul?»</b>."],
-      ["planner", "El planificador devuelve: intención <code>variant</code>, foco Couple (FEB-039), agrega <code>color.blue</code>. 0,96 s."],
-      ["reducer", "El reductor valida el id y arma los filtros: <b>Couple · azul</b>."],
-      ["paletas", "Esto se decidió antes de la charla. La ficha de Couple no trae lista propia: muestra la paleta de la línea Dormitorio. Su texto habla de superficies de impiallacciato, laccato y laccato metal y de zonas tapizadas en tessuto o similpelle, así que <b>laca, chapa, metal skin, telas y similpiel aplican</b>; espejo, gres y aluminio no."],
-      ["engine", "El motor: en el showroom Couple está en blanco hielo, no en azul. <b>Bajo pedido sí</b>: las lacas Blu Notte y Ceruleo, opacas y brillantes. Resultado <code>on_order_only</code>; obligación: decir que así no está y ofrecerla bajo pedido con enlace."],
-      ["composer", "El redactor escribe con etiquetas, p. ej. «…{{p:FEB-039}}, que aquí está en {{shown:FEB-039}}, sí está disponible bajo pedido en {{v:FEB-039}}; míralo en {{link:FEB-039}}». 0,94 s."],
-      ["renderer", "El código pone <b>Couple</b>, «blanco hielo», las lacas azules oficiales y el enlace a su ficha."],
-      ["verifier", "El verificador revisa nombres, idioma y obligaciones. Pasa al primer intento."],
-      ["respuesta", "«En el showroom no tenemos la cama <b>Couple</b> en azul, ya que aquí está en blanco hielo. Sin embargo, sí está disponible bajo pedido en Laccato Opaco Blu Notte, Laccato Opaco Ceruleo, Laccato Lucido Blu Notte, Laccato Lucido Ceruleo y más; míralo en su ficha.» · 1 tarjeta · 1,9 s en total."],
-    ] },
-  };
+  // ================================================================ guided tour
   let tour = null, step = 0;
   const stepbar = document.getElementById("stepbar"), stepText = document.getElementById("stepText"), stepCount = document.getElementById("stepCount"), tourTitle = document.getElementById("tourTitle");
-  const chips = { amarillo: document.getElementById("sc-amarillo"), cuero: document.getElementById("sc-cuero"), azul: document.getElementById("sc-azul") };
+  const chipsBox = document.getElementById("chips");
+  let chips = {};
   function show() {
-    const sc = SCEN[tour], [id, text] = sc.steps[step];
+    const sc = sheet.scen[tour], [id, text] = sc.steps[step];
     const path = sc.steps.slice(0, step + 1).map((s) => s[0]);
     svg.classList.add("dim");
     Object.entries(nodeEls).forEach(([nid, g]) => { g.classList.toggle("on", path.includes(nid)); g.classList.toggle("current", nid === id); });
@@ -480,7 +650,7 @@
     select(id); centerOn(id);
   }
   function startTour(name) {
-    tour = name; step = 0; stepbar.hidden = false; tourTitle.textContent = SCEN[name].title;
+    tour = name; step = 0; stepbar.hidden = false; tourTitle.textContent = sheet.scen[name].title;
     Object.entries(chips).forEach(([k2, b]) => b.setAttribute("aria-pressed", String(k2 === name)));
     show();
   }
@@ -489,17 +659,33 @@
     Object.values(chips).forEach((b) => b.setAttribute("aria-pressed", "false"));
     Object.values(nodeEls).forEach((g) => g.classList.remove("on", "current", "sel"));
     edgeEls.forEach((e) => { e.g.classList.remove("on"); e.p.setAttribute("marker-end", "url(#arrow)"); });
-    stepText.textContent = "Los ejemplos salen de las baterías con gpt-4o-mini del 23 y el 25 de septiembre de 2026: mismo texto, mismas piezas, mismos tiempos.";
-    overview(); fit();
+    stepText.textContent = sheet.intro;
+    detail.innerHTML = sheet.overview(); fit();
   }
-  chips.amarillo.onclick = () => startTour("amarillo");
-  chips.cuero.onclick = () => startTour("cuero");
-  chips.azul.onclick = () => startTour("azul");
   document.getElementById("prev").onclick = () => { if (step > 0) { step--; show(); } };
-  document.getElementById("next").onclick = () => { if (step < SCEN[tour].steps.length - 1) { step++; show(); } };
+  document.getElementById("next").onclick = () => { if (step < sheet.scen[tour].steps.length - 1) { step++; show(); } };
   document.getElementById("exit").onclick = exitTour;
 
-  overview();
+  // ================================================================ sheets (tabs)
+  const tabs = { chat: document.getElementById("tab-chat"), lista: document.getElementById("tab-lista") };
+  function openSheet(name) {
+    sheet = SHEETS[name];
+    Object.entries(tabs).forEach(([k2, b]) => b.setAttribute("aria-selected", String(k2 === name)));
+    chipsBox.innerHTML = ""; chips = {};
+    Object.entries(sheet.scen).forEach(([key, sc]) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.className = "chip"; b.setAttribute("aria-pressed", "false"); b.textContent = sc.chip;
+      b.onclick = () => startTour(key);
+      chipsBox.appendChild(b); chips[key] = b;
+    });
+    draw(); exitTour();
+  }
+  tabs.chat.onclick = () => openSheet("chat");
+  tabs.lista.onclick = () => openSheet("lista");
+
+  openSheet("chat");
   requestAnimationFrame(fit);
 })();
 </script>
+
+</html>

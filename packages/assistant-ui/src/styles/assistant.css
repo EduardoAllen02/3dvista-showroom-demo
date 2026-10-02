@@ -94,6 +94,73 @@
   .tva-launcher:hover { transform: scale(1.05); }
 }
 
+/* Welcome bubble ("¡Hola! Soy tu asistente virtual") right above the
+   launcher, its tail pointing down at it (to its left it would cover the
+   tour's own house dots). Same stacking as the launcher, so the
+   wishlist panel covers it; hidden with it while the chat is open. The full
+   text sits invisibly under the typed one (same grid cell), so the bubble has
+   its final size from the first frame. */
+.tva-greeting {
+  position: absolute;
+  right: 0;
+  bottom: 74px;
+  z-index: 1;
+  display: grid;
+  width: max-content;
+  max-width: 260px;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 16px 16px 4px 16px;
+  white-space: nowrap;
+  background: #ffffff;
+  color: #1a1a1a;
+  font: 600 14px/1.35 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  text-align: left;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  transform-origin: 100% 100%;
+}
+.tva-greeting[hidden] { display: none; }
+.tva-greeting::after {
+  content: "";
+  position: absolute;
+  right: 24px;
+  bottom: -6px;
+  width: 12px;
+  height: 12px;
+  background: #ffffff;
+  transform: rotate(45deg);
+  border-radius: 2px;
+}
+.tva-greeting > span { grid-area: 1 / 1; }
+.tva-greeting-sizer { visibility: hidden; }
+.tva-greeting-typed::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -2px;
+  background: var(--assistant-primary);
+  animation: tva-greeting-caret 0.8s steps(1) infinite;
+}
+.tva-greeting--done .tva-greeting-typed::after { animation: none; opacity: 0; transition: opacity 0.4s ease 0.6s; }
+.tva-greeting:focus-visible { outline: 3px solid var(--assistant-primary); outline-offset: 3px; }
+.tva-root:not([data-tva-tour-entered="true"]) .tva-greeting,
+.tva-root:has(.tva-card--open) .tva-greeting {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes tva-greeting-caret { 50% { opacity: 0; } }
+@keyframes tva-greeting-pop {
+  0% { opacity: 0; transform: translate(10px, 10px) scale(0.5); }
+  60% { opacity: 1; transform: translate(0, 0) scale(1.06); }
+  100% { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tva-greeting--in { animation: tva-greeting-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+}
+
 /* Chat card — panel lateral de ancho fijo que se desliza desde el borde de
    la pantalla, idéntico en estructura al panel de wishlist (.tva-wl-panel).
    Se monta sobre el canvas de 3DVista gracias al stacking context de
@@ -798,6 +865,31 @@
   .tva-wl-rec-card:hover { transform: translateY(-3px); }
 }
 
+/* Entry point to the moodboard (packages/moodboard-ui). Only rendered when
+   the tour enables the feature and the panel has a style to show. Solid red
+   with the same one-rounded-corner shape as "La mia collezione", so it reads
+   as the panel's one primary action. */
+.tva-wl-moodboard-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 8px 0 0 0;
+  background: var(--assistant-primary);
+  color: var(--assistant-on-primary);
+  font-family: "FuturaBookC", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tva-wl-moodboard-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+.tva-wl-moodboard-btn:hover { background: var(--assistant-primary-hover); }
+.tva-wl-moodboard-btn:focus-visible { outline: 2px solid var(--assistant-text); outline-offset: 2px; }
+
 .tva-wl-actions {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -843,6 +935,183 @@
 .tva-wl-action[data-icon="whatsapp"]::before {
   -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z'/%3E%3C/svg%3E");
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3E%3Cpath d='M12 2a10 10 0 0 0-8.5 15.2L2 22l4.9-1.5A10 10 0 1 0 12 2Zm5.6 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.1.2-3.6-.8-3-1.2-4.9-4.2-5.1-4.4-.1-.2-1.2-1.6-1.2-3 0-1.4.7-2.1 1-2.4.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5.2.5.7 1.8.8 1.9.1.1.1.3 0 .5-.1.2-.1.3-.3.5l-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.5 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3Z'/%3E%3C/svg%3E");
+}
+.tva-wl-action[data-icon="contact"]::before {
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Ccircle cx='12' cy='8' r='4'/%3E%3Cpath d='M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7'/%3E%3C/svg%3E");
+}
+
+/* "Contáctame" — replaces the list inside the same panel (contact-panel.ts).
+   Compact on purpose: CAP, store, map, three fields and the privacy line fit
+   a laptop-height panel; the panel scrolls for anything more. */
+.tva-ct { display: flex; flex-direction: column; gap: 10px; }
+.tva-ct-header { display: flex; align-items: center; }
+.tva-ct-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px 4px 2px;
+  border: none;
+  background: transparent;
+  color: var(--assistant-text-muted);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tva-ct-back svg { width: 16px; height: 16px; }
+.tva-ct-back:hover { color: var(--assistant-primary); }
+.tva-ct-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--assistant-text);
+  font-family: "FuturaBookC", sans-serif;
+  text-transform: uppercase;
+}
+.tva-ct-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--assistant-border);
+  border-radius: 12px;
+  background: var(--assistant-bg-elevated);
+}
+.tva-ct-text { margin: 0; font-size: 13px; line-height: 1.45; color: var(--assistant-text); }
+.tva-ct-cap-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; }
+.tva-ct-input {
+  width: 100%;
+  height: 38px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid var(--assistant-border);
+  border-radius: 8px;
+  background: var(--assistant-bg);
+  color: var(--assistant-text);
+  font: inherit;
+  font-size: 14px;
+}
+.tva-ct-input:focus { outline: none; border-color: var(--assistant-primary); }
+.tva-ct-input[aria-invalid="true"] { border-color: var(--assistant-primary); }
+.tva-ct-search {
+  height: 38px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  background: var(--assistant-primary);
+  color: var(--assistant-on-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tva-ct-search:hover { background: var(--assistant-primary-hover); }
+.tva-ct-store { display: flex; align-items: center; gap: 10px; }
+.tva-ct-store-pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--assistant-bg);
+  color: var(--assistant-primary);
+}
+.tva-ct-store-pin svg { width: 18px; height: 18px; }
+.tva-ct-store-info { display: flex; flex-direction: column; min-width: 0; font-size: 14px; color: var(--assistant-text); }
+.tva-ct-store-kicker { font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--assistant-text-muted); }
+/* Store name and street in the title's face (FuturaBookC, capitals), like "Contáctame". */
+.tva-ct-store-name,
+.tva-ct-store-address { font-family: "FuturaBookC", sans-serif; text-transform: uppercase; }
+.tva-ct-store-name { font-size: 15px; font-weight: 700; }
+.tva-ct-store-address { font-size: 12px; color: var(--assistant-text-muted); }
+.tva-ct-map-toggle {
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--assistant-primary);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.tva-ct-map-toggle svg { width: 14px; height: 14px; transition: transform 0.2s ease; }
+.tva-ct-map-toggle--open svg { transform: rotate(180deg); }
+/* 200px is the smallest height at which Google's keyless embed is a live map (drag, Ctrl+wheel or
+   two-finger zoom, its move/zoom control); at 180px and below it serves a static picture. Tested
+   in Chrome, 28/09. */
+.tva-ct-map { width: 100%; height: 200px; flex-shrink: 0; border: 0; border-radius: 8px; background: var(--assistant-bg); }
+.tva-ct-names { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tva-ct-field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.tva-ct-label { font-size: 12px; color: var(--assistant-text-muted); }
+.tva-ct-error { font-size: 12px; color: var(--assistant-primary); }
+.tva-ct-consent { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; line-height: 1.4; color: var(--assistant-text); cursor: pointer; }
+.tva-ct-consent input { width: 16px; height: 16px; margin: 1px 0 0; flex-shrink: 0; accent-color: var(--assistant-primary); }
+.tva-ct-link {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--assistant-primary);
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.tva-ct-note { margin: 0; font-size: 12px; color: var(--assistant-text-muted); }
+.tva-ct-submit {
+  width: 100%;
+  height: 44px;
+  border: none;
+  border-radius: 8px 0 0 0;
+  background: var(--assistant-primary);
+  color: var(--assistant-on-primary);
+  font-family: "FuturaBookC", sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.tva-ct-submit:hover { background: var(--assistant-primary-hover); }
+.tva-ct-sent { display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 24px 4px; text-align: center; }
+.tva-ct-sent-icon { color: var(--assistant-primary); }
+.tva-ct-sent-icon svg { width: 52px; height: 52px; }
+.tva-ct-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  max-width: 92vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 999998;
+}
+.tva-ct-modal-sheet {
+  position: relative;
+  width: calc(100% - 32px);
+  max-height: 70%;
+  overflow-y: auto;
+  padding: 20px 18px;
+  border-radius: 12px;
+  background: var(--assistant-bg);
+  color: var(--assistant-text);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+.tva-ct-modal-sheet .tva-ct-text + .tva-ct-text { margin-top: 10px; }
+.tva-ct-modal-title { margin: 0 24px 12px 0; font-size: 15px; }
+.tva-ct-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: transparent;
+  color: var(--assistant-text-muted);
+  font-size: 22px;
+  cursor: pointer;
 }
 
 /* Hotspot-hover heart overlay — sits above the tour's canvas, effectively
@@ -1018,6 +1287,13 @@
 .tva-root[data-tva-mobile="true"] .tva-launcher {
   width: calc(64 * var(--tva-mobile-unit, 1px));
   height: calc(64 * var(--tva-mobile-unit, 1px));
+}
+.tva-root[data-tva-mobile="true"] .tva-greeting {
+  bottom: calc(78 * var(--tva-mobile-unit, 1px));
+  max-width: calc(240 * var(--tva-mobile-unit, 1px));
+  padding: calc(11 * var(--tva-mobile-unit, 1px)) calc(14 * var(--tva-mobile-unit, 1px));
+  font-size: calc(15 * var(--tva-mobile-unit, 1px));
+  border-radius: calc(16 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px)) calc(4 * var(--tva-mobile-unit, 1px)) calc(16 * var(--tva-mobile-unit, 1px));
 }
 .tva-root[data-tva-mobile="true"] .tva-launcher svg {
   width: calc(28 * var(--tva-mobile-unit, 1px));

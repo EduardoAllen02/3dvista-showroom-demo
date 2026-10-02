@@ -1,0 +1,11 @@
+{
+  "_fuente": "Decisiones de Febal en la llamada del 28/09/2026 (prueba de concepto). Los acabados por pieza vienen ahora del Book Compo (book-compo-finishes.json, 30/09): ahí quedó el top de Gres Travertino de la madia Libeskind, y Madeira pasó de gres a Cristallo Velvet (vidrio), pendiente de confirmar con Febal. Dudas abiertas en docs/chatbot-v2/dudas-febal.md.",
+  "models": {
+    "navigli": {
+      "styles": [
+        "style.elegant"
+      ]
+    }
+  },
+  "pieces": {}
+}

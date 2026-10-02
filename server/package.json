@@ -12,6 +12,7 @@
     "@3dvista-assistant/assistant-engine": "*",
     "@3dvista-assistant/catalog-engine": "*",
     "@3dvista-assistant/model-adapters": "*",
+    "@3dvista-assistant/moodboard-engine": "*",
     "@anthropic-ai/claude-agent-sdk": "^0.3.261",
     "@fastify/cors": "^10.0.1",
     "dotenv": "^16.4.5",

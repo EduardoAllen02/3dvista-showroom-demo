@@ -34,6 +34,10 @@ export interface ProductCard {
   availability?: "exhibited" | "on_order" | "line" | "unknown";
   reasons?: string[];
   official_url?: string | null;
+  /** The model's own name ("Melrose" for "Divano Melrose"), for text the widget writes itself. */
+  short_name?: string;
+  /** One line under the name in the visitor's language ("Sofá · gris cálido"); the description is Italian. */
+  teaser?: string;
 }
 
 /** Where the visitor is looking — sent so "this one" can be resolved server-side (v2). */
@@ -64,6 +68,13 @@ export interface HotspotManifestEntry {
    * catalog product (see native-preview-detector.ts) — same "BOX nnn -
    * B_nnn" label the catalog scrape captured, not something derived here. */
   hotspot_name: string | null;
+  /** Canonical product of its showroom composition (pieces of one kitchen share it): the hearts
+   * save one product per composition. Absent → the product itself. */
+  group_id?: string;
+  /** Extra hotspot keys that open this product's page besides its own hotspot_name. */
+  hotspot_keys?: string[];
+  /** The product page in every tour language, normalized (lowercase, no trailing slash). */
+  page_urls?: string[];
 }
 
 export interface ChatMessage {

@@ -26,6 +26,9 @@ export interface TurnPlan {
   detail_fields: ("dimensions" | "materials" | "style" | "shape" | "options" | "location" | "price")[];
   nav_target: string | null;
   unknown_terms: string[];
+  /** Set by the reducer (not the LLM) on a detail question about a material or colour ("¿es de mármol?",
+   * "¿de qué color es?"): the material/colour the visitor named, to answer yes or no. */
+  detail_asked?: { facet: "material" | "color"; value: string }[];
 }
 
 const FACETS: PlanFacet[] = ["category", "shape", "material", "color", "tone", "style", "mood", "model"];

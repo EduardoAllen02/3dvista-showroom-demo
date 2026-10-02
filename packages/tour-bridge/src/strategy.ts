@@ -3,6 +3,7 @@ import { playerApiNavigator } from "./player-api-navigator.js";
 import type { HotspotSignals, NavTarget, TourBridgeStrategy, ViewerState } from "./types.js";
 import { getActiveMediaName, getCameraState } from "./camera-reader.js";
 import { deriveOverlayPrefix, findEnabledDugmePrefix, findHotspotAnchor, findOpenNativePreview, normalizePrefix } from "./product-panel.js";
+import { applyTdvSkinTweaks, tdvLocale } from "./skin.js";
 
 /** 3DVista's product hotspots: "BOX 100 - B_103" markers with their "b103 dugme" overlays. */
 const TDV_HOTSPOTS: HotspotSignals = {
@@ -10,7 +11,7 @@ const TDV_HOTSPOTS: HotspotSignals = {
   anchor: (key) => findHotspotAnchor(key),
   openPanel: () => {
     const s = findOpenNativePreview();
-    return { open: s.open, key: s.prefix };
+    return { open: s.open, key: s.prefix, url: s.url };
   },
   keyOf: (hotspotName) => {
     const derived = deriveOverlayPrefix(hotspotName);
@@ -68,5 +69,7 @@ export function createTourBridge(preferred: PreferredStrategy = "player-api"): T
     },
     getViewer: tdvViewer,
     hotspots: TDV_HOTSPOTS,
+    getLocale: tdvLocale,
+    applySkinTweaks: applyTdvSkinTweaks,
   };
 }

@@ -28,6 +28,48 @@ const HEART_SVG =
   '<path d="M12 20.5s-7.5-4.8-10-9.4C.5 7.8 2.3 4.5 5.6 4c2-.3 3.9.6 5 2.2C11.7 4.6 13.6 3.7 15.6 4c3.3.5 5.1 3.8 3.6 7.1-2.5 4.6-10 9.4-10 9.4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>' +
   "</svg>";
 
+/** The pieces of `p`'s showroom composition (just `p` when it has none). */
+function compositionOf(manifest: HotspotManifestEntry[], p: HotspotManifestEntry): HotspotManifestEntry[] {
+  const group = p.group_id ?? p.product_id;
+  return manifest.filter((m) => (m.group_id ?? m.product_id) === group);
+}
+
+/** Saved already — under this piece or any other of its composition (e.g. from the chat). */
+export function isCompositionSaved(wishlist: WishlistState, manifest: HotspotManifestEntry[], p: HotspotManifestEntry): boolean {
+  return compositionOf(manifest, p).some((m) => wishlist.has(m.product_id));
+}
+
+/**
+ * The hotspot hearts' save/unsave: one wishlist item per composition, whichever of its hotspots
+ * the heart is on — the Origina kitchen's island and its two tall units are one product, never
+ * three. `p` is the composition's canonical entry (see canonicalOf).
+ */
+export function toggleComposition(
+  wishlist: WishlistState,
+  manifest: HotspotManifestEntry[],
+  p: HotspotManifestEntry,
+  hotspotName: string | null
+): void {
+  const saved = compositionOf(manifest, p).filter((m) => wishlist.has(m.product_id));
+  if (saved.length > 0) {
+    for (const m of saved) wishlist.remove(m.product_id);
+    return;
+  }
+  wishlist.toggle({
+    product_id: p.product_id,
+    name: p.name,
+    description: "",
+    image_url: p.image_url,
+    section: "",
+    detail_url: p.detail_url,
+    navTarget: { media_name: p.media_name, yaw: p.yaw, pitch: p.pitch, fov: p.fov, hotspot_name: hotspotName },
+    alternativesAvailable: false,
+  });
+}
+
+const normUrl = (u: string | null | undefined): string =>
+  (u ?? "").trim().toLowerCase().replace(/[?#].*$/, "").replace(/\/+$/, "");
+
 export interface NativePreviewState {
   open: boolean;
   /** null when open but the hotspot doesn't map to any catalog product yet
@@ -113,24 +155,19 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
 
   function syncSavedVisual(): void {
     if (!current) return;
-    heartBtn.classList.toggle("tva-hotspot-heart--saved", deps.wishlist.has(current.product_id));
+    heartBtn.classList.toggle("tva-hotspot-heart--saved", isCompositionSaved(deps.wishlist, deps.manifest, current));
   }
 
   heartBtn.addEventListener("click", () => {
     if (!current) return;
-    const p = current;
-    deps.wishlist.toggle({
-      product_id: p.product_id,
-      name: p.name,
-      description: "",
-      image_url: p.image_url,
-      section: "",
-      detail_url: p.detail_url,
-      navTarget: { media_name: p.media_name, yaw: p.yaw, pitch: p.pitch, fov: p.fov, hotspot_name: null },
-      alternativesAvailable: false,
-    });
+    toggleComposition(deps.wishlist, deps.manifest, current, null);
     syncSavedVisual();
   });
+
+  // The hotspot last pointed at: clicking it is what opens its preview, and by the time the
+  // preview is detected the popup covering the marker may have fired its roll-out already.
+  let lastHovered: { key: string; at: number } | null = null;
+  const LAST_HOVER_MS = 4000;
 
   // Tracks the native-preview prefix across checks so onNativePreviewChange
   // only fires on an actual change — `undefined` (not `null`) means "not
@@ -153,11 +190,11 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
   // forcing one initial callback even if nothing is open.
   let lastSignature: string | undefined = undefined;
   function checkNativePreview(): void {
-    const panel = deps.bridge.hotspots?.openPanel() ?? { open: false, key: null };
-    const signal = { open: panel.open, prefix: panel.key };
+    const panel = deps.bridge.hotspots?.openPanel() ?? { open: false, key: null, url: null };
+    const signal = { open: panel.open, prefix: panel.key, url: panel.url ?? null };
     previewOpen = signal.open;
     if (!deps.onNativePreviewChange) return;
-    const signature = `${signal.open}:${signal.prefix ?? ""}`;
+    const signature = `${signal.open}:${signal.prefix ?? ""}:${signal.url ?? ""}`;
     if (signature === lastSignature) return;
     lastSignature = signature;
     if (!signal.open) {
@@ -172,8 +209,37 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
     // opened via the shared-Window mechanism (no per-hotspot id to resolve
     // there); the heart still appears either way, its click just has
     // nothing to save when product is null (see wishlist-layer.ts).
-    const product = signal.prefix ? resolveProductForPrefix(signal.prefix) : null;
-    deps.onNativePreviewChange({ open: true, product });
+    deps.onNativePreviewChange({ open: true, product: resolvePreviewProduct(signal.prefix, signal.url) });
+  }
+
+  /**
+   * Which product an open preview shows: the hotspot whose "dugme" is still enabled, else the one
+   * just pointed at — each only if it opens this page (a stale enabled "dugme" can linger) — else
+   * the page itself, preferring a piece that is in this panorama when several share it.
+   */
+  function resolvePreviewProduct(prefix: string | null, url: string | null): HotspotManifestEntry | null {
+    const page = normUrl(url);
+    const showsPage = (p: HotspotManifestEntry): boolean =>
+      !page || (p.page_urls ?? [normUrl(p.detail_url)]).includes(page);
+    const recent = lastHovered && Date.now() - lastHovered.at < LAST_HOVER_MS ? lastHovered.key : null;
+    for (const key of [prefix, recent]) {
+      const p = key ? resolveProductForPrefix(key) : null;
+      if (p && showsPage(p)) return p;
+    }
+    if (!page) return null;
+    const onPage = deps.manifest.filter((p) => (p.page_urls ?? [normUrl(p.detail_url)]).includes(page));
+    const here = onPage.find((p) => keysOf(p).some((k) => deps.bridge.hotspots?.anchor(k)));
+    const found = here ?? onPage[0];
+    return found ? canonicalOf(found) : null;
+  }
+
+  function keysOf(p: HotspotManifestEntry): string[] {
+    const own = p.hotspot_name ? deps.bridge.hotspots?.keyOf(p.hotspot_name) ?? null : null;
+    return [...(own ? [own] : []), ...(p.hotspot_keys ?? [])];
+  }
+
+  function canonicalOf(p: HotspotManifestEntry): HotspotManifestEntry {
+    return deps.manifest.find((m) => m.product_id === p.group_id) ?? p;
   }
   // Deliberately NOT also called eagerly/synchronously here — an earlier
   // version did, to avoid a 300ms wait before the first correct paint, but
@@ -188,13 +254,10 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
   // could trip over just to shave 300ms off the very first render.
   const previewPollId = window.setInterval(checkNativePreview, NATIVE_PREVIEW_POLL_MS);
 
+  /** The composition's canonical product for a hotspot key (its own hotspot or an extra one). */
   function resolveProductForPrefix(prefix: string): HotspotManifestEntry | null {
-    return (
-      deps.manifest.find((p) => {
-        if (!p.hotspot_name) return false;
-        return deps.bridge.hotspots?.keyOf(p.hotspot_name) === prefix;
-      }) ?? null
-    );
+    const p = deps.manifest.find((m) => keysOf(m).includes(prefix));
+    return p ? canonicalOf(p) : null;
   }
 
   function showAt(x: number, y: number): void {
@@ -222,6 +285,7 @@ export function createHotspotHeartOverlay(deps: HotspotHeartOverlayDeps): { elem
     // the mouse entirely.
     const hoveredPrefix = deps.bridge.hotspots?.hovered() ?? null;
     if (hoveredPrefix) {
+      lastHovered = { key: hoveredPrefix, at: Date.now() };
       const product = resolveProductForPrefix(hoveredPrefix);
       if (product) {
         // The marker's own TRUE screen position this frame — read live

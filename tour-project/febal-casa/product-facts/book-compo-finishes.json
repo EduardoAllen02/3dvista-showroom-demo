@@ -1,0 +1,3356 @@
+{
+ "_fuente": {
+  "documento": "FC_2025-10-Restyling_Cerasolo_Book_Compo_06-10.pdf",
+  "titulo": "Flagship Store Rimini Cerasolo 2025 / Book Compo",
+  "fecha_documento": "2025-10-06",
+  "recibido": "2026-09-30",
+  "nota": "Ficha oficial de composición del showroom: por caja (B_xxx, la misma clave que los hotspots del tour) el producto y el acabado de cada parte. Página = página del PDF."
+ },
+ "FEB-003": {
+  "caja": "B_106",
+  "pagina": 7,
+  "nombre_libro": "Divano BALMORAL",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Tessuto Earth Dune R215",
+    "nombre": "Earth Dune R215",
+    "material": "material.fabric",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": null,
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-004": {
+  "caja": "B_109",
+  "pagina": 8,
+  "nombre_libro": "Tavolino RIO",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Rovere Spessart",
+    "nombre": "Rovere Spessart",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Top (madera)",
+    "acabado": "Rovere Spessart",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-005": {
+  "caja": "B_110",
+  "pagina": 8,
+  "nombre_libro": "Tavolino RIO",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Rovere Spessart",
+    "nombre": "Rovere Spessart",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Top (madera)",
+    "acabado": "Rovere Spessart",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-007": {
+  "caja": "B_121",
+  "pagina": 9,
+  "nombre_libro": "Composizione ISOLA (cucina Origina)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "Rovere Caffè cannettato",
+    "material": "material.wood_veneer",
+    "color": "rovere caffè",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Ceramica Infinity Rosso Domus",
+    "nombre": "Ceramica Infinity Rosso Domus",
+    "material": "material.ceramic",
+    "color": "rosso scuro venato",
+    "familias": [
+     "color.red",
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Piano Totem",
+    "acabado": "Fenix Nero Ingo",
+    "nombre": "Fenix Nero Ingo",
+    "material": "material.laminate",
+    "color": "nero",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "",
+    "material": "material.oak",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   },
+   {
+    "parte": "Top (aspecto)",
+    "acabado": "Ceramica Infinity Rosso Domus",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-008": {
+  "caja": "B_122",
+  "pagina": 9,
+  "nombre_libro": "Composizione COLONNE (cucina Origina)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "Rovere Caffè cannettato",
+    "material": "material.wood_veneer",
+    "color": "rovere caffè",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Telaio Col. Nero Vetro Fumé",
+    "nombre": "Telaio Col. Nero Vetro Fumé",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "",
+    "material": "material.oak",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-009": {
+  "caja": "B_123",
+  "pagina": 9,
+  "nombre_libro": "Composizione COLONNE (cucina Origina)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "Rovere Caffè cannettato",
+    "material": "material.wood_veneer",
+    "color": "rovere caffè",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Telaio Col. Nero Vetro Fumé",
+    "nombre": "Telaio Col. Nero Vetro Fumé",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Imp. Op. Cannettato Rovere Caffè",
+    "nombre": "",
+    "material": "material.oak",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-010": {
+  "caja": "B_141",
+  "pagina": 10,
+  "nombre_libro": "Composizione DICIOTTO / ANTA COVER / BASI (prototipo)",
+  "partes": [
+   {
+    "parte": "Pannelli Boiserie",
+    "acabado": "Laccato Opaco Mastice",
+    "nombre": "Mastice",
+    "material": "material.lacquer_matt",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Basi sospese 18 Ante",
+    "acabado": "Imp. Noce Eccimeri",
+    "nombre": "Noce Eccimeri",
+    "material": "material.walnut",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Bussolotti Pensili",
+    "acabado": "Laccato Op. Grigio Fango",
+    "nombre": "Grigio Fango",
+    "material": "material.lacquer_matt",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Mensole",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Basi sospese 18 Ante (madera)",
+    "acabado": "Imp. Noce Eccimeri",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "doors",
+    "principal": false
+   }
+  ],
+  "nota": "Prototipo según el libro."
+ },
+ "FEB-012": {
+  "caja": "B_143",
+  "pagina": 11,
+  "nombre_libro": "Libreria TRENTA",
+  "partes": [
+   {
+    "parte": "Ante Aurora Vetro",
+    "acabado": "Trasparente Fumè",
+    "nombre": "Trasparente Fumè",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": true
+   },
+   {
+    "parte": "Spalle Ripiani",
+    "acabado": "Laccato Opaco Castoro",
+    "nombre": "Castoro",
+    "material": "material.lacquer_matt",
+    "color": "tortora",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Laccato Opaco Grigio Fango",
+    "nombre": "Grigio Fango",
+    "material": "material.lacquer_matt",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Schiena",
+    "acabado": "Laccato Opaco Mastice",
+    "nombre": "Mastice",
+    "material": "material.lacquer_matt",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Ante Aurora Telaio",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "frame",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-013": {
+  "caja": "B_146",
+  "pagina": 12,
+  "nombre_libro": "Madie AURORA",
+  "partes": [
+   {
+    "parte": "Anta Vetro",
+    "acabado": "Trasparente Fumè",
+    "nombre": "Trasparente Fumè",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Laccato Opaco Grigio Fango",
+    "nombre": "Grigio Fango",
+    "material": "material.lacquer_matt",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Anta Telaio / Piedi",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "frame",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-015": {
+  "caja": "B_161",
+  "pagina": 13,
+  "nombre_libro": "Armadio PROFILE / BLOCK",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Laccato Opaco Mastice",
+    "nombre": "Mastice",
+    "material": "material.lacquer_matt",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Fascia centrale",
+    "acabado": "Similpelle Inca 006 Bambù",
+    "nombre": "Inca 006 Bambù",
+    "material": "material.faux_leather",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": null,
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-016": {
+  "caja": "B_162",
+  "pagina": 14,
+  "nombre_libro": "Libreria LAPIS",
+  "partes": [
+   {
+    "parte": "Bussolotti",
+    "acabado": "Laccati Metal Viva",
+    "nombre": "Metal Viva",
+    "material": "material.metal_skin",
+    "color": "grigio scuro",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Pali e Struttura Ripiani",
+    "acabado": "Metallo",
+    "nombre": "Metallo",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "structure",
+    "principal": false
+   },
+   {
+    "parte": "Interno Ripiani",
+    "acabado": "Vetro Trasparente Fumè",
+    "nombre": "Vetro Trasparente Fumè",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-017": {
+  "caja": "B_166",
+  "pagina": 15,
+  "nombre_libro": "Pouff WINDSOR",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Boston Taupe",
+    "nombre": "Boston Taupe",
+    "material": "material.fabric",
+    "color": "tortora",
+    "familias": [
+     "color.beige",
+     "color.grey"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-020": {
+  "caja": "B_173",
+  "pagina": 17,
+  "nombre_libro": "Composizione COLONNE DAILY (cucina Iosa Ghini, prototipo)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Lac. Op. Grigio Oxford con inserti in metallo Metal Viva Champagne",
+    "nombre": "Grigio Oxford",
+    "material": "material.lacquer_matt",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Vetro Trasparente Fumè",
+    "nombre": "Vetro Trasparente Fumè",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Elemento a giorno",
+    "acabado": "Nobilitato Eucalipto",
+    "nombre": "Eucalipto",
+    "material": "material.melamine",
+    "color": "marrone",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-021": {
+  "caja": "B_174",
+  "pagina": 17,
+  "nombre_libro": "Composizione COLONNE (cucina Iosa Ghini, prototipo)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Lac. Op. Grigio Oxford con inserti in metallo Metal Viva Champagne",
+    "nombre": "Grigio Oxford",
+    "material": "material.lacquer_matt",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top e schienale (B_172, misma cocina)",
+    "acabado": "Optimum Gold Laurent",
+    "nombre": "Optimum Gold Laurent",
+    "material": "material.marble_effect",
+    "color": "scuro venato",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Blocchi piano cottura e lavello (misma cocina)",
+    "acabado": "Inox satinato",
+    "nombre": "Inox satinato",
+    "material": "material.steel",
+    "color": "acciaio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "top",
+    "principal": false
+   }
+  ],
+  "nota": "Top y bloques de acero son de la misma cocina (B_171/B_172, pág. 16-17)."
+ },
+ "FEB-023": {
+  "caja": "B_182",
+  "pagina": 19,
+  "nombre_libro": "Libreria TRENTA",
+  "partes": [
+   {
+    "parte": "Ante / Spalle / Portale",
+    "acabado": "Laccato Opaco Grigio Caldo",
+    "nombre": "Grigio Caldo",
+    "material": "material.lacquer_matt",
+    "color": "grigio caldo",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Schiena / Pannello Tv",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Pannello Retro",
+    "acabado": "Nobilitato Botticino",
+    "nombre": "Botticino",
+    "material": "material.marble_effect",
+    "color": "beige chiaro",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-024": {
+  "caja": "B_186",
+  "pagina": 20,
+  "nombre_libro": "BOISERIE",
+  "partes": [
+   {
+    "parte": "Pannelli",
+    "acabado": "Laccato Opaco Grigio Caldo",
+    "nombre": "Grigio Caldo",
+    "material": "material.lacquer_matt",
+    "color": "grigio caldo",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Mensole",
+    "acabado": "Metallo Champagne",
+    "nombre": "Champagne",
+    "material": "material.metal",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-096": {
+  "caja": "B_192",
+  "pagina": 22,
+  "nombre_libro": "Armadio PROFILE / LEATHER",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Similpelle Inca 0407 Bronzo",
+    "nombre": "Inca 0407 Bronzo",
+    "material": "material.faux_leather",
+    "color": "bronzo",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Fianchi / Schiene / Cappello Basi",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Incasso Pelle Metal. Silver Shade",
+    "nombre": "Silver Shade",
+    "material": null,
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-097": {
+  "caja": "B_193",
+  "pagina": 23,
+  "nombre_libro": "Cabina Guardaroba",
+  "partes": [
+   {
+    "parte": "Fianco / Cappello Basi / Cassettiera / Schiene",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Frontali Cassetti",
+    "acabado": "Specchio Bronzo",
+    "nombre": "Specchio Bronzo",
+    "material": "material.mirror",
+    "color": "bronzo",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "front",
+    "principal": false
+   },
+   {
+    "parte": "Fianchi e Mensole Telaio",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "frame",
+    "principal": false
+   },
+   {
+    "parte": "Mensole Ripiano",
+    "acabado": "Vetro Trasparente",
+    "nombre": "Vetro Trasparente",
+    "material": "material.glass",
+    "color": "vetro",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-098": {
+  "caja": "B_194",
+  "pagina": 23,
+  "nombre_libro": "Cassettiera SQUARE",
+  "partes": [
+   {
+    "parte": "Struttura",
+    "acabado": "Laccato Opaco Marrone Corteccia",
+    "nombre": "Marrone Corteccia",
+    "material": "material.lacquer_matt",
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Frontali Cassetti",
+    "acabado": "Specchio Bronzo",
+    "nombre": "Specchio Bronzo",
+    "material": "material.mirror",
+    "color": "bronzo",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "front",
+    "principal": false
+   },
+   {
+    "parte": "Top Vano a Giorno",
+    "acabado": "Gres Stone Grey",
+    "nombre": "Gres Stone Grey",
+    "material": "material.ceramic",
+    "color": "grigio scuro venato",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Panca e Schiene Imbottite / Vassoi",
+    "acabado": "Similpelle Inca 0419 Caffè",
+    "nombre": "Inca 0419 Caffè",
+    "material": "material.faux_leather",
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie Lama",
+    "acabado": "Silver Shade",
+    "nombre": "Silver Shade",
+    "material": null,
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-099": {
+  "caja": "B_191",
+  "pagina": 21,
+  "nombre_libro": "Armadio BARRET PORTALE",
+  "partes": [
+   {
+    "parte": "Ante / Fianchi / Pannellatura",
+    "acabado": "Laccato Opaco Marrone Corteccia",
+    "nombre": "Marrone Corteccia",
+    "material": "material.lacquer_matt",
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Maniglie Incasso V55Y",
+    "acabado": "Similpelle Inca 0419 Caffè",
+    "nombre": "Inca 0419 Caffè",
+    "material": null,
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   },
+   {
+    "parte": "Casse Interne / Schiene",
+    "acabado": "Nobilitato Leather Grey",
+    "nombre": "Leather Grey",
+    "material": "material.melamine",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-025": {
+  "caja": "B_201",
+  "pagina": 25,
+  "nombre_libro": "Libreria TRENTA LIBESKIND",
+  "partes": [
+   {
+    "parte": "Spalle / Ante / Ante Libeskind",
+    "acabado": "Laccato Metal Viva Bronzo",
+    "nombre": "Metal Viva Bronzo",
+    "material": "material.metal_skin",
+    "color": "bronzo scuro",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Schiena / Mensole",
+    "acabado": "Laccato Opaco Grigio Seta",
+    "nombre": "Grigio Seta",
+    "material": "material.lacquer_matt",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-027": {
+  "caja": "B_203",
+  "pagina": 25,
+  "nombre_libro": "Divani CAMDEN",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Tessuto Cloud Dark Green",
+    "nombre": "Cloud Dark Green",
+    "material": "material.fabric",
+    "color": "verde scuro",
+    "familias": [
+     "color.green"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": null,
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-028": {
+  "caja": "B_204",
+  "pagina": 26,
+  "nombre_libro": "Poltrone ASTOR",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Jolie Sand",
+    "nombre": "Jolie Sand",
+    "material": "material.fabric",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura (base girevole)",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": "material.metal",
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-029": {
+  "caja": "B_205",
+  "pagina": 26,
+  "nombre_libro": "Tavolini INK",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Cristallo Velvet Nero Opaco",
+    "nombre": "Cristallo Velvet Nero Opaco",
+    "material": "material.glass",
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": "material.metal",
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-030": {
+  "caja": "B_221",
+  "pagina": 27,
+  "nombre_libro": "Composizione ISOLA (cucina Origina Libeskind)",
+  "partes": [
+   {
+    "parte": "Ante Libeskind / Ante",
+    "acabado": "Lac. Metal Viva Bronzo",
+    "nombre": "Metal Viva Bronzo",
+    "material": "material.metal_skin",
+    "color": "bronzo scuro",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top e fianchi",
+    "acabado": "Laminam Travertino Silver Bocciardato",
+    "nombre": "Laminam Travertino Silver Bocciardato",
+    "material": "material.ceramic",
+    "color": "travertino",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Top e fianchi (aspecto)",
+    "acabado": "Laminam Travertino Silver Bocciardato",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-031": {
+  "caja": "B_222",
+  "pagina": 27,
+  "nombre_libro": "Composizione COLONNE (cucina Origina Libeskind)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Imp. Op. Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Vetro Op. Specchio Bronzo",
+    "nombre": "Vetro Op. Specchio Bronzo",
+    "material": "material.mirror",
+    "color": "bronzo",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Top e schienale",
+    "acabado": "Laminam Travertino Silver Bocciardato",
+    "nombre": "Laminam Travertino Silver Bocciardato",
+    "material": "material.ceramic",
+    "color": "travertino",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Imp. Op. Rovere Asiatico",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   },
+   {
+    "parte": "Top e schienale (aspecto)",
+    "acabado": "Laminam Travertino Silver Bocciardato",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-032": {
+  "caja": "B_223",
+  "pagina": 28,
+  "nombre_libro": "Pouff WINDSOR",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Rimini Sahara",
+    "nombre": "Rimini Sahara",
+    "material": "material.fabric",
+    "color": "tortora scuro",
+    "familias": [
+     "color.grey",
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-033": {
+  "caja": "B_241",
+  "pagina": 28,
+  "nombre_libro": "Libreria TRENTA",
+  "partes": [
+   {
+    "parte": "Spalle Ripiani / Schiena",
+    "acabado": "Laccato Opaco Grigio Seta",
+    "nombre": "Grigio Seta",
+    "material": "material.lacquer_matt",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Ante",
+    "acabado": "Nobilitato Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.melamine",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Ante Aurora Vetro",
+    "acabado": "Trasparente Fumè",
+    "nombre": "Trasparente Fumè",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-034": {
+  "caja": "B_242",
+  "pagina": 29,
+  "nombre_libro": "Tavolo PHOENIX",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Rovere Carbone",
+    "nombre": "Rovere Carbone",
+    "material": "material.oak",
+    "color": "rovere carbone",
+    "familias": [
+     "color.anthracite",
+     "color.natural_wood"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Top (madera)",
+    "acabado": "Rovere Carbone",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-035": {
+  "caja": "B_244",
+  "pagina": 29,
+  "nombre_libro": "Madia LIBESKIND",
+  "partes": [
+   {
+    "parte": "Ante / Cassa",
+    "acabado": "Laccato Opaco Grigio Seta",
+    "nombre": "Grigio Seta",
+    "material": "material.lacquer_matt",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Gres Travertino",
+    "nombre": "Gres Travertino",
+    "material": "material.ceramic",
+    "color": "travertino",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Top (aspecto)",
+    "acabado": "Gres Travertino",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-036": {
+  "caja": "B_245",
+  "pagina": 30,
+  "nombre_libro": "Poltrona VIVIENNE",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Pelle Eagle Grey",
+    "nombre": "Eagle Grey",
+    "material": "material.nubuck",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": "material.metal",
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-037": {
+  "caja": "B_261",
+  "pagina": 31,
+  "nombre_libro": "Armadio MOMENTI LAVANDERIA",
+  "partes": [
+   {
+    "parte": "Facciata / Cassa / Schiena",
+    "acabado": "Nobilitato Canapa Opaco",
+    "nombre": "Canapa Opaco",
+    "material": "material.melamine",
+    "color": "beige chiaro",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "front",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-038": {
+  "caja": "B_264",
+  "pagina": 32,
+  "nombre_libro": "Composizione BOISERIE",
+  "partes": [
+   {
+    "parte": "Boiserie e Pannelli",
+    "acabado": "Laccato Opaco Mastice",
+    "nombre": "Mastice",
+    "material": "material.lacquer_matt",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Mensole Metallo",
+    "acabado": "Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-039": {
+  "caja": "B_281",
+  "pagina": 32,
+  "nombre_libro": "Letto COUPLE",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Pelle Inca col.0055 Cemento",
+    "nombre": "Inca 0055 Cemento",
+    "material": "material.faux_leather",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Pannello",
+    "acabado": "Laccato Opaco Grigio Seta",
+    "nombre": "Grigio Seta",
+    "material": "material.lacquer_matt",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "headboard",
+    "principal": false
+   }
+  ],
+  "nota": "El libro dice 'Pelle Inca'; Inca es similpiel en el resto del libro (Similpelle Inca 0101, 0407, 0419). Se trata como similpiel hasta que Febal lo confirme."
+ },
+ "FEB-040": {
+  "caja": "B_284",
+  "pagina": 33,
+  "nombre_libro": "Poltrona ISABELLE",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Cloud Beige",
+    "nombre": "Cloud Beige",
+    "material": "material.fabric",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": null,
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-041": {
+  "caja": "B_285",
+  "pagina": 33,
+  "nombre_libro": "Specchio POLAR",
+  "partes": [
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": null,
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "frame",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-042": {
+  "caja": "B_291",
+  "pagina": 34,
+  "nombre_libro": "BOISERIE (Libreria Lapis)",
+  "partes": [
+   {
+    "parte": "Boiserie",
+    "acabado": "Imp. Rovere Dark Eccimeri",
+    "nombre": "Rovere Dark",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.anthracite",
+     "color.natural_wood"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Boiserie (madera)",
+    "acabado": "Imp. Rovere Dark Eccimeri",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-043": {
+  "caja": "B_293",
+  "pagina": 34,
+  "nombre_libro": "Cabina LAPIS",
+  "partes": [
+   {
+    "parte": "Bussolotti / Ripiani",
+    "acabado": "Laccato Opaco Grigio Seta",
+    "nombre": "Grigio Seta",
+    "material": "material.lacquer_matt",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Pali",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-045": {
+  "caja": "B_295",
+  "pagina": 35,
+  "nombre_libro": "Armadio LEWITT PLUS",
+  "partes": [
+   {
+    "parte": "Ante / Maniglia / Fianchi",
+    "acabado": "Laccato Opaco Grigio Fango",
+    "nombre": "Grigio Fango",
+    "material": "material.lacquer_matt",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Casse Interne / Schiene",
+    "acabado": "Nobilitato Leather Grey",
+    "nombre": "Leather Grey",
+    "material": "material.melamine",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-046": {
+  "caja": "B_301",
+  "pagina": 37,
+  "nombre_libro": "DICIOTTO / PENSILE DECK / PORTA TV (prototipo)",
+  "partes": [
+   {
+    "parte": "Pannellatura / Top / Basi",
+    "acabado": "Imp. Ecc. Rovere Dark",
+    "nombre": "Rovere Dark",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.anthracite",
+     "color.natural_wood"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Pensili Deck Schiene",
+    "acabado": "Nobilitato Marmo Imperiale",
+    "nombre": "Marmo Imperiale",
+    "material": "material.marble_effect",
+    "color": "marrone scuro venato",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Bussolotti Pensili",
+    "acabado": "Laccato Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Pensili Deck Struttura / Telaio",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "frame",
+    "principal": false
+   },
+   {
+    "parte": "Pannellatura / Top / Basi (madera)",
+    "acabado": "Imp. Ecc. Rovere Dark",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "whole",
+    "principal": false
+   }
+  ],
+  "nota": "Prototipo según el libro."
+ },
+ "FEB-047": {
+  "caja": "B_302",
+  "pagina": 38,
+  "nombre_libro": "Libreria TRENTA",
+  "partes": [
+   {
+    "parte": "Spalle / Ante / Fasce e Pannelli",
+    "acabado": "Laccato Opaco Castoro",
+    "nombre": "Castoro",
+    "material": "material.lacquer_matt",
+    "color": "tortora",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Portale / Schiena",
+    "acabado": "Nobilitato Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.melamine",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-048": {
+  "caja": "B_303",
+  "pagina": 38,
+  "nombre_libro": "Divano MELROSE",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Orlando Col. Taupe' C017",
+    "nombre": "Orlando Taupe C017",
+    "material": "material.fabric",
+    "color": "tortora",
+    "familias": [
+     "color.beige",
+     "color.grey"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero Opaco",
+    "nombre": "Nero Opaco",
+    "material": null,
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-049": {
+  "caja": "B_304",
+  "pagina": 39,
+  "nombre_libro": "Poltrona ANDY",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Velvet Brown F609",
+    "nombre": "Velvet Brown F609",
+    "material": "material.velvet",
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero",
+    "nombre": "Nero",
+    "material": null,
+    "color": "nero",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-050": {
+  "caja": "B_308",
+  "pagina": 39,
+  "nombre_libro": "Gruppo NOTTE - settimino MARLENE",
+  "partes": [
+   {
+    "parte": "Struttura / Top",
+    "acabado": "Laccato Opaco Castoro",
+    "nombre": "Castoro",
+    "material": "material.lacquer_matt",
+    "color": "tortora",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Maniglia",
+    "acabado": "Rivestita Similpelle Inca 0419 Caffè",
+    "nombre": "Inca 0419 Caffè",
+    "material": null,
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-051": {
+  "caja": "B_321",
+  "pagina": 40,
+  "nombre_libro": "Composizione a parete (cucina Modula)",
+  "partes": [
+   {
+    "parte": "Ante colonne",
+    "acabado": "Nobilitato Basalto",
+    "nombre": "Basalto",
+    "material": "material.melamine",
+    "color": "tortora",
+    "familias": [
+     "color.beige",
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top e schienale",
+    "acabado": "Lam. Marmo Imperiale",
+    "nombre": "Laminam Marmo Imperiale",
+    "material": "material.ceramic",
+    "color": "marrone scuro venato",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Ante pensili",
+    "acabado": "Pet Acciaio Champagne",
+    "nombre": "Acciaio Champagne",
+    "material": "material.plastic",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Schienale",
+    "acabado": "Lam. Fenix Grigio Aragona",
+    "nombre": "Fenix Grigio Aragona",
+    "material": "material.laminate",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Top e schienale (aspecto)",
+    "acabado": "Lam. Marmo Imperiale",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-052": {
+  "caja": "B_322",
+  "pagina": 41,
+  "nombre_libro": "Tavolo MADEIRA",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Cristallo velvet_Nero opaco",
+    "nombre": "Cristallo Velvet Nero Opaco",
+    "material": "material.glass",
+    "color": "nero opaco",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ],
+  "nota": "El libro dice vidrio (Cristallo Velvet); el 28/09 se había dicho gres. Pendiente de confirmar con Febal."
+ },
+ "FEB-053": {
+  "caja": "B_323",
+  "pagina": 41,
+  "nombre_libro": "Sedia NINA",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Bouquet Antracite",
+    "nombre": "Bouquet Antracite",
+    "material": "material.velvet",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   }
+  ],
+  "nota": "Material (terciopelo) según la captura; el libro da solo el color."
+ },
+ "FEB-054": {
+  "caja": "B_324",
+  "pagina": 41,
+  "nombre_libro": "Madia LEAF",
+  "partes": [
+   {
+    "parte": "Ante / Cassa",
+    "acabado": "Laccato Opaco Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Nobilitato Marmo Imperiale",
+    "nombre": "Marmo Imperiale",
+    "material": "material.marble_effect",
+    "color": "marrone scuro venato",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Piedi",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-100": {
+  "caja": "B_341",
+  "pagina": 42,
+  "nombre_libro": "Armadio HALLEY",
+  "partes": [
+   {
+    "parte": "Ante Superiori",
+    "acabado": "Nobilitato Desert",
+    "nombre": "Desert",
+    "material": "material.melamine",
+    "color": "crema",
+    "familias": [
+     "color.cream"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Ante Inferiori",
+    "acabado": "Nobilitato Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.melamine",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Maniglia e Profili",
+    "acabado": "Laccato Marrone Corteccia",
+    "nombre": "Marrone Corteccia",
+    "material": null,
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-055": {
+  "caja": "B_342",
+  "pagina": 43,
+  "nombre_libro": "Libreria TRENTA",
+  "partes": [
+   {
+    "parte": "Spalle / Fasce / Schiena / Ante",
+    "acabado": "Nobilitato Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.melamine",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Pann. Interno Nicchia",
+    "acabado": "Lacc. Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-101": {
+  "caja": "B_343",
+  "pagina": 44,
+  "nombre_libro": "Letto ARDEN",
+  "partes": [
+   {
+    "parte": "Giroletto / Testata",
+    "acabado": "Impiallacciato Rovere Smoke tipo Eccimeri",
+    "nombre": "Rovere Smoke",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Giroletto / Testata (madera)",
+    "acabado": "Impiallacciato Rovere Smoke tipo Eccimeri",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-056": {
+  "caja": "B_344",
+  "pagina": 44,
+  "nombre_libro": "Gruppo NOTTE - comodini MARLENE",
+  "partes": [
+   {
+    "parte": "Struttura",
+    "acabado": "Laccato Opaco Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Nobilitato Rovere Asiatico",
+    "nombre": "Rovere Asiatico",
+    "material": "material.melamine",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Maniglia",
+    "acabado": "Rivestita Similpelle Inca 0419 Caffè",
+    "nombre": "Inca 0419 Caffè",
+    "material": null,
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-058": {
+  "caja": "B_361",
+  "pagina": 45,
+  "nombre_libro": "Armadio MOMENTI",
+  "partes": [
+   {
+    "parte": "Colore facciata",
+    "acabado": "Nobilitato Porfido",
+    "nombre": "Porfido",
+    "material": "material.melamine",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Cassa / Schiena / Finiture",
+    "acabado": "Nobilitato Canapa Opaco",
+    "nombre": "Canapa Opaco",
+    "material": "material.melamine",
+    "color": "beige chiaro",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Elemento a giorno / Scrivania / Comodino",
+    "acabado": "Nobilitato Bronzo Ossidato",
+    "nombre": "Bronzo Ossidato",
+    "material": "material.melamine",
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Maniglia PIN / Piede",
+    "acabado": "Champagne Spazzolato",
+    "nombre": "Champagne Spazzolato",
+    "material": null,
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-059": {
+  "caja": "B_362",
+  "pagina": 46,
+  "nombre_libro": "Letto MOMENTI",
+  "partes": [
+   {
+    "parte": "Tessuto",
+    "acabado": "Ecochic Colore Dorian",
+    "nombre": "Ecochic Dorian",
+    "material": "material.fabric",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-060": {
+  "caja": "B_363",
+  "pagina": 46,
+  "nombre_libro": "Libreria INFINITY",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Nobilitato Porfido",
+    "nombre": "Porfido",
+    "material": "material.melamine",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "doors",
+    "principal": true
+   },
+   {
+    "parte": "Struttura / Schiena",
+    "acabado": "Nobilitato Bronzo Ossidato",
+    "nombre": "Bronzo Ossidato",
+    "material": "material.melamine",
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-061": {
+  "caja": "B_364",
+  "pagina": 46,
+  "nombre_libro": "Pouf WINDSOR",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Campsbay Natural",
+    "nombre": "Campsbay Natural",
+    "material": "material.fabric",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-063": {
+  "caja": "B_401",
+  "pagina": 49,
+  "nombre_libro": "LIBRERIA TRENTA / BOISERIE",
+  "partes": [
+   {
+    "parte": "Spalle Ripiani Schiene",
+    "acabado": "Laccato Opaco Bianco Kent",
+    "nombre": "Bianco Kent",
+    "material": "material.lacquer_matt",
+    "color": "bianco",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Mensole / Telaio Ripiani Plus",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Ripiani Plus",
+    "acabado": "Vetro Trasparente",
+    "nombre": "Vetro Trasparente",
+    "material": "material.glass",
+    "color": "vetro",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Cassetti",
+    "acabado": "Laccato Opaco Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-064": {
+  "caja": "B_401",
+  "pagina": 49,
+  "nombre_libro": "LIBRERIA TRENTA / BOISERIE",
+  "partes": [
+   {
+    "parte": "Spalle Ripiani Schiene",
+    "acabado": "Laccato Opaco Bianco Kent",
+    "nombre": "Bianco Kent",
+    "material": "material.lacquer_matt",
+    "color": "bianco",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Mensole / Telaio Ripiani Plus",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Ripiani Plus",
+    "acabado": "Vetro Trasparente",
+    "nombre": "Vetro Trasparente",
+    "material": "material.glass",
+    "color": "vetro",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Cassetti",
+    "acabado": "Laccato Opaco Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "whole",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-065": {
+  "caja": "B_402",
+  "pagina": 49,
+  "nombre_libro": "Madia ZAHA HADID",
+  "partes": [
+   {
+    "parte": "Anta",
+    "acabado": "Vetro Metal Viva Champagne",
+    "nombre": "Vetro Metal Viva Champagne",
+    "material": "material.glass",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Laccato Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "structure",
+    "principal": false
+   },
+   {
+    "parte": "Piedi",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-066": {
+  "caja": "B_403",
+  "pagina": 50,
+  "nombre_libro": "Divano NAVIGLI",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Roma Vanilla Ice",
+    "nombre": "Roma Vanilla Ice",
+    "material": "material.boucle",
+    "color": "bianco panna",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Nero",
+    "nombre": "Nero",
+    "material": null,
+    "color": "nero",
+    "familias": [
+     "color.black"
+    ],
+    "rol": "structure",
+    "principal": false
+   }
+  ],
+  "nota": "Material (bouclé) según la captura; el libro da el tejido Roma Vanilla Ice."
+ },
+ "FEB-067": {
+  "caja": "B_421",
+  "pagina": 51,
+  "nombre_libro": "Libreria LAPIS ELDOM",
+  "partes": [
+   {
+    "parte": "Struttura",
+    "acabado": "Carbon grey",
+    "nombre": "Carbon Grey",
+    "material": "material.metal",
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "structure",
+    "principal": true
+   },
+   {
+    "parte": "Mensole",
+    "acabado": "Lac. Op. Castoro",
+    "nombre": "Castoro",
+    "material": "material.lacquer_matt",
+    "color": "tortora",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Mensole",
+    "acabado": "Vetro",
+    "nombre": "Vetro",
+    "material": "material.glass",
+    "color": "vetro",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-068": {
+  "caja": "B_422",
+  "pagina": 51,
+  "nombre_libro": "Composizione COLONNE (cucina Origina Sagoma 37)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Nobilitato Eucalipto",
+    "nombre": "Eucalipto",
+    "material": "material.melamine",
+    "color": "marrone scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   }
+  ]
+ },
+ "FEB-069": {
+  "caja": "B_423",
+  "pagina": 51,
+  "nombre_libro": "Composizione PENISOLA (cucina Origina Sagoma 37)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Lac. Luc. Marrone Corteccia",
+    "nombre": "Marrone Corteccia",
+    "material": "material.lacquer_gloss",
+    "color": "marrone scuro lucido",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top e fianchi",
+    "acabado": "Abitum Marmo Brown Rigato",
+    "nombre": "Abitum Marmo Brown Rigato",
+    "material": "material.marble_effect",
+    "color": "marrone venato",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Elementi a giorno",
+    "acabado": "Lac. Op. Castoro",
+    "nombre": "Castoro",
+    "material": "material.lacquer_matt",
+    "color": "tortora",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "shelves",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-072": {
+  "caja": "B_442",
+  "pagina": 52,
+  "nombre_libro": "Tavolo LEEDS (Bontempi)",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Impiallacciato Rovere Spessart",
+    "nombre": "Rovere Spessart",
+    "material": "material.oak",
+    "color": "rovere scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Top (madera)",
+    "acabado": "Impiallacciato Rovere Spessart",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-073": {
+  "caja": "B_443",
+  "pagina": 52,
+  "nombre_libro": "Sedia NIVES BRACCIOLI (Bontempi)",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Pelle Premium Fango",
+    "nombre": "Premium Fango",
+    "material": "material.leather",
+    "color": "tortora scuro",
+    "familias": [
+     "color.grey",
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Ottone Scuro",
+    "nombre": "Ottone Scuro",
+    "material": "material.brass",
+    "color": "ottone scuro",
+    "familias": [
+     "color.gold",
+     "color.bronze"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-074": {
+  "caja": "B_461",
+  "pagina": 53,
+  "nombre_libro": "Armadio Scorrevole RODIN",
+  "partes": [
+   {
+    "parte": "Ante / Fianchi",
+    "acabado": "Laccato Opaco Bianco Kent",
+    "nombre": "Bianco Kent",
+    "material": "material.lacquer_matt",
+    "color": "bianco",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Laccato Opaco Bianco Kent",
+    "nombre": "Bianco Kent",
+    "material": null,
+    "color": "bianco",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "handle",
+    "principal": false
+   },
+   {
+    "parte": "Casse Interne / Schiene",
+    "acabado": "Nobilitato Trama Natural",
+    "nombre": "Trama Natural",
+    "material": "material.melamine",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-075": {
+  "caja": "B_465",
+  "pagina": 55,
+  "nombre_libro": "Cabina HYPE",
+  "partes": [
+   {
+    "parte": "Pannelli",
+    "acabado": "Laccato Opaco Bianco Kent",
+    "nombre": "Bianco Kent",
+    "material": "material.lacquer_matt",
+    "color": "bianco",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "whole",
+    "principal": true
+   },
+   {
+    "parte": "Mensole / Cassettiere",
+    "acabado": "Laccato Opaco Grigio Fango",
+    "nombre": "Grigio Fango",
+    "material": "material.lacquer_matt",
+    "color": "grigio scuro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Struttura Metallo / Maniglie",
+    "acabado": "Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "structure",
+    "principal": false
+   },
+   {
+    "parte": "Cassettiere / Pannello a DX",
+    "acabado": "Specchio Bronzo",
+    "nombre": "Specchio Bronzo",
+    "material": "material.mirror",
+    "color": "bronzo",
+    "familias": [
+     "color.bronze"
+    ],
+    "rol": "front",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-076": {
+  "caja": "B_501",
+  "pagina": 56,
+  "nombre_libro": "Composizione ISOLA (Origina Onda, Zaha Hadid)",
+  "partes": [
+   {
+    "parte": "Anta",
+    "acabado": "Onda Zaha Hadid Metal Champagne",
+    "nombre": "Onda Metal Champagne",
+    "material": "material.glass",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Anta",
+    "acabado": "Lac. Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Top e fianchi",
+    "acabado": "Acciaio Inox Soft Touch",
+    "nombre": "Acciaio Inox Soft Touch",
+    "material": "material.steel",
+    "color": "acciaio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Zoccolo",
+    "acabado": "Laminam Bianco Statuario Venato Soft Touch",
+    "nombre": "Laminam Bianco Statuario",
+    "material": "material.ceramic",
+    "color": "bianco venato",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "base",
+    "principal": false
+   },
+   {
+    "parte": "Zoccolo (aspecto)",
+    "acabado": "Laminam Bianco Statuario Venato Soft Touch",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "base",
+    "principal": false
+   }
+  ],
+  "nota": "Material de la puerta Onda (vidrio) según la ficha oficial; el libro da el acabado Metal Champagne."
+ },
+ "FEB-077": {
+  "caja": "B_502",
+  "pagina": 56,
+  "nombre_libro": "Composizione COLONNE E RIENTRANTI (Origina Square)",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Imp. Op. Rovere Europeo vena cont.",
+    "nombre": "Rovere Europeo",
+    "material": "material.oak",
+    "color": "rovere naturale",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Schienali e top",
+    "acabado": "Laminam Bianco Statuario Venato Soft Touch",
+    "nombre": "Laminam Bianco Statuario",
+    "material": "material.ceramic",
+    "color": "bianco venato",
+    "familias": [
+     "color.white",
+     "color.cream"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Mensole",
+    "acabado": "Lac. Metal Viva Champagne",
+    "nombre": "Metal Viva Champagne",
+    "material": "material.metal_skin",
+    "color": "champagne",
+    "familias": [
+     "color.gold"
+    ],
+    "rol": "shelves",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Imp. Op. Rovere Europeo vena cont.",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   },
+   {
+    "parte": "Schienali e top (aspecto)",
+    "acabado": "Laminam Bianco Statuario Venato Soft Touch",
+    "nombre": "",
+    "material": "material.marble_effect",
+    "color": "",
+    "familias": [],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-079": {
+  "caja": "B_601",
+  "pagina": 58,
+  "nombre_libro": "Armadio PROFILE / LEATHER",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Similpelle Inca 0101 Panna",
+    "nombre": "Inca 0101 Panna",
+    "material": "material.faux_leather",
+    "color": "panna",
+    "familias": [
+     "color.cream"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Fianchi / Schiene / Cappello Basi",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Incasso Pelle Metal. Silver Shade",
+    "nombre": "Silver Shade",
+    "material": null,
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-081": {
+  "caja": "B_603",
+  "pagina": 59,
+  "nombre_libro": "Armadio PROFILE / SOLID",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Laccato Opaco Grigio Caldo",
+    "nombre": "Grigio Caldo",
+    "material": "material.lacquer_matt",
+    "color": "grigio caldo",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Schiene",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "interior",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": null,
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "handle",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-083": {
+  "caja": "B_605",
+  "pagina": 61,
+  "nombre_libro": "Armadio PROFILE / REFLEX",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Specchio Fumè",
+    "nombre": "Specchio Fumé",
+    "material": "material.mirror",
+    "color": "fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Maniglie e Profili",
+    "acabado": "Metallo Carbon Grey",
+    "nombre": "Carbon Grey",
+    "material": null,
+    "color": "antracite",
+    "familias": [
+     "color.anthracite"
+    ],
+    "rol": "handle",
+    "principal": false
+   },
+   {
+    "parte": "Fianchi / Schiene",
+    "acabado": "Nobilitato Trama Natural",
+    "nombre": "Trama Natural",
+    "material": "material.melamine",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-084": {
+  "caja": "B_607",
+  "pagina": 62,
+  "nombre_libro": "Armadio AURORA TELAIO",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Vetro Stopsol",
+    "nombre": "Stopsol",
+    "material": "material.glass",
+    "color": "vetro fumé",
+    "familias": [
+     "color.transparent",
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Fianchi / Cappello Basi",
+    "acabado": "Nobilitato Noce",
+    "nombre": "Nobilitato Noce",
+    "material": "material.melamine",
+    "color": "noce",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Maniglie / Fianco telaio",
+    "acabado": "Metallo Silver Shade",
+    "nombre": "Silver Shade",
+    "material": "material.metal",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "frame",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-085": {
+  "caja": "B_621",
+  "pagina": 63,
+  "nombre_libro": "Composizione ISOLA e COLONNE RIENTRANTI (Origina telaio alluminio)",
+  "partes": [
+   {
+    "parte": "Ante isola",
+    "acabado": "Vetro Flutes Tortora",
+    "nombre": "Vetro Flutes Tortora",
+    "material": "material.glass",
+    "color": "tortora",
+    "familias": [
+     "color.beige",
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Top",
+    "acabado": "Neolith Pietra di Luna Silk",
+    "nombre": "Neolith Pietra di Luna",
+    "material": "material.ceramic",
+    "color": "grigio chiaro",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "top",
+    "principal": false
+   },
+   {
+    "parte": "Ante colonne",
+    "acabado": "Nobilitato Rovere Africano",
+    "nombre": "Rovere Africano",
+    "material": "material.melamine",
+    "color": "rovere",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "doors",
+    "principal": false
+   },
+   {
+    "parte": "Fianchi isola",
+    "acabado": "Lac. Op. Grigio Etna",
+    "nombre": "Grigio Etna",
+    "material": "material.lacquer_matt",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Piano snack / Ante pensili",
+    "acabado": "Fenix Beige Arizona",
+    "nombre": "Fenix Beige Arizona",
+    "material": "material.laminate",
+    "color": "beige",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "top",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-086": {
+  "caja": "B_622",
+  "pagina": 64,
+  "nombre_libro": "Armadio BARRET",
+  "partes": [
+   {
+    "parte": "Ante",
+    "acabado": "Impiallacciato Rovere Sand Eccimeri",
+    "nombre": "Rovere Sand",
+    "material": "material.oak",
+    "color": "rovere",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Maniglie V52P",
+    "acabado": "Similp. Inca 0419 Caffè",
+    "nombre": "Inca 0419 Caffè",
+    "material": null,
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   },
+   {
+    "parte": "Schiene / Fianchi / Cappello Basi",
+    "acabado": "Nobilitato Leather Grey",
+    "nombre": "Leather Grey",
+    "material": "material.melamine",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Ante (madera)",
+    "acabado": "Impiallacciato Rovere Sand Eccimeri",
+    "nombre": "",
+    "material": "material.wood_veneer",
+    "color": "",
+    "familias": [],
+    "rol": "front",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-087": {
+  "caja": "B_623",
+  "pagina": 64,
+  "nombre_libro": "Sgabelli LOLA",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Bouquet Noce Moscata",
+    "nombre": "Bouquet Noce Moscata",
+    "material": "material.fabric",
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Sabbia",
+    "nombre": "Sabbia",
+    "material": "material.metal",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-088": {
+  "caja": "B_641",
+  "pagina": 65,
+  "nombre_libro": "Armadio LUMIA",
+  "partes": [
+   {
+    "parte": "Ante / Maniglie",
+    "acabado": "Laccato Opaco Grigio Caldo",
+    "nombre": "Grigio Caldo",
+    "material": "material.lacquer_matt",
+    "color": "grigio caldo",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Fianchi / Cappello Basi",
+    "acabado": "Nobilitato Eucalipto",
+    "nombre": "Eucalipto",
+    "material": "material.melamine",
+    "color": "marrone scuro",
+    "familias": [
+     "color.natural_wood",
+     "color.brown"
+    ],
+    "rol": "whole",
+    "principal": false
+   },
+   {
+    "parte": "Schiene",
+    "acabado": "Nobilitato Leather Grey",
+    "nombre": "Leather Grey",
+    "material": "material.melamine",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-090": {
+  "caja": "B_643",
+  "pagina": 67,
+  "nombre_libro": "Armadio LEWITT PLUS",
+  "partes": [
+   {
+    "parte": "Ante / Fianchi laterali",
+    "acabado": "Laccato Opaco Grigio Caldo",
+    "nombre": "Grigio Caldo",
+    "material": "material.lacquer_matt",
+    "color": "grigio caldo",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "front",
+    "principal": true
+   },
+   {
+    "parte": "Maniglie",
+    "acabado": "Laccato Opaco Marrone Corteccia",
+    "nombre": "Marrone Corteccia",
+    "material": null,
+    "color": "marrone scuro",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "handle",
+    "principal": false
+   },
+   {
+    "parte": "Fianchi / Schiene",
+    "acabado": "Nobilitato Leather Grey",
+    "nombre": "Leather Grey",
+    "material": "material.melamine",
+    "color": "grigio",
+    "familias": [
+     "color.grey"
+    ],
+    "rol": "interior",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-091": {
+  "caja": "B_644",
+  "pagina": 68,
+  "nombre_libro": "Tavolo MADEIRA",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Cristallo Velvet Tortora Opaco",
+    "nombre": "Cristallo Velvet Tortora Opaco",
+    "material": "material.glass",
+    "color": "tortora opaco",
+    "familias": [
+     "color.beige",
+     "color.grey"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Sabbia",
+    "nombre": "Sabbia",
+    "material": "material.metal",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ],
+  "nota": "El libro dice vidrio (Cristallo Velvet); el 28/09 se había dicho gres. Pendiente de confirmar con Febal."
+ },
+ "FEB-092": {
+  "caja": "B_645",
+  "pagina": 68,
+  "nombre_libro": "Sedia DEA",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Bouquet Argan",
+    "nombre": "Bouquet Argan",
+    "material": "material.fabric",
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Sabbia",
+    "nombre": "Sabbia",
+    "material": "material.metal",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-094": {
+  "caja": "B_665",
+  "pagina": 70,
+  "nombre_libro": "Sedia DEA",
+  "partes": [
+   {
+    "parte": "Rivestimento",
+    "acabado": "Bouquet Argan",
+    "nombre": "Bouquet Argan",
+    "material": "material.fabric",
+    "color": "marrone",
+    "familias": [
+     "color.brown"
+    ],
+    "rol": "upholstery",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Sabbia",
+    "nombre": "Sabbia",
+    "material": "material.metal",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "legs",
+    "principal": false
+   }
+  ]
+ },
+ "FEB-093": {
+  "caja": "B_664",
+  "pagina": 70,
+  "nombre_libro": "Tavolo DANIEL",
+  "partes": [
+   {
+    "parte": "Top",
+    "acabado": "Supermarmo Lucido Etoile Gold",
+    "nombre": "Supermarmo Lucido Etoile Gold",
+    "material": "material.marble_effect",
+    "color": "bianco venato oro",
+    "familias": [
+     "color.white",
+     "color.gold"
+    ],
+    "rol": "top",
+    "principal": true
+   },
+   {
+    "parte": "Struttura",
+    "acabado": "Sabbia",
+    "nombre": "Sabbia",
+    "material": "material.metal",
+    "color": "sabbia",
+    "familias": [
+     "color.beige"
+    ],
+    "rol": "base",
+    "principal": false
+   }
+  ]
+ }
+}

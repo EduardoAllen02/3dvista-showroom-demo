@@ -107,6 +107,8 @@ export interface NativePreviewSignal {
    * mechanism below (there's no per-hotspot id to recover there) or when
    * nothing is open. */
   prefix: string | null;
+  /** The product page the preview shows (the iframe's src), null when nothing is open. */
+  url: string | null;
 }
 
 /**
@@ -130,9 +132,44 @@ export interface NativePreviewSignal {
  * is kept below only as a secondary signal, to resolve WHICH product this
  * is — the iframe itself carries no per-hotspot id.
  */
-function isPreviewIframeOpen(): boolean {
+function openPreviewIframe(): HTMLIFrameElement | null {
   const iframe = document.querySelector("iframe");
-  return !!iframe && iframe.offsetWidth > 0 && /febalcasa\.com/i.test(iframe.src);
+  return iframe && iframe.offsetWidth > 0 && /febalcasa\.com/i.test(iframe.src) ? iframe : null;
+}
+
+/**
+ * Where an overlay's marker sits: its `items[0]` yaw/pitch. The export omits
+ * an angle that equals 0 (the default), confirmed live — hotspots at eye
+ * level have no `pitch` at all, and ones straight ahead no `yaw` — so a
+ * missing angle reads as 0 rather than disqualifying the hotspot.
+ */
+function overlayPosition(overlay: TdvObject): HotspotAnchor | null {
+  const items = overlay.get("items") as TdvObject[] | undefined;
+  const image = items?.[0];
+  if (!image) return null;
+  const yaw = image.get("yaw");
+  const pitch = image.get("pitch");
+  if (typeof yaw !== "number" && typeof pitch !== "number") return null;
+  return { yaw: typeof yaw === "number" ? yaw : 0, pitch: typeof pitch === "number" ? pitch : 0 };
+}
+
+function labelPrefix(overlay: TdvObject, suffix: string): string | null {
+  const data = overlay.get("data") as { label?: string } | undefined;
+  const label = data?.label;
+  return typeof label === "string" && label.endsWith(suffix) ? normalizePrefix(label.slice(0, -suffix.length)) : null;
+}
+
+/** The "<prefix> dugme" overlay enabled right now in the current panorama, if any. */
+function findEnabledDugme(): { prefix: string; overlay: TdvObject } | null {
+  const mediaName = getCurrentMediaName();
+  if (!mediaName) return null;
+  const overlays = findOverlaysForMediaName(mediaName);
+  if (!overlays) return null;
+  for (const o of overlays) {
+    const prefix = labelPrefix(o, " dugme");
+    if (prefix !== null && o.get("enabled") === true) return { prefix, overlay: o };
+  }
+  return null;
 }
 
 /**
@@ -146,19 +183,7 @@ function isPreviewIframeOpen(): boolean {
  * floating hover heart (NOT gated — reacts to hover alone).
  */
 export function findEnabledDugmePrefix(): string | null {
-  const mediaName = getCurrentMediaName();
-  if (!mediaName) return null;
-  const overlays = findOverlaysForMediaName(mediaName);
-  if (!overlays) return null;
-  const DUGME_SUFFIX = " dugme";
-  for (const o of overlays) {
-    const data = o.get("data") as { label?: string } | undefined;
-    const label = data?.label;
-    if (typeof label === "string" && label.endsWith(DUGME_SUFFIX) && o.get("enabled") === true) {
-      return normalizePrefix(label.slice(0, -DUGME_SUFFIX.length));
-    }
-  }
-  return null;
+  return findEnabledDugme()?.prefix ?? null;
 }
 
 /**
@@ -169,11 +194,14 @@ export function findEnabledDugmePrefix(): string | null {
  * hotspot-heart-overlay.ts for why).
  */
 export function findOpenNativePreview(): NativePreviewSignal {
-  if (!isPreviewIframeOpen()) return { open: false, prefix: null };
+  const iframe = openPreviewIframe();
+  if (!iframe) return { open: false, prefix: null, url: null };
   // Preview is confirmed open — best-effort resolve WHICH product via
   // whichever dugme overlay is enabled right now (the same click that
-  // opened the iframe also leaves that hotspot's own dugme enabled).
-  return { open: true, prefix: findEnabledDugmePrefix() };
+  // opened the iframe usually leaves that hotspot's own dugme enabled, but
+  // the popup covering the marker can fire its roll-out first — hence the
+  // page URL too).
+  return { open: true, prefix: findEnabledDugmePrefix(), url: iframe.src };
 }
 
 export interface HotspotAnchor {
@@ -199,28 +227,24 @@ export interface HotspotAnchor {
  * in, and needs no mouse-position involvement at all — used to give the
  * floating hover heart (hotspot-heart-overlay.ts) a fixed screen offset
  * from the marker itself instead of trailing the cursor.
+ *
+ * One panorama can hold several markers with the same label (e.g. two
+ * "123 hotspot" on either wall of the Origina kitchen), so the hovered
+ * instance wins: its own "<prefix> dugme" is the one enabled, and it sits at
+ * the marker's position (confirmed live). Otherwise the first marker.
  */
 export function findHotspotAnchor(prefix: string): HotspotAnchor | null {
+  const enabled = findEnabledDugme();
+  if (enabled && enabled.prefix === prefix) {
+    const position = overlayPosition(enabled.overlay);
+    if (position) return position;
+  }
   const mediaName = getCurrentMediaName();
   if (!mediaName) return null;
   const overlays = findOverlaysForMediaName(mediaName);
   if (!overlays) return null;
-  const HOTSPOT_SUFFIX = " hotspot";
   for (const o of overlays) {
-    const data = o.get("data") as { label?: string } | undefined;
-    const label = data?.label;
-    if (
-      typeof label === "string" &&
-      label.endsWith(HOTSPOT_SUFFIX) &&
-      normalizePrefix(label.slice(0, -HOTSPOT_SUFFIX.length)) === prefix
-    ) {
-      const items = o.get("items") as TdvObject[] | undefined;
-      const image = items?.[0];
-      const yaw = image?.get("yaw");
-      const pitch = image?.get("pitch");
-      if (typeof yaw === "number" && typeof pitch === "number") return { yaw, pitch };
-      return null;
-    }
+    if (labelPrefix(o, " hotspot") === prefix) return overlayPosition(o);
   }
   return null;
 }

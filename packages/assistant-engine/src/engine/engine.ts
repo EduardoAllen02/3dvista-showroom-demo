@@ -255,25 +255,33 @@ export class QueryEngine {
       groups.push({ id: `g${++gi}`, role: "line_on_order", relaxation: [], cards: L.slice(0, cap), total: L.length });
       for (const c of L.slice(0, 3)) obligations.push(`lin:${c.exhibit_id}`);
     }
+    const physicalOnly = !T1.length && (T2.length > 0 || L.length > 0) && this.policy.show_physical_when_only_on_order;
+    const needRelax = (!T1.length && !T2.length) || physicalOnly;
+    const available: Bundle["available_values"] = [];
+
     const unknownFacets = new Set(U.flatMap((c) => Object.entries(c.match).filter(([, m]) => m === "unknown").map(([id]) => cs.find((x) => x.id === id)?.facet)));
     const concreteUnknown = [...unknownFacets].every((f) => f === "color" || f === "material" || f === "shape");
-    if (U.length && concreteUnknown && U.length <= 4 && (T1.length + T2.length + L.length === 0 || (T1.length + T2.length + L.length <= 1 && U.length <= 3))) {
+    let showUnknown = U.length > 0 && concreteUnknown && U.length <= 4 && (T1.length + T2.length + L.length === 0 || (T1.length + T2.length + L.length <= 1 && U.length <= 3));
+    // Only the material is unconfirmed and the closest alternative already includes some of those pieces
+    // (Daniel's unconfirmed top for "marble", with supermarmo on order): offer them as that, not as "unknown".
+    const baseShown = new Set([...T1, ...T2, ...L].map((c) => c.exhibit_id));
+    let candidates = needRelax ? this.relaxCandidates(cs, physicalOnly, baseShown) : [];
+    if (showUnknown && needRelax && [...unknownFacets].every((f) => f === "material")
+      && (candidates[0]?.cards ?? []).some((c) => U.some((u) => u.exhibit_id === c.exhibit_id))) {
+      showUnknown = false;
+    }
+    if (showUnknown) {
       groups.push({ id: `g${++gi}`, role: "unknown", relaxation: [], cards: U.slice(0, cap), total: U.length });
       for (const c of U.slice(0, cap)) obligations.push(`unk:${c.exhibit_id}`);
     }
     const outcome: Outcome = T1.length ? "exact" : T2.length ? "on_order_only" : L.length ? "line_only" : groups.some((g) => g.role === "unknown") ? "unknown_only" : "no_exact";
     if (outcome !== "exact") obligations.push(`abs:${qid}`);
 
-    const physicalOnly = !T1.length && (T2.length > 0 || L.length > 0) && this.policy.show_physical_when_only_on_order;
-    const needRelax = (!T1.length && !T2.length) || physicalOnly;
-    const available: Bundle["available_values"] = [];
-
     if (needRelax) {
       // Unconfirmed pieces are excluded only when their group was shown: a table whose own top is
       // unconfirmed can still be the alternative the visitor needs (supermarmo on order for "marble").
-      const unknownShown = groups.some((g) => g.role === "unknown");
-      const shown = new Set([...T1, ...T2, ...L, ...(unknownShown ? U : [])].map((c) => c.exhibit_id));
-      const candidates = this.relaxCandidates(cs, physicalOnly, shown);
+      const shown = new Set([...baseShown, ...(showUnknown ? U.map((c) => c.exhibit_id) : [])]);
+      if (showUnknown) candidates = this.relaxCandidates(cs, physicalOnly, shown);
       const newCs = cs.filter((c) => c.role === "new" && c.facet !== "category" && c.strength === "must");
       const keepsNew = (k: RelaxCandidate) => newCs.every((c) => !k.ops.some((o) => o.constraint === c.id));
       // Only on-order matches: the on-order cards already keep the frame; what is missing is
@@ -394,27 +402,34 @@ export class QueryEngine {
       if (!sameCat && !nearCat) continue;
       let score = sameCat ? 10 : 0;
       const shared: Record<string, MatchMark> = {};
+      // The concepts behind the marks, so the answer can say "también de ángulo, en gris".
+      const common: ConceptId[] = sameCat ? [src.category] : [];
       if (e.model_id === src.model_id) { score += 5; shared["model"] = "yes"; }
       const eDom = this.dominant(e);
-      const colorShared = srcDom.some((d) => d.color_family.some((f) => eDom.some((x) => x.color_family.some((g) => topFamily(this.lx, g) === topFamily(this.lx, f)))));
-      if (colorShared) { score += 2; shared["color"] = "yes"; }
-      const matShared = srcDom.some((d) => d.material && eDom.some((x) => x.material && (this.lx.isA(x.material, d.material!) || this.lx.isA(d.material!, x.material))));
-      if (matShared) { score += 2; shared["material"] = "yes"; }
+      const colorShared = srcDom.flatMap((d) => d.color_family.map((f) => topFamily(this.lx, f)))
+        .find((f) => eDom.some((x) => x.color_family.some((g) => topFamily(this.lx, g) === f)));
+      if (colorShared) { score += 2; shared["color"] = "yes"; common.push(colorShared); }
+      const matShared = srcDom.flatMap((d) => (d.material ? [d.material] : []))
+        .find((m) => eDom.some((x) => x.material && (this.lx.isA(x.material, m) || this.lx.isA(m, x.material))));
+      if (matShared) { score += 2; shared["material"] = "yes"; common.push(matShared); }
       const eShapes = e.shape_as_shown.status === "known" ? e.shape_as_shown.value : [];
-      if (src.shape_as_shown.status === "known" && src.shape_as_shown.value.some((s) => eShapes.includes(s))) { score += 2; shared["shape"] = "yes"; }
+      const shapeShared = src.shape_as_shown.status === "known" ? src.shape_as_shown.value.find((s) => eShapes.includes(s)) : undefined;
+      if (shapeShared) { score += 2; shared["shape"] = "yes"; common.splice(sameCat ? 1 : 0, 0, shapeShared); }
       const eModel = this.models.get(e.model_id);
       if (srcModel?.styles.status === "known" && eModel?.styles.status === "known" && srcModel.styles.value.some((s) => eModel.styles.status === "known" && eModel.styles.value.includes(s))) { score += 1; shared["style"] = "yes"; }
-      scored.push({ card: this.card(e, "exhibited", shared), score });
+      scored.push({ card: { ...this.card(e, "exhibited", shared), shared: common }, score });
     }
     scored.sort((a, b) => b.score - a.score || a.card.exhibit_id.localeCompare(b.card.exhibit_id));
     const cards = dedupeByModel(scored.map((s) => s.card)).slice(0, this.policy.max_cards);
     return {
       query_id: qid, mode: "alternatives", source: exhibitId, constraints: [], outcome: cards.length ? "alternatives" : "not_found",
-      groups: cards.length ? [{ id: "g1", role: "alternatives", relaxation: [], cards, total: scored.length }] : [], obligations: [], available_values: [],
+      groups: cards.length ? [{ id: "g1", role: "alternatives", relaxation: [], cards, total: scored.length }] : [],
+      obligations: cards.length ? ["sim:g1"] : [], available_values: [],
     };
   }
 
-  recommend(seedIds: string[], seen: string[] = []): Bundle {
+  /** anchor: the piece the visitor asked about; it is the bundle's `source`, nameable though not a card. */
+  recommend(seedIds: string[], seen: string[] = [], anchor?: string): Bundle {
     const qid = `q${++this.queryCounter}`;
     const seeds = seedIds.map((id) => this.exhibits.get(id)).filter((e): e is Exhibit => !!e);
     if (!seeds.length) return notFound(qid, "recommend");
@@ -437,6 +452,7 @@ export class QueryEngine {
     const cards = dedupeByModel(scored.map((s) => s.card)).slice(0, 6);
     return {
       query_id: qid, mode: "recommend", constraints: [], outcome: cards.length ? "recommend" : "not_found",
+      ...(anchor && this.exhibits.has(anchor) ? { source: anchor } : {}),
       groups: cards.length ? [{ id: "g1", role: "recommend", relaxation: [], cards, total: scored.length }] : [], obligations: [], available_values: [],
     };
   }
@@ -485,11 +501,17 @@ export class QueryEngine {
     };
   }
 
-  detail(exhibitId: string, fields: string[]): Bundle {
+  /**
+   * asked: a material or colour the visitor named about this piece ("¿es de mármol?"). Each becomes a
+   * constraint of the bundle (so the answer may say it, even to deny it) and an `ans:<id>:<yes|no|unknown>`
+   * obligation, decided like a search decides it: by the piece's own configuration in the showroom.
+   */
+  detail(exhibitId: string, fields: string[], asked: { facet: "material" | "color"; value: ConceptId }[] = []): Bundle {
     const qid = `q${++this.queryCounter}`;
     const e = this.exhibits.get(exhibitId);
     const m = e ? this.models.get(e.model_id) : undefined;
     if (!e || !m) return notFound(qid, "detail");
+    const constraints: ActiveConstraint[] = asked.map((a, i) => ({ id: `a${i + 1}`, facet: a.facet, op: "is", value: a.value, role: "new", emphasis: "normal", strength: "must" }));
     const details: NonNullable<Bundle["details"]> = [];
     for (const f of fields) {
       if (f === "dimensions") details.push(m.dimensions.status === "known"
@@ -514,9 +536,10 @@ export class QueryEngine {
       else details.push({ exhibit_id: e.id, field: f, status: "unknown", facts: [] });
     }
     return {
-      query_id: qid, mode: "detail", constraints: [], outcome: "detail",
+      query_id: qid, mode: "detail", constraints, outcome: "detail",
       groups: [{ id: "g1", role: "detail", relaxation: [], cards: [{ ...this.card(e, "exhibited", {}), shown_as: this.shownAs(e) }], total: 1 }],
       obligations: [
+        ...constraints.map((c) => `ans:${c.id}:${this.satExhibit(e, c)}`),
         ...details.filter((d) => d.status === "unknown" && d.field !== "price").map((d) => `unk:${e.id}:${d.field}`),
         ...details.filter((d) => d.status === "known").map((d) => `fact:${d.field}`),
         ...(details.some((d) => d.field === "price") ? [`price:${e.id}`] : []),

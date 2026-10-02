@@ -41,6 +41,11 @@ export const DEFAULT_TEXTS = {
   locateMany: { es: "Está en varias zonas. ¿A cuál te llevo?", it: "È in più zone. Dove ti porto?", en: "It's in several areas. Which one should I take you to?" } as L,
   detailKnown: { es: "Según su ficha:", it: "Secondo la scheda:", en: "According to its page:" } as L,
   detailUnknown: { es: "No tengo ese dato confirmado;", it: "Non ho questo dato confermato;", en: "I don't have that detail confirmed;" } as L,
+  ansYesMat: { es: "sí es de", it: "sì, è in", en: "is made of" } as L,
+  ansNoMat: { es: "no es de", it: "non è in", en: "is not made of" } as L,
+  ansYesColor: { es: "sí está en", it: "sì, è", en: "is" } as L,
+  ansNoColor: { es: "no está en", it: "non è", en: "is not" } as L,
+  hereIs: { es: "aquí está en", it: "qui è in", en: "here it is in" } as L,
   notFound: { es: "No encontré esa pieza. ¿Me dices cuál es?", it: "Non ho trovato quel pezzo. Mi dici quale?", en: "I couldn't find that piece. Which one do you mean?" } as L,
   noPrice: { es: "No manejo precios: dependen de las medidas y los acabados. En su ficha puedes reservar una cita gratis con un asesor:", it: "Non gestisco i prezzi: dipendono da misure e finiture. Nella sua scheda puoi prenotare un appuntamento gratuito con un consulente:", en: "I don't have prices: they depend on sizes and finishes. On its page you can book a free appointment with an adviser:" } as L,
   moreInfo: { es: "Más detalles en", it: "Più dettagli nella", en: "More details on" } as L,
@@ -52,11 +57,15 @@ export const DEFAULT_TEXTS = {
   clarifyWhich: { es: "¿De cuál me hablas?", it: "Di quale parli?", en: "Which one do you mean?" } as L,
   clarifyEmpty: { es: "¿Qué tipo de mueble buscas? Por ejemplo sofás, mesas, cocinas o armarios.", it: "Che tipo di arredo cerchi? Per esempio divani, tavoli, cucine o armadi.", en: "What kind of furniture are you after? For example sofas, tables, kitchens or wardrobes." } as L,
   navigating: { es: "Te llevo a", it: "Ti porto a", en: "Taking you to" } as L,
+  similarTo: { es: "Lo que tienen en común con", it: "Cosa hanno in comune con", en: "What they share with" } as L,
 };
 
 export type Texts = typeof DEFAULT_TEXTS;
 
 const ps = (g: CardGroup, max = 4) => g.cards.slice(0, max).map((c) => `{{p:${c.exhibit_id}}}`).join(", ");
+/** Alternatives with what each shares with the piece they replace: "Balmoral (sofá, de ángulo, gris)". */
+const similar = (g: CardGroup, max = 4) => g.cards.slice(0, max)
+  .map((c) => `{{p:${c.exhibit_id}}}${c.shared?.length ? ` (${c.shared.map((x) => `{{c:${x}}}`).join(", ")})` : ""}`).join(", ");
 
 export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer, S: Texts = DEFAULT_TEXTS): Segment[] {
   const seg: Segment[] = [];
@@ -71,7 +80,7 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer, S: Texts
     }
     case "alternatives": {
       const g = bundle.groups[0];
-      seg.push({ text: g ? `${S.alternatives[lang]} ${ps(g)}.` : S.notFound[lang], claims: [] });
+      seg.push(g ? { text: `${S.alternatives[lang]} ${similar(g)}.`, claims: obl("sim:") } : { text: S.notFound[lang], claims: [] });
       break;
     }
     case "recommend": {
@@ -83,7 +92,7 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer, S: Texts
       const g = bundle.groups[0];
       if (!g) return [{ text: S.notFound[lang], claims: [] }];
       if (g.cards.length === 1) seg.push({ text: `${S.locate[lang]} {{z:${g.cards[0].exhibit_id}}}: {{p:${g.cards[0].exhibit_id}}}.`, claims: [] });
-      else seg.push({ text: `${g.cards.map((c) => `{{p:${c.exhibit_id}}} ({{z:${c.exhibit_id}}}, {{shown:${c.exhibit_id}}})`).join("; ")}. ${S.locateMany[lang]}`, claims: ["nav:ask"] });
+      else seg.push({ text: `${g.cards.map((c) => `{{p:${c.exhibit_id}}} ${S.in[lang]} {{z:${c.exhibit_id}}}, {{shown:${c.exhibit_id}}}`).join("; ")}. ${S.locateMany[lang]}`, claims: ["nav:ask"] });
       break;
     }
     case "detail": {
@@ -92,6 +101,17 @@ export function templateAnswer(bundle: Bundle, lang: Lang, r: Renderer, S: Texts
       const known = (bundle.details ?? []).filter((d) => d.status === "known");
       const unknown = (bundle.details ?? []).filter((d) => d.status === "unknown" && d.field !== "price");
       const price = (bundle.details ?? []).some((d) => d.field === "price");
+      // "¿Es de mármol?": the engine's yes/no first, and on a no how the piece is in the showroom.
+      for (const ob of bundle.obligations.filter((o) => o.startsWith("ans:"))) {
+        const [, cid, t] = ob.split(":");
+        const c = bundle.constraints.find((x) => x.id === cid);
+        if (!c) continue;
+        const mat = c.facet === "material";
+        const verb = t === "yes" ? (mat ? S.ansYesMat : S.ansYesColor) : t === "no" ? (mat ? S.ansNoMat : S.ansNoColor) : null;
+        seg.push(verb
+          ? { text: `{{p:${id}}} ${verb[lang]} {{c:${c.value}}}${t === "no" ? `; ${S.hereIs[lang]} {{shown:${id}}}` : ""}.`, claims: [ob] }
+          : { text: `{{p:${id}}} ({{c:${c.value}}}): ${S.detailUnknown[lang]} ${S.checkPage[lang]} {{link:${id}}}.`, claims: [ob] });
+      }
       if (known.length) seg.push({ text: `{{p:${id}}} — ${S.detailKnown[lang]} ${known.map((d) => `{{f:${d.field}}}`).join("; ")}.`, claims: [] });
       if (unknown.length) seg.push({ text: `{{p:${id}}}: ${S.detailUnknown[lang]} ${S.checkPage[lang]} {{link:${id}}}.`, claims: unknown.map((d) => `unk:${id}:${d.field}`) });
       if (price) seg.push({ text: `${S.noPrice[lang]} {{link:${id}}}.`, claims: [`price:${id}`] });
@@ -133,7 +153,7 @@ export function fixedAnswer(kind: keyof Texts, lang: Lang, S: Texts = DEFAULT_TE
 }
 
 export function navigationAnswer(exhibitId: string, lang: Lang, S: Texts = DEFAULT_TEXTS): Segment[] {
-  return [{ text: `${S.navigating[lang]} {{p:${exhibitId}}} ({{z:${exhibitId}}}).`, claims: [] }];
+  return [{ text: `${S.navigating[lang]} {{p:${exhibitId}}}, ${S.in[lang]} {{z:${exhibitId}}}.`, claims: [] }];
 }
 
 export function clarifyAnswer(candidates: string[], lang: Lang, reason: "ambiguous_ref" | "no_focus" | "empty", S: Texts = DEFAULT_TEXTS): Segment[] {
@@ -146,11 +166,13 @@ export function clarifyAnswer(candidates: string[], lang: Lang, reason: "ambiguo
  * values that do exist, the on-order options of a piece it already named). Never rewrites what the
  * LLM said; appends before a closing question so the answer still ends with it.
  */
-export function completeObligations(segments: Segment[], bundle: Bundle, lang: Lang, linksOnly = false, S: Texts = DEFAULT_TEXTS): Segment[] | null {
+export function completeObligations(segments: Segment[], bundle: Bundle, lang: Lang, linksOnly = false, S: Texts = DEFAULT_TEXTS,
+  covered: (ob: string) => boolean = () => false): Segment[] | null {
   const full = segments.map((s) => s.text).join(" ");
   const has = (t: string) => full.includes(t);
   const extra: Segment[] = [];
-  for (const ob of bundle.obligations) {
+  // Already said in the composer's own words (the values listed by hand): adding them again repeats them.
+  for (const ob of bundle.obligations.filter((o) => !covered(o))) {
     const [kind, a] = ob.split(":");
     if (kind === "vals" && !linksOnly && !has(`{{vals:${a}}}`)) extra.push({ text: `${S.values[lang]} {{vals:${a}}}.`, claims: [ob] });
     if (kind === "ord") {
@@ -165,6 +187,11 @@ export function completeObligations(segments: Segment[], bundle: Bundle, lang: L
     if (kind === "unk" && has(`{{p:${a}}}`) && !has(`{{link:${a}}}`)) extra.push({ text: `${cap(S.checkPage[lang])} {{link:${a}}}.`, claims: [ob] });
     if (kind === "price" && !has(`{{link:${a}}}`)) extra.push({ text: `${S.noPrice[lang]} {{link:${a}}}.`, claims: [ob] });
     if (kind === "lnk" && !has(`{{link:${a}}}`) && !bundle.obligations.includes(`price:${a}`)) extra.push({ text: `${S.moreInfo[lang]} {{link:${a}}}.`, claims: [ob] });
+    if (kind === "sim" && !linksOnly && bundle.source) {
+      const g = bundle.groups.find((x) => x.id === a);
+      const named = (g?.cards ?? []).filter((c) => has(`{{p:${c.exhibit_id}}}`) && c.shared?.length);
+      if (named.length) extra.push({ text: `${S.similarTo[lang]} {{p:${bundle.source}}}: ${similar({ ...g!, cards: named })}.`, claims: [ob] });
+    }
   }
   if (!extra.length) return null;
   // Before the closing question (the question can share a segment with the rest of the answer).

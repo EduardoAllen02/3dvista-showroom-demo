@@ -1,4 +1,4 @@
-import type { TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
+import type { SkinTweaks, TourBridgeStrategy } from "@3dvista-assistant/tour-bridge";
 
 export interface AssistantTheme {
   primaryColor: string;
@@ -22,4 +22,17 @@ export interface AssistantConfig {
   navStrategy?: "hash" | "player-api";
   /** Another viewer platform's bridge; when absent, the 3DVista bridge (createTourBridge) is used. */
   bridge?: TourBridgeStrategy;
+  /** Optional components, opt-in per tour (tour.config.json `features`). */
+  features?: {
+    /** Wishlist moodboard. Needs a backend with the /moodboard routes. */
+    moodboard?: boolean;
+    /** "Contáctame" in the wishlist panel (nearest store + form), instead of "send by email". */
+    contactForm?: boolean;
+    /** The "Hi! I'm your virtual assistant" bubble next to the chat button after entering the tour. */
+    greeting?: boolean;
+  };
+  /** The chat's first message in other languages (the viewer's own language pick, "it"/"en"). */
+  welcomeMessages?: Partial<Record<"it" | "es" | "en", string>>;
+  /** Edits to the viewer's own skin (3DVista: hide the zone label, raise the map button). */
+  skin?: SkinTweaks;
 }

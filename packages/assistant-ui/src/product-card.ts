@@ -61,7 +61,7 @@ export function renderProductInfo(card: ProductCard, handlers: ProductCardHandle
   const title = document.createElement("strong");
   title.textContent = card.name;
   const desc = document.createElement("p");
-  desc.textContent = shortDescription(card.description);
+  desc.textContent = card.teaser ?? shortDescription(card.description);
   body.append(title, desc);
 
   // Only the official page link here: "Llévame" (below) already takes the visitor to the piece,

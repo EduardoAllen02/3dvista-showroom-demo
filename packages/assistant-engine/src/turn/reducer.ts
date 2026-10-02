@@ -18,9 +18,9 @@ export type EngineAction =
   | { kind: "mood"; constraints: ActiveConstraint[] }
   | { kind: "list"; constraints: ActiveConstraint[] }
   | { kind: "alternatives"; exhibit: string }
-  | { kind: "recommend"; seeds: string[]; seen: string[] }
+  | { kind: "recommend"; seeds: string[]; seen: string[]; anchor?: string }
   | { kind: "locate"; target: string }
-  | { kind: "detail"; exhibit: string; fields: string[] }
+  | { kind: "detail"; exhibit: string; fields: string[]; asked?: { facet: "material" | "color"; value: string }[] }
   | { kind: "navigate"; exhibit: string }
   | { kind: "show"; exhibits: string[] }
   | { kind: "clarify"; candidates: string[]; reason: "ambiguous_ref" | "no_focus" | "empty" }
@@ -113,6 +113,42 @@ export class Reducer {
     for (const c of proposed) {
       const hit = lexHits.find((h) => h.concept === c.value);
       if (hit && c.op === "is" && negated(hit.start)) { c.op = "not"; notes.push(`negation restored: ${c.value}`); }
+    }
+    // "¿Lo tienes en amarillo?" right after several pieces asks about all of them (the kind just shown),
+    // not about whichever one the planner picked: only a name, a demonstrative, an ordinal or the piece
+    // in front of the camera singles one out.
+    const lastShown = prev.last_cards.turn === prev.turn ? prev.last_cards.groups.flatMap((g) => g.items) : [];
+    if (plan.intent === "variant" && focus && lastShown.length > 1 && lastShown.includes(focus) && !named.length
+      && focus !== s.viewer.centered && !POINTER.test(` ${normalizeText(message)} `)) {
+      notes.push(`variant→search (a pronoun after ${lastShown.length} pieces asks about all of them)`);
+      plan.intent = "search";
+      focus = null;
+    }
+    // A bare "sí" right after an offer accepts it, whatever the planner made of it (it sometimes re-runs
+    // the previous search with the offer still pending).
+    if (s.pending?.kind === "offer_group" && YES.test(` ${normalizeText(message)} `) && plan.intent !== "confirm") {
+      notes.push(`${plan.intent}→confirm (yes to the pending offer)`);
+      plan.intent = "confirm";
+    }
+    // "¿y cuánto pesa?": the planner sometimes asks for every field. Keep the ones the message names;
+    // none named → one field, so the answer is about what was asked and not a dump of the page.
+    if (plan.intent === "detail" && plan.detail_fields.length > 2) {
+      const msg = ` ${normalizeText(message)} `;
+      const named = plan.detail_fields.filter((f) => FIELD_WORDS[f]?.test(msg));
+      plan.detail_fields = named.length ? named : ["dimensions"];
+      notes.push(`detail fields narrowed to ${plan.detail_fields.join(",")}`);
+    }
+    // "¿La madia es de mármol?", "¿de qué color es el Balmoral?": a question about how the piece in the
+    // showroom is made or looks. It is answered from the piece itself (yes/no + its finishes), so the
+    // page's material list and fields the message doesn't name (dimensions) stay out.
+    if (plan.intent === "detail") {
+      const msg = ` ${normalizeText(message)} `;
+      const asked = lexHits.filter((h) => (h.facet === "material" || h.facet === "color") && !negated(h.start));
+      if (asked.length || COLOR_Q.test(msg)) {
+        plan.detail_asked = asked.map((h) => ({ facet: h.facet as "material" | "color", value: h.concept }));
+        plan.detail_fields = plan.detail_fields.filter((f) => f !== "materials" && f !== "options" && FIELD_WORDS[f]?.test(msg));
+        notes.push(`detail about the piece itself: ${plan.detail_asked.map((a) => a.value).join(",") || "colour"}`);
+      }
     }
     // Normalize the intent: "list" only for a bare category; "variant" needs a single focused piece.
     if (plan.intent === "list" && proposed.some((c) => c.facet !== "category") ) { plan.intent = "search"; notes.push("list→search (has attributes)"); }
@@ -249,14 +285,16 @@ export class Reducer {
         return focus ? { kind: "alternatives", exhibit: focus } : { kind: "clarify", candidates: s.last_cards.groups.flatMap((g) => g.items).slice(0, 4), reason: "no_focus" };
       case "recommend": {
         const seeds = [...new Set([...(focus ? [focus] : []), ...s.wishlist])];
-        return seeds.length ? { kind: "recommend", seeds, seen: s.seen } : { kind: "clarify", candidates: [], reason: "empty" };
+        // anchor: the piece asked about ("¿qué combina con el sofá Camden?"), which the answer must be able to name.
+        return seeds.length ? { kind: "recommend", seeds, seen: s.seen, ...(focus ? { anchor: focus } : {}) } : { kind: "clarify", candidates: [], reason: "empty" };
       }
       case "locate": {
         const target = focus ?? named[0];
         return target ? { kind: "locate", target } : { kind: "clarify", candidates: [], reason: "no_focus" };
       }
       case "detail":
-        return focus ? { kind: "detail", exhibit: focus, fields: plan.detail_fields.length ? plan.detail_fields : ["materials", "dimensions"] }
+        return focus ? { kind: "detail", exhibit: focus, asked: plan.detail_asked ?? [],
+          fields: plan.detail_asked || plan.detail_fields.length ? plan.detail_fields : ["materials", "dimensions"] }
           : { kind: "clarify", candidates: s.last_cards.groups.flatMap((g) => g.items).slice(0, 4), reason: "no_focus" };
       case "navigate": {
         // Explicit imperative with a single, resolved destination counts as confirmation (policy D4).
@@ -291,6 +329,26 @@ export class Reducer {
     }
   }
 }
+
+/** A message that is only a yes ("sí", "dale", "sì certo", "yes please"). */
+const YES = /^ (si|sí|sip|claro|dale|ok|okay|va|vale|por favor|si por favor|sí por favor|certo|si certo|va bene|yes|yes please|sure|yeah) $/;
+
+/** Words that name each detail field ("medidas", "material", "dove si trova"…), on normalized text. */
+const FIELD_WORDS: Record<string, RegExp> = {
+  dimensions: / (medida|medidas|mide|miden|dimension|dimensiones|tamano|ancho|alto|largo|profundo|misure|misura|dimensioni|grande|size|dimensions|wide|tall|long|big) /,
+  materials: / (material|materiales|hecho|hecha|materiale|materiali|fatto|fatta|made|materials) /,
+  style: / (estilo|stile|style) /,
+  shape: / (forma|shape) /,
+  options: / (colores|color|acabados|acabado|opciones|tapiceria|finiture|colori|opzioni|colours|colors|finishes|options) /,
+  location: / (donde|dove|where|zona|ubicacion) /,
+  price: / (precio|precios|cuesta|cuestan|vale|prezzo|costa|price|cost) /,
+};
+
+/** "¿De qué color es…?" in each language, on normalized text. */
+const COLOR_Q = / (que color|de que colores?|che colore|di che colore|what colou?r|which colou?r) /;
+
+/** Words that single out one piece of a list ("este", "el primero", "quello", "the last one"). */
+const POINTER = / (este|esta|ese|esa|aquel|aquella|primer|primero|primera|segundo|segunda|tercer|tercero|tercera|ultimo|ultima|questo|questa|quello|quella|primo|secondo|seconda|terzo|terza|this|that|first|second|third|last|one) /;
 
 const PRICE = /(cu[aá]nto\s+(cuesta|cuestan|vale|valen|sale|salen)|\bprecios?\b|\bprezz[oi]\b|quanto\s+cost|how\s+much|\bprices?\b|\bcost(o|s)?\b)/i;
 
